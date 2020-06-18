@@ -1,0 +1,39 @@
+-----------------------
+Zameranie Zoznam
+-----------------------
+
+Browser               - Brave
+Storage               - Storj, IPFS, Siacoin
+Video a audio volania - Experty
+OS                    - EOS< Essentia.one
+Soc. siete            - steemit
+Messaging             - Status
+Platobne systemy      - Monetha
+
+-----------------------
+Databazovy model
+-----------------------
+
+Coin ->
+zameranie,
+typ (EP5, ERC20),
+platforma, (neo, eth, -),
+povod, (fork, airdrop)
+net (test, main),
+rychlost tx,
+cena tx,
+typ2 (token, coin) -> zistim z platforma.
+
+-----------------------
+TODO do releaseu 1.0
+-----------------------
+- menu zmen na standardne
+- text hore trosku sivsi
+- slovnik preloz
+- vymysli inak clanky (na mobiloch nevidno ten )
+- google analytics
+- socialne sluzby
+- webaccess
+- g+ account
+- napis par clankov ale kvalitne : - vysvetlit co robit pri registraciach ...
+- ake obrazky mat pre clanky > - sluzba ktora nejak pomeni original obrazky ?
