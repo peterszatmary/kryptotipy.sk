@@ -41,20 +41,44 @@
           <div class="navigation">
             <nav>
               <ul class="nav topnav">
+                <? if($active == 'index') { ?>
                 <li class="active">
-                  <a href="index.html">Domov</a>
-                </li>
+                <? } else { ?>
                 <li>
-                  <a href="posts.html">Články</a>
+                <? } ?>
+                  <a href="<?php print_r($base_url);?>index">Domov</a>
                 </li>
+
+                <? if($active == 'posts') { ?>
+                <li class="active">
+                <? } else { ?>
                 <li>
-                  <a href="external-services.html">Externé služby</a>
+                <? } ?>
+                  <a href="<?php print_r($base_url);?>posts">Články</a>
                 </li>
+
+                <? if($active == 'external_services') { ?>
+                <li class="active">
+                <? } else { ?>
                 <li>
-                  <a href="dictionary.html">Slovník</a>
+                <? } ?>
+                  <a href="<?php print_r($base_url);?>external_services">Externé služby</a>
                 </li>
+
+                <? if($active == 'dictionary') { ?>
+                <li class="active">
+                <? } else { ?>
                 <li>
-                  <a href="contact.html">Kontakt</a>
+                <? } ?>
+                  <a href="<?php print_r($base_url);?>dictionary">Slovník</a>
+                </li>
+
+                <? if($active == 'contact') { ?>
+                <li class="active">
+                <? } else { ?>
+                <li>
+                <? } ?>
+                  <a href="<?php print_r($base_url);?>contact">Kontakt</a>
                 </li>
               </ul>
             </nav>
