@@ -19,7 +19,7 @@
     <div class="row">
       <div class="span12">
         <ul class="breadcrumb notop">
-          <li><a href="#">Domov</a><span class="divider">/</span></li>
+          <li><a href="<?php print_r($base_url);?>index">Domov</a><span class="divider">/</span></li>
           <li class="active">Chyba</li>
         </ul>
       </div>
