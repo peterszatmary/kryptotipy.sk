@@ -1,4 +1,4 @@
-# CodeIgniter 4 Framework
+# Page kryptotipy.sk
 
 ## What is CodeIgniter?
 
@@ -11,17 +11,18 @@ The user guide corresponding to this version of the framework can be found
 ## Versions
 
 I am using
-- CI4 in version v4.0.3.
+- codeigniter4 in version v4.0.3.
 - Minimal PHP is 7.2.
 - Maria DB
 - Bootstrap v2.3.0 (2012)
 
-## Important to start with CI4
+## Important to start with codeigniter4
 
 - rename env file to .env
 - in .env file change production to development to make debugging working
 - assets goes to public folder
 - constants in Constants.php as for example ```defined('BASE_URL') || define('BASE_URL', 'http://localhost:8080/');```
+- than you can use it in Controller as ```BASE_URL```
 - spark simplifies server booting as ```cmd php spark server```
 - i did one route in Routes.php ```$routes->get('(:any)', 'Pages::render/$1');``` i didnt know ho to write / pass second parameter in routes as array and didnt want to pass it through GET request. If you find uot you can simplify Pages.php and performance.
 
