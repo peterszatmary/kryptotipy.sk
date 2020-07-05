@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="MonstaFTP">
+<head>
+    <title>Websupport FTP</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" type="image/x-icon" href="application/frontend/images/logo-favicon.png">
+    <link rel="apple-touch-icon" href="application/frontend/images/logo-webclip.png">
+
+    <script>
+        var g_defaultLanguage = "en_us";
+        var g_upgradeURL = "http://www.monstaftp.com/upgrade";
+        var g_loadComplete = false;
+        var g_xhrTimeoutSeconds = 1800;
+        var g_isMonstaPostEntry = false;
+        var g_isNewWindowsInstall = false;
+        var g_ftpConnectionAvailable = true;
+        var g_openSslAvailable = true;
+        var g_resetPasswordAvailable = false;
+        var g_forgotPasswordAvailable = false;
+
+            </script>
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600,300">
+    <script src="application/frontend/assets-2.10.1/vendor.js"></script>
+
+    <link rel="stylesheet" href="application/frontend/css/monsta.css">
+    <link rel="stylesheet" href="settings/theme.css">
+    
+    <script src="application/frontend/js/monsta-min-2.10.1.js"></script>
+    <script src="application/frontend/js/templates-2.10.1.js"></script>
+
+                <script src="application/frontend/vs/loader.js"></script>
+                <script>
+        var g_languageFiles = [["en_us","English (US)"]];
+    </script>
+</head>
+<body>
+    <div id="spinner" ng-controller="SpinnerController" ng-show="spinnerVisible">
+        <div>
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div>
+    </div>
+    <div id="file-xfer-drop" ng-controller="DragDropController">
+        <div translate>DROP_FILES_INSTRUCTION</div>
+    </div>
+    <ng-include src="'application/frontend/templates/modal-chmod.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-login.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-password-management.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-editor.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-transfers.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-prompt.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-confirm.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-error.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-addons.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-settings.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-properties.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-login-link.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-choice.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-update.html'"></ng-include>
+    <ng-include src="'application/frontend/templates/modal-upgrade-required.html'"></ng-include>
+
+    <div id="sb-site" canvas="container">
+        <ng-include src="'application/frontend/templates/body-header.html'"></ng-include>
+        <ng-include src="'application/frontend/templates/body-history.html'"></ng-include>
+        <ng-include src="'application/frontend/templates/body-files.html'"></ng-include>
+        <ng-include src="'application/frontend/templates/body-footer.html'"></ng-include>
+    </div>
+
+    <ng-include src="'application/frontend/templates/body-slidebar.html'"></ng-include>
+    <iframe src="about:blank" id="download-iframe"></iframe>
+    <script>
+        var versionQS = "v=2.10.1&amp;r=http%3A%2F%2Fwebftp.ws.int%2F&amp;os=Linux&amp;e=e" +getFpQs();
+        document.write('<scri' + 'pt async src="//monstaftp.com/_callbacks/latest-version.php?' + versionQS + '"></scr' + 'ipt>')
+    </script>
+</body>
+</html>
