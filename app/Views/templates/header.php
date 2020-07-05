@@ -35,7 +35,7 @@
       <div class="navbar-inner">
         <div class="container">
           <!-- logo -->
-          <a class="brand logo" href="http://www.kryptotipy.sk/"><img src="<?php print_r($base_url);?>assets/img/logo.png" alt="kryptotipy.sk"></a>
+          <a class="brand logo" href="<?php print_r($base_url);?>"><img src="<?php print_r($base_url);?>assets/img/logo.png" alt="kryptotipy.sk"></a>
           <!-- end logo -->
           <!-- top menu -->
           <div class="navigation">

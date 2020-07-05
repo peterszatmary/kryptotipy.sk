@@ -116,7 +116,7 @@
                       <p>
                         Slovenské krypto články rôznych zdrojov na jednom mieste.
                       </p>
-                      <a class="btn btn-success" href="https://kryptotipy.sk/kryptotipysk-web/posts.html">Všetky články</a> <a class="btn btn-success" href="https://kryptotipy.sk/index.html">Najnovšie články</a>
+                      <a class="btn btn-success" href="<?php print_r($base_url);?>posts">Všetky články</a> <a class="btn btn-success" href="https://kryptotipy.sk/index.html">Najnovšie články</a>
                     </div>
                     <img class="slider_img" src="<?php print_r($base_url);?>assets/img/slides/sequence/3.jpg" alt="">
                   </li>
@@ -130,7 +130,7 @@
                       <p>
                         Slovenské krypto články rôznych zdrojov na jednom mieste.
                       </p>
-                      <a class="btn btn-success" href="https://kryptotipy.sk/kryptotipysk-web/posts.html">Všetky články</a> <a class="btn btn-success" href="https://kryptotipy.sk/index.html">Najnovšie články</a>
+                      <a class="btn btn-success" href="<?php print_r($base_url);?>posts">Všetky články</a> <a class="btn btn-success" href="https://kryptotipy.sk/index.html">Najnovšie články</a>
                     </div>
                     <img class="slider_img" src="<?php print_r($base_url);?>assets/img/slides/sequence/4.jpg" alt="">
                   </li>
