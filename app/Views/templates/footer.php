@@ -10,7 +10,7 @@
          </div>
          <div class="span6">
            <div class="credits">
-             <a href="contact.html">Kontakt a donate</a>
+             <a href="<?php print_r($base_url);?>contact">Kontakt a donate</a>
            </div>
          </div>
        </div>
