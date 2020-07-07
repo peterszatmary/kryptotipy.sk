@@ -11,9 +11,10 @@ class Pages extends Controller {
     private $PAGE_EXTERNAL_SERVICES = "external_services";
     private $PAGE_DICTIONARY = "dictionary";
     private $PAGE_CONTACT = "contact";
+    private $db;
 
     public function __construct() {
-        //$db = db_connect();
+        $this->db = \Config\Database::connect();
     }
 
     public function index() {
@@ -37,8 +38,8 @@ class Pages extends Controller {
         $data['active'] = $this->PAGE_POSTS;
         $data['base_url'] = BASE_URL;
         $data['header'] = 'header';
-        $db = \Config\Database::connect();
-        $t = $db->table('post')->get()->getResult();
+
+        $t = $this->db->table('post')->get()->getResult();
         $data['posts'] = $t[0];
         //log_message('info', $data['posts']);
         return $data;
