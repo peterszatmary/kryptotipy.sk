@@ -114,7 +114,7 @@
                       <br>
                       <h3>Pre krypto-nadšencov</h3>
                       <p>
-                        Slovenské krypto články rôznych zdrojov na jednom mieste.
+                        Slovenské krypto články z rôznych zdrojov na jednom mieste.
                       </p>
                       <a class="btn btn-success" href="<?php print_r($base_url);?>posts">Všetky články</a> <a class="btn btn-success" href="<?php print_r($base_url);?>posts">Najnovšie články</a>
                     </div>
@@ -128,7 +128,7 @@
                       <br>
                       <h3>Pre krypto-nadšencov</h3>
                       <p>
-                        Slovenské krypto články rôznych zdrojov na jednom mieste.
+                        Viac ako 10 000 slovenských krypto článkov.
                       </p>
                       <a class="btn btn-success" href="<?php print_r($base_url);?>posts">Všetky články</a> <a class="btn btn-success" href="<?php print_r($base_url);?>posts">Najnovšie články</a>
                     </div>

@@ -197,6 +197,9 @@
       </ul>
     </div>
 
+
+    <p>posts:</p>
+    <?php print_r($posts);?>
     <!-- pagination
     <div class="row">
       <div class="span12">
