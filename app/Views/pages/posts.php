@@ -49,7 +49,7 @@
             <div class="thumbnail">
               <a href="post-kryptotipysk.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Ako na airdropy tokenov zadarmo" title="Ako na airdropy tokenov zadarmo" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Ako na airdropy tokenov zadarmo" title="Ako na airdropy tokenov zadarmo" />
                 <article  style="display: block;">
                   <h4>Ako na airdropy tokenov zadarmo</h4>
                 </article>
@@ -64,7 +64,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Ako si vybrať ERC20 tokeny" title="Ako si vybrať ERC20 tokeny" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Ako si vybrať ERC20 tokeny" title="Ako si vybrať ERC20 tokeny" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny</h4>
                 </article>
@@ -79,7 +79,7 @@
             <div class="thumbnail">
               <a href="post-proofs.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Proofs..." title="Proofs..." />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Proofs..." title="Proofs..." />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Proofs ...</h4>
                 </article>
@@ -94,7 +94,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny a dalsie blaboly</h4>
                 </article>
@@ -109,7 +109,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny a dalsie blaboly</h4>
                 </article>
@@ -124,7 +124,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny a dalsie blaboly</h4>
                 </article>
@@ -139,7 +139,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny a dalsie blaboly</h4>
                 </article>
@@ -154,7 +154,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny a dalsie blaboly</h4>
                 </article>
@@ -169,7 +169,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny a dalsie blaboly</h4>
                 </article>
@@ -184,7 +184,7 @@
             <div class="thumbnail">
               <a href="post-example.html">
               <div class="image-wrapp">
-                <img src="assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
+                <img src="<?php print_r($base_url);?>assets/img/dummies/work5.jpg" alt="Portfolio name" title="" />
                 <article class="da-animate da-slideFromRight" style="display: block;">
                   <h4>Ako si vybrať ERC20 tokeny a dalsie blaboly</h4>
                 </article>
