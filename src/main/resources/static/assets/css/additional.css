@@ -1,0 +1,44 @@
+.big-spacing {
+    font-size: 16px;
+}
+.dictionary-fist-letter {
+  font-size: 50px;
+  margin-bottom: 15px;
+  margin-top: 0px;
+  padding-bottom:50px;
+}
+
+.bottom-post-text {
+  font-weight: bold;
+  color: #f2f2f2;
+  background-color: #333333;
+  padding: 10px;
+  text-align: center;
+}
+
+.last-in-dictionary-letter {
+  margin-bottom: 70px;
+}
+
+.post-title {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  margin: 0px;
+  display: block;
+  color: #68c425;
+  background-color: #F2F2F2;
+}
+
+.post-metadata {
+  padding-top: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin: 0px;
+  display: block;
+  color: #383d3a;
+  background-color: #F2F2F2;
+  font-size: smaller;
+}

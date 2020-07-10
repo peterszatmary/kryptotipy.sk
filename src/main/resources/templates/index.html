@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <div th:replace="fragments/header"></div>
+        <meta name="description" th:content="${page_description}" />
+        <meta name="author" th:content="${page_author}" />
+        <title th:text="${page_title}"></title>
+    </head>
+    <body>
+        <div th:replace="fragments/navbar"></div>
+        <div th:replace="fragments/index-bar"></div>
+        <!-- self content start -->
+        <div th:replace="fragments/content/index"></div>
+        <!-- self content end -->
+        <div th:replace="fragments/footer"></div>
+    </body>
+</html>

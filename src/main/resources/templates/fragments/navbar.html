@@ -1,0 +1,41 @@
+    <html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+    <header>
+        <!-- Navbar
+        ================================================== -->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- logo -->
+                    <a class="brand logo" th:href="${base_url}"><img th:src="@{${base_url + 'assets/img/logo.png'}}" alt="kryptotipy.sk"></a>
+                    <!-- end logo -->
+                    <!-- top menu -->
+                    <div class="navigation">
+                        <nav>
+                            <ul class="nav topnav">
+                                <li th:class="${active_index}">
+                                    <a th:href="${base_url}">Domov</a>
+                                </li>
+
+                                <li th:class="${active_posts}">
+                                    <a th:href="@{${base_url + 'posts'}}">Články</a>
+                                </li>
+
+                                <li th:class="${active_external_services}">
+                                    <a th:href="@{${base_url + 'external-services'}}">Externé služby</a>
+                                </li>
+
+                                <li th:class="${active_dictionary}">
+                                    <a th:href="@{${base_url + 'dictionary'}}">Slovník</a>
+                                </li>
+
+                                <li th:class="${active_contact}">
+                                    <a th:href="@{${base_url + 'contact'}}">Kontakt</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- end menu -->
+                </div>
+            </div>
+        </div>
+    </header>

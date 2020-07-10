@@ -1,0 +1,19 @@
+                <html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+                <li class="portfolio-item2" data-id="id-0" data-type="graphic" th:fragment="one_post(post)">
+                    <div class="span3">
+                        <div class="thumbnail">
+                            <div class="image-wrapp">
+                                <a th:href="${post.url}">
+                                    <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />
+                                    <article class="da-animate da-slideFromRight" style="display: block;">
+                                        <h4 th:text="${post.title}"></h4>
+                                    </article>
+                                </a>
+                                <span th:text="${post.title}" class="post-title"></span>
+                                <span class="post-metadata">
+                                    <span th:text="@{${post.birthday + '          ' + post.source}}"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
