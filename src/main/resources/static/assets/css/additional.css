@@ -21,14 +21,15 @@
 }
 
 .post-title {
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 5px;
-  margin: 0px;
-  display: block;
-  color: #68c425;
-  background-color: #F2F2F2;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    margin: 0px;
+    display: block;
+    font-size: medium;
+    color: #383838;
+    background-color: #f2f2f2;
 }
 
 .post-metadata {
@@ -38,7 +39,7 @@
   padding-bottom: 15px;
   margin: 0px;
   display: block;
-  color: #383d3a;
+  color: #636363;
   background-color: #F2F2F2;
   font-size: smaller;
 }

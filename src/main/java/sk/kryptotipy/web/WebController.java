@@ -35,7 +35,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_contact", "");
-            model.put("posts", fillImgSrc());
+            model.put("posts", this.postService.getPosts());
             log.info("index.html - ");
             pageData.set(model, " - index");
             return "index";
@@ -134,27 +134,6 @@ public class WebController {
             pageData.set(model, "404");
             return "redirect:/error.html";
         }
-    }
-
-
-    private List<Post> fillImgSrc() {
-
-//        List<Post> posts = this.postService.getPosts().stream().map(
-//                post -> {
-//                    post.setImgSrc(this.postService.choosePostImg(post));
-//                    return post;
-//                }
-//        ).collect(Collectors.toList());
-
-        List<Post> posts = this.postService.getPosts();
-
-        for (Post post : posts) {
-
-            String label = this.postService.choosePostImg(post);
-            post.setImgSrc(label);
-
-        }
-        return posts;
     }
 
 
