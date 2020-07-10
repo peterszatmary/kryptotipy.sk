@@ -23,19 +23,7 @@ public class PostService implements PostServiceApi {
     }
 
     //TODO
-    public String choosePostImg(Post post) {
-        List<Label> labels = post.getLabels();
-        Label label;
-        if (labels.isEmpty()) {
-            label = new Label();
-            label.setName("nezaradene");
-        } else {
-            label = labels.get(new Random().nextInt(labels.size()));
-        }
-        String img = "assets/post-images/" + label.getName() + "/images_" + (new Random().nextInt(10) + 1 ) + ".jpg";
-        log.info("Choosed img : {} for post {} labels {}", img, post.getUrl(), post.getLabels());
-        return img;
-    }
+
 
     //TODO
     public List<Post> getPosts() {

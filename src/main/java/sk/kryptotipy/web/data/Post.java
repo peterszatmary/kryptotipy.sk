@@ -50,10 +50,13 @@ public class Post {
     @Setter
     private Boolean external;
 
-    //not in db
     @Setter
-    @Transient
+    @Column(name = "img_src")
     private String imgSrc;
+
+    @Setter
+    @Column(name = "source_render")
+    private String sourceRender;
 
     @ManyToMany
     @JoinTable(
