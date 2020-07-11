@@ -10,8 +10,11 @@
                                     </article>
                                 </a>
                                 <span th:text="${post.title}" class="post-title"></span>
+                                <span class="post-labels">
+                                    <span th:each="label : ${post.labels}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></span>
+                                </span>
                                 <span class="post-metadata">
-                                    <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + ' ' + post.sourceRender}"></span>
+                                    <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></span>
                                 </span>
                             </div>
                         </div>

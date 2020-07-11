@@ -43,3 +43,15 @@
   background-color: #F2F2F2;
   font-size: smaller;
 }
+
+.post-labels {
+  padding-top: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 2px;
+  margin: 0px;
+  display: block;
+  color: dodgerblue;
+  background-color: #F2F2F2;
+  font-size: smaller;
+}
