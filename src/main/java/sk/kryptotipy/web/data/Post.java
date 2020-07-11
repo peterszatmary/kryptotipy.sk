@@ -33,6 +33,10 @@ public class Post {
     @Setter
     private String title;
 
+    @Setter
+    @Transient
+    private String titleRender;
+
     @Lob
     @Setter
     private String content;

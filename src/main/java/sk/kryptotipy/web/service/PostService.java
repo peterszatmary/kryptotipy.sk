@@ -28,12 +28,31 @@ public class PostService implements PostServiceApi {
     //TODO
     public List<Post> getPosts() {
         //return postRepository.findAll().stream().limit(100).collect(Collectors.toList());
-        return postRepository.findAllByOrderByBirthdayDesc().stream().limit(20).collect(Collectors.toList());
+        return postRepository.findAllByOrderByBirthdayDesc()
+                .stream()
+                .limit(20)
+                .map(post -> { post.setTitleRender(this.renderPostTitle(post));return post;})
+                .collect(Collectors.toList());
         //return postRepository.findByLabel("bitcoin");
     }
 
     //TODO
     public Page<Post> getNewestPosts() {
         return postRepository.findAll(PageRequest.of(0, 12));
+    }
+
+    public String renderPostTitle(Post post) {
+        int MAX_LENGTH = 66;
+        if (post.getTitle() == null) {
+            return "N/A";
+        }
+        String raw  = post.getTitle().substring(0, MAX_LENGTH - 1);
+        if (raw.length() <= MAX_LENGTH - 3) {
+            return raw;
+        } else {
+            String part = raw.substring(0, MAX_LENGTH - 3);
+            StringBuilder title = new StringBuilder().append(part).append("...");
+            return title.toString();
+        }
     }
 }

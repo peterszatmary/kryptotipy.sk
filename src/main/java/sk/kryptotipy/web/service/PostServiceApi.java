@@ -8,4 +8,5 @@ import java.util.List;
 public interface PostServiceApi {
     Page<Post> getNewestPosts();
     List<Post> getPosts();
+    String renderPostTitle(Post post);
 }

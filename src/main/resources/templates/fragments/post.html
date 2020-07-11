@@ -6,7 +6,7 @@
                                 <a th:href="${post.url}">
                                     <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />
                                     <article class="da-animate da-slideFromRight" style="display: block;">
-                                        <h4 th:text="${post.title}"></h4>
+                                        <h4 th:text="${post.titleRender}"></h4>
                                     </article>
                                 </a>
                                 <span th:text="${post.title}" class="post-title"></span>
