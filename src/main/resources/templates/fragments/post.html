@@ -4,12 +4,12 @@
                         <div class="thumbnail">
                             <div class="image-wrapp">
                                 <a th:href="${post.url}">
-                                    <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />
+                                    <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.titleRender}" th:title="${post.titleRender}" />
                                     <article class="da-animate da-slideFromRight" style="display: block;">
                                         <h4 th:text="${post.titleRender}"></h4>
                                     </article>
                                 </a>
-                                <span th:text="${post.title}" class="post-title"></span>
+                                <span th:text="${post.titleRender}" class="post-title"></span>
                                 <span class="post-labels">
                                     <span th:each="label : ${post.labels}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></span>
                                 </span>

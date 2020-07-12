@@ -28,12 +28,15 @@ public class PostService implements PostServiceApi {
     //TODO
     public List<Post> getPosts() {
         //return postRepository.findAll().stream().limit(100).collect(Collectors.toList());
-        return postRepository.findAllByOrderByBirthdayDesc()
+        List<Post> posts = postRepository.findAllByOrderByBirthdayDesc()
                 .stream()
                 .limit(20)
                 .map(post -> { post.setTitleRender(this.renderPostTitle(post));return post;})
                 .collect(Collectors.toList());
+
         //return postRepository.findByLabel("bitcoin");
+        posts.stream().forEach(System.out::println);
+        return posts;
     }
 
     //TODO
@@ -42,17 +45,31 @@ public class PostService implements PostServiceApi {
     }
 
     public String renderPostTitle(Post post) {
-        int MAX_LENGTH = 66;
+        int MAX_LENGTH = 40;
         if (post.getTitle() == null) {
             return "N/A";
         }
-        String raw  = post.getTitle().substring(0, MAX_LENGTH - 1);
-        if (raw.length() <= MAX_LENGTH - 3) {
-            return raw;
-        } else {
-            String part = raw.substring(0, MAX_LENGTH - 3);
+
+        int titleLength = post.getTitle().length();
+
+        if (titleLength < MAX_LENGTH) {
+            // dopocitaj
+            StringBuilder str = new StringBuilder(post.getTitle());
+            for (int i = 0; i < MAX_LENGTH - titleLength; i++) {
+                str.append(" ");
+            }
+            return str.toString();
+        }
+
+        if (titleLength == MAX_LENGTH) {
+            return post.getTitle();
+        }
+
+        if (titleLength > MAX_LENGTH) {
+            String part = post.getTitle().substring(0, MAX_LENGTH);
             StringBuilder title = new StringBuilder().append(part).append("...");
             return title.toString();
         }
+        return "";
     }
 }
