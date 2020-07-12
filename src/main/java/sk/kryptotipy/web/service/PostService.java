@@ -31,7 +31,7 @@ public class PostService implements PostServiceApi {
         List<Post> posts = postRepository.findAllByOrderByBirthdayDesc()
                 .stream()
                 .limit(20)
-                .map(post -> { post.setTitleRender(this.renderPostTitle(post));return post;})
+                .map(post -> { this.setRenderPostTitle(post); return post; })
                 .collect(Collectors.toList());
 
         //return postRepository.findByLabel("bitcoin");
@@ -44,32 +44,39 @@ public class PostService implements PostServiceApi {
         return postRepository.findAll(PageRequest.of(0, 12));
     }
 
-    public String renderPostTitle(Post post) {
+    /**
+     * render title atribute is calculated each time from title. is not stored in DB
+     * @param post
+     * @return
+     */
+    public void setRenderPostTitle(Post post) {
         int MAX_LENGTH = 45;
         if (post.getTitle() == null) {
-            return "N/A";
+            post.setTitleRender("N/A");
+            return;
         }
 
         int titleLength = post.getTitle().length();
 
         if (titleLength < MAX_LENGTH) {
-            // dopocitaj
             StringBuilder str = new StringBuilder(post.getTitle());
             for (int i = 0; i < MAX_LENGTH - titleLength; i++) {
                 str.append(" ");
             }
-            return str.toString();
+            post.setTitleRender(str.toString());
+            return;
         }
 
         if (titleLength == MAX_LENGTH) {
-            return post.getTitle();
+            post.setTitleRender(post.getTitle());
+            return;
         }
 
         if (titleLength > MAX_LENGTH) {
             String part = post.getTitle().substring(0, MAX_LENGTH);
             StringBuilder title = new StringBuilder().append(part).append("...");
-            return title.toString();
+            post.setTitleRender(title.toString());
+            return;
         }
-        return "";
     }
 }
