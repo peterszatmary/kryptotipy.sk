@@ -35,7 +35,7 @@ public class PostService implements PostServiceApi {
                 .collect(Collectors.toList());
 
         //return postRepository.findByLabel("bitcoin");
-        posts.stream().forEach(System.out::println);
+
         return posts;
     }
 
@@ -45,7 +45,7 @@ public class PostService implements PostServiceApi {
     }
 
     public String renderPostTitle(Post post) {
-        int MAX_LENGTH = 40;
+        int MAX_LENGTH = 45;
         if (post.getTitle() == null) {
             return "N/A";
         }
