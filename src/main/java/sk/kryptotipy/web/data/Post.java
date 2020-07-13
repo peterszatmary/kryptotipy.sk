@@ -14,10 +14,10 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 @AllArgsConstructor
 //@Data
 @Getter
-@Entity
+//@Entity
 @EqualsAndHashCode
 @ToString(exclude = {"content"})
-@Table(name = "post")
+//@Table(name = "post")
 public class Post {
 
     @Id
@@ -63,10 +63,10 @@ public class Post {
     @Column(name = "source_render")
     private String sourceRender;
 
-    @ManyToMany
-    @JoinTable(
-            joinColumns = @JoinColumn(name = "post_id"),
-            inverseJoinColumns = @JoinColumn(name = "label_id"))
+//    @ManyToMany
+//    @JoinTable(
+//            joinColumns = @JoinColumn(name = "post_id"),
+//            inverseJoinColumns = @JoinColumn(name = "label_id"))
     @Setter
-    private Set<Label> labels;
+    private List<Label> labels;
 }

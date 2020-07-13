@@ -11,7 +11,7 @@
                                 </a>
                                 <span th:text="${post.titleRender}" class="post-title"></span>
                                 <span class="post-labels">
-                                    <a  th:each="label : ${post.labels}"  th:href="@{${base_url + 'posts/' + label.name}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
+                                    <a  th:each="label : ${post.labels}"  th:href="@{${base_url + 'posts/' + label.name + '/0/30'}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                                 </span>
                                 <span class="post-metadata">
                                     <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></span>

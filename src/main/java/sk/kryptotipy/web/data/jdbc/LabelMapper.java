@@ -1,0 +1,17 @@
+package sk.kryptotipy.web.data.jdbc;
+
+import org.springframework.jdbc.core.RowMapper;
+import sk.kryptotipy.web.data.Label;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class LabelMapper implements RowMapper<Label> {
+    @Override
+    public Label mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+        Label label = new Label();
+        label.setName(rs.getString("l.name"));
+        return label;
+    }
+}

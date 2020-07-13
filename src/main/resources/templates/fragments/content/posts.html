@@ -5,9 +5,9 @@
                 <div class="row">
                     <div class="span12">
                         <div class="centered">
-                            <h3>Články</h3>
+                            <h3 th:text="@{${ 'Články ' + label}}"></h3>
                             <p>
-                                A je to u
+                                TODO treba nieco vymysliet
                             </p>
                         </div>
                     </div>
@@ -21,71 +21,61 @@
                 <div class="span12">
                     <ul class="breadcrumb notop">
                         <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                        <li class="active">Posts</li>
+                        <li class="active">Články</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    <section id="maincontent">
+
+    <section id="maincontent" style="margin-top: -30px;">
         <div class="container">
 
             <div class="row">
                 <div class="span12">
                     <ul class="filter">
-                        <li class="all active"><a href="#" class="btn btn-color">Všetky</a></li>
-                        <li class="token"><a href="#" class="btn btn-color">Tokeny</a></li>
-                        <li class="coin"><a href="#" class="btn btn-color">Coiny</a></li>
-                        <li class="others"><a href="#" class="btn btn-color">Ostatné</a></li>
-                        <li class="all active"><a href="#" class="btn btn-color">Bitcoin</a></li>
-                        <li class="token"><a href="#" class="btn btn-color">Ethereum</a></li>
-                        <li class="coin"><a href="#" class="btn btn-color">Penazenky</a></li>
-                        <li class="others"><a href="#" class="btn btn-color">kryptomeny</a></li>
-                        <li class="others"><a href="#" class="btn btn-color">FED</a></li>
-                        <li class="others"><a href="#" class="btn btn-color">ECB</a></li>
+                        <li th:classappend="${label} == 'Všetky' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/all/0/30'}}" class="btn btn-color">Všetky</a></li>
+                        <li th:classappend="${label} == 'kryptomeny' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/kryptomeny/0/30'}}" class="btn btn-color">Kryptomeny</a></li>
+                        <li th:classappend="${label} == 'monero' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/monero/0/30'}}" class="btn btn-color">Monero</a></li>
+                        <li th:classappend="${label} == 'litecoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/litecoin/0/30'}}" class="btn btn-color">Litecoin</a></li>
+                        <li th:classappend="${label} == 'bitcoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/bitcoin/0/30'}}" class="btn btn-color">Bitcoin</a></li>
+
+                        <li th:classappend="${label} == 'ethereum' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ethereum/0/30'}}" class="btn btn-color">Ethereum</a></li>
+                        <li th:classappend="${label} == 'altcoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/altcoin/0/30'}}" class="btn btn-color">Altcoiny</a></li>
+                        <li th:classappend="${label} == 'fed' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/fed/0/30'}}" class="btn btn-color">FED</a></li>
+                        <li th:classappend="${label} == 'ecb' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ecb/0/30'}}" class="btn btn-color">ECB</a></li>
+                        <li th:classappend="${label} == 'binance' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/binance/0/30'}}" class="btn btn-color">Binance</a></li>
+
+                        <li th:classappend="${label} == 'dag' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/dag/0/30'}}" class="btn btn-color">DAG</a></li>
+                        <li th:classappend="${label} == 'exodus' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/exodus/0/30'}}" class="btn btn-color">Exodus</a></li>
+                        <li th:classappend="${label} == 'dash' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/dash/0/30'}}" class="btn btn-color">Dash</a></li>
+                        <li th:classappend="${label} == 'burza' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/burza/0/30'}}" class="btn btn-color">Burza</a></li>
+                        <li th:classappend="${label} == 'fork' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/fork/0/30'}}" class="btn btn-color">Fork</a></li>
+
+                        <li th:classappend="${label} == 'ico' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ico/0/30'}}" class="btn btn-color">ICO</a></li>
+                        <li th:classappend="${label} == 'kraken' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/kraken/0/30'}}" class="btn btn-color">Kraken</a></li>
+                        <li th:classappend="${label} == 'coinbase' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/coinbase/0/30'}}" class="btn btn-color">Coinbase</a></li>
+                        <li th:classappend="${label} == 'halving' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/halving/0/30'}}" class="btn btn-color">Halving</a></li>
+                        <li th:classappend="${label} == 'nbs' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/nbs/0/30'}}" class="btn btn-color">NBS</a></li>
+
+                        <li th:classappend="${label} == 'neo' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/neo/0/30'}}" class="btn btn-color">NEO</a></li>
+                        <li th:classappend="${label} == 'bitfinex' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/bitfinex/0/30'}}" class="btn btn-color">Bitfinex</a></li>
+                        <li th:classappend="${label} == 'bittrex' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/bittrex/0/30'}}" class="btn btn-color">Bittrex</a></li>
+                        <li th:classappend="${label} == 'ripple' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ripple/0/30'}}" class="btn btn-color">Ripple</a></li>
+                        <li th:classappend="${label} == 'penazenky' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/penazenky/0/30'}}" class="btn btn-color">Peňaženky</a></li>
+
+                        <li th:classappend="${label} == 'coinmarketcap' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/coinmarketcap/0/30'}}" class="btn btn-color">Coinmarketcap</a></li>
+                        <li th:classappend="${label} == 'nezaradene' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/nezaradene/0/30'}}" class="btn btn-color">Ostatné</a></li>
+
                     </ul>
                 </div>
             </div>
-            <!--<div class="row">-->
-            <!--<div class="span3 features">-->
-            <!--<i class="icon-circled icon-32 icon-thumbs-up left active"></i>-->
-            <!--<h4>Kryptotipy</h4>-->
-            <!--<div class="dotted_line">-->
-            <!--</div>-->
-            <!--<p class="left">-->
-            <!--Po pridaní do telegram skupiny <a href="https://t.me/kryptotipy" target="_blank">kryptotipy</a> už vám tokeny z airdropov zadarmo neuniknú.-->
-            <!--</p>-->
-            <!--<a href="post-kryptotipysk.html">Chcem vedieť viac</a>-->
-            <!--</div>-->
-            <!--<div class="span3 features">-->
-            <!--<i class="icon-circled icon-32 icon-plane left"></i>-->
-            <!--<h4>Slovník</h4>-->
-            <!--<div class="dotted_line"></div>-->
-            <!--<p class="left">-->
-            <!--Ako každá doména aj tá krypto doména má svoje pojmy, skratky a slovné spojenia. Slovník pomôže v začiatkoch a človek sa začne orientovať lepšie.-->
-            <!--</p>-->
-            <!--<a href="dictionary.html">Chcem vedieť viac</a>-->
-            <!--</div>-->
 
-            <!--<div class="span3 features">-->
-            <!--<i class="icon-circled icon-32 icon-cogs left"></i>-->
-            <!--<h4>Externé služby</h4>-->
-            <!--<div class="dotted_line"></div>-->
-            <!--<p class="left">-->
-            <!--Zoznam dôležitých služieb a odkazov týkajúcich sa krypto, ktoré sa môžu hodiť.-->
-            <!--</p>-->
-            <!--<a href="external-services.html">Zoznam</a>-->
-            <!--</div>-->
-
-            <!--</div>-->
 
             <div class="row">
-                <div class="span12">
-                    <h3>Najnovšie články</h3>
-                </div>
                 <ul class="portfolio-area da-thumbs">
-                    <div th:each="post : ${posts}">
-                        <div th:replace="fragments/post :: one_post(${post})"></div>
+                    <div th:each="post : ${posts}" th:remove="tag">
+                        <div th:replace="fragments/post :: one_post(${post})" th:remove="tag"></div>
                     </div>
                 </ul>
             </div>

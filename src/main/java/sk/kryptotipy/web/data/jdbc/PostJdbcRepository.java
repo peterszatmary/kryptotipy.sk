@@ -20,7 +20,7 @@ public class PostJdbcRepository {
         List<Post> posts = new ArrayList<>();
 
         try {
-            posts  = jdbcTemplate.query(QueryFactory.newestPosts(), new Object[] {}, new PostMapper());
+            posts  = jdbcTemplate.query(QueryFactory.newestPosts(), new Object[] {}, new PostMapper(jdbcTemplate));
 
         } catch(Exception e){
             e.printStackTrace();
@@ -28,12 +28,26 @@ public class PostJdbcRepository {
         return posts;
     }
 
-   public List<Post> getPostsByLabel(String label) {
+   public List<Post> getPostsByLabel(String label, Long from, Long to) {
         List<Post> posts = new ArrayList<>();
 
         try {
             //SqlParameterSource namedParameters = new MapSqlParameterSource("label_name", label);
-            posts  = jdbcTemplate.query(QueryFactory.postsByLabel(), new PostMapper(), label);
+            posts  = jdbcTemplate.query(QueryFactory.postsByLabel(), new PostMapper(jdbcTemplate), label, from, to);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return posts;
+    }
+
+    public List<Post> getPostsByLabelAll(Long from, Long to) {
+        List<Post> posts = new ArrayList<>();
+
+        try {
+            //SqlParameterSource namedParameters = new MapSqlParameterSource("label_name", label);
+            posts  = jdbcTemplate.query(QueryFactory.postsByLabelAll(), new PostMapper(jdbcTemplate), from, to);
 
         } catch(Exception e){
             e.printStackTrace();

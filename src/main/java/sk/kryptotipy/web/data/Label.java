@@ -9,26 +9,24 @@ import java.util.List;
 @NoArgsConstructor
 //@Data
 @Getter
-@Entity
+//@Entity
 @ToString(exclude = {"id", "posts"})
-@Table(name = "label")
+//@Table(name = "label")
 public class Label {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Setter
-    @Column(unique = true)
+    //@Column(unique = true)
     private String name;
 
     public Label(String name) {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "labels")
+    //@ManyToMany(mappedBy = "labels")
     @Setter
     private List<Post> posts;
-
-
 }

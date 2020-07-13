@@ -55,3 +55,17 @@
   background-color: #F2F2F2;
   font-size: smaller;
 }
+
+.post-labels a:hover  {
+   text-decoration: none;
+   color: #383838;
+}
+
+.post-labels a:visited, a:active {
+   text-decoration: none;
+   color: #86b300;
+}
+
+.bigger {
+    line-height: 40px;
+}

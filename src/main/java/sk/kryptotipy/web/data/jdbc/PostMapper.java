@@ -1,5 +1,8 @@
 package sk.kryptotipy.web.data.jdbc;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import sk.kryptotipy.web.data.Label;
 import sk.kryptotipy.web.data.Post;
@@ -8,18 +11,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+@Slf4j
+@AllArgsConstructor
 public class PostMapper implements RowMapper<Post> {
+
+    private final JdbcTemplate jdbcTemplate;
 
     @Override
     public Post mapRow(ResultSet rs, int i) throws SQLException {
 
+        //log.info("started post mapRow");
+
         Post post = new Post();
-        Label label = new Label();
-        label.setName(rs.getString("l.name"));
+        //Label label = new Label();
+        //label.setName(rs.getString("l.name"));
 
         post.setUrl(rs.getString("p.url"));
         post.setTitle(rs.getString("p.title"));
@@ -29,14 +39,28 @@ public class PostMapper implements RowMapper<Post> {
         post.setSourceRender(rs.getString("p.source_render"));
         post.setImgSrc(rs.getString("p.img_src"));
         post.setBirthday(LocalDate.parse(rs.getString("p.birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        post.setLabels(new HashSet<>(Arrays.asList(label)));
+        //post.setLabels(new HashSet<>(Arrays.asList(label)));
+
+        post.setLabels(selectLabels(rs.getLong("p.id")));
+        //log.info("after labels sql query");
 
         return post;
     }
 
 
-    private List<Label> selectLabels() {
-        
+    private List<Label> selectLabels(Long id) {
+        List<Label> labels = new ArrayList<>();
+
+        try {
+            //SqlParameterSource namedParameters = new MapSqlParameterSource("label_name", label);
+            labels  = jdbcTemplate.query(QueryFactory.getLabelsByPostId(), new LabelMapper(), id);
+            //labels.stream().forEach(System.out::println);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return labels;
     }
 
     /**
