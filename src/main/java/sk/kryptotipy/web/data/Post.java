@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 
@@ -15,7 +16,7 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 @Getter
 @Entity
 @EqualsAndHashCode
-@ToString(exclude = {"labels", "content"})
+@ToString(exclude = {"content"})
 @Table(name = "post")
 public class Post {
 
@@ -67,5 +68,5 @@ public class Post {
             joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "label_id"))
     @Setter
-    private List<Label> labels;
+    private Set<Label> labels;
 }

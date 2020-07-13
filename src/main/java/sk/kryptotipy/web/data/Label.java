@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"name"})
 @NoArgsConstructor
 //@Data
 @Getter
@@ -29,4 +29,6 @@ public class Label {
     @ManyToMany(mappedBy = "labels")
     @Setter
     private List<Post> posts;
+
+
 }

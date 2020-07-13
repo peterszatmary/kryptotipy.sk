@@ -2,6 +2,7 @@ package sk.kryptotipy.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.service.PageDataService;
@@ -35,7 +36,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_contact", "");
-            model.put("posts", this.postService.getPosts());
+            model.put("posts", this.postService.getNewestPosts());
             log.info("index.html - ");
             pageData.set(model, " - index");
             return "index";
@@ -69,17 +70,25 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/posts")
-    public String posts(Map<String, Object> model) {
+    @RequestMapping("/posts/{label}")
+    public String posts(Map<String, Object> model,
+                        @PathVariable("label") final String label) {
 
+        List<Post> posts;
         try {
+            if ("all".equals(label)) {
+                posts = this.postService.getNewestPosts();
+            } else {
+                //TODO label in check
+                posts = this.postService.getPostsByLabel(label);
+            }
 
             model.put("active_index", "");
             model.put("active_posts", "active");
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_contact", "");
-            model.put("posts", fill());
+            model.put("posts", posts);
 
             log.info("posts.html - ");
             pageData.set(model, " - posts");
@@ -88,7 +97,7 @@ public class WebController {
         } catch (Exception ex) {
             log.warn("posts : " + ex.getMessage());
             pageData.set(model, "404");
-            return "redirect:/error.html";
+            return "redirect:/error";
         }
     }
 
@@ -110,7 +119,7 @@ public class WebController {
         } catch (Exception ex) {
             log.warn("external-services : " + ex.getMessage());
             pageData.set(model, "404");
-            return "redirect:/error.html";
+            return "redirect:/error";
         }
     }
 
@@ -132,27 +141,7 @@ public class WebController {
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
             pageData.set(model, "404");
-            return "redirect:/error.html";
+            return "redirect:/error";
         }
-    }
-
-
-    private List<Post> fill() {
-        Post p = new Post();
-        p.setImgSrc("assets/post-images/dummy/work5.jpg");
-        List<Post> posts = new ArrayList<>();
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        posts.add(p);
-        return posts;
     }
 }
