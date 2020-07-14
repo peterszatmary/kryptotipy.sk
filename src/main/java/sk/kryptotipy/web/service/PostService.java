@@ -45,7 +45,7 @@ public class PostService implements PostServiceApi {
         List<Post> posts = postLabelRepository
                 .getNewestPosts()
                 .stream()
-                .limit(100)
+                //.limit(100)
                 .collect(Collectors.toList());
 
         //return groupSimilar(posts).stream().limit(20).collect(Collectors.toList());
