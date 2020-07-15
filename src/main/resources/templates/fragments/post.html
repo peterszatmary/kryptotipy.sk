@@ -4,7 +4,7 @@
                         <div class="thumbnail">
                             <div class="image-wrapp">
                                 <a th:href="${post.url}" target="_blank">
-                                    <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.titleRender}" th:title="${post.titleRender}" />
+                                    <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.titleRender}" th:title="${post.title}" />
                                     <article class="da-animate da-slideFromRight" style="display: block;">
                                         <h4 th:text="${post.titleRender}"></h4>
                                     </article>

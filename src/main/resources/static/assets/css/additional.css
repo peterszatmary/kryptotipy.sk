@@ -44,6 +44,17 @@
   font-size: smaller;
 }
 
+.dictionary-my {
+  padding-top: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin: 0px;
+  display: block;
+  color: #636363;
+  font-size: small;
+}
+
 .post-labels {
   padding-top: 0px;
   padding-left: 15px;
