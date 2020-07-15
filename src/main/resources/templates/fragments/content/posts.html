@@ -21,7 +21,8 @@
                 <div class="span12">
                     <ul class="breadcrumb notop">
                         <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                        <li class="active">Články</li>
+                        <li class="active">Články<span class="divider">/</span></li>
+                        <li class="active" th:text="${label}"></li>
                     </ul>
                 </div>
             </div>
