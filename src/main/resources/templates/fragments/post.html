@@ -9,7 +9,9 @@
                                         <h4 th:text="${post.titleRender}"></h4>
                                     </article>
                                 </a>
-                                <a th:href="${post.url}" th:text="${post.titleRender}" target="_blank" class="post-title"></a>
+                                <a th:href="${post.url}" th:text="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}">
+                                    <!--<span th:text="${post.title}" data-toggle="tooltip"></span>-->
+                                </a>
                                 <span class="post-labels">
                                     <a th:each="label : ${post.labels}"  th:href="@{${base_url + 'posts/' + label.name + '/0/30'}}" target="_blank" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                                 </span>

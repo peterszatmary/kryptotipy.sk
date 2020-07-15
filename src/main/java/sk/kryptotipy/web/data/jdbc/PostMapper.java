@@ -80,7 +80,7 @@ public class PostMapper implements RowMapper<Post> {
         if (titleLength < MAX_LENGTH) {
             StringBuilder str = new StringBuilder(post.getTitle());
             for (int i = 0; i < MAX_LENGTH - titleLength; i++) {
-                str.append(" ");
+                str.append("&#160;");//todo
             }
             post.setTitleRender(str.toString());
             return;

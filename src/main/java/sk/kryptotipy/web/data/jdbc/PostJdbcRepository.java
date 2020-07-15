@@ -32,7 +32,6 @@ public class PostJdbcRepository {
         List<Post> posts = new ArrayList<>();
 
         try {
-            //SqlParameterSource namedParameters = new MapSqlParameterSource("label_name", label);
             posts  = jdbcTemplate.query(QueryFactory.postsByLabel(), new PostMapper(jdbcTemplate), label, from, to);
 
         } catch(Exception e){
@@ -46,7 +45,6 @@ public class PostJdbcRepository {
         List<Post> posts = new ArrayList<>();
 
         try {
-            //SqlParameterSource namedParameters = new MapSqlParameterSource("label_name", label);
             posts  = jdbcTemplate.query(QueryFactory.postsByLabelAll(), new PostMapper(jdbcTemplate), from, to);
 
         } catch(Exception e){

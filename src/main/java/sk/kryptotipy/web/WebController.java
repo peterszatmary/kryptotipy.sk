@@ -36,7 +36,6 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
-            model.put("active_contact", "");
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html - ");
             pageData.set(model, " - index");
@@ -44,28 +43,6 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
-            pageData.set(model, "404");
-            return "redirect:/error.html";
-        }
-    }
-
-    @RequestMapping("/contact")
-    public String contact(Map<String, Object> model) {
-
-        try {
-
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_contact", "active");
-
-            log.info("contact.html - ");
-            pageData.set(model, " - contact");
-            return "contact";
-
-        } catch (Exception ex) {
-            log.warn("contact : " + ex.getMessage());
             pageData.set(model, "404");
             return "redirect:/error.html";
         }
@@ -91,7 +68,6 @@ public class WebController {
             model.put("active_posts", "active");
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
-            model.put("active_contact", "");
             model.put("posts", posts);
             model.put("label", label);
 
@@ -115,8 +91,6 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "");
             model.put("active_external_services", "active");
-            model.put("active_contact", "");
-
 
             List<Service> services = new ArrayList<>();
             services.add(new Service("Coinbase", "https://www.coinbase.com", "coinbase-big.png", "Služba na nákup a predaj vybraných kryptomien vybudovaná na beckende GDAxu. Jej výhodou je jednoduchosť."));
@@ -161,7 +135,6 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "active");
             model.put("active_external_services", "");
-            model.put("active_contact", "");
 
             log.info("dictionary.html - ");
             pageData.set(model, " - dictionary");

@@ -1148,6 +1148,14 @@ ul.the-icons {
 
 /* custom size */
 
+.icon-28 {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
 .icon-32 {
   width: 24px;
   height: 24px;

@@ -51,8 +51,6 @@ public class PageDataService implements PageDataServiceApi {
         model.put("base_url", baseUrl);
         model.put("title", title);
         model.put("project_version", projectVersion);
-        //model.put("render", render);
-        //model.put("tooltip", appProperties.getTooltip());
     }
 
 }

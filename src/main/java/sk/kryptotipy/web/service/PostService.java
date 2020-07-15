@@ -24,9 +24,6 @@ public class PostService implements PostServiceApi {
                 .getPostsByLabel(label, from, to)
                 .stream()
                 .collect(Collectors.toList());
-
-        //posts.stream().forEach(System.out::println);
-        //return groupSimilar(posts).stream().limit(20).collect(Collectors.toList());
         return posts;
     }
 
@@ -45,31 +42,9 @@ public class PostService implements PostServiceApi {
         List<Post> posts = postLabelRepository
                 .getNewestPosts()
                 .stream()
-                //.limit(100)
                 .collect(Collectors.toList());
-
-        //return groupSimilar(posts).stream().limit(20).collect(Collectors.toList());
         return posts;
     }
-
-    //TODO sort by birthday ? fix
-//    public static List<Post> groupSimilar(final List<Post> posts) {
-//        Map<String, Post> postsByUrl = new HashMap<>();
-//
-//        for (Post post: posts) {
-//            String url = post.getUrl();
-//            if (!postsByUrl.containsKey(url)) {
-//                postsByUrl.put(url, post);
-//            } else {
-//                Post p = postsByUrl.get(url);
-//                Set<Label> existingLabels = p.getLabels();
-//                existingLabels.add(post.getLabels().iterator().next());
-//                p.setLabels(existingLabels);
-//                postsByUrl.put(p.getUrl(), p);
-//            }
-//        }
-//        return postsByUrl.values().stream().collect(Collectors.toList());
-//    }
 
     //TODO
     public List<Post> getPosts() {
