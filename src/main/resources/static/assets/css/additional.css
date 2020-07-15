@@ -32,6 +32,10 @@
     background-color: #f2f2f2;
 }
 
+.post-title a {
+    decoration: none;
+}
+
 .post-metadata {
   padding-top: 0px;
   padding-left: 15px;
@@ -67,12 +71,12 @@
   font-size: smaller;
 }
 
-.post-labels a:hover  {
+.post-labels a {
    text-decoration: none;
    color: #383838;
 }
 
-.post-labels a:visited, a:active {
+.post-labels a {
    text-decoration: none;
    color: #86b300;
 }
