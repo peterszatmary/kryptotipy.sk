@@ -3,7 +3,6 @@ package sk.kryptotipy.web.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import sk.kryptotipy.web.data.Label;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.jdbc.PostJdbcRepository;
 
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 public class PostService implements PostServiceApi {
 
     private final PostJdbcRepository postLabelRepository;
-
 
     public List<Post> getPostsByLabel(String label, Long from, Long to) {
 

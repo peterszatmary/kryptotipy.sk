@@ -2,10 +2,10 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Kryptotipy.sk</title>
+        <title th:text="${page_title}"></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="portal zaoberajúci sa špecifickými službami v oblasti krypto.">
-        <meta name="author" content="kryptotipy.sk">
+        <meta name="description" content="Portál združujúci najlepšie články z oblasti kryptomien na jednom mieste.">
+        <meta name="author" th:content="${title}">
         <!-- styles -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700" rel="stylesheet">
         <link th:href="@{${base_url + 'assets/css/bootstrap.css'}}" rel="stylesheet">

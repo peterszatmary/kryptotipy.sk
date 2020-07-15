@@ -22,9 +22,6 @@ public class PageDataService implements PageDataServiceApi {
     @Value("${base.url}")
     private String baseUrl;
 
-    @Value("${title}")
-    private String title;
-
     @Value("${project.version}")
     private String projectVersion;
 
@@ -49,7 +46,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_description", pageDescription);
         model.put("page_author", pageAuthor);
         model.put("base_url", baseUrl);
-        model.put("title", title);
+        model.put("title", pageTitle);
         model.put("project_version", projectVersion);
     }
 

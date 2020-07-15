@@ -37,8 +37,8 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("posts", this.postService.getNewestPosts());
-            log.info("index.html - ");
-            pageData.set(model, " - index");
+            log.info("index.html");
+            pageData.set(model, " - Vitajte");
             return "index";
 
         } catch (Exception ex) {
@@ -71,8 +71,8 @@ public class WebController {
             model.put("posts", posts);
             model.put("label", label);
 
-            log.info("posts.html - ");
-            pageData.set(model, " - posts");
+            log.info("posts.html {}", label);
+            pageData.set(model, " - Články");
             return "posts";
 
         } catch (Exception ex) {
@@ -114,8 +114,8 @@ public class WebController {
 
             model.put("services", services);
 
-            log.info("external-services-old.html - ");
-            pageData.set(model, " - external services");
+            log.info("external-services.html");
+            pageData.set(model, " - Externé služby");
             return "external-services";
 
         } catch (Exception ex) {
@@ -136,8 +136,8 @@ public class WebController {
             model.put("active_dictionary", "active");
             model.put("active_external_services", "");
 
-            log.info("dictionary.html - ");
-            pageData.set(model, " - dictionary");
+            log.info("dictionary.html");
+            pageData.set(model, " - Slovník");
             return "dictionary";
 
         } catch (Exception ex) {
