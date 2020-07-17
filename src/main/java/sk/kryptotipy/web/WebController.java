@@ -1,5 +1,6 @@
 package sk.kryptotipy.web;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,16 +17,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
+@AllArgsConstructor
 @Controller
 public class WebController {
 
     private final PageDataServiceApi pageData;
     private final PostServiceApi postService;
-
-    public WebController(PageDataService pageData, PostServiceApi postService) {
-        this.pageData = pageData;
-        this.postService = postService;
-    }
 
     @RequestMapping("/")
     public String index(Map<String, Object> model) {
@@ -72,7 +69,7 @@ public class WebController {
             model.put("label", label);
 
             log.info("posts.html {}", label);
-            pageData.set(model, " - Články");
+            pageData.set(model, " - Články : " + label);
             return "posts";
 
         } catch (Exception ex) {
