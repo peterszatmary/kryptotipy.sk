@@ -1,0 +1,5 @@
+deb http://ubuntu-archive.mirror.serveriai.lt/ xenial main restricted universe
+deb http://ubuntu-archive.mirror.serveriai.lt/ xenial-updates main restricted universe
+deb http://ubuntu-archive.mirror.serveriai.lt/ xenial-security main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu xenial partner
+deb http://httpredir.debian.org/debian jessie-backports main contrib non-free

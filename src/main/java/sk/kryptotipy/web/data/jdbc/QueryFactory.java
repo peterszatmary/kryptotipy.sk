@@ -39,7 +39,7 @@ public class QueryFactory {
         return new StringBuilder()
                 .append("SELECT l.name ")
                 .append("FROM label l JOIN post_labels pl ON pl.label_id = l.id ")
-                .append("WHERE pl.post_id = ? ")
+                .append("WHERE pl.post_id = ? LIMIT 5") // LIMIT because i dont wnat to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
                 .toString();
     }
 }
