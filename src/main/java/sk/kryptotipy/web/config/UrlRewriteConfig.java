@@ -26,9 +26,10 @@ public class UrlRewriteConfig extends UrlRewriteFilter {
     @Override
     public void loadUrlRewriter(FilterConfig filterConfig) throws ServletException {
         try {
-            ClassPathResource classPathResource = new ClassPathResource("urlr-ewrite.xml");
+            String urlRewriteConf = "url-rewrite.xml";
+            ClassPathResource classPathResource = new ClassPathResource(urlRewriteConf);
             InputStream inputStream = classPathResource.getInputStream();
-            Conf conf1 = new Conf(filterConfig.getServletContext(), inputStream, "url-rewrite.xml", "");
+            Conf conf1 = new Conf(filterConfig.getServletContext(), inputStream, urlRewriteConf, "");
             urlRewriter = new UrlRewriter(conf1);
         } catch (Exception e) {
             throw new ServletException(e);
