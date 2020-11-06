@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sshpass -p '5g5tlTSsG8L2' scp -r ./deploy/ root@80.209.233.164:/home/release-apps/kryptotipy-web
+sshpass -p 'GRr12rQq30gR' scp -r ../deploy/ root@80.209.237.211:/home/web
