@@ -102,12 +102,14 @@ public class WebController {
             services.add(new Service("Shapeshift", "https://shapeshift.io/", "shapeshift-big.png", "Krypto zmenáreň. Jej hlavnou výhodou je, že nie je potrebné sa registrovať."));
             services.add(new Service("ATHA", "https://athda.com", "athda-big.jpg", "Posledné All time high (ATH) kryptomien s časovým údajom."));
             services.add(new Service("Binance", "https://www.binance.com", "binance-big.png", "Burza kryptomien. Bola založená v Číne roku 2017 a už ten rok sa jej viac než darilo."));
-            services.add(new Service("Bitfinex", "https://www.bitfinex.com", "bitfinex-big.jpg", "Burza kryptomien. Tvorca USDT. tgtg gtgtg gtgtg gtgt gtgtg. tgtg gtgtg gtgtg gtgt gtgtg  g gtgt gtgtg. tgtg gtgtg gtgtg gtgt gtgtg ")); //TODO
+            services.add(new Service("Bitfinex", "https://www.bitfinex.com", "bitfinex-big.jpg", "Burza kryptomien. Tvorca USDT. Založená bola v roku 2012. Vlastní a prevádzkuje spoločnosť iFinex Inc. "));
             services.add(new Service("Bittrex", "https://bittrex.com", "bittrex-big.png", "Burza kryptomien. Založená bola v amerika roku 2013. AKo prvá ponúkla náhradu za USDT tzv. TUSD (True USD)."));
-            services.add(new Service("Bitscreener", "https://bitscreener.com/screener", "bitscreener-big.png", "Sortovanie podľa ceny meny, marketcapu, 24 hodinového volume a typu. Chartview ponúka percentuálny súhrn zmeny za")); //TODO určité časové obdobie."));
+            services.add(new Service("Bitscreener", "https://bitscreener.com/screener", "bitscreener-big.png", "Sortovanie podľa ceny meny, marketcapu, 24 hodinového volume a typu. Chartview ponúka percentuálny súhrn zmeny."));
             services.add(new Service("Coinmarketcap", "https://coinmarketcap.com", "coinmarketcap-big.png", "Stránka monitorujúca kryptomeny, ktoré sa obchodujú. Ponúka množstvo použiteľných rankingov a grafov."));
             services.add(new Service("Cryptocompare", "https://www.cryptocompare.com", "cryptocompare-big.png", "Monitoring kryptomien, rôzne kalkulačky pre ťažiarov, peňaženky podľa kryptomien, pre developerov je tu REST API a ďalšie."));
             services.add(new Service("Coindar", "https://coindar.org", "coindar-big.jpg", "Krypto kalendár. Vďaka tejto službe budete informovaný o nadchádzajúcich krypto udalostiach."));
+            services.add(new Service("Crypto Fear & Greed Index", "https://alternative.me/crypto/fear-and-greed-index/", "fear-and-greed-index.png", "Crypto Fear & Greed Index meria aká je aktuálna nálada na kryptomenových trhoch. Kontroluje dve základné nálady a to strach a chamtivosť. "));
+
 
             model.put("services", services);
 
