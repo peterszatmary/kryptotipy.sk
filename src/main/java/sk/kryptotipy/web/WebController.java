@@ -61,6 +61,11 @@ public class WebController {
                 posts = this.postService.getPostsByLabel(label, from, to);
             }
 
+            //diakritics throwing out
+            if ("peňaženky".equals(label)) {
+                label = "penazenky";
+            }
+
             model.put("active_index", "");
             model.put("active_posts", "active");
             model.put("active_dictionary", "");
