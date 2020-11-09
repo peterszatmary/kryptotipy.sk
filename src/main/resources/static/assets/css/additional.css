@@ -84,3 +84,31 @@
 .bigger {
     line-height: 40px;
 }
+
+
+.navbar .nav>li>  a .btn btn-category-margin .btn-color .category {
+    float: none;
+    font-size: 2px;
+    padding: 0px 0px 0px;
+    margin: 2px;
+    color: #777777;
+    text-decoration: none;
+    text-shadow: none;
+    font-weight: bold;
+}
+
+.btn-category-margin {
+    margin: 4px 2px 2px 2px;
+}
+
+/* header */
+.navbar .nav li.active {
+	border-style:none;
+
+}
+
+.navbar .nav li.active a {
+	color:white;
+	background-color: #333333;
+
+}

@@ -18,7 +18,7 @@ a:hover {
 	color:#81ab35;
 }
 
-footer .nav-list li a:hover,footer ul.regular li a:hover  {
+footer .nav-list li a:hover,footer ul.regular li a.menu:hover  {
 	color:#81ab35;
 }
 
@@ -57,15 +57,15 @@ footer .nav-list li a:hover,footer ul.regular li a:hover  {
 }
 
 /* header */
-.navbar .nav li.active {
+.navbar .nav li.active.menu {
 	border-top:5px solid #94c045;
 
 }
-.navbar .nav li.active a {
+.navbar .nav li.active.menu a.menu {
 	color:#94c045;
 }
 
-.navbar .nav li ul.dropdown-menu li a:hover, .navbar .nav li.active ul.dropdown-menu li a:hover  {
+.navbar .nav li ul.dropdown-menu li a.menu:hover, .navbar .nav li.active ul.dropdown-menu li a.menu:hover  {
 	background:#94c045;
 
 }
@@ -142,8 +142,8 @@ input[type="color"]:focus,
 
 
 /* tabs */
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills > .active > a.menu,
+.nav-pills > .active > a.menu:hover {
   color: #ffffff;
   background-color: #94c045;
 }
@@ -161,14 +161,14 @@ input[type="color"]:focus,
 
 
 /* nav */
-.nav-list > .active > a,
-.nav-list > .active > a:hover {
+.nav-list > .active > a.menu,
+.nav-list > .active > a.menu:hover {
   background: #94c045;
 }
 
 
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills > .active > a.menu,
+.nav-pills > .active > a.menu:hover {
   background: #94c045;
 }
 

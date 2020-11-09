@@ -12,20 +12,20 @@
                     <div class="navigation">
                         <nav>
                             <ul class="nav topnav">
-                                <li th:class="${active_index}">
-                                    <a th:href="${base_url}">Domov</a>
+                                <li th:class="${active_index + ' menu'}">
+                                    <a th:class="menu" th:href="${base_url}">Domov</a>
                                 </li>
 
-                                <li th:class="${active_posts}">
-                                    <a th:href="@{${base_url + 'posts/all/0/30'}}">Články</a>
+                                <li th:class="${active_posts + ' menu'}">
+                                    <a th:class="menu" th:href="@{${base_url + 'posts/all/0/30'}}">Články</a>
                                 </li>
 
-                                <li th:class="${active_external_services}">
-                                    <a th:href="@{${base_url + 'external-services'}}">Externé služby</a>
+                                <li th:class="${active_external_services + ' menu'}">
+                                    <a th:class="menu" th:href="@{${base_url + 'external-services'}}">Externé služby</a>
                                 </li>
 
-                                <li th:class="${active_dictionary}">
-                                    <a th:href="@{${base_url + 'dictionary'}}">Slovník</a>
+                                <li th:class="${active_dictionary + ' menu'}">
+                                    <a th:class="menu" th:href="@{${base_url + 'dictionary'}}">Slovník</a>
                                 </li>
                             </ul>
                         </nav>

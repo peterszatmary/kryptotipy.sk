@@ -818,7 +818,7 @@ button.close {
 
 /* header */
 
-.navbar .nav li.active a {
+.navbar .nav li.active a.menu {
 	font-weight:bold;
 }
 header .navbar-primary .navbar-inner nav li.blob  {
@@ -1383,7 +1383,7 @@ input[type="submit"].btn.btn-mini {
 
 .nav-tabs .open .dropdown-toggle,
 .nav-pills .open .dropdown-toggle,
-.nav > li.dropdown.open.active > a:hover {
+.nav > li.dropdown.open.active > a.menu:hover {
   color: #ffffff;
   background-color: #999999;
   border-color: #999999;
@@ -1391,7 +1391,7 @@ input[type="submit"].btn.btn-mini {
 
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
-.nav li.dropdown.open a:hover .caret {
+.nav li.dropdown.open a.menu:hover .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
   opacity: 1;
@@ -1429,7 +1429,7 @@ input[type="submit"].btn.btn-mini {
   border-radius: 0;
 }
 
-.nav > .disabled > a:hover {
+.nav > .disabled > a.menu:hover {
   text-decoration: none;
   background-color: transparent;
   cursor: default;
@@ -1441,9 +1441,9 @@ input[type="submit"].btn.btn-mini {
   border-color: #262626;
 }
 
-.navbar-inverse .nav .active > a,
-.navbar-inverse .nav .active > a:hover,
-.navbar-inverse .nav .active > a:focus {
+.navbar-inverse .nav .active > a.menu,
+.navbar-inverse .nav .active > a.menu:hover,
+.navbar-inverse .nav .active > a.menu:focus {
   color: #ffffff;
 }
 
@@ -1510,9 +1510,9 @@ input[type="submit"].btn.btn-mini {
   box-shadow: none;
 }
 
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus {
+.navbar .nav > .active > a.menu,
+.navbar .nav > .active > a.menu:hover,
+.navbar .nav > .active > a.menu:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
