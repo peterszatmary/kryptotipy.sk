@@ -33,6 +33,7 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
+            model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html");
             pageData.set(model, " - Vitajte");
@@ -72,6 +73,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("posts", posts);
             model.put("label", label);
+            model.put("site", "posts/" + label + "/" + from + "/" + to);
 
             log.info("posts.html {}", label);
             pageData.set(model, " - Články : " + label);
@@ -93,6 +95,7 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "");
             model.put("active_external_services", "active");
+            model.put("site", "external-services/");
 
             List<Service> services = new ArrayList<>();
             services.add(new Service("Coinbase", "https://www.coinbase.com", "coinbase-big.png", "Služba na nákup a predaj vybraných kryptomien vybudovaná na beckende GDAxu. Jej výhodou je jednoduchosť."));
@@ -140,6 +143,7 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "active");
             model.put("active_external_services", "");
+            model.put("site", "dictionary/");
 
             log.info("dictionary.html");
             pageData.set(model, " - Slovník");
