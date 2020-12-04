@@ -50,7 +50,7 @@ public class WebController {
 
         List<Post> posts;
         Long from = 0L;
-        Long to = 2000L;
+        Long to = 1000L;
         try {
             if ("all".equals(label)) {
                 posts = this.postService.getPostsByLabelAll(from, to);
