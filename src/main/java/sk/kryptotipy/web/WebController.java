@@ -2,22 +2,17 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.Service;
-import sk.kryptotipy.web.service.PageDataService;
 import sk.kryptotipy.web.service.PageDataServiceApi;
 import sk.kryptotipy.web.service.PostServiceApi;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 @AllArgsConstructor
@@ -49,13 +44,13 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/posts/{label}/{from}/{to}")
+    @RequestMapping("/posts/{label}")
     public String posts(Map<String, Object> model,
-                        @PathVariable("label") String label,
-                        @PathVariable("from") final Long from,
-                        @PathVariable("to") final Long to) {
+                        @PathVariable("label") String label) {
 
         List<Post> posts;
+        Long from = 0L;
+        Long to = 2000L;
         try {
             if ("all".equals(label)) {
                 posts = this.postService.getPostsByLabelAll(from, to);
@@ -76,7 +71,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("posts", posts);
             model.put("label", label);
-            model.put("site", "posts/" + label + "/" + from + "/" + to);
+            model.put("site", "posts/" + label);
 
             log.info("posts.html {}", label);
             pageData.set(model, " - Články : " + label);
