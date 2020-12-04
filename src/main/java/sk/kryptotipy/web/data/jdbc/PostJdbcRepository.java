@@ -1,6 +1,7 @@
 package sk.kryptotipy.web.data.jdbc;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Slice;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -50,8 +51,6 @@ public class PostJdbcRepository {
         } catch(Exception e){
             e.printStackTrace();
         }
-
         return posts;
     }
-
 }
