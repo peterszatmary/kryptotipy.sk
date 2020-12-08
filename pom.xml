@@ -10,12 +10,13 @@
 	</parent>
 	<groupId>sk.kryptotipy</groupId>
 	<artifactId>kryptotipy-web</artifactId>
-	<version>1.5.2</version>
+	<version>1.5.3</version>
 	<name>kryptotipy.sk web</name>
 	<description>kryptotipy.sk web</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<lombok.version>1.18.16</lombok.version>
 	</properties>
 
 	<dependencies>
@@ -42,6 +43,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
