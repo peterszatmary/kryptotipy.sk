@@ -45,6 +45,7 @@
                                     <ul class="nav topnav">
                                         <li th:classappend="${label} == 'Všetky' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/all'}}" class="btn btn-category-margin btn-color category">Všetky</a></li>
                                         <li th:classappend="${label} == 'kryptomeny' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/kryptomeny'}}" class="btn btn-category-margin btn-color category">Kryptomeny</a></li>
+                                        <li th:classappend="${label} == 'blockchain' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/blockchain'}}" class="btn btn-category-margin btn-color category">Blockchain</a></li>
                                         <li th:classappend="${label} == 'monero' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/monero'}}" class="btn btn-category-margin btn-color category">Monero</a></li>
                                         <li th:classappend="${label} == 'litecoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/litecoin'}}" class="btn btn-category-margin btn-color category">Litecoin</a></li>
                                         <li th:classappend="${label} == 'bitcoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/bitcoin'}}" class="btn btn-category-margin btn-color category">Bitcoin</a></li>
