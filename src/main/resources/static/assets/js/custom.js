@@ -37,6 +37,8 @@ jQuery(document).ready(function($) {
     window.location = $(this).find("option:selected").val();
   });
 
+  /**
+
   $("a[data-pretty^='prettyPhoto']").prettyPhoto();
   $(".gallery:first a[data-pretty^='prettyPhoto']").prettyPhoto({
     animation_speed: 'normal',
@@ -63,7 +65,7 @@ jQuery(document).ready(function($) {
       _bsap.exec();
     }
   });
-
+*/
 
   $('iframe').each(function() { /*fix youtube z-index*/
     var url = $(this).attr("src");

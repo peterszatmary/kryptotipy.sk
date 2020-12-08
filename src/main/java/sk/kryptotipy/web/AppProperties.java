@@ -19,4 +19,7 @@ public class AppProperties {
 
     @Value("${spring.datasource.driver-class-name}")
     private String dbDriver;
+
+    @Value("${page.size}")
+    private Long pageSize;
 }

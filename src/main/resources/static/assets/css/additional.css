@@ -149,3 +149,46 @@
 	background: #000000;
 }
 
+/**
+  BTC price
+*/
+
+@media (min-width: 980px) {
+    p.btc_price {
+        font-size: 13px;
+        background-color: #404b50;
+        padding: 12px;
+        margin-bottom: 0px;
+        color: rgb(232, 232, 232);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    p.btc_price {
+        font-size: 13px;
+        background-color: #404b50;
+        padding: 12px;
+        margin-bottom: 0px;
+        color: rgb(232, 232, 232);
+    }
+}
+
+@media (max-width: 767px) {
+    p.btc_price {
+        font-size: 11px;
+        background-color: #404b50;
+        padding: 12px;
+        margin-bottom: 0px;
+        color: rgb(232, 232, 232);
+    }
+}
+
+@media (max-width: 480px) {
+    p.btc_price {
+        font-size: 11px;
+        background-color: #404b50;
+        padding: 12px;
+        margin-bottom: 0px;
+        color: rgb(232, 232, 232);
+    }
+}

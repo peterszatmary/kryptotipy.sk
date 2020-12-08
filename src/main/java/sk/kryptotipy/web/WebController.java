@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.Service;
-import sk.kryptotipy.web.service.PageDataServiceApi;
-import sk.kryptotipy.web.service.PostServiceApi;
+import sk.kryptotipy.web.api.PageDataServiceApi;
+import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.service.BtcPriceService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,13 @@ public class WebController {
 
     private final PageDataServiceApi pageData;
     private final PostServiceApi postService;
+    private final AppProperties appProperties;
+    private final BtcPriceService btcPriceService;
 
     @RequestMapping("/")
     public String index(Map<String, Object> model) {
 
         try {
-
             model.put("active_index", "active");
             model.put("active_posts", "");
             model.put("active_dictionary", "");
@@ -35,6 +37,7 @@ public class WebController {
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html");
             pageData.set(model, " - Vitajte");
+            model.put("btc_price", getBtcPrice());
             return "index";
 
         } catch (Exception ex) {
@@ -50,7 +53,7 @@ public class WebController {
 
         List<Post> posts;
         Long from = 0L;
-        Long to = 1000L;
+        Long to = appProperties.getPageSize();
         try {
             if ("all".equals(label)) {
                 posts = this.postService.getPostsByLabelAll(from, to);
@@ -152,5 +155,10 @@ public class WebController {
             pageData.set(model, "404");
             return "redirect:/error";
         }
+    }
+
+    private String getBtcPrice() {
+        String btcPrice = String.valueOf(btcPriceService.getLatestPrice());
+        return btcPrice.substring(0, btcPrice.length() - 2);
     }
 }

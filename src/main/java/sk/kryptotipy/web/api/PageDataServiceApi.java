@@ -1,4 +1,4 @@
-package sk.kryptotipy.web.service;
+package sk.kryptotipy.web.api;
 
 import java.util.Map;
 

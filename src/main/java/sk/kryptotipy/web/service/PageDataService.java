@@ -1,13 +1,16 @@
 package sk.kryptotipy.web.service;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import sk.kryptotipy.web.api.PageDataServiceApi;
 
 import java.util.Map;
 
 @Service
 @Data
+@Slf4j
 public class PageDataService implements PageDataServiceApi {
 
     @Value("${page.title}")
@@ -28,26 +31,16 @@ public class PageDataService implements PageDataServiceApi {
     @Value("${page.size}")
     private Integer pageSize;
 
-    //@Autowired
-    //private RenderComponent render;
-
-    //@Autowired
-    //private FormData formData;
-
-    //@Autowired
-    //private AppProperties appProperties;
-
     // info about if pagination should go to view
     private Boolean paginationOn = Boolean.TRUE;
 
 
     public void set(Map<String, Object> model, String pageTitleCustom) {
-        model.put("page_title", pageTitle + pageTitleCustom);
+        model.put("page_title", pageTitle + " " + pageTitleCustom);
         model.put("page_description", pageDescription);
         model.put("page_author", pageAuthor);
         model.put("base_url", baseUrl);
         model.put("title", pageTitle);
         model.put("project_version", projectVersion);
     }
-
 }
