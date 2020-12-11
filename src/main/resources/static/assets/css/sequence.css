@@ -82,6 +82,12 @@
 	max-width: 1400px;
 }
 
+@media (max-width: 767px) {
+    #sequence {
+        height: 300px;
+    }
+}
+
 .info {
 	color: black;
 	left: 80%;

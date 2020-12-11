@@ -642,7 +642,7 @@ form.bs-docs-example {
 
   /* Widen masthead and social buttons to fill body padding */
   .jumbotron {
-    padding: 40px 20px;
+    padding: 0px 20px;
     margin-top:   -20px; /* Offset bottom margin on .navbar */
     margin-right: -20px;
     margin-left:  -20px;
