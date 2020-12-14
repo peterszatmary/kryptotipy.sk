@@ -33,6 +33,7 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
             model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html");
@@ -42,7 +43,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
-            pageData.set(model, "404");
+            pageData.set(model, "404 Stránka nenájdená");
             return "redirect:/error.html";
         }
     }
@@ -72,6 +73,7 @@ public class WebController {
             model.put("active_posts", "active");
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
             model.put("posts", posts);
             model.put("label", label);
             model.put("site", "posts/" + label);
@@ -82,7 +84,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("posts : " + ex.getMessage());
-            pageData.set(model, "404");
+            pageData.set(model, "404 Stránka nenájdená");
             return "redirect:/error";
         }
     }
@@ -96,6 +98,7 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "");
             model.put("active_external_services", "active");
+            model.put("active_did_you_know", "");
             model.put("site", "external-services/");
 
             List<Service> services = new ArrayList<>();
@@ -129,7 +132,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("external-services : " + ex.getMessage());
-            pageData.set(model, "404");
+            pageData.set(model, "404 Stránka nenájdená");
             return "redirect:/error";
         }
     }
@@ -144,6 +147,7 @@ public class WebController {
             model.put("active_posts", "");
             model.put("active_dictionary", "active");
             model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
             model.put("site", "dictionary/");
 
             log.info("dictionary.html");
@@ -152,7 +156,30 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, "404");
+            pageData.set(model, "404 Stránka nenájdená");
+            return "redirect:/error";
+        }
+    }
+
+    @RequestMapping("/did-you-know")
+    public String didYouKnow(Map<String, Object> model) {
+
+        try {
+
+            model.put("active_index", "");
+            model.put("active_posts", "");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "active");
+            model.put("site", "did-you-know/");
+
+            log.info("did-you-know.html");
+            pageData.set(model, " - Zaujímavosti");
+            return "did-you-know";
+
+        } catch (Exception ex) {
+            log.warn("dictionary : " + ex.getMessage());
+            pageData.set(model, "404 Stránka nenájdená");
             return "redirect:/error";
         }
     }

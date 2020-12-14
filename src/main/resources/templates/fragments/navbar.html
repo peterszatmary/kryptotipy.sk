@@ -24,6 +24,10 @@
                                     <a th:class="menu" th:href="@{${base_url + 'external-services'}}">Externé služby</a>
                                 </li>
 
+                                <li th:class="${active_did_you_know + ' menu'}">
+                                    <a th:class="menu" th:href="@{${base_url + 'did-you-know'}}">Zaujímavosti</a>
+                                </li>
+
                                 <li th:class="${active_dictionary + ' menu'}">
                                     <a th:class="menu" th:href="@{${base_url + 'dictionary'}}">Slovník</a>
                                 </li>
