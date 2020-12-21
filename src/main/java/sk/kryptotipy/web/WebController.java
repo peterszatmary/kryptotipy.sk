@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.Service;
 import sk.kryptotipy.web.api.PageDataServiceApi;
@@ -182,6 +184,41 @@ public class WebController {
             pageData.set(model, "404 Stránka nenájdená");
             return "redirect:/error";
         }
+    }
+
+    @RequestMapping("/one-post-frame") //TODO iframe
+    public String onePostFrame(Map<String, Object> model,
+            @RequestParam(value = "post_url", required = false) String postUrl) {
+        //try {
+            model.put("active_index", "");
+            model.put("active_posts", "active");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
+            model.put("site", "one-post-frame/");
+
+            //String postUrl = "https://kryptotrejder.sk/regulacie-v-usa-ziskavaju-realne-kontury-ohrozia-kryptomenovy-sektor/"; //TODO
+            String[] urlParts = postUrl.split("/");
+            String postUrlSource = urlParts[2];
+            String protocol = urlParts[0].replace(":", "");
+            String postUrlSourceLang = postUrlSource.split("\\.")[1];
+            String postUrlValue = urlParts[urlParts.length - 1];
+            String postTitle = postUrlValue.replace("-"," ") + " - " + postUrlSource;
+
+            model.put("post_url_iframe", postUrl);
+            model.put("post_url_rendered", postUrlSource);
+            model.put("post_url_value", postUrlValue);
+
+            log.info("one-post-frame.html");
+            pageData.set(model, " - " + postTitle);
+            return "one-post-frame";
+
+//        } catch (Exception ex) {
+//            log.warn("one page frame : " + ex.getMessage());
+//            log.warn(ex.getCause() + "" + ex.getStackTrace());
+//            pageData.set(model, "404 Stránka nenájdená");
+//            return "redirect:/error";
+//        }
     }
 
     private String getBtcPrice() {
