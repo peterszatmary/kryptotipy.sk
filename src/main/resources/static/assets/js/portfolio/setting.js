@@ -1,4 +1,4 @@
-
+//
 //jQuery(document).ready(function($){
 //
 //if (jQuery().quicksand) {
