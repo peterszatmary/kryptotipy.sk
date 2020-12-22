@@ -22,6 +22,7 @@ public class Label {
     //@Column(unique = true)
     private String name;
 
+
     public Label(String name) {
         this.name = name;
     }

@@ -8,7 +8,7 @@ public class QueryFactory {
                 .append("FROM post p ")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
-                .append("LIMIT 12")
+                .append("LIMIT 20")
                 .toString();
     }
 
