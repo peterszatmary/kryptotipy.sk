@@ -197,7 +197,8 @@
   iframe
 */
 
-@media (min-width: 980px) {
+
+@media (min-width: 1025px) {
     div.iframe_post {
         margin-top: 100px;
         text-align: center;
@@ -206,9 +207,12 @@
         padding: 0px;
         margin-bottom: 0px;
     }
+    .span3 {
+        width: 270px;
+    }
 }
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     div.iframe_post {
         margin-top: 0px;
         text-align:center;
@@ -216,6 +220,10 @@
     section.iframe_post {
         padding: 0px;
         margin-bottom: 0px;
+    }
+
+    .span3 {
+      width: 320px;
     }
 }
 
@@ -234,7 +242,36 @@
         padding-right: 0px;
         padding-left: 0px;
     }
+
 }
+
+
+@media (min-width: 580px) and (max-width: 767px) {
+    .iframe_post {
+        margin-top: 0px;
+        text-align: center;
+    }
+
+    section.iframe_post{
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+
+    body.iframe {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .span3 important!{
+      width: 250px;
+    }
+
+        ul.portfolio-area li important!{
+          width: 250px;
+        }
+}
+
+
 
 @media (max-width: 480px) {
     .iframe_post {
@@ -247,4 +284,9 @@
         margin-bottom: 0px;
     }
 
+    .span3 {
+      width: 100%;
+    }
 }
+
+

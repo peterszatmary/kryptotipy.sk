@@ -34,9 +34,7 @@
 
             <div class="row">
                 <div class="span12">
-
                     <!-- -->
-
                     <div class="navbar navbar-inner">
                         <div class="container">
                             <!-- top menu -->
@@ -90,11 +88,13 @@
 
 
             <div class="row">
+                <div class="span12">
                 <ul class="portfolio-area da-thumbs">
                     <div th:each="post : ${posts}" th:remove="tag">
-                        <div th:replace="fragments/post :: one_post(${post})" th:remove="tag"></div>
+                        <div class="col" th:replace="fragments/post :: one_post(${post})" th:remove="tag"></div>
                     </div>
                 </ul>
+                </div>
             </div>
         </div>
     </div>
