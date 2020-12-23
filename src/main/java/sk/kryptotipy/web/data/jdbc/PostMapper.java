@@ -33,6 +33,7 @@ public class PostMapper implements RowMapper<Post> {
 
         post.setUrl(rs.getString("p.url"));
         post.setTitle(rs.getString("p.title"));
+        post.setI18n(rs.getString("p.i18n"));
         this.setRenderPostTitle(post);
 
         post.setSource(rs.getString("p.source"));

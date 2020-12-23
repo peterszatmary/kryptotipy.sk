@@ -1,4 +1,4 @@
-                <html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
 <!--                <li class="portfolio-item2" th:fragment="one_post(post)">-->
 <!--                    <div class="span3">-->
 <!--                        <div class="thumbnail">-->
@@ -25,27 +25,26 @@
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </li>-->
-                    <li class="portfolio-item2" th:fragment="one_post(post)">
-                        <div class="span3">
-                            <div class="thumbnail">
-                                <div class="image-wrapp">
-                                    <a th:href="${post.url}" target="_blank">
-                                        <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />
-                                        <article class="da-animate da-slideFromRight" style="display: block;">
-                                            <h4 th:text="${post.titleRender}"></h4>
-                                        </article>
-                                    </a>
-                                    <a th:href="${post.url}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;"></a>
-                                    <span class="post-labels">
+<li class="portfolio-item2" th:fragment="one_post(post)">
+    <div class="span3">
+        <div class="thumbnail">
+            <div class="image-wrapp">
+                <a th:href="${post.url}" target="_blank">
+                    <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />
+                    <article class="da-animate da-slideFromRight" style="display: block;">
+                        <h4 th:text="${post.titleRender}"></h4>
+                    </article>
+                </a>
+                <a th:href="${post.url}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;"></a>
+                <span class="post-labels">
                                         <a th:each="label : ${post.labels}" th:href="@{${base_url + 'posts/' + label.name}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                                     </span>
-                                    <span class="post-metadata">
-                                        <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                <div class="post-metadata">
 
-                <input type="text" th:name="participant"/>
-                <input type="submit"/>
+                    <img th:src="@{${base_url + 'assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" th:title="@{${post.i18n + ' flag'}}" th:alt="@{${post.i18n + ' flag'}}" style="float: left;padding-right: 10px;"/>
+                    <div th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>

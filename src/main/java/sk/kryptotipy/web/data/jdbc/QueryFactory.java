@@ -4,7 +4,7 @@ public class QueryFactory {
 
     public static String newestPosts() {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n ")
                 .append("FROM post p ")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
@@ -14,7 +14,7 @@ public class QueryFactory {
 
     public static String postsByLabelAll() {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n ")
                 .append("FROM post p ")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
@@ -25,7 +25,7 @@ public class QueryFactory {
     //TODO pagination
     public static String postsByLabel() {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, l.name ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, l.name ")
                 .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
                 .append("JOIN label l ON l.id = pl.label_id ")
                 .append("WHERE l.name = ? ")
