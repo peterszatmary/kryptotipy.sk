@@ -68,7 +68,7 @@ public class WebController {
 
             model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
             log.info("posts.html - i18n");
-            pageData.set(model, " - " + i18n + " články");
+            pageData.set(model, " - " + getI18nText(i18n));
             return "posts_by_i18n";
 
         } catch (Exception ex) {
