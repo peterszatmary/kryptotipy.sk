@@ -50,6 +50,7 @@ public class WebController {
         }
     }
 
+
     @RequestMapping("/posts/{label}")
     public String posts(Map<String, Object> model,
                         @PathVariable("label") String label) {
