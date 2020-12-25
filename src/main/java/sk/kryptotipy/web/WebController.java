@@ -50,6 +50,34 @@ public class WebController {
         }
     }
 
+    @RequestMapping("/posts-by-i18n/{i18n}")
+    public String postsByI18n(Map<String, Object> model,
+                              @PathVariable("i18n") String i18n) {
+        try {
+            Long from = 0L;
+            Long to = appProperties.getPageSize();
+
+            model.put("active_index", "");
+            model.put("active_posts", "active");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
+            model.put("i18n", i18n);
+            model.put("i18n_text", getI18nText(i18n));
+            model.put("site", "posts/i18n" + i18n);
+
+            model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
+            log.info("posts.html - i18n");
+            pageData.set(model, " - " + i18n + " články");
+            return "posts_by_i18n";
+
+        } catch (Exception ex) {
+            log.warn("index : " + ex.getMessage());
+            pageData.set(model, "404 Stránka nenájdená");
+            return "redirect:/error.html";
+        }
+    }
+
 
     @RequestMapping("/posts/{label}")
     public String posts(Map<String, Object> model,
@@ -225,5 +253,13 @@ public class WebController {
     private String getBtcPrice() {
         String btcPrice = String.valueOf(btcPriceService.getLatestPrice());
         return btcPrice.substring(0, btcPrice.length() - 2);
+    }
+
+    private String getI18nText(String i18n) {
+        switch(i18n) {
+            case "SK": return "Slovenské články";
+            case "CZ": return "České články";
+            default : return null; //TODO
+        }
     }
 }

@@ -8,7 +8,18 @@ public class QueryFactory {
                 .append("FROM post p ")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
-                .append("LIMIT 20")
+                .append("LIMIT 24")
+                .toString();
+    }
+
+    public static String postsByI18n() {
+        return new StringBuilder()
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n ")
+                .append("FROM post p ")
+                .append("where p.i18n = ? ")
+                .append("ORDER BY p.birthday ")
+                .append("DESC ")
+                .append("LIMIT ?,?")
                 .toString();
     }
 

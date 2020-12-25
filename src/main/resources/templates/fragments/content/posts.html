@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="span12">
                     <div class="centered">
-                        <h3 th:text="@{${ 'Články ' + label}}"></h3>
+                        <h3 th:text="@{${ label + ' články' }}"></h3>
                         <p>
                             Výber najnovších článkov zo sveta kryptomien zoradených vhodne do kategórií.
                         </p>
@@ -24,7 +24,7 @@
             <div class="span12">
                 <ul class="breadcrumb notop">
                     <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                    <li class="active">Články<span class="divider">/</span></li>
+                    <li class="active"><a th:href="@{${base_url + 'posts/all' }}">Články</a><span class="divider">/</span></li>
                     <li class="active" th:text="${label}"></li>
                 </ul>
             </div>

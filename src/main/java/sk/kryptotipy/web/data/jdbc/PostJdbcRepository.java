@@ -42,6 +42,19 @@ public class PostJdbcRepository {
         return posts;
     }
 
+    public List<Post> getPostsByI18n(String i18n, Long from, Long to) {
+        List<Post> posts = new ArrayList<>();
+
+        try {
+            posts  = jdbcTemplate.query(QueryFactory.postsByI18n(), new PostMapper(jdbcTemplate), i18n, from, to);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return posts;
+    }
+
     public List<Post> getPostsByLabelAll(Long from, Long to) {
         List<Post> posts = new ArrayList<>();
 

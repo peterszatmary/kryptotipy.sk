@@ -41,7 +41,9 @@
                                     </span>
                 <div class="post-metadata">
 
-                    <img th:src="@{${base_url + 'assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" th:title="@{${post.i18n + ' flag'}}" th:alt="@{${post.i18n + ' flag'}}" style="float: left;padding-right: 10px;"/>
+                    <a th:href="@{${base_url + 'posts-by-i18n/' + post.i18n}}">
+                        <img th:src="@{${base_url + 'assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" th:title="@{${post.i18n + ' flag'}}" th:alt="@{${post.i18n + ' flag'}}" style="float: left;padding-right: 10px;"/>
+                    </a>
                     <div th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></div>
                 </div>
             </div>

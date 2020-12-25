@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+<a name="newest-posts"></a>
+
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="centered">
+                        <h3 th:text="${i18n_text}"></h3>
+                        <p>
+                            Výber najnovších článkov zo sveta kryptomien zoradených vhodne do kategórií.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb notop">
+                    <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
+                    <li class="active"><a th:href="@{${base_url + 'posts/all' }}">Články</a><span class="divider">/</span></li>
+                    <li class="active" th:text="${i18n_text}"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+
+            <div class="row" style="margin-top: -30px;">
+                <div class="span12">
+                    <!-- -->
+                    <div class="navbar navbar-inner">
+                        <div class="container">
+                            <!-- top menu -->
+                            <h1 th:text="${i18n_text}"></h1>
+                            <!-- end menu -->
+                        </div>
+                    </div>
+                    <!-- -->
+                </div>
+            </div>
+
+            <ul class="portfolio-area da-thumbs">
+                <div th:each="post : ${posts}">
+                    <div th:replace="fragments/post :: one_post(${post})"></div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</section>

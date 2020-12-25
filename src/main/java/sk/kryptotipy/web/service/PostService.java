@@ -18,36 +18,27 @@ public class PostService implements PostServiceApi {
     private final PostJdbcRepository postLabelRepository;
 
     public List<Post> getPostsByLabel(String label, Long from, Long to) {
-
         List<Post> posts = postLabelRepository
-                .getPostsByLabel(label, from, to)
-                .stream()
-                .collect(Collectors.toList());
+                .getPostsByLabel(label, from, to);
         return posts;
     }
 
     @Override
     public List<Post> getPostsByLabelAll(Long from, Long to) {
         List<Post> posts = postLabelRepository
-                .getPostsByLabelAll(from, to)
-                .stream()
-                .collect(Collectors.toList());
+                .getPostsByLabelAll(from, to);
         return posts;
     }
 
-    //TODO
+    @Override
+    public List<Post> getPostsByI18n(String i18n, Long from, Long to) {
+        return postLabelRepository.getPostsByI18n(i18n, from, to);
+    }
+
+    @Override
     public List<Post> getNewestPosts() {
-
         List<Post> posts = postLabelRepository
-                .getNewestPosts()
-                .stream()
-                .collect(Collectors.toList());
+                .getNewestPosts();
         return posts;
     }
-
-    //TODO
-    public List<Post> getPosts() {
-        return null;
-    }
-
 }
