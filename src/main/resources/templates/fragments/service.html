@@ -4,7 +4,7 @@
                     <div class="thumbnail">
                         <div class="image-wrapp">
                             <a th:href="${service.url}" target="_blank">
-                                <img th:src="@{${base_url + 'assets/img/services/' + service.imgSrc}}" th:alt="${service.name}" />
+                                <img th:src="@{${'/assets/img/services/' + service.imgSrc}}" th:alt="${service.name}" />
                                 <article class="da-animate da-slideFromRight" style="display: block;">
                                     <h4 th:text="${service.name}"></h4>
                                 </article>

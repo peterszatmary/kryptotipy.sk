@@ -45,39 +45,39 @@
                             <div class="navigation">
                                 <nav>
                                     <ul class="nav topnav">
-                                        <li th:classappend="${label} == 'Všetky' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/all'}}" class="btn btn-category-margin btn-color category">Všetky</a></li>
-                                        <li th:classappend="${label} == 'kryptomeny' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/kryptomeny'}}" class="btn btn-category-margin btn-color category">Kryptomeny</a></li>
-                                        <li th:classappend="${label} == 'blockchain' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/blockchain'}}" class="btn btn-category-margin btn-color category">Blockchain</a></li>
-                                        <li th:classappend="${label} == 'monero' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/monero'}}" class="btn btn-category-margin btn-color category">Monero</a></li>
-                                        <li th:classappend="${label} == 'litecoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/litecoin'}}" class="btn btn-category-margin btn-color category">Litecoin</a></li>
-                                        <li th:classappend="${label} == 'bitcoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/bitcoin'}}" class="btn btn-category-margin btn-color category">Bitcoin</a></li>
+                                        <li th:classappend="${label} == 'Všetky' ? 'all active bigger':'others bigger'"><a href="/posts/all" class="btn btn-category-margin btn-color category">Všetky</a></li>
+                                        <li th:classappend="${label} == 'kryptomeny' ? 'all active bigger':'others bigger'"><a href="/posts/kryptomeny" class="btn btn-category-margin btn-color category">Kryptomeny</a></li>
+                                        <li th:classappend="${label} == 'blockchain' ? 'all active bigger':'others bigger'"><a href="/posts/blockchain" class="btn btn-category-margin btn-color category">Blockchain</a></li>
+                                        <li th:classappend="${label} == 'monero' ? 'all active bigger':'others bigger'"><a href="/posts/monero" class="btn btn-category-margin btn-color category">Monero</a></li>
+                                        <li th:classappend="${label} == 'litecoin' ? 'all active bigger':'others bigger'"><a href="/posts/litecoin" class="btn btn-category-margin btn-color category">Litecoin</a></li>
+                                        <li th:classappend="${label} == 'bitcoin' ? 'all active bigger':'others bigger'"><a href="/posts/bitcoin" class="btn btn-category-margin btn-color category">Bitcoin</a></li>
 
-                                        <li th:classappend="${label} == 'ethereum' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ethereum'}}" class="btn btn-category-margin btn-color category">Ethereum</a></li>
-                                        <li th:classappend="${label} == 'altcoin' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/altcoin'}}" class="btn btn-category-margin btn-color category">Altcoiny</a></li>
-                                        <li th:classappend="${label} == 'fed' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/fed'}}" class="btn btn-category-margin btn-color category">FED</a></li>
-                                        <li th:classappend="${label} == 'ecb' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ecb'}}" class="btn btn-category-margin btn-color category">ECB</a></li>
-                                        <li th:classappend="${label} == 'binance' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/binance'}}" class="btn btn-category-margin btn-color category">Binance</a></li>
+                                        <li th:classappend="${label} == 'ethereum' ? 'all active bigger':'others bigger'"><a href="/posts/ethereum" class="btn btn-category-margin btn-color category">Ethereum</a></li>
+                                        <li th:classappend="${label} == 'altcoin' ? 'all active bigger':'others bigger'"><a href="/posts/altcoin" class="btn btn-category-margin btn-color category">Altcoiny</a></li>
+                                        <li th:classappend="${label} == 'fed' ? 'all active bigger':'others bigger'"><a href="/posts/fed" class="btn btn-category-margin btn-color category">FED</a></li>
+                                        <li th:classappend="${label} == 'ecb' ? 'all active bigger':'others bigger'"><a href="/posts/ecb" class="btn btn-category-margin btn-color category">ECB</a></li>
+                                        <li th:classappend="${label} == 'binance' ? 'all active bigger':'others bigger'"><a href="/posts/binance" class="btn btn-category-margin btn-color category">Binance</a></li>
 
-                                        <li th:classappend="${label} == 'dag' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/dag'}}" class="btn btn-category-margin btn-color category">DAG</a></li>
-                                        <li th:classappend="${label} == 'exodus' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/exodus'}}" class="btn btn-category-margin btn-color category">Exodus</a></li>
-                                        <li th:classappend="${label} == 'dash' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/dash'}}" class="btn btn-category-margin btn-color category">Dash</a></li>
-                                        <li th:classappend="${label} == 'burza' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/burza'}}" class="btn btn-category-margin btn-color category">Burza</a></li>
-                                        <li th:classappend="${label} == 'fork' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/fork'}}" class="btn btn-category-margin btn-color category">Fork</a></li>
+                                        <li th:classappend="${label} == 'dag' ? 'all active bigger':'others bigger'"><a href="/posts/dag" class="btn btn-category-margin btn-color category">DAG</a></li>
+                                        <li th:classappend="${label} == 'exodus' ? 'all active bigger':'others bigger'"><a href="/posts/exodus" class="btn btn-category-margin btn-color category">Exodus</a></li>
+                                        <li th:classappend="${label} == 'dash' ? 'all active bigger':'others bigger'"><a href="/posts/dash" class="btn btn-category-margin btn-color category">Dash</a></li>
+                                        <li th:classappend="${label} == 'burza' ? 'all active bigger':'others bigger'"><a href="/posts/burza" class="btn btn-category-margin btn-color category">Burza</a></li>
+                                        <li th:classappend="${label} == 'fork' ? 'all active bigger':'others bigger'"><a href="/posts/fork" class="btn btn-category-margin btn-color category">Fork</a></li>
 
-                                        <li th:classappend="${label} == 'ico' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ico'}}" class="btn btn-category-margin btn-color category">ICO</a></li>
-                                        <li th:classappend="${label} == 'kraken' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/kraken'}}" class="btn btn-category-margin btn-color category">Kraken</a></li>
-                                        <li th:classappend="${label} == 'coinbase' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/coinbase'}}" class="btn btn-category-margin btn-color category">Coinbase</a></li>
-                                        <li th:classappend="${label} == 'halving' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/halving'}}" class="btn btn-category-margin btn-color category">Halving</a></li>
-                                        <li th:classappend="${label} == 'nbs' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/nbs'}}" class="btn btn-category-margin btn-color category">NBS</a></li>
+                                        <li th:classappend="${label} == 'ico' ? 'all active bigger':'others bigger'"><a href="/posts/ico" class="btn btn-category-margin btn-color category">ICO</a></li>
+                                        <li th:classappend="${label} == 'kraken' ? 'all active bigger':'others bigger'"><a href="/posts/kraken" class="btn btn-category-margin btn-color category">Kraken</a></li>
+                                        <li th:classappend="${label} == 'coinbase' ? 'all active bigger':'others bigger'"><a href="/posts/coinbase" class="btn btn-category-margin btn-color category">Coinbase</a></li>
+                                        <li th:classappend="${label} == 'halving' ? 'all active bigger':'others bigger'"><a href="/posts/halving" class="btn btn-category-margin btn-color category">Halving</a></li>
+                                        <li th:classappend="${label} == 'nbs' ? 'all active bigger':'others bigger'"><a href="/posts/nbs" class="btn btn-category-margin btn-color category">NBS</a></li>
 
-                                        <li th:classappend="${label} == 'neo' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/neo'}}" class="btn btn-category-margin btn-color category">NEO</a></li>
-                                        <li th:classappend="${label} == 'bitfinex' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/bitfinex'}}" class="btn btn-category-margin btn-color category">Bitfinex</a></li>
-                                        <li th:classappend="${label} == 'bittrex' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/bittrex'}}" class="btn btn-category-margin btn-color category">Bittrex</a></li>
-                                        <li th:classappend="${label} == 'ripple' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/ripple'}}" class="btn btn-category-margin btn-color category">Ripple</a></li>
-                                        <li th:classappend="${label} == 'penazenky' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/penazenky'}}" class="btn btn-category-margin btn-color category">Peňaženky</a></li>
+                                        <li th:classappend="${label} == 'neo' ? 'all active bigger':'others bigger'"><a href="/posts/neo" class="btn btn-category-margin btn-color category">NEO</a></li>
+                                        <li th:classappend="${label} == 'bitfinex' ? 'all active bigger':'others bigger'"><a href="/posts/bitfinex" class="btn btn-category-margin btn-color category">Bitfinex</a></li>
+                                        <li th:classappend="${label} == 'bittrex' ? 'all active bigger':'others bigger'"><a href="/posts/bittrex" class="btn btn-category-margin btn-color category">Bittrex</a></li>
+                                        <li th:classappend="${label} == 'ripple' ? 'all active bigger':'others bigger'"><a href="/posts/ripple" class="btn btn-category-margin btn-color category">Ripple</a></li>
+                                        <li th:classappend="${label} == 'penazenky' ? 'all active bigger':'others bigger'"><a href="/posts/penazenky" class="btn btn-category-margin btn-color category">Peňaženky</a></li>
 
-                                        <li th:classappend="${label} == 'coinmarketcap' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/coinmarketcap'}}" class="btn btn-category-margin btn-color category">Coinmarketcap</a></li>
-                                        <li th:classappend="${label} == 'nezaradene' ? 'all active bigger':'others bigger'"><a th:href="@{${base_url + 'posts/nezaradene'}}" class="btn btn-category-margin btn-color category">Ostatné</a></li>
+                                        <li th:classappend="${label} == 'coinmarketcap' ? 'all active bigger':'others bigger'"><a href="/posts/coinmarketcap" class="btn btn-category-margin btn-color category">Coinmarketcap</a></li>
+                                        <li th:classappend="${label} == 'nezaradene' ? 'all active bigger':'others bigger'"><a href="/posts/nezaradene" class="btn btn-category-margin btn-color category">Ostatné</a></li>
                                     </ul>
                                 </nav>
                             </div>

@@ -6,7 +6,9 @@
             <div class="navbar-inner">
                 <div class="container">
                     <!-- logo -->
-                    <a class="brand logo" th:href="${base_url}"><img th:src="@{${base_url + 'assets/img/logo/banner-small.png'}}" alt="kryptotipy.sk"></a>
+                    <a class="brand logo" th:href="${base_url}">
+                        <img src="/assets/img/logo/banner-small.png" th:alt="${page_title}">
+                    </a>
                     <!-- end logo -->
                     <!-- top menu -->
                     <div class="navigation">
@@ -17,19 +19,19 @@
                                 </li>
 
                                 <li th:class="${active_posts + ' menu'}">
-                                    <a th:class="menu" th:href="@{${base_url + 'posts/all'}}">Články</a>
+                                    <a th:class="menu" href="/posts/all">Články</a>
                                 </li>
 
                                 <li th:class="${active_external_services + ' menu'}">
-                                    <a th:class="menu" th:href="@{${base_url + 'external-services'}}">Externé služby</a>
+                                    <a th:class="menu" href="/external-services">Externé služby</a>
                                 </li>
 
                                 <li th:class="${active_did_you_know + ' menu'}">
-                                    <a th:class="menu" th:href="@{${base_url + 'did-you-know'}}">Zaujímavosti</a>
+                                    <a th:class="menu" href="/did-you-know">Zaujímavosti</a>
                                 </li>
 
                                 <li th:class="${active_dictionary + ' menu'}">
-                                    <a th:class="menu" th:href="@{${base_url + 'dictionary'}}">Slovník</a>
+                                    <a th:class="menu" href="/dictionary">Slovník</a>
                                 </li>
                             </ul>
                         </nav>
