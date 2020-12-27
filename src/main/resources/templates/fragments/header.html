@@ -1,5 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
     <head>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182396559-1"></script>
         <script>
@@ -10,30 +11,50 @@
           gtag('config', 'UA-182396559-1');
         </script>
 <!--        <meta HTTP-EQUIV="REFRESH" th:content="@{${'0; url=https://www.kryptotipy.sk/' + site}}">-->
-        <link rel="canonical" th:href="@{${'https://www.kryptotipy.sk/' + site}}">
-        <!-- End Google Tag Manager -->
+        <link rel="canonical" th:href="@{${'https://www.kryptotipy.sk/' + site}}" />
+
+
         <meta charset="utf-8">
         <title th:text="${page_title}"></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="ahrefs-site-verification" content="9db20406c04a652307c41783ebc05970f93314d929d54c484f05e0367eb3dae2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="ahrefs-site-verification" content="9db20406c04a652307c41783ebc05970f93314d929d54c484f05e0367eb3dae2" />
         <meta name="description" th:content="${page_description}" />
         <meta name="author" th:content="${page_author}" />
-        <!-- styles -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/css/bootstrap.css'}}" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/css/bootstrap-responsive.css'}}" rel="stylesheet">
 
-        <link th:href="@{${base_url + 'assets/css/docs.css'}}" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/js/google-code-prettify/prettify.css'}}" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/css/flexslider.css'}}" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/css/sequence.css'}}" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/css/style.css'}}" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/color/default.css'}}" rel="stylesheet">
-        <link th:href="@{${base_url + 'assets/css/additional.css'}}" rel="stylesheet">
+        <!-- social open graph -->
+        <meta property="og:url" th:content="${base_url}" />
+        <meta property="og:title" th:content="${page_title}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" th:content="${page_description}" />
+        <meta property="og:site_name" th:content="${page_title}" />
+        <meta property="og:image" th:content="@{${base_url + 'assets/img/logo/banner.png'}}" />
+        <meta property="og:image:width" content="870"/>
+        <meta property="og:image:height" content="214"/>
+        <meta property="og:article:published_time" content="2020-12-04T00:00:00+0100" />
+        <meta name="robots" content="index,follow" />
+
+        <!-- social twitter cards -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" th:content="${page_title}" />
+        <meta name="twitter:image" th:content="@{${base_url + 'assets/img/logo/banner.png'}}" />
+        <meta name="twitter:description" th:content="${page_description}" />
+
+        <!-- styles -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/css/bootstrap.css'}}" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/css/bootstrap-responsive.css'}}" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/css/docs.css'}}" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/js/google-code-prettify/prettify.css'}}" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/css/flexslider.css'}}" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/css/sequence.css'}}" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/css/style.css'}}" rel="stylesheet" />
+        <link th:href="@{${base_url + 'assets/color/default.css'}}" rel="stylesheet" />
+        <link href="/assets/css/additional.css" rel="stylesheet" />
+
         <!-- fav and touch icons -->
-        <link th:href="@{${base_url + 'assets/ico/favicon.ico'}}"rel="shortcut icon">
-        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-144-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="144x144">
-        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-114-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="114x114">
-        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-72-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="72x72">
-        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-57-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="57x57">
+        <link th:href="@{${base_url + 'assets/ico/favicon.ico'}}"rel="shortcut icon" />
+        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-144-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="144x144" />
+        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-114-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="114x114" />
+        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-72-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="72x72" />
+        <link th:href="@{${base_url + 'assets/ico/apple-touch-icon-57-precomposed.png'}}" rel="apple-touch-icon-precomposed" sizes="57x57" />
     </head>
