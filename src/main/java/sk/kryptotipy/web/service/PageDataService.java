@@ -31,6 +31,9 @@ public class PageDataService implements PageDataServiceApi {
     @Value("${page.size}")
     private Integer pageSize;
 
+    @Value("${project.post.count}")
+    private String postsCount;
+
     // info about if pagination should go to view
     private Boolean paginationOn = Boolean.TRUE;
 
@@ -41,6 +44,8 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_author", pageAuthor);
         model.put("base_url", baseUrl);
         model.put("title", pageTitle);
+        model.put("posts_count", postsCount);
         model.put("project_version", projectVersion);
     }
+
 }
