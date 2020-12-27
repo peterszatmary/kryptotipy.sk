@@ -35,7 +35,7 @@
                         <h4 th:text="${post.titleRender}"></h4>
                     </article>
                 </a>
-                <a th:href="${post.url}" th:text="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;"></a>
+                <a th:href="${post.url}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;"></a>
                 <span class="post-labels">
                       <a th:each="label : ${post.labels}" th:href="@{${'/posts/' + label.name}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                 </span>
