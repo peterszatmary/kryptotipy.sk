@@ -54,6 +54,13 @@ public class WebController {
     public String postsByI18n(Map<String, Object> model,
                               @PathVariable("i18n") String i18n) {
         try {
+
+            if (!("SK".equals(i18n) || "CZ".equals(i18n))) {
+                log.info("Someone tried i18n page by manipulating url !!. i18n value = {}", i18n);
+                log.error("Someone tried i18n page by manipulating url !!. i18n value = {}", i18n);
+                throw new Exception("Someone tried i18n page by manipulating url !!.");
+            }
+
             Long from = 0L;
             Long to = appProperties.getPageSize();
 
