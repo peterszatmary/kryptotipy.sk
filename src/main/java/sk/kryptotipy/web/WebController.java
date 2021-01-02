@@ -72,11 +72,12 @@ public class WebController {
             model.put("i18n", i18n);
             model.put("i18n_text", getI18nText(i18n));
             model.put("site", "posts/i18n" + i18n);
+            model.put("content_path","fragments/content/posts_by_i18n");
 
             model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
             log.info("posts.html - i18n");
             pageData.set(model, " - " + getI18nText(i18n));
-            return "posts_by_i18n";
+            return "non-index";
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
@@ -115,10 +116,11 @@ public class WebController {
             model.put("posts", posts);
             model.put("label", label);
             model.put("site", "posts/" + label);
+            model.put("content_path","fragments/content/posts");
 
             log.info("posts.html {}", label);
             pageData.set(model, " - Články : " + label);
-            return "posts";
+            return "non-index";
 
         } catch (Exception ex) {
             log.warn("posts : " + ex.getMessage());
@@ -138,6 +140,8 @@ public class WebController {
             model.put("active_external_services", "active");
             model.put("active_did_you_know", "");
             model.put("site", "external-services/");
+            model.put("content_path","fragments/content/external_services");
+
 
             List<Service> services = new ArrayList<>();
 
@@ -164,14 +168,12 @@ public class WebController {
             services.add(new Service("Airdrops.io", "https://airdrops.io", "airdrops-io.jpg", "Služba monitorujúca takzvané airdropy tokenov, čo sú tokeny zadarmo za splnenie najčastejšie úloh na sociálnych sieťach a podobne."));
             services.add(new Service("Staking rewards", "https://www.stakingrewards.com", "staking-rewards.png", "Vďaka tejto službe si viete pohodlne vyrátať, aký veľký je váš pasívny príjem, ak vlastníte niektorý z proof of stake tokenov."));
             services.add(new Service("Krypto tank", "https://kryptotank.cz/", "kryptotank.png", "Ide o čerpaciu stanicu v Českej republike, kde je možné platiť pohonné látky obľúbeným Bitcoinom."));
-
-
-
+            
             model.put("services", services);
 
-            log.info("external-services.html");
+            log.info("external_services.html");
             pageData.set(model, " - Externé služby");
-            return "external-services";
+            return "non-index";
 
         } catch (Exception ex) {
             log.warn("external-services : " + ex.getMessage());
@@ -192,13 +194,40 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("site", "dictionary/");
+            model.put("content_path","fragments/content/dictionary");
 
             log.info("dictionary.html");
             pageData.set(model, " - Slovník");
-            return "dictionary";
+            return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
+            pageData.set(model, "404 Stránka nenájdená");
+            return "redirect:/error";
+        }
+    }
+
+
+    @RequestMapping("/{postTitle}")
+    public String post(Map<String, Object> model,
+                       @PathVariable("postTitle") String postTitle) {
+
+        try {
+            model.put("active_index", "");
+            model.put("active_posts", "active");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
+            model.put("site", postTitle);
+            model.put("post_title", "Bitcoin nebol prvou kryptomenou");
+            model.put("content_path","fragments/content/" + postTitle);
+
+            log.info("post.html - {}", postTitle);
+            pageData.set(model, postTitle);
+            return "non-index";
+
+        } catch (Exception ex) {
+            log.warn("{} : {}", postTitle, ex.getMessage());
             pageData.set(model, "404 Stránka nenájdená");
             return "redirect:/error";
         }
@@ -214,11 +243,12 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "active");
-            model.put("site", "did-you-know/");
+            model.put("site", "did_you_know/");
+            model.put("content_path","fragments/content/did_you_know");
 
-            log.info("did-you-know.html");
+            log.info("did_you_know.html");
             pageData.set(model, " - Zaujímavosti");
-            return "did-you-know";
+            return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());

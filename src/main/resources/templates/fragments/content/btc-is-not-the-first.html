@@ -1,0 +1,306 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="centered">
+                        <h1 style="font-size: 22px;color: #fff;" th:text="${post_title}"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <article>
+                    <div class="heading">
+                        <i>2.1.2020</i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="fb-share-button"
+                             data-href="https://www.kryptotipy.sk"
+                             data-layout="button_count"
+                             data-size="large"
+                             style="margin-top: 20px;">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Zdieľať</a>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="row">
+                        <div class="span8">
+                            <p>
+                                Pred Bitcoinom tu naozaj bola iná kryptomena.  Zopár projektov muselo najprv zlyhať,
+                                aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?
+                            </p>
+
+                            <p>
+                                Prvý známy pokus o vytvorenie kryptomeny sa udial <strong>v Holandsku, koncom 80. rokov</strong>.
+                                Uprostred noci prepadávali benzínové pumpy v odľahlých oblastiach. Zaujímala ich hotovosť.
+
+                                <br /><br />
+
+                                Niekto mal vynikajúci nápad vkladať peniaze na nové inteligentné karty, a tak vznikla elektronická hotovosť.
+                                Vodiči nákladných vozidiel dostali tieto karty namiesto
+                                hotovosti, a tak sa stanice stali bezpečnejšími.
+
+                                <br /><br />
+
+                                Dominantný maloobchodný predajca <strong>Albert Heijn</strong> zároveň tlačil na banky, aby vymysleli
+                                nejaký spôsob, ktorý umožní kupujúcim platiť priamo z ich bankových účtov, ktorý sa nakoniec stal
+                                známym ako
+                                <a href="https://www.investopedia.com/terms/p/point-of-sale.asp" target="_blank">POS alebo point-of-sale</a>.
+                                <br /><br /><br />
+                            </p>
+
+                            <p>
+
+                                <h2>DigiCash a ECash</h2>
+
+                                Ešte predtým <a href="https://www.chaum.com" target="_blank">David Chaum</a>, americký kryptograf,
+                                skúmal, čo je potrebné na vytvorenie elektronickej hotovosti. Jeho pohľad na peniaze a súkromie ho priviedol k presvedčeniu,
+                                že na to, aby sme mohli bezpečne obchodovať, budeme potrebovať symbolické peniaze, ktoré by napodobňovali fyzické mince a
+                                papierové bankovky. Konkrétne chcel zabezpečiť funkciu ochrany osobných údajov, ktorá spočíva v schopnosti bezpečne platiť
+                                niekomu z ruky do ruky.
+
+                                <br /><br />
+                                Už v roku <strong>1982 vynašiel <a href="https://en.wikipedia.org/wiki/David_Chaum" target="_blank">David Chaum</a></strong>
+                                <a href="https://www.chaum.com/publications/Chaum-blind-signatures.PDF" target="_blank">vzorec</a>, ktorý je rozšírením algoritmu RSA stále používaným pri šifrovaní webu.
+                                Ten umožňuje osobe odovzdať číslo druhej osobe s tým, že toto číslo môže príjemca upraviť.
+
+                                <br />
+
+                                <img src="/assets/img/posts/btc_not_first/ecash_LOGO.jpg" style="margin-top: 30px; margin-bottom: 40px;" />
+
+                                <br /><br />
+
+                                Keď príjemca vloží svoju tzv. mincu do banky, nesie originálny podpis mincovne.
+                                Ale nejde o rovnaké číslo ako to, ktoré mincovňa podpísala. Chaumov vynález umožnil nenápadne upraviť
+                                mincu bez toho, aby došlo k porušeniu podpisu mincovne, preto bola banka voči transakcii "slepá".
+                                Nasleduje ukážka z práce Chauma. Celú prácu si môžete pozrieť na jeho
+                                <a href="https://www.chaum.com/publications/Chaum-blind-signatures.PDF" target="_blank">osobných stránkach</a>.
+
+                                <br />
+
+                                <img src="/assets/img/posts/btc_not_first/chaum-blind-signatures.png" style="margin-top: 30px; margin-bottom: 40px;" />
+
+                                <br />
+
+                                David Chaum migroval do Holandska. Keď pracoval koncom 80. rokov v CWI, ohnisku kryptografického
+                                a matematického výskumu v Amsterdame, začal s programom DigiCash budovať svoj vynález internetových peňazí.
+
+                                Na nasledujúcom obrázku môžete vidieť pôvodnú zostavu DigiCash.
+
+                                <br />
+
+
+                                <img src="/assets/img/posts/btc_not_first/digicash-crew.png" style="margin-top: 30px; margin-bottom: 40px;" />
+
+                                <br /><br />
+
+                                V projekte zamestnal mnoho ďalších mien, ktoré sa neskôr preslávili: Stefan Brands, Niels Ferguson,
+                                Gary Howland „Marcel„, BigMac “van der Peijl, Nick Szabo a Bryce „Zooko “ Wilcox-Ahearn.
+
+                                <br /><br />
+
+                                Vynález "slepej" hotovosti <a href="https://www.chaum.com/publications/Chaum-blind-signatures.PDF" target="_blank">(Blind signatures for untraceable payments)</a> bol mimoriadny a vyvolal nevídanú vlnu pozornosti tlače.
+                                David Chaum a jeho spoločnosť, bohužiaľ, urobili niekoľko prešľapov a upadli do nemylosti centrálnej
+                                banky (De Nederlandsche Bank alebo DNB).
+
+                                <br /><br />
+
+                                Dohodnutým kompromisom bolo, že produkt <strong>ECash</strong> spoločnosti Digicash
+                                sa bude predávať iba bankám. Toto opatrenie regulácie však viedlo spoločnosť postupne až k bankrotu.
+
+                                <br /><br />
+
+                                Množstvo pozornosti v tlači prinieslo taktiež veľmi zaujímavé príležitosti so spoločnosťami
+                                <strong>Microsoft</strong>, <strong>Deutsche Bank</strong> a podobne. David Chaum ich ale nedokázal
+                                využiť.
+                                <br /><br />
+
+                                Napriek pribúdajúcim reguláciam naďalej vznikali stovky startupov ročne, ktoré mali o túto oblasť záujem a chceli v nej preraziť. V polovici 90. rokov
+                                sa pozornosť presunula z Európy na Severnú Ameriku, a to kvôli dvom faktorom:
+                                <a href="" target="_blank">Netscape IPO</a> uvoľnil obrovské množstvo akcií a tiež
+                                Európa priniesla prvý oficiálny regulačný zásah do digitálnej hotovosti - správu EÚ o predplatených
+                                kartách z roku 1994, ktorá sa zmenila na spomínanú reakciu proti DigiCash.
+
+                                <br /><br />
+
+                                V tom istom roku prebehla
+                                <a href="https://www.chaum.com/ecash/articles/1994/05-27-94%20-%20World_s%20first%20electronic%20cash%20payment%20over%20computer%20networks.pdf" target="_blank">
+                                    prvá platba elektronickými peniazmi v histórií ľudstva vôbec
+                                </a>. Udialo sa tak 27. mája 1994. Stalo sa tak v Ženeve na technologickej konferencii.
+
+
+                                <br /><br />
+
+                                V jednom okamihu spoločnosť Microsoft ponúkla
+                                Chaumovi 180 miliónov dolárov na to, aby sa program DigiCashu dostal na každý počítač so systémom Windows.
+                                Ani táto závratná suma by nestačila na pokrytie nákladov, a tak s dochádzajúcimi financiami zanikla v roku 1998 aj spoločnosť DigiCash.
+                                <br /><br />
+
+                                Na nasledujúcom obrázku môžete vidieť zopár firiem, ktoré svojho času ECash podporovali.
+
+
+                                <img src="/assets/img/posts/btc_not_first/supported.png" style="margin-top: 30px; margin-bottom: 40px;" />
+
+                                Prvá veľká vlna kryptomien skončila a nahradila ju druhá vlna.
+
+                            </p>
+
+                            <p>
+                                <br /><br />
+                                <h2>Druhá vlna - Webové peniaze</h2>
+
+
+                                Druhou vlnou boli webové peňiaze. <strong>First Virtual</strong>
+                                bol prvý krátky príval vzrušenia, ktorý bol takmer okamžite nahradený službou
+                                <strong><a href="https://www.paypal.com" target="_blank">Paypal</a></strong>, ktorá
+                                dokázala známe princípy priviesť k väčšej popularite.
+
+                                <img src="/assets/img/posts/btc_not_first/paypal.png" style="margin-top: 10px;" />
+
+                                <br /><br />
+
+                                Zatiaľ čo First Virtual trval na tom, že na prijímanie peňazí musíte byť "obchodníkom", PayPal umožnil,
+                                aby peniaze putovali priamo od človeka k človeku. Pôvodné obmedzenia boli populárne
+                                zo strany bánk a regulačných orgánov, ale ľudia ich nemali radi. PayPal teda poskočil vpred
+                                tým, že navrhol svoj systém v zjednodušenej a menej regulovanej forme.
+
+                                <br /><br />
+
+                                PayPal vycítil príležitosť v presune tradičných peňazí na web.
+                                Začatím využívania PayPalu v komunite eBay sa zdala svetlá budúcnosť tohto projektu zaručená. Bolo potrebné len vyhnúť sa
+                                bankovým / regulačným mínovým poliam, ktoré pred ňu boli postavené.
+
+                                <br /><br />
+
+                                Tým, že služba PayPal dokázala,
+                                že web sa stal miestom pre nové peniaze, Chaumove nápady boli na širšom západnom trhu pomaly zabúdané.
+                                Tradícia s WebMoney ostala naďalej živá v Rusku a niektorých menších krypto záujmových skupinách.
+
+                                <br /><br />
+                                V tých časoch vznikol aj akýsi hybrid spomínaných projektov, ktorým bola firma e-gold.
+                                Bola spočiatku veľmi úspešnou. Americkú prevádzku mala v Nevise v Karibiku.
+                                <strong>
+                                    <a href="https://en.wikipedia.org/wiki/E-gold#:~:text=E%2Dgold%20was%20a%20digital,to%20other%20e%2Dgold%20accounts." target="_blank">E-gold</a>
+                                </strong>
+                                    bol celkom jednoduchý nápad. Poslali ste svoje fyzické zlato alebo striebro a spoločnosť vám pripísala na váš účet e-zlato.
+                                Prípadne ste si kúpili nové e-zlato tým, že spoločnosť nakúpila za vaše peniaze fyzické zlato.
+                                Okolo roku 1999 boli na vrchole.
+
+                                Keďže emitent meny e-gold bol v zahraničí, nevyžadoval si súhlas na pobreží v USA.
+
+                               S rastúcou popularitou na prelome milénia explodoval nezávislý burzový trh
+                                a e-gold si upevnilo pozíciu.
+                                <br /><br /><br />
+                            </p>
+
+
+                            <p>
+                                <h2>Regulácie</h2>
+                                Elektronické zlato sa však dostalo do problémov pre svoj príliš voľný ideál umožňujúci komukoľvek vlastniť účet.
+                                Aj keď je to teoreticky skvelý koncept, neustály prúd ponziho schém a iných podvodov priťahoval pozornosť FBI.
+
+                                <br /><br />
+
+                                V roku 2005 boli prepadnuté kancelárie spoločnosti e-gold na Floride, čo znamenalo zánik tejto meny.
+                                FBI tiež pristúpila k vyčisteniu všetkých obdobných firiem
+                                a zabezpečili tak koniec druhej veľkej vlny nových peňazí.
+
+                                <br /><br />
+
+                                Spätne vidíme, že 11. september znamenal veľkú zmenu v pohľade na problematiku internetových peňazí. Predtým bolo USA v tejto téme
+                                pomerne liberálne a považovali ich za potenciálny obchod a inováciu do budúcnosti.
+                                Po neslávne známom 11. septembri sa názor dramaticky zmenil a kontroly zvýšili. Takmer všetky kryptomeny boli považované za ohniská teroristov,
+                                drogových dílerov a ďalších nelegálnych činností.
+
+                                <br /><br />
+
+                                Bolo zrejmé, že pokus o vypnutie kryptomien bol veľmi úspešný. Avšak Európsky inovátori šli opačným smerom. Nasledujúce
+                                generácie zákona o takzvaných
+                                <a href="https://www.chaum.com/ecash/articles/1994/Wired/12-01-1994%20-%20E-Money%20(That_s%20What%20I%20Want).pdf" target="_blank">eMoney</a>
+                                boli prijaté s cieľom otvoriť opäť staré možnosti. Čo nás postupne posúva vpred do roku 2008 a do obdobia prvého zverejnenia
+                                <a href="https://bitcoin.org/bitcoin.pdf" target="_blank">bitcoin white paper-u</a> od Satoshi Nakamota.
+                                <br /><br /><br />
+                                </p>
+
+                                <p>
+                                <h2>Záver</h2>
+                                    Satoshi Nakamoto pri vydaní kódu napísal:
+
+                                <br /><br />
+
+                                <blockquote>
+                                    "Viete, myslím si, že v 90. rokoch sa zaujímalo o danú problematiku oveľa viac ľudí,
+                                    ale po viac ako desiatich rokoch zlyhávania dôveryhodných  systémov tretích strán (Digicash atď.),
+                                    to považujú za stratenú vec. Dúfam, že dokážu rozlíšiť, že <strong>je to prvýkrát, čo viem, že vyskúšame systém,
+                                    ktorý nie je založený na dôvere (non-trusted system)</strong>."
+                                </blockquote>
+
+                                <br />
+
+                                <strong>Bitcoin</strong> je výsledkom histórie, dobrých aj zlých rozhodnutí, ktoré sa spoločne podieľali na dnešnom dizajne.
+                                Nakamoto sa síce považuje za matku bitcoinu, ale je známych je viacero otcov. Slepé mince Davida Chauma a jeho osudový kompromis
+                                s DNB, anonymné účty e-gold a realpolitika po 11. septembri, banky a ich priemyselné kontrolné opatrenia. Všetko to pripelo k súčasnej podobe.
+                                To ako sa bude vyvíjať tento trh v najbližších rokoch je otázkou regulácií a samotných užívateľov.
+                                <br /><br />
+                            </p>
+
+                            <p>
+                            <h3>Zdroje</h3>
+                            <ul>
+                                <li><a href="https://bitcoinmagazine.com/articles/quick-history-cryptocurrencies-bbtc-bitcoin-1397682630" target="_blank">Bitcoin magazín</a></li>
+                                <li><a href="https://en.wikipedia.org/wiki/David_Chaum" target="_blank">David Chaum Wikipedia</a></li>
+                                <li><a href="https://en.wikipedia.org/wiki/DigiCash" target="_blank">DigiCash</a></li>
+                                <li><a href="https://www.chaum.com" target="_blank">David Chaum</a></li>
+                                <li><a href="https://www.chaum.com/ecash/" target="_blank">ECash</a></li>
+                                <li><a href="https://www.chaum.com/publications/Chaum-blind-signatures.PDF" target="_blank">Chaumov algoritmus</a></li>
+                                <li><a href="https://www.paypal.com" target="_blank">Paypal</a></li>
+                                <li><a href="https://www.benzinga.com/general/education/19/08/12174598/this-day-in-market-history-the-netscape-ipo" target="_blank">Netscape IPO</a></li>
+                                <li><a href="https://www.chaum.com/ecash/articles/1994/05-27-94%20-%20World_s%20first%20electronic%20cash%20payment%20over%20computer%20networks.pdf" target="_blank">Prvá elektronická platba na svete vôbec</a></li>
+                                <li><a href="https://www.chaum.com/ecash/articles/1994/Wired/12-01-1994%20-%20E-Money%20(That_s%20What%20I%20Want).pdf" target="_blank">eMoney</a></li>
+                                <li><a href="https://en.wikipedia.org/wiki/E-gold#:~:text=E%2Dgold%20was%20a%20digital,to%20other%20e%2Dgold%20accounts." target="_blank">E-gold</a></li>
+                                <li><a href="https://bitcoin.org/bitcoin.pdf" target="_blank">Bitcoin white-paper</a></li>
+                                <li><a href="https://www.investopedia.com/terms/p/point-of-sale.asp" target="_blank">Investopedia : POS</a></li>
+
+                            </ul>
+                            <br /><br />
+                            </p>
+
+
+                            <div class="fb-share-button"
+                                 data-href="https://www.kryptotipy.sk"
+                                 data-layout="button_count"
+                                 data-size="large"
+                                 style="margin-top: 20px;">
+                                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Zdieľať</a>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="project-widget">
+                                <h4><i class="icon-48 icon-beaker"></i> Kľúčové slová, informácie</h4>
+                                <ul class="project-detail">
+                                    <li>ECash - prvé elektronické peniaze</li>
+                                    <li>DigiCash - spoločnosť, ktorá vytvorila ECash.</li>
+                                    <li>David Chaum,
+                                        <label>1982</label> (vznik tzv. blind signatures),
+                                        <label>1994</label> (prvá elektronická platba vôbec),
+                                        <label>1998</label> (zánik firmy DigiCash).
+                                    </li>
+                                    <li>Webové peniaze, First Virtual, Paypal.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <!-- end article full post -->
+            </div>
+        </div>
+    </div>
+</section>
