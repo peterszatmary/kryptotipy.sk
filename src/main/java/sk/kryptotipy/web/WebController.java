@@ -211,7 +211,6 @@ public class WebController {
     @RequestMapping("/{postTitle}")
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle) {
-
         try {
             model.put("active_index", "");
             model.put("active_posts", "active");
@@ -219,11 +218,14 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("site", postTitle);
-            model.put("post_title", "Bitcoin nebol prvou kryptomenou");
+
             model.put("content_path","fragments/content/" + postTitle);
 
             log.info("post.html - {}", postTitle);
-            pageData.set(model, postTitle);
+            pageData.set(model, pageData.getPostTitle(postTitle));
+            model.put("post_title", pageData.getPostTitle(postTitle));
+            model.put("page_title", pageData.getPostTitle(postTitle));
+            model.put("page_description", pageData.getPostDescription(postTitle));
             return "non-index";
 
         } catch (Exception ex) {
