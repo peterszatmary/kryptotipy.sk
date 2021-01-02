@@ -27,7 +27,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:description" th:content="${page_description}" />
         <meta property="og:site_name" th:content="${page_title}" />
-        <meta property="og:image" th:content="@{${base_url + 'assets/img/logo/banner.png'}}" />
+        <meta property="og:image" th:content="${page_image}" />
         <meta property="og:image:width" content="870"/>
         <meta property="og:image:height" content="214"/>
         <meta property="og:article:published_time" content="2020-12-04T00:00:00+0100" />
@@ -36,7 +36,7 @@
         <!-- social twitter cards -->
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" th:content="${page_title}" />
-        <meta name="twitter:image" th:content="@{${base_url + 'assets/img/logo/banner.png'}}" />
+        <meta name="twitter:image" th:content="${page_image}" />
         <meta name="twitter:description" th:content="${page_description}" />
 
         <!-- styles -->

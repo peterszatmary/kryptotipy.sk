@@ -226,6 +226,7 @@ public class WebController {
             model.put("post_title", pageData.getPostTitle(postTitle));
             model.put("page_title", pageData.getPostTitle(postTitle));
             model.put("page_description", pageData.getPostDescription(postTitle));
+            model.put("page_image", pageData.getPostImage(postTitle));
             return "non-index";
 
         } catch (Exception ex) {

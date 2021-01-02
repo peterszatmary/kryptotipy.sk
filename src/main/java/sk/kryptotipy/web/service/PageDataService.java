@@ -20,9 +20,6 @@ public class PageDataService implements PageDataServiceApi {
     @Value("${page.description}")
     private String pageDescription;
 
-    @Value("${page.description.utf8}")
-    private String pageDescriptionUtf8;
-
     @Value("${page.author}")
     private String pageAuthor;
 
@@ -38,11 +35,8 @@ public class PageDataService implements PageDataServiceApi {
     @Value("${project.post.count}")
     private String postsCount;
 
-    @Value("${post.title.btc-is-not-the-first}")
-    private String btcIsNotFirstTitle;
-
-    @Value("${post.description.btc-is-not-the-first}")
-    private String btcIsNotFirstDescription;
+    @Value("${page.image}")
+    private String pageImagePath;
 
     // info about if pagination should go to view
     private Boolean paginationOn = Boolean.TRUE;
@@ -53,12 +47,12 @@ public class PageDataService implements PageDataServiceApi {
     public void set(Map<String, Object> model, String pageTitleCustom) {
         model.put("page_title", pageTitle + " " + pageTitleCustom);
         model.put("page_description", pageDescription);
-        model.put("page_description_utf8", pageDescriptionUtf8);
         model.put("page_author", pageAuthor);
         model.put("base_url", baseUrl);
         model.put("title", pageTitle);
         model.put("posts_count", postsCount);
         model.put("project_version", projectVersion);
+        model.put("page_image", pageImagePath);
 
         addPostsMeta();
     }
@@ -67,6 +61,7 @@ public class PageDataService implements PageDataServiceApi {
     private void addPostsMeta() {
         postsMeta.put("post.title.btc-is-not-the-first", "Bitcoin nebol prvou kryptomenou");
         postsMeta.put("post.description.btc-is-not-the-first","KRYPTOTIPY.SK - Pred Bitcoinom tu naozaj bola iná kryptomena.");
+        postsMeta.put("post.image.btc-is-not-the-first", baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
     }
 
     public String getPostTitle(String key) {
@@ -75,6 +70,10 @@ public class PageDataService implements PageDataServiceApi {
 
     public String getPostDescription(String key) {
         return postsMeta.get("post.description." + key);
+    }
+
+    public String getPostImage(String key) {
+        return postsMeta.get("post.image." + key);
     }
 
 }
