@@ -168,6 +168,7 @@ public class WebController {
             services.add(new Service("Airdrops.io", "https://airdrops.io", "airdrops-io.jpg", "Služba monitorujúca takzvané airdropy tokenov, čo sú tokeny zadarmo za splnenie najčastejšie úloh na sociálnych sieťach a podobne."));
             services.add(new Service("Staking rewards", "https://www.stakingrewards.com", "staking-rewards.png", "Vďaka tejto službe si viete pohodlne vyrátať, aký veľký je váš pasívny príjem, ak vlastníte niektorý z proof of stake tokenov."));
             services.add(new Service("Krypto tank", "https://kryptotank.cz/", "kryptotank.png", "Ide o čerpaciu stanicu v Českej republike, kde je možné platiť pohonné látky obľúbeným Bitcoinom."));
+
             
             model.put("services", services);
 
@@ -182,6 +183,41 @@ public class WebController {
         }
     }
 
+
+    @RequestMapping("/krypto-learning")
+    public String cryptoLearning(Map<String, Object> model) {
+
+        try {
+
+            model.put("active_index", "");
+            model.put("active_posts", "");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "active");
+            model.put("site", "krypto-learning/");
+            model.put("content_path","fragments/content/krypto_learning");
+
+            List<Service> services = new ArrayList<>();
+            services.add(new Service(
+                    "ECash",
+                    "/btc-is-not-the-first",
+                    "articles/ecash.png",
+                    "2.1.2020 - Pred Bitcoinom tu naozaj bola iná kryptomena. Zopár projektov muselo najprv zlyhať, " +
+                            "aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?"));
+
+            model.put("services", services);
+
+            log.info("krypto_learning.html");
+            pageData.set(model, " - Krypto learning");
+            return "non-index";
+
+        } catch (Exception ex) {
+            log.warn("krypto-learning : " + ex.getMessage());
+            pageData.set(model, "404 Stránka nenájdená");
+            return "redirect:/error";
+        }
+    }
 
     @RequestMapping("/dictionary")
     public String dictionary(Map<String, Object> model) {
