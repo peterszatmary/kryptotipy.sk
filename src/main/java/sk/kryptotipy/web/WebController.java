@@ -200,10 +200,10 @@ public class WebController {
 
             List<Service> services = new ArrayList<>();
             services.add(new Service(
-                    "ECash",
+                    "Prvou kryptomenou bol ECash",
                     "/btc-is-not-the-first",
                     "articles/ecash.png",
-                    "2.1.2020 - Pred Bitcoinom tu naozaj bola iná kryptomena. Zopár projektov muselo najprv zlyhať, " +
+                    "2.1.2021 - Pred Bitcoinom tu naozaj bola iná kryptomena. Zopár projektov muselo najprv zlyhať, " +
                             "aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?"));
 
             model.put("services", services);
