@@ -34,6 +34,7 @@ public class ServiceRepository {
         services.add(new Service("Airdrops.io", "https://airdrops.io", "airdrops-io.jpg", "Služba monitorujúca takzvané airdropy tokenov, čo sú tokeny zadarmo za splnenie najčastejšie úloh na sociálnych sieťach a podobne."));
         services.add(new Service("Staking rewards", "https://www.stakingrewards.com", "staking-rewards.png", "Vďaka tejto službe si viete pohodlne vyrátať, aký veľký je váš pasívny príjem, ak vlastníte niektorý z proof of stake tokenov."));
         services.add(new Service("Krypto tank", "https://kryptotank.cz/", "kryptotank.png", "Ide o čerpaciu stanicu v Českej republike, kde je možné platiť pohonné látky obľúbeným Bitcoinom."));
+        services.add(new Service("Whitepaper.io", "https://whitepaper.io/", "whitepaper.jpg", "Whitepaper je technickou špecifikáciou danej kryptomeny. Táto služba ich všetky ponúka na jednom mieste."));
         return services;
 
     }
