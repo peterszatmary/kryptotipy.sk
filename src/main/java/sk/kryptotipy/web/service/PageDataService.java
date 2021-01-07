@@ -45,7 +45,7 @@ public class PageDataService implements PageDataServiceApi {
 
 
     public void set(Map<String, Object> model, String pageTitleCustom) {
-        model.put("page_title", pageTitle + " " + pageTitleCustom);
+        model.put("page_title", pageTitleCustom + " | " + pageTitle);
         model.put("page_description", pageDescription);
         model.put("page_author", pageAuthor);
         model.put("base_url", baseUrl);

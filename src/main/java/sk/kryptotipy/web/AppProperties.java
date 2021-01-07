@@ -22,4 +22,7 @@ public class AppProperties {
 
     @Value("${page.size}")
     private Long pageSize;
+
+    @Value("${page.description.short}")
+    private String pageDescriptionShort;
 }

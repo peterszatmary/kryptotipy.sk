@@ -44,7 +44,7 @@ public class WebController {
             model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html");
-            pageData.set(model, " - Vitajte");
+            pageData.set(model, appProperties.getPageDescriptionShort());
             model.put("btc_price", getBtcPrice());
             return "index";
 
@@ -81,7 +81,7 @@ public class WebController {
 
             model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
             log.info("posts.html - i18n");
-            pageData.set(model, " - " + getI18nText(i18n));
+            pageData.set(model, getI18nText(i18n));
             return "non-index";
 
         } catch (Exception ex) {
@@ -136,7 +136,7 @@ public class WebController {
             model.put("content_path","fragments/content/posts");
 
             log.info("posts.html {}", label);
-            pageData.set(model, " - Články : " + label);
+            pageData.set(model, label_render + " články");
             return "non-index";
 
         } catch (Exception ex) {
@@ -161,7 +161,7 @@ public class WebController {
             model.put("services", serviceRepo.getExternalServices());
 
             log.info("external_services.html");
-            pageData.set(model, " - Externé služby");
+            pageData.set(model, "Externé služby");
             return "non-index";
 
         } catch (Exception ex) {
@@ -197,7 +197,7 @@ public class WebController {
             model.put("services", services);
 
             log.info("krypto_learning.html");
-            pageData.set(model, " - Krypto learning");
+            pageData.set(model, "Krypto learning");
             return "non-index";
 
         } catch (Exception ex) {
@@ -221,7 +221,7 @@ public class WebController {
             model.put("content_path","fragments/content/dictionary");
 
             log.info("dictionary.html");
-            pageData.set(model, " - Slovník");
+            pageData.set(model, "Slovník");
             return "non-index";
 
         } catch (Exception ex) {
@@ -274,7 +274,7 @@ public class WebController {
             model.put("content_path","fragments/content/did_you_know");
 
             log.info("did_you_know.html");
-            pageData.set(model, " - Zaujímavosti");
+            pageData.set(model, "Vedeli ste, že");
             return "non-index";
 
         } catch (Exception ex) {
@@ -308,7 +308,7 @@ public class WebController {
             model.put("post_url_value", postUrlValue);
 
             log.info("one-post-frame.html");
-            pageData.set(model, " - " + postTitle);
+            pageData.set(model, postTitle);
             return "one-post-frame";
 
 //        } catch (Exception ex) {
