@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LabelMapper implements RowMapper<Label> {
+
     @Override
     public Label mapRow(ResultSet rs, int rowNum) throws SQLException {
 

@@ -52,10 +52,9 @@ public class SiteRepository {
         save(new SiteEntry("/posts/nbs", 0.64D, ACTUAL_DATE));
         save(new SiteEntry("/posts/neo", 0.64D, ACTUAL_DATE));
         save(new SiteEntry("/posts/bitfinex", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/posts/penazenky", 0.64D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/wallets", 0.64D, ACTUAL_DATE));
 
         save(new SiteEntry("/posts/coinmarketcap", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/posts/peňaženky", 0.64D, ACTUAL_DATE));
         save(new SiteEntry("/btc-is-not-the-first", 0.64D, ACTUAL_DATE));
     }
 

@@ -3,10 +3,12 @@ package sk.kryptotipy.web;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import sk.kryptotipy.web.api.LabelServiceApi;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.Service;
 import sk.kryptotipy.web.api.PageDataServiceApi;
@@ -28,6 +30,7 @@ public class WebController {
     private final AppProperties appProperties;
     private final BtcPriceService btcPriceService;
     private final ServiceRepository serviceRepo;
+    private LabelServiceApi labelService;
 
     @RequestMapping("/")
     public String index(Map<String, Object> model) {
@@ -89,25 +92,33 @@ public class WebController {
     }
 
 
-    @RequestMapping("/posts/{label}")
+    @RequestMapping("/posts/{label_q}")
     public String posts(Map<String, Object> model,
-                        @PathVariable("label") String label) {
-
-        List<Post> posts;
-        Long from = 0L;
-        Long to = appProperties.getPageSize();
+                        @PathVariable("label_q") String label_q) {
         try {
-            if ("all".equals(label)) {
-                posts = this.postService.getPostsByLabelAll(from, to);
-                label = "Všetky";
-            } else {
-                //TODO label in check
-                posts = this.postService.getPostsByLabel(label, from, to);
+            String label_render = label_q;
+            String label = label_q;
+
+            List<Post> posts;
+            Long from = 0L;
+            Long to = appProperties.getPageSize();
+
+            if ("wallets".equals(label_q)) {
+                label_render = "Peňaženky";
+                label = "peňaženky"; //TODO i18n
             }
 
-            //diakritics throwing out
-            if ("peňaženky".equals(label)) {
-                label = "penazenky";
+            if ("nezaradene".equals(label_q)) {
+                label_render = "Ostatné"; //TODO i18n
+                label = label_q;
+            }
+
+            if ("all".equals(label_q)) {
+                label_render = "Všetky";
+                posts = this.postService.getPostsByLabelAll(from, to);
+            } else {
+                posts = this.postService.getPostsByLabel(label, from, to);
+                label_render = StringUtils.capitalize(label_render);
             }
 
             model.put("active_index", "");
@@ -116,7 +127,11 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("posts", posts);
+
             model.put("label", label);
+            model.put("label_render", label_render);
+            model.put("label_q", label_q);
+
             model.put("site", "posts/" + label);
             model.put("content_path","fragments/content/posts");
 

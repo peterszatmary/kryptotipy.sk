@@ -53,4 +53,11 @@ public class QueryFactory {
                 .append("WHERE pl.post_id = ? LIMIT 5") // LIMIT because i dont wnat to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
                 .toString();
     }
+
+    public static String getAllLabels() {
+        return new StringBuilder()
+                .append("SELECT DISTINCT l.name ")
+                .append("FROM label l ")
+                .toString();
+    }
 }
