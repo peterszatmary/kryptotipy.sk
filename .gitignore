@@ -38,3 +38,5 @@ app.log
 TODO
 *.tmp
 *.icloud
+
+deploy/kryptotipy-web-*.jar
