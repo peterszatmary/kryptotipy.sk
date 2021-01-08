@@ -10,11 +10,12 @@
                       height="0" width="0" style="display:none;visibility:hidden">
       </iframe>
     </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v9.0&appId=1628998487331339&autoLogAppEvents=1" nonce="1ubE9jGh">
-
     </script>
-    <!-- End Google Tag Manager (noscript) -->
+
+    <div th:replace="fragments/cookies"></div>
     <div th:replace="fragments/navbar"></div>
     <!-- self content start -->
     <div th:replace="__${content_path}__"></div>
