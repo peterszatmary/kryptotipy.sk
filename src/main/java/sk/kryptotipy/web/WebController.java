@@ -136,7 +136,7 @@ public class WebController {
             model.put("content_path","fragments/content/posts");
 
             log.info("posts.html {}", label);
-            pageData.set(model, label_render + " články");
+            pageData.set(model, label_render + " krypto-články");
             return "non-index";
 
         } catch (Exception ex) {
@@ -326,8 +326,8 @@ public class WebController {
 
     private String getI18nText(String i18n) {
         switch(i18n) {
-            case "SK": return "Slovenské články";
-            case "CZ": return "České články";
+            case "SK": return "Slovenské krypto články";
+            case "CZ": return "České krypto články";
             default : return null; //TODO
         }
     }
