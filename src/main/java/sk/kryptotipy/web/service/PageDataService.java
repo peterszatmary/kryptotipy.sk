@@ -59,9 +59,14 @@ public class PageDataService implements PageDataServiceApi {
 
 
     private void addPostsMeta() {
-        postsMeta.put("post.title.btc-is-not-the-first", "Bitcoin nebol prvou kryptomenou");
-        postsMeta.put("post.description.btc-is-not-the-first","KRYPTOTIPY.SK - Pred Bitcoinom tu naozaj bola iná kryptomena.");
-        postsMeta.put("post.image.btc-is-not-the-first", baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
+        postsMeta.put("post.title.btc-is-not-the-first",
+                "Bitcoin nebol prvou kryptomenou | KRYPTOTIPY.SK");
+        postsMeta.put("post.description.btc-is-not-the-first",
+                "Mnohí si asi myslia, že prvá kryptomena bol Bitcoin. " +
+                        "Nie je to však tak. História kryptomien začala už omnoho skôr. " +
+                        "| KRYPTOTIPY.SK");
+        postsMeta.put("post.image.btc-is-not-the-first",
+                baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
     }
 
     public String getPostTitle(String key) {

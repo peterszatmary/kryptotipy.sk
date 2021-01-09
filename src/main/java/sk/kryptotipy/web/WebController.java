@@ -136,7 +136,7 @@ public class WebController {
             model.put("content_path","fragments/content/posts");
 
             log.info("posts.html {}", label);
-            pageData.set(model, label_render + " krypto-články");
+            pageData.set(model, label_render + " krypto články");
             return "non-index";
 
         } catch (Exception ex) {
@@ -161,7 +161,7 @@ public class WebController {
             model.put("services", serviceRepo.getExternalServices());
 
             log.info("external_services.html");
-            pageData.set(model, "Externé služby");
+            pageData.set(model, "Externé krypto služby");
             return "non-index";
 
         } catch (Exception ex) {
@@ -221,7 +221,7 @@ public class WebController {
             model.put("content_path","fragments/content/dictionary");
 
             log.info("dictionary.html");
-            pageData.set(model, "Slovník");
+            pageData.set(model, "Krypto slovník");
             return "non-index";
 
         } catch (Exception ex) {
