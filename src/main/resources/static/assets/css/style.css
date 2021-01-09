@@ -1856,44 +1856,50 @@ img.alignright {
   }
 }
 
-@media (max-width: 767px) {
+
+@media (max-width: 960px) {
  .navbar .navbar-inner .container .logo {
     padding-left: 20px;
     padding-right: 20px;
   }
-  #slider_holder {
-    margin-top: 30px;
-    margin-bottom: 0px;
-  }
+      div nav ul {
+        display: none;
+      }
+      nav ul li {
+        display: none;
+      }
+      nav select {
+        display: block;
+
+        float: right;
+        margin-bottom: 20px;
+        color: #111;
+        margin-top: 20px;
+        margin-right: 20px;
+        line-height: 30px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      nav select a {
+        line-height: 1.5em;
+      }
+}
+
+@media (max-width: 767px) {
+
+    #slider_holder {
+      margin-top: 30px;
+      margin-bottom: 0px;
+    }
   section#intro {
     max-width: 100%;
     margin: 0 auto;
     margin-top: 0;
     padding-top: 0;
   }
-  div nav ul {
-    display: none;
-  }
-  nav ul li {
-    display: none;
-  }
-  nav select {
-    display: block;
-    width: 50%;
-    float: right;
-    margin-bottom: 20px;
-    color: #111;
-    margin-top: 20px;
-    margin-right: 20px;
-    line-height: 30px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  nav select a {
-    line-height: 1.5em;
-  }
+
   section#subintro {
     padding-left: 20px;
     padding-right: 20px;
@@ -1946,7 +1952,7 @@ img.alignright {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   nav select {
     display: inline-block;
     width: 85%;
