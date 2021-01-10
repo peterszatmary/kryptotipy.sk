@@ -41,6 +41,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
             model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html");
@@ -74,6 +75,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
             model.put("i18n", i18n);
             model.put("i18n_text", getI18nText(i18n));
             model.put("site", "posts/i18n" + i18n);
@@ -126,6 +128,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
             model.put("posts", posts);
 
             model.put("label", label);
@@ -156,6 +159,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "active");
             model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
             model.put("site", "external-services/");
             model.put("content_path","fragments/content/external_services");
             model.put("services", serviceRepo.getExternalServices());
@@ -218,6 +222,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("site", "dictionary/");
+            model.put("active_krypto_learning", "");
             model.put("content_path","fragments/content/dictionary");
 
             log.info("dictionary.html");
@@ -241,6 +246,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
             model.put("site", postTitle);
 
             model.put("content_path","fragments/content/" + postTitle);
@@ -270,6 +276,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "active");
+            model.put("active_krypto_learning", "");
             model.put("site", "did_you_know/");
             model.put("content_path","fragments/content/did_you_know");
 
@@ -293,6 +300,7 @@ public class WebController {
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
             model.put("site", "one-post-frame/");
 
             //String postUrl = "https://kryptotrejder.sk/regulacie-v-usa-ziskavaju-realne-kontury-ohrozia-kryptomenovy-sektor/"; //TODO
