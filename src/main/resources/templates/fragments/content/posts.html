@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="span12">
                     <div class="centered">
-                        <h1 style="font-size: 22px; color: #fff;" th:text="@{${ label_render + ' články' }}"></h1>
+                        <h1 style="font-size: 22px; color: #fff;" th:text="@{${ label_render + ' krypto články' }}"></h1>
                         <p>
-                            Výber najnovších článkov zo sveta kryptomien zoradených vhodne do kategórií.
+                            Výber najnovších krypto článkov zo sveta kryptomien zoradených vhodne do krypto kategórií.
                         </p>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
             <div class="span12">
                 <ul class="breadcrumb notop">
                     <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                    <li class="active"><a th:href="@{${base_url + 'posts/all' }}">Články</a><span class="divider">/</span></li>
+                    <li class="active"><a th:href="@{${base_url + 'posts/all' }}">Krypto články</a><span class="divider">/</span></li>
                     <li class="active" th:text="${label_render}"></li>
                 </ul>
             </div>
