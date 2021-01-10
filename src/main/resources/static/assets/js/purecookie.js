@@ -65,6 +65,16 @@ function cookieConsent() {
 function purecookieDismiss() {
   setCookie('purecookieDismiss','1',7);
   pureFadeOut("cookieConsentContainer");
+
 }
 
-window.onload = function() { cookieConsent(); };
+window.onload = function() {
+    cookieConsent();
+    enableSelectBoxAgain();
+};
+
+function enableSelectBoxAgain() {
+  $("nav select").change(function() {
+    window.location = $(this).find("option:selected").val();
+  });
+}
