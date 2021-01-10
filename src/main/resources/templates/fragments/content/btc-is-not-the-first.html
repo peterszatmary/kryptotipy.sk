@@ -14,6 +14,19 @@
     </div>
 </section>
 
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb notop">
+                    <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
+                    <li class="active"><span th:text="${post_title}"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="maincontent">
     <div class="container">
         <div class="row">
