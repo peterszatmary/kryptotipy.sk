@@ -55,7 +55,7 @@ public class SiteRepository {
         save(new SiteEntry("/posts/wallets", 0.64D, ACTUAL_DATE));
 
         save(new SiteEntry("/posts/coinmarketcap", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/btc-is-not-the-first", 0.64D, ACTUAL_DATE));
+        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, ACTUAL_DATE));
     }
 
 

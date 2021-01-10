@@ -193,7 +193,7 @@ public class WebController {
             List<Service> services = new ArrayList<>();
             services.add(new Service(
                     "Prvou kryptomenou bol ECash",
-                    "/btc-is-not-the-first",
+                    "/article/btc-is-not-the-first",
                     "articles/ecash.png",
                     "2.1.2021 - Pred Bitcoinom tu naozaj bola iná kryptomena. Zopár projektov muselo najprv zlyhať, " +
                             "aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?"));
@@ -236,8 +236,14 @@ public class WebController {
         }
     }
 
+    @RequestMapping("/robots.txt")
+    public String robotsTxt(Map<String, Object> model) {
+        log.info("robots.txt");
+        return "robots.txt";
+    }
 
-    @RequestMapping("/{postTitle}")
+
+    @RequestMapping("/article/{postTitle}")
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle) {
         try {

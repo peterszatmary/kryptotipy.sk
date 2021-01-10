@@ -60,7 +60,7 @@ public class PageDataService implements PageDataServiceApi {
 
     private void addPostsMeta() {
         postsMeta.put("post.title.btc-is-not-the-first",
-                "Bitcoin nebol prvou kryptomenou | KRYPTOTIPY.SK");
+                "Bitcoin nebol prvou kryptomenou");
         postsMeta.put("post.description.btc-is-not-the-first",
                 "Mnohí si asi myslia, že prvá kryptomena bol Bitcoin. " +
                         "Nie je to však tak. História kryptomien začala už omnoho skôr. " +
