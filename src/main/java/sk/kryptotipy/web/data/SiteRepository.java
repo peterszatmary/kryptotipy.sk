@@ -1,8 +1,6 @@
 package sk.kryptotipy.web.data;
 
-import com.redfin.sitemapgenerator.WebSitemapUrl;
 import org.springframework.stereotype.Repository;
-import sk.kryptotipy.web.data.SiteEntry;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -34,10 +32,10 @@ public class SiteRepository {
         save(new SiteEntry("/posts/coinbase", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/bittrex", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/posts-by-i18n/SK", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/posts/posts/kryptomeny", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/posts/posts/nezaradene", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/posts/posts/kraken", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/posts/posts/ico", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/kryptomeny", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/nezaradene", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/kraken", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/ico", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/burza", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/monero", 0.8D, ACTUAL_DATE));
 

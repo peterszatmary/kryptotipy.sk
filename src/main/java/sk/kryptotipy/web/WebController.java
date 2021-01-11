@@ -163,6 +163,7 @@ public class WebController {
             model.put("site", "external-services/");
             model.put("content_path","fragments/content/external_services");
             model.put("services", serviceRepo.getExternalServices());
+            model.put("link_is_not_internal", true);
 
             log.info("external_services.html");
             pageData.set(model, "Externé krypto služby");
@@ -199,6 +200,7 @@ public class WebController {
                             "aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?"));
 
             model.put("services", services);
+            model.put("link_is_not_internal", false);
 
             log.info("krypto_learning.html");
             pageData.set(model, "Krypto learning");
@@ -223,7 +225,7 @@ public class WebController {
             model.put("active_did_you_know", "");
             model.put("site", "dictionary/");
             model.put("active_krypto_learning", "");
-            model.put("content_path","fragments/content/dictionary");
+            model.put("content_path", "fragments/content/dictionary");
 
             log.info("dictionary.html");
             pageData.set(model, "Krypto slovník");
@@ -253,7 +255,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("site", postTitle);
+            model.put("site", "article/" + postTitle + "/");
 
             model.put("content_path","fragments/content/" + postTitle);
 
@@ -283,7 +285,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "active");
             model.put("active_krypto_learning", "");
-            model.put("site", "did_you_know/");
+            model.put("site", "did-you-know/");
             model.put("content_path","fragments/content/did_you_know");
 
             log.info("did_you_know.html");
