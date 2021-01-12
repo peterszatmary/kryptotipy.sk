@@ -36,6 +36,40 @@ public class ServiceRepository {
         services.add(new Service("Krypto tank", "https://kryptotank.cz/", "kryptotank.png", "Ide o čerpaciu stanicu v Českej republike, kde je možné platiť pohonné látky obľúbeným Bitcoinom."));
         services.add(new Service("Whitepaper.io", "https://whitepaper.io/", "whitepaper.jpg", "Whitepaper je technickou špecifikáciou danej kryptomeny. Táto služba ich všetky ponúka na jednom mieste."));
         return services;
-
     }
+
+    public List<Service> getCooperationServices() {
+        List<Service> services = new ArrayList<>();
+        services.add(new Service("Výmena spätných odkazov (Backlink building)",
+                "",
+                "cooperation/back.jpg",
+                "Radi podporíme projekty / stránky podobného charakteru výmenou spätných " +
+                " odkazov. Takýto odkaz umiestnime do pätičky stránok kryptotipy.sk." +
+                " Výmena bude zavŕšená pridaním odkazu kryptotipy.sk do pätičky vašich stránok."));
+        services.add(new Service(
+                "Zobrazenie odkazov na vaše články na našich stránkach",
+                "",
+                "cooperation/posts.png",
+                "Ak máte záujem byť medzi ďalšími portálmi, ktorých odkazy na články zobrazujeme," +
+                        " stačí si pridať spätný odkaz do pätičky vašich stránok a napísať nám na info@kryptotipy.sk." +
+                        " Do dvoch dní sa vaše články začnú zobrazovať."));
+        services.add(new Service(
+                "Článok o kryptotipy.sk",
+                "",
+                "cooperation/write_post_but_question.jpg",
+                "Ak máte záujem o nás napísať článok alebo blog post alebo akýkoľvek text a chýbajú vám" +
+                        " informácie, radi Vám ich poskytneme." +
+                        " Stačí nám napísať na info@kryptotipy.sk o vašom zámere a položiť otázky, na ktoré by ste radi dostali odpoveď."));
+        services.add(new Service(
+                "Iný druh spolupráce",
+                "",
+                "cooperation/backlinks.png",
+                "Samozrejme existuje jeden veľký kopec iných možností spolupráce a my o to vieme. " +
+                        "Ak vám napadla " +
+                        "spolupráca, ktorá sa nehodí do predošlých 3 opísaných, neváhajte nás" +
+                        " takisto kontaktovať na info@kryptotipy.sk. Tešíme sa na vás a spoluprácu s vami."));
+        return services;
+    }
+
+
 }

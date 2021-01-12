@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="centered">
+                        <h1 style="font-size: 22px; color: #fff;">Spolupráca s kryptotipy.sk</h1>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb notop">
+                    <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
+                    <li class="active">Spolupráca s kryptotipy.sk</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <ul class="portfolio-area da-thumbs">
+                <h2 style="font-size: 35px;">Spolupráca s kryptotipy.sk</h2>
+                <img src="/assets/img/services/cooperation/cooperation.png" style="margin-top: 30px; margin-bottom: 40px;"
+                     alt="Spolupráca s kryptotipy.sk" width="1000" height="200" />
+
+                <div th:each="service : ${services}" th:remove="tag">
+                    <div th:replace="fragments/service :: one_service(${service}, ${link_is_no_follow})" th:remove="tag"></div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</section>

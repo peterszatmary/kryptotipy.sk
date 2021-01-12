@@ -7,4 +7,5 @@ public interface PageDataServiceApi {
     String getPostTitle(String key);
     String getPostDescription(String key);
     String getPostImage(String key);
+    String getPageDescription();
 }

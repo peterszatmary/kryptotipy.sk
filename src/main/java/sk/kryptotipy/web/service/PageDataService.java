@@ -46,7 +46,6 @@ public class PageDataService implements PageDataServiceApi {
 
     public void set(Map<String, Object> model, String pageTitleCustom) {
         model.put("page_title", pageTitleCustom + " | " + pageTitle);
-        model.put("page_description", pageDescription);
         model.put("page_author", pageAuthor);
         model.put("base_url", baseUrl);
         model.put("title", pageTitle);
@@ -67,6 +66,10 @@ public class PageDataService implements PageDataServiceApi {
                         "| KRYPTOTIPY.SK");
         postsMeta.put("post.image.btc-is-not-the-first",
                 baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
+    }
+
+    public String getPageDescription() {
+        return this.pageDescription;
     }
 
     public String getPostTitle(String key) {

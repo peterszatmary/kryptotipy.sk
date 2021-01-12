@@ -30,7 +30,7 @@ public class WebController {
     private final AppProperties appProperties;
     private final BtcPriceService btcPriceService;
     private final ServiceRepository serviceRepo;
-    private LabelServiceApi labelService;
+    private static final String MESSAGE_404_NOT_FOUND = "404 Stránka nenájdená";
 
     @RequestMapping("/")
     public String index(Map<String, Object> model) {
@@ -47,11 +47,12 @@ public class WebController {
             log.info("index.html");
             pageData.set(model, appProperties.getPageDescriptionShort());
             model.put("btc_price", getBtcPrice());
+            model.put("page_description", pageData.getPageDescription());
             return "index";
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error.html";
         }
     }
@@ -84,11 +85,12 @@ public class WebController {
             model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
             log.info("posts.html - i18n");
             pageData.set(model, getI18nText(i18n));
+            model.put("page_description", "Najčerstvejšie " + getI18nText(i18n) + " na jednom mieste. Sledujte dianie v krypto svete jednoduchšie, aby vám žiadna krypto informácia neunikla.");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error.html";
         }
     }
@@ -140,11 +142,13 @@ public class WebController {
 
             log.info("posts.html {}", label);
             pageData.set(model, label_render + " krypto články");
+            model.put("page_description", "Všetky krypto články zo všetkých podporovaných štátov európy. Krypto novinky z celej európy na jednom mieste. ");
+
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("posts : " + ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error";
         }
     }
@@ -167,11 +171,39 @@ public class WebController {
 
             log.info("external_services.html");
             pageData.set(model, "Externé krypto služby");
+            model.put("page_description", "Služby, ktoré približujú používateľovi kryptomeny a krypto svet vznikajú po celom svete a je ich stále viac. Na stránkach kryptotipy.sk nájdete súhrn tých najzaujímavejších.");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("external-services : " + ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            return "redirect:/error";
+        }
+    }
+
+    @RequestMapping("/cooperation")
+    public String cooperation(Map<String, Object> model) {
+
+        try {
+
+            model.put("active_index", "");
+            model.put("active_posts", "");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
+            model.put("site", "external-services/");
+            model.put("content_path","fragments/content/cooperation");
+            model.put("services", serviceRepo.getCooperationServices());
+
+            log.info("cooperation.html");
+            pageData.set(model, "Spolupráca");
+            model.put("page_description", "Spolupráca s portálom kryptotipy.sk jednoducho a rýchlo.");
+            return "non-index";
+
+        } catch (Exception ex) {
+            log.warn("cooperation : " + ex.getMessage());
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error";
         }
     }
@@ -204,11 +236,12 @@ public class WebController {
 
             log.info("krypto_learning.html");
             pageData.set(model, "Krypto learning");
+            model.put("page_description", "Kryptotipy.sk nielenže agregujú zaujímavý krypto obsah z celej európy, ale vytvára aj vlastný obsah. Čítajte krypto články z pera kryptotipy.sk");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("krypto-learning : " + ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error";
         }
     }
@@ -229,11 +262,12 @@ public class WebController {
 
             log.info("dictionary.html");
             pageData.set(model, "Krypto slovník");
+            model.put("page_description", "Krypto slovník pomáha zorientovať sa v novom krypto svete a jeho krypto pojmoch.");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error";
         }
     }
@@ -269,7 +303,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("{} : {}", postTitle, ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error";
         }
     }
@@ -287,14 +321,14 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "did-you-know/");
             model.put("content_path","fragments/content/did_you_know");
-
-            log.info("did_you_know.html");
             pageData.set(model, "Vedeli ste, že");
+            log.info("did_you_know.html");
+            model.put("page_description", "Krypto sekcia, ktorá prináša krypto zaujímavosti o rôznych kryptomenách z rôznych časových období, nielen aktuality.");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, MESSAGE_404_NOT_FOUND);
             return "redirect:/error";
         }
     }

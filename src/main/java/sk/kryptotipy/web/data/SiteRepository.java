@@ -31,7 +31,7 @@ public class SiteRepository {
         save(new SiteEntry("/posts/litecoin", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/coinbase", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/bittrex", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/posts/posts-by-i18n/SK", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts-by-i18n/SK", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/kryptomeny", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/nezaradene", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/kraken", 0.8D, ACTUAL_DATE));
