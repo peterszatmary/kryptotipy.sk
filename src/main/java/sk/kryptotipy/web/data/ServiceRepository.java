@@ -66,7 +66,7 @@ public class ServiceRepository {
                 "cooperation/backlinks.png",
                 "Samozrejme existuje jeden veľký kopec iných možností spolupráce a my o to vieme. " +
                         "Ak vám napadla " +
-                        "spolupráca, ktorá sa nehodí do predošlých 3 opísaných, neváhajte nás" +
+                        "spolupráca, ktorá nebola spomenutá v predošlých 3 možnostiach, neváhajte nás" +
                         " takisto kontaktovať na info@kryptotipy.sk. Tešíme sa na vás a spoluprácu s vami."));
         return services;
     }

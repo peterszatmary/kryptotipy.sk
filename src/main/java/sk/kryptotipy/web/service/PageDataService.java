@@ -26,6 +26,9 @@ public class PageDataService implements PageDataServiceApi {
     @Value("${base.url}")
     private String baseUrl;
 
+    @Value("${base.url.without.port}")
+    private String baseUrlWithoutPort;
+
     @Value("${project.version}")
     private String projectVersion;
 
@@ -48,6 +51,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_title", pageTitleCustom + " | " + pageTitle);
         model.put("page_author", pageAuthor);
         model.put("base_url", baseUrl);
+        model.put("base_url_without_port", baseUrlWithoutPort);
         model.put("title", pageTitle);
         model.put("posts_count", postsCount);
         model.put("project_version", projectVersion);

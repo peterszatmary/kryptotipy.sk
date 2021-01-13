@@ -79,7 +79,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("i18n", i18n);
             model.put("i18n_text", getI18nText(i18n));
-            model.put("site", "posts/i18n" + i18n);
+            model.put("site", "posts/i18n/" + i18n);
             model.put("content_path","fragments/content/posts_by_i18n");
 
             model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
@@ -137,6 +137,10 @@ public class WebController {
             model.put("label_render", label_render);
             model.put("label_q", label_q);
 
+            if ("peňaženky".equals(label)) {
+                label = "wallets";
+            }
+
             model.put("site", "posts/" + label);
             model.put("content_path","fragments/content/posts");
 
@@ -164,7 +168,7 @@ public class WebController {
             model.put("active_external_services", "active");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("site", "external-services/");
+            model.put("site", "external-services");
             model.put("content_path","fragments/content/external_services");
             model.put("services", serviceRepo.getExternalServices());
             model.put("link_is_not_internal", true);
@@ -192,7 +196,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("site", "external-services/");
+            model.put("site", "cooperation");
             model.put("content_path","fragments/content/cooperation");
             model.put("services", serviceRepo.getCooperationServices());
 
@@ -220,7 +224,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "active");
-            model.put("site", "krypto-learning/");
+            model.put("site", "krypto-learning");
             model.put("content_path","fragments/content/krypto_learning");
 
             List<Service> services = new ArrayList<>();
@@ -256,7 +260,7 @@ public class WebController {
             model.put("active_dictionary", "active");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
-            model.put("site", "dictionary/");
+            model.put("site", "dictionary");
             model.put("active_krypto_learning", "");
             model.put("content_path", "fragments/content/dictionary");
 
@@ -289,7 +293,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("site", "article/" + postTitle + "/");
+            model.put("site", "article/" + postTitle);
 
             model.put("content_path","fragments/content/" + postTitle);
 
@@ -319,7 +323,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "active");
             model.put("active_krypto_learning", "");
-            model.put("site", "did-you-know/");
+            model.put("site", "did-you-know");
             model.put("content_path","fragments/content/did_you_know");
             pageData.set(model, "Vedeli ste, že");
             log.info("did_you_know.html");
@@ -343,7 +347,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("site", "one-post-frame/");
+            model.put("site", "one-post-frame");
 
             //String postUrl = "https://kryptotrejder.sk/regulacie-v-usa-ziskavaju-realne-kontury-ohrozia-kryptomenovy-sektor/"; //TODO
             String[] urlParts = postUrl.split("/");
