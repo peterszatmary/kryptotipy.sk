@@ -79,7 +79,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("i18n", i18n);
             model.put("i18n_text", getI18nText(i18n));
-            model.put("site", "posts/i18n/" + i18n);
+            model.put("site", "posts-by-i18n/" + i18n);
             model.put("content_path","fragments/content/posts_by_i18n");
 
             model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
@@ -202,7 +202,10 @@ public class WebController {
 
             log.info("cooperation.html");
             pageData.set(model, "Spolupráca");
-            model.put("page_description", "Spolupráca s portálom kryptotipy.sk jednoducho a rýchlo.");
+            model.put("page_description", "Spolupráca s portálom kryptotipy.sk. " +
+                    "Výmena spätných odkazov (Backlink building), zobrazenie odkazov na " +
+                    "vaše články na kryptotipy.sk, článok o kryptotipy.sk, alebo iný druh " +
+                    "spolupráce.");
             return "non-index";
 
         } catch (Exception ex) {
@@ -266,7 +269,9 @@ public class WebController {
 
             log.info("dictionary.html");
             pageData.set(model, "Krypto slovník");
-            model.put("page_description", "Krypto slovník pomáha zorientovať sa v novom krypto svete a jeho krypto pojmoch.");
+            model.put("page_description",
+                    "Krypto slovník pomáha zorientovať sa v novom krypto svete a jeho krypto pojmoch. " +
+                            "Vysvetľuje najbežnejšie / najdôležitejšie krypto pojmy tvoriace doménu kryptomien.");
             return "non-index";
 
         } catch (Exception ex) {
