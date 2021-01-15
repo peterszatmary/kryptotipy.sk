@@ -3,6 +3,7 @@ package sk.kryptotipy.web.config;
 import lombok.NoArgsConstructor;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
+import org.apache.catalina.valves.rewrite.RewriteValve;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -28,6 +29,7 @@ public class ToSSLRedirectConfig {
             }
         };
         tomcat.addAdditionalTomcatConnectors(redirectConnector());
+        //tomcat.addContextValves(new RewriteValve()); // non www -> www
         return tomcat;
     }
 

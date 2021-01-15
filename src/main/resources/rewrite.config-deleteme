@@ -1,0 +1,3 @@
+RewriteRule  https://kryptotipy.sk  https://www.kryptotipy.sk [R,NE]
+RewriteRule  http://kryptotipy.sk  https://www.kryptotipy.sk [R,NE]
+RewriteRule  kryptotipy.sk  https://www.kryptotipy.sk [R,NE]

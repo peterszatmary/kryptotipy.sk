@@ -1,0 +1,2 @@
+RewriteRule  ^/kryptotipy.sk/(.*)$  https://www.kryptotipy.sk/$1 [R,NE]
+RewriteRule  https://kryptotipy.sk/(.*)$  https://www.kryptotipy.sk/$1 [R,NE]

@@ -25,4 +25,7 @@ public class AppProperties {
 
     @Value("${page.description.short}")
     private String pageDescriptionShort;
+
+    @Value("${page.port}")
+    private String pagePort;
 }
