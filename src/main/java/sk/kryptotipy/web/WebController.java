@@ -45,7 +45,7 @@ public class WebController {
             model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html");
-            pageData.set(model, appProperties.getPageDescriptionShort());
+            pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách y celej európy na jednom mieste.");
             model.put("btc_price", getBtcPrice());
             model.put("page_description", pageData.getPageDescription());
             return "index";
