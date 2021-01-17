@@ -45,7 +45,7 @@ public class WebController {
             model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
             log.info("index.html");
-            pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách y celej európy na jednom mieste.");
+            pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celej európy.");
             model.put("btc_price", getBtcPrice());
             model.put("page_description", pageData.getPageDescription());
             return "index";
@@ -230,15 +230,7 @@ public class WebController {
             model.put("site", "krypto-learning");
             model.put("content_path","fragments/content/krypto_learning");
 
-            List<Service> services = new ArrayList<>();
-            services.add(new Service(
-                    "Prvou kryptomenou bol ECash",
-                    "/article/btc-is-not-the-first",
-                    "articles/ecash.png",
-                    "2.1.2021 - Pred Bitcoinom tu naozaj bola iná kryptomena. Zopár projektov muselo najprv zlyhať, " +
-                            "aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?"));
-
-            model.put("services", services);
+            model.put("services", serviceRepo.getKryptotipyContent());
             model.put("link_is_not_internal", false);
 
             log.info("krypto_learning.html");

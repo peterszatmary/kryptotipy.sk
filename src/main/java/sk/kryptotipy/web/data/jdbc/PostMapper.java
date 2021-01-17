@@ -65,7 +65,7 @@ public class PostMapper implements RowMapper<Post> {
     }
 
     /**
-     * render title atribute is calculated each time from title. is not stored in DB
+     * render title attribute is calculated each time from title. is not stored in DB
      * @param post
      * @return
      */

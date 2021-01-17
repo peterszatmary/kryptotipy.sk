@@ -71,5 +71,23 @@ public class ServiceRepository {
         return services;
     }
 
+    public List<Service> getKryptotipyContent() {
+        List<Service> services = new ArrayList<>();
+        services.add(new Service(
+                "Prvou kryptomenou bol ECash",
+                "/article/btc-is-not-the-first",
+                "articles/ecash.png",
+                "2.1.2021 - Pred Bitcoinom tu naozaj bola iná kryptomena. Zopár projektov muselo najprv zlyhať, " +
+                        "aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?"));
+
+        services.add(new Service(
+                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke",
+                "article/passive-income-with-exodus",
+                "articles/wall2.jpg",
+                "16.1.2021"));
+
+        return services;
+    }
+
 
 }
