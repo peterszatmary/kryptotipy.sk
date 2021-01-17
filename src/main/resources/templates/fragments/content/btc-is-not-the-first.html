@@ -20,6 +20,7 @@
             <div class="span12">
                 <ul class="breadcrumb notop">
                     <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
+                    <li><a th:href="@{${base_url + '/krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
                     <li class="active"><span th:text="${post_title}"></span></li>
                 </ul>
             </div>
@@ -48,6 +49,8 @@
                     <div class="row">
                         <div class="span8">
                             <p>
+                                <h2 th:text="${post_title}"></h2>
+
                                 Pred Bitcoinom tu naozaj bola iná kryptomena.  Zopár projektov muselo najprv zlyhať,
                                 aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?
                             </p>

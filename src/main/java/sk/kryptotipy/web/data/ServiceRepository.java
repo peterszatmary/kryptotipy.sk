@@ -84,7 +84,7 @@ public class ServiceRepository {
                 "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke",
                 "article/passive-income-with-exodus",
                 "articles/passive-income-with-exodus.jpg",
-                "16.1.2021"));
+                "17.1.2021"));
 
         return services;
     }

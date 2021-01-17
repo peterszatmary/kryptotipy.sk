@@ -300,6 +300,8 @@ public class WebController {
             model.put("page_title", pageData.getPostTitle(postTitle));
             model.put("page_description", pageData.getPostDescription(postTitle));
             model.put("page_image", pageData.getPostImage(postTitle));
+            model.put("page_image_width", pageData.getPostImageWidth(postTitle));
+            model.put("page_image_height", pageData.getPostImageHeight(postTitle));
             return "non-index";
 
         } catch (Exception ex) {

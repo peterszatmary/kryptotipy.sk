@@ -56,6 +56,8 @@ public class PageDataService implements PageDataServiceApi {
         model.put("posts_count", postsCount);
         model.put("project_version", projectVersion);
         model.put("page_image", pageImagePath);
+        model.put("page_img_width", "85");
+        model.put("page_img_height", "85");
 
         addPostsMeta();
     }
@@ -69,14 +71,20 @@ public class PageDataService implements PageDataServiceApi {
                         "Nie je to však tak. História kryptomien začala už omnoho skôr. " +
                         "| KRYPTOTIPY.SK");
         postsMeta.put("post.image.btc-is-not-the-first",
-                baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
+                baseUrlWithoutPort + "assets/img/articles/btc_not_first/ecash-mini.jpg");
+        postsMeta.put("post.image.width.btc-is-not-the-first", "638");
+        postsMeta.put("post.image.height.btc-is-not-the-first", "414");
+
+
         postsMeta.put("post.title.passive-income-with-exodus",
-                "Bitcoin nebol prvou kryptomenou");
+                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke");
         postsMeta.put("post.description.passive-income-with-exodus",
                 "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke " +
                         "| KRYPTOTIPY.SK");
         postsMeta.put("post.image.passive-income-with-exodus",
-                baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
+                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-exodus.jpg");
+        postsMeta.put("post.image.width.passive-income-with-exodus", "638");
+        postsMeta.put("post.image.height.passive-income-with-exodus", "414");
     }
 
     public String getPageDescription() {
@@ -93,6 +101,14 @@ public class PageDataService implements PageDataServiceApi {
 
     public String getPostImage(String key) {
         return postsMeta.get("post.image." + key);
+    }
+
+    public String getPostImageWidth(String key) {
+        return postsMeta.get("post.image.width." + key);
+    }
+
+    public String getPostImageHeight(String key) {
+        return postsMeta.get("post.image.height." + key);
     }
 
 }
