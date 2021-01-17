@@ -70,6 +70,13 @@ public class PageDataService implements PageDataServiceApi {
                         "| KRYPTOTIPY.SK");
         postsMeta.put("post.image.btc-is-not-the-first",
                 baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
+        postsMeta.put("post.title.passive-income-with-exodus",
+                "Bitcoin nebol prvou kryptomenou");
+        postsMeta.put("post.description.passive-income-with-exodus",
+                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke " +
+                        "| KRYPTOTIPY.SK");
+        postsMeta.put("post.image.passive-income-with-exodus",
+                baseUrl + "assets/img/posts/btc_not_first/ecash-mini.jpg");
     }
 
     public String getPageDescription() {
