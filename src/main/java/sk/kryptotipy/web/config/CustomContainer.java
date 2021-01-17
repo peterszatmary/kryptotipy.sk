@@ -25,7 +25,7 @@ public class CustomContainer implements WebServerFactoryCustomizer<TomcatServlet
                 super.startInternal();
 
                 try {
-                    InputStream resource = new ClassPathResource("rewrite.config-deleteme").getInputStream();
+                    InputStream resource = new ClassPathResource("rewrite.config").getInputStream();
 
                     InputStreamReader resourceReader = new InputStreamReader(resource);
                     BufferedReader buffer = new BufferedReader(resourceReader);
