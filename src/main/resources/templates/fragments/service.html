@@ -2,7 +2,7 @@
             <li class="portfolio-item2" th:fragment="one_service(service, link_is_no_follow)">
                 <div class="span3">
                     <div class="thumbnail">
-                        <div class="image-wrapp">
+                        <div class="image-wrapp" itemscope itemtype="https://schema.org/Article">
                             <a th:href="${service.url}" target="_blank" th:rel="${link_is_not_internal} ? 'external' : 'bookmark'">
                                 <img th:src="@{${'/assets/img/services/' + service.imgSrc}}" th:alt="${service.name}" />
                                 <article class="da-animate da-slideFromRight" style="display: block;">

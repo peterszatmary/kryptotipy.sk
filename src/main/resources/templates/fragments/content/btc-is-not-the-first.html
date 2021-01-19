@@ -20,8 +20,8 @@
             <div class="span12">
                 <ul class="breadcrumb notop">
                     <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                    <li><a th:href="@{${base_url + '/krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
-                    <li class="active"><span th:text="${post_title}"></span></li>
+                    <li><a th:href="@{${base_url + 'krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
+                    <li class="active"><span th:text="${post_title}" itemprop="name"></span></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-                <article>
+                <article itemscope itemtype="https://schema.org/Article">
                     <div class="heading">
                         <i>2.1.2020</i>&nbsp;&nbsp;&nbsp;&nbsp;
                         <div class="fb-share-button"
@@ -43,13 +43,15 @@
                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fbtc-is-not-the-first&amp;src=sdkpreparse"
                                class="fb-xfbml-parse-ignore">Zdieľať</a>
                         </div>
+                        <br /><br />
+                        <a th:href="${base_url}">Späť na hlavné stránky</a>
                     </div>
                     <div class="clearfix">
                     </div>
                     <div class="row">
                         <div class="span8">
                             <p>
-                                <h2 th:text="${post_title}"></h2>
+                                <h2 th:text="${post_title}" itemprop="name"></h2>
 
                                 Pred Bitcoinom tu naozaj bola iná kryptomena.  Zopár projektov muselo najprv zlyhať,
                                 aby sa nakoniec vytvoril koncept, ktorý bude fungovať. Ako to teda bolo ?
@@ -302,6 +304,8 @@
                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fbtc-is-not-the-first&amp;src=sdkpreparse"
                                    class="fb-xfbml-parse-ignore">Zdieľať</a>
                             </div>
+                            <br /><br />
+                            <a th:href="${base_url}">Späť na hlavné stránky</a>
 
                         </div>
                         <div class="span4">

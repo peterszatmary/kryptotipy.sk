@@ -20,8 +20,8 @@
             <div class="span12">
                 <ul class="breadcrumb notop">
                     <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                    <li><a th:href="@{${base_url + '/krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
-                    <li class="active"><span th:text="${post_title}"></span></li>
+                    <li><a th:href="@{${base_url + 'krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
+                    <li class="active"><span th:text="${post_title}" itemprop="name"></span></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-                <article>
+                <article itemscope itemtype="https://schema.org/Article">
                     <div class="heading">
                         <i>17.1.2020</i>&nbsp;&nbsp;&nbsp;&nbsp;
                         <div class="fb-share-button"
@@ -43,16 +43,18 @@
                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-exodus&amp;src=sdkpreparse"
                                class="fb-xfbml-parse-ignore">Zdieľať</a>
                         </div>
+                        <br /><br />
+                        <a th:href="${base_url}">Späť na hlavné stránky</a>
                     </div>
                     <div class="clearfix">
                     </div>
                     <div class="row">
                         <div class="span8">
                             <p>
-                                <h2 th:text="${post_title}"></h2>
+                                <h2 th:text="${post_title}" itemprop="name"></h2>
 
                                 Je príjem, ktorý sa generuje, aj keď robíte niečo iné alebo aj úplne nič.
-                                <strong>Warren Buffet</strong>, jeden z najväčších investorov všetkých čias, sa vyjadril, že
+                                <strong itemscope itemprop="Person" itemtype="https://schema.org/Person">Warren Buffet</strong>, jeden z najväčších investorov všetkých čias, sa vyjadril, že
 
                                 <br /><br /><br />
 
@@ -70,7 +72,7 @@
                             </p>
 
                             <p>
-                                <h2>Peňaženka Exodus</h2>
+                                <h2 itemscope itemtype="https://schema.org/Product">Peňaženka Exodus</h2>
                                 <img src="/assets/img/articles/passive-income-with-exodus/exodus2.png" style="margin-top: 30px; margin-bottom: 40px;" alt="Exodus peňaženka" />
                                 <p>
                                     <h3>Charakteristika</h3>
@@ -340,7 +342,8 @@
                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-exodus&amp;src=sdkpreparse"
                                    class="fb-xfbml-parse-ignore">Zdieľať</a>
                             </div>
-
+                            <br /><br />
+                            <a th:href="${base_url}">Späť na hlavné stránky</a>
                         </div>
                         <div class="span4">
 
