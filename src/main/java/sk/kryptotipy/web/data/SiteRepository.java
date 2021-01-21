@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class SiteRepository {
     private final List<SiteEntry> siteEntries = new ArrayList<>();
-    private LocalDate ACTUAL_DATE = LocalDate.of(2021, Month.JANUARY, 6);
+    private LocalDate ACTUAL_DATE = LocalDate.of(2021, Month.JANUARY, 21);
 
     public SiteRepository() {
 
@@ -27,6 +27,14 @@ public class SiteRepository {
         save(new SiteEntry("/posts/bitcoin", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts-by-i18n/CZ", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/ethereum", 0.8D, ACTUAL_DATE));
+
+        save(new SiteEntry("/posts/polkadot", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/algorand", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/vechain", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/tezos", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/cosmos", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/ontology", 0.8D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/cardano", 0.8D, ACTUAL_DATE));
 
         save(new SiteEntry("/posts/litecoin", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/coinbase", 0.8D, ACTUAL_DATE));
