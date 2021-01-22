@@ -16,6 +16,9 @@ import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.data.ServiceRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -177,6 +180,7 @@ public class WebController {
 
             log.info("external_services.html");
             pageData.set(model, "Externé krypto služby");
+            model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 19, 0, 0) + "");
             model.put("page_description", "Služby, ktoré približujú používateľovi kryptomeny a krypto svet vznikajú po celom svete a je ich stále viac. Na stránkach kryptotipy.sk nájdete súhrn tých najzaujímavejších.");
             return "non-index";
 
@@ -208,6 +212,7 @@ public class WebController {
                     "Výmena spätných odkazov (Backlink building), zobrazenie odkazov na " +
                     "vaše články na kryptotipy.sk, článok o kryptotipy.sk, alebo iný druh " +
                     "spolupráce.");
+            model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
@@ -237,7 +242,10 @@ public class WebController {
 
             log.info("krypto_learning.html");
             pageData.set(model, "Krypto learning");
-            model.put("page_description", "Kryptotipy.sk nielenže agregujú zaujímavý krypto obsah z celej európy, ale vytvára aj vlastný obsah. Čítajte krypto články z pera kryptotipy.sk");
+            model.put("page_description", "Kryptotipy.sk nielenže agregujú zaujímavý " +
+                    "krypto obsah z celej európy, ale vytvára aj vlastný obsah. Čítajte " +
+                    "krypto články z pera kryptotipy.sk");
+            model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 17, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
@@ -266,6 +274,7 @@ public class WebController {
             model.put("page_description",
                     "Krypto slovník pomáha zorientovať sa v novom krypto svete a jeho krypto pojmoch. " +
                             "Vysvetľuje najbežnejšie / najdôležitejšie krypto pojmy tvoriace doménu kryptomien.");
+            model.put("page_date", LocalDateTime.of(2020, Month.DECEMBER, 22, 0, 0 ) + "");
             return "non-index";
 
         } catch (Exception ex) {
@@ -304,6 +313,7 @@ public class WebController {
             model.put("page_image", pageData.getPostImage(postTitle));
             model.put("page_image_width", pageData.getPostImageWidth(postTitle));
             model.put("page_image_height", pageData.getPostImageHeight(postTitle));
+            model.put("page_date", pageData.getPostDate(postTitle));
             return "non-index";
 
         } catch (Exception ex) {
@@ -328,7 +338,9 @@ public class WebController {
             model.put("content_path","fragments/content/did_you_know");
             pageData.set(model, "Vedeli ste, že");
             log.info("did_you_know.html");
-            model.put("page_description", "Krypto sekcia, ktorá prináša krypto zaujímavosti o rôznych kryptomenách z rôznych časových období, nielen aktuality.");
+            model.put("page_description", "Krypto sekcia, ktorá prináša krypto zaujímavosti " +
+                    "o rôznych kryptomenách z rôznych časových období, nielen aktuality.");
+            model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {

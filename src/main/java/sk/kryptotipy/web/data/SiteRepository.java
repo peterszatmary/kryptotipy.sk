@@ -3,7 +3,6 @@ package sk.kryptotipy.web.data;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

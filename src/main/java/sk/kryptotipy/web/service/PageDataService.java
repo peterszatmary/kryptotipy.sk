@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,6 +61,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_image", pageImagePath);
         model.put("page_img_width", "85");
         model.put("page_img_height", "85");
+        model.put("page_date", LocalDateTime.now());
 
         addPostsMeta();
     }
@@ -121,6 +125,7 @@ public class PageDataService implements PageDataServiceApi {
                 baseUrlWithoutPort + "/assets/img/articles/btc_not_first/ecash-mini.jpg");
         postsMeta.put("post.image.width.btc-is-not-the-first", "638");
         postsMeta.put("post.image.height.btc-is-not-the-first", "414");
+        postsMeta.put("post.date.btc-is-not-the-first", LocalDateTime.of(2021, Month.JANUARY, 2, 0, 0) + "");
     }
 
     private void addArticlePassiveIncome() {
@@ -133,6 +138,7 @@ public class PageDataService implements PageDataServiceApi {
                 baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-exodus.jpg");
         postsMeta.put("post.image.width.passive-income-with-exodus", "638");
         postsMeta.put("post.image.height.passive-income-with-exodus", "414");
+        postsMeta.put("post.date.passive-income-with-exodus", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
     }
 
     public String getPageDescription() {
@@ -149,6 +155,11 @@ public class PageDataService implements PageDataServiceApi {
 
     public String getPostImage(String key) {
         return postsMeta.get("post.image." + key);
+    }
+
+    @Override
+    public String getPostDate(String key) {
+        return postsMeta.get("post.date." + key);
     }
 
     public String getPostImageWidth(String key) {
