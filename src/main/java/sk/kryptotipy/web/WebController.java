@@ -148,8 +148,8 @@ public class WebController {
             model.put("content_path", "fragments/content/posts");
 
             log.info("posts.html {}", label);
-            pageData.set(model, label_render + " krypto články");
-            model.put("page_description", "Všetky krypto články zo všetkých podporovaných štátov európy. Krypto novinky z celej európy na jednom mieste. ");
+            pageData.set(model,  "Krypto články na tému " + label_render);
+
             model.put("page_image", pageData.getPostImage(label_q));
             model.put("page_image_width", "800");
             model.put("page_image_height", "600");

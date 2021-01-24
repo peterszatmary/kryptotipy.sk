@@ -13,3 +13,9 @@
 - info@kryptotipy.sk
 - C#
 
+# Spolupracu neskor rozsir
+
+- ak chcete rovnaky agregator 
+    - web + zakladne sluzby enginu (4 slovenske + 4 ceske zdroje) 2000 e
+    - krajina ( 100 e )
+    - stranka krajiny ( 50 e )

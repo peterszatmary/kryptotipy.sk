@@ -161,6 +161,17 @@
         margin-bottom: 15px;
         color: rgb(232, 232, 232);
     }
+
+    p.posts_ends_for_free {
+        font-size: 13px;
+        background-color: #404b50;
+        padding-top: 25px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        margin-bottom: 15px;
+        color: rgb(232, 232, 232);
+    }
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -168,6 +179,17 @@
         font-size: 13px;
         background-color: #404b50;
         padding: 12px;
+        margin-bottom: 15px;
+        color: rgb(232, 232, 232);
+    }
+
+    p.posts_ends_for_free {
+        font-size: 13px;
+        background-color: #404b50;
+        padding-top: 25px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 30px;
         margin-bottom: 15px;
         color: rgb(232, 232, 232);
     }
@@ -181,6 +203,17 @@
         margin-bottom: 15px;
         color: rgb(232, 232, 232);
     }
+
+    p.posts_ends_for_free {
+        font-size: 13px;
+        background-color: #404b50;
+        padding-top: 25px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        margin-bottom: 15px;
+        color: rgb(232, 232, 232);
+    }
 }
 
 @media (max-width: 480px) {
@@ -189,6 +222,17 @@
         background-color: #404b50;
         padding: 12px;
         margin-bottom: 15px;
+        color: rgb(232, 232, 232);
+    }
+
+    p.posts_ends_for_free {
+        font-size: 13px;
+        background-color: #404b50;
+        padding-top: 25px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        margin-bottom: 20px;
         color: rgb(232, 232, 232);
     }
 }
