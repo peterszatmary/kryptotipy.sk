@@ -1857,7 +1857,7 @@ img.alignright {
 }
 
 
-@media (max-width: 960px) {
+@media (max-width: 970px) {
  .navbar .navbar-inner .container .logo {
     padding-left: 20px;
     padding-right: 20px;

@@ -148,7 +148,7 @@ public class WebController {
             model.put("content_path", "fragments/content/posts");
 
             log.info("posts.html {}", label);
-            pageData.set(model,  "Krypto články na tému " + label_render);
+            pageData.set(model,  "Krypto novinky na tému " + label_render);
 
             model.put("page_image", pageData.getPostImage(label_q));
             model.put("page_image_width", "800");
