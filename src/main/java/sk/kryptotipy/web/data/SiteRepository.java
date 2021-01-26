@@ -3,6 +3,7 @@ package sk.kryptotipy.web.data;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,10 +17,12 @@ public class SiteRepository {
 
         save(new SiteEntry("/", 1.00D, ACTUAL_DATE));
         save(new SiteEntry("/posts/all", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/external-services", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/did-you-know", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/dictionary", 0.8D, ACTUAL_DATE));
-        save(new SiteEntry("/krypto-learning", 0.8D, ACTUAL_DATE));
+        
+        save(new SiteEntry("/external-services", 0.8D, LocalDate.of(2021, Month.JANUARY, 19)));
+        save(new SiteEntry("/did-you-know", 0.8D, LocalDate.of(2021, Month.JANUARY, 26)));
+        save(new SiteEntry("/dictionary", 0.8D, LocalDate.of(2021,Month.DECEMBER, 22)));
+        save(new SiteEntry("/krypto-learning", 0.8D, LocalDate.of(2021, Month.JANUARY, 17)));
+
         save(new SiteEntry("/posts/ripple", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/blockchain", 0.8D, ACTUAL_DATE));
         save(new SiteEntry("/posts/binance", 0.8D, ACTUAL_DATE));
@@ -60,9 +63,9 @@ public class SiteRepository {
         save(new SiteEntry("/posts/wallets", 0.64D, ACTUAL_DATE));
 
         save(new SiteEntry("/posts/coinmarketcap", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/cooperation", 0.64D, ACTUAL_DATE));
+        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.JANUARY, 2)));
+        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.JANUARY, 1)));
+        save(new SiteEntry("/cooperation", 0.64D, LocalDate.of(2021, Month.JANUARY, 16)));
     }
 
 

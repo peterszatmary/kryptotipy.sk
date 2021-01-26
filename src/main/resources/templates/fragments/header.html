@@ -22,7 +22,7 @@
         <meta name="author" th:content="${page_author}" />
 
         <!-- social open graph -->
-        <meta property="og:url" th:content="@{${base_url + site}}" itemprop="url" />
+        <meta property="og:url" th:content="@{${base_url_without_port + site}}" itemprop="url" />
         <meta property="og:title" th:content="${page_title}" />
         <meta property="og:type" content="website" />
         <meta property="og:description" th:content="${page_description}" />

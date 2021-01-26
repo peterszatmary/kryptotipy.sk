@@ -40,10 +40,11 @@
                       <a th:each="label : ${post.labels}" th:href="@{${'/posts/' + label.name}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                 </span>
                 <div class="post-metadata">
-
-                <a th:href="@{${'/posts-by-i18n/' + post.i18n}}">
-                    <img th:src="@{${'/assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" th:title="@{${post.i18n + ' flag'}}" th:alt="@{${post.i18n + ' flag'}}" style="float: left;padding-right: 10px;"/>
-                </a>
+                    <a th:href="@{${'/posts-by-i18n/' + post.i18n}}">
+                        <img th:src="@{${'/assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"
+                                 th:title="${post.getI18nFlagRender()}" th:alt="${post.getI18nFlagRender()}"
+                            />
+                    </a>
                     <div th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></div>
                 </div>
             </div>

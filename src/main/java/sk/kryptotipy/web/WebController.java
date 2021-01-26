@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -65,7 +66,10 @@ public class WebController {
                               @PathVariable("i18n") String i18n) {
         try {
 
-            if (!("SK".equals(i18n) || "CZ".equals(i18n))) {
+            List<String> supportedLangs = Arrays.asList(
+                    "SK", "CZ", "DE", "CH", "PL", "CZ"
+            );
+            if (!supportedLangs.contains(i18n)) {
                 log.info("Someone tried i18n page by manipulating url !!. i18n value = {}", i18n);
                 log.error("Someone tried i18n page by manipulating url !!. i18n value = {}", i18n);
                 throw new Exception("Someone tried i18n page by manipulating url !!.");
@@ -393,9 +397,13 @@ public class WebController {
 
     private String getI18nText(String i18n) {
         switch(i18n) {
-            case "SK": return "Slovenské krypto články";
-            case "CZ": return "České krypto články";
-            default : return null; //TODO
+            case "SK": return "Slovenské krypto novinky";
+            case "CZ": return "České krypto novinky";
+            case "CH": return "Švajčiarské krypto novinky";
+            case "DE": return "Nemecké krypto novinky";
+            case "PL": return "Poľské krypto novinky";
+            case "HU": return "Maďarské krypto novinky";
+            default : return "Nezaradené krypto novinky";
         }
     }
 }

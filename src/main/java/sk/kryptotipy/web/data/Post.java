@@ -69,4 +69,17 @@ public class Post {
 //            inverseJoinColumns = @JoinColumn(name = "label_id"))
     @Setter
     private List<Label> labels;
+
+    @Transient
+    public String getI18nFlagRender() {
+        switch (this.i18n) {
+            case "SK" : { return "Slovenské novinky"; }
+            case "CZ" : { return "České novinky"; }
+            case "DE" : { return "Nemecké novinky"; }
+            case "CH" : { return "Švajčiarské novinky"; }
+            case "PL" : { return "Poľské novinky"; }
+            case "HU" : { return "Maďarské novinky"; }
+            default : return "Novinky";
+        }
+    }
 }
