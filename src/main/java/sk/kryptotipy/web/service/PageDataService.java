@@ -152,7 +152,7 @@ public class PageDataService implements PageDataServiceApi {
                 "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus " +
                         "| KRYPTOTIPY.SK");
         postsMeta.put("post.image.passive-income-with-algorand",
-                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-exodus.jpg");
+                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-algorand.png");
         postsMeta.put("post.image.width.passive-income-with-algorand", "638");
         postsMeta.put("post.image.height.passive-income-with-algorand", "414");
         postsMeta.put("post.date.passive-income-with-algorand", LocalDateTime.of(2021, Month.JANUARY, 27, 0, 0) + "");
