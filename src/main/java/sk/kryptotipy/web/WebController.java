@@ -310,7 +310,7 @@ public class WebController {
 
             model.put("content_path","fragments/content/" + postTitle);
 
-            log.info("post.html - {}", postTitle);
+            log.info("article = {}", postTitle);
             pageData.set(model, pageData.getPostTitle(postTitle));
             model.put("post_title", pageData.getPostTitle(postTitle));
             model.put("page_title", pageData.getPostTitle(postTitle));
