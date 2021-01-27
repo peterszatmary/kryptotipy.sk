@@ -34,7 +34,8 @@
             <div class="span12">
                 <article itemscope itemtype="https://schema.org/Article">
                     <div class="heading">
-                        <i>17.1.2020</i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h2 th:text="${post_title}" itemprop="name"></h2>
+                        <i>17.1.2020 (aktualizované 27.1.2021)</i>&nbsp;&nbsp;&nbsp;&nbsp;
                         <div class="fb-share-button"
                              data-href="https://www.kryptotipy.sk/article/passive-income-with-exodus"
                              data-layout="button_count"
@@ -51,8 +52,6 @@
                     <div class="row">
                         <div class="span8">
                             <p>
-                                <h2 th:text="${post_title}" itemprop="name"></h2>
-
                                 Je príjem, ktorý sa generuje, aj keď robíte niečo iné alebo aj úplne nič.
                                 <strong itemscope itemprop="Person" itemtype="https://schema.org/Person">Warren Buffet</strong>, jeden z najväčších investorov všetkých čias, sa vyjadril, že
 
@@ -150,14 +149,16 @@
 
                                 Algorand nadácia tvrdí, že z kryptomeny ALGO bude vytvorených iba 10 miliárd jednotiek.
 
-                                Držaním tokenov ALGO tokenov získate <strong>7,31%</strong> z držaných ALGO tokenov.
+                                Držaním tokenov ALGO tokenov získate <strong>7,49%</strong> z držaných ALGO tokenov.
                                 <p>
+                                    <a name="algorand-stock-exchanges"></a>
                                     <strong>Kde kúpim ALGO</strong>
                                     <a href="https://www.binance.com/" target="_blank">Binance</a>,
                                     <a href="https://www.kraken.com/" target="_blank">Kraken</a>,
                                     <a href="https://pro.coinbase.com" target="_blank">Coinbase</a> a
                                     <a href="https://coinmarketcap.com/currencies/algorand/markets/" target="_blank">ďalšie</a>.
                                     <br />
+                                    <strong>Chcem vedieť </strong><a th:href="@{${base_url + 'article/passive-income-with-algorand'}}"> o pasívnom zárobku s kryptomenou Algorand viac</a><br />
                                     <strong>Chcem vedieť </strong><a href="https://www.algorand.com/" target="_blank">o ALGO tokene a sieti Algorand viac.</a><br />
                                     <strong>Aktuality o tokene a sieti </strong><a href="/posts/algorand">Algorand</a>
                                 </p>
@@ -318,24 +319,14 @@
                                 <img src="/assets/img/articles/passive-income-with-exodus/XTZ.png" style="margin-top: 30px; margin-bottom: 40px;" alt="Tezos" />
                             </p>
 
-                            <p>
-                                Ak máte akékoľvek otázky, napíšte ich do komentára nižšie.
-                                Napíšte nám do komentára o svojich skúsenostiach s pasívnym príjmom alebo podobnými peňaženkami.
-                                <br /><br />
-                                V prípade akýchkoľvek otázok nás neváhajte kontaktovať.
-                            </p>
-
-
-                            <p>
-                                Nenesieme žiadnu zodpovednosť za vaše prípadné finančné straty. Články sú výlučne
-                                informačného charakteru. Každý by mal obchodovať na vlastnú zodpovednosť a s peniazmi, ktoré
-                                je ochotný stratiť.
+                            <div th:replace="fragments/article-ending" th:remove="tag"></div>
 
 
                                 <br /><br />
 
                                 <h2>Ďalšie populárne články</h2>
                                 <a th:href="@{${base_url + 'article/btc-is-not-the-first'}}">2.1.2021 - Prvá kryptomena nie je Bitcoin</a><br />
+                                <a th:href="@{${base_url + 'article/passive-income-with-algorand'}}">27.1.2021 - Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus</a><br />
                                 <a href="/posts/algorand">Aktuality o Algorand</a><br />
                                 <a href="/posts/neo">Aktuality o NEO</a><br />
                                 <a href="/posts/cosmos">Aktuality o Cosmos (ATOM)</a><br />

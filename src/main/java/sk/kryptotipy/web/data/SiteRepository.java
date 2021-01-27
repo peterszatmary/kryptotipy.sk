@@ -63,8 +63,8 @@ public class SiteRepository {
         save(new SiteEntry("/posts/wallets", 0.64D, ACTUAL_DATE));
 
         save(new SiteEntry("/posts/coinmarketcap", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.JANUARY, 2)));
-        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.JANUARY, 1)));
+        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.JANUARY, 27)));
+        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.JANUARY, 27)));
         save(new SiteEntry("/cooperation", 0.64D, LocalDate.of(2021, Month.JANUARY, 16)));
     }
 

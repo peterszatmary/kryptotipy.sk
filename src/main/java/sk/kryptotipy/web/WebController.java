@@ -48,6 +48,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
+            model.put("services", serviceRepo.getKryptotipyContent());
             log.info("index.html");
             pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celej európy.");
             model.put("btc_price", getBtcPrice());

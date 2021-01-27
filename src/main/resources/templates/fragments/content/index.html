@@ -3,9 +3,10 @@
 <a name="newest-posts"></a>
 <section id="maincontent">
     <div class="container">
+
         <div class="row">
             <div class="span12">
-                <h1 style="font-size: 22px;margin-bottom: 0px;">Najnovšie krypto články</h1>
+                <h1 style="font-size: 22px;margin-bottom: 0px;">Krypto learning</h1>
                 <div style="margin-bottom: 20px;">
                     <a href="/cooperation">V prípade záujmu o spoluprácu kliknite na odkaz.</a>
                 </div>
@@ -16,6 +17,17 @@
 
                     <div style="margin-left: -20px;" class="fb-like" data-href="https://www.kryptotipy.sk" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
                 </div>
+            </div>
+            <ul class="portfolio-area da-thumbs">
+                <div th:each="service : ${services}" th:remove="tag">
+                    <div th:replace="fragments/service :: one_service(${service}, ${link_is_no_follow})" th:remove="tag"></div>
+                </div>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <h2 style="font-size: 22px;margin-bottom: 10px;">Najnovšie krypto články</h2>
             </div>
 
             <ul class="portfolio-area da-thumbs">

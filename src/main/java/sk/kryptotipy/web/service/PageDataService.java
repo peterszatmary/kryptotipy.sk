@@ -69,9 +69,12 @@ public class PageDataService implements PageDataServiceApi {
 
 
     private void addPostsMeta() {
+
         // articles
         addArticleBtcIsNotTheFirst();
         addArticlePassiveIncome();
+        addArticlePassiveIncomeWithAlgorand();
+
         // posts
         addAllPostsMeta();
     }
@@ -123,7 +126,7 @@ public class PageDataService implements PageDataServiceApi {
                         "Nie je to však tak. História kryptomien začala už omnoho skôr. " +
                         "| KRYPTOTIPY.SK");
         postsMeta.put("post.image.btc-is-not-the-first",
-                baseUrlWithoutPort + "/assets/img/articles/btc_not_first/ecash-mini.jpg");
+                baseUrlWithoutPort + "/assets/img/services/articles/btc-not-first.png");
         postsMeta.put("post.image.width.btc-is-not-the-first", "638");
         postsMeta.put("post.image.height.btc-is-not-the-first", "414");
         postsMeta.put("post.date.btc-is-not-the-first", LocalDateTime.of(2021, Month.JANUARY, 2, 0, 0) + "");
@@ -140,6 +143,19 @@ public class PageDataService implements PageDataServiceApi {
         postsMeta.put("post.image.width.passive-income-with-exodus", "638");
         postsMeta.put("post.image.height.passive-income-with-exodus", "414");
         postsMeta.put("post.date.passive-income-with-exodus", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
+    }
+
+    private void addArticlePassiveIncomeWithAlgorand() {
+        postsMeta.put("post.title.passive-income-with-algorand",
+                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus");
+        postsMeta.put("post.description.passive-income-with-algorand",
+                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus " +
+                        "| KRYPTOTIPY.SK");
+        postsMeta.put("post.image.passive-income-with-algorand",
+                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-exodus.jpg");
+        postsMeta.put("post.image.width.passive-income-with-algorand", "638");
+        postsMeta.put("post.image.height.passive-income-with-algorand", "414");
+        postsMeta.put("post.date.passive-income-with-algorand", LocalDateTime.of(2021, Month.JANUARY, 27, 0, 0) + "");
     }
 
     public String getPageDescription() {

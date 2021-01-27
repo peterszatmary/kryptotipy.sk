@@ -1,0 +1,359 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="centered">
+                        <h1 style="font-size: 22px;color: #fff;" th:text="${post_title}"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb notop">
+                    <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
+                    <li><a th:href="@{${base_url + 'krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
+                    <li class="active"><span th:text="${post_title}" itemprop="name"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <article itemscope itemtype="https://schema.org/Article">
+                    <div class="heading">
+                        <h2 th:text="${post_title}" itemprop="name"></h2>
+                        <i>27.1.2020 (aktualizované 27.1.2021)</i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="fb-share-button"
+                             data-href="https://www.kryptotipy.sk/article/passive-income-with-algorand"
+                             data-layout="button_count"
+                             data-size="large">
+                            <a target="_blank"
+                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-algorand&amp;src=sdkpreparse"
+                               class="fb-xfbml-parse-ignore">Zdieľať</a>
+                        </div>
+                        <br /><br />
+                        <a th:href="${base_url}">Späť na hlavné stránky</a>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="row">
+                        <div class="span8">
+                            <p>
+                                <blockquote>
+                                    <i>
+                                        “Najbohatší ľudia sveta hľadajú a budujú siete. Všetci ostatní hľadajú prácu.”,
+                                        povedal raz <a href="https://en.wikipedia.org/wiki/Robert_Kiyosaki" target="_blank">Robert Kiyosaki</a>.
+                                    </i>
+                                </blockquote>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>Obsah</h2>
+                                    <ul>
+                                        <li>Na začiatok</li>
+                                        <li>Čo je to Algorand ?</li>
+                                        <li>Exodus a Algorand</li>
+                                        <li>APY (Annual Percentage Yield)</li>
+                                        <li>Pár postrehov</li>
+                                        <li>Konkrétny príklad a varovanie</li>
+                                        <li>Ďalšie populárne články</li>
+                                    </ul>
+                                </p>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>Na začiatok</h2>
+                                    Hľadať a budovať siete. Tento citát možno chápať naozaj rôzne a verím, že aj každý z nás si ho vyloží po svojom.
+                                    Avšak všetkých z nás by mal nakopnúť k nachádzaniu možností a spôsobov ako si finančne prilepšiť.
+                                    Či už to budú cesty nové alebo vychodené, overené... nech sa z nich nevraciame na prázdno.
+                                </p>
+
+                                <p>
+                                    Keď ste sa už rozhodli nakupovať kryptomeny a trošku sa zahrať na tomto novom, čerstvo pokosenom ihrisku.
+                                    Prečo zarábať len za ich lacný nákup a drahý predaj ? Okrem toho, že to teda vôbec nie je jednoduché a
+                                    že mnohí z nás sa na týchto trhových výkyvoch popálili alebo minimálne nevyužili naplno ich potenciál, sa to dá robiť aj inak.
+                                </p>
+
+                                <p>
+                                    <strong>Proof of stake</strong>, ako sme už v spomínali pri predstavení
+                                    <a href="/articles/passive-income-with-exodus" target="_blank">peňaženky Exodus</a>
+                                    , či v článku o kryptomene Neo, nás dokáže odmeniť jednou kryptomenou za to,
+                                    že vlastníme inú. Niečo ako dva v jednom. Ako keď máte k menu nápoj grátis.
+                                    Tento drink vám pri troche šťastia môže uhasiť smäd po zárobkoch,
+                                    na ktorých tvorbe sa nemusíte ani nijak zvlášť pričiniť.
+                                </p>
+
+
+                                <p>
+                                    <a href="https://www.exodus.io/download" target="_blank">Exodus</a> ponúka takýchto kryptomien niekoľko a
+                                    jednou z tých “štedrejších” je práve <strong>Algorand</strong>.
+                                </p>
+
+
+                                <p>
+                                    <br /><br />
+                                    <a name="what_is_algorand"></a>
+                                    <h2 id="what_is_algorand">Čo je to Algorand ?</h2>
+                                    <h3>História</h3>
+                                    Prvý blok Algorandu bol vyťažený 11. júna 2019. Za projektom stojí nadácia Algorand,
+                                    v jej čele je profesor MIT <a href="https://www.algorand.com/who-we-are/from-our-founder" target="_blank"><strong>Silvio Micali</strong></a>,
+                                    ktorý je majiteľom <a href="https://sk.wikipedia.org/wiki/Turingova_cena" target="_blank">Turingovej ceny</a>
+                                    (niečo ako  Nobelová cena v IT sektore)
+                                    za položenie základov modernej kryptografie založenej na verejnom kľúči.
+                                    Spoločne s  úspešnými biznismenmi – <strong>Steveom Kokinsonom</strong>, spoluzakladateľom
+                                    <a href="https://en.wikipedia.org/wiki/Fuze_(company)" target="_blank">firmy Fuze</a> a
+                                    <a href="https://www.linkedin.com/in/w-sean-ford-63a1478" target="_blank">W. Seanom Fordom</a>,
+                                    bývalým šéfom marketingu v LogMeIn sú najvýznamnejšími predstaviteľmi Algorand projektu.
+                                </p>
+                                <p>
+                                    <h3>Problémy, ktoré Algorand rieši</h3>
+                                    Algorand sa snaží riešiť <strong>súčasné problémy kryptomien</strong>. Ide o problémy s bezpečnosťou,
+                                    nedostatočnou decentralizáciou a slabou škálovateľnosťou.
+                                </p>
+                                <p>
+                                    <h4>Nedostatočná decentralizácia</h4>
+                                    Nedostatočnú decentralizáciu rieši algorand tak, že každý bez rozdielu má právo zúčastniť
+                                    sa na procese navrhovania a schvaľovania blokov pokiaľ vlastní aspoň 1 ALGO.
+                                </p>
+                                <p>
+                                    <h4>Nedostatočná bezpečnosť a škálovateľnosť</h4>
+                                    Je zabezpečená algoritmom
+                                    <strong>
+                                        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=814584&casa_token=FNotdBslTWYAAAAA:J5wGitWaP2tqbiQKF0_FkAtBRPQKSqOWVfSemR6LSy7AaSEhVoXHWVHiLQ0Wukjh9lPVKW0oZOoq&tag=1"
+                                           target="_blank">
+                                            Verifable Random Functions (VRF)
+                                        </a>
+                                    </strong>,
+                                    ktorý zaručuje, že bude zvolený vždy len jeden držiteľ ALGO, ktorý má právo navrhnúť nový blok.
+                                    Rovnako tak náhodne za pomoci VRF je vybraná komisia 1000 nodeov, ktorá daný blok overí.
+                                    Proces tvorby nového bloku a distribúcia trvá cca 4 - 5 sekúnd.
+                                    Pre zaujímavosť Bitcoinu to trvá 10 minút.
+                                </p>
+
+                                <p>
+                                    <p>
+                                        <br /><br />
+                                        <h2>Exodus a Algorand</h2>
+                                        <h3>Ako začať staking ?</h3>
+                                        Stačí si poslať kryptomenu Algorand do peňaženky. Nic viac nie je nutné urobiť.
+                                        Vaše Algorandy nie sú nijak loknuté, čo znamená, že ich môžete používať na platenie, presuny ...
+                                        Nie každá kryptomena túto možnosť ponúka, preto je to v prípade Algorandu obrovskou výhodou.
+
+                                        <br /><br />
+
+                                        <img src="/assets/img/articles/passive-income-with-exodus/rewards.png"
+                                             title="Peňaženka Exodus a sekcia pasívnych príjmov (Rewards)"
+                                             alt="Peňaženka Exodus a sekcia pasívnych príjmov (Rewards)" />
+                                    </p>
+                                    <p>
+                                        <p>
+                                            <br /><br />
+                                            <h3>Ako a kde získam prvé ALGO potrebné na staking ?</h3>
+                                            O burzách, ktoré Algorand predávajú sme písali v článku
+                                            <a th:href="@{${base_url + 'article/passive-income-with-exodus#algorand-stock-exchanges'}}">
+                                                Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke
+                                            </a>.
+
+                                            <br /><br />
+                                        </p>
+                                        <p>
+                                            Ak nechcete ísť na burzu a máte už nejaké kryptomeny v peňaženke Exodus je možné pohodlne vymeniť
+                                            kryptomenu za kryptomenu rovno v Exoduse. Viď obrázok nižšie.
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-exodus/exchange.png"
+                                                 title="Peňaženka Exodus vstavaná zmenáreň"
+                                                 alt="Peňaženka Exodus a vstavaná zmenáreň" />
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-algorand/exchange-inside-exodus.png" title="Peňaženka Exodus a vstavaná zmenáreň" alt="Peňaženka Exodus a vstavaná zmenáreň" />
+                                        </p>
+
+                                    </p>
+                                    <p>
+                                        <br /><br />
+                                        <h3>Ako ukončiť staking alebo ako urobiť unstake ?</h3>
+                                        Staking začína automaticky v momente, keď Algorant máte vo svojej peňaženke.
+                                        Nie je potrebné preto riešiť žiaden unstake. Pri iných kryptomenách totižto je nutné čakať istý čas,
+                                        niekedy až niekoľko dní, kým process unstakingu prebehne. V prípade Algorandu je to otázkou pár sekúnd.
+                                    </p>
+
+                                    <p>
+                                        <h3>Ako si pripíšem zarobené kryptomeny ?</h3>
+                                        Je nutné stlačiť tlačidlo <strong>Claim</strong> a následne sa zarobené kryptomeny
+                                        pripíšu na účet vašej peňaženky.
+
+                                        <br /><br />
+                                        <img src="/assets/img/articles/passive-income-with-algorand/claim-button-algorand.png"
+                                             title="Peňaženka Exodus a claim tlačidlo Claim" alt="Peňaženka Exodus a claim tlačidlo Claim" />
+
+                                        <br /><br />
+
+                                        <img src="/assets/img/articles/passive-income-with-algorand/alforand-main-exodus.png"
+                                             title="Peňaženka Exodus claim Algorand"
+                                             alt="Peňaženka Exodus claim Algorand" />
+
+                                        <br /><br />
+
+                                        <img src="/assets/img/articles/passive-income-with-algorand/claiming-algorand.png"
+                                             title="Peňaženka Exodus a proces výberu pasívneho príjmu Algorand" alt="Peňaženka Exodus a proces výberu pasívneho príjmu Algorand" />
+
+                                        <br /><br />
+
+                                        <img src="/assets/img/articles/passive-income-with-algorand/claiming-algorand-in-progress.png"
+                                             title="Peňaženka Exodus a práve prebiehajúci proces výberu pasívneho príjmu Algorand" alt="Peňaženka Exodus a práve prebiehajúci proces výberu pasívneho príjmu Algorand" />
+
+                                        <br /><br />
+
+                                        <img src="/assets/img/articles/passive-income-with-algorand/claiming-algorand-done.png"
+                                             title="Peňaženka Exodus a " alt="Peňaženka Exodus a úspešne ukončený výber pasívneho príjmu Algorand" />
+
+                                        <br /><br />
+
+                                    </p>
+                                    <p>
+                                        Z toho plynie jedno odporúčanie. Ak môžete vyberajte vaše zisky v podobe Algorandov čo najmenej.
+                                        Ušetríte na poplatkoch.
+                                    </p>
+                                    <p>
+                                        <h3>Minimum ALGO potrebných na staking</h3>
+                                        Keďže staking je automatický neexistuje žiadne obmedzenie v podobe minimálneho množstva ALGO v krypto peňaženke.
+                                    </p>
+                                    <p>
+                                        <h3>Minimum ALGO potrebných na výber</h3>
+                                        Najmenej je možné vybrať <strong>0.0011 ALGO</strong>, pretože poplatok za zrušenie stakingu
+                                        (v skutočnosti poplatok za akúkoľvek transakciu) je 0.001 ALGO.
+                                    </p>
+                                    <p>
+                                        <h3>Je potrebné mať otvorenú peňaženku Exodus ?</h3>
+                                        Penaženku môžete kľudne zavrieť. Kryptomena ALGO vám bude pribúdať do peňaženky aj tak.
+                                    </p>
+                                    <p>
+                                        <h3>Pasívny príjem</h3>
+                                        Pri rôznych iných kryptomenách, ktoré pasívny príjem podporujú zarábate špeciálnu kryptomenu na to určenú. Pre
+                                        Algorand to neplatí. Stakujete ALGO a získavate takisto ALGO.
+                                    </p>
+                                </p>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>APY (Annual Percentage Yield)</h2>
+                                    S peňaženkou Exodus budete zarábať spôsobom, ktoré sa nazýva <strong>APY</strong>.
+                                    <a href="https://www.investopedia.com/terms/a/apy.asp" target="_blank">Investopedia definuje pojem APY</a>
+                                    ako skutočnú mieru návratnosti získanú z vkladu alebo investície, ktorá zohľadňuje
+                                    účinok zloženého úroku. Narozdiel od jednoduchého úroku sa zložený úrok
+                                    počíta pravidelne a suma sa okamžite pripočíta k zostatku.
+                                </p>
+                                <p>
+                                    Pozor ! <strong>APY nie je konštantné číslo</strong>, vyrátava sa algoritmicky v každej sieti inak,
+                                    čiže sa bude v čase meniť.
+                                </p>
+                                <p>
+                                    APY pre Algorand je momentálne na úrovni <strong>7,49%</strong>.
+                                </p>
+                                    <p>
+                                        <br /><br />
+                                        <h2>Pár postrehov</h2>
+                                        APY je oveľa vyššie ako úroky v tradičných bankách, čo je skvelé.
+                                        Navyše svoju investíciu máte pod kontrolou práve vy v peňaženke, nie banka.
+                                        Odtiaľto plynie aj nedostatok a to ten, že vy sa staráte o bezpečnosť investície teda o
+                                        bezpečnosť Exodusu vo vašom počítači. (zálohy, hack útoky...) V porovnaní s eurom sú
+                                        kryptomeny veľmi volatilné, čo znamená, že vaša investícia sa zhodnotí 7,49% ročne,
+                                        ale je možné , že cena za mincu poklesne / porastie veľmi výrazne.
+                                    </p>
+
+                                    <p>
+                                        <br /><br />
+                                        <h2>Konrétny príklad a varovanie</h2>
+                                        Povedzme, že nakúpite Algorand v hodnote 1000 eur a hodnota jedného ALGO sa celý rok nezmení.
+                                        Pri zhodnotení 7,49% budete mať na konci roka ALGO v hodnote približne 1073,1 eura ( keďže ide o APY ).
+                                        Ak pôjde cena 1 ALGO hore budete na tom samopzrejme lepšie.
+                                        Ak však cena ALGO mince klesne, môže sa stať, že celková hodnota všetkých ALGO v peňaženke na konci
+                                        roka bude nižšia ako 1000 eur. Napriek tomu, že počet ALGO mincí bude vyšší.
+                                        Tak to už s kryptomenami býva. Vyberajte kryptomeny, ktoré kupujete s rozvahou.
+                                        Pokiaľ kryptomenu nepredáte strata ani zisk nie sú realitou.
+                                    </p>
+                                </p>
+
+                                <p>
+                                    <p>
+                                        Či ste teda konzervatívnejší (ak to je pri kryptomenách vôbec možné) alebo radi riskujete,
+                                        takéto zapĺňanie peňaženky kryptomenami zdarma, by vám mohlo pomôcť vytvárať vlastnú sieť
+                                        ciest k pasívnemu príjmu.
+                                    </p>
+                                    <p>
+                                        Podeľte sa o svoje dojmy a skúsenosti v sekcii komentáre alebo nám v prípade otázok neváhajte
+                                        napísať na niektorý z uvedených kontaktov.
+                                    </p>
+                                </p>
+
+
+                                <div th:replace="fragments/article-ending" th:remove="tag"></div>
+
+                                <br /><br />
+
+                                <h2>Ďalšie populárne články</h2>
+                                <a th:href="@{${base_url_without_port + 'article/btc-is-not-the-first'}}">2.1.2021 - Prvá kryptomena nie je Bitcoin</a><br />
+                                <a th:href="@{${base_url_without_port + 'article/passive-income-with-exodus'}}">17.1.2021 - Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke</a><br />
+
+                                <br /><br /><br />
+                                <div th:replace="fragments/social-networks"></div>
+                            </p>
+
+                            <p>
+                            <h3>Zdroje</h3>
+                            <ul>
+                                <li><a href="https://www.exodus.io/status/" target="_blank">Zoznam podporovaných kryptomien peňaženky Exodus.</a></li>
+                                <li><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=814584&casa_token=FNotdBslTWYAAAAA:J5wGitWaP2tqbiQKF0_FkAtBRPQKSqOWVfSemR6LSy7AaSEhVoXHWVHiLQ0Wukjh9lPVKW0oZOoq&tag=1" target="_blank">Verifable Random Functions (VRF)</a></li>
+                                <li><a th:href="@{${base_url + 'article/passive-income-with-exodus'}}">17.1.2021 - Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke</a></li>
+                                <li><a href="https://coinmarketcap.com" target="_blank">Coinmarketcap</a></li>
+                                <li><a href="https://www.kraken.com/learn/what-is-algorand-algo" target="_blank">Kraken - Čo je Algorand</a></li>
+                                <li><a href="https://www.investopedia.com/terms/a/apy.asp" target="_blank">Investopedia APY</a></li>
+                                <li><a href="https://sk.wikipedia.org/wiki/Turingova_cena" target="_blank">Wikipedia - Turingová cena</a> </li>
+                            </ul>
+
+                            <br /><br />
+                            </p>
+
+                            <div class="fb-comments" data-href="https://www.kryptotipy.sk/article/passive-income-with-algorand" data-width="" data-numposts="5"></div>
+
+                            <br /><br />
+
+                            <div class="fb-share-button"
+                                 data-href="https://www.kryptotipy.sk/article/passive-income-with-algorand"
+                                 data-layout="button_count"
+                                 data-size="large">
+                                <a target="_blank"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-algorand&amp;src=sdkpreparse"
+                                   class="fb-xfbml-parse-ignore">Zdieľať</a>
+                            </div>
+                            <br /><br />
+
+
+                            <a th:href="${base_url}">Späť na hlavné stránky</a>
+                        </div>
+                        <div class="span4">
+
+                        </div>
+                    </div>
+                </article>
+                <!-- end article full post -->
+            </div>
+        </div>
+    </div>
+</section>
