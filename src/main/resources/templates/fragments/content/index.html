@@ -10,29 +10,40 @@
                 <div style="margin-bottom: 20px;">
                     <a href="/cooperation">V prípade záujmu o spoluprácu kliknite na odkaz.</a>
                 </div>
-                <div style="margin-bottom: 20px;">
-                    <div class="fb-share-button" data-href="https://www.kryptotipy.sk" data-layout="button_count" data-size="large">
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Zdieľať</a>
-                    </div>
-
-                    <div style="margin-left: -20px;" class="fb-like" data-href="https://www.kryptotipy.sk" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
-                </div>
             </div>
             <ul class="portfolio-area da-thumbs">
-                <div th:each="service : ${services}" th:remove="tag">
-                    <div th:replace="fragments/service :: one_service(${service}, ${link_is_no_follow})" th:remove="tag"></div>
+                <div th:each="article : ${articles}" th:remove="tag">
+                    <div th:replace="fragments/service :: one_service(${article}, ${link_is_no_follow})" th:remove="tag"></div>
                 </div>
             </ul>
         </div>
 
         <div class="row">
             <div class="span12">
-                <h2 style="font-size: 22px;margin-bottom: 10px;">Najnovšie krypto články</h2>
+                <h2 style="font-size: 22px;margin-bottom: 0px;">Najnovšie krypto články</h2>
+                <div style="margin-bottom: 20px;">
+                    <a href="/cooperation">V prípade záujmu o spoluprácu kliknite na odkaz.</a>
+                </div>
             </div>
 
             <ul class="portfolio-area da-thumbs">
                 <div th:each="post : ${posts}">
                     <div th:replace="fragments/post :: one_post(${post})"></div>
+                </div>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <h2 style="font-size: 22px;margin-bottom: 0px;">Externé krypto služby</h2>
+                <div style="margin-bottom: 20px;">
+                    <a href="/cooperation">V prípade záujmu o spoluprácu kliknite na odkaz.</a>
+                </div>
+            </div>
+
+            <ul class="portfolio-area da-thumbs">
+                <div th:each="ext_service : ${external_services}">
+                    <div th:replace="fragments/service :: one_service(${ext_service}, ${link_is_no_follow})" th:remove="tag"></div>
                 </div>
             </ul>
         </div>

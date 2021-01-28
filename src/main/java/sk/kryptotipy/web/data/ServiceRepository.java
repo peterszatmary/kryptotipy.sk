@@ -98,4 +98,44 @@ public class ServiceRepository {
     }
 
 
+    /** views **/
+    public List<Service> getExternalServicesViews() {
+        List<Service> services = new ArrayList<>();
+        
+        services.add(new Service("Exodus", "https://www.exodus.io", "exodus-big.jpg", "Peňaženka podporujúca množstvo kryptomien plus obsahuje zabudovanú zmenáreň poháňanú ďalšou službou Shapeshift."));
+        services.add(new Service("ATHA", "https://athda.com", "athda-big.jpg", "Posledné All time high (ATH) kryptomien s časovým údajom. ATH je maximálna hodnota, ktorú kryptomena kedy dosiahla."));
+        services.add(new Service("Ethplorer", "https://ethplorer.io", "ethplorer-big.png", "Po zadaní adresy vie ukázať nielen ETH zostatok na vašej peňaženke, ale aj zostatok všetkých ETH tokenov na danej adrese."));
+        services.add(new Service("Coindar", "https://coindar.org", "coindar-big.jpg", "Ide o akýsi krypto-kalendár. Vďaka tejto službe budete informovaný o nadchádzajúcich krypto udalostiach a nič vám už neunikne."));
+        services.add(new Service("Crypto Fear & Greed Index", "https://alternative.me/crypto/fear-and-greed-index/", "fear-and-greed-index.png", "Crypto Fear & Greed Index meria aká je aktuálna nálada na kryptomenových trhoch. Kontroluje dve základné nálady a to strach a chamtivosť. "));
+        services.add(new Service("Coin atm radar", "https://coinatmradar.com/bitcoin-atm-near-me/", "coin-atm-radar.png", "Webová služba umožňujúca nájsť rôzne kryptomaty pre kúpu a predaj rôznych kryptomien vo vašom najbližšom okolí."));
+        services.add(new Service("Airdrops.io", "https://airdrops.io", "airdrops-io.jpg", "Služba monitorujúca takzvané airdropy tokenov, čo sú tokeny zadarmo za splnenie najčastejšie úloh na sociálnych sieťach a podobne."));
+        services.add(new Service("Staking rewards", "https://www.stakingrewards.com", "staking-rewards.png", "Vďaka tejto službe si viete pohodlne vyrátať, aký veľký je váš pasívny príjem, ak vlastníte niektorý z proof of stake tokenov."));
+
+        return services;
+    }
+
+    public List<Service> getKryptotipyContentView() {
+        List<Service> services = new ArrayList<>();
+        services.add(new Service(
+                "Bitcoin nebol prvou kryptomenou, Ecash a zrod skutočne prvej digitálnej kryptomeny.",
+                "/article/btc-is-not-the-first",
+                "articles/btc-not-first.png",
+                "2.1.2021"));
+
+        services.add(new Service(
+                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
+                "article/passive-income-with-exodus",
+                "articles/passive-income-with-exodus.jpg",
+                "17.1.2021"));
+
+        services.add(new Service(
+                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
+                "article/passive-income-with-algorand",
+                "articles/passive-income-with-algorand.jpg",
+                "27.1.2021"));
+
+        return services;
+    }
+
+
 }

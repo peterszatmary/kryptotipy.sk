@@ -9,7 +9,7 @@ public class QueryFactory {
                 .append("WHERE p.disabled = 0 ")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
-                .append("LIMIT 24")
+                .append("LIMIT 8")
                 .toString();
     }
 
