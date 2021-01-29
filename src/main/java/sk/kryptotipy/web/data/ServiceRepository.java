@@ -77,10 +77,10 @@ public class ServiceRepository {
     public List<Service> getKryptotipyContent() {
         List<Service> services = new ArrayList<>();
         services.add(new Service(
-                "Bitcoin nebol prvou kryptomenou, Ecash a zrod skutočne prvej digitálnej kryptomeny.",
-                "/article/btc-is-not-the-first",
-                "articles/btc-not-first.png",
-                "2.1.2021"));
+                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
+                "article/passive-income-with-algorand",
+                "articles/passive-income-with-algorand.jpg",
+                "27.1.2021"));
 
         services.add(new Service(
                 "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
@@ -89,10 +89,10 @@ public class ServiceRepository {
                 "17.1.2021"));
 
         services.add(new Service(
-                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
-                "article/passive-income-with-algorand",
-                "articles/passive-income-with-algorand.jpg",
-                "27.1.2021"));
+                "Bitcoin nebol prvou kryptomenou, Ecash a zrod skutočne prvej digitálnej kryptomeny.",
+                "/article/btc-is-not-the-first",
+                "articles/btc-not-first.png",
+                "2.1.2021"));
 
         return services;
     }
@@ -116,11 +116,12 @@ public class ServiceRepository {
 
     public List<Service> getKryptotipyContentView() {
         List<Service> services = new ArrayList<>();
+
         services.add(new Service(
-                "Bitcoin nebol prvou kryptomenou, Ecash a zrod skutočne prvej digitálnej kryptomeny.",
-                "/article/btc-is-not-the-first",
-                "articles/btc-not-first.png",
-                "2.1.2021"));
+                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
+                "article/passive-income-with-algorand",
+                "articles/passive-income-with-algorand.jpg",
+                "27.1.2021"));
 
         services.add(new Service(
                 "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
@@ -129,10 +130,10 @@ public class ServiceRepository {
                 "17.1.2021"));
 
         services.add(new Service(
-                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
-                "article/passive-income-with-algorand",
-                "articles/passive-income-with-algorand.jpg",
-                "27.1.2021"));
+                "Bitcoin nebol prvou kryptomenou, Ecash a zrod skutočne prvej digitálnej kryptomeny.",
+                "/article/btc-is-not-the-first",
+                "articles/btc-not-first.png",
+                "2.1.2021"));
 
         return services;
     }

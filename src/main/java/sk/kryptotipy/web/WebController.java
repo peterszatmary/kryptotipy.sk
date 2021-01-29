@@ -118,12 +118,18 @@ public class WebController {
 
             if ("wallets".equals(label_q)) {
                 label_render = "Peňaženky";
-                label = "peňaženky"; //TODO i18n
             }
 
-            if ("nezaradene".equals(label_q)) {
-                label_render = "Ostatné"; //TODO i18n
-                label = label_q;
+            if ("not-categorized".equals(label_q)) {
+                label_render = "Ostatné";
+            }
+
+            if ("cryptocurrency".equals(label_q)) {
+                label_render = "Kryptomeny";
+            }
+
+            if ("exchange".equals(label_q)) {
+                label_render = "Burzy";
             }
 
             if ("all".equals(label_q)) {

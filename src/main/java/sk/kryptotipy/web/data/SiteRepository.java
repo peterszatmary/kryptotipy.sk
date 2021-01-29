@@ -43,11 +43,11 @@ public class SiteRepository {
         save(new SiteEntry("/posts/coinbase", LAST_MOD_DEFAULT, ACTUAL_DATE));
         save(new SiteEntry("/posts/bittrex", 0.64D, ACTUAL_DATE));
         save(new SiteEntry("/posts-by-i18n/SK", LAST_MOD_DEFAULT, ACTUAL_DATE));
-        save(new SiteEntry("/posts/kryptomeny", LAST_MOD_DEFAULT, ACTUAL_DATE));
-        save(new SiteEntry("/posts/nezaradene", LAST_MOD_DEFAULT, ACTUAL_DATE));
+        save(new SiteEntry("/posts/cryptocurrency", LAST_MOD_DEFAULT, ACTUAL_DATE));
+        save(new SiteEntry("/posts/not-categorized", LAST_MOD_DEFAULT, ACTUAL_DATE));
         save(new SiteEntry("/posts/kraken", 0.64D, ACTUAL_DATE));
         save(new SiteEntry("/posts/ico", LAST_MOD_DEFAULT, ACTUAL_DATE));
-        save(new SiteEntry("/posts/burza", 0.64D, ACTUAL_DATE));
+        save(new SiteEntry("/posts/exchange", 0.64D, ACTUAL_DATE));
         save(new SiteEntry("/posts/monero", 0.64D, ACTUAL_DATE));
 
         save(new SiteEntry("/posts/altcoin", LAST_MOD_DEFAULT, ACTUAL_DATE));
@@ -64,8 +64,8 @@ public class SiteRepository {
         save(new SiteEntry("/posts/wallets", 0.64D, ACTUAL_DATE));
 
         save(new SiteEntry("/posts/coinmarketcap", 0.64D, ACTUAL_DATE));
-        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.JANUARY, 28)));
-        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.JANUARY, 28)));
+        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.JANUARY, 29)));
+        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.JANUARY, 29)));
         save(new SiteEntry("/cooperation", 0.64D, LocalDate.of(2021, Month.JANUARY, 16)));
     }
 
