@@ -76,6 +76,13 @@ public class ServiceRepository {
 
     public List<Service> getKryptotipyContent() {
         List<Service> services = new ArrayList<>();
+
+        services.add(new Service(
+                "NEO-spôsoby ako pasívne zarábať. Exodus a ďalší pasívny príjem.",
+                "article/passive-income-with-neo",
+                "articles/passive-income-with-neo.png",
+                "31.1.2021"));
+
         services.add(new Service(
                 "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
                 "article/passive-income-with-algorand",
@@ -116,6 +123,12 @@ public class ServiceRepository {
 
     public List<Service> getKryptotipyContentView() {
         List<Service> services = new ArrayList<>();
+
+        services.add(new Service(
+                "NEO-spôsoby ako pasívne zarábať.  Exodus a ďalší pasívny príjem.",
+                "article/passive-income-with-neo",
+                "articles/passive-income-with-neo.png",
+                "31.1.2021"));
 
         services.add(new Service(
                 "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",

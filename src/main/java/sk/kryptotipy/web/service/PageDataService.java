@@ -74,6 +74,7 @@ public class PageDataService implements PageDataServiceApi {
         addArticleBtcIsNotTheFirst();
         addArticlePassiveIncome();
         addArticlePassiveIncomeWithAlgorand();
+        addArticlePassiveIncomeWithNeo();
 
         // posts
         addAllPostsMeta();
@@ -123,8 +124,7 @@ public class PageDataService implements PageDataServiceApi {
                 "Bitcoin nebol prvou kryptomenou");
         postsMeta.put("post.description.btc-is-not-the-first",
                 "Mnohí si asi myslia, že prvá kryptomena bol Bitcoin. " +
-                        "Nie je to však tak. História kryptomien začala už omnoho skôr. " +
-                        "| KRYPTOTIPY.SK");
+                        "Nie je to však tak. História kryptomien začala už omnoho skôr.");
         postsMeta.put("post.image.btc-is-not-the-first",
                 baseUrlWithoutPort + "/assets/img/services/articles/btc-not-first.png");
         postsMeta.put("post.image.width.btc-is-not-the-first", "638");
@@ -136,8 +136,7 @@ public class PageDataService implements PageDataServiceApi {
         postsMeta.put("post.title.passive-income-with-exodus",
                 "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke");
         postsMeta.put("post.description.passive-income-with-exodus",
-                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke " +
-                        "| KRYPTOTIPY.SK");
+                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke. 7 kryptomien, 7 spôsobov ako pasívne zarábať.");
         postsMeta.put("post.image.passive-income-with-exodus",
                 baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-exodus.jpg");
         postsMeta.put("post.image.width.passive-income-with-exodus", "638");
@@ -149,13 +148,24 @@ public class PageDataService implements PageDataServiceApi {
         postsMeta.put("post.title.passive-income-with-algorand",
                 "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus");
         postsMeta.put("post.description.passive-income-with-algorand",
-                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus " +
-                        "| KRYPTOTIPY.SK");
+                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus. Algorand ako ďalšia proof of stake kryptomena.");
         postsMeta.put("post.image.passive-income-with-algorand",
                 baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-algorand.jpg");
         postsMeta.put("post.image.width.passive-income-with-algorand", "638");
         postsMeta.put("post.image.height.passive-income-with-algorand", "414");
         postsMeta.put("post.date.passive-income-with-algorand", LocalDateTime.of(2021, Month.JANUARY, 27, 0, 0) + "");
+    }
+
+    private void addArticlePassiveIncomeWithNeo() {
+        postsMeta.put("post.title.passive-income-with-neo",
+                "NEO-spôsoby ako pasívne zarábať");
+        postsMeta.put("post.description.passive-income-with-neo",
+                "NEO-spôsoby ako pasívne zarábať. Proof of stake kryptomena NEO v peňaženke Exodus a možnosť pasívneho zárobku v podobe GAS.");
+        postsMeta.put("post.image.passive-income-with-neo",
+                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-neo.png");
+        postsMeta.put("post.image.width.passive-income-with-neo", "638");
+        postsMeta.put("post.image.height.passive-income-with-neo", "414");
+        postsMeta.put("post.date.passive-income-with-neo", LocalDateTime.of(2021, Month.JANUARY, 31, 0, 0) + "");
     }
 
     public String getPageDescription() {
