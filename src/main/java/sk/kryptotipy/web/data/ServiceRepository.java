@@ -11,11 +11,13 @@ public class ServiceRepository {
     public List<Service> getExternalServices() {
         List<Service> services = new ArrayList<>();
 
+        services.add(new Service("Trezor One (Black)", "https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933", "trezor-one-black.png", "Cold peňaženka s maximálnou bezpečnosťou pre vaše kryptomeny. Podporuje množstvo kryptomien."));
         services.add(new Service("Coinbase", "https://www.coinbase.com", "coinbase-big.png", "Služba na nákup a predaj vybraných kryptomien vybudovaná na beckende GDAxu. Jej výhodou je jednoduchosť."));
         services.add(new Service("Exodus", "https://www.exodus.io", "exodus-big.jpg", "Peňaženka podporujúca množstvo kryptomien plus obsahuje zabudovanú zmenáreň poháňanú ďalšou službou Shapeshift."));
         services.add(new Service("Coinbase.Pro", "https://pro.coinbase.com/", "gdax-big.jpg", "Burza kryptomien patriaca Coinbase. S originálnym názvom GDAX teraz známa ako Coinbase.Pro."));
         services.add(new Service("Poloniex", "https://poloniex.com", "poloniex-big.png", "Americká krypto burza, ktorá vznikla roku 2014 v amerike. Je takisto zaujímavou možnosťou ako začať obchodovať s kryptomenami."));
         services.add(new Service("Jaxx", "https://jaxx.io", "jaxx-big.png", "Peňaženka podporujúca množstvo coinov. Je Lightweight a hot. Nepotrebuje sťahovať celý blockchain, čiže šetrí miesto na hard diskoch."));
+        services.add(new Service("Trezor T", "https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933", "trezor-t-black.png", "Cold peňaženka s vylepšenou bezpečnosťou pre vaše kryptomeny. Podporuje ešte väčšie množstvo kryptomien ako model One."));
         services.add(new Service("Kucoin", "https://www.kucoin.com/", "kucoin-big.png", "Burza kryptomien. Rýchlo a spoľahlivo pridáva nové kryptomeny s potenciálom. Možno tu nájsť kryptomeny aké na iných burzách neuvidíte."));
         services.add(new Service("Kraken", "https://www.kraken.com", "kraken-big.jpg", "Americká burza kryptomien s bohatou históriou.  Vznikla roku 2011. Ďalšia z možností ako začať obchodovať s kryptomenami."));
         services.add(new Service("Neo to Gas", "https://neotogas.com", "neotogas-big.jpg", "Prepočíta, aké množstvo GAS tokenu získate ako pasívny príjem za držanie NEO tokenov v špecializovanej NEON peňaženke."));
@@ -109,10 +111,10 @@ public class ServiceRepository {
     public List<Service> getExternalServicesViews() {
         List<Service> services = new ArrayList<>();
         
-        services.add(new Service("Exodus", "https://www.exodus.io", "exodus-big.jpg", "Peňaženka podporujúca množstvo kryptomien plus obsahuje zabudovanú zmenáreň poháňanú ďalšou službou Shapeshift."));
+        services.add(new Service("Trezor One (Black)", "https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933", "trezor-one-black.png", "Cold peňaženka s maximálnou bezpečnosťou pre vaše kryptomeny. Podporuje množstvo kryptomien."));
         services.add(new Service("ATHA", "https://athda.com", "athda-big.jpg", "Posledné All time high (ATH) kryptomien s časovým údajom. ATH je maximálna hodnota, ktorú kryptomena kedy dosiahla."));
         services.add(new Service("Ethplorer", "https://ethplorer.io", "ethplorer-big.png", "Po zadaní adresy vie ukázať nielen ETH zostatok na vašej peňaženke, ale aj zostatok všetkých ETH tokenov na danej adrese."));
-        services.add(new Service("Coindar", "https://coindar.org", "coindar-big.jpg", "Ide o akýsi krypto-kalendár. Vďaka tejto službe budete informovaný o nadchádzajúcich krypto udalostiach a nič vám už neunikne."));
+        services.add(new Service("Trezor T", "https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933", "trezor-t-black.png", "Cold peňaženka s vylepšenou bezpečnosťou pre vaše kryptomeny. Podporuje ešte väčšie množstvo kryptomien ako model One."));
         services.add(new Service("Crypto Fear & Greed Index", "https://alternative.me/crypto/fear-and-greed-index/", "fear-and-greed-index.png", "Crypto Fear & Greed Index meria aká je aktuálna nálada na kryptomenových trhoch. Kontroluje dve základné nálady a to strach a chamtivosť. "));
         services.add(new Service("Coin atm radar", "https://coinatmradar.com/bitcoin-atm-near-me/", "coin-atm-radar.png", "Webová služba umožňujúca nájsť rôzne kryptomaty pre kúpu a predaj rôznych kryptomien vo vašom najbližšom okolí."));
         services.add(new Service("Airdrops.io", "https://airdrops.io", "airdrops-io.jpg", "Služba monitorujúca takzvané airdropy tokenov, čo sú tokeny zadarmo za splnenie najčastejšie úloh na sociálnych sieťach a podobne."));
