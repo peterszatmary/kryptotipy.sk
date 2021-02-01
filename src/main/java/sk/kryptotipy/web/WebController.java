@@ -5,21 +5,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import sk.kryptotipy.web.api.LabelServiceApi;
-import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.data.Service;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.data.ArticleRepository;
+import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.ServiceRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +30,7 @@ public class WebController {
     private final AppProperties appProperties;
     private final BtcPriceService btcPriceService;
     private final ServiceRepository serviceRepo;
+    private final ArticleRepository articleRepo;
     private static final String MESSAGE_404_NOT_FOUND = "404 Stránka nenájdená";
 
     @RequestMapping("/")
@@ -48,7 +45,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "");
             model.put("posts", this.postService.getNewestPosts());
-            model.put("articles", serviceRepo.getKryptotipyContentView());
+            model.put("articles", articleRepo.getKryptotipyContentView());
             model.put("external_services", serviceRepo.getExternalServicesViews());
             log.info("index.html");
             pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celej európy.");
@@ -249,7 +246,7 @@ public class WebController {
             model.put("site", "krypto-learning");
             model.put("content_path","fragments/content/krypto_learning");
 
-            model.put("services", serviceRepo.getKryptotipyContent());
+            model.put("articles", articleRepo.getKryptotipyContent());
             model.put("link_is_not_internal", false);
 
             log.info("krypto_learning.html");
