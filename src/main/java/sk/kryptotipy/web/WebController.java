@@ -305,11 +305,11 @@ public class WebController {
                        @PathVariable("postTitle") String postTitle) {
         try {
             model.put("active_index", "");
-            model.put("active_posts", "active");
+            model.put("active_posts", "");
             model.put("active_dictionary", "");
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
+            model.put("active_krypto_learning", "active");
             model.put("site", "article/" + postTitle);
 
             model.put("content_path","fragments/content/" + postTitle);
