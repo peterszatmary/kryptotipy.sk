@@ -133,18 +133,17 @@ public class PageDataService implements PageDataServiceApi {
         postsMeta.put("post.title." + postKey, postTitle);
         postsMeta.put("post.description." + postKey, postDescription);
         postsMeta.put("post.image." + postKey,
-                baseUrlWithoutPort + "assets/img/services/articles/" + postKey + postImagePathExtension);
+                baseUrlWithoutPort + "assets/img/articles/index/" + postKey + postImagePathExtension);
         postsMeta.put("post.image.width." + postKey, imgWidth);
         postsMeta.put("post.image.height." + postKey, imgHeight);
         postsMeta.put("post.date." + postKey,  postDate + "");
     }
 
-    //TODO
     private void addArticleProofOfWork() {
         String postKey = "complete-guide-to-proof-of-work";
-        String postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien"; //TODO
-        String postDescription = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien"; //TODO
-        String postImagePathExtension =  ".png";
+        String postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
+        String postDescription = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
+        String postImagePathExtension =  ".jpg";
         String imgWidth = "638";
         String imgHeight = "414";
         LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 7, 0, 0);
