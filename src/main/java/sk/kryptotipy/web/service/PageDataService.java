@@ -75,6 +75,7 @@ public class PageDataService implements PageDataServiceApi {
         addArticlePassiveIncome();
         addArticlePassiveIncomeWithAlgorand();
         addArticlePassiveIncomeWithNeo();
+        addArticleProofOfWork();
 
         // posts
         addAllPostsMeta();
@@ -119,53 +120,107 @@ public class PageDataService implements PageDataServiceApi {
     }
 
 
+
+    private void addPost(
+            String postKey,
+            String postTitle,
+            String postDescription,
+            String postImagePathExtension,
+            String imgWidth,
+            String imgHeight,
+            LocalDateTime postDate
+    ) {
+        postsMeta.put("post.title." + postKey, postTitle);
+        postsMeta.put("post.description." + postKey, postDescription);
+        postsMeta.put("post.image." + postKey,
+                baseUrlWithoutPort + "assets/img/services/articles/" + postKey + postImagePathExtension);
+        postsMeta.put("post.image.width." + postKey, imgWidth);
+        postsMeta.put("post.image.height." + postKey, imgHeight);
+        postsMeta.put("post.date." + postKey,  postDate + "");
+    }
+
+    //TODO
+    private void addArticleProofOfWork() {
+        String postKey = "complete-guide-to-proof-of-work";
+        String postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien"; //TODO
+        String postDescription = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien"; //TODO
+        String postImagePathExtension =  ".png";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 7, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePathExtension,
+                imgWidth, imgHeight, postDate
+        );
+    }
+
     private void addArticleBtcIsNotTheFirst() {
-        postsMeta.put("post.title.btc-is-not-the-first",
-                "Bitcoin nebol prvou kryptomenou");
-        postsMeta.put("post.description.btc-is-not-the-first",
-                "Mnohí si asi myslia, že prvá kryptomena bol Bitcoin. " +
-                        "Nie je to však tak. História kryptomien začala už omnoho skôr.");
-        postsMeta.put("post.image.btc-is-not-the-first",
-                baseUrlWithoutPort + "/assets/img/services/articles/btc-not-first.png");
-        postsMeta.put("post.image.width.btc-is-not-the-first", "638");
-        postsMeta.put("post.image.height.btc-is-not-the-first", "414");
-        postsMeta.put("post.date.btc-is-not-the-first", LocalDateTime.of(2021, Month.JANUARY, 2, 0, 0) + "");
+
+        String postKey = "btc-is-not-the-first";
+        String postTitle = "Bitcoin nebol prvou kryptomenou";
+        String postDescription = "Mnohí si asi myslia, že prvá kryptomena bol Bitcoin. " +
+                "Nie je to však tak. História kryptomien začala už omnoho skôr.";
+        String postImagePath = ".png";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 2, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePath,
+                imgWidth, imgHeight, postDate
+        );
     }
 
     private void addArticlePassiveIncome() {
-        postsMeta.put("post.title.passive-income-with-exodus",
-                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke");
-        postsMeta.put("post.description.passive-income-with-exodus",
-                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke. 7 kryptomien, 7 spôsobov ako pasívne zarábať.");
-        postsMeta.put("post.image.passive-income-with-exodus",
-                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-exodus.jpg");
-        postsMeta.put("post.image.width.passive-income-with-exodus", "638");
-        postsMeta.put("post.image.height.passive-income-with-exodus", "414");
-        postsMeta.put("post.date.passive-income-with-exodus", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
-    }
+
+        String postKey = "passive-income-with-exodus";
+        String postTitle = "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke";
+        String postDescription = "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v" +
+                " banke. 7 kryptomien, 7 spôsobov ako pasívne zarábať.";
+        String postImagePath = ".jpg";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePath,
+                imgWidth, imgHeight, postDate
+        );
+}
 
     private void addArticlePassiveIncomeWithAlgorand() {
-        postsMeta.put("post.title.passive-income-with-algorand",
-                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus");
-        postsMeta.put("post.description.passive-income-with-algorand",
-                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus. Algorand ako ďalšia proof of stake kryptomena.");
-        postsMeta.put("post.image.passive-income-with-algorand",
-                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-algorand.jpg");
-        postsMeta.put("post.image.width.passive-income-with-algorand", "638");
-        postsMeta.put("post.image.height.passive-income-with-algorand", "414");
-        postsMeta.put("post.date.passive-income-with-algorand", LocalDateTime.of(2021, Month.JANUARY, 27, 0, 0) + "");
+
+        String postKey = "passive-income-with-algorand";
+        String postTitle = "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus";
+        String postDescription = "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus. " +
+                "Algorand ako ďalšia proof of stake kryptomena.";
+        String postImagePath = ".jpg";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 27, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePath,
+                imgWidth, imgHeight, postDate
+        );
     }
 
     private void addArticlePassiveIncomeWithNeo() {
-        postsMeta.put("post.title.passive-income-with-neo",
-                "NEO-spôsoby ako pasívne zarábať");
-        postsMeta.put("post.description.passive-income-with-neo",
-                "NEO-spôsoby ako pasívne zarábať. Proof of stake kryptomena NEO v peňaženke Exodus a možnosť pasívneho zárobku v podobe GAS.");
-        postsMeta.put("post.image.passive-income-with-neo",
-                baseUrlWithoutPort  + "assets/img/services/articles/passive-income-with-neo.png");
-        postsMeta.put("post.image.width.passive-income-with-neo", "638");
-        postsMeta.put("post.image.height.passive-income-with-neo", "414");
-        postsMeta.put("post.date.passive-income-with-neo", LocalDateTime.of(2021, Month.JANUARY, 31, 0, 0) + "");
+
+        String postKey = "passive-income-with-neo";
+        String postTitle = "NEO-spôsoby ako pasívne zarábať";
+        String postDescription = "NEO-spôsoby ako pasívne zarábať. Proof of stake kryptomena NEO v peňaženke Exodus a " +
+                "možnosť pasívneho zárobku v podobe GAS.";
+        String postImagePath = ".jpg";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 31, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePath,
+                imgWidth, imgHeight, postDate
+        );
     }
 
     public String getPageDescription() {
