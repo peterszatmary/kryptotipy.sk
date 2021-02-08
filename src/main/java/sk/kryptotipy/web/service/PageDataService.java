@@ -142,7 +142,7 @@ public class PageDataService implements PageDataServiceApi {
     private void addArticleProofOfWork() {
         String postKey = "complete-guide-to-proof-of-work";
         String postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
-        String postDescription = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
+        String postDescription = "Kompletný sprievodca algoritmami proof of work (PoW). Článok vysvetľuje aj ako funguje ťažba kryptomien, ako vyzerá blok a blockchain, výhody nevýhody tohto prístupu.";
         String postImagePathExtension =  ".jpg";
         String imgWidth = "638";
         String imgHeight = "414";
