@@ -11,9 +11,6 @@ import sk.kryptotipy.web.data.ArticleRepository;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -30,7 +27,7 @@ public class RssFeedView extends AbstractRssFeedView {
                                      Channel feed, HttpServletRequest request) {
         feed.setTitle("Kryptotipy.sk RSS Feed");
         feed.setDescription(appProperties.getPageDescription());
-        feed.setLink(appProperties.getBaseUrl());
+        feed.setLink(appProperties.getBaseUrlWithoutPort());
     }
 
     @Override

@@ -3,10 +3,13 @@ package sk.kryptotipy.web.data;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 @Repository
 public class ArticleRepository {
@@ -27,7 +30,11 @@ public class ArticleRepository {
     }
 
     public List<Article> getKryptotipyContentView() {
+
         List<Article> services = new ArrayList<>();
+
+        //TODO +1 day because Iam stupid and date does not contain Time Zone
+
 
         services.add(new Article(
                 "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien", //TODO
@@ -35,7 +42,7 @@ public class ArticleRepository {
                 "complete-guide-to-proof-of-work.jpg",
                 "7.2.2021 - KRYPTO MINING",
                 "",
-                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7))
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
 
         ));
 
@@ -45,7 +52,7 @@ public class ArticleRepository {
                 "passive-income-with-neo.png",
                 "31.1.2021 - PASÍVNY PRÍJEM",
                 "",
-                        Date.valueOf(LocalDate.of(2021, Month.JANUARY, 31))
+                        Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 1))
                 ));
 
         services.add(new Article(
@@ -54,7 +61,7 @@ public class ArticleRepository {
                 "passive-income-with-algorand.jpg",
                 "27.1.2021 - PASÍVNY PRÍJEM",
                 "",
-                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27))
+                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
         ));
 
         services.add(new Article(
@@ -63,7 +70,7 @@ public class ArticleRepository {
                 "passive-income-with-exodus.jpg",
                 "17.1.2021 - PASÍVNY PRÍJEM",
                 "",
-                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17))
+                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17+1))
         ));
 
         return services;
