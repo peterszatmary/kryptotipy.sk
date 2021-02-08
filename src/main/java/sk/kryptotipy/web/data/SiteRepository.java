@@ -1,5 +1,7 @@
 package sk.kryptotipy.web.data;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -8,11 +10,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@AllArgsConstructor
 @Repository
 public class SiteRepository {
+
     private final List<SiteEntry> siteEntries = new ArrayList<>();
     private LocalDate ACTUAL_DATE = LocalDate.now();
     private Double LAST_MOD_DEFAULT = 0.8D;
+
 
     public SiteRepository() {
 

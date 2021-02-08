@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 
 import java.time.LocalDate;
@@ -17,32 +18,8 @@ import java.util.Map;
 @Slf4j
 public class PageDataService implements PageDataServiceApi {
 
-    @Value("${page.title}")
-    private String pageTitle;
 
-    @Value("${page.description}")
-    private String pageDescription;
-
-    @Value("${page.author}")
-    private String pageAuthor;
-
-    @Value("${base.url}")
-    private String baseUrl;
-
-    @Value("${base.url.without.port}")
-    private String baseUrlWithoutPort;
-
-    @Value("${project.version}")
-    private String projectVersion;
-
-    @Value("${page.size}")
-    private Integer pageSize;
-
-    @Value("${project.post.count}")
-    private String postsCount;
-
-    @Value("${page.image}")
-    private String pageImagePath;
+    private final AppProperties appProperties;
 
     // info about if pagination should go to view
     private Boolean paginationOn = Boolean.TRUE;
@@ -51,14 +28,14 @@ public class PageDataService implements PageDataServiceApi {
 
 
     public void set(Map<String, Object> model, String pageTitleCustom) {
-        model.put("page_title", pageTitleCustom + " | " + pageTitle);
-        model.put("page_author", pageAuthor);
-        model.put("base_url", baseUrl);
-        model.put("base_url_without_port", baseUrlWithoutPort);
-        model.put("title", pageTitle);
-        model.put("posts_count", postsCount);
-        model.put("project_version", projectVersion);
-        model.put("page_image", pageImagePath);
+        model.put("page_title", pageTitleCustom + " | " + appProperties.getPageTitle());
+        model.put("page_author", appProperties.getPageAuthor());
+        model.put("base_url", appProperties.getBaseUrl());
+        model.put("base_url_without_port", appProperties.getBaseUrlWithoutPort());
+        model.put("title", appProperties.getPageTitle());
+        model.put("posts_count", appProperties.getPostsCount());
+        model.put("project_version", appProperties.getProjectVersion());
+        model.put("page_image", appProperties.getPageImagePath());
         model.put("page_img_width", "85");
         model.put("page_img_height", "85");
         model.put("page_date", LocalDateTime.now());
@@ -82,6 +59,7 @@ public class PageDataService implements PageDataServiceApi {
     }
 
     private void addAllPostsMeta() {
+        String baseUrlWithoutPort = appProperties.getBaseUrlWithoutPort();
         postsMeta.put("post.image.all",           baseUrlWithoutPort + "assets/post-images/bitcoin/images_2.jpg");
         postsMeta.put("post.image.bitcoin",       baseUrlWithoutPort + "assets/post-images/bitcoin/images_3.jpg");
         postsMeta.put("post.image.nezaradene",    baseUrlWithoutPort + "assets/post-images/nezaradene/images_1.jpg");
@@ -133,7 +111,10 @@ public class PageDataService implements PageDataServiceApi {
         postsMeta.put("post.title." + postKey, postTitle);
         postsMeta.put("post.description." + postKey, postDescription);
         postsMeta.put("post.image." + postKey,
-                baseUrlWithoutPort + "assets/img/articles/index/" + postKey + postImagePathExtension);
+                this.appProperties.getBaseUrlWithoutPort() +
+                        "assets/img/articles/index/" +
+                        postKey +
+                        postImagePathExtension);
         postsMeta.put("post.image.width." + postKey, imgWidth);
         postsMeta.put("post.image.height." + postKey, imgHeight);
         postsMeta.put("post.date." + postKey,  postDate + "");
@@ -223,7 +204,7 @@ public class PageDataService implements PageDataServiceApi {
     }
 
     public String getPageDescription() {
-        return this.pageDescription;
+        return this.appProperties.getPageDescription();
     }
 
     public String getPostTitle(String key) {

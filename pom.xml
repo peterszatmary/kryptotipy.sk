@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>sk.kryptotipy</groupId>
 	<artifactId>kryptotipy-web</artifactId>
-	<version>2.2.4</version>
+	<version>2.3.0</version>
 	<name>kryptotipy.sk web</name>
 	<description>kryptotipy.sk web</description>
 
@@ -19,6 +19,7 @@
 		<lombok.version>1.18.16</lombok.version>
 		<sitemapgen.version>1.1.1</sitemapgen.version>
 		<mariadb-client.version>2.6.0</mariadb-client.version>
+		<rometools.version>1.15.0</rometools.version>
 	</properties>
 
 	<dependencies>
@@ -68,6 +69,12 @@
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 			<version>${mariadb-client.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome</artifactId>
+			<version>${rometools.version}</version>
 		</dependency>
 
 		<dependency>
