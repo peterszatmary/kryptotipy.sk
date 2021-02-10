@@ -41,6 +41,10 @@ public class ServiceRepository {
         services.add(new Service("Bitcoin Obituaries", "https://99bitcoins.com/bitcoin-obituaries/", "bitcoin-deaths.jpeg", "Bitcoinu predpovedali smrť už dokopy 395 krát. Tohto roku to bolo už 3 krát. Koľko takýchto predpovedí Bitcoin ešte prežije ?"));
 
 
+        services.add(new Service("Bitcoin prekonáva Teslu podľa kapitalizácie trhu!", "https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933", "trezor-one-black.png",
+                "Veľké zmeny! Bitcoin je od dnes väčší ako Tesla."));
+
+
         return services;
     }
 

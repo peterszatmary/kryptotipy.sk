@@ -19,6 +19,15 @@ public class ArticleRepository {
         services.addAll(getKryptotipyContentView());
 
         services.add(new Article(
+                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
+                "article/passive-income-with-exodus",
+                "passive-income-with-exodus.jpg",
+                "17.1.2021 - PASÍVNY PRÍJEM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17+1))
+        ));
+
+        services.add(new Article(
                 "Bitcoin nebol prvou kryptomenou, Ecash a zrod skutočne prvej digitálnej kryptomeny.",
                 "/article/btc-is-not-the-first",
                 "btc-not-first.png",
@@ -35,15 +44,22 @@ public class ArticleRepository {
 
         //TODO +1 day because Iam stupid and date does not contain Time Zone
 
+        services.add(new Article(
+                "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM ako eurá v banke",
+                "/article/passive-income-with-cosmos-atom",
+                "passive-income-with-cosmos-atom.jpg",
+                "14.2.2021 - PASÍVNY PRÍJEM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 14+1))
+        ));
 
         services.add(new Article(
-                "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien", //TODO
+                "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien",
                 "/article/complete-guide-to-proof-of-work",
                 "complete-guide-to-proof-of-work.jpg",
                 "7.2.2021 - KRYPTO MINING",
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
-
         ));
 
         services.add(new Article(
@@ -64,14 +80,7 @@ public class ArticleRepository {
                 Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
         ));
 
-        services.add(new Article(
-                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
-                "article/passive-income-with-exodus",
-                "passive-income-with-exodus.jpg",
-                "17.1.2021 - PASÍVNY PRÍJEM",
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17+1))
-        ));
+
 
         return services;
     }

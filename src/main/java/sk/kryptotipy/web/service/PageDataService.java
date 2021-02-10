@@ -52,6 +52,7 @@ public class PageDataService implements PageDataServiceApi {
         addArticlePassiveIncome();
         addArticlePassiveIncomeWithAlgorand();
         addArticlePassiveIncomeWithNeo();
+        addArticlePassiveIncomeWithCosmosAtom();
         addArticleProofOfWork();
 
         // posts
@@ -128,6 +129,21 @@ public class PageDataService implements PageDataServiceApi {
         String imgWidth = "638";
         String imgHeight = "414";
         LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 7, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePathExtension,
+                imgWidth, imgHeight, postDate
+        );
+    }
+
+    private void addArticlePassiveIncomeWithCosmosAtom() {
+        String postKey = "passive-income-with-cosmos-atom";
+        String postTitle = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke";
+        String postDescription = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke."; //TODO
+        String postImagePathExtension =  ".jpg";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 14, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePathExtension,
