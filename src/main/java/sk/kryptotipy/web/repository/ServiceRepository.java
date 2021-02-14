@@ -1,6 +1,7 @@
-package sk.kryptotipy.web.data;
+package sk.kryptotipy.web.repository;
 
 import org.springframework.stereotype.Repository;
+import sk.kryptotipy.web.data.Service;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -139,7 +139,8 @@ public class PageDataService implements PageDataServiceApi {
     private void addArticlePassiveIncomeWithCosmosAtom() {
         String postKey = "passive-income-with-cosmos-atom";
         String postTitle = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke";
-        String postDescription = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke."; //TODO
+        String postDescription = "Pasívny zárobok vďaka kryptomene ATOM v sieti COSMOS. Sieť COSMOS ponúka solídny pasívny príjem a keď, k tomu" +
+                " pripočítame atraktivitu projektu, ide o veľmi zaujímavú investíciu a nielen o pasívny príjem.";
         String postImagePathExtension =  ".jpg";
         String imgWidth = "638";
         String imgHeight = "414";

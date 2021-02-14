@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
-import sk.kryptotipy.web.data.ArticleRepository;
+import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.data.ServiceRepository;
+import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
 
 import java.time.LocalDateTime;

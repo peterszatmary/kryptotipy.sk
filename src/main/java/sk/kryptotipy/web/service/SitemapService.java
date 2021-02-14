@@ -4,7 +4,7 @@ import com.redfin.sitemapgenerator.WebSitemapGenerator;
 import com.redfin.sitemapgenerator.WebSitemapUrl;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.data.SiteEntry;
-import sk.kryptotipy.web.data.SiteRepository;
+import sk.kryptotipy.web.repository.SiteRepository;
 
 import java.net.MalformedURLException;
 import java.util.Objects;

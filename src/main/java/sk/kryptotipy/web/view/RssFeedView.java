@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.data.Article;
-import sk.kryptotipy.web.data.ArticleRepository;
+import sk.kryptotipy.web.repository.ArticleRepository;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

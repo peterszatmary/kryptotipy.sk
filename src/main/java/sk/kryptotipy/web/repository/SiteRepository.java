@@ -1,8 +1,9 @@
-package sk.kryptotipy.web.data;
+package sk.kryptotipy.web.repository;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
+import sk.kryptotipy.web.data.SiteEntry;
 
 import java.time.LocalDate;
 import java.time.Month;

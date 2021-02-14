@@ -1,6 +1,7 @@
-package sk.kryptotipy.web.data;
+package sk.kryptotipy.web.repository;
 
 import org.springframework.stereotype.Repository;
+import sk.kryptotipy.web.data.Article;
 
 import java.sql.Date;
 import java.time.Instant;
