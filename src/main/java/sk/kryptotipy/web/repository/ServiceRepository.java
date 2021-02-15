@@ -75,7 +75,7 @@ public class ServiceRepository {
                 "Iný druh spolupráce",
                 "",
                 "cooperation/backlinks.png",
-                "Samozrejme existuje jeden veľký kopec iných možností spolupráce a my o to vieme. " +
+                "Samozrejme existuje jeden veľký kopec možností spolupráce a my o tom vieme. " +
                         "Ak vám napadla " +
                         "spolupráca, ktorá nebola spomenutá v predošlých 3 možnostiach, neváhajte nás" +
                         " takisto kontaktovať na info@kryptotipy.sk. Tešíme sa na vás a spoluprácu s vami."));
