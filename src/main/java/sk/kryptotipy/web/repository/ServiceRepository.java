@@ -20,7 +20,8 @@ public class ServiceRepository {
         services.add(new Service("Jaxx", "https://jaxx.io", "jaxx-big.png", "Peňaženka podporujúca množstvo coinov. Je Lightweight a hot. Nepotrebuje sťahovať celý blockchain, čiže šetrí miesto na hard diskoch."));
         services.add(new Service("Trezor T", "https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933", "trezor-t-black.png", "Cold peňaženka s vylepšenou bezpečnosťou pre vaše kryptomeny. Podporuje ešte väčšie množstvo kryptomien ako model One."));
         services.add(new Service("Kucoin", "https://www.kucoin.com/", "kucoin-big.png", "Burza kryptomien. Rýchlo a spoľahlivo pridáva nové kryptomeny s potenciálom. Možno tu nájsť kryptomeny aké na iných burzách neuvidíte."));
-        services.add(new Service("Kraken", "https://www.kraken.com", "kraken-big.jpg", "Americká burza kryptomien s bohatou históriou.  Vznikla roku 2011. Ďalšia z možností ako začať obchodovať s kryptomenami."));
+        services.add(new Service("KeepKey", "https://lddy.no/v0jj", "keepkey.jpg", "Harvér peňaženka podporujúca množstvo kryptomien od skupiny Shapeshift. Vhodná ako lacnejšia alternatíva ku Trezor produktom."));
+        services.add(new Service("Kraken", "https://r.kraken.com/rn4GDj", "kraken-big.jpg", "Americká burza kryptomien s bohatou históriou.  Vznikla roku 2011. Ďalšia z možností ako začať obchodovať s kryptomenami."));
         services.add(new Service("Neo to Gas", "https://neotogas.com", "neotogas-big.jpg", "Prepočíta, aké množstvo GAS tokenu získate ako pasívny príjem za držanie NEO tokenov v špecializovanej NEON peňaženke."));
         services.add(new Service("ATHA", "https://athda.com", "athda-big.jpg", "Posledné All time high (ATH) kryptomien s časovým údajom. ATH je maximálna hodnota, ktorú kryptomena kedy dosiahla."));
         services.add(new Service("Ledger Nano X", "https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506", "ledger-nano-x.jpg", "Cold peňaženka s dôrazom na bezpečnosť podporuje množstvo kryptomien. Podporuje pripojenie cez Bluetooth"));
@@ -42,8 +43,7 @@ public class ServiceRepository {
         services.add(new Service("Bitcoin Obituaries", "https://99bitcoins.com/bitcoin-obituaries/", "bitcoin-deaths.jpeg", "Bitcoinu predpovedali smrť už dokopy 395 krát. Tohto roku to bolo už 3 krát. Koľko takýchto predpovedí Bitcoin ešte prežije ?"));
 
 
-        services.add(new Service("Bitcoin prekonáva Teslu podľa kapitalizácie trhu!", "https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933", "trezor-one-black.png",
-                "Veľké zmeny! Bitcoin je od dnes väčší ako Tesla."));
+
 
 
         return services;
@@ -93,10 +93,16 @@ public class ServiceRepository {
         services.add(new Service("ATHA", "https://athda.com", "athda-big.jpg", "Posledné All time high (ATH) kryptomien s časovým údajom. ATH je maximálna hodnota, ktorú kryptomena kedy dosiahla."));
         services.add(new Service("Ethplorer", "https://ethplorer.io", "ethplorer-big.png", "Po zadaní adresy vie ukázať nielen ETH zostatok na vašej peňaženke, ale aj zostatok všetkých ETH tokenov na danej adrese."));
         services.add(new Service("Trezor T", "https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933", "trezor-t-black.png", "Cold peňaženka s vylepšenou bezpečnosťou pre vaše kryptomeny. Podporuje ešte väčšie množstvo kryptomien ako model One."));
+
         services.add(new Service("Crypto Fear & Greed Index", "https://alternative.me/crypto/fear-and-greed-index/", "fear-and-greed-index.png", "Crypto Fear & Greed Index meria aká je aktuálna nálada na kryptomenových trhoch. Kontroluje dve základné nálady a to strach a chamtivosť. "));
         services.add(new Service("Coin atm radar", "https://coinatmradar.com/bitcoin-atm-near-me/", "coin-atm-radar.png", "Webová služba umožňujúca nájsť rôzne kryptomaty pre kúpu a predaj rôznych kryptomien vo vašom najbližšom okolí."));
         services.add(new Service("Ledger Nano X", "https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506", "ledger-nano-x.jpg", "Cold peňaženka s dôrazom na bezpečnosť podporuje množstvo kryptomien. Podporuje pripojenie cez Bluetooth."));
         services.add(new Service("Staking rewards", "https://www.stakingrewards.com", "staking-rewards.png", "Vďaka tejto službe si viete pohodlne vyrátať, aký veľký je váš pasívny príjem, ak vlastníte niektorý z proof of stake tokenov."));
+
+        services.add(new Service("KeepKey", "https://lddy.no/v0jj", "keepkey.jpg", "Harvér peňaženka podporujúca množstvo kryptomien od skupiny Shapeshift. Vhodná ako lacnejšia alternatíva ku Trezor produktom."));
+        services.add(new Service("Whitepaper.io", "https://whitepaper.io/", "whitepaper.jpg", "Whitepaper je technickou špecifikáciou danej kryptomeny. Táto služba ich všetky ponúka na jednom mieste."));
+        services.add(new Service("Kraken", "https://r.kraken.com/rn4GDj", "kraken-big.jpg", "Americká burza kryptomien s bohatou históriou.  Vznikla roku 2011. Ďalšia z možností ako začať obchodovať s kryptomenami."));
+        services.add(new Service("Exodus", "https://www.exodus.io", "exodus-big.jpg", "Peňaženka podporujúca množstvo kryptomien plus obsahuje zabudovanú zmenáreň poháňanú ďalšou službou Shapeshift."));
 
         return services;
     }
