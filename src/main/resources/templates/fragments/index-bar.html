@@ -16,7 +16,15 @@
                     <div class="span12">
                         <div id="slider_holder">
                             <div id="sequence">
-                                <p class="btc_price" th:text="@{${'BTC: ' + btc_price + ' eur'}}"></p>
+                                <p class="btc_price" >
+                                    <a href="/posts/bitcoin">
+                                        <img src="/assets/img/icons/btc-icon.png"
+                                             height="20"
+                                             width="20"
+                                             alt="btc icon and current price" />
+                                    </a>
+                                    <span th:text="@{${'€ ' + btc_price}}"></span>
+                                </p>
                                 <ul>
                                     <!-- Layer 1 -->
                                     <li>

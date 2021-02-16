@@ -50,6 +50,7 @@ public class WebController {
             log.info("index.html");
             pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celej európy.");
             model.put("btc_price", getBtcPrice());
+            model.put("eth_price", getBtcPrice());
             model.put("page_description", pageData.getPageDescription());
             return "index";
 
