@@ -5,13 +5,16 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <!-- logo -->
-                    <a class="brand logo" th:href="${base_url}">
-                        <img src="/assets/img/logo/banner-small.png" th:alt="${page_title}">
-                    </a>
+                    <div style="float:left;">
+                        <!-- logo -->
+                        <a class="brand logo" th:href="${base_url}">
+                            <img id="banner_render" th:alt="${page_title}" />
+                        </a>
+                    </div>
+
                     <!-- end logo -->
                     <!-- top menu -->
-                    <div class="navigation">
+                    <div class="navigation" style="float:right;">
                         <nav>
                             <ul class="nav topnav">
                                 <li th:class="${active_index + ' menu'}">

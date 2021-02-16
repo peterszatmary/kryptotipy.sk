@@ -342,4 +342,24 @@ div.did-you-know ul li {
     margin-bottom: 15px;
 }
 
+@media (min-width: 520px) {
+    img#banner_render {
+        content:url("/assets/img/logo/banner-small.png");
+        margin-bottom: 10px;
+    }
+    nav select {
+        height: 40px;
+    }
+}
+
+@media (max-width: 519px) {
+    img#banner_render {
+        content:url("/assets/img/logo/logo-40.png");
+    }
+    nav select {
+        width: 220px;
+        height: 40px;
+    }
+}
+
 
