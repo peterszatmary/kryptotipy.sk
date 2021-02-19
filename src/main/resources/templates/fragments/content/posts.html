@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="span12">
                     <div class="centered">
-                        <h1 style="font-size: 22px; color: #fff;" th:text="@{${ label_render + ' krypto novinky' }}"></h1>
+                        <h1 style="font-size: 22px; color: #fff;" th:text="${label_render}"></h1>
                         <p>
                             Výber najnovších krypto noviniek zo sveta kryptomien zoradených vhodne do krypto kategórií.
                         </p>
@@ -24,8 +24,8 @@
             <div class="span12">
                 <ul class="breadcrumb notop">
                     <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                    <li class="active"><a th:href="@{${base_url + 'posts/all' }}">Krypto novinky</a><span class="divider">/</span></li>
-                    <li class="active" th:text="${label_render}"></li>
+                    <li class="active"><a th:href="@{${base_url + 'novinky' }}">Krypto novinky</a><span class="divider">/</span></li>
+                    <li class="active" th:text="${label_render_path}"></li>
                 </ul>
             </div>
         </div>
@@ -34,83 +34,29 @@
 
 <section id="maincontent">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: -30px;">
+<!--            <div class="span12">-->
+<!--                <div class="navbar navbar-inner">-->
 
-            <div class="row" style="margin-top: -30px;">
-                <div class="span12">
-                    <!-- -->
-                    <div class="navbar navbar-inner">
-                        <div class="container">
-                            <!-- top menu -->
-                            <div class="navigation">
-                                <nav>
-                                    <ul class="nav topnav">
-                                        <li th:classappend="${label_q} == 'all' ? 'all active bigger':'others bigger'"><a href="/posts/all" class="btn btn-category-margin btn-color category">Všetky</a></li>
-                                        <li th:classappend="${label_q} == 'cryptocurrency' ? 'all active bigger':'others bigger'"><a href="/posts/cryptocurrency" class="btn btn-category-margin btn-color category">Kryptomeny</a></li>
-                                        <li th:classappend="${label_q} == 'blockchain' ? 'all active bigger':'others bigger'"><a href="/posts/blockchain" class="btn btn-category-margin btn-color category">Blockchain</a></li>
-                                        <li th:classappend="${label_q} == 'altcoin' ? 'all active bigger':'others bigger'"><a href="/posts/altcoin" class="btn btn-category-margin btn-color category">Altcoiny</a></li>
-                                        <li th:classappend="${label_q} == 'bitcoin' ? 'all active bigger':'others bigger'"><a href="/posts/bitcoin" class="btn btn-category-margin btn-color category">Bitcoin</a></li>
-                                        <li th:classappend="${label_q} == 'litecoin' ? 'all active bigger':'others bigger'"><a href="/posts/litecoin" class="btn btn-category-margin btn-color category">Litecoin</a></li>
-                                        <li th:classappend="${label_q} == 'monero' ? 'all active bigger':'others bigger'"><a href="/posts/monero" class="btn btn-category-margin btn-color category">Monero</a></li>
-                                        <li th:classappend="${label_q} == 'ethereum' ? 'all active bigger':'others bigger'"><a href="/posts/ethereum" class="btn btn-category-margin btn-color category">Ethereum</a></li>
+<!--                </div>-->
+<!--            </div>-->
 
-                                        <li th:classappend="${label_q} == 'polkadot' ? 'all active bigger':'others bigger'"><a href="/posts/polkadot" class="btn btn-category-margin btn-color category">Polkadot</a></li>
-                                        <li th:classappend="${label_q} == 'vechain' ? 'all active bigger':'others bigger'"><a href="/posts/vechain" class="btn btn-category-margin btn-color category">VeChain</a></li>
-                                        <li th:classappend="${label_q} == 'algorand' ? 'all active bigger':'others bigger'"><a href="/posts/algorand" class="btn btn-category-margin btn-color category">Algorand</a></li>
-                                        <li th:classappend="${label_q} == 'cardano' ? 'all active bigger':'others bigger'"><a href="/posts/cardano" class="btn btn-category-margin btn-color category">Cardano</a></li>
-                                        <li th:classappend="${label_q} == 'tezos' ? 'all active bigger':'others bigger'"><a href="/posts/tezos" class="btn btn-category-margin btn-color category">Tezos</a></li>
-                                        <li th:classappend="${label_q} == 'ontology' ? 'all active bigger':'others bigger'"><a href="/posts/ontology" class="btn btn-category-margin btn-color category">Ontology</a></li>
-                                        <li th:classappend="${label_q} == 'cosmos' ? 'all active bigger':'others bigger'"><a href="/posts/cosmos" class="btn btn-category-margin btn-color category">Cosmos (ATOM)</a></li>
+            <div th:replace="fragments/filter-component" th:remove="tag"></div>
 
-                                        <li th:classappend="${label_q} == 'fed' ? 'all active bigger':'others bigger'"><a href="/posts/fed" class="btn btn-category-margin btn-color category">FED</a></li>
-                                        <li th:classappend="${label_q} == 'ecb' ? 'all active bigger':'others bigger'"><a href="/posts/ecb" class="btn btn-category-margin btn-color category">ECB</a></li>
-                                        <li th:classappend="${label_q} == 'binance' ? 'all active bigger':'others bigger'"><a href="/posts/binance" class="btn btn-category-margin btn-color category">Binance</a></li>
-
-                                        <li th:classappend="${label_q} == 'dag' ? 'all active bigger':'others bigger'"><a href="/posts/dag" class="btn btn-category-margin btn-color category">DAG</a></li>
-                                        <li th:classappend="${label_q} == 'exodus' ? 'all active bigger':'others bigger'"><a href="/posts/exodus" class="btn btn-category-margin btn-color category">Exodus</a></li>
-                                        <li th:classappend="${label_q} == 'dash' ? 'all active bigger':'others bigger'"><a href="/posts/dash" class="btn btn-category-margin btn-color category">Dash</a></li>
-                                        <li th:classappend="${label_q} == 'exchange' ? 'all active bigger':'others bigger'"><a href="/posts/exchange" class="btn btn-category-margin btn-color category">Burza</a></li>
-                                        <li th:classappend="${label_q} == 'fork' ? 'all active bigger':'others bigger'"><a href="/posts/fork" class="btn btn-category-margin btn-color category">Fork</a></li>
-
-                                        <li th:classappend="${label_q} == 'ico' ? 'all active bigger':'others bigger'"><a href="/posts/ico" class="btn btn-category-margin btn-color category">ICO</a></li>
-                                        <li th:classappend="${label_q} == 'kraken' ? 'all active bigger':'others bigger'"><a href="/posts/kraken" class="btn btn-category-margin btn-color category">Kraken</a></li>
-                                        <li th:classappend="${label_q} == 'coinbase' ? 'all active bigger':'others bigger'"><a href="/posts/coinbase" class="btn btn-category-margin btn-color category">Coinbase</a></li>
-                                        <li th:classappend="${label_q} == 'halving' ? 'all active bigger':'others bigger'"><a href="/posts/halving" class="btn btn-category-margin btn-color category">Halving</a></li>
-                                        <li th:classappend="${label_q} == 'nbs' ? 'all active bigger':'others bigger'"><a href="/posts/nbs" class="btn btn-category-margin btn-color category">NBS</a></li>
-
-                                        <li th:classappend="${label_q} == 'neo' ? 'all active bigger':'others bigger'"><a href="/posts/neo" class="btn btn-category-margin btn-color category">NEO</a></li>
-                                        <li th:classappend="${label_q} == 'bitfinex' ? 'all active bigger':'others bigger'"><a href="/posts/bitfinex" class="btn btn-category-margin btn-color category">Bitfinex</a></li>
-                                        <li th:classappend="${label_q} == 'bittrex' ? 'all active bigger':'others bigger'"><a href="/posts/bittrex" class="btn btn-category-margin btn-color category">Bittrex</a></li>
-                                        <li th:classappend="${label_q} == 'ripple' ? 'all active bigger':'others bigger'"><a href="/posts/ripple" class="btn btn-category-margin btn-color category">Ripple</a></li>
-                                        <li th:classappend="${label_q} == 'wallets' ? 'all active bigger':'others bigger'"><a href="/posts/wallets" class="btn btn-category-margin btn-color category">Peňaženky</a></li>
-
-                                        <li th:classappend="${label_q} == 'coinmarketcap' ? 'all active bigger':'others bigger'"><a href="/posts/coinmarketcap" class="btn btn-category-margin btn-color category">Coinmarketcap</a></li>
-                                        <li th:classappend="${label_q} == 'not-categorized' ? 'all active bigger':'others bigger'"><a href="/posts/not-categorized" class="btn btn-category-margin btn-color category">Ostatné</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- end menu -->
-                        </div>
-                    </div>
-
-                    <!-- -->
-
-                </div>
-            </div>
 
             <ul class="portfolio-area da-thumbs">
-                <div th:each="post : ${posts}">
-                    <div th:replace="fragments/post :: one_post(${post})"></div>
-                </div>
-            </ul>
-        </div>
-        <p class="posts_ends_for_free">
+                   <div th:each="post : ${posts}">
+                       <div th:replace="fragments/post :: one_post(${post})"></div>
+                   </div>
+               </ul>
+           </div>
 
-            <a href="mailto:info@kryptotipy.sk" target="_blank">
-                <i class="icon-rounded icon-28 icon-pencil active"></i>
-            </a>
-             Ak ste sa preskrolovali až sem a radi by ste čítali staršie články, neváhajte nás kontaktovať
-            na <a href="mailto:info@kryptotipy.sk" target="_blank">info@kryptotipy.sk</a>.
-        </p>
-    </div>
-</section>
+           <p class="posts_ends_for_free">
+               <a href="mailto:info@kryptotipy.sk" target="_blank">
+                   <i class="icon-rounded icon-28 icon-pencil active"></i>
+               </a>
+                Ak ste sa preskrolovali až sem a radi by ste čítali staršie články, neváhajte nás kontaktovať
+               na <a href="mailto:info@kryptotipy.sk" target="_blank">info@kryptotipy.sk</a>.
+           </p>
+       </div>
+   </section>

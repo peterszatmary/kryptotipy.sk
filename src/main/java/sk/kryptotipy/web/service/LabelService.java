@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.LabelServiceApi;
 import sk.kryptotipy.web.data.Label;
-import sk.kryptotipy.web.data.jdbc.LabelRepository;
+import sk.kryptotipy.web.repository.LabelRepository;
 
 import java.util.List;
 

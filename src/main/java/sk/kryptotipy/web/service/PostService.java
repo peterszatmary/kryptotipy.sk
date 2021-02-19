@@ -5,10 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.data.jdbc.PostJdbcRepository;
+import sk.kryptotipy.web.repository.PostJdbcRepository;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 @AllArgsConstructor
@@ -33,6 +32,11 @@ public class PostService implements PostServiceApi {
     @Override
     public List<Post> getPostsByI18n(String i18n, Long from, Long to) {
         return postLabelRepository.getPostsByI18n(i18n, from, to);
+    }
+
+    @Override
+    public List<Post> getPostsByLabelsAndLangs(List<String> labels, List<String> langs, Long from, Long to) {
+        return postLabelRepository.getPostsByLabelsAndLang(labels, langs, from, to);
     }
 
     @Override

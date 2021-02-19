@@ -2,23 +2,30 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.amqp.AbstractRabbitListenerContainerFactoryConfigurer;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.data.Post;
+import sk.kryptotipy.web.repository.LabelRepository;
 import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @AllArgsConstructor
@@ -31,6 +38,7 @@ public class WebController {
     private final BtcPriceService btcPriceService;
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
+    private final LabelRepository labelRepo;
     private static final String MESSAGE_404_NOT_FOUND = "404 Stránka nenájdená";
 
     @RequestMapping("/")
@@ -61,115 +69,64 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/posts-by-i18n/{i18n}")
-    public String postsByI18n(Map<String, Object> model,
-                              @PathVariable("i18n") String i18n) {
-        try {
+    //TODO
+    @RequestMapping(value="/novinky", method= RequestMethod.GET)
+    public String x(Map<String, Object> model, HttpServletRequest request) {
 
-            List<String> supportedLangs = Arrays.asList(
-                    "SK", "CZ", "DE", "CH", "PL", "CZ"
-            );
-            if (!supportedLangs.contains(i18n)) {
-                log.info("Someone tried i18n page by manipulating url !!. i18n value = {}", i18n);
-                log.error("Someone tried i18n page by manipulating url !!. i18n value = {}", i18n);
-                throw new Exception("Someone tried i18n page by manipulating url !!.");
-            }
+        List<String> allLabels = labelRepo.getAllLabels()
+                .stream()
+                .map(label -> label.getName())
+                .collect(Collectors.toList());
 
-            Long from = 0L;
-            Long to = appProperties.getPageSize();
+        final Integer ALL_LABELS = allLabels.size();
+        final Integer ALL_LANGS  = 2; //TODO from DB
 
-            model.put("active_index", "");
-            model.put("active_posts", "active");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
-            model.put("i18n", i18n);
-            model.put("i18n_text", getI18nText(i18n));
-            model.put("site", "posts-by-i18n/" + i18n);
-            model.put("content_path","fragments/content/posts_by_i18n");
+        Map<String, String[]> parameterMap = request.getParameterMap();
 
-            model.put("posts", this.postService.getPostsByI18n(i18n, from, to));
-            log.info("posts.html - i18n");
-            pageData.set(model, getI18nText(i18n));
-            model.put("page_description", "Najčerstvejšie " + getI18nText(i18n) + " na jednom mieste. Sledujte dianie v krypto svete jednoduchšie, aby vám žiadna krypto informácia neunikla.");
-            return "non-index";
+        List<String> langs =
+                checkAndInitCheckBoxInput("lang", parameterMap, Arrays.asList("SK","CZ"));
 
-        } catch (Exception ex) {
-            log.warn("index : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
-            return "redirect:/error.html";
+        List<String> labels =
+                checkAndInitCheckBoxInput("label", parameterMap, allLabels);
+
+        final Long from = 0L;
+        final Long to = appProperties.getPageSize();
+
+        List<Post> posts = (labels.size() == ALL_LABELS && langs.size() == ALL_LANGS) ?
+                this.postService.getPostsByLabelAll(from, to) :
+                this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+
+        String label_render;
+        String customPageTitle;
+        if (langs.size() == 1) {
+            customPageTitle = getI18nText(langs.get(0));
+            label_render = customPageTitle.split(" ")[0];
+        } else if (labels.size() == 1) {
+            label_render = mapLabelForRendering(labels.get(0));
+            customPageTitle = "Krypto novinky na tému " + label_render;
+        } else {
+            customPageTitle = "Vybrané krypto novinky";
+            label_render = "Vybrané";
         }
-    }
 
+        pageData.set(model, customPageTitle);
+        model.put("site", mapSiteUrl(buildSiteUrl(labels, langs))); //TODO redirects
+        model.put("posts", posts);
+        model.put("label_render", customPageTitle);
+        model.put("content_path", "fragments/content/posts");
+        model.put("checked_labels", labels);
+        model.put("checked_langs", langs);
+        model.put("label_render_path", StringUtils.capitalize(label_render));
+        model.put("active_index", "");
+        model.put("active_posts", "active");
+        model.put("active_dictionary", "");
+        model.put("active_external_services", "");
+        model.put("active_did_you_know", "");
+        model.put("active_krypto_learning", "");
 
-    @RequestMapping("/posts/{label_q}")
-    public String posts(Map<String, Object> model,
-                        @PathVariable("label_q") String label_q) {
-        try {
-            String label_render = label_q;
-            String label = label_q;
-
-            List<Post> posts;
-            Long from = 0L;
-            Long to = appProperties.getPageSize();
-
-            if ("wallets".equals(label_q)) {
-                label_render = "Peňaženky";
-            }
-
-            if ("not-categorized".equals(label_q)) {
-                label_render = "Ostatné";
-            }
-
-            if ("cryptocurrency".equals(label_q)) {
-                label_render = "Kryptomeny";
-            }
-
-            if ("exchange".equals(label_q)) {
-                label_render = "Burzy";
-            }
-
-            if ("all".equals(label_q)) {
-                label_render = "Všetky";
-                posts = this.postService.getPostsByLabelAll(from, to);
-            } else {
-                posts = this.postService.getPostsByLabel(label, from, to);
-                label_render = StringUtils.capitalize(label_render);
-            }
-
-            model.put("active_index", "");
-            model.put("active_posts", "active");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
-            model.put("posts", posts);
-
-            model.put("label", label);
-            model.put("label_render", label_render);
-            model.put("label_q", label_q);
-
-            if ("peňaženky".equals(label)) {
-                label = "wallets";
-            }
-
-            model.put("site", "posts/" + label);
-            model.put("content_path", "fragments/content/posts");
-
-            log.info("posts.html {}", label);
-            pageData.set(model,  "Krypto novinky na tému " + label_render);
-
-            model.put("page_image", pageData.getPostImage(label_q));
-            model.put("page_image_width", "800");
-            model.put("page_image_height", "600");
-            return "non-index";
-
-        } catch (Exception ex) {
-            log.warn("posts : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
-            return "redirect:/error";
-        }
+        log.info("Posts filtered by labels count = {} labels = {} langs count = {} and langs = {}",
+                labels.size(), labels, langs.size(), langs);
+        return "non-index";
     }
 
     @RequestMapping("/external-services")
@@ -411,5 +368,135 @@ public class WebController {
             case "HU": return "Maďarské krypto novinky";
             default : return "Nezaradené krypto novinky";
         }
+    }
+
+    private String buildSiteUrl(List<String> labels, List<String> langs) {
+        StringBuilder siteUrl = new StringBuilder("novinky?");
+        labels.stream().forEach(label -> siteUrl.append("label=").append(label).append("&"));
+        langs.stream().forEach(lang -> siteUrl.append("lang=").append(lang).append("&"));
+        siteUrl.delete(siteUrl.length() - 1, siteUrl.length());
+        return siteUrl.toString();
+    }
+
+    private String mapSiteUrl(String url) {
+
+        switch (url) {
+            case "novinky" :
+                return "posts/all";
+            case "novinky?label=cardano&lang=SK&lang=CZ" :
+                return "posts/cardano";
+            case "novinky?label=tezos&lang=SK&lang=CZ" :
+                return "posts/tezos";
+            case "novinky?label=bitcoin&lang=SK&lang=CZ" :
+                return "posts/bitcoin";
+            case "novinky?label=ethereum&lang=SK&lang=CZ" :
+                return "posts/ethereum";
+            case "novinky?label=exchange&lang=SK&lang=CZ" :
+                return "posts/exchange";
+            case "novinky?label=litecoin&lang=SK&lang=CZ" :
+                return "posts/litecoin";
+            case "novinky?label=polkadot&lang=SK&lang=CZ" :
+                return "posts/polkadot";
+            case "novinky?label=fed&lang=SK&lang=CZ" :
+                return "posts/fed";
+            case "novinky?label=ecb&lang=SK&lang=CZ" :
+                return "posts/ecb";
+            case "novinky?label=nbs&lang=SK&lang=CZ" :
+                return "posts/nbs";
+            case "novinky?label=neo&lang=SK&lang=CZ" :
+                return "posts/neo";
+            case "novinky?label=altcoin&lang=SK&lang=CZ" :
+                return "posts/altcoin";
+            case "novinky?label=monero&lang=SK&lang=CZ" :
+                return "posts/monero";
+            case "novinky?label=dash&lang=SK&lang=CZ" :
+                return "posts/dash";
+            case "novinky?label=vechain&lang=SK&lang=CZ" :
+                return "posts/vechain";
+            case "novinky?label=algorand&lang=SK&lang=CZ" :
+                return "posts/algorand";
+            case "novinky?label=ontology&lang=SK&lang=CZ" :
+                return "posts/ontology";
+            case "novinky?label=cosmos&lang=SK&lang=CZ" :
+                return "posts/cosmos";
+            case "novinky?label=binance&lang=SK&lang=CZ" :
+                return "posts/binance";
+            case "novinky?label=dag&lang=SK&lang=CZ" :
+                return "posts/dag";
+            case "novinky?label=exodus&lang=SK&lang=CZ" :
+                return "posts/exodus";
+            case "novinky?label=fork&lang=SK&lang=CZ" :
+                return "posts/fork";
+            case "novinky?label=ico&lang=SK&lang=CZ" :
+                return "posts/ico";
+            case "novinky?label=kraken&lang=SK&lang=CZ" :
+                return "posts/kraken";
+            case "novinky?label=coinbase&lang=SK&lang=CZ" :
+                return "posts/coinbase";
+            case "novinky?label=halving&lang=SK&lang=CZ" :
+                return "posts/halving";
+            case "novinky?label=bitfinex&lang=SK&lang=CZ" :
+                return "posts/bitfinex";
+            case "novinky?label=bittrex&lang=SK&lang=CZ" :
+                return "posts/bittrex";
+            case "novinky?label=ripple&lang=SK&lang=CZ" :
+                return "posts/ripple";
+            case "novinky?label=wallets&lang=SK&lang=CZ" :
+                return "posts/wallets";
+            case "novinky?label=coinmarketcap&lang=SK&lang=CZ" :
+                return "posts/coinmarketcap";
+            case "novinky?label=not-categorized&lang=SK&lang=CZ" :
+                return "posts/not-categorized";
+        }
+
+        if (isLangUrl(url, "SK")) {
+            return "posts-by-i18n/SK";
+        }
+
+        if (isLangUrl(url, "CZ")) {
+            return "posts-by-i18n/CZ";
+        }
+        return "N/A";
+    }
+
+    private boolean isLangUrl(String newUrl, String lang) {
+        return (newUrl.contains("lang=" + lang) &&
+                (
+                        newUrl.contains("bitcoin") &&
+                        newUrl.contains("cryptocurrency") &&
+                        newUrl.contains("altcoin")
+                ))
+                || (newUrl.contains("lang=" + lang) && (newUrl.split("label").length == 1));
+    }
+
+
+    private List<String> checkAndInitCheckBoxInput(
+            String inputKey,
+            Map<String, String[]> parameterMap,
+            List<String> initValues
+    ) {
+        //TODO from DB
+        return (null == parameterMap.get(inputKey)) ?
+                initValues : Arrays.asList(parameterMap.get(inputKey));
+    }
+
+    private String mapLabelForRendering(String label) {
+        String result = label;
+        if ("wallets".equals(label)) {
+            result = "peňaženky";
+        }
+
+        else if ("not-categorized".equals(label)) {
+            result = "ostatné";
+        }
+
+        else if ("cryptocurrency".equals(label)) {
+            result = "kryptomeny";
+        }
+
+        else if ("exchange".equals(label)) {
+            result = "burzy";
+        }
+        return result;
     }
 }

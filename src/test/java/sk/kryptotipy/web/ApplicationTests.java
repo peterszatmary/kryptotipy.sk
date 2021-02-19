@@ -1,14 +1,11 @@
 package sk.kryptotipy.web;
 
-import org.junit.Ignore;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.stream.IntStream;
+
 @SpringBootTest
-class ApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
+public class ApplicationTests {
 }

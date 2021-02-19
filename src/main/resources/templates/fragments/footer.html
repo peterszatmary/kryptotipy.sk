@@ -93,3 +93,28 @@
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/smoothscroll.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v9.0&appId=1628998487331339&autoLogAppEvents=1" nonce="lYlmGRb6"></script>
+    <script>
+        function hideAndShowPostFilter() {
+          var x = document.getElementById("filter-component");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
+        // select / unselect  all checkboxes by one
+        document.getElementById('select-all').onclick = function() {
+            var checkboxesLabel = document.getElementsByName('label');
+            for (var checkbox of checkboxesLabel) {
+                checkbox.checked = this.checked;
+            }
+            var checkboxesLang = document.getElementsByName('lang');
+            for (var checkbox of checkboxesLang) {
+                checkbox.checked = this.checked;
+            }
+        }
+
+
+
+    </script>

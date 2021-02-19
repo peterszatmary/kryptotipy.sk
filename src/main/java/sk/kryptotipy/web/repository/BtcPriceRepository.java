@@ -1,4 +1,4 @@
-package sk.kryptotipy.web.data.jdbc;
+package sk.kryptotipy.web.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

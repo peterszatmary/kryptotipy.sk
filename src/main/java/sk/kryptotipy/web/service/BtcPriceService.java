@@ -3,7 +3,7 @@ package sk.kryptotipy.web.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.BtcPriceServiceApi;
-import sk.kryptotipy.web.data.jdbc.BtcPriceRepository;
+import sk.kryptotipy.web.repository.BtcPriceRepository;
 
 @AllArgsConstructor
 @Service

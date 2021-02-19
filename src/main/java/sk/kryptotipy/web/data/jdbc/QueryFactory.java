@@ -1,5 +1,7 @@
 package sk.kryptotipy.web.data.jdbc;
 
+import java.util.stream.IntStream;
+
 public class QueryFactory {
 
     public static String newestPosts() {
@@ -36,7 +38,6 @@ public class QueryFactory {
                 .toString();
     }
 
-    //TODO pagination
     public static String postsByLabel() {
         return new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, l.name ")
@@ -63,5 +64,30 @@ public class QueryFactory {
                 .append("SELECT DISTINCT l.name ")
                 .append("FROM label l ")
                 .toString();
+    }
+
+    public static String postsByLabelsAndLangs(Integer labelsCount, Integer langsCount) {
+        return new StringBuilder()
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, l.name ")
+                .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
+                .append("JOIN label l ON l.id = pl.label_id ")
+                .append("WHERE l.name in (")
+                .append(_x(labelsCount))
+                .append(") ")
+                .append("AND p.i18n in (")
+                .append(_x(langsCount))
+                .append(") ")
+                .append("AND p.disabled = 0 ")
+                .append("ORDER BY p.birthday ")
+                .append("DESC ")
+                .append("LIMIT ?,?")
+                .toString();
+    }
+
+    private static String _x(Integer count) {
+        StringBuilder str = new StringBuilder();
+        IntStream.range(0, count).forEach(x -> str.append("?,"));
+        str.delete(str.length() - 1, str.length());
+        return str.toString();
     }
 }
