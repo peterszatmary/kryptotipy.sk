@@ -69,32 +69,58 @@ public class WebController {
         }
     }
 
+    @RequestMapping("/posts-by-i18n/{lang}")
+    public String postsByI18n(Map<String, Object> model,
+                              @PathVariable("lang") String lang, HttpServletRequest request) {
+       return x(null, lang, model, request);
+    }
+
+
+    @RequestMapping("/posts/{label}")
+    public String posts(Map<String, Object> model,
+                        @PathVariable("label") String label, HttpServletRequest request) {
+        return x(label, null,  model, request);
+    }
+
+
     //TODO
-    @RequestMapping(value="/novinky", method= RequestMethod.GET)
-    public String x(Map<String, Object> model, HttpServletRequest request) {
+    @RequestMapping(value="/novinky", method = RequestMethod.GET)
+    public String x(String labell, String lang, Map<String, Object> model, HttpServletRequest request) {
 
         List<String> allLabels = labelRepo.getAllLabels()
                 .stream()
                 .map(label -> label.getName())
                 .collect(Collectors.toList());
 
+        List<String> langs = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
+
+        if (labell != null && !labell.contains(",")) {
+            labels = "all".equals(labell) ? allLabels : Arrays.asList(labell);
+        }
+
+        if (lang != null && !lang.contains(",")) {
+            langs.add(lang);
+        }
+
         final Integer ALL_LABELS = allLabels.size();
-        final Integer ALL_LANGS  = 2; //TODO from DB
+        final Integer ALL_LANGS  = 6; //TODO from DB
 
         Map<String, String[]> parameterMap = request.getParameterMap();
 
-        List<String> langs =
-                checkAndInitCheckBoxInput("lang", parameterMap, Arrays.asList("SK","CZ"));
+        if (langs.isEmpty()) {
+            langs =
+                    checkAndInitCheckBoxInput("lang", parameterMap, Arrays.asList("SK","CZ"));
+        }
 
-        List<String> labels =
-                checkAndInitCheckBoxInput("label", parameterMap, allLabels);
+        if (labels.isEmpty()) {
+            labels =
+                    checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
+        }
 
         final Long from = 0L;
         final Long to = appProperties.getPageSize();
 
-        List<Post> posts = (labels.size() == ALL_LABELS && langs.size() == ALL_LANGS) ?
-                this.postService.getPostsByLabelAll(from, to) :
-                this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
 
         String label_render;
         String customPageTitle;
@@ -104,13 +130,21 @@ public class WebController {
         } else if (labels.size() == 1) {
             label_render = mapLabelForRendering(labels.get(0));
             customPageTitle = "Krypto novinky na tému " + label_render;
+        } else if (labels.size() == 1+ALL_LABELS) {
+            labels.remove("all");
+            customPageTitle = "Všetky krypto novinky";
+            label_render = "Všetky";
         } else {
             customPageTitle = "Vybrané krypto novinky";
             label_render = "Vybrané";
         }
 
+        List<Post> posts = (labels.size() == ALL_LABELS && langs.size() == ALL_LANGS) ?
+                this.postService.getPostsByLabelAll(from, to) :
+                this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+
         pageData.set(model, customPageTitle);
-        model.put("site", mapSiteUrl(buildSiteUrl(labels, langs))); //TODO redirects
+        model.put("site", mapSiteUrl(buildSiteUrl(labels, langs)));
         model.put("posts", posts);
         model.put("label_render", customPageTitle);
         model.put("content_path", "fragments/content/posts");
@@ -456,7 +490,7 @@ public class WebController {
         if (isLangUrl(url, "CZ")) {
             return "posts-by-i18n/CZ";
         }
-        return "N/A";
+        return url;
     }
 
     private boolean isLangUrl(String newUrl, String lang) {
@@ -477,7 +511,7 @@ public class WebController {
     ) {
         //TODO from DB
         return (null == parameterMap.get(inputKey)) ?
-                initValues : Arrays.asList(parameterMap.get(inputKey));
+                initValues : new ArrayList<>(Arrays.asList(parameterMap.get(inputKey)));
     }
 
     private String mapLabelForRendering(String label) {

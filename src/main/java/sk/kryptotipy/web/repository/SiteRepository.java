@@ -24,6 +24,7 @@ public class SiteRepository {
 
         save(new SiteEntry("/", 1.00D, ACTUAL_DATE));
         save(new SiteEntry("/posts/all", LAST_MOD_DEFAULT, ACTUAL_DATE));
+        save(new SiteEntry("/novinky", LAST_MOD_DEFAULT, ACTUAL_DATE));
         
         save(new SiteEntry("/external-services", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 19)));
         save(new SiteEntry("/did-you-know", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 26)));
