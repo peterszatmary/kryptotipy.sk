@@ -104,7 +104,7 @@ public class WebController {
         }
 
         final Integer ALL_LABELS = allLabels.size();
-        final Integer ALL_LANGS  = 6; //TODO from DB
+        final Integer ALL_LANGS  = 2; //TODO from DB
 
         Map<String, String[]> parameterMap = request.getParameterMap();
 
@@ -121,27 +121,35 @@ public class WebController {
         final Long from = 0L;
         final Long to = appProperties.getPageSize();
 
-
+        List<Post> posts;
         String label_render;
         String customPageTitle;
         if (langs.size() == 1) {
             customPageTitle = getI18nText(langs.get(0));
             label_render = customPageTitle.split(" ")[0];
-        } else if (labels.size() == 1) {
+            //posts = this.postService.getPostsByI18n(langs.get(0), 0L, appProperties.getPageSize());
+        } else if (labels.size() == 1 && langs.size() == ALL_LANGS) {
             label_render = mapLabelForRendering(labels.get(0));
             customPageTitle = "Krypto novinky na tému " + label_render;
-        } else if (labels.size() == 1+ALL_LABELS) {
-            labels.remove("all");
+            //posts = this.postService.getPostsByLabel(labels.get(0), 0L, appProperties.getPageSize());
+        } else if (labels.contains("all") || labels.size() == ALL_LABELS) {
+            if (labels.contains("all")) {
+                labels.remove("all");
+            }
+
             customPageTitle = "Všetky krypto novinky";
             label_render = "Všetky";
+            //posts = this.postService.getPostsByLabelAll(0L, appProperties.getPageSize());
         } else {
             customPageTitle = "Vybrané krypto novinky";
             label_render = "Vybrané";
+            //posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
         }
 
-        List<Post> posts = (labels.size() == ALL_LABELS && langs.size() == ALL_LANGS) ?
-                this.postService.getPostsByLabelAll(from, to) :
-                this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+        posts = (ALL_LABELS == labels.size() && ALL_LANGS == ALL_LANGS) ?
+            this.postService.getPostsByLabelAll(from, to) :
+            this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+
 
         pageData.set(model, customPageTitle);
         model.put("site", mapSiteUrl(buildSiteUrl(labels, langs)));
