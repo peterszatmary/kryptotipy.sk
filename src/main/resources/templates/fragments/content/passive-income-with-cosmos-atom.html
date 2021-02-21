@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="span12">
                     <div class="centered">
-                        <h1 style="font-size: 22px;color: #fff;" th:text="${post_title}"></h1>
+                        <h1 style="font-size: 22px;color: #fff;" th:text="${page_title}"></h1>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <ul class="breadcrumb notop">
                     <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
                     <li><a th:href="@{${base_url + 'krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
-                    <li class="active"><span th:text="${post_title}" itemprop="name"></span></li>
+                    <li class="active"><span th:text="${page_title}" itemprop="name"></span></li>
                 </ul>
             </div>
         </div>
@@ -66,6 +66,7 @@
                                     (
                                     <a href="/article/passive-income-with-neo">NEO</a>,
                                     <a href="/article/passive-income-with-algorand">Algorand</a>,
+                                    <a href="/article/passive-income-with-cardano">Cardano</a>,
                                     <a href="/article/passive-income-with-exodus">a ďalšie</a>
                                     ) a veríme, že viacerým z vás už priniesli zaujímavé skúsenosti a možno aj pár eur
                                     do krypto peňaženiek, je na Exoduse sprístupnená aj kryptomena Atom,
@@ -290,7 +291,7 @@
                                         <p>
                                             Definíciu a vysvetlenie toho, čo je APY sme uviedli
                                             <a href="/article/passive-income-with-algorand">v článku Algorand a pasívny príjem</a>.
-                                            APY pre COSMOS je momentálne na úrovni 9,32%. APY sa časom mení, nie je to konštantné číslo.
+                                            APY pre COSMOS je momentálne na úrovni 9,53%. APY sa časom mení, nie je to konštantné číslo.
                                             APY je oveľa vyššie ako úroky v tradičných bankách, čo je skvelé.
                                             Navyše svoju investíciu máte pod kontrolou práve vy v peňaženke, nie banka.
 
@@ -299,7 +300,7 @@
                                             Odtiaľto plynie aj nedostatok a to ten, že o bezpečnosť investície teda o
                                             bezpečnosť Exodusu vo vašom počítači sa staráte vy (zálohy, hack útoky...).
                                             V porovnaní s eurom sú kryptomeny veľmi volatilné, čo znamená, že vaša investícia
-                                            sa zhodnotí <strong>9,32%</strong> ročne, ale je možné, že cena za mincu poklesne / porastie veľmi
+                                            sa zhodnotí <strong>9,53%</strong> ročne, ale je možné, že cena za mincu poklesne / porastie veľmi
                                             výrazne.
                                         </p>
 
@@ -307,8 +308,8 @@
                                         <h2>Konkrétny príklad a varovanie</h2>
                                         <p>
                                             Povedzme, že nakúpite COSMOS v hodnote 1000 eur a hodnota jedného ATOM sa celý rok nezmení.
-                                            Pri zhodnotení 9,32% budete mať na konci roka ATOM tokeny v hodnote približne
-                                            1093,2 eur. Realita výnosov a strát môže byť absolútne iná pokiaľ cena tokenov
+                                            Pri zhodnotení 9,53% budete mať na konci roka ATOM tokeny v hodnote približne
+                                            1095,3 eur. Realita výnosov a strát môže byť absolútne iná pokiaľ cena tokenov
                                             ATOM tokenov vyrazí hore a opäť iná no menej prívetivá,
                                             keď sa rozhodne ísť opačným smerom.
 
@@ -325,7 +326,7 @@
                             <br /><br />
 
                             <h2>Ďalšie populárne články</h2>
-
+                            <a href="/article/passive-income-with-cardano">21.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ADA (Cardano) ako eurá v banke</a><br />
                             <a href="/article/complete-guide-to-proof-of-work">7.2.2021 - 15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien</a><br />
                             <a href="/article/btc-is-not-the-first">2.1.2021 - Prvá kryptomena nie je Bitcoin</a><br />
                             <a href="/article/passive-income-with-exodus">17.1.2021 - Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke</a><br />
@@ -349,8 +350,6 @@
                                     <a href="https://cosmos.network/resources/whitepaper" target="_blank">[3] Cosmos whitepaper</a>
                                 </li>
                             </ul>
-
-
 
                             <br /><br />
                             </p>

@@ -40,7 +40,7 @@
                       <a th:each="label : ${post.labels}" th:href="@{${'/posts/' + label.name}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                 </span>
                 <div class="post-metadata">
-                    <a th:href="@{${'/novinky?lang=' + post.i18n}}">
+                    <a th:href="@{${'/news?lang=' + post.i18n}}">
                         <img th:src="@{${'/assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"
                                  th:title="${post.getI18nFlagRender()}" th:alt="${post.getI18nFlagRender()}"
                             />

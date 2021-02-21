@@ -84,7 +84,7 @@ public class WebController {
 
 
     //TODO
-    @RequestMapping(value="/novinky", method = RequestMethod.GET)
+    @RequestMapping(value="/news", method = RequestMethod.GET)
     public String x(String labell, String lang, Map<String, Object> model, HttpServletRequest request) {
 
         List<String> allLabels = labelRepo.getAllLabels()
@@ -124,15 +124,20 @@ public class WebController {
         List<Post> posts;
         String label_render;
         String customPageTitle;
+
+        posts = (ALL_LABELS == labels.size() && ALL_LANGS == ALL_LANGS) ?
+                this.postService.getPostsByLabelAll(from, to) :
+                this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+
         if (langs.size() == 1) {
             customPageTitle = getI18nText(langs.get(0));
             label_render = customPageTitle.split(" ")[0];
-            //posts = this.postService.getPostsByI18n(langs.get(0), 0L, appProperties.getPageSize());
+            posts = this.postService.getPostsByI18n(langs.get(0), 0L, appProperties.getPageSize());
         } else if (labels.size() == 1 && langs.size() == ALL_LANGS) {
             label_render = mapLabelForRendering(labels.get(0));
             customPageTitle = "Krypto novinky na tému " + label_render;
             //posts = this.postService.getPostsByLabel(labels.get(0), 0L, appProperties.getPageSize());
-        } else if (labels.contains("all") || labels.size() == ALL_LABELS) {
+        } else if (labels.contains("all") || labels.size() == ALL_LABELS) { //TODO trasparency for all checkbox later
             if (labels.contains("all")) {
                 labels.remove("all");
             }
@@ -146,9 +151,7 @@ public class WebController {
             //posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
         }
 
-        posts = (ALL_LABELS == labels.size() && ALL_LANGS == ALL_LANGS) ?
-            this.postService.getPostsByLabelAll(from, to) :
-            this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+
 
 
         pageData.set(model, customPageTitle);
@@ -316,7 +319,7 @@ public class WebController {
 
             log.info("article = {}", postTitle);
             pageData.set(model, pageData.getPostTitle(postTitle));
-            model.put("post_title", pageData.getPostTitle(postTitle));
+
             model.put("page_title", pageData.getPostTitle(postTitle));
             model.put("page_description", pageData.getPostDescription(postTitle));
             model.put("page_image", pageData.getPostImage(postTitle));
@@ -413,7 +416,7 @@ public class WebController {
     }
 
     private String buildSiteUrl(List<String> labels, List<String> langs) {
-        StringBuilder siteUrl = new StringBuilder("novinky?");
+        StringBuilder siteUrl = new StringBuilder("news?");
         labels.stream().forEach(label -> siteUrl.append("label=").append(label).append("&"));
         langs.stream().forEach(lang -> siteUrl.append("lang=").append(lang).append("&"));
         siteUrl.delete(siteUrl.length() - 1, siteUrl.length());
@@ -423,71 +426,71 @@ public class WebController {
     private String mapSiteUrl(String url) {
 
         switch (url) {
-            case "novinky" :
+            case "news" :
                 return "posts/all";
-            case "novinky?label=cardano&lang=SK&lang=CZ" :
+            case "news?label=cardano&lang=SK&lang=CZ" :
                 return "posts/cardano";
-            case "novinky?label=tezos&lang=SK&lang=CZ" :
+            case "news?label=tezos&lang=SK&lang=CZ" :
                 return "posts/tezos";
-            case "novinky?label=bitcoin&lang=SK&lang=CZ" :
+            case "news?label=bitcoin&lang=SK&lang=CZ" :
                 return "posts/bitcoin";
-            case "novinky?label=ethereum&lang=SK&lang=CZ" :
+            case "news?label=ethereum&lang=SK&lang=CZ" :
                 return "posts/ethereum";
-            case "novinky?label=exchange&lang=SK&lang=CZ" :
+            case "news?label=exchange&lang=SK&lang=CZ" :
                 return "posts/exchange";
-            case "novinky?label=litecoin&lang=SK&lang=CZ" :
+            case "news?label=litecoin&lang=SK&lang=CZ" :
                 return "posts/litecoin";
-            case "novinky?label=polkadot&lang=SK&lang=CZ" :
+            case "news?label=polkadot&lang=SK&lang=CZ" :
                 return "posts/polkadot";
-            case "novinky?label=fed&lang=SK&lang=CZ" :
+            case "news?label=fed&lang=SK&lang=CZ" :
                 return "posts/fed";
-            case "novinky?label=ecb&lang=SK&lang=CZ" :
+            case "news?label=ecb&lang=SK&lang=CZ" :
                 return "posts/ecb";
-            case "novinky?label=nbs&lang=SK&lang=CZ" :
+            case "news?label=nbs&lang=SK&lang=CZ" :
                 return "posts/nbs";
-            case "novinky?label=neo&lang=SK&lang=CZ" :
+            case "news?label=neo&lang=SK&lang=CZ" :
                 return "posts/neo";
-            case "novinky?label=altcoin&lang=SK&lang=CZ" :
+            case "news?label=altcoin&lang=SK&lang=CZ" :
                 return "posts/altcoin";
-            case "novinky?label=monero&lang=SK&lang=CZ" :
+            case "news?label=monero&lang=SK&lang=CZ" :
                 return "posts/monero";
-            case "novinky?label=dash&lang=SK&lang=CZ" :
+            case "news?label=dash&lang=SK&lang=CZ" :
                 return "posts/dash";
-            case "novinky?label=vechain&lang=SK&lang=CZ" :
+            case "news?label=vechain&lang=SK&lang=CZ" :
                 return "posts/vechain";
-            case "novinky?label=algorand&lang=SK&lang=CZ" :
+            case "news?label=algorand&lang=SK&lang=CZ" :
                 return "posts/algorand";
-            case "novinky?label=ontology&lang=SK&lang=CZ" :
+            case "news?label=ontology&lang=SK&lang=CZ" :
                 return "posts/ontology";
-            case "novinky?label=cosmos&lang=SK&lang=CZ" :
+            case "news?label=cosmos&lang=SK&lang=CZ" :
                 return "posts/cosmos";
-            case "novinky?label=binance&lang=SK&lang=CZ" :
+            case "news?label=binance&lang=SK&lang=CZ" :
                 return "posts/binance";
-            case "novinky?label=dag&lang=SK&lang=CZ" :
+            case "news?label=dag&lang=SK&lang=CZ" :
                 return "posts/dag";
-            case "novinky?label=exodus&lang=SK&lang=CZ" :
+            case "news?label=exodus&lang=SK&lang=CZ" :
                 return "posts/exodus";
-            case "novinky?label=fork&lang=SK&lang=CZ" :
+            case "news?label=fork&lang=SK&lang=CZ" :
                 return "posts/fork";
-            case "novinky?label=ico&lang=SK&lang=CZ" :
+            case "news?label=ico&lang=SK&lang=CZ" :
                 return "posts/ico";
-            case "novinky?label=kraken&lang=SK&lang=CZ" :
+            case "news?label=kraken&lang=SK&lang=CZ" :
                 return "posts/kraken";
-            case "novinky?label=coinbase&lang=SK&lang=CZ" :
+            case "news?label=coinbase&lang=SK&lang=CZ" :
                 return "posts/coinbase";
-            case "novinky?label=halving&lang=SK&lang=CZ" :
+            case "news?label=halving&lang=SK&lang=CZ" :
                 return "posts/halving";
-            case "novinky?label=bitfinex&lang=SK&lang=CZ" :
+            case "news?label=bitfinex&lang=SK&lang=CZ" :
                 return "posts/bitfinex";
-            case "novinky?label=bittrex&lang=SK&lang=CZ" :
+            case "news?label=bittrex&lang=SK&lang=CZ" :
                 return "posts/bittrex";
-            case "novinky?label=ripple&lang=SK&lang=CZ" :
+            case "news?label=ripple&lang=SK&lang=CZ" :
                 return "posts/ripple";
-            case "novinky?label=wallets&lang=SK&lang=CZ" :
+            case "news?label=wallets&lang=SK&lang=CZ" :
                 return "posts/wallets";
-            case "novinky?label=coinmarketcap&lang=SK&lang=CZ" :
+            case "news?label=coinmarketcap&lang=SK&lang=CZ" :
                 return "posts/coinmarketcap";
-            case "novinky?label=not-categorized&lang=SK&lang=CZ" :
+            case "news?label=not-categorized&lang=SK&lang=CZ" :
                 return "posts/not-categorized";
         }
 

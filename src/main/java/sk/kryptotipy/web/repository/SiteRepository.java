@@ -1,7 +1,6 @@
 package sk.kryptotipy.web.repository;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
 import sk.kryptotipy.web.data.SiteEntry;
 
@@ -24,7 +23,7 @@ public class SiteRepository {
 
         save(new SiteEntry("/", 1.00D, ACTUAL_DATE));
         save(new SiteEntry("/posts/all", LAST_MOD_DEFAULT, ACTUAL_DATE));
-        save(new SiteEntry("/novinky", LAST_MOD_DEFAULT, ACTUAL_DATE));
+        save(new SiteEntry("/news", LAST_MOD_DEFAULT, ACTUAL_DATE));
         
         save(new SiteEntry("/external-services", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 19)));
         save(new SiteEntry("/did-you-know", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 26)));
@@ -73,12 +72,14 @@ public class SiteRepository {
 
         save(new SiteEntry("/cooperation", 0.64D, LocalDate.of(2021, Month.JANUARY, 16)));
 
-        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 14)));
-        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 14)));
-        save(new SiteEntry("/article/passive-income-with-algorand", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 14)));
-        save(new SiteEntry("/article/passive-income-with-neo", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 14)));
-        save(new SiteEntry("/article/complete-guide-to-proof-of-work", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 14)));
-        save(new SiteEntry("/article/passive-income-with-cosmos-atom", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 14)));
+        save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
+        save(new SiteEntry("/article/complete-guide-to-proof-of-work", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
+
+        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
+        save(new SiteEntry("/article/passive-income-with-algorand", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
+        save(new SiteEntry("/article/passive-income-with-neo", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
+        save(new SiteEntry("/article/passive-income-with-cosmos-atom", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
+        save(new SiteEntry("/article/passive-income-with-cardano", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
     }
 
 

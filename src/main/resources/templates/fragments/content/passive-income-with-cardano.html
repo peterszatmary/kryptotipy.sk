@@ -1,0 +1,415 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="centered">
+                        <h1 style="font-size: 22px;color: #fff;" th:text="${post_title}"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb notop">
+                    <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
+                    <li><a th:href="@{${base_url + 'krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
+                    <li class="active"><span th:text="${post_title}" itemprop="name"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <article itemscope itemtype="https://schema.org/Article">
+                    <div class="heading">
+                        <h2 th:text="${post_title}" itemprop="name"></h2>
+                        <i>21.2.2020 (aktualizované 21.2.2021)</i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="fb-share-button"
+                             data-href="https://www.kryptotipy.sk/article/passive-income-with-cardano"
+                             data-layout="button_count"
+                             data-size="large">
+                            <a target="_blank"
+                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-cardano&amp;src=sdkpreparse"
+                               class="fb-xfbml-parse-ignore">Zdieľať</a>
+                        </div>
+                        <br /><br />
+                        <a th:href="${base_url}">Späť na hlavné stránky</a>
+                    </div>
+
+                    <img src="/assets/img/articles/index/article-passive-income-with-cardano.png" width="850" />
+
+                    <div class="clearfix">
+                    </div>
+                    <div class="row">
+                        <div class="span8">
+                            <p>
+                                <p>
+
+                                    <br /><br />
+                                    <blockquote>
+                                        <i>
+                                            <h4>
+                                            “Z ľudských myšlienok sa vyťažilo viac zlata, než sa
+                                                ho kedy vydolovalo zo zeme povedal
+                                                raz <a href="https://en.wikipedia.org/wiki/Napoleon_Hill" target="_blank">Napoleon Hill</a>.
+                                            </h4>
+                                        </i>
+                                    </blockquote>
+
+                                    <br /><br />
+
+                                    Možno jednu z ďalších zaujímavých myšlienok, zaoberajúcou sa pasívnym príjmom, vám dnes predstávíme aj my.
+
+                                    <br /><br />
+
+                                    Ak s kryptomenami ešte len začínate a nevyznáte sa veľmi v tom,
+                                    ktorá je aká výkonná alebo netušíte, ktorej veriť, skúste si na
+                                    začiatok vybrať také, čo vás odmenia za to, že ich vlastníte.
+
+                                    <br /><br />
+
+                                    Hovoríme o pasívnom príjme, ktorý sme sa vám už
+                                    v nejednom článku predstavili
+                                    (
+                                    <a href="/article/passive-income-with-neo">NEO</a>,
+                                    <a href="/article/passive-income-with-algorand">Algorand</a>,
+                                    <a href="/article/passive-income-with-cardano">Cardano</a>,
+                                    <a href="/article/passive-income-with-exodus">a ďalšie</a>
+                                    ).
+
+                                    <br /><br />
+
+                                    Vašou prvou v tomto prípade môže byť aj <strong>ADA</strong>,
+                                    kryptomena ktorá
+                                    poháňa sieť <a href="https://cardano.org" target="_blank">Cardano</a>.
+                                    ADA je pomenovaná po
+                                    <a href="https://cs.wikipedia.org/wiki/Ada_Lovelace" target="_blank">
+                                        prvej známej programátorke, Ade Lovelace
+                                    </a>
+                                    ,nielen prvej žene, ktorá sa problematike programovania
+                                    venovala, ale celkovo prvom človeku v tomto obore.
+                                </p>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>Čo je to Cardano (ADA)?</h2>
+                                    <p>
+                                        Cardano je proof-of-stake blockchain, ktorý ponúka možnosť rozšírovať ho
+                                        pomocou vlastnej programovacej logiky (inteligentné zmluvy tzv.
+                                        <strong>smart kontraktov</strong>)
+                                        a vytvárania programov (<strong>decentralizovaných aplikácií</strong>).
+
+                                        <br /><br />
+
+                                        Cardano sa líši od ostatných projektov tým, že kladie dôraz na výskum,
+                                        ktorého cieľom je dosiahnuť akademickú presnosť, ktorá podľa neho bude poháňať
+                                        prijatie Cardano technológie.
+
+                                        <br /><br />
+
+                                        <a href="https://cardano.org/ouroboros/" target="_blank">Algoritmus konsenzu Ouroboros</a> bol napríklad procesom formálneho preskúmania
+                                        považovaný za „preukázateľne bezpečný“.
+                                    </p>
+                                </p>
+
+
+                                <p>
+                                    <br /><br />
+                                    <h2>História</h2>
+                                    <p>
+                                        Platforma sa začala vyvíjať v roku 2015 a v roku 2017 ju uviedol
+                                        <a href="https://en.wikipedia.org/wiki/Charles_Hoskinson">Charles Hoskinson</a>,
+                                        spoluzakladateľ spoločností
+                                        <a href="https://ethereum.org/en/" target="_blank">Ethereum</a> a
+                                        <a href="https://coinmarketcap.com/currencies/bitshares/"  target="_blank">BitShares</a>.
+
+                                        Hoskinson opustil Ethereum, pretože chcel nechať Ethereum neziskové,
+                                        no neuspel. Po odchode spolu s Cardano Foundation a Emurgo založil spoločnosť
+                                        <a href="https://iohk.io/en/" target="_blank">IOHK ( Input Output Hong Kong)</a>.
+                                        IOHK sa zaoberá blockchainovým inžinierstvom a jej hlavným predmetom podnikania je vývoj spoločnosti Cardano.
+                                        Táto platforma je pomenovaná po
+                                        <a href="https://sk.wikipedia.org/wiki/Gerolamo_Cardano" target="_blank">Gerolamovi Cardanovi</a>
+                                        a kryptomena  ADA.
+                                    </p>
+                                </p>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>Platforma</h2>
+                                    <p>
+                                        Cardano sa označuje <strong>kryptomenou 3 generácie</strong>
+                                        (Bitcoin = 1. generácia, Ethereum = 2. generácia), ktorá sa snaží vytvoriť
+                                        platobný systém a k tomu aj decentralizované aplikácie (DApps),
+                                        podobne ako je to v Ethereum,
+                                        <a href="/article/passive-income-with-neo">NEO</a>,
+                                        alebo <a href="https://lisk.io/" target="_blank">Lisk sieti</a>.
+
+                                        <br /><br />
+
+                                        Zameriava sa na rýchlu a lacnú možnosť mikro a makro transakcií.
+
+                                        <br /><br />
+
+                                        Do <a href="https://roadmap.cardano.org/en/" target="_blank">road mapy Cardana</a> spadá niekoľko zaujímavých cieľov, ako napríklad
+                                        snaha <strong>prepojiť tradičné bankové systémy a kryptomeny</strong> alebo vytvorenie
+                                        vlastnej kreditnej karty, ktorá bude prepojená s mobilnou peňaženkou Cardana.
+                                    </p>
+                                </p>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>Exodus a ADA</h2>
+                                    <p>
+                                        <h3>Ako začať staking?</h3>
+                                        <p>
+                                            Rovnako ako v prípade
+                                            <a href="/article/passive-income-with-algorand">Algorandu</a> alebo
+                                            <a href="/article/passive-income-with-neo">NEO tokenov</a>
+                                             si stačí ADA tokeny
+                                            poslať do peňaženky. Nič viac nie je nutné urobiť. Vaše ADA tokeny nie sú
+                                            nijako blokované, čo znamená, že ich môžete používať bez obmedzenia.
+
+                                            <br /><br />
+
+                                            Nie každá kryptomena túto možnosť ponúka, preto je to v prípade ADA
+                                            tokenov obrovskou výhodou. Rovnaký výhodu ponúkajú aj
+                                            <a href="/article/passive-income-with-neo">NEO</a> a
+                                            <a href="/article/passive-income-with-algorand">ALGO tokeny</a>.
+
+                                            <br /><br />
+
+                                            Ak sa rozhodnete pre staking s kryptomenou ADA, na schválenie budete musieť
+                                            <strong>počkať 20 dní</strong>. Stane sa to iba prvýkrát.
+
+                                            Po tomto 20-dňovom období začnete
+                                            <strong>každých 5 dní získavať odmeny</strong>. 5 dní sa rovná jednému cyklu Epochy v sieti
+                                            Cardano. To znamená, že keď prvýkrát začnete vkladať svoje ADA,
+                                            <strong>prvú odmenu získate o 25 dní a potom každých 5 dní</strong>.
+
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-cardano/cardano-rewards.png"
+                                                 title="Cardano (ADA) rewards Exodus"
+                                                 alt="Cardano (ADA) rewards Exodus" width="500" />
+
+                                        </p>
+                                        <br /><br />
+                                        <h3>Ako a kde získam prvé Cardano (ADA) potrebné na staking?</h3>
+                                        <p>
+                                            O burzách, ktoré ADA predávajú sme písali v článku
+                                            <a href="/article/passive-income-with-exodus">Pasívny zárobok s peňaženkou
+                                                Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke.</a>
+
+                                            <br /><br />
+
+                                            Ak nechcete ísť na burzu a máte už nejaké kryptomeny v peňaženke Exodus
+                                            je možné vymeniť inú kryptomenu za ADA rovno v
+                                            <a href="https://www.exodus.com" target="_blank">Exoduse</a>.
+                                            Za začatie stakingu
+                                            si berie sieť <strong>2 ADA tokeny</strong>, ktoré vám neskôr pri unstakingu vrátia späť do
+                                            peňaženky Exodus. Viď obrázok nižšie.
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-exodus/exchange.png"
+                                                 title="Peňaženka Exodus vstavaná zmenáreň"
+                                                 alt="Peňaženka Exodus a vstavaná zmenáreň" />
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-cardano/exchange-inside-exodus.png"
+                                                 title="Peňaženka Exodus a vstavaná zmenáreň"
+                                                 alt="Peňaženka Exodus a vstavaná zmenáreň" />
+                                        </p>
+
+                                        <br /><br />
+                                        <h3>Ako ukončiť staking alebo ako urobiť unstake?</h3>
+                                        <p>
+                                            Staking začína automaticky v momente, keď máte ADA tokeny vo svojej peňaženke.
+                                            Unstake ako taký je iba o stlačení tlačidla Claim.
+                                            Nie je potrebné čakať ani vykonávať ďalšie úkony.
+                                            Za ukončenie stakingu vám budú vrátené <strong>2 ADA tokeny</strong>, ktoré ste zaplatili keď staking začal.
+                                        </p>
+
+                                        <br /><br />
+                                        <h3>Ako si pripíšem zarobené kryptomeny?</h3>
+                                        <p>
+                                            Je nutné stlačiť tlačidlo Claim a vaše pasívne zarobené ADA tokeny budú
+                                            okamžite pripísané na účet vašej peňaženky.
+
+                                            <br /><br />
+
+                                            Rovnako ako v prípade
+                                            <a href="/article/passive-income-with-algorand">Algorandu</a>
+                                            alebo
+                                            <a href="/article/passive-income-with-neo">NEO tokenov</a>
+                                            aj v prípade ADA tokenu
+                                            platí, že ak môžete, vyberajte vaše zisky v podobe ADA tokenov čo najmenej.
+                                            Ušetríte na poplatkoch. Pretože transakcie sú v sieti samozrejme spoplatnené.
+                                            Momentálne ide o <strong>poplatok 0,188868 ADA</strong>.
+
+                                            <br /><br />
+
+                                            Po stlačení tlačidla Claim vám Exodus vypíše nasledujúcu hlášku
+
+                                            <strong>
+                                                <span style="color: red;">Please wait for the latest ADA transaction to confirm.</span>
+                                            </strong>
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-cardano/claim-ada.png"
+                                                 title=""
+                                                 alt="" width="500" />
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-cardano/please-wait-ada-on-the-way.png"
+                                                 title="Please wait for the latest ADA transaction to confirm"
+                                                 alt="Please wait for the latest ADA transaction to confirm" width="500" />
+
+                                            <br /><br />
+
+                                            Treba len chvíľku počkať, kým sa transakcia, ktorú ste spustili spracuje.
+                                            Ide rádovo len o sekundy.
+
+                                            <br /><br />
+
+                                            <img src="/assets/img/articles/passive-income-with-cardano/ada-rewards-paid.png"
+                                                 title="Cardano (ADA) pasívny príjem vyplatený na peňaženku Exodus"
+                                                 alt="Cardano (ADA) pasívny príjem vyplatený na peňaženku Exodus" width="500" />
+
+                                            <br /><br />
+
+                                        </p>
+
+                                        <br />
+                                        <h3>Minimum ADA potrebných na staking</h3>
+                                        <p>
+                                            Minimálne množstva ADA tokenov potrebných na začatie stakingu je <strong>5 ADA tokenov</strong>.
+                                        </p>
+
+                                        <br />
+                                        <h3>Minimum ADA potrebných na výber</h3>
+                                        <p>
+                                            Keďže poplatok za akúkoľvek transakciu je momentálne <strong>0.188868 ADA</strong>,
+                                            potrebujete mať toto množstvo ADA mincí už v peňaženke, aby ste si mohli vyplatiť pasívne
+                                            zarobené ADA tokeny. Samotný pasívny zárobok obmedzený nie je.
+                                            Jeho výška môže byť akákoľvek.
+                                        </p>
+
+                                        <br />
+                                        <h3>Je potrebné mať otvorenú peňaženku Exodus?</h3>
+                                        <p>
+                                            Peňaženku môžete kľudne zavrieť. Kryptomena ADA vám bude pribúdať do peňaženky
+                                            aj tak. Za to, že stakujete ADA tokeny získavate pasívny príjem vo forme ADA tokenu.
+                                        </p>
+                                    </p>
+                                </p>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>APY (Annual Percentage Yield)</h2>
+                                    <p>
+                                        Definíciu a vysvetlenie toho, čo je APY sme uviedli v napríklad
+                                        <a href="/article/passive-income-with-neo">NEO a pasívny príjem</a>.
+
+                                        APY pre Cardano je momentálne na úrovni <strong>4,26%</strong>.
+                                        APY sa časom mení, nie je to konštantné číslo.
+                                        APY je oveľa vyššie ako úroky v tradičných bankách, čo je skvelé.
+                                        Navyše svoju investíciu máte pod kontrolou práve vy v peňaženke, nie banka.
+                                        Odtiaľto plynie aj nedostatok a to ten, že o bezpečnosť investície teda o
+                                        bezpečnosť Exodusu vo vašom počítači sa staráte vy (zálohy, hack útoky...).
+                                        V porovnaní s eurom sú kryptomeny veľmi volatilné, čo znamená, že vaša investícia
+                                        sa zhodnotí 4,26% ročne, ale je možné , že cena za mincu poklesne / porastie veľmi výrazne.
+                                    </p>
+                                </p>
+
+                                <p>
+                                    <br /><br />
+                                    <h2>Konkrétny príklad a varovanie</h2>
+                                    <p>
+                                        Povedzme, že nakúpite ADA v hodnote 1000 eur a hodnota jedného ADA sa celý rok
+                                        nezmení. Pri zhodnotení <strong>4,26%</strong> budete mať na konci roka ADA tokeny v hodnote
+                                        približne 1042,6 eur. Realita výnosov a strát môže byť absolútne iná pokiaľ
+                                        cena tokenov ADA tokenov vyrazí hore a opäť iná no menej prívetivá, keď sa
+                                        rozhodne ísť opačným smerom.
+
+                                        <br /><br />
+
+                                        ADA je jednou z kryptomien, ktoré ponúkajú relatívne dobré zhodnotenie.
+                                        Ide však o jeden z mála projektov, ktorým sa pripisuje veľký potenciál a budúcnosť.
+                                        Z tohto pohľadu je 4,26% veľmi zaujímavých.
+                                    </p>
+                                </p>
+
+
+
+                                <div th:replace="fragments/article-ending" th:remove="tag"></div>
+
+                                <br /><br />
+
+                                <h2>Ďalšie populárne články</h2>
+                                <a href="/article/passive-income-with-algorand">27.1.2021 - Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus</a><br />
+                                <a href="/article/passive-income-with-cosmos-atom">14.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke</a><br />
+                                <a href="/article/complete-guide-to-proof-of-work">7.2.2021 - 15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien</a><br />
+                                <a href="/article/btc-is-not-the-first">2.1.2021 - Prvá kryptomena nie je Bitcoin</a><br />
+                                <a href="/article/passive-income-with-exodus">17.1.2021 - Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke</a><br />
+                                <a href="/article/passive-income-with-neo">31.1.2021 - NEO-spôsoby ako pasívne zarábať</a><br />
+
+                                <br /><br /><br />
+                                <div th:replace="fragments/social-networks"></div>
+                            </p>
+
+                            <p>
+                            <h3>Zdroje</h3>
+                            <ul>
+                                <li><a href="https://support.exodus.com/article/1498-cardano-staking-faq#choose-amount-and-aspend" target="_blank">[1] Cardano staking Exodus</a></li>
+                                <li><a href="https://www.kraken.com/learn/what-is-cardano-ada" target="_blank">[2] Kraken - Čo je Cardano</a></li>
+                                <li><a href="https://roadmap.cardano.org/en/" target="_blank">[3] Cardano roadmap</a></li>
+                                <li><a href="https://cardano.org" target="_blank">[4] Cardano oficial</a></li>
+                            </ul>
+
+                            <br /><br />
+                            </p>
+
+                            <div class="fb-comments" data-href="https://www.kryptotipy.sk/article/passive-income-with-cardano" data-width="" data-numposts="5"></div>
+
+                            <br /><br />
+
+                            <div class="fb-share-button"
+                                 data-href="https://www.kryptotipy.sk/article/passive-income-with-cardano"
+                                 data-layout="button_count"
+                                 data-size="large">
+                                <a target="_blank"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-cardano&amp;src=sdkpreparse"
+                                   class="fb-xfbml-parse-ignore">Zdieľať</a>
+                            </div>
+                            <br /><br />
+
+
+                            <a th:href="${base_url}">Späť na hlavné stránky</a>
+                        </div>
+                        <div class="span4">
+
+                        </div>
+                    </div>
+                </article>
+                <!-- end article full post -->
+            </div>
+        </div>
+    </div>
+</section>

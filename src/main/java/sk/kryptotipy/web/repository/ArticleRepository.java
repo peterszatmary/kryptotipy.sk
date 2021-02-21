@@ -20,6 +20,15 @@ public class ArticleRepository {
         services.addAll(getKryptotipyContentView());
 
         services.add(new Article(
+                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
+                "article/passive-income-with-algorand",
+                "passive-income-with-algorand.jpg",
+                "27.1.2021 - PASÍVNY PRÍJEM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
+        ));
+
+        services.add(new Article(
                 "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
                 "article/passive-income-with-exodus",
                 "passive-income-with-exodus.jpg",
@@ -44,6 +53,15 @@ public class ArticleRepository {
         List<Article> services = new ArrayList<>();
 
         //TODO +1 day because Iam stupid and date does not contain Time Zone
+
+        services.add(new Article(
+                "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ADA ako eurá v banke",
+                "/article/passive-income-with-cardano",
+                "passive-income-with-cardano.png",
+                "21.2.2021 - PASÍVNY PRÍJEM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 21+1))
+        ));
 
         services.add(new Article(
                 "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM ako eurá v banke",
@@ -71,17 +89,6 @@ public class ArticleRepository {
                 "",
                         Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 1))
                 ));
-
-        services.add(new Article(
-                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
-                "article/passive-income-with-algorand",
-                "passive-income-with-algorand.jpg",
-                "27.1.2021 - PASÍVNY PRÍJEM",
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
-        ));
-
-
 
         return services;
     }
