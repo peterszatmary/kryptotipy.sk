@@ -75,11 +75,11 @@ public class SiteRepository {
         save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
         save(new SiteEntry("/article/complete-guide-to-proof-of-work", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
 
-        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
-        save(new SiteEntry("/article/passive-income-with-algorand", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
-        save(new SiteEntry("/article/passive-income-with-neo", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
-        save(new SiteEntry("/article/passive-income-with-cosmos-atom", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
-        save(new SiteEntry("/article/passive-income-with-cardano", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 21)));
+        save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 22)));
+        save(new SiteEntry("/article/passive-income-with-algorand", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 22)));
+        save(new SiteEntry("/article/passive-income-with-neo", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 22)));
+        save(new SiteEntry("/article/passive-income-with-cosmos-atom", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 22)));
+        save(new SiteEntry("/article/passive-income-with-cardano", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 22)));
     }
 
 

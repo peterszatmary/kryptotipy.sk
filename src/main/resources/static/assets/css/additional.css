@@ -392,9 +392,7 @@ input.filter-component[type="checkbox"] {
     margin-left: 0px;
 }
 
-#filter-component {
-    display: none;
-}
+
 
 
 /* ===========================================================
@@ -402,9 +400,12 @@ input.filter-component[type="checkbox"] {
    ======================================================== */
 
 @media (min-width: 981px) {
-        .margin {
-            margin-left: 25px;
-        }
+    .margin {
+        margin-left: 25px;
+    }
+    div#filter-component {
+        display: block;
+    }
 }
 
 @media (min-width: 561px) and (max-width: 980px) {
@@ -414,9 +415,12 @@ input.filter-component[type="checkbox"] {
     .border-test {
         border: none;
     }
-        .margin {
-            margin-left: 0px;
-        }
+    .margin {
+        margin-left: 0px;
+    }
+    div#filter-component {
+        display: block;
+    }
 }
 
 @media (min-width: 371px) and (max-width: 560px) {
@@ -430,6 +434,9 @@ input.filter-component[type="checkbox"] {
     .margin {
         margin-left: 0px;
     }
+    div#filter-component {
+        display: none;
+    }
 }
 
 
@@ -442,9 +449,12 @@ input.filter-component[type="checkbox"] {
         border: none;
     }
 
-        .margin {
-            margin-left: 0px;
-        }
+    .margin {
+        margin-left: 0px;
+    }
+    div#filter-component {
+        display: none;
+    }
 }
 
 
@@ -507,6 +517,3 @@ input[type=checkbox]:checked:disabled + label:before {
   background-color: #bfb;
   border-color: #bfb;
 }
-
-
-
