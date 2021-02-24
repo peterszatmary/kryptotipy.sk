@@ -2,6 +2,7 @@ package sk.kryptotipy.web.repository;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -43,6 +44,17 @@ public class PostJdbcRepository {
         }
 
         return posts;
+    }
+
+    public Post findByUrl(String url) {
+        List<Post> posts = new ArrayList<>();
+        try {
+            posts  = jdbcTemplate.query(QueryFactory.postByUrl(), new PostMapper(jdbcTemplate), url + "%");
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return posts.get(0); //TODO what if two ? than it means problem in data consistency !
     }
 
     public List<Post> getPostsByI18n(String i18n, Long from, Long to) {
@@ -92,5 +104,10 @@ public class PostJdbcRepository {
             e.printStackTrace();
         }
         return posts;
+    }
+
+    public boolean updatePostClicks(String url, Integer clicks) {
+        return jdbcTemplate.update("update post set clicks = ? where url like ?",
+                clicks, url + "%") > 0;
     }
 }

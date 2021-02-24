@@ -244,8 +244,8 @@
 
 @media (min-width: 1025px) {
     div.iframe_post {
-        margin-top: 100px;
-        text-align: center;
+        margin-top: 0px;
+        text-align: right;
     }
     section.iframe_post{
         padding: 0px;
@@ -259,7 +259,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     div.iframe_post {
         margin-top: 0px;
-        text-align:center;
+        text-align:right;
     }
     section.iframe_post {
         padding: 0px;
@@ -274,7 +274,7 @@
 @media (max-width: 767px) {
     .iframe_post {
         margin-top: 0px;
-        text-align: center;
+        text-align: right;
     }
 
     section.iframe_post{
@@ -293,7 +293,7 @@
 @media (min-width: 580px) and (max-width: 767px) {
     .iframe_post {
         margin-top: 0px;
-        text-align: center;
+        text-align: right;
     }
 
     section.iframe_post{
@@ -320,7 +320,7 @@
 @media (max-width: 480px) {
     .iframe_post {
         margin-top: 0px;
-        text-align:center;
+        text-align:right;
     }
 
     section.iframe_post{
@@ -342,7 +342,7 @@ div.did-you-know ul li {
     margin-bottom: 15px;
 }
 
-
+/** kryptotipy.sk - all other   */
 
 @media (min-width: 520px) {
     img#banner_render {
@@ -363,6 +363,24 @@ div.did-you-know ul li {
         height: 40px;
     }
 }
+
+
+
+/** kryptotipy.sk - all other   */
+
+@media (min-width: 750px) {
+    img#banner_render_iframe {
+        content:url("/assets/img/logo/banner-small.png");
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 749px) {
+    img#banner_render_iframe {
+        content:url("/assets/img/logo/logo-40.png");
+    }
+}
+
 
 
 label.filter-component {
@@ -398,6 +416,17 @@ input.filter-component[type="checkbox"] {
 /* ===========================================================
    optimalization of filter component on different screen sizes
    ======================================================== */
+@media (min-width: 1028px) {
+    div.social-panel {
+        padding-right: 150px;
+    }
+}
+
+@media (min-width: 981px) and (max-width:1027px) {
+    div.social-panel {
+        padding-right: 25px;
+    }
+}
 
 @media (min-width: 981px) {
     .margin {
@@ -421,6 +450,9 @@ input.filter-component[type="checkbox"] {
     div#filter-component {
         display: block;
     }
+    div.social-panel {
+        padding-right: 25px;
+    }
 }
 
 @media (min-width: 371px) and (max-width: 560px) {
@@ -436,6 +468,9 @@ input.filter-component[type="checkbox"] {
     }
     div#filter-component {
         display: none;
+    }
+    div.social-panel {
+        padding-right: 25px;
     }
 }
 
@@ -454,6 +489,9 @@ input.filter-component[type="checkbox"] {
     }
     div#filter-component {
         display: none;
+    }
+    div.social-panel {
+        padding-right: 15px;
     }
 }
 

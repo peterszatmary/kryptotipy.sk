@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" itemscope itemtype="https://schema.org/WebSite">
+
+    <div th:replace="fragments/header"></div>
+
+    <body id="top">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3RDJ8D"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div th:replace="fragments/cookies"></div>
+
+        <header>
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <div style="float:left;">
+                            <!-- logo -->
+                            <a class="brand logo" th:href="${base_url}">
+                                <img id="banner_render_iframe" th:alt="${page_title}" />
+                            </a>
+                        </div>
+
+
+                            <div style="float:right; margin-bottom:20px; margin-top:20px; margin-right:20px;">
+                                <div class="iframe_post">
+                                    <div>
+                                        <div style="font-size: 15px; margin-top: 3px;">
+                                            Práve prezeráte stránky <span th:text="${one_post.sourceRender}"></span>
+                                        </div><br />
+                                        <a class="btn btn-success" style="background-color: #94c045" href="/news">Späť na novinky</a>
+                                        <a class="btn btn-light" th:href="${one_post.url}">Prejsť na stránky <span th:text="${one_post.sourceRender}"></span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                    </div>
+
+                        <div class="social-panel" style="background-color: #262626; color: #f2f2f2; text-align:right; padding-top:10px; padding-bottom: 10px;">
+                            <i class="icon-eye-open" style="font-size:17px;">VIDENÉ&nbsp;<span th:text="${one_post.views}"></span></i>
+    <!--                        <i class="icon-heart-empty" style="font-size:17px;">&nbsp;78</i>-->
+    <!--                        <i class="icon-plus" style="font-size:17px;"></i>-->
+                        </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- self content start -->
+        <section class="iframe_post">
+            <iframe th:src="${one_post.url}" style="height:900px;width:100%;" th:title="${one_post.url}">
+            </iframe>
+        </section>
+
+    </body>
+</html>

@@ -40,6 +40,16 @@ public class PostService implements PostServiceApi {
     }
 
     @Override
+    public Post getPostByUrl(String url) {
+        return postLabelRepository.findByUrl(url);
+    }
+
+    @Override
+    public boolean updatePostViews(String url, Integer views) {
+        return postLabelRepository.updatePostClicks(url, views);
+    }
+
+    @Override
     public List<Post> getNewestPosts() {
         List<Post> posts = postLabelRepository
                 .getNewestPosts();

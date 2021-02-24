@@ -1,10 +1,12 @@
 package sk.kryptotipy.web.data;
 
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -18,6 +20,7 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 @EqualsAndHashCode
 @ToString(exclude = {"content"})
 //@Table(name = "post")
+@Slf4j
 public class Post {
 
     @Id
@@ -56,6 +59,10 @@ public class Post {
     private Boolean external;
 
     @Setter
+    @Column(name = "clicks")
+    private Integer views;
+
+    @Setter
     @Column(name = "img_src")
     private String imgSrc;
 
@@ -63,14 +70,21 @@ public class Post {
     @Column(name = "source_render")
     private String sourceRender;
 
-//    @ManyToMany
+    //    @ManyToMany
 //    @JoinTable(
 //            joinColumns = @JoinColumn(name = "post_id"),
 //            inverseJoinColumns = @JoinColumn(name = "label_id"))
     @Setter
     private List<Label> labels;
 
-    @Transient
+    public String getPostUrl() {
+        if (useRedirectToSourceSite()) {
+            return this.url;
+        } else {
+            return "/one-post-frame/" + this.getProtocol() + "/" + this.getWWW() + "/" + this.sourceRender + "/" + this.getUrlLastPart();
+        }
+    }
+
     public String getI18nFlagRender() {
         switch (this.i18n) {
             case "SK" : { return "Slovenské novinky"; }
@@ -81,5 +95,45 @@ public class Post {
             case "HU" : { return "Maďarské novinky"; }
             default : return "Novinky";
         }
+    }
+
+    private String getUrlLastPart() {
+        if (null != url) {
+            String[] urlParts = url.split("/");
+            return urlParts[urlParts.length -1 ];
+        }
+        log.info("UrlLastPath = {}", "NA");
+        return "NA";
+    }
+
+    private String getProtocol() {
+        if (null != url) {
+            String[] urlParts = url.split("/");
+            String s = urlParts[0].replace(":","");
+            return "https".equals(s) ? "hs" : "h";
+        }
+        log.info("protocol = {}", "NA");
+        return "NA";
+    }
+
+    private String getWWW() {
+        if (null != url) {
+            return url.contains("www") ? "www" : "non-www";
+        }
+        log.info("protocol = {}", "NA");
+        return "NA";
+    }
+
+    /**
+     * some sources have to have direct redirect to their site and
+     * their content without kryptotipy iframe.
+     * @return
+     */
+    private boolean useRedirectToSourceSite() {
+        List<String> redirect = Arrays.asList(
+                "krypto.sk", // si tak praje
+                "kryptonovinky.sk" //TODO problem s redirectom
+        );
+        return this.url.contains(redirect.get(0)) || this.url.contains(redirect.get(1));
     }
 }

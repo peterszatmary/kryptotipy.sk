@@ -1,49 +1,23 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
-<!--                <li class="portfolio-item2" th:fragment="one_post(post)">-->
-<!--                    <div class="span3">-->
-<!--                        <div class="thumbnail">-->
-<!--                            <div class="image-wrapp">-->
-<!--                                <form th:action = "@{/one-post-frame/}" method = "POST">-->
-<!--                                    <input type="text" hidden th:name="post_url"/>-->
-<!--                                    <input type="submit"/>&ndash;&gt;-->
-<!--                                    <a th:href="@{${base_url + 'one-post-frame/'}}">-->
-<!--                                        <img th:src="@{${base_url + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />-->
-<!--                                        <article class="da-animate da-slideFromRight" style="display: block;">-->
-<!--                                            <h4 th:text="${post.titleRender}"></h4>-->
-<!--                                        </article>-->
-<!--                                    </a>-->
 
-<!--                                    <a th:href="@{${base_url + 'one-post-frame/' + post.url}}" th:utext="${post.titleRender}"  class="post-title" th:title="${post.title}" style="text-decoration: none;"></a>-->
-<!--                                </form>-->
-<!--                                    <span class="post-labels">-->
-<!--                                    <a th:each="label : ${post.labels}" th:href="@{${base_url + 'posts/' + label.name}}"  th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>-->
-<!--                                </span>-->
-<!--                                <span class="post-metadata">-->
-<!--                                    <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></span>-->
-<!--                                </span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </li>-->
 <li class="portfolio-item2" th:fragment="one_post(post)">
     <div class="span3">
         <div class="thumbnail">
             <div class="image-wrapp"  itemscope itemtype="https://schema.org/Article">
-                <a th:href="${post.url}" target="_blank" rel="nofollow">
+                <a th:href="${post.getPostUrl()}" rel="nofollow">
                     <img th:src="@{${'/' + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />
                     <article class="da-animate da-slideFromRight" style="display: block;" >
                         <h4 th:text="${post.titleRender}"></h4>
                     </article>
                 </a>
-                <a th:href="${post.url}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;" rel="nofollow"></a>
+                <a th:href="${post.getPostUrl()}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;" rel="nofollow"></a>
                 <span class="post-labels">
                       <a th:each="label : ${post.labels}" th:href="@{${'/posts/' + label.name}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                 </span>
                 <div class="post-metadata">
                     <a th:href="@{${'/news?lang=' + post.i18n}}">
                         <img th:src="@{${'/assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"
-                                 th:title="${post.getI18nFlagRender()}" th:alt="${post.getI18nFlagRender()}"
-                            />
+                                 th:title="${post.getI18nFlagRender()}" th:alt="${post.getI18nFlagRender()}"/>
                     </a>
                     <div th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></div>
                 </div>

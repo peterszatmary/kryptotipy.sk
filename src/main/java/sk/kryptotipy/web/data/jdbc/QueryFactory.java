@@ -6,7 +6,7 @@ public class QueryFactory {
 
     public static String newestPosts() {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
                 .append("ORDER BY p.birthday ")
@@ -17,7 +17,7 @@ public class QueryFactory {
 
     public static String postsByI18n() {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
                 .append("AND p.i18n = ? ")
@@ -29,7 +29,7 @@ public class QueryFactory {
 
     public static String postsByLabelAll() {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
                 .append("ORDER BY p.birthday ")
@@ -40,7 +40,7 @@ public class QueryFactory {
 
     public static String postsByLabel() {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, l.name ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, l.name ")
                 .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
                 .append("JOIN label l ON l.id = pl.label_id ")
                 .append("WHERE l.name = ? ")
@@ -68,7 +68,7 @@ public class QueryFactory {
 
     public static String postsByLabelsAndLangs(Integer labelsCount, Integer langsCount) {
         return new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, l.name ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, l.name ")
                 .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
                 .append("JOIN label l ON l.id = pl.label_id ")
                 .append("WHERE l.name in (")
@@ -81,6 +81,14 @@ public class QueryFactory {
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
                 .append("LIMIT ?,?")
+                .toString();
+    }
+
+    public static String postByUrl() {
+        return new StringBuilder()
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks ")
+                .append("FROM post p ")
+                .append("WHERE p.url like ? ") // because ending / can be present in url and can not be. it is optional
                 .toString();
     }
 

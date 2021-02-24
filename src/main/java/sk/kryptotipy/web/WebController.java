@@ -2,14 +2,11 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.amqp.AbstractRabbitListenerContainerFactoryConfigurer;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.repository.ArticleRepository;
@@ -72,20 +69,19 @@ public class WebController {
     @RequestMapping("/posts-by-i18n/{lang}")
     public String postsByI18n(Map<String, Object> model,
                               @PathVariable("lang") String lang, HttpServletRequest request) {
-       return x(null, lang, model, request);
+       return news(null, lang, model, request);
     }
 
 
     @RequestMapping("/posts/{label}")
     public String posts(Map<String, Object> model,
                         @PathVariable("label") String label, HttpServletRequest request) {
-        return x(label, null,  model, request);
+        return news(label, null,  model, request);
     }
 
 
-    //TODO
     @RequestMapping(value="/news", method = RequestMethod.GET)
-    public String x(String labell, String lang, Map<String, Object> model, HttpServletRequest request) {
+    public String news(String labell, String lang, Map<String, Object> model, HttpServletRequest request) {
 
         List<String> allLabels = labelRepo.getAllLabels()
                 .stream()
@@ -150,8 +146,6 @@ public class WebController {
             label_render = "Vybrané";
             //posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
         }
-
-
 
 
         pageData.set(model, customPageTitle);
@@ -362,10 +356,16 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/one-post-frame") //TODO iframe
+    @RequestMapping("/one-post-frame/{protocol}/{www}/{source_rendered}/{url_path}")
     public String onePostFrame(Map<String, Object> model,
-            @RequestParam(value = "post_url", required = false) String postUrl) {
-        //try {
+            @PathVariable(value = "source_rendered", required = false) String sourceRendered,
+            @PathVariable(value = "url_path", required = false) String urlPath,
+            @PathVariable(value = "protocol", required = false) String protocol,
+                               @PathVariable(value = "www", required = false) String www
+                               //HttpServletResponse response
+            //@PathVariable(value = "www", required = false) String www
+                               ) {
+        try {
             model.put("active_index", "");
             model.put("active_posts", "active");
             model.put("active_dictionary", "");
@@ -374,29 +374,49 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "one-post-frame");
 
-            //String postUrl = "https://kryptotrejder.sk/regulacie-v-usa-ziskavaju-realne-kontury-ohrozia-kryptomenovy-sektor/"; //TODO
-            String[] urlParts = postUrl.split("/");
-            String postUrlSource = urlParts[2];
-            String protocol = urlParts[0].replace(":", "");
-            String postUrlSourceLang = postUrlSource.split("\\.")[1];
-            String postUrlValue = urlParts[urlParts.length - 1];
-            String postTitle = postUrlValue.replace("-"," ") + " - " + postUrlSource;
+            String wwwStr = "www".equals(www) ? "www." : "";
+            String protocolStr = "hs".equals(protocol) ? "https" : "http";
+            String postUrl = protocolStr + "://" + wwwStr + sourceRendered + "/" + urlPath;
 
-            model.put("post_url_iframe", postUrl);
-            model.put("post_url_rendered", postUrlSource);
-            model.put("post_url_value", postUrlValue);
+            Post post = this.postService.getPostByUrl(postUrl);
 
-            log.info("one-post-frame.html");
-            pageData.set(model, postTitle);
-            return "one-post-frame";
+            System.out.println("labels=" + post.getLabels());
 
-//        } catch (Exception ex) {
-//            log.warn("one page frame : " + ex.getMessage());
-//            log.warn(ex.getCause() + "" + ex.getStackTrace());
-//            pageData.set(model, "404 Stránka nenájdená");
-//            return "redirect:/error";
-//        }
+
+            post.setViews(post.getViews() + 1);
+            postService.updatePostViews(post.getUrl(), post.getViews());
+            log.info("New view for post = {}, views = {}", post.getUrl(), post.getViews());
+
+            //model.put("post_url_iframe", postUrl);
+            //model.put("post_url_rendered", sourceRendered);
+            //model.put("post_url_value", urlPath);
+            //model.put("views", post.getViews());
+            //model.put("labels", post.getLabels());
+
+            model.put("one_post", post);
+
+            //TODO kryptotnovinky
+            //response.setHeader("X-Frame-Options", "https://www.kryptonovinky.sk");
+            //response.setHeader("Content-Security-Policy", "connect-src https://www.kryptonovinky.sk;connect-src https://google-analytics.com");
+
+            pageData.set(model, urlPath.replace("-"," ") + " - " + sourceRendered);
+
+            return "one-post";
+
+        } catch (Exception ex) {
+            log.warn("one page frame : sourceRendered={}, urlPath={}, protocol={}, www={}",
+                    sourceRendered,
+                    urlPath,
+                    protocol,
+                    www,
+                    ex.getMessage()
+            );
+            log.warn(ex.getCause() + "" + ex.getStackTrace());
+            pageData.set(model, "404 Stránka nenájdená");
+            return "redirect:/error";
+        }
     }
+
 
     private String getBtcPrice() {
         String btcPrice = String.valueOf(btcPriceService.getLatestPrice());
