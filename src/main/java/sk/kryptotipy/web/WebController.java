@@ -2,6 +2,7 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
@@ -361,8 +363,9 @@ public class WebController {
             @PathVariable(value = "source_rendered", required = false) String sourceRendered,
             @PathVariable(value = "url_path", required = false) String urlPath,
             @PathVariable(value = "protocol", required = false) String protocol,
-                               @PathVariable(value = "www", required = false) String www
-                               //HttpServletResponse response
+                               @PathVariable(value = "www", required = false) String www,
+                               HttpServletResponse response
+
             //@PathVariable(value = "www", required = false) String www
                                ) {
         try {
@@ -379,19 +382,11 @@ public class WebController {
             String postUrl = protocolStr + "://" + wwwStr + sourceRendered + "/" + urlPath;
 
             Post post = this.postService.getPostByUrl(postUrl);
-
             System.out.println("labels=" + post.getLabels());
-
 
             post.setViews(post.getViews() + 1);
             postService.updatePostViews(post.getUrl(), post.getViews());
             log.info("New view for post = {}, views = {}", post.getUrl(), post.getViews());
-
-            //model.put("post_url_iframe", postUrl);
-            //model.put("post_url_rendered", sourceRendered);
-            //model.put("post_url_value", urlPath);
-            //model.put("views", post.getViews());
-            //model.put("labels", post.getLabels());
 
             model.put("one_post", post);
 
@@ -400,6 +395,10 @@ public class WebController {
             //response.setHeader("Content-Security-Policy", "connect-src https://www.kryptonovinky.sk;connect-src https://google-analytics.com");
 
             pageData.set(model, urlPath.replace("-"," ") + " - " + sourceRendered);
+
+
+            //response.setHeader("Location", "https://www.google.sk");
+            //response.setStatus(302);
 
             return "one-post";
 

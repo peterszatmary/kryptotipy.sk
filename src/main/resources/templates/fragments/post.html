@@ -19,7 +19,15 @@
                         <img th:src="@{${'/assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"
                                  th:title="${post.getI18nFlagRender()}" th:alt="${post.getI18nFlagRender()}"/>
                     </a>
-                    <div th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}"></div>
+                    <div>
+                        <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}">
+                        </span>
+                        &nbsp;
+                        <i class="icon-eye-open" style="margin-right:-2px;"></i>
+                        <span th:text="${post.views}"></span>
+
+                    </div>
+
                 </div>
             </div>
         </div>
