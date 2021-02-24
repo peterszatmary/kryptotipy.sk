@@ -365,8 +365,6 @@ public class WebController {
             @PathVariable(value = "protocol", required = false) String protocol,
                                @PathVariable(value = "www", required = false) String www,
                                HttpServletResponse response
-
-            //@PathVariable(value = "www", required = false) String www
                                ) {
         try {
             model.put("active_index", "");
@@ -379,7 +377,11 @@ public class WebController {
 
             String wwwStr = "www".equals(www) ? "www." : "";
             String protocolStr = "hs".equals(protocol) ? "https" : "http";
-            String postUrl = protocolStr + "://" + wwwStr + sourceRendered + "/" + urlPath;
+            String additional =
+                    "krypto.sk".equals(sourceRendered) ||
+                            "krypto-meny.sk".equals(sourceRendered) ? "/l" : "";
+            String postUrl = protocolStr + "://" + wwwStr + sourceRendered + additional + "/" + urlPath;
+
 
             Post post = this.postService.getPostByUrl(postUrl);
             System.out.println("labels=" + post.getLabels());
@@ -396,10 +398,11 @@ public class WebController {
 
             pageData.set(model, urlPath.replace("-"," ") + " - " + sourceRendered);
 
+            if (post.useRedirectToSourceSite()) {
+                response.setHeader("Location", post.getUrl());
+                response.setStatus(302);
 
-            //response.setHeader("Location", "https://www.google.sk");
-            //response.setStatus(302);
-
+            }
             return "one-post";
 
         } catch (Exception ex) {

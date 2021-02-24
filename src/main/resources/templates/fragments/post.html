@@ -4,13 +4,13 @@
     <div class="span3">
         <div class="thumbnail">
             <div class="image-wrapp"  itemscope itemtype="https://schema.org/Article">
-                <a th:href="${post.getPostUrl()}" rel="nofollow">
+                <a th:href="${post.getPostViewUrl()}" rel="nofollow">
                     <img th:src="@{${'/' + post.imgSrc}}" th:alt="${post.title}" th:title="${post.title}" />
                     <article class="da-animate da-slideFromRight" style="display: block;" >
                         <h4 th:text="${post.titleRender}"></h4>
                     </article>
                 </a>
-                <a th:href="${post.getPostUrl()}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;" rel="nofollow"></a>
+                <a th:href="${post.getPostViewUrl()}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;" rel="nofollow"></a>
                 <span class="post-labels">
                       <a th:each="label : ${post.labels}" th:href="@{${'/posts/' + label.name}}" th:text="@{${label.name} + '&nbsp;&nbsp;' }"></a>
                 </span>

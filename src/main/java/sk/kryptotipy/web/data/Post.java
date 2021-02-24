@@ -77,12 +77,8 @@ public class Post {
     @Setter
     private List<Label> labels;
 
-    public String getPostUrl() {
-        if (useRedirectToSourceSite()) {
-            return this.url;
-        } else {
-            return "/one-post-frame/" + this.getProtocol() + "/" + this.getWWW() + "/" + this.sourceRender + "/" + this.getUrlLastPart();
-        }
+    public String getPostViewUrl() {
+        return "/one-post-frame/" + this.getProtocol() + "/" + this.getWWW() + "/" + this.sourceRender + "/" + this.getUrlLastPart();
     }
 
     public String getI18nFlagRender() {
@@ -129,7 +125,7 @@ public class Post {
      * their content without kryptotipy iframe.
      * @return
      */
-    private boolean useRedirectToSourceSite() {
+    public boolean useRedirectToSourceSite() {
         List<String> redirect = Arrays.asList(
                 "krypto.sk", // si tak praje
                 "kryptonovinky.sk" //TODO problem s redirectom
