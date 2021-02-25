@@ -13,6 +13,7 @@
 
               gtag('config', 'UA-182396559-1');
             </script>
+
         <!--        <meta HTTP-EQUIV="REFRESH" th:content="@{${'0; url=https://www.kryptotipy.sk/' + site}}">-->
         <link rel="canonical" th:href="@{${base_url_without_port + site}}" itemprop="url" />
 
@@ -92,6 +93,10 @@
                                         <div style="font-size: 15px; margin-top: 3px;">
                                             Prezeráte stránky <span th:text="${one_post.sourceRender}"></span>
                                         </div><br />
+
+
+
+                                        <div id="google_translate_element"></div>
                                         <a class="btn btn-success" style="background-color: #94c045" href="/news">Späť</a>
                                         <a class="btn btn-light" th:href="${one_post.url}" rel="nofollow">Prejsť na <span th:text="${one_post.sourceRender}"></span></a>
                                     </div>
@@ -116,6 +121,5 @@
             <iframe th:src="${one_post.url}" style="height:900px;width:100%;" th:title="${one_post.url}">
             </iframe>
         </section>
-
     </body>
 </html>
