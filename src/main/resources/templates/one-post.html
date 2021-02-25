@@ -1,7 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" itemscope itemtype="https://schema.org/WebSite">
 
-    <div th:replace="fragments/header"></div>
+    <!-- duplication just because noindex head -->
+    <head>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182396559-1"></script>
+        <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-182396559-1');
+            </script>
+        <!--        <meta HTTP-EQUIV="REFRESH" th:content="@{${'0; url=https://www.kryptotipy.sk/' + site}}">-->
+        <link rel="canonical" th:href="@{${base_url_without_port + site}}" itemprop="url" />
+
+
+        <meta charset="utf-8">
+        <title th:text="${page_title}"></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="ahrefs-site-verification" content="9db20406c04a652307c41783ebc05970f93314d929d54c484f05e0367eb3dae2" />
+        <meta name="description" th:content="${page_description}" />
+        <meta name="author" th:content="${page_author}" />
+
+        <!-- social open graph -->
+        <meta property="og:url" th:content="@{${base_url_without_port + site}}" itemprop="url" />
+        <meta property="og:title" th:content="${page_title}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" th:content="${page_description}" />
+        <meta property="og:site_name" th:content="${page_title}" />
+        <meta property="og:image" th:content="${page_image}" />
+        <meta property="og:image:width" th:content="${page_image_width}"/>
+        <meta property="og:image:height" th:content="${page_image_height}"/>
+        <meta property="og:article:published_time" th:content="${page_date}" />
+        <meta name="robots" content="noindex" />
+
+        <!-- social twitter cards -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" th:content="${page_title}" />
+        <meta name="twitter:image" th:content="${page_image}" />
+        <meta name="twitter:description" th:content="${page_description}" />
+        <meta name="twitter:site" th:content="@{${base_url_without_port + site}}" />
+        <meta name="twitter:image:alt" th:content="${page_description}" />
+
+
+        <!-- styles -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700" rel="stylesheet" />
+        <link href="/assets/css/bootstrap.css" rel="stylesheet" />
+        <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="/assets/css/docs.css" rel="stylesheet" />
+        <link href="/assets/js/google-code-prettify/prettify.css" rel="stylesheet" />
+        <link href="/assets/css/flexslider.css" rel="stylesheet" />
+        <link href="/assets/css/sequence.css" rel="stylesheet" />
+        <link href="/assets/css/style.css" rel="stylesheet" />
+        <link href="/assets/color/default.css" rel="stylesheet" />
+        <link href="/assets/css/additional.css" rel="stylesheet" />
+
+
+        <!-- fav and touch icons -->
+        <link href="/assets/ico/favicon.ico" type="image/png" rel="icon" />
+        <link href="/assets/ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144" />
+        <link href="/assets/ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" />
+        <link href="/assets/ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" />
+        <link href="/assets/ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon-precomposed" sizes="57x57" />
+        <link rel="alternate" type="application/rss+xml" title="Kryptotipy.sk RSS zdroj" th:href="@{${base_url + 'rss'}}" />
+    </head>
 
     <body id="top">
         <!-- Google Tag Manager (noscript) -->
