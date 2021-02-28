@@ -102,7 +102,7 @@ public class WebController {
         }
 
         final Integer ALL_LABELS = allLabels.size();
-        final Integer ALL_LANGS  = 2; //TODO from DB
+        final Integer ALL_LANGS  = 6; //TODO from DB
 
         Map<String, String[]> parameterMap = request.getParameterMap();
 
@@ -123,22 +123,21 @@ public class WebController {
         String label_render;
         String customPageTitle;
 
-        posts = (ALL_LABELS == labels.size() && ALL_LANGS == langs.size()) ?
-                this.postService.getPostsByLabelAll(from, to) :
+        if (labels.contains("all")) {
+            labels.remove("all");
+        }
+
+        posts = //(ALL_LABELS == labels.size() && ALL_LANGS == langs.size()) ?
+                //this.postService.getPostsByLabelAll(from, to) :
                 this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
 
         if (langs.size() == 1) {
             customPageTitle = getI18nText(langs.get(0));
             label_render = customPageTitle.split(" ")[0];
-            //posts = this.postService.getPostsByI18n(langs.get(0), 0L, appProperties.getPageSize());
         } else if (labels.size() == 1 && langs.size() == ALL_LANGS) {
             label_render = mapLabelForRendering(labels.get(0));
             customPageTitle = "Krypto novinky na tému " + label_render;
-            //posts = this.postService.getPostsByLabel(labels.get(0), 0L, appProperties.getPageSize());
-        } else if (labels.contains("all") || labels.size() == ALL_LABELS) { //TODO trasparency for all checkbox later
-            if (labels.contains("all")) {
-                labels.remove("all");
-            }
+        } else if (labels.size() == ALL_LABELS) { //TODO trasparency for all checkbox later
 
             customPageTitle = "Všetky krypto novinky";
             label_render = "Všetky";

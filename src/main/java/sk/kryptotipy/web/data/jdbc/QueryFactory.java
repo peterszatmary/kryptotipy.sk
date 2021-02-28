@@ -12,6 +12,7 @@ public class QueryFactory {
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
+                .append("AND p.i18n IN ('CZ','SK') ")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
                 .append("LIMIT 8")
@@ -96,7 +97,7 @@ public class QueryFactory {
                 .append("DESC ")
                 .append("LIMIT ?,?")
                 .toString();
-        //log.info(query);
+        log.info(query);
         return query;
     }
 
