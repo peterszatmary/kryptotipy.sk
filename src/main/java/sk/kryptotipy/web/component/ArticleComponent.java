@@ -134,6 +134,22 @@ public class ArticleComponent {
         );
     }
 
+    private void addArticlePassiveIncomeWithVechain() {
+
+        String postKey = "passive-income-with-vechain";
+        String postTitle = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu Vechain ako eurá v banke";
+        String postDescription = "Ako pasívne zarábať s kryptomenou Vechain držanou v peňaženke Exodus.";//TODO
+        String postImagePath = ".jpg";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 26, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePath,
+                imgWidth, imgHeight, postDate
+        );
+    }
+
     private void addAllPostsMeta() {
         String baseUrlWithoutPort = appProperties.getBaseUrlWithoutPort();
         postsMeta.put("post.image.all",           baseUrlWithoutPort + "assets/post-images/bitcoin/images_2.jpg");
@@ -201,6 +217,7 @@ public class ArticleComponent {
         addArticlePassiveIncomeWithAlgorand();
         addArticlePassiveIncomeWithCardano();
         addArticlePassiveIncomeWithCosmosAtom();
+        addArticlePassiveIncomeWithVechain();
         addArticleProofOfWork();
         addArticlePassiveIncomeWithNeo();
         addAllPostsMeta();

@@ -20,6 +20,15 @@ public class ArticleRepository {
         services.addAll(getKryptotipyContentView());
 
         services.add(new Article(
+                "NEO-spôsoby ako pasívne zarábať.  Exodus a ďalší pasívny príjem.",
+                "article/passive-income-with-neo",
+                "passive-income-with-neo.png",
+                "31.1.2021 - PASÍVNY PRÍJEM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 1))
+        ));
+
+        services.add(new Article(
                 "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
                 "article/passive-income-with-algorand",
                 "passive-income-with-algorand.jpg",
@@ -48,11 +57,22 @@ public class ArticleRepository {
         return services;
     }
 
+
+
     public List<Article> getKryptotipyContentView() {
 
         List<Article> services = new ArrayList<>();
 
         //TODO +1 day because Iam stupid and date does not contain Time Zone
+
+        services.add(new Article(
+                "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu VeChain (VET) ako eurá v banke",
+                "/article/passive-income-with-vechain",
+                "passive-income-with-vechain.jpg",
+                "28.2.2021 - PASÍVNY PRÍJEM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 26+1))
+        ));
 
         services.add(new Article(
                 "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ADA ako eurá v banke",
@@ -80,15 +100,6 @@ public class ArticleRepository {
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
         ));
-
-        services.add(new Article(
-                "NEO-spôsoby ako pasívne zarábať.  Exodus a ďalší pasívny príjem.",
-                "article/passive-income-with-neo",
-                "passive-income-with-neo.png",
-                "31.1.2021 - PASÍVNY PRÍJEM",
-                "",
-                        Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 1))
-                ));
 
         return services;
     }

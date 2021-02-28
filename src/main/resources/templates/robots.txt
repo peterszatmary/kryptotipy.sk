@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /one-page-frame/
+Sitemap: https://www.kryptotipy.sk/sitemap.xml

@@ -123,14 +123,14 @@ public class WebController {
         String label_render;
         String customPageTitle;
 
-        posts = (ALL_LABELS == labels.size() && ALL_LANGS == ALL_LANGS) ?
+        posts = (ALL_LABELS == labels.size() && ALL_LANGS == langs.size()) ?
                 this.postService.getPostsByLabelAll(from, to) :
                 this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
 
         if (langs.size() == 1) {
             customPageTitle = getI18nText(langs.get(0));
             label_render = customPageTitle.split(" ")[0];
-            posts = this.postService.getPostsByI18n(langs.get(0), 0L, appProperties.getPageSize());
+            //posts = this.postService.getPostsByI18n(langs.get(0), 0L, appProperties.getPageSize());
         } else if (labels.size() == 1 && langs.size() == ALL_LANGS) {
             label_render = mapLabelForRendering(labels.get(0));
             customPageTitle = "Krypto novinky na tému " + label_render;
@@ -149,6 +149,7 @@ public class WebController {
             //posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
         }
 
+        log.info("Posts count rendered = {}", posts.size());
 
         pageData.set(model, customPageTitle);
         model.put("site", mapSiteUrl(buildSiteUrl(labels, langs)));
