@@ -71,7 +71,7 @@ public class PostMapper implements RowMapper<Post> {
      * @return
      */
     private void setRenderPostTitle(Post post) {
-        int MAX_LENGTH = 50;
+        int MAX_LENGTH = 68;
         if (post.getTitle() == null) {
             post.setTitleRender("N/A");
             return;

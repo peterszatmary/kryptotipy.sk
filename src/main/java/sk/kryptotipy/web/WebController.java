@@ -91,10 +91,14 @@ public class WebController {
                 .collect(Collectors.toList());
 
         List<String> langs = new ArrayList<>();
-        List<String> labels = new ArrayList<>();
+        List<String> labels;
 
-        if (labell != null && !labell.contains(",")) {
-            labels = "all".equals(labell) ? allLabels : Arrays.asList(labell);
+        if (null == labell) {
+            labels = new ArrayList<>();
+        } else {
+            labels =
+                    labell != null && !labell.contains(",") ?
+                            Arrays.asList(labell) : Arrays.asList(labell.split(","));
         }
 
         if (lang != null && !lang.contains(",")) {
