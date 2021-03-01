@@ -83,19 +83,21 @@ public class WebController {
 
 
     @RequestMapping(value="/news", method = RequestMethod.GET)
-    public String news(String labell, String lang, Map<String, Object> model, HttpServletRequest request) {
+    public String news(String labell, String lang, Map<String, Object> model,
+                       HttpServletRequest request) {
 
         List<String> allLabels = labelRepo.getAllLabels()
                 .stream()
                 .map(label -> label.getName())
                 .collect(Collectors.toList());
 
-        List<String> langs = new ArrayList<>();
-        List<String> labels;
+        final Integer ALL_LABELS = allLabels.size();
+        final Integer ALL_LANGS  = 6; //TODO from DB
 
-        if (null == labell) {
-            labels = new ArrayList<>();
-        } else {
+        List<String> langs = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
+
+        if (null != labell) {
             labels =
                     labell != null && !labell.contains(",") ?
                             Arrays.asList(labell) : Arrays.asList(labell.split(","));
@@ -104,9 +106,6 @@ public class WebController {
         if (lang != null && !lang.contains(",")) {
             langs.add(lang);
         }
-
-        final Integer ALL_LABELS = allLabels.size();
-        final Integer ALL_LANGS  = 6; //TODO from DB
 
         Map<String, String[]> parameterMap = request.getParameterMap();
 
@@ -123,45 +122,29 @@ public class WebController {
         final Long from = 0L;
         final Long to = appProperties.getPageSize();
 
-        List<Post> posts;
-        String label_render;
-        String customPageTitle;
-
         if (labels.contains("all")) {
             labels.remove("all");
         }
 
-        posts = //(ALL_LABELS == labels.size() && ALL_LANGS == langs.size()) ?
-                //this.postService.getPostsByLabelAll(from, to) :
-                this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
-
-        if (langs.size() == 1) {
-            customPageTitle = getI18nText(langs.get(0));
-            label_render = customPageTitle.split(" ")[0];
-        } else if (labels.size() == 1 && langs.size() == ALL_LANGS) {
-            label_render = mapLabelForRendering(labels.get(0));
-            customPageTitle = "Krypto novinky na tému " + label_render;
-        } else if (labels.size() == ALL_LABELS) { //TODO trasparency for all checkbox later
-
-            customPageTitle = "Všetky krypto novinky";
-            label_render = "Všetky";
-            //posts = this.postService.getPostsByLabelAll(0L, appProperties.getPageSize());
-        } else {
-            customPageTitle = "Vybrané krypto novinky";
-            label_render = "Vybrané";
-            //posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+        List<Post> posts;
+        if (labels.size() == 1 && langs.size() == ALL_LANGS) {
+            posts = this.postService.getPostsByLabel(labels.get(0), from, to);
+        } else if (labels.size() == ALL_LABELS && langs.size() == 1) {
+            posts = this.postService.getPostsByI18n(langs.get(0), from, to);
+        } else if (labels.size() == ALL_LABELS && langs.size() == ALL_LANGS) {
+            posts = this.postService.getPostsByLabelAll(from, to);
+        }
+        else {
+            posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);//TODO az to opravis staci ti jeden SQL QUERY
         }
 
-        log.info("Posts count rendered = {}", posts.size());
+        setNewsRenderingTexts(labels, langs, model, ALL_LABELS, ALL_LANGS);
 
-        pageData.set(model, customPageTitle);
-        model.put("site", mapSiteUrl(buildSiteUrl(labels, langs)));
+        log.info("Posts count rendered = {}", posts.size());
         model.put("posts", posts);
-        model.put("label_render", customPageTitle);
         model.put("content_path", "fragments/content/posts");
         model.put("checked_labels", labels);
         model.put("checked_langs", langs);
-        model.put("label_render_path", StringUtils.capitalize(label_render));
         model.put("active_index", "");
         model.put("active_posts", "active");
         model.put("active_dictionary", "");
@@ -172,6 +155,36 @@ public class WebController {
         log.info("Posts filtered by labels count = {} labels = {} langs count = {} and langs = {}",
                 labels.size(), labels, langs.size(), langs);
         return "non-index";
+    }
+
+
+    private void setNewsRenderingTexts(List<String> labels, List<String> langs,
+                                       Map<String, Object> model,
+                                       Integer allLabelCount, Integer allLangsCount) {
+
+        String label_render;
+        String customPageTitle;
+        if (langs.size() == 1) {
+            customPageTitle = getI18nText(langs.get(0));
+            label_render = customPageTitle.split(" ")[0];
+        } else if (labels.size() == 1 && langs.size() == allLangsCount) {
+            label_render = mapLabelForRendering(labels.get(0));
+            customPageTitle = "Krypto novinky na tému " + label_render;
+        } else if (labels.size() == allLabelCount) { //TODO trasparency for all checkbox later
+
+            customPageTitle = "Všetky krypto novinky";
+            label_render = "Všetky";
+            //posts = this.postService.getPostsByLabelAll(0L, appProperties.getPageSize());
+        } else {
+            customPageTitle = "Vybrané krypto novinky";
+            label_render = "Vybrané";
+            //posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+        }
+
+        pageData.set(model, customPageTitle);
+        model.put("site", mapSiteUrl(buildSiteUrl(labels, langs)));
+        model.put("label_render", customPageTitle);
+        model.put("label_render_path", StringUtils.capitalize(label_render));
     }
 
     @RequestMapping("/external-services")

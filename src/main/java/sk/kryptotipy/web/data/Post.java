@@ -21,52 +21,43 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 @ToString(exclude = {"content"})
 //@Table(name = "post")
 @Slf4j
+@Setter
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Setter
     @Column(unique = true)
     private String url;
 
-    @Setter
     private String source;
 
     @Setter
     private String title;
 
-    @Setter
     @Transient
     private String titleRender;
 
     @Lob
-    @Setter
     private String content;
 
     @DateTimeFormat(iso = DATE)
-    @Setter
     private LocalDate birthday;
 
-    @Setter
     private String i18n;
 
-    @Setter
     private Boolean disabled;
 
     @Setter
     private Boolean external;
 
-    @Setter
     @Column(name = "clicks")
     private Integer views;
 
-    @Setter
     @Column(name = "img_src")
     private String imgSrc;
 
-    @Setter
     @Column(name = "source_render")
     private String sourceRender;
 
@@ -74,7 +65,6 @@ public class Post {
 //    @JoinTable(
 //            joinColumns = @JoinColumn(name = "post_id"),
 //            inverseJoinColumns = @JoinColumn(name = "label_id"))
-    @Setter
     private List<Label> labels;
 
     public String getPostViewUrl() {

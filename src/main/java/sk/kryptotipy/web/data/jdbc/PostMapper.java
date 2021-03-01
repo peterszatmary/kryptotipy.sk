@@ -31,6 +31,7 @@ public class PostMapper implements RowMapper<Post> {
         //Label label = new Label();
         //label.setName(rs.getString("l.name"));
 
+        post.setId(rs.getLong("p.id"));
         post.setUrl(rs.getString("p.url"));
         post.setTitle(rs.getString("p.title"));
         post.setI18n(rs.getString("p.i18n"));
@@ -40,6 +41,7 @@ public class PostMapper implements RowMapper<Post> {
         post.setSourceRender(rs.getString("p.source_render"));
         post.setImgSrc(rs.getString("p.img_src"));
         post.setViews(rs.getInt("p.clicks"));
+        //post.setLikes(rs.getInt("p.likes"));
         post.setBirthday(LocalDate.parse(rs.getString("p.birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         //post.setLabels(new HashSet<>(Arrays.asList(label)));
 
