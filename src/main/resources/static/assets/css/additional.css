@@ -37,6 +37,22 @@
     decoration: none;
 }
 
+.service-title {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    margin: 0px;
+    display: block;
+    font-size: medium;
+    color: #383838;
+    background-color: #f2f2f2;
+}
+
+.service-title a {
+    decoration: none;
+}
+
 .post-metadata {
   padding-top: 0px;
   padding-left: 15px;

@@ -9,7 +9,7 @@
                                     <h4 th:text="${service.name}"></h4>
                                 </article>
                             </a>
-                            <a th:href="${service.url}" class="post-title" th:text="${service.name}" target="_blank" style="text-decoration: none;" th:rel="${link_is_not_internal} ? 'external' : 'bookmark'"></a>
+                            <a th:href="${service.url}" class="service-title" th:text="${service.name}" target="_blank" style="text-decoration: none;" th:rel="${link_is_not_internal} ? 'external' : 'bookmark'"></a>
                             <span class="post-metadata" th:text="${service.description}"></span>
                         </div>
                     </div>
