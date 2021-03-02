@@ -81,7 +81,7 @@ public class SiteRepository {
         save(new SiteEntry("/article/passive-income-with-neo", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
         save(new SiteEntry("/article/passive-income-with-cosmos-atom", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
         save(new SiteEntry("/article/passive-income-with-cardano", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
-        save(new SiteEntry("/article/passive-income-with-vechain", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
+        save(new SiteEntry("/article/passive-income-with-vechain", 0.64D, LocalDate.of(2021, Month.MARCH, 2)));
     }
 
 
