@@ -86,9 +86,15 @@ public class Post {
     }
 
     private String getUrlLastPart() {
+        String result = "";
         if (null != url) {
             String[] urlParts = url.split("/");
-            return urlParts[urlParts.length -1 ];
+            result = urlParts[urlParts.length -1 ];
+            if ("kryptohodler.cz".equals(sourceRender) && result.contains("=")) {
+                String[] x = result.split("=");
+                result = x[x.length - 1];
+            }
+            return result;
         }
         log.info("UrlLastPath = {}", "NA");
         return "NA";
