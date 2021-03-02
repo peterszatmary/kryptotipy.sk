@@ -17,7 +17,7 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 //@Data
 @Getter
 //@Entity
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"id"})
 @ToString(exclude = {"content"})
 //@Table(name = "post")
 @Slf4j
@@ -54,6 +54,8 @@ public class Post {
 
     @Column(name = "clicks")
     private Integer views;
+
+    private Integer likes;
 
     @Column(name = "img_src")
     private String imgSrc;

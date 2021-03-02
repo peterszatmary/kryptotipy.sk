@@ -13,7 +13,9 @@ import sk.kryptotipy.web.data.jdbc.PostMapper;
 import sk.kryptotipy.web.data.jdbc.QueryFactory;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Repository
@@ -84,7 +86,7 @@ public class PostJdbcRepository {
     }
 
     public List<Post> getPostsByLabelsAndLang(List<String> labels, List<String> langs, Long from, Long to) {
-        List<Post> posts = new ArrayList<>();
+        List<Post> result = new ArrayList<>();
 
         try {
 
@@ -92,22 +94,36 @@ public class PostJdbcRepository {
             o.addAll(labels);
             o.addAll(langs);
             o.add(from);
-            o.add(to);
+            o.add(to(to));
 
-            posts  = jdbcTemplate.query(
+            List<Post> posts  = jdbcTemplate.query(
                     QueryFactory.postsByLabelsAndLangs(labels.size(), langs.size()),
                     new PostMapper(jdbcTemplate),
                     o.toArray()
             );
 
+            //System.out.println(">>>>>" + posts.size());
+
+            Set<Post> resultWithoutDuplicities = new HashSet<>();
+            posts.stream().forEach(post -> resultWithoutDuplicities.add(post));
+            result = new ArrayList<>(resultWithoutDuplicities);
+
+
+            //System.out.println(">>>>>" + resultWithoutDuplicities.size());
+
         } catch(Exception e){
             e.printStackTrace();
         }
-        return posts;
+        return result;
     }
 
     public boolean updatePostClicks(String url, Integer clicks) {
         return jdbcTemplate.update("update post set clicks = ? where url like ?",
                 clicks, url + "%") > 0;
+    }
+
+    private Long to(Long to) {
+        final Integer NUM_OF_LABELS = 5;
+        return to * NUM_OF_LABELS;
     }
 }
