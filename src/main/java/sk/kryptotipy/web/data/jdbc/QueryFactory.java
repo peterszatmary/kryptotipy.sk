@@ -103,7 +103,7 @@ public class QueryFactory {
 
     public static String postByUrl() {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.url like ? ") // because ending / can be present in url and can not be. it is optional
                 .toString();
