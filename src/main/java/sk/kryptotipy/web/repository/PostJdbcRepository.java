@@ -23,11 +23,14 @@ public class PostJdbcRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public List<Post> getNewestPosts() {
+    public List<Post> getNewestPosts(List<String> langs) {
         List<Post> posts = new ArrayList<>();
 
         try {
-            posts  = jdbcTemplate.query(QueryFactory.newestPosts(), new Object[] {}, new PostMapper(jdbcTemplate));
+            List<Object> o = new ArrayList<>();
+            o.addAll(langs);
+
+            posts  = jdbcTemplate.query(QueryFactory.newestPosts(langs.size()), new PostMapper(jdbcTemplate), o.toArray());
 
         } catch(Exception e){
             e.printStackTrace();

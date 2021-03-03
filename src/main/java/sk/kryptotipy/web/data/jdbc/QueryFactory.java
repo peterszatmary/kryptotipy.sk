@@ -7,12 +7,14 @@ import java.util.stream.IntStream;
 @Slf4j
 public class QueryFactory {
 
-    public static String newestPosts() {
+    public static String newestPosts(Integer langsCount) {
         String query = new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
-                .append("AND p.i18n IN ('CZ','SK') ")
+                .append("AND p.i18n IN (")
+                .append(_x(langsCount))
+                .append(")")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
                 .append("LIMIT 8")

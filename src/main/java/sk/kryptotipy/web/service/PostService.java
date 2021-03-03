@@ -50,9 +50,9 @@ public class PostService implements PostServiceApi {
     }
 
     @Override
-    public List<Post> getNewestPosts() {
+    public List<Post> getNewestPosts(List<String> langs) {
         List<Post> posts = postLabelRepository
-                .getNewestPosts();
+                .getNewestPosts(langs);
         return posts;
     }
 }

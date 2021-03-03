@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -41,7 +38,7 @@ public class WebController {
     private static final String MESSAGE_404_NOT_FOUND = "404 Stránka nenájdená";
 
     @RequestMapping("/")
-    public String index(Map<String, Object> model) {
+    public String index(Map<String, Object> model, HttpServletRequest request) {
 
         try {
             model.put("active_index", "active");
@@ -51,13 +48,14 @@ public class WebController {
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
             model.put("site", "");
-            model.put("posts", this.postService.getNewestPosts());
+            List<String> langs = new ArrayList<>();
+            setLangsByUserCountry(langs, request.getLocale());
+            model.put("posts", this.postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView());
             model.put("external_services", serviceRepo.getExternalServicesViews());
             log.info("index.html");
             pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celej európy.");
             model.put("btc_price", getBtcPrice());
-            model.put("eth_price", getBtcPrice());
             model.put("page_description", pageData.getPageDescription());
             return "index";
 
@@ -86,6 +84,9 @@ public class WebController {
     public String news(String labell, String lang, Map<String, Object> model,
                        HttpServletRequest request) {
 
+        List<String> langs = new ArrayList<>();
+
+
         List<String> allLabels = labelRepo.getAllLabels()
                 .stream()
                 .map(label -> label.getName())
@@ -94,24 +95,26 @@ public class WebController {
         final Integer ALL_LABELS = allLabels.size();
         final Integer ALL_LANGS  = 6; //TODO from DB
 
-        List<String> langs = new ArrayList<>();
+
         List<String> labels = new ArrayList<>();
 
         if (null != labell) {
             labels =
-                    labell != null && !labell.contains(",") ?
+                    labell != null && !labell.contains(",") && labels.contains(labell) ?
                             Arrays.asList(labell) : Arrays.asList(labell.split(","));
         }
 
-        if (lang != null && !lang.contains(",")) {
+        if (lang != null && !lang.contains(",") && !langs.contains(lang)) {
             langs.add(lang);
         }
 
         Map<String, String[]> parameterMap = request.getParameterMap();
 
-        if (langs.isEmpty()) {
-            langs =
-                    checkAndInitCheckBoxInput("lang", parameterMap, Arrays.asList("SK","CZ"));
+        if (langs.isEmpty() && null == parameterMap.get("lang")) {
+            Locale userLocale = request.getLocale();
+            setLangsByUserCountry(langs, userLocale);
+        } else {
+            langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
         }
 
         if (labels.isEmpty()) {
@@ -155,6 +158,33 @@ public class WebController {
         log.info("Posts filtered by labels count = {} labels = {} langs count = {} and langs = {}",
                 labels.size(), labels, langs.size(), langs);
         return "non-index";
+    }
+
+    private void setLangsByUserCountry(List<String> langs, Locale userLocale) {
+
+        log.info("Trying to read user locale = {},{}", userLocale, userLocale.getDisplayLanguage());
+        log.info("Lang is empty");
+
+        String userLanguage = userLocale.getLanguage();
+        if (!StringUtils.isEmpty(userLanguage)) {
+            String langLower = userLanguage.toLowerCase();
+            switch (langLower) {
+                case "sk" : { langs.add("SK"); langs.add("CZ");  break; }
+                case "cs" : { langs.add("SK"); langs.add("CZ"); break; }
+                case "de" : { langs.add("DE"); langs.add("CH"); break; }
+                case "pl" : { langs.add("PL"); break; }
+                case "hu" : { langs.add("HU"); break; }
+                default: {
+                    langs.add("SK");
+                    langs.add("CZ");
+                    langs.add("DE");
+                    langs.add("PL");
+                    langs.add("HU");
+                    langs.add("CH");
+                    break;
+                }
+            }
+        }
     }
 
 
@@ -553,17 +583,6 @@ public class WebController {
                 || (newUrl.contains("lang=" + lang) && (newUrl.split("label").length == 1));
     }
 
-
-    private List<String> checkAndInitCheckBoxInput(
-            String inputKey,
-            Map<String, String[]> parameterMap,
-            List<String> initValues
-    ) {
-        //TODO from DB
-        return (null == parameterMap.get(inputKey)) ?
-                initValues : new ArrayList<>(Arrays.asList(parameterMap.get(inputKey)));
-    }
-
     private String mapLabelForRendering(String label) {
         String result = label;
         if ("wallets".equals(label)) {
@@ -582,5 +601,15 @@ public class WebController {
             result = "burzy";
         }
         return result;
+    }
+
+    private List<String> checkAndInitCheckBoxInput(
+            String inputKey,
+            Map<String, String[]> parameterMap,
+            List<String> initValues
+    ) {
+        //TODO from DB
+        return (null == parameterMap.get(inputKey)) ?
+                initValues : new ArrayList<>(Arrays.asList(parameterMap.get(inputKey)));
     }
 }
