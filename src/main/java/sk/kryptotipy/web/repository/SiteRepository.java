@@ -27,7 +27,7 @@ public class SiteRepository {
         
         save(new SiteEntry("/external-services", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 19)));
         save(new SiteEntry("/did-you-know", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 26)));
-        save(new SiteEntry("/dictionary", LAST_MOD_DEFAULT, LocalDate.of(2021,Month.DECEMBER, 22)));
+        save(new SiteEntry("/dictionary", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.MARCH, 3)));
         save(new SiteEntry("/krypto-learning", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 17)));
 
         save(new SiteEntry("/posts/ripple", LAST_MOD_DEFAULT, ACTUAL_DATE));
@@ -76,12 +76,19 @@ public class SiteRepository {
         save(new SiteEntry("/article/btc-is-not-the-first", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 26)));
         save(new SiteEntry("/article/complete-guide-to-proof-of-work", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 26)));
 
+        save(new SiteEntry("/news?lang=PL", 0.64D, ACTUAL_DATE));
+        save(new SiteEntry("/news?lang=HU", 0.64D, ACTUAL_DATE));
+        save(new SiteEntry("/news?lang=CH", 0.64D, ACTUAL_DATE));
+        save(new SiteEntry("/news?lang=DE", 0.64D, ACTUAL_DATE));
+
         save(new SiteEntry("/article/passive-income-with-exodus", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
         save(new SiteEntry("/article/passive-income-with-algorand", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
         save(new SiteEntry("/article/passive-income-with-neo", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
         save(new SiteEntry("/article/passive-income-with-cosmos-atom", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
         save(new SiteEntry("/article/passive-income-with-cardano", 0.64D, LocalDate.of(2021, Month.FEBRUARY, 28)));
         save(new SiteEntry("/article/passive-income-with-vechain", 0.64D, LocalDate.of(2021, Month.MARCH, 2)));
+
+
     }
 
 

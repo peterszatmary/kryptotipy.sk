@@ -9,6 +9,7 @@
 ```
 certbot renew --dry-run
 certbot renew
+openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```
 
 ### Automatic renew
@@ -31,7 +32,7 @@ snap install core; sudo snap refresh core
 apt-get remove certbot
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-ertbot certonly --standalone -d kryptotipy.sk -d www.kryptotipy.sk
+certbot certonly --standalone -d kryptotipy.sk -d www.kryptotipy.sk
 openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```
 
