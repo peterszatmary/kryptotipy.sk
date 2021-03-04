@@ -81,6 +81,9 @@ public class Post {
             case "CH" : { return "Švajčiarské novinky"; }
             case "PL" : { return "Poľské novinky"; }
             case "HU" : { return "Maďarské novinky"; }
+            case "CA" : { return "Kanadské novinky"; }
+            case "US" : { return "Americké novinky"; }
+            case "GB" : { return "Anglické novinky"; }
             default : return "Novinky";
         }
     }
