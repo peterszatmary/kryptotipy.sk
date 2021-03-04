@@ -189,6 +189,11 @@ public class WebController {
                 } else if (langLower.contains("hu")) {
                     langs.add("HU");
                     log.info("set HU by hu");
+                } else if (langLower.contains("en")) {
+                    langs.add("CA");
+                    langs.add("GB");
+                    langs.add("US");
+                    log.info("set CA,GB,US by en");
                 } else {
                     langs.add("SK");
                     langs.add("CZ");
