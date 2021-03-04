@@ -49,7 +49,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "");
             List<String> langs = new ArrayList<>();
-            setLangsByUserCountry(langs, request.getLocale());
+            setLangsByUserCountry(langs, request);
             model.put("posts", this.postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView());
             model.put("external_services", serviceRepo.getExternalServicesViews());
@@ -111,8 +111,7 @@ public class WebController {
         Map<String, String[]> parameterMap = request.getParameterMap();
 
         if (langs.isEmpty() && null == parameterMap.get("lang")) {
-            Locale userLocale = request.getLocale();
-            setLangsByUserCountry(langs, userLocale);
+            setLangsByUserCountry(langs, request);
         } else {
             langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
         }
@@ -160,31 +159,42 @@ public class WebController {
         return "non-index";
     }
 
-    private void setLangsByUserCountry(List<String> langs, Locale userLocale) {
+    private void setLangsByUserCountry(List<String> langs, HttpServletRequest request) {
 
-        log.info("Trying to read user locale = {},{}", userLocale, userLocale.getDisplayLanguage());
-        log.info("Lang is empty");
+        String userLocale = "";
+        String clientLocal = request.getHeader("Accept-Language");
+        if (!StringUtils.isEmpty(clientLocal)) {
+            userLocale = clientLocal.split(";")[0];
+        }
+        log.info("Trying to read client locale = {} userLocale = {}", clientLocal, userLocale);
 
-        String userLanguage = userLocale.getLanguage();
-        if (!StringUtils.isEmpty(userLanguage)) {
-            String langLower = userLanguage.toLowerCase();
-            switch (langLower) {
-                case "sk" : { langs.add("SK"); langs.add("CZ");  break; }
-                case "cs" : { langs.add("SK"); langs.add("CZ"); break; }
-                case "de" : { langs.add("DE"); langs.add("CH"); break; }
-                case "pl" : { langs.add("PL"); break; }
-                case "hu" : { langs.add("HU"); break; }
-                default: {
+        if (!StringUtils.isEmpty(userLocale)) {
+            String langLower = userLocale.toLowerCase();
+
+                if (langLower.contains("sk")) {
                     langs.add("SK");
                     langs.add("CZ");
+                    log.info("set SK and CZ by sk");
+                } else if (langLower.contains("cs")) {
+                    langs.add("SK");
+                    langs.add("CZ");
+                    log.info("set SK and CZ by cs");
+                } else if (langLower.contains("de")) {
                     langs.add("DE");
-                    langs.add("PL");
-                    langs.add("HU");
                     langs.add("CH");
-                    break;
+                    log.info("set DE and CH by de");
+                } else if (langLower.contains("pl")) {
+                    langs.add("PL");
+                    log.info("set PL by pl");
+                } else if (langLower.contains("hu")) {
+                    langs.add("HU");
+                    log.info("set HU by hu");
+                } else {
+                    langs.add("SK");
+                    langs.add("CZ");
+                    log.info("set SK and CZ by N/A");
                 }
             }
-        }
     }
 
 

@@ -126,7 +126,7 @@ public class PostJdbcRepository {
     }
 
     private Long to(Long to) {
-        final Integer NUM_OF_LABELS = 5;
-        return to * NUM_OF_LABELS;
+        final Integer NUM_OF_POSSIBLE_LABELS = 4;
+        return to * NUM_OF_POSSIBLE_LABELS;
     }
 }
