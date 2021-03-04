@@ -12,10 +12,7 @@ import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.jdbc.PostMapper;
 import sk.kryptotipy.web.data.jdbc.QueryFactory;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @AllArgsConstructor
 @Repository
@@ -107,7 +104,7 @@ public class PostJdbcRepository {
 
             //System.out.println(">>>>>" + posts.size());
 
-            Set<Post> resultWithoutDuplicities = new HashSet<>();
+            Set<Post> resultWithoutDuplicities = new LinkedHashSet<>();
             posts.stream().forEach(post -> resultWithoutDuplicities.add(post));
             result = new ArrayList<>(resultWithoutDuplicities);
 
