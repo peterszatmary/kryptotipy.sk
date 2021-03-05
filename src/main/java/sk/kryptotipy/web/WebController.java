@@ -168,9 +168,6 @@ public class WebController {
         }
         log.info("Trying to read client locale = {} userLocale = {}", clientLocal, userLocale);
 
-        //TODO not working so SK
-        userLocale = "sk";
-
         if (!StringUtils.isEmpty(userLocale)) {
             String langLower = userLocale.toLowerCase();
 

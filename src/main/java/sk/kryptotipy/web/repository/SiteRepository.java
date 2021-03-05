@@ -27,7 +27,7 @@ public class SiteRepository {
         
         save(new SiteEntry("/external-services", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 19)));
         save(new SiteEntry("/did-you-know", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 26)));
-        save(new SiteEntry("/dictionary", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.MARCH, 3)));
+        save(new SiteEntry("/dictionary", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.MARCH, 5)));
         save(new SiteEntry("/krypto-learning", LAST_MOD_DEFAULT, LocalDate.of(2021, Month.JANUARY, 17)));
 
         save(new SiteEntry("/posts/ripple", LAST_MOD_DEFAULT, ACTUAL_DATE));
