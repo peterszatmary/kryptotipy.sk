@@ -20,6 +20,21 @@ public class ArticleComponent {
     private Map<String, String> postsMeta;
 
     private void addArticleProofOfWork() {
+        String postKey = "passive-income-with-polkadot-on-ledger";
+        String postTitle = "Pasívny zárobok s kryptomenu Polkadot (DOT) pomocou Nano Ledger";
+        String postDescription = "Hardvérová peňaženka Ledger Nano je prvou hardvérovou peňaženkou na svete, ktorá prináša moźnosť stakeovať Polkadot DOT tokeny. Článok rozoberá kompletne ako na to.";
+        String postImagePathExtension =  ".png";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.MARCH, 6, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePathExtension,
+                imgWidth, imgHeight, postDate
+        );
+    }
+
+    private void addArticlePassiveIncomeWithPolkadotOnLedger() {
         String postKey = "complete-guide-to-proof-of-work";
         String postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
         String postDescription = "Kompletný sprievodca algoritmami proof of work (PoW). Článok vysvetľuje aj ako funguje ťažba kryptomien, ako vyzerá blok a blockchain, výhody nevýhody tohto prístupu.";
@@ -220,6 +235,7 @@ public class ArticleComponent {
         addArticlePassiveIncomeWithVechain();
         addArticleProofOfWork();
         addArticlePassiveIncomeWithNeo();
+        addArticlePassiveIncomeWithPolkadotOnLedger();
         addAllPostsMeta();
     }
 
@@ -251,6 +267,4 @@ public class ArticleComponent {
     public String getPostImageHeight(String key) {
         return postsMeta.get("post.image.height." + key);
     }
-
-
 }

@@ -1,0 +1,443 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="centered">
+                        <h1 style="font-size: 22px;color: #fff;" th:text="${page_title}"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb notop">
+                    <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
+                    <li><a th:href="@{${base_url + 'krypto-learning'}}">Krypto learning</a><span class="divider">/</span></li>
+                    <li class="active"><span th:text="${page_title}" itemprop="name"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <article itemscope itemtype="https://schema.org/Article">
+                    <div class="heading">
+                        <h2 th:text="${post_title}" itemprop="name"></h2>
+                        <div class="fb-share-button"
+                             data-href="https://www.kryptotipy.sk/article/passive-income-with-polkadot-on-ledger"
+                             data-layout="button_count"
+                             data-size="large">
+                            <a target="_blank"
+                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-polkadot-on-ledger&amp;src=sdkpreparse"
+                               class="fb-xfbml-parse-ignore">Zdieľať</a>
+                        </div>
+                        <br /><br />
+                        <i>6.3.2020 (aktualizované 6.3.2021)</i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href="${base_url}">Späť na hlavné stránky</a>
+                    </div>
+
+                    <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">
+                        <img src="/assets/img/articles/index/article-passive-income-with-polkadot-on-ledger.png" alt="Polkadot passive incomes with Ledger Nano" width="638" />
+                    </a>
+
+                    <div class="clearfix">
+                    </div>
+                    <div class="row">
+                        <div class="span8">
+                            <p>
+                                <p>
+                                    <br /><br />
+
+                                    Polkadot je jednou z naskloňovanejších kryptomenových sietí súčasnosti.
+                                    Patrí do 3.generácie a snaží sa riešiť všetky neduhy súčasných blockchainov
+                                    (slabá škálovateľnosť, bezpečnosť, nedostatočná decentralizácia).
+                                    Polkadot dokáže ku svojmu
+                                    <strong>
+                                        <a href="https://wiki.polkadot.network/docs/en/learn-architecture" target="_blank">
+                                            Relay chain
+                                        </a>
+                                    </strong> pripájať aj existujúce
+                                    blockchainy ako ETH,
+                                    <a href="https://polkadot.network/bitcoin-is-coming-to-polkadot/" target="_blank">BTC</a> a ďalšie
+                                    pomocou
+                                    <strong>
+                                        <a href="https://wiki.polkadot.network/docs/en/learn-parachains" target="_blank">parachain</a>
+                                    </strong>ov, ktoré dokážu pracovať paralelne
+                                    vzhľadom na Relay chain, čo prispieva ku skvelej škálovateľnosti.
+                                    Využíva <strong>nominated proof-of-stake</strong> na validovanie transakcií a staking.
+
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/parachain-relaychain.png"
+                                         alt="Polkadot Relay chain a parachain"
+                                         title="Polkadot Relay chain a parachain"
+                                         width="638" />
+
+                                    <h3>Polkadot a validovanie</h3>
+                                    <ul>
+                                        <li>
+                                            Pred tým, než sa pustíme do vysvetlenia ako staking pomocou
+                                            <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">Ledger nano</a>
+                                            funguje, je dôležité si vysvetliť role ,a teda kto je kto v sieti.
+                                            <strong>Validátori</strong> sú uzly, ktoré validujú transakcie a potrebujú
+                                            vás ako nominátorov, aby im v tom pomáhali.
+                                        </li>
+                                        <li>
+                                            <strong>Nominátor</strong> (teda vy) môže nominovať až 16 validátorov, z čoho iba
+                                            jeden bude aktívny. Ak by bolo viac validátorov aktívnych, vždy dostanete DOT tokeny iba od jedného
+                                            z nich.
+                                        </li>
+                                        <li>
+                                            DOT tokeny sú vyplácané vždy keď končí takzvaná <strong>ERA</strong>.
+                                            <a href="https://wiki.polkadot.network/docs/en/maintain-guides-validator-payout" target="_blank">ERA trvá presne 24 hodín</a>.
+                                        </li>
+                                        <li>
+                                            Decentralizáciu Polkadot rieši <strong>obmedzením počtu nominátorov v poole
+                                            a to na 128. Toto číslo sa v čase mení.
+                                            <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">Ledger Nano</a>
+                                            vás na túto skutočnosť upozorňuje. Viď ibrázok nižšie.</strong>.
+                                        </li>
+                                        <li>
+                                            Znamená to, že sa nepokúšajte pripojiť k validátorovi, ktorému už pomáha
+                                            <strong>128 a viac nominátorov</strong>. Takýto validátor sa nazýva
+                                            <strong style="color: orange;">oversubscribed</strong>.
+                                            S najväčšou pravdepodobnosťou na konci dňa nedostanete žiadne
+                                            tokeny ako váš pasívny príjem. Takto sieť Polkadot núti ku vzniku
+                                            nových poolov.
+                                        </li>
+                                    </ul>
+
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/over-subscribed.png" title="" alt="" width="" />
+
+                                    <br /><br /><br />
+                                    <h2>Polkadot a Ledger Nano</h2>
+                                    <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">Ledger Nano</a>
+                                    sa stala prvou hardvérovou peňaženkou, ktorá podporuje Polkadot staking.
+                                    Polkadot zaberie takmer 3/4 peňaženky Ledger Nano S (112 KB). Preto vám už ostane priestor
+                                    iba na jednu kryptomenu, aj to žial nie je možné vybrať zo všetkých podporovaných
+                                    (pretože niektoré zaberajú väčší priestor ako je ten voľný, ktorý ostal).
+                                    Odporúčame teda
+                                    <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">Ledger Nano X</a>, ktorá umožňuje mať viac ako 100 peňaženiek
+                                    na zariadení súčasne.
+
+
+                                    <br /><br />
+                                    <h3>Ako na pasívny príjem s peňaženkou Ledger Nano</h3>
+
+                                    To ako zariadenie prvýkrát nastaviť v tomto článku preskočíme a prejdeme rovno k stakingu.
+                                    Staking možno rozdeliť do nasledujúcich krokov, ktoré na seba nadväzujú.
+
+                                    <br /><br />
+
+                                    <ol>
+                                        <li><strong>Inštalácia Ledger Live</strong></li>
+                                        <li><strong>Inštalácia peňaženky Polkadot (Ledger Manažér)</strong></li>
+                                        <li><strong>Vytvorenie konta Polkadot</strong></li>
+                                        <li><strong>Poslanie si DOT tokenov alebo swap tokenov za Polkadot</strong></li>
+                                        <li><strong>Zablokovanie DOT tokenov na staking</strong></li>
+                                        <li><strong>Nominácia validátorov</strong></li>
+                                    </ol>
+
+                                    <br /><br />
+
+                                    <h4>1. Inštalácia Ledger Live</h4>
+                                    Ledger Live je softvér vďaka, ktorému dokážete
+                                    hardvérovú peňaženku Ledger Nano</a>
+                                    ovládať.
+                                    <a href="https://www.ledger.com/ledger-live" target="_blank">Ledger live</a> stiahnete
+                                    a nainštalujete z oficiálnych stránok.
+
+                                    <br /><br />
+
+                                    <h4>2. Inštalácia peňaženky Polkadot (Ledger Manažér)</h4>
+
+                                    Nasledujúcim krokom je inštalácia peňaženky Polkadot pomocou Ledger manažéra.
+
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/1-device-connect.png" title="" alt="" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/2-allow-ledger-connect.png" title="" alt="" width="" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/3-install-polkadot.png" title="" alt="" width="" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/4-installing-polkadot.png" title="" alt="" width="" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/5-polkadot-installed.png" title="" alt="" width="" />
+                                    <br /><br />
+
+
+                                    <br /><br />
+                                    <h4>3. Vytvorenie konta Polkadot</h4>
+                                    Potom ako peňaženka Polkadot existuje pokračujeme vytvorením konta Polkadot.
+
+                                    <br /><br />
+
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/6-add-polkadot-account.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/7-add-account-polkadot-ledger.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/8-add-account-confirm.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/9-renaming-account.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/10-account-added.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/11-account-empty.png"
+                                         title="" alt="" width="" />
+                                    <br /><br />
+
+
+                                    <h4>4. Poslanie si DOT tokenov alebo swap tokenov za Polkadot</h4>
+
+                                    Predtým než začneme so stakingom je potrebné kúpiť / poslať si na peňaženku alebo
+                                    vymeniť kryptomeny za DOT tokeny.
+
+                                    <br /><br />
+
+                                    Polkadot možno kúpiť na overených burzách ako Binance alebo <a href="https://r.kraken.com/c/2683827/741638/10583" target="_blank">Kraken</a> a ďalších.
+
+                                    Ak už v peňaženke <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">Ledger Nano</a> máte nejaké kryptomeny,
+                                    môžete využiť jej vstavanú <strong>zmenáreň Swap</strong>.
+
+
+                                    <br /><br />
+                                    <h4>5. Zablokovanie DOT tokenov na staking</h4>
+
+                                    Proces stakingu vyžaduje, aby ste vaše DOT tokeny <strong>zablokovali</strong>.
+                                    Pozor! <strong>Proces odblokovania DOT tokenov trvá 28 dní</strong>. Na staking možno
+                                    použiť takmer ľuvobovoľné množstvo DOT tokenov. Pre potreby tohto článku sme blokovali a
+                                    využili 2 DOT tokeny na staking. Proces začnete stlačením tlačidla <strong>Earn rewards</strong>.
+
+                                    <br /><br />
+
+                                    Existujú aj iné spôsoby ako stakovať Polkadot, ale tie nemajú s
+                                    <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">
+                                    peňaženkou Ledger Nano</a> nič spoločné. Ide o burzy ako napríklad
+                                    <a href="https://r.kraken.com/c/2683827/741638/10583" target="_blank">Kraken</a>.
+
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/11-earn-rewards-start.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/12-earn-rewards-start.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/13-open-polka-on-device.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/14-polka-on-device-confirm.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/15-polka-bonded.png"
+                                         title="" alt="" width="500" />
+                                    <br /><br />
+
+                                    <h4>6. Nominácia validátorov</h4>
+                                    Posledným krokom je nominovanie takzvaných validátorov, ktorí budú validovať spolu s vami a ďalšími nominátormi transakcie a budú
+                                    za to odmenení v podobe DOT tokenov.
+
+                                    <br /><br />
+                                    <h5>6.1 Ako správne vybrať validátorov</h5>
+                                        <ol>
+                                            <li><strong>Počet validátorov</strong><br />
+                                                Môžete si vybrať až 16 vylidátorov. Odporúčame vybrať presne 16. Naspriek tomu, že
+                                                odmenu dostanete iba od jediného, zvýšite si tým šance byť odmenený. Môže sa stať, že si vyberiete
+                                                3 a z nejakého dôvodu (sú offline a podobne) nedostanete odmenu ani od jedného z nich.
+                                            </li>
+                                            <li><strong>Nízke poplatky(commissions)</strong><br />
+                                                Každý validátor si berie istú privíziu v percentách. Ide o takzvané <strong>commissions</strong>. Mala by byť, čo najnižsia.
+                                                Pozor na validátorov, ktorý berú 100%, čiže všetko.
+                                            </li>
+                                            <li>
+                                                <strong>Validátori pod 128 nominátorov</strong><br />
+                                                Validátor nesmie mať viac ako 128 nominátorov.
+                                                Všetko pod 128 je ok. Ak validátor má viac než 128 validátorov a vy budete 129-ty, nebudete dostávať odmenu v podobe DOT.
+                                                Takýto validátori sa nazývajú <strong>oversubscribed</strong> a
+                                                <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">
+                                                    peňaženka Ledger Nano</a> vás na nich upozorňuje tak, že ich vysvieti oranžovou farbou. Viď obrázok.
+                                            </li>
+                                        </ol>
+                                    <br /><br />
+                                    <h5>6.2 Ako vyzerá proces výberu validátora</h5>
+
+                                    Nomináciu začnete stlačením tlačidla <strong>Nominate</strong>, ktoré sa objaví na obrazovke tesne po tom, čo ste zablokovali svoje DOT tokeny.
+
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/start-nominating-button.png"
+                                         title="" alt="" width="300" />
+
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/16-over-subscribed.png"
+                                         title="" alt="" width="" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/17-nominations.png"
+                                         title="" alt="" width="" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/18-nominations-on-device.png"
+                                         title="" alt="" width="600" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/19-nominations-on-device-2.png"
+                                         title="" alt="" width="600" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/20-nominations-done.png"
+                                         title="" alt="" width="600" />
+                                    <br /><br />
+                                    <img src="/assets/img/articles/passive-income-with-polkadot-on-ledger/21-bonded.png" title="" alt="" width="" />
+                                    <br /><br /><br /><br />
+
+                                    <h2>Najčastejšie otázky</h2>
+
+                                    <br />
+                                    <h3>Minimálna čiastka na staking</h3>
+                                    Peňaženka Ledger vám dovolí stakeovať ľubovoľný počet DOT  tokenov.
+                                    Ak však chcete byť odmenený pasívnym príjmom DOT, budete musieť momentálne
+                                    stakeovať viac než 105 DOT. Toto množstvo sa časom mení.
+
+                                    <br /><br />
+                                    <h3>Nemám 105 DOT, no napriek tomu chcem pasívne zarábať</h3>
+                                    Ak nemáte tento počet tokenov a napriek tomu chcete pasívny príjem, tak aj keď neradi,
+                                    poradíme vám staking na burzách. Tie jednak nevyžadujú 105 DOT a dokonca neblokujú
+                                    vaše DOT na 28 dní po unstakingu.
+                                    Príkladom je <a href="https://r.kraken.com/c/2683827/741638/10583" target="_blank">Kraken</a>.
+                                    Týmto prístupom nie sú vaše DOT pod vašou kontrolou a zároveň podporujete centralizáciu Polkadot siete.
+
+                                    <br /><br />
+                                    <h3>Ako dlho musím čakať, kým dostanem odmenu?</h3>
+                                    Ak chcete potenciálne dostávať odmeny, budete si musieť počkať na koniec nasledujúcej
+                                    éry. Napríklad ak nominujete validátora počas éry N, vaša nominácia nadobudne platnosť
+                                    v ére N + 1, potom sú platby možné, keď skončí éra N + 1 a začne éra N + 2.
+                                    Éra trvá 24 hodín.
+
+                                    <br /><br />
+                                    <h3>Ako sa rozdeľujú odmeny?</h3>
+                                    Celková suma odmien dostupných pre každú éru je
+                                    <strong>rozdelená rovnomerne medzi validátorov</strong>
+                                    bez ohľadu na ich podiel (výplata konkrétneho overovateľa sa však môže líšiť
+                                    v závislosti od získaných bodov éry).
+
+                                    <br /><br />
+                                    <h3>Ako získam svoje odmeny?</h3>
+                                    Výplatu odmien môže spustiť ktorýkoľvek používateľ (zvyčajne overovateľ alebo jeden
+                                    z jeho nominantov). Keď ktorýkoľvek z nich spustí výplatu, všetci dostanú svoju odmenu.
+                                    <strong>Manuálne získavanie odmien nie je v službe Ledger Live podporované</strong>.
+                                    V dôsledku toho dostanete svoje odmeny bez toho, aby ste niečo podnikli, keď validátor,
+                                    ktorého si vyberiete, alebo ktokoľvek iný, kto nominoval rovnakého validátora, spustí vyplácanie odmien.
+                                    <strong>Vyplatenie je možné urobiť do 84 dní</strong>, potom môžu všetky zarobené DOT v jednej ére prepadnúť.
+
+                                    <br /><br />
+                                    <h3>Ak predsa nechcem čakať na vyplatenie odmeny?</h3>
+                                    Je potrebné použiť
+                                    <a href="https://polkadot.js.org/apps/#/explorer" target="_blank">oficiálnu peňaženku Polkadot.js</a>
+
+                                    <br /><br />
+                                    <h3>Existuje riziko stakeu na Polkadot?</h3>
+                                    V prípade systému Polkadot môže validátor a nominátor prísť o časť svojich aktív,
+                                    ak sa validátor správa nesprávne je offline napríklad dlhšie ako je dovolené.
+                                    Preto je dôležité  si premyslieť koho nominujete.
+
+
+                                    <br /><br />
+                                    <h3>Chcem kúpiť Nano Ledger X</h3>
+                                    Na kúpu hardvérovej peňaženky
+                                    <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">Nano Ledger X môžete využiť aj náš affiliate link</a>.
+                                    <br /><br />
+                                    <br /><br />
+
+                                    <div th:replace="fragments/article-ending" th:remove="tag"></div>
+
+                                    <br /><br />
+
+                                    <h2>Ďalšie populárne články</h2>
+                                    <a href="/article/passive-income-with-algorand">27.1.2021 - Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus</a><br />
+                                    <a href="/article/passive-income-with-vechain">28.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu Vechain ako eurá v banke</a><br />
+                                    <a href="/article/passive-income-with-cardano">21.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ADA (Cardano) ako eurá v banke</a><br />
+                                    <a href="/article/passive-income-with-cosmos-atom">14.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke</a><br />
+                                    <a href="/article/complete-guide-to-proof-of-work">7.2.2021 - 15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien</a><br />
+                                    <a href="/article/btc-is-not-the-first">2.1.2021 - Prvá kryptomena nie je Bitcoin</a><br />
+                                    <a href="/article/passive-income-with-exodus">17.1.2021 - Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke</a><br />
+                                    <a href="/article/passive-income-with-neo">31.1.2021 - NEO-spôsoby ako pasívne zarábať</a><br />
+
+                                    <br /><br /><br />
+                                    <div th:replace="fragments/social-networks"></div>
+                                </p>
+
+                            <p>
+                                <h3>Zdroje</h3>
+                                <ul>
+                                    <li>
+                                        <a href="https://polkadot.network/bitcoin-is-coming-to-polkadot/"
+                                           target="_blank">[1] Bitcoin prichádza na Polkadot</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://hackernoon.com/proof-of-stake-is-coming-of-age-and-polkadot-is-leading-the-pack-xzh33jq"
+                                           target="_blank">[2] Proof of stake</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.ledger.com/staking-polkadot"
+                                           target="_blank">[3] Staking Polkadot</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://wiki.polkadot.network/docs/en/maintain-polkadot-parameters"
+                                           target="_blank">[4] Polkadot parametre</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://polkaview.network/dot"
+                                           target="_blank">[5] Polkaview staking minimum chart</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://support.ledger.com/hc/en-us/articles/360018131260?utm_source=ledger_live_desktop&utm_medium=self_referral&utm_content=polkadot"
+                                           target="_blank">[6] Nano Ledger and Polkadot staking</a>
+
+                                    </li>
+
+                                </ul>
+
+
+
+
+                                <br /><br />
+                            </p>
+
+                            <div class="fb-comments" data-href="https://www.kryptotipy.sk/article/passive-income-with-polkadot-on-ledger" data-width="" data-numposts="5"></div>
+
+                            <br /><br />
+
+                            <div class="fb-share-button"
+                                 data-href="https://www.kryptotipy.sk/article/passive-income-with-polkadot-on-ledger"
+                                 data-layout="button_count"
+                                 data-size="large">
+                                <a target="_blank"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fpassive-income-with-polkadot-on-ledger&amp;src=sdkpreparse"
+                                   class="fb-xfbml-parse-ignore">Zdieľať</a>
+                            </div>
+                            <br /><br />
+
+
+                            <a th:href="${base_url}">Späť na hlavné stránky</a>
+                        </div>
+                        <div class="span4">
+
+                        </div>
+                    </div>
+                </article>
+                <!-- end article full post -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -20,6 +20,15 @@ public class ArticleRepository {
         services.addAll(getKryptotipyContentView());
 
         services.add(new Article(
+                "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien",
+                "/article/complete-guide-to-proof-of-work",
+                "complete-guide-to-proof-of-work.jpg",
+                "7.2.2021 - KRYPTO MINING",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
+        ));
+
+        services.add(new Article(
                 "NEO-spôsoby ako pasívne zarábať.  Exodus a ďalší pasívny príjem.",
                 "article/passive-income-with-neo",
                 "passive-income-with-neo.png",
@@ -66,6 +75,15 @@ public class ArticleRepository {
         //TODO +1 day because Iam stupid and date does not contain Time Zone
 
         services.add(new Article(
+                "Pasívny zárobok s kryptomenu Polkadot (DOT) pomocou Nano Ledger",
+                "/article/passive-income-with-polkadot-on-ledger",
+                "polka-ledger-nano-x.png",
+                "6.3.2021 - PASÍVNY PRÍJEM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.MARCH, 6+1))
+        ));
+
+        services.add(new Article(
                 "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu VeChain (VET) ako eurá v banke",
                 "/article/passive-income-with-vechain",
                 "passive-income-with-vechain.jpg",
@@ -90,15 +108,6 @@ public class ArticleRepository {
                 "14.2.2021 - PASÍVNY PRÍJEM",
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 14+1))
-        ));
-
-        services.add(new Article(
-                "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien",
-                "/article/complete-guide-to-proof-of-work",
-                "complete-guide-to-proof-of-work.jpg",
-                "7.2.2021 - KRYPTO MINING",
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
         ));
 
         return services;
