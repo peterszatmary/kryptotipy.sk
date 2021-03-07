@@ -77,7 +77,7 @@ public class ArticleRepository {
         services.add(new Article(
                 "Pasívny zárobok s kryptomenu Polkadot (DOT) pomocou Nano Ledger",
                 "/article/passive-income-with-polkadot-on-ledger",
-                "polka-ledger-nano-x.png",
+                "passive-income-with-polkadot-on-ledger.png",
                 "6.3.2021 - PASÍVNY PRÍJEM",
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.MARCH, 6+1))

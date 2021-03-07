@@ -19,10 +19,10 @@ public class ArticleComponent {
     private final AppProperties appProperties;
     private Map<String, String> postsMeta;
 
-    private void addArticleProofOfWork() {
+    private void addArticlePassiveIncomeWithPolkadotOnLedger() {
         String postKey = "passive-income-with-polkadot-on-ledger";
-        String postTitle = "Pasívny zárobok s kryptomenu Polkadot (DOT) pomocou Nano Ledger";
-        String postDescription = "Hardvérová peňaženka Ledger Nano je prvou hardvérovou peňaženkou na svete, ktorá prináša moźnosť stakeovať Polkadot DOT tokeny. Článok rozoberá kompletne ako na to.";
+        String postTitle = "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger";
+        String postDescription = "Hardvérová peňaženka Ledger Nano je prvou hardvérovou peňaženkou na svete, ktorá prináša možnosť stakeovať Polkadot DOT tokeny. Článok rozoberá kompletne ako na to.";
         String postImagePathExtension =  ".png";
         String imgWidth = "638";
         String imgHeight = "414";
@@ -34,11 +34,11 @@ public class ArticleComponent {
         );
     }
 
-    private void addArticlePassiveIncomeWithPolkadotOnLedger() {
+    private void addArticleProofOfWork() {
         String postKey = "complete-guide-to-proof-of-work";
         String postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
         String postDescription = "Kompletný sprievodca algoritmami proof of work (PoW). Článok vysvetľuje aj ako funguje ťažba kryptomien, ako vyzerá blok a blockchain, výhody nevýhody tohto prístupu.";
-        String postImagePathExtension =  ".jpg";
+        String postImagePathExtension =  ".png";
         String imgWidth = "638";
         String imgHeight = "414";
         LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 7, 0, 0);
