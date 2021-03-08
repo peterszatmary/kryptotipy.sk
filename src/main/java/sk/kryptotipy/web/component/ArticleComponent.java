@@ -22,7 +22,7 @@ public class ArticleComponent {
     private void addArticlePassiveIncomeWithPolkadotOnLedger() {
         String postKey = "passive-income-with-polkadot-on-ledger";
         String postTitle = "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger";
-        String postDescription = "Hardvérová peňaženka Ledger Nano je prvou hardvérovou peňaženkou na svete, ktorá prináša možnosť stakeovať Polkadot DOT tokeny. Článok rozoberá kompletne ako na to.";
+        String postDescription = "Hardvérová peňaženka Ledger Nano je prvou hardvérovou peňaženkou na svete, ktorá prináša možnosť stakeovať Polkadot DOT tokeny. Článok rozoberá ako pasívne zarobiť s Polkadot a Ledger.";
         String postImagePathExtension =  ".png";
         String imgWidth = "638";
         String imgHeight = "414";
@@ -51,7 +51,7 @@ public class ArticleComponent {
 
     private void addArticlePassiveIncomeWithCosmosAtom() {
         String postKey = "passive-income-with-cosmos-atom";
-        String postTitle = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke";
+        String postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke";
         String postDescription = "Pasívny zárobok vďaka kryptomene ATOM v sieti COSMOS. Sieť COSMOS ponúka solídny pasívny príjem a keď, k tomu" +
                 " pripočítame atraktivitu projektu, ide o veľmi zaujímavú investíciu a nielen o pasívny príjem.";
         String postImagePathExtension =  ".jpg";
@@ -67,7 +67,7 @@ public class ArticleComponent {
 
     private void addArticlePassiveIncomeWithCardano() {
         String postKey = "passive-income-with-cardano";
-        String postTitle = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ADA (Cardano) ako eurá v banke";
+        String postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ADA (Cardano) ako eurá v banke";
         String postDescription = "Pasívny zárobok vďaka kryptomene ADA v sieti Cardamo. Sieť Cardano ponúka solídny pasívny príjem a keď, k tomu" +
                 " pripočítame atraktivitu projektu, ide nielen o zaujímavú investíciu.";
         String postImagePathExtension =  ".png";
@@ -84,7 +84,7 @@ public class ArticleComponent {
     private void addArticlePassiveIncomeExodus() {
 
         String postKey = "passive-income-with-exodus";
-        String postTitle = "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke";
+        String postTitle = "Pasívny príjem s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke";
         String postDescription = "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v" +
                 " banke. 7 kryptomien, 7 spôsobov ako pasívne zarábať.";
         String postImagePath = ".jpg";
@@ -152,7 +152,7 @@ public class ArticleComponent {
     private void addArticlePassiveIncomeWithVechain() {
 
         String postKey = "passive-income-with-vechain";
-        String postTitle = "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu Vechain ako eurá v banke";
+        String postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu Vechain ako eurá v banke";
         String postDescription = "Ako pasívne zarábať s kryptomenou Vechain držanou v peňaženke Exodus.";//TODO
         String postImagePath = ".jpg";
         String imgWidth = "638";

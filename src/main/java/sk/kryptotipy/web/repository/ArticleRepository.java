@@ -29,7 +29,7 @@ public class ArticleRepository {
         ));
 
         services.add(new Article(
-                "NEO-spôsoby ako pasívne zarábať.  Exodus a ďalší pasívny príjem.",
+                "NEO-spôsoby ako pasívne zarábať. Exodus a ďalší pasívny príjem.",
                 "article/passive-income-with-neo",
                 "passive-income-with-neo.png",
                 "31.1.2021 - PASÍVNY PRÍJEM",
@@ -47,7 +47,7 @@ public class ArticleRepository {
         ));
 
         services.add(new Article(
-                "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
+                "Pasívny príjem s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
                 "article/passive-income-with-exodus",
                 "passive-income-with-exodus.jpg",
                 "17.1.2021 - PASÍVNY PRÍJEM",
@@ -75,7 +75,7 @@ public class ArticleRepository {
         //TODO +1 day because Iam stupid and date does not contain Time Zone
 
         services.add(new Article(
-                "Pasívny zárobok s kryptomenu Polkadot (DOT) pomocou Nano Ledger",
+                "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger",
                 "/article/passive-income-with-polkadot-on-ledger",
                 "passive-income-with-polkadot-on-ledger.png",
                 "6.3.2021 - PASÍVNY PRÍJEM",
@@ -84,7 +84,7 @@ public class ArticleRepository {
         ));
 
         services.add(new Article(
-                "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu VeChain (VET) ako eurá v banke",
+                "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu VeChain (VET) ako eurá v banke",
                 "/article/passive-income-with-vechain",
                 "passive-income-with-vechain.jpg",
                 "28.2.2021 - PASÍVNY PRÍJEM",
@@ -93,7 +93,7 @@ public class ArticleRepository {
         ));
 
         services.add(new Article(
-                "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ADA ako eurá v banke",
+                "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ADA ako eurá v banke",
                 "/article/passive-income-with-cardano",
                 "passive-income-with-cardano.png",
                 "21.2.2021 - PASÍVNY PRÍJEM",
@@ -102,7 +102,7 @@ public class ArticleRepository {
         ));
 
         services.add(new Article(
-                "Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM ako eurá v banke",
+                "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ATOM ako eurá v banke",
                 "/article/passive-income-with-cosmos-atom",
                 "passive-income-with-cosmos-atom.jpg",
                 "14.2.2021 - PASÍVNY PRÍJEM",

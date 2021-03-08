@@ -54,7 +54,7 @@ public class WebController {
             model.put("articles", articleRepo.getKryptotipyContentView());
             model.put("external_services", serviceRepo.getExternalServicesViews());
             log.info("index.html");
-            pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celej európy.");
+            pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celého sveta.");
             model.put("btc_price", getBtcPrice());
             model.put("page_description", pageData.getPageDescription());
             return "index";
@@ -93,7 +93,7 @@ public class WebController {
                 .collect(Collectors.toList());
 
         final Integer ALL_LABELS = allLabels.size();
-        final Integer ALL_LANGS  = 6; //TODO from DB
+        final Integer ALL_LANGS  = 9; //TODO from DB
 
 
         List<String> labels = new ArrayList<>();
@@ -140,7 +140,7 @@ public class WebController {
             posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);//TODO az to opravis staci ti jeden SQL QUERY
         }
 
-        setNewsRenderingTexts(labels, langs, model, ALL_LABELS, ALL_LANGS);
+        setNewsRenderingTexts(labels, langs, model, ALL_LABELS);
 
         log.info("Posts count rendered = {}", posts.size());
         model.put("posts", posts);
@@ -205,25 +205,31 @@ public class WebController {
 
     private void setNewsRenderingTexts(List<String> labels, List<String> langs,
                                        Map<String, Object> model,
-                                       Integer allLabelCount, Integer allLangsCount) {
-
+                                       Integer allLabelCount) {
         String label_render;
         String customPageTitle;
         if (langs.size() == 1) {
             customPageTitle = getI18nText(langs.get(0));
             label_render = customPageTitle.split(" ")[0];
-        } else if (labels.size() == 1 && langs.size() == allLangsCount) {
+        } else if (labels.size() == 1) {
             label_render = mapLabelForRendering(labels.get(0));
-            customPageTitle = "Krypto novinky na tému " + label_render;
+            customPageTitle = "Krypto novinky na tému " + StringUtils.capitalize(label_render);
         } else if (labels.size() == allLabelCount) { //TODO trasparency for all checkbox later
 
             customPageTitle = "Všetky krypto novinky";
             label_render = "Všetky";
-            //posts = this.postService.getPostsByLabelAll(0L, appProperties.getPageSize());
         } else {
-            customPageTitle = "Vybrané krypto novinky";
-            label_render = "Vybrané";
-            //posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
+            String pageTitle = "Krypto novinky na témy ";
+
+            StringBuilder labelsStr = new StringBuilder();
+            labelsStr.append("[ ");
+            labels.stream().forEach(label -> labelsStr.append(StringUtils.capitalize(label)).append(", "));
+            label_render = labelsStr
+                    .deleteCharAt(labelsStr.length() - 1)
+                    .deleteCharAt(labelsStr.length() - 1)
+                    .append(" ]")
+                    .toString();
+            customPageTitle = pageTitle + label_render;//"Vybrané";
         }
 
         pageData.set(model, customPageTitle);
@@ -313,7 +319,7 @@ public class WebController {
             log.info("krypto_learning.html");
             pageData.set(model, "Krypto learning");
             model.put("page_description", "Kryptotipy.sk nielenže agregujú zaujímavý " +
-                    "krypto obsah z celej európy, ale vytvára aj vlastný obsah. Čítajte " +
+                    "krypto obsah z celého sveta, ale vytvára aj vlastný obsah. Čítajte " +
                     "krypto články z pera kryptotipy.sk");
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 17, 0, 0) + "");
             return "non-index";

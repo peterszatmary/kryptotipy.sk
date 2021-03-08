@@ -34,7 +34,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_img_width", "85");
         model.put("page_img_height", "85");
         model.put("page_date", LocalDateTime.now());
-        model.put("page_description", pageTitleCustom + " zo všetkých podporovaných štátov európy. Najčerstvejšie krypto novinky z celej európy na jednom mieste. ");
+        model.put("page_description", pageTitleCustom + " z celého sveta na jednom mieste. Vždy najčerstvejšie krypto novinky.");
 
         articleComponent.addPostsAndArticlesMeta();
     }
