@@ -501,6 +501,9 @@ public class WebController {
             case "DE": return "Nemecké krypto novinky";
             case "PL": return "Poľské krypto novinky";
             case "HU": return "Maďarské krypto novinky";
+            case "GB": return "Britské krypto novinky";
+            case "CA": return "Kanadské krypto novinky";
+            case "US": return "Americké krypto novinky";
             default : return "Nezaradené krypto novinky";
         }
     }
