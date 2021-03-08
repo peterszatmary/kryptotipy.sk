@@ -161,45 +161,43 @@ public class WebController {
 
     private void setLangsByUserCountry(List<String> langs, HttpServletRequest request) {
 
-        String userLocale = "";
+        String userLocale = "SK";
         String clientLocal = request.getHeader("Accept-Language");
         if (!StringUtils.isEmpty(clientLocal)) {
             userLocale = clientLocal.split(";")[0];
         }
         log.info("Trying to read client locale = {} userLocale = {}", clientLocal, userLocale);
 
-        if (!StringUtils.isEmpty(userLocale)) {
-            String langLower = userLocale.toLowerCase();
+        String langLower = userLocale.toLowerCase();
 
-                if (langLower.contains("sk")) {
-                    langs.add("SK");
-                    langs.add("CZ");
-                    log.info("set SK and CZ by sk");
-                } else if (langLower.contains("cs")) {
-                    langs.add("SK");
-                    langs.add("CZ");
-                    log.info("set SK and CZ by cs");
-                } else if (langLower.contains("de")) {
-                    langs.add("DE");
-                    langs.add("CH");
-                    log.info("set DE and CH by de");
-                } else if (langLower.contains("pl")) {
-                    langs.add("PL");
-                    log.info("set PL by pl");
-                } else if (langLower.contains("hu")) {
-                    langs.add("HU");
-                    log.info("set HU by hu");
-                } else if (langLower.contains("en")) {
-                    langs.add("CA");
-                    langs.add("GB");
-                    langs.add("US");
-                    log.info("set CA,GB,US by en");
-                } else {
-                    langs.add("SK");
-                    langs.add("CZ");
-                    log.info("set SK and CZ by N/A");
-                }
-            }
+        if (langLower.contains("sk")) {
+            langs.add("SK");
+            langs.add("CZ");
+            log.info("set SK and CZ by sk");
+        } else if (langLower.contains("cs")) {
+            langs.add("SK");
+            langs.add("CZ");
+            log.info("set SK and CZ by cs");
+        } else if (langLower.contains("de")) {
+            langs.add("DE");
+            langs.add("CH");
+            log.info("set DE and CH by de");
+        } else if (langLower.contains("pl")) {
+            langs.add("PL");
+            log.info("set PL by pl");
+        } else if (langLower.contains("hu")) {
+            langs.add("HU");
+            log.info("set HU by hu");
+        } else if (langLower.contains("en")) {
+            langs.add("CA");
+            langs.add("GB");
+            langs.add("US");
+            log.info("set CA,GB,US by en");
+        } else {
+            langs.add("SK");
+            langs.add("CZ");
+            log.info("set SK and CZ by N/A");
+        }
     }
 
 
