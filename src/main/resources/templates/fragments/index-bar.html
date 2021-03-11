@@ -21,7 +21,7 @@
                                         <img src="/assets/img/icons/btc-icon.png"
                                              height="20"
                                              width="20"
-                                             alt="btc icon and current price" />
+                                             th:alt="#{indexbar.btc.price}" />
                                     </a>
                                     <span th:text="@{${'€ ' + btc_price}}"></span>
                                 </p>
@@ -29,49 +29,51 @@
                                     <!-- Layer 1 -->
                                     <li>
                                         <div class="info">
-                                            <h2>Informácie</h2>
+                                            <h2 th:text="#{indexbar.slider.1.title}"></h2>
                                             <br />
-                                            <h3>pre krypto-nadšencov</h3>
-                                            <p>
-                                                Slovenské a zahraničné krypto články z rôznych zdrojov sveta na jednom mieste.
-                                            </p>
-                                            <a class="btn btn-success" href="/posts/all">Všetky články</a>
+                                            <h3 th:text="#{indexbar.slider.1.2.title}"></h3>
+                                            <p th:text="#{indexbar.slider.1.description}"></p>
+                                            <a class="btn btn-success" href="/posts/all" th:text="#{indexbar.link.all.posts}"></a>
                                             <br />
                                         </div>
-                                        <img class="slider_img" src="/assets/img/slides/sequence/3.jpg" alt="slider image" />
+                                        <img class="slider_img" src="/assets/img/slides/sequence/3.jpg"
+                                             alt="Banner kryptotipy.sk" />
                                     </li>
 
-                                    <!-- Layer 1 -->
+                                    <!-- Layer 2 -->
                                     <li>
                                         <div class="info">
-                                            <h2>Informácie</h2>
+                                            <h2 th:text="#{indexbar.slider.2.title}"></h2>
                                             <br />
-                                            <h3>pre krypto-nadšencov</h3>
+                                            <h3 th:text="#{indexbar.slider.2.2.title}"></h3>
                                             <p>
-                                                Viac ako <span th:text="${posts_count}"></span> Slovenských a zahraničných krypto článkov.
+                                                <span th:text="#{indexbar.slider.2.count.a}"></span>
+                                                <span th:text="${posts_count}"></span>
+                                                <span th:text="#{indexbar.slider.2.count.b}"></span>
                                             </p>
-                                            <a class="btn btn-success" href="/posts/all">Všetky články</a>
+                                            <a class="btn btn-success" href="/posts/all" th:text="#{indexbar.link.all.posts}"></a>
                                             <br />
                                         </div>
-                                        <img class="slider_img" src="/assets/img/slides/sequence/4.jpg" alt="slider image" />
+                                        <img class="slider_img" src="/assets/img/slides/sequence/4.jpg"
+                                             alt="Banner kryptotipy.sk" />
                                     </li>
 
-
-                                    <!-- Layer 1 -->
+                                    <!-- Layer 3 -->
                                     <li>
                                         <div class="info">
-                                            <h2>Informácie</h2>
+                                            <h2 th:text="#{indexbar.slider.3.title}"></h2>
                                             <br />
                                             <h3><a href="https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933" target="_blank"> o krypto peňaženkách.</a></h3>
                                             <p>
 
                                             </p>
-                                            <a class="btn btn-success" href="/krypto-learning">Všetky články</a>
+                                            <a class="btn btn-success" href="/krypto-learning"
+                                               th:text="#{indexbar.link.all.posts}"></a>
                                             <br />
                                         </div>
 
-                                            <img class="slider_img" src="/assets/img/slides/sequence/TREZOR-T.jpg" alt="slider image" />
-
+                                        <img class="slider_img" src="/assets/img/slides/sequence/TREZOR-T.jpg"
+                                             alt="Banner kryptotipy.sk" />
                                     </li>
                                 </ul>
                             </div>

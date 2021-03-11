@@ -11,6 +11,6 @@ public interface PostServiceApi {
     List<Post> getPostsByI18n(String i18n, Long from, Long to);
     List<Post> getPostsByLabelsAndLangs(List<String> labels, List<String>langs, Long from, Long to);
     Post getPostByUrl(String url);
+    Post getPostByUrlPartAndSourceRendered(String urlPart, String sourceRendered);
     boolean updatePostViews(String url, Integer views);
-
 }

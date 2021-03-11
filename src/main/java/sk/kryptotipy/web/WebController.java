@@ -2,7 +2,7 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.filters.ExpiresFilter;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +15,7 @@ import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.repository.LabelRepository;
 import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
+import sk.kryptotipy.web.service.UtilityService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,16 +32,21 @@ public class WebController {
     private final PageDataServiceApi pageData;
     private final PostServiceApi postService;
     private final AppProperties appProperties;
+    private final UtilityService utilityService;
     private final BtcPriceService btcPriceService;
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
     private final LabelRepository labelRepo;
-    private static final String MESSAGE_404_NOT_FOUND = "404 Stránka nenájdená";
 
     @RequestMapping("/")
-    public String index(Map<String, Object> model, HttpServletRequest request) {
+    public String index(Map<String, Object> model,
+                        HttpServletRequest request) {
 
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
+
             model.put("active_index", "active");
             model.put("active_posts", "");
             model.put("active_dictionary", "");
@@ -51,17 +57,17 @@ public class WebController {
             List<String> langs = new ArrayList<>();
             setLangsByUserCountry(langs, request);
             model.put("posts", this.postService.getNewestPosts(langs));
-            model.put("articles", articleRepo.getKryptotipyContentView());
-            model.put("external_services", serviceRepo.getExternalServicesViews());
+            model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
+            model.put("external_services", serviceRepo.getExternalServicesViews(rbFromUrl));
             log.info("index.html");
-            pageData.set(model, "Agregátor najčerstvejších článkov o kryptomenách z celého sveta.");
+            pageData.set(model, rbFromUrl.getString("page.index.description"), rbFromUrl);
             model.put("btc_price", getBtcPrice());
             model.put("page_description", pageData.getPageDescription());
             return "index";
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error.html";
         }
     }
@@ -118,7 +124,7 @@ public class WebController {
 
         if (labels.isEmpty()) {
             labels =
-                    checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
+                    utilityService.checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
         }
 
         final Long from = 0L;
@@ -137,10 +143,10 @@ public class WebController {
             posts = this.postService.getPostsByLabelAll(from, to);
         }
         else {
-            posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);//TODO az to opravis staci ti jeden SQL QUERY
+            posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
         }
 
-        setNewsRenderingTexts(labels, langs, model, ALL_LABELS);
+        setNewsRenderingTexts(labels, langs, model, ALL_LABELS, request);
 
         log.info("Posts count rendered = {}", posts.size());
         model.put("posts", posts);
@@ -161,15 +167,7 @@ public class WebController {
 
     private void setLangsByUserCountry(List<String> langs, HttpServletRequest request) {
 
-        String userLocale = "SK";
-        String clientLocal = request.getHeader("Accept-Language");
-        if (!StringUtils.isEmpty(clientLocal)) {
-            userLocale = clientLocal.split(";")[0];
-        }
-        log.info("Trying to read client locale = {} userLocale = {}", clientLocal, userLocale);
-
-        String langLower = userLocale.toLowerCase();
-
+        String langLower = utilityService.consumeAcceptLang(request);
         if (langLower.contains("sk")) {
             langs.add("SK");
             langs.add("CZ");
@@ -203,22 +201,25 @@ public class WebController {
 
     private void setNewsRenderingTexts(List<String> labels, List<String> langs,
                                        Map<String, Object> model,
-                                       Integer allLabelCount) {
+                                       Integer allLabelCount, HttpServletRequest request) {
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         String label_render;
         String customPageTitle;
         if (langs.size() == 1) {
-            customPageTitle = getI18nText(langs.get(0));
+            customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
             label_render = customPageTitle.split(" ")[0];
         } else if (labels.size() == 1) {
-            label_render = mapLabelForRendering(labels.get(0));
-            customPageTitle = "Krypto novinky na tému " + StringUtils.capitalize(label_render);
+            label_render = utilityService.mapLabelForRendering(labels.get(0));
+            customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
         } else if (labels.size() == allLabelCount) { //TODO trasparency for all checkbox later
-
-            customPageTitle = "Všetky krypto novinky";
-            label_render = "Všetky";
+            customPageTitle = rbFromUrl.getString("crypto.news.title.all");
+            label_render = rbFromUrl.getString("filter.component.all");
         } else {
-            String pageTitle = "Krypto novinky na témy ";
+            String pageTitle = rbFromUrl.getString("crypto.news.themes");
 
+            //TODO cryptocurrency, exchange, ...
             StringBuilder labelsStr = new StringBuilder();
             labelsStr.append("[ ");
             labels.stream().forEach(label -> labelsStr.append(StringUtils.capitalize(label)).append(", "));
@@ -227,18 +228,21 @@ public class WebController {
                     .deleteCharAt(labelsStr.length() - 1)
                     .append(" ]")
                     .toString();
-            customPageTitle = pageTitle + label_render;//"Vybrané";
+            customPageTitle = pageTitle + label_render;
         }
 
-        pageData.set(model, customPageTitle);
-        model.put("site", mapSiteUrl(buildSiteUrl(labels, langs)));
+        pageData.set(model, customPageTitle, rbFromUrl);
+        model.put("site", utilityService.mapSiteUrl(utilityService.buildSiteUrl(labels, langs)));
         model.put("label_render", customPageTitle);
         model.put("label_render_path", StringUtils.capitalize(label_render));
     }
 
     @RequestMapping("/external-services")
-    public String externalServices(Map<String, Object> model) {
+    public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
 
             model.put("active_index", "");
@@ -249,25 +253,28 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "external-services");
             model.put("content_path","fragments/content/external_services");
-            model.put("services", serviceRepo.getExternalServices());
+            model.put("services", serviceRepo.getExternalServices(rbFromUrl));
             model.put("link_is_not_internal", true);
 
             log.info("external_services.html");
-            pageData.set(model, "Externé krypto služby");
+            pageData.set(model, rbFromUrl.getString("external.services.h1"), rbFromUrl);
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 19, 0, 0) + "");
-            model.put("page_description", "Služby, ktoré približujú používateľovi kryptomeny a krypto svet vznikajú po celom svete a je ich stále viac. Na stránkach kryptotipy.sk nájdete súhrn tých najzaujímavejších.");
+            model.put("page_description", rbFromUrl.getString("external.description"));
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("external-services : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error";
         }
     }
 
     @RequestMapping("/cooperation")
-    public String cooperation(Map<String, Object> model) {
+    public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
 
             model.put("active_index", "");
@@ -278,28 +285,28 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "cooperation");
             model.put("content_path","fragments/content/cooperation");
-            model.put("services", serviceRepo.getCooperationServices());
+            model.put("services", serviceRepo.getCooperationServices(rbFromUrl));
 
             log.info("cooperation.html");
-            pageData.set(model, "Spolupráca");
-            model.put("page_description", "Spolupráca s portálom kryptotipy.sk. " +
-                    "Výmena spätných odkazov (Backlink building), zobrazenie odkazov na " +
-                    "vaše články na kryptotipy.sk, článok o kryptotipy.sk, alebo iný druh " +
-                    "spolupráce.");
+            pageData.set(model, rbFromUrl.getString("footer.cooperation"), rbFromUrl);
+            model.put("page_description", rbFromUrl.getString("cooperation.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("cooperation : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error";
         }
     }
 
 
     @RequestMapping("/krypto-learning")
-    public String cryptoLearning(Map<String, Object> model) {
+    public String cryptoLearning(Map<String, Object> model, HttpServletRequest request) {
 
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
 
             model.put("active_index", "");
@@ -311,27 +318,28 @@ public class WebController {
             model.put("site", "krypto-learning");
             model.put("content_path","fragments/content/krypto_learning");
 
-            model.put("articles", articleRepo.getKryptotipyContent());
+            model.put("articles", articleRepo.getKryptotipyContent(rbFromUrl));
             model.put("link_is_not_internal", false);
 
             log.info("krypto_learning.html");
-            pageData.set(model, "Krypto learning");
-            model.put("page_description", "Kryptotipy.sk nielenže agregujú zaujímavý " +
-                    "krypto obsah z celého sveta, ale vytvára aj vlastný obsah. Čítajte " +
-                    "krypto články z pera kryptotipy.sk");
+            pageData.set(model, "Krypto learning", rbFromUrl);
+            model.put("page_description", rbFromUrl.getString("crypto.learning.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 17, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("krypto-learning : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error";
         }
     }
 
     @RequestMapping("/dictionary")
-    public String dictionary(Map<String, Object> model) {
+    public String dictionary(Map<String, Object> model, HttpServletRequest request) {
 
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
 
             model.put("active_index", "");
@@ -344,22 +352,20 @@ public class WebController {
             model.put("content_path", "fragments/content/dictionary");
 
             log.info("dictionary.html");
-            pageData.set(model, "Krypto slovník");
-            model.put("page_description",
-                    "Krypto slovník pomáha zorientovať sa v novom krypto svete a jeho krypto pojmoch. " +
-                            "Vysvetľuje najbežnejšie / najdôležitejšie krypto pojmy tvoriace doménu kryptomien.");
+            pageData.set(model, rbFromUrl.getString("dictionary.title"), rbFromUrl);
+            model.put("page_description", rbFromUrl.getString("dictionary.d"));
             model.put("page_date", LocalDateTime.of(2020, Month.DECEMBER, 22, 0, 0 ) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error";
         }
     }
 
     @RequestMapping("/robots.txt")
-    public String robotsTxt(Map<String, Object> model) {
+    public String robotsTxt() {
         log.info("robots.txt");
         return "robots.txt";
     }
@@ -367,8 +373,12 @@ public class WebController {
 
     @RequestMapping("/article/{postTitle}")
     public String post(Map<String, Object> model,
-                       @PathVariable("postTitle") String postTitle) {
+                       @PathVariable("postTitle") String postTitle, HttpServletRequest request) {
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
+
             model.put("active_index", "");
             model.put("active_posts", "");
             model.put("active_dictionary", "");
@@ -380,7 +390,7 @@ public class WebController {
             model.put("content_path","fragments/content/" + postTitle);
 
             log.info("article = {}", postTitle);
-            pageData.set(model, pageData.getPostTitle(postTitle));
+            pageData.set(model, pageData.getPostTitle(postTitle), rbFromUrl);
 
             model.put("page_title", pageData.getPostTitle(postTitle));
             model.put("page_description", pageData.getPostDescription(postTitle));
@@ -392,14 +402,17 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("{} : {}", postTitle, ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error";
         }
     }
 
     @RequestMapping("/did-you-know")
-    public String didYouKnow(Map<String, Object> model) {
+    public String didYouKnow(Map<String, Object> model, HttpServletRequest request) {
 
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
 
             model.put("active_index", "");
@@ -410,16 +423,15 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "did-you-know");
             model.put("content_path","fragments/content/did_you_know");
-            pageData.set(model, "Vedeli ste, že");
+            pageData.set(model, "Vedeli ste, že", rbFromUrl);
             log.info("did_you_know.html");
-            model.put("page_description", "Krypto sekcia, ktorá prináša krypto zaujímavosti " +
-                    "o rôznych kryptomenách z rôznych časových období, nielen aktuality.");
+            model.put("page_description", rbFromUrl.getString("did.you.know.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, MESSAGE_404_NOT_FOUND);
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error";
         }
     }
@@ -430,9 +442,14 @@ public class WebController {
             @PathVariable(value = "url_path", required = false) String urlPath,
             @PathVariable(value = "protocol", required = false) String protocol,
                                @PathVariable(value = "www", required = false) String www,
+                               HttpServletRequest request,
                                HttpServletResponse response
                                ) {
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
         try {
+
             model.put("active_index", "");
             model.put("active_posts", "active");
             model.put("active_dictionary", "");
@@ -441,16 +458,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "one-post-frame");
 
-            String wwwStr = "www".equals(www) ? "www." : "";
-            String protocolStr = "hs".equals(protocol) ? "https" : "http";
-            String additional =
-                    "krypto.sk".equals(sourceRendered) ||
-                            "krypto-meny.sk".equals(sourceRendered) ? "/l" : "";
-            String postUrl = protocolStr + "://" + wwwStr + sourceRendered + additional + "/" + urlPath;
-
-
-            Post post = this.postService.getPostByUrl(postUrl);
-            System.out.println("labels=" + post.getLabels());
+            Post post = this.postService.getPostByUrlPartAndSourceRendered(urlPath, sourceRendered);
 
             post.setViews(post.getViews() + 1);
             postService.updatePostViews(post.getUrl(), post.getViews());
@@ -458,16 +466,11 @@ public class WebController {
 
             model.put("one_post", post);
 
-            //TODO kryptotnovinky
-            //response.setHeader("X-Frame-Options", "https://www.kryptonovinky.sk");
-            //response.setHeader("Content-Security-Policy", "connect-src https://www.kryptonovinky.sk;connect-src https://google-analytics.com");
-
-            pageData.set(model, urlPath.replace("-"," ") + " - " + sourceRendered);
+            pageData.set(model, urlPath.replace("-"," ") + " - " + sourceRendered, rbFromUrl);
 
             if (post.useRedirectToSourceSite()) {
                 response.setHeader("Location", post.getUrl());
                 response.setStatus(302);
-
             }
             return "one-post";
 
@@ -480,7 +483,7 @@ public class WebController {
                     ex.getMessage()
             );
             log.warn(ex.getCause() + "" + ex.getStackTrace());
-            pageData.set(model, "404 Stránka nenájdená");
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl);
             return "redirect:/error";
         }
     }
@@ -489,149 +492,5 @@ public class WebController {
     private String getBtcPrice() {
         String btcPrice = String.valueOf(btcPriceService.getLatestPrice());
         return btcPrice.substring(0, btcPrice.length() - 2);
-    }
-
-    private String getI18nText(String i18n) {
-        switch(i18n) {
-            case "SK": return "Slovenské krypto novinky";
-            case "CZ": return "České krypto novinky";
-            case "CH": return "Švajčiarské krypto novinky";
-            case "DE": return "Nemecké krypto novinky";
-            case "PL": return "Poľské krypto novinky";
-            case "HU": return "Maďarské krypto novinky";
-            case "GB": return "Britské krypto novinky";
-            case "CA": return "Kanadské krypto novinky";
-            case "US": return "Americké krypto novinky";
-            default : return "Nezaradené krypto novinky";
-        }
-    }
-
-    private String buildSiteUrl(List<String> labels, List<String> langs) {
-        StringBuilder siteUrl = new StringBuilder("news?");
-        labels.stream().forEach(label -> siteUrl.append("label=").append(label).append("&"));
-        langs.stream().forEach(lang -> siteUrl.append("lang=").append(lang).append("&"));
-        siteUrl.delete(siteUrl.length() - 1, siteUrl.length());
-        return siteUrl.toString();
-    }
-
-    private String mapSiteUrl(String url) {
-
-        switch (url) {
-            case "news" :
-                return "posts/all";
-            case "news?label=cardano&lang=SK&lang=CZ" :
-                return "posts/cardano";
-            case "news?label=tezos&lang=SK&lang=CZ" :
-                return "posts/tezos";
-            case "news?label=bitcoin&lang=SK&lang=CZ" :
-                return "posts/bitcoin";
-            case "news?label=ethereum&lang=SK&lang=CZ" :
-                return "posts/ethereum";
-            case "news?label=exchange&lang=SK&lang=CZ" :
-                return "posts/exchange";
-            case "news?label=litecoin&lang=SK&lang=CZ" :
-                return "posts/litecoin";
-            case "news?label=polkadot&lang=SK&lang=CZ" :
-                return "posts/polkadot";
-            case "news?label=fed&lang=SK&lang=CZ" :
-                return "posts/fed";
-            case "news?label=ecb&lang=SK&lang=CZ" :
-                return "posts/ecb";
-            case "news?label=nbs&lang=SK&lang=CZ" :
-                return "posts/nbs";
-            case "news?label=neo&lang=SK&lang=CZ" :
-                return "posts/neo";
-            case "news?label=altcoin&lang=SK&lang=CZ" :
-                return "posts/altcoin";
-            case "news?label=monero&lang=SK&lang=CZ" :
-                return "posts/monero";
-            case "news?label=dash&lang=SK&lang=CZ" :
-                return "posts/dash";
-            case "news?label=vechain&lang=SK&lang=CZ" :
-                return "posts/vechain";
-            case "news?label=algorand&lang=SK&lang=CZ" :
-                return "posts/algorand";
-            case "news?label=ontology&lang=SK&lang=CZ" :
-                return "posts/ontology";
-            case "news?label=cosmos&lang=SK&lang=CZ" :
-                return "posts/cosmos";
-            case "news?label=binance&lang=SK&lang=CZ" :
-                return "posts/binance";
-            case "news?label=dag&lang=SK&lang=CZ" :
-                return "posts/dag";
-            case "news?label=exodus&lang=SK&lang=CZ" :
-                return "posts/exodus";
-            case "news?label=fork&lang=SK&lang=CZ" :
-                return "posts/fork";
-            case "news?label=ico&lang=SK&lang=CZ" :
-                return "posts/ico";
-            case "news?label=kraken&lang=SK&lang=CZ" :
-                return "posts/kraken";
-            case "news?label=coinbase&lang=SK&lang=CZ" :
-                return "posts/coinbase";
-            case "news?label=halving&lang=SK&lang=CZ" :
-                return "posts/halving";
-            case "news?label=bitfinex&lang=SK&lang=CZ" :
-                return "posts/bitfinex";
-            case "news?label=bittrex&lang=SK&lang=CZ" :
-                return "posts/bittrex";
-            case "news?label=ripple&lang=SK&lang=CZ" :
-                return "posts/ripple";
-            case "news?label=wallets&lang=SK&lang=CZ" :
-                return "posts/wallets";
-            case "news?label=coinmarketcap&lang=SK&lang=CZ" :
-                return "posts/coinmarketcap";
-            case "news?label=not-categorized&lang=SK&lang=CZ" :
-                return "posts/not-categorized";
-        }
-
-        if (isLangUrl(url, "SK")) {
-            return "posts-by-i18n/SK";
-        }
-
-        if (isLangUrl(url, "CZ")) {
-            return "posts-by-i18n/CZ";
-        }
-        return url;
-    }
-
-    private boolean isLangUrl(String newUrl, String lang) {
-        return (newUrl.contains("lang=" + lang) &&
-                (
-                        newUrl.contains("bitcoin") &&
-                        newUrl.contains("cryptocurrency") &&
-                        newUrl.contains("altcoin")
-                ))
-                || (newUrl.contains("lang=" + lang) && (newUrl.split("label").length == 1));
-    }
-
-    private String mapLabelForRendering(String label) {
-        String result = label;
-        if ("wallets".equals(label)) {
-            result = "peňaženky";
-        }
-
-        else if ("not-categorized".equals(label)) {
-            result = "ostatné";
-        }
-
-        else if ("cryptocurrency".equals(label)) {
-            result = "kryptomeny";
-        }
-
-        else if ("exchange".equals(label)) {
-            result = "burzy";
-        }
-        return result;
-    }
-
-    private List<String> checkAndInitCheckBoxInput(
-            String inputKey,
-            Map<String, String[]> parameterMap,
-            List<String> initValues
-    ) {
-        //TODO from DB
-        return (null == parameterMap.get(inputKey)) ?
-                initValues : new ArrayList<>(Arrays.asList(parameterMap.get(inputKey)));
     }
 }

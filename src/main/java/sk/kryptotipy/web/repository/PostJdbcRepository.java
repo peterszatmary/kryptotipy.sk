@@ -85,6 +85,22 @@ public class PostJdbcRepository {
 
     }
 
+    public Post findByUrlPartAndSourceRendered(String urlPart, String sourceRendered) {
+        List<Post> posts = null;
+
+        try {
+            posts = jdbcTemplate.query(
+                    QueryFactory.postsByUrlPartAndSourceRendered(),
+                    new PostMapper(jdbcTemplate),
+                    "%" + urlPart + "%",
+                    sourceRendered);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return posts.get(0);
+    }
+
     public List<Post> getPostsByLabelsAndLang(List<String> labels, List<String> langs, Long from, Long to) {
         List<Post> result = new ArrayList<>();
 

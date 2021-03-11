@@ -10,6 +10,7 @@ import sk.kryptotipy.web.component.ArticleComponent;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 @Service
 @Data
@@ -22,11 +23,16 @@ public class PageDataService implements PageDataServiceApi {
     private final ArticleComponent articleComponent;
 
 
-    public void set(Map<String, Object> model, String pageTitleCustom) {
+    //TODO
+    public void set(Map<String, Object> model, String pageTitleCustom, ResourceBundle rb) {
         model.put("page_title", pageTitleCustom + " | " + appProperties.getPageTitle());
         model.put("page_author", appProperties.getPageAuthor());
         model.put("base_url", appProperties.getBaseUrl());
         model.put("base_url_without_port", appProperties.getBaseUrlWithoutPort());
+        model.put("base_url_without_port_en", appProperties.getBaseUrlWithoutPortEn());
+        model.put("base_url_without_port_de", appProperties.getBaseUrlWithoutPortDe());
+        model.put("base_url_without_port_sk", appProperties.getBaseUrlWithoutPortSk());
+        model.put("base_url_without_port_hu", appProperties.getBaseUrlWithoutPortHu());
         model.put("title", appProperties.getPageTitle());
         model.put("posts_count", appProperties.getPostsCount());
         model.put("project_version", appProperties.getProjectVersion());
@@ -34,7 +40,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_img_width", "85");
         model.put("page_img_height", "85");
         model.put("page_date", LocalDateTime.now());
-        model.put("page_description", pageTitleCustom + " z celého sveta na jednom mieste. Vždy najčerstvejšie krypto novinky.");
+        model.put("page_description", pageTitleCustom + rb.getString("default.descr"));
 
         articleComponent.addPostsAndArticlesMeta();
     }
@@ -66,7 +72,5 @@ public class PageDataService implements PageDataServiceApi {
     public String getPostImageHeight(String key) {
         return this.articleComponent.getPostImageHeight(key);
     }
-
-
 
 }

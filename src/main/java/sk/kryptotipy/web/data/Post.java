@@ -3,6 +3,7 @@ package sk.kryptotipy.web.data;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -129,8 +130,12 @@ public class Post {
     public boolean useRedirectToSourceSite() {
         List<String> redirect = Arrays.asList(
                 "krypto.sk", // si tak praje
-                "kryptonovinky.sk" //TODO problem s redirectom
+                "kryptonovinky.sk", //TODO problem s redirectom,
+                 "cryptobriefing.com", //TODO problem s redirectom,
+                 "trustnodes.com" //TODO problem s redirectom,
+
         );
-        return this.url.contains(redirect.get(0)) || this.url.contains(redirect.get(1));
+        System.out.println(this);
+        return redirect.contains(sourceRender);
     }
 }

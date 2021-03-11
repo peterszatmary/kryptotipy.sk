@@ -45,6 +45,11 @@ public class PostService implements PostServiceApi {
     }
 
     @Override
+    public Post getPostByUrlPartAndSourceRendered(String urlPart, String sourceRendered) {
+        return postLabelRepository.findByUrlPartAndSourceRendered(urlPart, sourceRendered);
+    }
+
+    @Override
     public boolean updatePostViews(String url, Integer views) {
         return postLabelRepository.updatePostClicks(url, views);
     }

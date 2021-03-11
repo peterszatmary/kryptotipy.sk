@@ -8,9 +8,7 @@
                 <div class="span12">
                     <div class="centered">
                         <h1 style="font-size: 22px; color: #fff;" th:text="${label_render}"></h1>
-                        <p>
-                            Výber najnovších krypto noviniek zo sveta kryptomien zoradených vhodne do krypto kategórií.
-                        </p>
+                        <p th:text="#{posts.description}"></p>
                     </div>
                 </div>
             </div>
@@ -23,8 +21,14 @@
         <div class="row">
             <div class="span12">
                 <ul class="breadcrumb notop">
-                    <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                    <li class="active"><a th:href="@{${base_url + 'news' }}">Krypto novinky</a><span class="divider">/</span></li>
+                    <li>
+                        <a href="/" th:text="#{navbar.home}"></a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li class="active">
+                        <a href="/news" th:text="#{link.news}"></a>
+                        <span class="divider">/</span>
+                    </li>
                     <li class="active" th:text="${label_render_path}"></li>
                 </ul>
             </div>
@@ -35,25 +39,20 @@
 <section id="maincontent">
     <div class="container">
         <div class="row" style="margin-top: -30px;">
-<!--            <div class="span12">-->
-<!--                <div class="navbar navbar-inner">-->
-
-<!--                </div>-->
-<!--            </div>-->
 
             <div th:replace="fragments/filter-component" th:remove="tag"></div>
 
             <div style="margin-left:25px; margin-top: 20px;margin-bottom: 20px;margin-right: 20px;" >
-                <h4>Mohlo by vás zaujímať</h4>
-                <a href="/article/passive-income-with-polkadot-on-ledger" target="_blank">Pasívny príjem s Ledger Nano a Polkadot</a> |
+                <h4 th:text="#{posts.interesting}"></h4>
+                <a href="/article/passive-income-with-polkadot-on-ledger" target="_blank" th:text="#{posts.article.title.polkadot}"></a> |
                 <a href="https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933" target="_blank">Trezor T</a> |
-                <a href="/article/btc-is-not-the-first" target="_blank">Bitcoin nebol prvou kryptomenou</a> |
+                <a href="/article/btc-is-not-the-first" target="_blank" th:text="#{posts.article.title.btc.first}"></a> |
                 <a href="https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933" target="_blank">Trezor One</a> |
-                <a href="/article/passive-income-with-cardano" target="_blank">Pasívny príjem s kryptomenou Cardano</a> |
+                <a href="/article/passive-income-with-cardano" target="_blank"  th:text="#{posts.article.title.cardano}"></a> |
                 <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">Ledger Nano X</a> |
-                <a href="/article/passive-income-with-cosmos-atom" target="_blank">Pasívny príjem s kryptomenou Cosmos</a> |
+                <a href="/article/passive-income-with-cosmos-atom" target="_blank" th:text="#{posts.article.title.cosmos}"></a> |
                 <a href="https://lddy.no/v0jj" target="_blank">KeepKey</a> |
-                <a href="/article/passive-income-with-algorand" target="_blank">Pasívny príjem s kryptomenou Algorand</a>
+                <a href="/article/passive-income-with-algorand" target="_blank" th:text="#{posts.article.title.algorand}"></a>
             </div>
 
             <ul class="portfolio-area da-thumbs">
@@ -67,8 +66,8 @@
                <a href="mailto:info@kryptotipy.sk" target="_blank">
                    <i class="icon-rounded icon-28 icon-pencil active"></i>
                </a>
-                Ak ste sa preskrolovali až sem a radi by ste čítali staršie články, neváhajte nás kontaktovať
-               na <a href="mailto:info@kryptotipy.sk" target="_blank">info@kryptotipy.sk</a>.
+               <span th:text="#{posts.end.text}"></span>
+               <a href="mailto:info@kryptotipy.sk" target="_blank">info@kryptotipy.sk</a>.
            </p>
        </div>
    </section>

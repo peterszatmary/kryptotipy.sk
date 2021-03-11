@@ -26,20 +26,15 @@ public class CustomContainer implements WebServerFactoryCustomizer<TomcatServlet
 
                 try {
                     InputStream resource = new ClassPathResource("rewrite.config").getInputStream();
-
                     InputStreamReader resourceReader = new InputStreamReader(resource);
                     BufferedReader buffer = new BufferedReader(resourceReader);
-
                     parse(buffer);
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         };
-
         valve.setEnabled(true);
-
         factory.addContextValves(valve);
     }
 }

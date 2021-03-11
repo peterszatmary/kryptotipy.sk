@@ -65,6 +65,21 @@
   font-size: smaller;
 }
 
+.service-metadata {
+  padding-top: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin: 0px;
+  display: block;
+  color: #636363;
+  background-color: #F2F2F2;
+  font-size: smaller;
+  height: 90px;
+}
+
+
+
 .dictionary-my {
   padding-top: 0px;
   padding-left: 15px;

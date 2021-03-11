@@ -5,5 +5,5 @@ import sk.kryptotipy.web.data.Label;
 import java.util.List;
 
 public interface LabelServiceApi {
-    List<Label> getAllLabels();//TODO Set
+    List<Label> getAllLabels();
 }

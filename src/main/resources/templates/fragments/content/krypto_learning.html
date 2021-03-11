@@ -5,10 +5,8 @@
                 <div class="row">
                     <div class="span12">
                         <div class="centered">
-                            <h1 style="font-size: 22px; color: #fff;">Krypto learning</h1>
-                            <p>Napriek tomu, že kryptomeny už dávno nie sú novinkou,
-                                vývoj v tejto oblasti je rýchly, a preto sme sa rozhodli
-                                prispievať odbornými článkami, ktoré budú vysvetľovať najrôznejšie pojmy.
+                            <h1 style="font-size: 22px; color: #fff;" th:text="#{crypto.learning.title}"></h1>
+                            <p th:text="#{crypto.learning.description}">
                             </p>
                         </div>
                     </div>
@@ -22,8 +20,10 @@
             <div class="row">
                 <div class="span12">
                     <ul class="breadcrumb notop">
-                        <li><a th:href="${base_url}">Domov</a><span class="divider">/</span></li>
-                        <li class="active">Krypto learning</li>
+                        <li>
+                            <a href="/" th:text="#{navbar.home}"></a>
+                            <span class="divider">/</span></li>
+                        <li class="active" th:text="#{crypto.learning.title}"></li>
                     </ul>
                 </div>
             </div>

@@ -8,6 +8,8 @@ import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.data.Article;
 import sk.kryptotipy.web.repository.ArticleRepository;
+import sk.kryptotipy.web.service.UtilityService;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +23,7 @@ public class RssFeedView extends AbstractRssFeedView {
 
     private final ArticleRepository articleRepository;
     private final AppProperties appProperties;
+    private final UtilityService utilityService;
 
     @Override
     protected void buildFeedMetadata(Map<String, Object> model,
@@ -34,7 +37,8 @@ public class RssFeedView extends AbstractRssFeedView {
     protected List<Item> buildFeedItems(Map<String, Object> model,
                                         HttpServletRequest request, HttpServletResponse response) {
 
-        List<Article> articles = articleRepository.getKryptotipyContent();
+        List<Article> articles = articleRepository.getKryptotipyContent(
+                utilityService.getResourceBundle(request));
         return articles.stream()
                 .map(article -> mapArticleToRssItem(article))
                 .collect(Collectors.toList());

@@ -7,7 +7,7 @@
                 <div class="container">
                     <div style="float:left;">
                         <!-- logo -->
-                        <a class="brand logo" th:href="${base_url}">
+                        <a class="brand logo" href="/">
                             <img id="banner_render" th:alt="${page_title}" />
                         </a>
                     </div>
@@ -18,27 +18,27 @@
                         <nav>
                             <ul class="nav topnav">
                                 <li th:class="${active_index + ' menu'}">
-                                    <a th:class="menu" th:href="${base_url}">Domov</a>
+                                    <a th:class="menu" href="/" th:text="#{navbar.home}"></a>
                                 </li>
 
                                 <li th:class="${active_posts + ' menu'}">
-                                    <a th:class="menu" href="/news">Novinky</a>
+                                    <a th:class="menu" href="/news" th:text="#{navbar.news}"></a>
                                 </li>
 
                                 <li th:class="${active_krypto_learning + ' menu'}">
-                                    <a th:class="menu" href="/krypto-learning">Krypto learning</a>
+                                    <a th:class="menu" href="/krypto-learning" th:text="#{navbar.crypto.learning}"></a>
                                 </li>
 
                                 <li th:class="${active_external_services + ' menu'}">
-                                    <a th:class="menu" href="/external-services">Externé služby</a>
+                                    <a th:class="menu" href="/external-services" th:text="#{navbar.external.services}"></a>
                                 </li>
 
                                 <li th:class="${active_did_you_know + ' menu'}">
-                                    <a th:class="menu" href="/did-you-know">Zaujímavosti</a>
+                                    <a th:class="menu" href="/did-you-know" th:text="#{navbar.did.you.know}"></a>
                                 </li>
 
                                 <li th:class="${active_dictionary + ' menu'}">
-                                    <a th:class="menu" href="/dictionary">Slovník</a>
+                                    <a th:class="menu" href="/dictionary" th:text="#{navbar.dictionary}"></a>
                                 </li>
                             </ul>
                         </nav>

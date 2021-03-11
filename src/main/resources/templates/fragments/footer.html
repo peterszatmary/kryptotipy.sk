@@ -5,25 +5,18 @@
             <div class="row">
 
                 <div id="go-top" style="display: block;">
-                    <a class="smoothscroll" title="Naspäť hore" href="#top">
+                    <a class="smoothscroll" th:title="#{footer.back}" href="#top">
                         <i class="icon-arrow-up"></i>
                     </a>
                 </div>
 
-
                 <div class="span6">
                     <div class="credits" style="text-align: left;">
                         <div class="widget">
-                            <h4>Upozornenie</h4>
+                            <h4 th:text="#{footer.warning}"></h4>
                             <ul class="social-links">
                                 <li>
-                                    <div style="text-align: justify;">
-                                        Neposkytujeme finančné, ani investičné poradenstvo. Každý človek obchoduje s vlastným
-                                    kapitálom a podľa vlastného uváženia. Informácie uverejnené na stránke kryptotipy.sk
-                                    sú výhradne informačného charakteru a v žiadnom prípade nie sú investičnou radou alebo
-                                    obchodným odporúčaním. Portál nenesie žiadnu zodpovednosť za vaše prípadne finančné straty
-                                    pri investícii do kryptomien alebo iných.
-                                    Pre finančné poradenstvo kontaktujte finančného poradcu.
+                                    <div style="text-align: justify;" th:text="#{footer.warning.content}">
                                     </div>
                                 </li>
                             </ul>
@@ -31,23 +24,24 @@
                     </div>
                 </div>
 
-
                 <div class="span6">
                     <div class="credits">
                         <div class="widget">
-                            <h4>Partnerské weby</h4>
+                            <h4 th:text="#{footer.partners}"></h4>
                             <ul class="social-links">
                                 <li><a href="https://www.krypto.sk" target="_blank">krypto.sk</a></li><br />
                                 <li><a href="https://www.krypto-meny.sk" target="_blank">krypto-meny.sk</a></li><br />
                                 <li><a href="https://www.coinly.cz" target="_blank">coinly.cz</a></li>
                             </ul>
 
-                            <h4>Spolupráca</h4>
+                            <h4 th:text="#{footer.cooperation}"></h4>
                             <ul class="social-links">
-                                <li><a href="/cooperation">V prípade záujmu kliknite na odkaz.</a></li>
+                                <li>
+                                    <a href="/cooperation" th:text="#{footer.cooperation.link.text}"></a>
+                                </li>
                             </ul>
 
-                            <h4>Kontakty</h4>
+                            <h4 th:text="#{footer.contacts}"></h4>
                             <ul class="social-links">
                                 <li><a href="https://www.facebook.com/kryptotipy.sk/" title="Facebook" target="_blank">
                                     <i class="icon-rounded icon-28 icon-facebook active"></i></a>
@@ -64,11 +58,11 @@
                                 <li><a th:href="@{${base_url + 'rss'}}" title="RSS feed kryptotipy.sk" target="_blank">
                                     <i class="icon-rounded icon-28 icon-rss active"></i></a>
                                 </li>
-
                             </ul>
+
                             <ul class="social-links">
                                 <li>info@kryptotipy.sk&nbsp;&nbsp;</li><br />
-                                <li>&copy; kryptotipy.sk - Všetky práva vyhradené.</li>
+                                <li>&copy; kryptotipy.sk - <span th:text="#{footer.rights}">.</li>
                             </ul>
                         </div>
                     </div>

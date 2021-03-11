@@ -13,12 +13,14 @@
                     <div>
                         <input type="checkbox" class="filter-component" id="select-all" name="label" value="all" onclick="toggle()"
                                th:checked="${#lists.contains(checked_labels, 'all')}" />
-                        <label class="filter-component" for="select-all">Všetky</label>
+                        <label class="filter-component" for="select-all"
+                        th:text="#{filter.component.all}"></label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="altcoin" name="label" value="altcoin"
                                th:checked="${#lists.contains(checked_labels, 'altcoin')}" />
-                        <label class="filter-component" for="altcoin">Altcoiny</label>
+                        <label class="filter-component" for="altcoin"
+                               th:text="#{filter.component.altcoins}"></label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="blockchain" name="label" value="blockchain"
@@ -51,7 +53,9 @@
                     <div>
                         <input type="checkbox" class="filter-component" id="cryptocurrency" name="label" value="cryptocurrency"
                                th:checked="${#lists.contains(checked_labels, 'cryptocurrency')}" />
-                        <label class="filter-component" for="cryptocurrency">Kryptomeny</label>
+                        <label class="filter-component" for="cryptocurrency"
+                               th:text="#{filter.component.cryptocurrency}"
+                        ></label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="polkadot" name="label" value="polkadot"
@@ -180,12 +184,14 @@
                     <div>
                         <input type="checkbox" class="filter-component" id="exchange" name="label" value="exchange"
                                th:checked="${#lists.contains(checked_labels, 'exchange')}" />
-                        <label class="filter-component" for="exchange">Burza</label>
+                        <label class="filter-component" for="exchange"
+                               th:text="#{filter.component.exchange}"></label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="wallets" name="label" value="wallets"
                                th:checked="${#lists.contains(checked_labels, 'wallets')}" />
-                        <label class="filter-component" for="wallets">Peňaženka</label>
+                        <label class="filter-component" for="wallets"
+                               th:text="#{filter.component.wallets}"></label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="fed" name="label" value="fed"
@@ -195,7 +201,8 @@
                     <div>
                         <input type="checkbox" class="filter-component" id="not-categorized" name="label" value="not-categorized"
                                th:checked="${#lists.contains(checked_labels, 'not-categorized')}" />
-                        <label class="filter-component" for="not-categorized">Ostatné</label>
+                        <label class="filter-component" for="not-categorized"
+                               th:text="#{filter.component.not.categorized}"></label>
                     </div>
                 </div>
 
@@ -205,49 +212,57 @@
                         <input type="checkbox" class="filter-component" id="SK" name="lang" value="SK"
                                th:checked="${#lists.contains(checked_langs, 'SK')}" />
                         <label class="filter-component" for="SK">
-                            <img src="/assets/img/flags/SK.png" width="20" height="35" alt="Slovenské články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/SK.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.sk}"
+                                 style="border: 1px solid #969696;" />
                         </label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="CZ" name="lang" value="CZ"
                                th:checked="${#lists.contains(checked_langs, 'CZ')}" />
                         <label class="filter-component" for="CZ">
-                            <img src="/assets/img/flags/CZ.png" width="20" height="35" alt="České články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/CZ.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.cz}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="DE" name="lang" value="DE"
                                th:checked="${#lists.contains(checked_langs, 'DE')}" />
                         <label class="filter-component" for="DE">
-                            <img src="/assets/img/flags/DE.png" width="20" height="35" alt="Nemecké články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/DE.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.de}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="PL" name="lang" value="PL"
                                th:checked="${#lists.contains(checked_langs, 'PL')}" />
                         <label class="filter-component" for="PL">
-                            <img src="/assets/img/flags/PL.png" width="20" height="35" alt="Poľské články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/PL.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.pl}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="HU" name="lang" value="HU"
                                th:checked="${#lists.contains(checked_langs, 'HU')}" />
                         <label class="filter-component" for="HU">
-                            <img src="/assets/img/flags/HU.png" width="20" height="35" alt="Maďarské články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/HU.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.hu}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="CH" name="lang" value="CH"
                                th:checked="${#lists.contains(checked_langs, 'CH')}" />
                         <label class="filter-component" for="CH">
-                            <img src="/assets/img/flags/CH.png" width="20" height="35" alt="Švajčiarské články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/CH.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.ch}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                     <div>
                         <input type="checkbox" class="filter-component" id="GB" name="lang" value="GB"
                                th:checked="${#lists.contains(checked_langs, 'GB')}" />
                         <label class="filter-component" for="GB">
-                            <img src="/assets/img/flags/GB.png" width="20" height="35" alt="Veľká Británia články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/GB.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.gb}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                 </div>
@@ -257,21 +272,24 @@
                         <input type="checkbox" class="filter-component" id="US" name="lang" value="US"
                                th:checked="${#lists.contains(checked_langs, 'US')}" />
                         <label class="filter-component" for="US">
-                            <img src="/assets/img/flags/US.png" width="20" height="35" alt="Americké články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/US.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.us}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                     <div style="display:inline;">
                         <input type="checkbox" class="filter-component" id="CA" name="lang" value="CA"
                                th:checked="${#lists.contains(checked_langs, 'CA')}" />
                         <label class="filter-component" for="CA">
-                            <img src="/assets/img/flags/CA.png" width="20" height="35" alt="Kanadské články" style="border: 1px solid #969696;" />
+                            <img src="/assets/img/flags/CA.png" width="20" height="35"
+                                 th:alt="#{filter.component.lang.ca}" style="border: 1px solid #969696;" />
                         </label>
                     </div>
                 </div>
 
             <div style="float:right;padding: 15px;">
                 <button type="submit" class="btn btn-success">
-                    <i class="icon-filter"></i>FILTRUJ
+                    <i class="icon-filter"></i>
+                    <span th:text="#{news.filter.do.filtering}"></span>
                 </button>
             </div>
             </form>

@@ -119,4 +119,16 @@ public class QueryFactory {
         str.delete(str.length() - 1, str.length());
         return str.toString();
     }
+
+    public static String postsByUrlPartAndSourceRendered() {
+        String query = new StringBuilder()
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes, l.name ")
+                .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
+                .append("JOIN label l ON l.id = pl.label_id ")
+                .append("WHERE p.url like ? ")
+                .append("AND p.source_render = ? ")
+                .toString();
+        //log.info(query);
+        return query;
+    }
 }

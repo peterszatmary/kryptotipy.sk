@@ -7,59 +7,56 @@ import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 @Repository
 public class ArticleRepository {
-    public List<Article> getKryptotipyContent() {
+    public List<Article> getKryptotipyContent(ResourceBundle rb) {
         List<Article> services = new ArrayList<>();
 
-        services.addAll(getKryptotipyContentView());
+        services.addAll(getKryptotipyContentView(rb));
 
         services.add(new Article(
-                "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien",
+                rb.getString("article.proof.of.work"),
                 "/article/complete-guide-to-proof-of-work",
                 "complete-guide-to-proof-of-work.jpg",
-                "7.2.2021 - KRYPTO MINING",
+                "7.2.2021 - " + rb.getString("article.category.crypto.mining"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
         ));
 
         services.add(new Article(
-                "NEO-spôsoby ako pasívne zarábať. Exodus a ďalší pasívny príjem.",
+                rb.getString("article.exodus.neo"),
                 "article/passive-income-with-neo",
                 "passive-income-with-neo.png",
-                "31.1.2021 - PASÍVNY PRÍJEM",
+                "31.1.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 1))
         ));
 
         services.add(new Article(
-                "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus",
+                rb.getString("article.exodus.algorand"),
                 "article/passive-income-with-algorand",
                 "passive-income-with-algorand.jpg",
-                "27.1.2021 - PASÍVNY PRÍJEM",
+                "27.1.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
         ));
 
         services.add(new Article(
-                "Pasívny príjem s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ...",
+                rb.getString("article.exodus"),
                 "article/passive-income-with-exodus",
                 "passive-income-with-exodus.jpg",
-                "17.1.2021 - PASÍVNY PRÍJEM",
+                "17.1.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17+1))
         ));
 
         services.add(new Article(
-                "Bitcoin nebol prvou kryptomenou, Ecash a zrod skutočne prvej digitálnej kryptomeny.",
+                rb.getString("article.btc.not.first"),
                 "/article/btc-is-not-the-first",
                 "btc-not-first.png",
-                "2.1.2021 - KRYPTO HISTÓRIA",
+                "2.1.2021 - " + rb.getString("article.category.crypto.history"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.JANUARY, 2))));
 
@@ -68,44 +65,44 @@ public class ArticleRepository {
 
 
 
-    public List<Article> getKryptotipyContentView() {
+    public List<Article> getKryptotipyContentView(ResourceBundle rb) {
 
         List<Article> services = new ArrayList<>();
 
         //TODO +1 day because Iam stupid and date does not contain Time Zone
 
         services.add(new Article(
-                "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger",
+                rb.getString("article.exodus.polkadot"),
                 "/article/passive-income-with-polkadot-on-ledger",
                 "passive-income-with-polkadot-on-ledger.png",
-                "6.3.2021 - PASÍVNY PRÍJEM",
+                "6.3.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.MARCH, 6+1))
         ));
 
         services.add(new Article(
-                "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu VeChain (VET) ako eurá v banke",
+                rb.getString("article.exodus.vechain"),
                 "/article/passive-income-with-vechain",
                 "passive-income-with-vechain.jpg",
-                "28.2.2021 - PASÍVNY PRÍJEM",
+                "28.2.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 26+1))
         ));
 
         services.add(new Article(
-                "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ADA ako eurá v banke",
+                rb.getString("article.exodus.cardano"),
                 "/article/passive-income-with-cardano",
                 "passive-income-with-cardano.png",
-                "21.2.2021 - PASÍVNY PRÍJEM",
+                "21.2.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 21+1))
         ));
 
         services.add(new Article(
-                "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ATOM ako eurá v banke",
+                rb.getString("article.exodus.cosmos"),
                 "/article/passive-income-with-cosmos-atom",
                 "passive-income-with-cosmos-atom.jpg",
-                "14.2.2021 - PASÍVNY PRÍJEM",
+                "14.2.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 14+1))
         ));
