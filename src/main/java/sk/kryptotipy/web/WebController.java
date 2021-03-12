@@ -446,15 +446,13 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/one-post-frame/{protocol}/{www}/{source_rendered}/{url_path}")
-    public String onePostFrame(Map<String, Object> model,
-            @PathVariable(value = "source_rendered", required = false) String sourceRendered,
-            @PathVariable(value = "url_path", required = false) String urlPath,
-            @PathVariable(value = "protocol", required = false) String protocol,
-                               @PathVariable(value = "www", required = false) String www,
-                               HttpServletRequest request,
-                               HttpServletResponse response
-                               ) {
+    @RequestMapping("/one-post-frame/{hashed_id}")
+    public String onePostFrame(
+            Map<String, Object> model,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            @PathVariable("hashed_id") String hashedId
+       ) {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
                 request.getRequestURL().toString()
         ));
@@ -468,15 +466,17 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "one-post-frame");
 
-            Post post = this.postService.getPostByUrlPartAndSourceRendered(urlPath, sourceRendered);
+            Long id = utilityService.decodeKryptotipyHash(hashedId);
+            Post post = this.postService.getPostsById(id);
 
             post.setViews(post.getViews() + 1);
             postService.updatePostViews(post.getUrl(), post.getViews());
+            log.info("Post hashed id = {}, id = {}", hashedId, id);
             log.info("New view for post = {}, views = {}", post.getUrl(), post.getViews());
 
             model.put("one_post", post);
 
-            pageData.set(model, urlPath.replace("-"," ") + " - " + sourceRendered, rbFromUrl.getString("default.descr"));
+            pageData.set(model, post.getTitle(), rbFromUrl.getString("default.descr"));
 
             if (post.useRedirectToSourceSite()) {
                 response.setHeader("Location", post.getUrl());
@@ -485,11 +485,8 @@ public class WebController {
             return "one-post";
 
         } catch (Exception ex) {
-            log.warn("one page frame : sourceRendered={}, urlPath={}, protocol={}, www={}",
-                    sourceRendered,
-                    urlPath,
-                    protocol,
-                    www,
+            log.warn("one page frame : hashedId={}",
+                    hashedId,
                     ex.getMessage()
             );
             log.warn(ex.getCause() + "" + ex.getStackTrace());

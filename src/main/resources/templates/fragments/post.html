@@ -17,7 +17,7 @@
                 <div class="post-metadata">
                     <a th:href="@{${'/news?lang=' + post.i18n}}">
                         <img th:src="@{${'/assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"
-                                 th:title="${post.getI18nFlagRender()}" th:alt="${post.getI18nFlagRender()}"/>
+                                 th:title="#{${post.getI18nFlagRender()}}" th:alt="#{${post.getI18nFlagRender()}}"/>
                     </a>
                     <div>
                         <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}">

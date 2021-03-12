@@ -6,8 +6,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import java.util.Set;
 
@@ -71,55 +73,23 @@ public class Post {
     private List<Label> labels;
 
     public String getPostViewUrl() {
-        return "/one-post-frame/" + this.getProtocol() + "/" + this.getWWW() + "/" + this.sourceRender + "/" + this.getUrlLastPart();
+        String hashed = "p" + (this.id + 217) + "sz";
+        return "/one-post-frame/" + hashed;
     }
 
     public String getI18nFlagRender() {
         switch (this.i18n) {
-            case "SK" : { return "Slovenské novinky"; }
-            case "CZ" : { return "České novinky"; }
-            case "DE" : { return "Nemecké novinky"; }
-            case "CH" : { return "Švajčiarské novinky"; }
-            case "PL" : { return "Poľské novinky"; }
-            case "HU" : { return "Maďarské novinky"; }
-            case "CA" : { return "Kanadské novinky"; }
-            case "US" : { return "Americké novinky"; }
-            case "GB" : { return "Anglické novinky"; }
-            default : return "Novinky";
+            case "SK" : { return "crypto.news.title.sk"; }
+            case "CZ" : { return "crypto.news.title.cz"; }
+            case "DE" : { return "crypto.news.title.de"; }
+            case "CH" : { return "crypto.news.title.ch"; }
+            case "PL" : { return "crypto.news.title.pl"; }
+            case "HU" : { return "crypto.news.title.hu"; }
+            case "CA" : { return "crypto.news.title.ca"; }
+            case "US" : { return "crypto.news.title.us"; }
+            case "GB" : { return "crypto.news.title.gb"; }
+            default : return "navbar.news";
         }
-    }
-
-    private String getUrlLastPart() {
-        String result = "";
-        if (null != url) {
-            String[] urlParts = url.split("/");
-            result = urlParts[urlParts.length -1 ];
-            if ("kryptohodler.cz".equals(sourceRender) && result.contains("=")) {
-                String[] x = result.split("=");
-                result = x[x.length - 1];
-            }
-            return result;
-        }
-        log.info("UrlLastPath = {}", "NA");
-        return "NA";
-    }
-
-    private String getProtocol() {
-        if (null != url) {
-            String[] urlParts = url.split("/");
-            String s = urlParts[0].replace(":","");
-            return "https".equals(s) ? "hs" : "h";
-        }
-        log.info("protocol = {}", "NA");
-        return "NA";
-    }
-
-    private String getWWW() {
-        if (null != url) {
-            return url.contains("www") ? "www" : "non-www";
-        }
-        log.info("protocol = {}", "NA");
-        return "NA";
     }
 
     /**
@@ -135,7 +105,6 @@ public class Post {
                  "trustnodes.com" //TODO problem s redirectom,
 
         );
-        System.out.println(this);
         return redirect.contains(sourceRender);
     }
 }

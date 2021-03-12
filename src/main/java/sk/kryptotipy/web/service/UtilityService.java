@@ -199,4 +199,10 @@ public class UtilityService {
             return "https://" + lang + ".kryptotipy.sk";
         }
     }
+
+
+    public Long decodeKryptotipyHash(String hashedId) {
+        String s = hashedId.substring(1, hashedId.length() - 2);
+        return Long.valueOf(s) - 217L;
+    }
 }

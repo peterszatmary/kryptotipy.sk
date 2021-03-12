@@ -30,6 +30,11 @@ public class PostService implements PostServiceApi {
     }
 
     @Override
+    public Post getPostsById(Long id) {
+        return postLabelRepository.getPostById(id);
+    }
+
+    @Override
     public List<Post> getPostsByI18n(String i18n, Long from, Long to) {
         return postLabelRepository.getPostsByI18n(i18n, from, to);
     }

@@ -131,4 +131,14 @@ public class QueryFactory {
         //log.info(query);
         return query;
     }
+
+    public static String postById() {
+        String query = new StringBuilder()
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
+                .append("FROM post p ")
+                .append("WHERE p.id = ? ")
+                .toString();
+        //log.info(query);
+        return query;
+    }
 }
