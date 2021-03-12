@@ -1,16 +1,21 @@
 package sk.kryptotipy.web.service;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import sk.kryptotipy.web.AppProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Slf4j
+@AllArgsConstructor
 @Service
 public class UtilityService {
+
+    private final AppProperties appProperties;
 
     public String consumeAcceptLang(HttpServletRequest request) {
         String userLocale = "SK";
@@ -172,7 +177,7 @@ public class UtilityService {
 
     public String getLocaleFromUrl(String url) {
 
-        List<String> supportedLangs = Arrays.asList("sk", "en", "de", "hu");
+        List<String> supportedLangs = appProperties.getSupportedLangs();
         String DEFAULT_LANG = "sk";
 
         String result = DEFAULT_LANG;

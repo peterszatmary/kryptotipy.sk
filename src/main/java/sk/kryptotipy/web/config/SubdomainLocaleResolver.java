@@ -13,14 +13,6 @@ public class SubdomainLocaleResolver extends AbstractLocaleResolver {
     public Locale resolveLocale(HttpServletRequest request) {
         String domain = request.getServerName();
 
-        String[] domainParts = domain.split("\\.");
-
-//        if (!(domainParts.length >= 3)) {
-//            return new Locale("sk");
-//        } else if ("https://www".equals(domainParts[0])) {
-//            return new Locale("sk");
-//        }
-
         int i = domain.indexOf(".");
         if (i == -1) {
             return new Locale("sk");

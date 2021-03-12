@@ -1,6 +1,6 @@
 // --- Config --- //
 var purecookieTitle = "Cookies."; // Title
-var purecookieDesc = "Používaním týhto stránok automaticky akceptujete a súhlasíte, že stránky Kryptotipy.sk používají cookies pre zkvalitnenie vášho komfortu pri prezeraní stránok."; // Description
+var purecookieDesc = "Používaním týchto stránok automaticky akceptujete a súhlasíte, že stránky Kryptotipy.sk používají cookies pre zkvalitnenie vášho komfortu pri prezeraní stránok."; // Description
 var purecookieLink = '<a href="https://sk.wikipedia.org/wiki/HTTP_cookie" target="_blank">Chcem vedieť viac</a>'; // Cookiepolicy link
 var purecookieButton = "Rozumiem a súhlasím"; // Button text
 // ---        --- //

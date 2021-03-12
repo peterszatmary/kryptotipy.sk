@@ -55,6 +55,9 @@ public class AppProperties {
     @Value("${base.url.without.port.sk}")
     private String baseUrlWithoutPortSk;
 
+    @Value("${base.url.without.port.pl}")
+    private String baseUrlWithoutPortPl;
+
     @Value("${base.url.without.port.hu}")
     private String baseUrlWithoutPortHu;
 

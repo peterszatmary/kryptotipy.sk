@@ -88,10 +88,6 @@
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://hu.kryptotipy.sk/news?lang=GB</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
     <url>
         <loc>https://hu.kryptotipy.sk/posts/ethereum</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
@@ -109,11 +105,6 @@
     </url>
     <url>
         <loc>https://hu.kryptotipy.sk/posts/altcoin</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://hu.kryptotipy.sk/news?lang=US</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
         <priority>0.80</priority>
     </url>
@@ -154,11 +145,6 @@
     </url>
     <url>
         <loc>https://hu.kryptotipy.sk/posts/cardano</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://hu.kryptotipy.sk/news?lang=CA</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
         <priority>0.64</priority>
     </url>
@@ -307,6 +293,51 @@
         <loc>https://hu.kryptotipy.sk/posts/ontology</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
         <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/GB</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/US</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/CA</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/SK</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/CZ</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/PL</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/DE</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/HU</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://hu.kryptotipy.sk/posts-by-i18n/CH</loc>
+        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
+        <priority>0.64</priority>
     </url>
 
 

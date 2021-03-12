@@ -33,6 +33,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("base_url_without_port_de", appProperties.getBaseUrlWithoutPortDe());
         model.put("base_url_without_port_sk", appProperties.getBaseUrlWithoutPortSk());
         model.put("base_url_without_port_hu", appProperties.getBaseUrlWithoutPortHu());
+        model.put("base_url_without_port_pl", appProperties.getBaseUrlWithoutPortPl());
         model.put("title", appProperties.getPageTitle());
         model.put("posts_count", appProperties.getPostsCount());
         model.put("project_version", appProperties.getProjectVersion());
