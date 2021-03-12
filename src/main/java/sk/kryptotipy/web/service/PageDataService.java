@@ -24,7 +24,7 @@ public class PageDataService implements PageDataServiceApi {
 
 
     //TODO
-    public void set(Map<String, Object> model, String pageTitleCustom, ResourceBundle rb) {
+    public void set(Map<String, Object> model, String pageTitleCustom, String pageDescription) {
         model.put("page_title", pageTitleCustom + " | " + appProperties.getPageTitle());
         model.put("page_author", appProperties.getPageAuthor());
         model.put("base_url", appProperties.getBaseUrl());
@@ -40,7 +40,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_img_width", "85");
         model.put("page_img_height", "85");
         model.put("page_date", LocalDateTime.now());
-        model.put("page_description", pageTitleCustom + rb.getString("default.descr"));
+        model.put("page_description", pageTitleCustom + pageDescription);
 
         articleComponent.addPostsAndArticlesMeta();
     }

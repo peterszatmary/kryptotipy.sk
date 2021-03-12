@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Data
 @Component
 public class AppProperties {
@@ -64,4 +66,7 @@ public class AppProperties {
 
     @Value("${page.image}")
     private String pageImagePath;
+
+    @Value("#{'${supported.langs}'.split(',')}")
+    private List<String> supportedLangs;
 }

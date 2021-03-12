@@ -11,7 +11,7 @@
           gtag('config', 'UA-182396559-1');
         </script>
         <!--        <meta HTTP-EQUIV="REFRESH" th:content="@{${'0; url=https://www.kryptotipy.sk/' + site}}">-->
-        <link rel="canonical" th:href="@{${base_url_without_port + site}}" itemprop="url" />
+        <link rel="canonical" th:href="@{${'/' + site}}" itemprop="url" />
 
 
         <meta charset="utf-8">
@@ -65,5 +65,5 @@
         <link href="/assets/ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" />
         <link href="/assets/ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" />
         <link href="/assets/ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon-precomposed" sizes="57x57" />
-        <link rel="alternate" type="application/rss+xml" title="Kryptotipy.sk RSS zdroj" th:href="@{${base_url + 'rss'}}" />
+        <link rel="alternate" type="application/rss+xml" title="Kryptotipy.sk RSS zdroj" href="/rss" />
     </head>

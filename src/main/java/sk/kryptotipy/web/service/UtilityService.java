@@ -191,4 +191,12 @@ public class UtilityService {
         LocaleContextHolder.setLocale(new Locale(result)); //TODO not sure maybe delete it
         return result;
     }
+
+    public String buildUrlWithLang(String lang) {
+        if (StringUtils.isEmpty(lang)) {
+            return "https://www.kryptotipy.sk";
+        } else {
+            return "https://" + lang + ".kryptotipy.sk";
+        }
+    }
 }
