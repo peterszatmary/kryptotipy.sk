@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
   $("<option />", {
     "selected": "selected",
     "value": "",
-    "text": "Ísť na ..."
+    "text": ">>>"
   }).appendTo("nav select");
 
   // Populate dropdown with menu items

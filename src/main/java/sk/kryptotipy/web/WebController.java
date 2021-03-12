@@ -43,9 +43,8 @@ public class WebController {
     public String index(Map<String, Object> model,
                         HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
-        ));
+        String lang = utilityService.getLocaleFromUrl(request.getRequestURL().toString());
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(lang);
         try {
 
             model.put("active_index", "active");
@@ -54,6 +53,7 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
+            model.put("cookies_lang", lang);
             model.put("site", "");
             List<String> langs = new ArrayList<>();
             setLangsByUserCountry(langs, request);
