@@ -3,6 +3,7 @@ package sk.kryptotipy.web;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -368,6 +369,15 @@ public class WebController {
     public String robotsTxt() {
         log.info("robots.txt");
         return "robots.txt";
+    }
+
+    @RequestMapping(value = "/sitemap.xml",
+            produces = MediaType.APPLICATION_XML_VALUE)
+    public String sitemapXml(HttpServletRequest request) {
+
+        String lang = utilityService.getLocaleFromUrl(request.getRequestURL().toString());
+        log.info("Lang was found={}, sitemap-{}.xml rendered", lang, lang);
+        return "sitemaps/sitemap-" + lang + ".xml";
     }
 
 
