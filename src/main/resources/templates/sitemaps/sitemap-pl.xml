@@ -48,26 +48,6 @@
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://pl.kryptotipy.sk/article/passive-income-with-polkadot-on-ledger</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/article/passive-income-with-vechain</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/article/passive-income-with-cardano</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/article/passive-income-with-cosmos-atom</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
         <loc>https://pl.kryptotipy.sk/posts/cryptocurrency</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
         <priority>0.80</priority>
@@ -130,16 +110,6 @@
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://pl.kryptotipy.sk/article/btc-is-not-the-first</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/article/passive-income-with-algorand</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
         <loc>https://pl.kryptotipy.sk/posts/ripple</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
         <priority>0.64</priority>
@@ -177,56 +147,6 @@
     </url>
     <url>
         <loc>https://pl.kryptotipy.sk/posts/fed</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/article/complete-guide-to-proof-of-work</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/article/passive-income-with-neo</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/article/passive-income-with-exodus</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/news?label=wallets</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/news?label=blockchain</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/news?label=cryptocurrency</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/news?label=bitcoin</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/news?label=ethereum</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/news?label=neo</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/news?label=polkadot</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
         <priority>0.64</priority>
     </url>
@@ -287,11 +207,6 @@
     </url>
     <url>
         <loc>https://pl.kryptotipy.sk/posts/cosmos</loc>
-        <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-        <priority>0.51</priority>
-    </url>
-    <url>
-        <loc>https://pl.kryptotipy.sk/posts/ontology</loc>
         <lastmod>2021-03-12T12:02:22+00:00</lastmod>
         <priority>0.51</priority>
     </url>

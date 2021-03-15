@@ -211,41 +211,6 @@
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://www.kryptotipy.sk/news?label=wallets</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://www.kryptotipy.sk/news?label=blockchain</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://www.kryptotipy.sk/news?label=cryptocurrency</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://www.kryptotipy.sk/news?label=bitcoin</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://www.kryptotipy.sk/news?label=ethereum</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://www.kryptotipy.sk/news?label=neo</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://www.kryptotipy.sk/news?label=polkadot</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
     <loc>https://www.kryptotipy.sk/posts/ontology/</loc>
     <lastmod>2021-03-12T12:02:22+00:00</lastmod>
     <priority>0.64</priority>
@@ -287,11 +252,6 @@
   </url>
   <url>
     <loc>https://www.kryptotipy.sk/posts/cosmos</loc>
-    <lastmod>2021-03-12T12:02:22+00:00</lastmod>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>https://www.kryptotipy.sk/posts/ontology</loc>
     <lastmod>2021-03-12T12:02:22+00:00</lastmod>
     <priority>0.51</priority>
   </url>
