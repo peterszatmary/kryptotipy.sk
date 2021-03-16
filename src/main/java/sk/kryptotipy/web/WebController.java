@@ -100,7 +100,7 @@ public class WebController {
                 .collect(Collectors.toList());
 
         final Integer ALL_LABELS = allLabels.size();
-        final Integer ALL_LANGS  = 9; //TODO from DB
+        final Integer ALL_LANGS  = 10; //TODO from DB
 
 
         List<String> labels = new ArrayList<>();
@@ -120,7 +120,12 @@ public class WebController {
         if (langs.isEmpty() && null == parameterMap.get("lang")) {
             setLangsByUserCountry(langs, request);
         } else {
-            langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
+            if (null == parameterMap.get("lang")) {
+                langs = new ArrayList<>(Arrays.asList(lang));
+            } else {
+                langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
+            }
+
         }
 
         if (labels.isEmpty()) {
