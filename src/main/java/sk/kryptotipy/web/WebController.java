@@ -192,6 +192,9 @@ public class WebController {
             langs.add("GB");
             langs.add("US");
             log.info("set CA,GB,US by en");
+        } else if (langLower.contains("nl")) {
+            langs.add("NL");
+            log.info("set NL by nl");
         } else {
             langs.add("SK");
             langs.add("CZ");

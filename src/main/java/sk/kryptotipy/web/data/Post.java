@@ -88,6 +88,7 @@ public class Post {
             case "CA" : { return "crypto.news.title.ca"; }
             case "US" : { return "crypto.news.title.us"; }
             case "GB" : { return "crypto.news.title.gb"; }
+            case "NL" : { return "crypto.news.title.nl"; }
             default : return "navbar.news";
         }
     }

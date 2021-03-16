@@ -35,7 +35,6 @@ public class UtilityService {
     }
 
     public ResourceBundle getResourceBundle(String lang) {
-        //LocaleContextHolder.setLocale(new Locale("hu"));
         ResourceBundle rb = ResourceBundle.getBundle(
                 "messages", new Locale(lang == null ? "sk" : lang)
         );
@@ -124,9 +123,32 @@ public class UtilityService {
         if (isLangUrl(url, "SK")) {
             return "posts-by-i18n/SK";
         }
-
         if (isLangUrl(url, "CZ")) {
             return "posts-by-i18n/CZ";
+        }
+        if (isLangUrl(url, "NL")) {
+            return "posts-by-i18n/NL";
+        }
+        if (isLangUrl(url, "CA")) {
+            return "posts-by-i18n/CA";
+        }
+        if (isLangUrl(url, "GB")) {
+            return "posts-by-i18n/GB";
+        }
+        if (isLangUrl(url, "US")) {
+            return "posts-by-i18n/US";
+        }
+        if (isLangUrl(url, "DE")) {
+            return "posts-by-i18n/DE";
+        }
+        if (isLangUrl(url, "PL")) {
+            return "posts-by-i18n/PL";
+        }
+        if (isLangUrl(url, "HU")) {
+            return "posts-by-i18n/HU";
+        }
+        if (isLangUrl(url, "CH")) {
+            return "posts-by-i18n/CH";
         }
         return url;
     }
@@ -144,7 +166,7 @@ public class UtilityService {
     }
 
 
-    //TODO
+    //TODO translate
     public String mapLabelForRendering(String label) {
         String result = label;
         if ("wallets".equals(label)) {
