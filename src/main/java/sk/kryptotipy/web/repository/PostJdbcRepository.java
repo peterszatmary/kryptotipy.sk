@@ -139,13 +139,12 @@ public class PostJdbcRepository {
     }
 
     private Long to(Long to) {
-        final Integer NUM_OF_POSSIBLE_LABELS = 4;
+        final Integer NUM_OF_POSSIBLE_LABELS = 3;
         return to * NUM_OF_POSSIBLE_LABELS;
     }
 
     public Post getPostById(Long id) {
         List<Post> posts = new ArrayList<>();
-        System.out.println("ID="+id);
         try {
             posts  = jdbcTemplate.query(QueryFactory.postById(), new PostMapper(jdbcTemplate), id);
 
