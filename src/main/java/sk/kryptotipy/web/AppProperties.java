@@ -25,7 +25,7 @@ public class AppProperties {
     @Value("${page.size}")
     private Long pageSize;
 
-    @Value("${page.description.short}")
+    @Value("${page.description.short.raw}")
     private String pageDescriptionShort;
 
     @Value("${page.port}")
@@ -34,7 +34,7 @@ public class AppProperties {
     @Value("${page.title}")
     private String pageTitle;
 
-    @Value("${page.description}")
+    @Value("${page.description.raw}")
     private String pageDescription;
 
     @Value("${page.author}")
