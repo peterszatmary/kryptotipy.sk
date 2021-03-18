@@ -6,6 +6,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import sk.kryptotipy.web.AppProperties;
+import sk.kryptotipy.web.data.Label;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -49,120 +50,18 @@ public class UtilityService {
         return siteUrl.toString();
     }
 
-    public String mapSiteUrl(String url) {
+    public String mapSiteUrl(String url, List<String> labels, List<String> langs) {
 
-        switch (url) {
-            case "news" :
-                return "posts/all";
-            case "news?label=cardano&lang=SK&lang=CZ" :
-                return "posts/cardano";
-            case "news?label=tezos&lang=SK&lang=CZ" :
-                return "posts/tezos";
-            case "news?label=bitcoin&lang=SK&lang=CZ" :
-                return "posts/bitcoin";
-            case "news?label=ethereum&lang=SK&lang=CZ" :
-                return "posts/ethereum";
-            case "news?label=exchange&lang=SK&lang=CZ" :
-                return "posts/exchange";
-            case "news?label=litecoin&lang=SK&lang=CZ" :
-                return "posts/litecoin";
-            case "news?label=polkadot&lang=SK&lang=CZ" :
-                return "posts/polkadot";
-            case "news?label=fed&lang=SK&lang=CZ" :
-                return "posts/fed";
-            case "news?label=ecb&lang=SK&lang=CZ" :
-                return "posts/ecb";
-            case "news?label=nbs&lang=SK&lang=CZ" :
-                return "posts/nbs";
-            case "news?label=neo&lang=SK&lang=CZ" :
-                return "posts/neo";
-            case "news?label=altcoin&lang=SK&lang=CZ" :
-                return "posts/altcoin";
-            case "news?label=monero&lang=SK&lang=CZ" :
-                return "posts/monero";
-            case "news?label=dash&lang=SK&lang=CZ" :
-                return "posts/dash";
-            case "news?label=vechain&lang=SK&lang=CZ" :
-                return "posts/vechain";
-            case "news?label=algorand&lang=SK&lang=CZ" :
-                return "posts/algorand";
-            case "news?label=ontology&lang=SK&lang=CZ" :
-                return "posts/ontology";
-            case "news?label=cosmos&lang=SK&lang=CZ" :
-                return "posts/cosmos";
-            case "news?label=binance&lang=SK&lang=CZ" :
-                return "posts/binance";
-            case "news?label=dag&lang=SK&lang=CZ" :
-                return "posts/dag";
-            case "news?label=exodus&lang=SK&lang=CZ" :
-                return "posts/exodus";
-            case "news?label=fork&lang=SK&lang=CZ" :
-                return "posts/fork";
-            case "news?label=ico&lang=SK&lang=CZ" :
-                return "posts/ico";
-            case "news?label=kraken&lang=SK&lang=CZ" :
-                return "posts/kraken";
-            case "news?label=coinbase&lang=SK&lang=CZ" :
-                return "posts/coinbase";
-            case "news?label=halving&lang=SK&lang=CZ" :
-                return "posts/halving";
-            case "news?label=bitfinex&lang=SK&lang=CZ" :
-                return "posts/bitfinex";
-            case "news?label=bittrex&lang=SK&lang=CZ" :
-                return "posts/bittrex";
-            case "news?label=ripple&lang=SK&lang=CZ" :
-                return "posts/ripple";
-            case "news?label=wallets&lang=SK&lang=CZ" :
-                return "posts/wallets";
-            case "news?label=coinmarketcap&lang=SK&lang=CZ" :
-                return "posts/coinmarketcap";
-            case "news?label=not-categorized&lang=SK&lang=CZ" :
-                return "posts/not-categorized";
+        if (labels.size() == 1) {
+            return "posts/" + labels.get(0);
         }
-
-        if (isLangUrl(url, "SK")) {
-            return "posts-by-i18n/SK";
+        if (langs.size() == 1) {
+            return "posts-by-i18n/" + langs.get(0).toUpperCase();
         }
-        if (isLangUrl(url, "CZ")) {
-            return "posts-by-i18n/CZ";
-        }
-        if (isLangUrl(url, "NL")) {
-            return "posts-by-i18n/NL";
-        }
-        if (isLangUrl(url, "CA")) {
-            return "posts-by-i18n/CA";
-        }
-        if (isLangUrl(url, "GB")) {
-            return "posts-by-i18n/GB";
-        }
-        if (isLangUrl(url, "US")) {
-            return "posts-by-i18n/US";
-        }
-        if (isLangUrl(url, "DE")) {
-            return "posts-by-i18n/DE";
-        }
-        if (isLangUrl(url, "PL")) {
-            return "posts-by-i18n/PL";
-        }
-        if (isLangUrl(url, "HU")) {
-            return "posts-by-i18n/HU";
-        }
-        if (isLangUrl(url, "CH")) {
-            return "posts-by-i18n/CH";
+        if ("news".equals(url)) {
+            return "posts/all";
         }
         return url;
-    }
-
-
-
-    private boolean isLangUrl(String newUrl, String lang) {
-        return (newUrl.contains("lang=" + lang) &&
-                (
-                        newUrl.contains("bitcoin") &&
-                                newUrl.contains("cryptocurrency") &&
-                                newUrl.contains("altcoin")
-                ))
-                || (newUrl.contains("lang=" + lang) && (newUrl.split("label").length == 1));
     }
 
 

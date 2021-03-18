@@ -241,7 +241,7 @@ public class WebController {
         }
 
         pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"));
-        model.put("site", utilityService.mapSiteUrl(utilityService.buildSiteUrl(labels, langs)));
+        model.put("site", utilityService.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
         model.put("label_render", customPageTitle);
         model.put("label_render_path", StringUtils.capitalize(label_render));
     }
