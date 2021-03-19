@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.data.Post;
+import sk.kryptotipy.web.data.Source;
 import sk.kryptotipy.web.repository.PostJdbcRepository;
+import sk.kryptotipy.web.repository.SourceRepository;
 
 import java.util.*;
 
@@ -15,6 +17,7 @@ import java.util.*;
 public class PostService implements PostServiceApi {
 
     private final PostJdbcRepository postLabelRepository;
+    private final SourceRepository sourceRepository;
 
     public List<Post> getPostsByLabel(String label, Long from, Long to) {
         List<Post> posts = postLabelRepository
@@ -64,5 +67,10 @@ public class PostService implements PostServiceApi {
         List<Post> posts = postLabelRepository
                 .getNewestPosts(langs);
         return posts;
+    }
+
+    @Override
+    public List<Source> getAllSources() {
+        return sourceRepository.getSources();
     }
 }

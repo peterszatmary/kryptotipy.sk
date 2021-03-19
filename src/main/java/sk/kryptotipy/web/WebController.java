@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.data.Source;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.repository.LabelRepository;
@@ -277,6 +278,41 @@ public class WebController {
             return "redirect:/error";
         }
     }
+
+
+    @RequestMapping("/sources")
+    public String sources(Map<String, Object> model, HttpServletRequest request) {
+
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
+        try {
+
+            model.put("active_index", "");
+            model.put("active_posts", "");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
+            model.put("site", "cooperation");
+            model.put("content_path","fragments/content/sources");
+            model.put("sources", postService.getAllSources());
+
+            log.info("sources.html");
+            pageData.set(model, rbFromUrl.getString("footer.sources.text"), rbFromUrl.getString("default.descr"));//TODO
+            model.put("page_description", rbFromUrl.getString("cooperation.descr"));
+            model.put("page_date", LocalDateTime.of(2021, Month.MARCH, 19, 0, 0) + "");
+            return "non-index";
+
+        } catch (Exception ex) {
+            log.warn("sources : " + ex.getMessage());
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            return "redirect:/error";
+        }
+    }
+
+
+
 
     @RequestMapping("/cooperation")
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {

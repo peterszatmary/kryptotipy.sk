@@ -1,6 +1,7 @@
 package sk.kryptotipy.web.api;
 
 import sk.kryptotipy.web.data.Post;
+import sk.kryptotipy.web.data.Source;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface PostServiceApi {
     Post getPostByUrl(String url);
     Post getPostByUrlPartAndSourceRendered(String urlPart, String sourceRendered);
     boolean updatePostViews(String url, Integer views);
+    List<Source> getAllSources();
 }
