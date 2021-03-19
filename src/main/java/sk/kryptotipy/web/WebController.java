@@ -300,7 +300,7 @@ public class WebController {
 
             log.info("sources.html");
             pageData.set(model, rbFromUrl.getString("footer.sources.text"), rbFromUrl.getString("default.descr"));//TODO
-            model.put("page_description", rbFromUrl.getString("cooperation.descr"));
+            model.put("page_description", rbFromUrl.getString("sources.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.MARCH, 19, 0, 0) + "");
             return "non-index";
 
