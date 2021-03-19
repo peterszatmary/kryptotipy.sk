@@ -61,7 +61,7 @@ public class UtilityService {
         if ("news".equals(url)) {
             return "posts/all";
         }
-        return url;
+        return "news";
     }
 
 
