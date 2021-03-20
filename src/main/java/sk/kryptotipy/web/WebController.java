@@ -223,16 +223,16 @@ public class WebController {
         } else if (labels.size() == 1) {
             label_render = utilityService.mapLabelForRendering(labels.get(0));
             customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
-        } else if (labels.size() == allLabelCount) { //TODO trasparency for all checkbox later
+        } else if (labels.size() == allLabelCount) {
             customPageTitle = rbFromUrl.getString("crypto.news.title.all");
             label_render = rbFromUrl.getString("filter.component.all");
         } else {
             String pageTitle = rbFromUrl.getString("crypto.news.themes");
 
-            //TODO cryptocurrency, exchange, ...
             StringBuilder labelsStr = new StringBuilder();
             labelsStr.append("[ ");
-            labels.stream().forEach(label -> labelsStr.append(StringUtils.capitalize(label)).append(", "));
+            labels.stream().forEach(label -> labelsStr.append(rbFromUrl.getString("a.label."+label))
+                    .append(", "));
             label_render = labelsStr
                     .deleteCharAt(labelsStr.length() - 1)
                     .deleteCharAt(labelsStr.length() - 1)
