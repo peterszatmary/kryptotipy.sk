@@ -104,7 +104,9 @@ public class Post {
                 "kryptonovinky.sk", //TODO problem s redirectom,
                 "cryptobriefing.com", //TODO problem s redirectom,
                 "trustnodes.com", //TODO problem s redirectom,
-                "cryptoslate.com" //TODO problem s redirectom,
+                "cryptoslate.com", //TODO problem s redirectom,
+                "ambcrypto.com",
+                "krypto-meny.sk"
 
         );
         return redirect.contains(sourceRender);

@@ -118,14 +118,9 @@ public class PostJdbcRepository {
                     o.toArray()
             );
 
-            //System.out.println(">>>>>" + posts.size());
-
             Set<Post> resultWithoutDuplicities = new LinkedHashSet<>();
             posts.stream().forEach(post -> resultWithoutDuplicities.add(post));
             result = new ArrayList<>(resultWithoutDuplicities);
-
-
-            //System.out.println(">>>>>" + resultWithoutDuplicities.size());
 
         } catch(Exception e){
             e.printStackTrace();
