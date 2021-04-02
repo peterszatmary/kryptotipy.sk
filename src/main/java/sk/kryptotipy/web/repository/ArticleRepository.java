@@ -48,7 +48,7 @@ public class ArticleRepository {
         services.add(new Article(
                 rb.getString("article.telegram.newsbot"),
                 "/article/kryptotipy_news_bot",
-                "telegram_news_bot.png",
+                "kryptotipy_news_bot.png",
                 "2.4.2021 - " + "TELEGRAM",
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.APRIL, 2+1))
