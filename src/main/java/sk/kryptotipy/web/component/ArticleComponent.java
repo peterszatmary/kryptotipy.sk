@@ -19,6 +19,21 @@ public class ArticleComponent {
     private final AppProperties appProperties;
     private Map<String, String> postsMeta;
 
+    private void addTelegramNewsBot() {
+        String postKey = "kryptotipy_news_bot";
+        String postTitle = "Nový telegram bot, ktorý vám nájde najčerstvejšie krypto novinky @kryptotipy_news_bot";
+        String postDescription = "Články na tému kryptomeny možno hľadať jednoducho pomocou nového bota Kryptotipy aktuality @kryptotipy_news_bot .";
+        String postImagePathExtension =  ".png";
+        String imgWidth = "638";
+        String imgHeight = "414";
+        LocalDateTime postDate = LocalDateTime.of(2021, Month.APRIL, 2, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePathExtension,
+                imgWidth, imgHeight, postDate
+        );
+    }
+
     private void addArticlePassiveIncomeWithPolkadotOnLedger() {
         String postKey = "passive-income-with-polkadot-on-ledger";
         String postTitle = "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger";
@@ -237,6 +252,7 @@ public class ArticleComponent {
         addArticlePassiveIncomeWithNeo();
         addArticlePassiveIncomeWithPolkadotOnLedger();
         addAllPostsMeta();
+        addTelegramNewsBot();
     }
 
 

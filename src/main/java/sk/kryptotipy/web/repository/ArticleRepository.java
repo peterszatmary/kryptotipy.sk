@@ -16,32 +16,6 @@ public class ArticleRepository {
 
         services.addAll(getKryptotipyContentView(rb));
 
-        services.add(new Article(
-                rb.getString("article.proof.of.work"),
-                "/article/complete-guide-to-proof-of-work",
-                "complete-guide-to-proof-of-work.jpg",
-                "7.2.2021 - " + rb.getString("article.category.crypto.mining"),
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
-        ));
-
-        services.add(new Article(
-                rb.getString("article.exodus.neo"),
-                "article/passive-income-with-neo",
-                "passive-income-with-neo.png",
-                "31.1.2021 - " + rb.getString("article.category.passive.income"),
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 1))
-        ));
-
-        services.add(new Article(
-                rb.getString("article.exodus.algorand"),
-                "article/passive-income-with-algorand",
-                "passive-income-with-algorand.jpg",
-                "27.1.2021 - " + rb.getString("article.category.passive.income"),
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
-        ));
 
         services.add(new Article(
                 rb.getString("article.exodus"),
@@ -70,6 +44,15 @@ public class ArticleRepository {
         List<Article> services = new ArrayList<>();
 
         //TODO +1 day because Iam stupid and date does not contain Time Zone
+
+        services.add(new Article(
+                rb.getString("article.telegram.newsbot"),
+                "/article/kryptotipy_news_bot",
+                "telegram_news_bot.png",
+                "2.4.2021 - " + "TELEGRAM",
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.APRIL, 2+1))
+        ));
 
         services.add(new Article(
                 rb.getString("article.exodus.polkadot"),
@@ -106,6 +89,34 @@ public class ArticleRepository {
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 14+1))
         ));
+
+        services.add(new Article(
+                rb.getString("article.proof.of.work"),
+                "/article/complete-guide-to-proof-of-work",
+                "complete-guide-to-proof-of-work.jpg",
+                "7.2.2021 - " + rb.getString("article.category.crypto.mining"),
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 7+1))
+        ));
+
+        services.add(new Article(
+                rb.getString("article.exodus.neo"),
+                "article/passive-income-with-neo",
+                "passive-income-with-neo.png",
+                "31.1.2021 - " + rb.getString("article.category.passive.income"),
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 1))
+        ));
+
+        services.add(new Article(
+                rb.getString("article.exodus.algorand"),
+                "article/passive-income-with-algorand",
+                "passive-income-with-algorand.jpg",
+                "27.1.2021 - " + rb.getString("article.category.passive.income"),
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
+        ));
+
 
         return services;
     }
