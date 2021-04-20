@@ -35,6 +35,13 @@ public class UtilityService {
         return rb;
     }
 
+    public ResourceBundle getResourceBundleSk(HttpServletRequest request) {
+        ResourceBundle rb = ResourceBundle.getBundle(
+                "messages", new Locale("sk")
+        );
+        return rb;
+    }
+
     public ResourceBundle getResourceBundle(String lang) {
         ResourceBundle rb = ResourceBundle.getBundle(
                 "messages", new Locale(lang == null ? "sk" : lang)

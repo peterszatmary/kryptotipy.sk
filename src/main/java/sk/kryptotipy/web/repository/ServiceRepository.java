@@ -45,6 +45,7 @@ public class ServiceRepository {
         services.add(new Service(rb.getString("external.services.service.30.title"), "https://99bitcoins.com/bitcoin-obituaries/", "bitcoin-deaths.jpeg", rb.getString("external.services.service.30.description")));
 
 
+
         return services;
     }
 

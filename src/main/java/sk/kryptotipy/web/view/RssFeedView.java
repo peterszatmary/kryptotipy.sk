@@ -13,6 +13,9 @@ import sk.kryptotipy.web.service.UtilityService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,6 +32,7 @@ public class RssFeedView extends AbstractRssFeedView {
     protected void buildFeedMetadata(Map<String, Object> model,
                                      Channel feed, HttpServletRequest request) {
         feed.setTitle("Kryptotipy.sk RSS Feed");
+        //feed.setEncoding("ISO-8859-1");
         feed.setDescription(appProperties.getPageDescription());
         feed.setLink(appProperties.getBaseUrlWithoutPort());
     }
@@ -38,7 +42,7 @@ public class RssFeedView extends AbstractRssFeedView {
                                         HttpServletRequest request, HttpServletResponse response) {
 
         List<Article> articles = articleRepository.getKryptotipyContent(
-                utilityService.getResourceBundle(request));
+                utilityService.getResourceBundleSk(request));
         return articles.stream()
                 .map(article -> mapArticleToRssItem(article))
                 .collect(Collectors.toList());
@@ -46,7 +50,13 @@ public class RssFeedView extends AbstractRssFeedView {
 
     private Item mapArticleToRssItem(Article article) {
         Item rssItem = new Item();
-        rssItem.setTitle(article.getName());
+        String t = "";
+        try {
+            t = new String(article.getName().getBytes("ISO-8859-1"), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        rssItem.setTitle(t);
         rssItem.setAuthor(appProperties.getPageTitle());
         rssItem.setLink(appProperties.getBaseUrlWithoutPort() + article.getUrl());
         rssItem.setPubDate(article.getPubDate());
