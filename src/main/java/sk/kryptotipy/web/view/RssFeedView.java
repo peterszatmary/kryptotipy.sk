@@ -52,7 +52,7 @@ public class RssFeedView extends AbstractRssFeedView {
         Item rssItem = new Item();
         String t = "";
         try {
-            t = new String(article.getName().getBytes("ISO-8859-1"), "UTF-8");
+            t = new String(article.getName().getBytes("ISO-8859-1"), "ISO-8859-1");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.data.SiteEntry;
 import sk.kryptotipy.web.data.Source;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.repository.LabelRepository;
 import sk.kryptotipy.web.repository.ServiceRepository;
+import sk.kryptotipy.web.repository.SiteRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
+import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +42,9 @@ public class WebController {
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
     private final LabelRepository labelRepo;
+    private final SitemapService sitemapService;
+
+    private final SiteRepository s;
 
     @RequestMapping("/")
     public String index(Map<String, Object> model,
@@ -416,12 +422,15 @@ public class WebController {
     }
 
     @RequestMapping(value = "/sitemap.xml",
+            //produces = MediaType.TEXT_XML_VALUE)
             produces = MediaType.APPLICATION_XML_VALUE)
-    public String sitemapXml(HttpServletRequest request) {
-
+    public List<SiteEntry> sitemapXml(HttpServletRequest request) {
+        //XmlUrlSet
         String lang = utilityService.getLocaleFromUrl(request.getRequestURL().toString());
         log.info("Lang was found={}, sitemap-{}.xml rendered", lang, lang);
-        return "sitemaps/sitemap-" + lang + ".xml";
+
+        ///return sitemapService.createSitemap(lang);
+        return s.getSites();
     }
 
 

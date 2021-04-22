@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 public class SiteEntry {
-    private final String title;
+    private final String loc;
     private final Double priority;
-    private final LocalDate date;
+    private final LocalDate lastmod;
 }

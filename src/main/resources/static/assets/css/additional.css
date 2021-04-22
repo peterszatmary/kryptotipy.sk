@@ -587,3 +587,16 @@ input[type=checkbox]:checked:disabled + label:before {
   background-color: #bfb;
   border-color: #bfb;
 }
+
+
+div.right-vertical-social {
+    background-color: transparent;
+    display: block;
+    position: fixed;
+    padding-right: 10px;
+    width: 50px;
+    height: 200px;
+    right: 0px;
+    bottom: 200px;
+    z-index: 100;
+}
