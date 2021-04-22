@@ -424,13 +424,15 @@ public class WebController {
     @RequestMapping(value = "/sitemap.xml",
             //produces = MediaType.TEXT_XML_VALUE)
             produces = MediaType.APPLICATION_XML_VALUE)
-    public List<SiteEntry> sitemapXml(HttpServletRequest request) {
+    //public List<SiteEntry> sitemapXml(HttpServletRequest request) {
+    public String sitemapXml(HttpServletRequest request) {
         //XmlUrlSet
         String lang = utilityService.getLocaleFromUrl(request.getRequestURL().toString());
         log.info("Lang was found={}, sitemap-{}.xml rendered", lang, lang);
 
         ///return sitemapService.createSitemap(lang);
-        return s.getSites();
+        //return s.getSites();
+        return "sitemaps/sitemap-" + lang + ".xml";
     }
 
 
