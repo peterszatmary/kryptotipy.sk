@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>sk.kryptotipy</groupId>
 	<artifactId>kryptotipy-web</artifactId>
-	<version>4.17.3</version>
+	<version>4.17.4</version>
 	<name>kryptotipy.sk web</name>
 	<description>kryptotipy.sk web</description>
 
@@ -75,6 +75,7 @@
 			<artifactId>rome</artifactId>
 			<version>${rometools.version}</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>junit</groupId>

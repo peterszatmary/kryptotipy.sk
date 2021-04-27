@@ -9,8 +9,12 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
 
+//TODO encoding problems are caused by external library rome. but coinly is able to read it as it is.
+//
 @Repository
 public class ArticleRepository {
+
+
     public List<Article> getKryptotipyContent(ResourceBundle rb) {
         List<Article> services = new ArrayList<>();
 

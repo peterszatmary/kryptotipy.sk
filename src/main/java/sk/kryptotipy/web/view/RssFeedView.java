@@ -1,6 +1,8 @@
 package sk.kryptotipy.web.view;
 
+import com.rometools.rome.feed.rss.Category;
 import com.rometools.rome.feed.rss.Channel;
+import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Item;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -8,6 +10,7 @@ import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.data.Article;
 import sk.kryptotipy.web.repository.ArticleRepository;
+import sk.kryptotipy.web.repository.RssRepository;
 import sk.kryptotipy.web.service.UtilityService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -37,6 +41,8 @@ public class RssFeedView extends AbstractRssFeedView {
         feed.setLink(appProperties.getBaseUrlWithoutPort());
     }
 
+//TODO CRYPTO-2: I was not able to solve encoding problem with resource bundle!
+// try in the future solve it because you can improve by that the maintance
     @Override
     protected List<Item> buildFeedItems(Map<String, Object> model,
                                         HttpServletRequest request, HttpServletResponse response) {
@@ -48,18 +54,34 @@ public class RssFeedView extends AbstractRssFeedView {
                 .collect(Collectors.toList());
     }
 
+//    @Override
+//    protected List<Item> buildFeedItems(Map<String, Object> model,
+//                                        HttpServletRequest request, HttpServletResponse response) {
+//
+//        List<Article> articles = rssRepository.getKryptotipyContentForRss();
+//        return articles.stream()
+//                .map(article -> mapArticleToRssItem(article))
+//                .collect(Collectors.toList());
+//    }
+
+
+
     private Item mapArticleToRssItem(Article article) {
         Item rssItem = new Item();
-        String t = "";
-        try {
-            t = new String(article.getName().getBytes("ISO-8859-1"), "ISO-8859-1");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        rssItem.setTitle(t);
+        rssItem.setTitle(article.getName());
         rssItem.setAuthor(appProperties.getPageTitle());
         rssItem.setLink(appProperties.getBaseUrlWithoutPort() + article.getUrl());
         rssItem.setPubDate(article.getPubDate());
+
+//        Description description = new Description();
+//        description.setValue(article.getDescription());
+//        description.setType(article.getDescription());
+//        rssItem.setDescription(description);
+//
+//        Category category = new Category();
+//        category.setValue(article.getCategory());
+//        rssItem.setCategories(Arrays.asList(category));
+
         return rssItem;
     }
 }
