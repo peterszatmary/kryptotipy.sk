@@ -106,7 +106,10 @@ public class Post {
                 "trustnodes.com", //TODO problem s redirectom,
                 "cryptoslate.com", //TODO problem s redirectom,
                 "ambcrypto.com",
-                "krypto-meny.sk"
+                "krypto-meny.sk",
+                "beincrypto.pl", // partners
+                "beincrypto.com", // partners
+                "de.beincrypto.com" // partners
 
         );
         return redirect.contains(sourceRender);

@@ -1,8 +1,6 @@
 package sk.kryptotipy.web.view;
 
-import com.rometools.rome.feed.rss.Category;
 import com.rometools.rome.feed.rss.Channel;
-import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Item;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,16 +8,10 @@ import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.data.Article;
 import sk.kryptotipy.web.repository.ArticleRepository;
-import sk.kryptotipy.web.repository.RssRepository;
 import sk.kryptotipy.web.service.UtilityService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
