@@ -21,7 +21,7 @@
                                  th:title="#{${post.getI18nFlagRender()}}" th:alt="#{${post.getI18nFlagRender()}}"/>
                     </a>
                     <div>
-                        <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.sourceRender}">
+                        <span th:text="${#temporals.format(post.birthday,'dd.MM.yyyy') + '&nbsp;&nbsp;' + post.getPostRenderShort()}">
                         </span>
                         &nbsp;
                         <i class="icon-eye-open" style="margin-right:-2px;"></i>

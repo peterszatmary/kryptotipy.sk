@@ -8,10 +8,7 @@ import org.springframework.util.CollectionUtils;
 import javax.persistence.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 
@@ -75,6 +72,18 @@ public class Post {
     public String getPostViewUrl() {
         String hashed = "p" + (this.id + 217) + "sz";
         return "/one-post-frame/" + hashed;
+    }
+
+    public String getPostRenderShort() {
+        if (this.sourceRender == null || this.sourceRender.isEmpty()) {
+            return "";
+        }
+        if (sourceRender.length() <= 20) {
+            return this.sourceRender;
+        }
+        List<String> sourceParts = new ArrayList(Arrays.asList(this.sourceRender.split("\\.")));
+        return sourceParts.stream().max(Comparator.comparingInt(String::length)).get();
+
     }
 
     public String getI18nFlagRender() {
