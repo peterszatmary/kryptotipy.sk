@@ -12,6 +12,7 @@ public class ServiceRepository {
 
     public List<Service> getExternalServices(ResourceBundle rb) {
         List<Service> services = new ArrayList<>();
+        
 
         services.add(new Service(rb.getString("external.services.service.1.title"), "https://blockchair.com/", "blockchair.png", rb.getString("external.services.service.1.description")));
         services.add(new Service(rb.getString("external.services.service.2.title"), "https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933", "trezor-one-black.png", rb.getString("external.services.service.2.description")));
@@ -43,6 +44,9 @@ public class ServiceRepository {
         services.add(new Service(rb.getString("external.services.service.28.title"), "https://kryptotank.cz/", "kryptotank.png", rb.getString("external.services.service.28.description")));
         services.add(new Service(rb.getString("external.services.service.29.title"), "https://whitepaper.io/", "whitepaper.jpg", rb.getString("external.services.service.29.description")));
         services.add(new Service(rb.getString("external.services.service.30.title"), "https://99bitcoins.com/bitcoin-obituaries/", "bitcoin-deaths.jpeg", rb.getString("external.services.service.30.description")));
+
+
+
 
 
 
