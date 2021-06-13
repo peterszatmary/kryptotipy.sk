@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.data.Donate;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.data.Source;
+import sk.kryptotipy.web.repository.DonateRepository;
 import sk.kryptotipy.web.repository.PostJdbcRepository;
 import sk.kryptotipy.web.repository.SourceRepository;
 
@@ -18,6 +20,7 @@ public class PostService implements PostServiceApi {
 
     private final PostJdbcRepository postLabelRepository;
     private final SourceRepository sourceRepository;
+    private final DonateRepository donateRepository;
 
     public List<Post> getPostsByLabel(String label, Long from, Long to) {
         List<Post> posts = postLabelRepository
@@ -72,5 +75,10 @@ public class PostService implements PostServiceApi {
     @Override
     public List<Source> getAllSources() {
         return sourceRepository.getSources();
+    }
+
+    @Override
+    public List<Donate> getAllDonates() {
+        return donateRepository.getDonates();
     }
 }

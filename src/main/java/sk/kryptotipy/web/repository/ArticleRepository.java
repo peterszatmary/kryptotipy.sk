@@ -22,15 +22,6 @@ public class ArticleRepository {
 
 
         services.add(new Article(
-                rb.getString("article.exodus"),
-                "article/passive-income-with-exodus",
-                "passive-income-with-exodus.jpg",
-                "17.1.2021 - " + rb.getString("article.category.passive.income"),
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17+1))
-        ));
-
-        services.add(new Article(
                 rb.getString("article.btc.not.first"),
                 "/article/btc-is-not-the-first",
                 "btc-not-first.png",
@@ -49,14 +40,14 @@ public class ArticleRepository {
 
         //TODO +1 day because Iam stupid and date does not contain Time Zone
 
-        services.add(new Article(
-                rb.getString("article.telegram.newsbot"),
-                "/article/kryptotipy_news_bot",
-                "kryptotipy_news_bot.png",
-                "2.4.2021 - " + "TELEGRAM",
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.APRIL, 2+1))
-        ));
+//        services.add(new Article(
+//                rb.getString("article.telegram.newsbot"),
+//                "/article/kryptotipy_news_bot",
+//                "kryptotipy_news_bot.png",
+//                "2.4.2021 - " + "TELEGRAM",
+//                "",
+//                Date.valueOf(LocalDate.of(2021, Month.APRIL, 2+1))
+//        ));
 
         services.add(new Article(
                 rb.getString("article.exodus.polkadot"),
@@ -119,6 +110,15 @@ public class ArticleRepository {
                 "27.1.2021 - " + rb.getString("article.category.passive.income"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
+        ));
+
+        services.add(new Article(
+                rb.getString("article.exodus"),
+                "article/passive-income-with-exodus",
+                "passive-income-with-exodus.jpg",
+                "17.1.2021 - " + rb.getString("article.category.passive.income"),
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17+1))
         ));
 
 

@@ -13,11 +13,8 @@ import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.data.SiteEntry;
 import sk.kryptotipy.web.data.Source;
-import sk.kryptotipy.web.repository.ArticleRepository;
+import sk.kryptotipy.web.repository.*;
 import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.repository.LabelRepository;
-import sk.kryptotipy.web.repository.ServiceRepository;
-import sk.kryptotipy.web.repository.SiteRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
@@ -346,6 +343,37 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("cooperation : " + ex.getMessage());
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            return "redirect:/error";
+        }
+    }
+
+    @RequestMapping("/donate")
+    public String donate(Map<String, Object> model, HttpServletRequest request) {
+
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
+                request.getRequestURL().toString()
+        ));
+        try {
+
+            model.put("active_index", "");
+            model.put("active_posts", "");
+            model.put("active_dictionary", "");
+            model.put("active_external_services", "");
+            model.put("active_did_you_know", "");
+            model.put("active_krypto_learning", "");
+            model.put("site", "donate");
+            model.put("content_path","fragments/content/donate");
+            model.put("donates", postService.getAllDonates());
+
+            log.info("donate.html");
+            pageData.set(model, rbFromUrl.getString("footer.donate"), rbFromUrl.getString("default.descr"));
+            model.put("page_description", rbFromUrl.getString("donate.descr"));
+            model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
+            return "non-index";
+
+        } catch (Exception ex) {
+            log.warn("donate : " + ex.getMessage());
             pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
             return "redirect:/error";
         }

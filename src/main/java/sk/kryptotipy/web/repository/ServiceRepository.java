@@ -84,8 +84,6 @@ public class ServiceRepository {
     }
 
 
-
-
     /** views **/
     public List<Service> getExternalServicesViews(ResourceBundle rb) {
         List<Service> services = new ArrayList<>();

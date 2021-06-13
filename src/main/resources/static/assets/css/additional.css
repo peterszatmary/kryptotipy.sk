@@ -617,3 +617,22 @@ input[type=checkbox]:checked:disabled + label:before {
         z-index: 100;
     }
 }
+
+/** DONATE tables */
+@media (min-width: 1201px) {
+    .donate-table-big {
+        display: table;
+    }
+    .donate-table-small {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .donate-table-big {
+        display: none;
+    }
+    .donate-table-small {
+        display: table;
+    }
+}
