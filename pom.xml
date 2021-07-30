@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>sk.kryptotipy</groupId>
 	<artifactId>kryptotipy-web</artifactId>
-	<version>4.20.1</version>
+	<version>4.21.0</version>
 	<name>kryptotipy.sk web</name>
 	<description>kryptotipy.sk web</description>
 
@@ -19,6 +19,7 @@
 		<lombok.version>1.18.16</lombok.version>
 		<mariadb-client.version>2.6.0</mariadb-client.version>
 		<rometools.version>1.15.0</rometools.version>
+		<spring.fox.boot.version>3.0.0</spring.fox.boot.version>
 	</properties>
 
 	<dependencies>
@@ -40,6 +41,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${spring.fox.boot.version}</version>
 		</dependency>
 
 		<dependency>
