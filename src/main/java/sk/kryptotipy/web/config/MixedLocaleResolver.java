@@ -43,7 +43,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
             }
         }
         String localeString = getJustOneLocale(result).toUpperCase();
-        if ("GB".equals(localeString)) {
+        if ("GB".equalsIgnoreCase(localeString)) {
             localeString = "US";
         }
         // en-gb,en-us
@@ -71,9 +71,17 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
             return result;
         }
 
+        // xxx-xxx
         matcher = Pattern.compile("(.{0,3})-(.{0,3})").matcher(locale);
         if (matcher.matches()) {
             result = matcher.group(1);
+            return result;
+        }
+
+        // cs-CZ,cs -> CZ
+        matcher = Pattern.compile("(.{0,3})-(.{0,3}),(.{0,3})").matcher(locale);
+        if (matcher.matches()) {
+            result = matcher.group(2);
             return result;
         }
 
