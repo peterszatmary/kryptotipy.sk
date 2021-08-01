@@ -47,10 +47,6 @@ public class PageDataService implements PageDataServiceApi {
         articleComponent.addPostsAndArticlesMeta();
     }
 
-    public String getPageDescription() {
-        return this.appProperties.getPageDescription();
-    }
-
     public String getPostTitle(String key) {
         return this.articleComponent.getPostTitle(key);
     }

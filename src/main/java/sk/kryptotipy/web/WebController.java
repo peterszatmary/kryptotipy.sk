@@ -40,12 +40,9 @@ public class WebController {
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
     private final LabelRepository labelRepo;
-
     private final MixedLocaleResolver mixedLocaleResolver;
 
-
     private final SitemapService sitemapService;
-
     private final SiteRepository s;
 
     @RequestMapping("/")
@@ -72,7 +69,7 @@ public class WebController {
             log.info("index.html");
             pageData.set(model, rbFromUrl.getString("page.index.description"), rbFromUrl.getString("default.descr"));
             model.put("btc_price", getBtcPrice());
-            model.put("page_description", pageData.getPageDescription());//TODO internalisation missing
+            model.put("page_description", rbFromUrl.getString("page.index.description.long"));
             return "index";
 
         } catch (Exception ex) {
@@ -487,7 +484,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "did-you-know");
             model.put("content_path", "fragments/content/did_you_know");
-            pageData.set(model, "Vedeli ste, že", rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("did.you.know") , rbFromUrl.getString("default.descr"));
             log.info("did_you_know.html");
             model.put("page_description", rbFromUrl.getString("did.you.know.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");

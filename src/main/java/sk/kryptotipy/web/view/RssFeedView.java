@@ -13,7 +13,9 @@ import sk.kryptotipy.web.service.UtilityService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -29,7 +31,7 @@ public class RssFeedView extends AbstractRssFeedView {
                                      Channel feed, HttpServletRequest request) {
         feed.setTitle("Kryptotipy.sk RSS Feed");
         //feed.setEncoding("ISO-8859-1");
-        feed.setDescription(appProperties.getPageDescription());
+        feed.setDescription(utilityService.getResourceBundleSk().getString("page.index.description.long"));
         feed.setLink(appProperties.getBaseUrlWithoutPort());
     }
 

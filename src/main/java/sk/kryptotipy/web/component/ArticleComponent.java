@@ -255,11 +255,6 @@ public class ArticleComponent {
         addTelegramNewsBot();
     }
 
-
-    public String getPageDescription() {
-        return this.appProperties.getPageDescription();
-    }
-
     public String getPostTitle(String key) {
         return postsMeta.get("post.title." + key);
     }

@@ -10,5 +10,4 @@ public interface PageDataServiceApi {
     String getPostDate(String key);
     String getPostImageWidth(String key);
     String getPostImageHeight(String key);
-    String getPageDescription();
 }
