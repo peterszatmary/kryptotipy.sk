@@ -43,7 +43,11 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
             }
         }
         String localeString = getJustOneLocale(result).toUpperCase();
-        if ("GB".equalsIgnoreCase(localeString)) {
+        if ("CZ".equalsIgnoreCase(localeString)) {
+            localeString = "SK";
+        }
+        localeString = localeString.toLowerCase();
+        if (!appProperties.getSupportedLangs().contains(localeString)) {
             localeString = "US";
         }
         // en-gb,en-us
