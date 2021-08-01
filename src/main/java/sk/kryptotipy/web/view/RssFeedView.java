@@ -40,7 +40,7 @@ public class RssFeedView extends AbstractRssFeedView {
                                         HttpServletRequest request, HttpServletResponse response) {
 
         List<Article> articles = articleRepository.getKryptotipyContent(
-                utilityService.getResourceBundleSk(request));
+                utilityService.getResourceBundleSk());
         return articles.stream()
                 .map(article -> mapArticleToRssItem(article))
                 .collect(Collectors.toList());

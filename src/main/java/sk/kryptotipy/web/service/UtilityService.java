@@ -2,9 +2,13 @@ package sk.kryptotipy.web.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import org.springframework.web.servlet.LocaleResolver;
 import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.data.Label;
 
@@ -18,35 +22,46 @@ public class UtilityService {
 
     private final AppProperties appProperties;
 
-    public String consumeAcceptLang(HttpServletRequest request) {
-        String userLocale = "SK";
-        String clientLocal = request.getHeader("Accept-Language");
-        if (!StringUtils.isEmpty(clientLocal)) {
-            userLocale = clientLocal.split(";")[0];
-        }
-        log.info("Trying to read client locale = {} userLocale = {}", clientLocal, userLocale);
-        return userLocale.toLowerCase();
-    }
+    //TODO good for deletion
+//    public ResourceBundle getResourceBundle(HttpServletRequest request) {
+//        ResourceBundle rb = ResourceBundle.getBundle(
+//                "messages", new Locale(consumeAcceptLang(request))
+//        );
+//        return rb;
+//    }
 
-    public ResourceBundle getResourceBundle(HttpServletRequest request) {
-        ResourceBundle rb = ResourceBundle.getBundle(
-                "messages", new Locale(consumeAcceptLang(request))
-        );
-        return rb;
-    }
-
-    public ResourceBundle getResourceBundleSk(HttpServletRequest request) {
+    //TODO
+    public ResourceBundle getResourceBundleSk() {
         ResourceBundle rb = ResourceBundle.getBundle(
                 "messages", new Locale("sk")
         );
         return rb;
     }
 
-    public ResourceBundle getResourceBundle(String lang) {
-        ResourceBundle rb = ResourceBundle.getBundle(
-                "messages", new Locale(lang == null ? "sk" : lang)
-        );
-        return rb;
+    public ResourceBundle getResourceBundle(String langLower) {
+        if (langLower.contains("sk")) {//TODO news -> is null
+
+            return ResourceBundle.getBundle("messages", new Locale("sk"));
+        } else if (langLower.contains("cs")) {
+            return ResourceBundle.getBundle("messages", new Locale("sk"));
+        } else if (langLower.contains("de")) {
+            return ResourceBundle.getBundle("messages", new Locale("de"));
+        } else if (langLower.contains("pl")) {
+            return ResourceBundle.getBundle("messages", new Locale("pl"));
+        } else if (langLower.contains("hu")) {
+            return ResourceBundle.getBundle("messages", new Locale("hu"));
+        } else if (langLower.contains("en")) {
+            //LocaleContextHolder.setLocale(new Locale("hu"));//TODO
+            //LocaleContextHolder.setLocale(new Locale("en_US"));
+            log.info("Returning en resource bundle");
+            return ResourceBundle.getBundle("messages", new Locale("en"));
+        } else if (langLower.contains("us")) {
+            return ResourceBundle.getBundle("messages", new Locale("en"));
+        } else if (langLower.contains("nl")) {
+            return ResourceBundle.getBundle("messages", new Locale("nl"));
+        } else {
+            return ResourceBundle.getBundle("messages", new Locale("sk"));
+        }
     }
 
     public String buildSiteUrl(List<String> labels, List<String> langs) {
@@ -103,27 +118,7 @@ public class UtilityService {
                 initValues : new ArrayList<>(Arrays.asList(parameterMap.get(inputKey)));
     }
 
-    public String getLocaleFromUrl(String url) {
 
-        List<String> supportedLangs = appProperties.getSupportedLangs();
-        String DEFAULT_LANG = "sk";
-
-        String result = DEFAULT_LANG;
-
-        String[] urlParts = url.split("\\.");
-        String langPart = DEFAULT_LANG;
-        if (null != urlParts[0]) {
-            langPart = urlParts[0].toLowerCase();
-        }
-
-        langPart = langPart.replace("https://", "");
-
-        if (supportedLangs.contains(langPart)) {
-            result = langPart;
-        }
-        LocaleContextHolder.setLocale(new Locale(result)); //TODO not sure maybe delete it
-        return result;
-    }
 
     public String buildUrlWithLang(String lang) {
         if (StringUtils.isEmpty(lang)) {

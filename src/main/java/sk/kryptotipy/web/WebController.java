@@ -2,7 +2,6 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -11,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
-import sk.kryptotipy.web.data.SiteEntry;
-import sk.kryptotipy.web.data.Source;
-import sk.kryptotipy.web.repository.*;
 import sk.kryptotipy.web.data.Post;
+import sk.kryptotipy.web.repository.ArticleRepository;
+import sk.kryptotipy.web.repository.LabelRepository;
+import sk.kryptotipy.web.repository.ServiceRepository;
+import sk.kryptotipy.web.repository.SiteRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
+import sk.kryptotipy.web.service.LangService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
 
@@ -39,6 +40,7 @@ public class WebController {
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
     private final LabelRepository labelRepo;
+    private final LangService langService;
     private final SitemapService sitemapService;
 
     private final SiteRepository s;
@@ -47,8 +49,9 @@ public class WebController {
     public String index(Map<String, Object> model,
                         HttpServletRequest request) {
 
-        String lang = utilityService.getLocaleFromUrl(request.getRequestURL().toString());
+        String lang = langService.getLang(request);
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(lang);
+
         try {
 
             model.put("active_index", "active");
@@ -59,15 +62,14 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("cookies_lang", lang);
             model.put("site", "");
-            List<String> langs = new ArrayList<>();
-            setLangsByUserCountry(langs, request);
-            model.put("posts", this.postService.getNewestPosts(langs));
+            List<String> langs = langService.getLangsByUserCountry(lang);
+            model.put("posts", postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
             model.put("external_services", serviceRepo.getExternalServicesViews(rbFromUrl));
             log.info("index.html");
             pageData.set(model, rbFromUrl.getString("page.index.description"), rbFromUrl.getString("default.descr"));
             model.put("btc_price", getBtcPrice());
-            model.put("page_description", pageData.getPageDescription());
+            model.put("page_description", pageData.getPageDescription());//TODO internalisation missing
             return "index";
 
         } catch (Exception ex) {
@@ -106,7 +108,6 @@ public class WebController {
         final Integer ALL_LABELS = allLabels.size();
         final Integer ALL_LANGS  = 10; //TODO from DB
 
-
         List<String> labels = new ArrayList<>();
 
         if (null != labell) {
@@ -122,7 +123,7 @@ public class WebController {
         Map<String, String[]> parameterMap = request.getParameterMap();
 
         if (langs.isEmpty() && null == parameterMap.get("lang")) {
-            setLangsByUserCountry(langs, request);
+            langs = langService.getLangsByUserCountry(langService.getLang(request));
         } else {
             if (null == parameterMap.get("lang")) {
                 langs = new ArrayList<>(Arrays.asList(lang));
@@ -175,48 +176,11 @@ public class WebController {
         return "non-index";
     }
 
-    private void setLangsByUserCountry(List<String> langs, HttpServletRequest request) {
-
-        String langLower = utilityService.consumeAcceptLang(request);
-        if (langLower.contains("sk")) {
-            langs.add("SK");
-            langs.add("CZ");
-            log.info("set SK and CZ by sk");
-        } else if (langLower.contains("cs")) {
-            langs.add("SK");
-            langs.add("CZ");
-            log.info("set SK and CZ by cs");
-        } else if (langLower.contains("de")) {
-            langs.add("DE");
-            langs.add("CH");
-            log.info("set DE and CH by de");
-        } else if (langLower.contains("pl")) {
-            langs.add("PL");
-            log.info("set PL by pl");
-        } else if (langLower.contains("hu")) {
-            langs.add("HU");
-            log.info("set HU by hu");
-        } else if (langLower.contains("en")) {
-            langs.add("CA");
-            langs.add("GB");
-            langs.add("US");
-            log.info("set CA,GB,US by en");
-        } else if (langLower.contains("nl")) {
-            langs.add("NL");
-            log.info("set NL by nl");
-        } else {
-            langs.add("SK");
-            langs.add("CZ");
-            log.info("set SK and CZ by N/A");
-        }
-    }
-
-
     private void setNewsRenderingTexts(List<String> labels, List<String> langs,
                                        Map<String, Object> model,
                                        Integer allLabelCount, HttpServletRequest request) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         String label_render;
         String customPageTitle;
@@ -253,8 +217,8 @@ public class WebController {
     @RequestMapping("/external-services")
     public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -286,8 +250,8 @@ public class WebController {
     @RequestMapping("/sources")
     public String sources(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -320,8 +284,8 @@ public class WebController {
     @RequestMapping("/cooperation")
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -351,8 +315,8 @@ public class WebController {
     @RequestMapping("/donate")
     public String donate(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -383,8 +347,8 @@ public class WebController {
     @RequestMapping("/krypto-learning")
     public String cryptoLearning(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -416,8 +380,8 @@ public class WebController {
     @RequestMapping("/dictionary")
     public String dictionary(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -455,7 +419,7 @@ public class WebController {
     //public List<SiteEntry> sitemapXml(HttpServletRequest request) {
     public String sitemapXml(HttpServletRequest request) {
         //XmlUrlSet
-        String lang = utilityService.getLocaleFromUrl(request.getRequestURL().toString());
+        String lang = langService.getLocaleFromUrl(request.getRequestURL().toString());
         log.info("Lang was found={}, sitemap-{}.xml rendered", lang, lang);
 
         ///return sitemapService.createSitemap(lang);
@@ -467,8 +431,8 @@ public class WebController {
     @RequestMapping("/article/{postTitle}")
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle, HttpServletRequest request) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -503,8 +467,8 @@ public class WebController {
     @RequestMapping("/did-you-know")
     public String didYouKnow(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
@@ -515,7 +479,7 @@ public class WebController {
             model.put("active_did_you_know", "active");
             model.put("active_krypto_learning", "");
             model.put("site", "did-you-know");
-            model.put("content_path","fragments/content/did_you_know");
+            model.put("content_path", "fragments/content/did_you_know");
             pageData.set(model, "Vedeli ste, že", rbFromUrl.getString("default.descr"));
             log.info("did_you_know.html");
             model.put("page_description", rbFromUrl.getString("did.you.know.descr"));
@@ -536,8 +500,8 @@ public class WebController {
             HttpServletResponse response,
             @PathVariable("hashed_id") String hashedId
        ) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(utilityService.getLocaleFromUrl(
-                request.getRequestURL().toString()
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
+                request
         ));
         try {
 
