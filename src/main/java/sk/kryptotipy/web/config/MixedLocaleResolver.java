@@ -70,6 +70,13 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
             result = matcher.group(4);
             return result;
         }
+
+        matcher = Pattern.compile("(.{0,3})-(.{0,3})").matcher(locale);
+        if (matcher.matches()) {
+            result = matcher.group(1);
+            return result;
+        }
+
         return locale;
     }
 
