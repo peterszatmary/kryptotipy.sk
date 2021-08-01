@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.config.MixedLocaleResolver;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.repository.LabelRepository;
 import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.repository.SiteRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
-import sk.kryptotipy.web.service.LangService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
 
@@ -40,7 +40,10 @@ public class WebController {
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
     private final LabelRepository labelRepo;
-    private final LangService langService;
+
+    private final MixedLocaleResolver mixedLocaleResolver;
+
+
     private final SitemapService sitemapService;
 
     private final SiteRepository s;
@@ -49,8 +52,8 @@ public class WebController {
     public String index(Map<String, Object> model,
                         HttpServletRequest request) {
 
-        String lang = langService.getLang(request);
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(lang);
+        Locale resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
 
         try {
 
@@ -60,9 +63,9 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("cookies_lang", lang);
+            model.put("cookies_lang", resolvedLocale.getCountry().toLowerCase());//TODO cookies everywhere!!!
             model.put("site", "");
-            List<String> langs = langService.getLangsByUserCountry(lang);
+            List<String> langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
             model.put("posts", postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
             model.put("external_services", serviceRepo.getExternalServicesViews(rbFromUrl));
@@ -123,7 +126,7 @@ public class WebController {
         Map<String, String[]> parameterMap = request.getParameterMap();
 
         if (langs.isEmpty() && null == parameterMap.get("lang")) {
-            langs = langService.getLangsByUserCountry(langService.getLang(request));
+            langs = mixedLocaleResolver.getLangsByUserCountry(mixedLocaleResolver.resolveLocale(request));
         } else {
             if (null == parameterMap.get("lang")) {
                 langs = new ArrayList<>(Arrays.asList(lang));
@@ -179,9 +182,9 @@ public class WebController {
     private void setNewsRenderingTexts(List<String> labels, List<String> langs,
                                        Map<String, Object> model,
                                        Integer allLabelCount, HttpServletRequest request) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         String label_render;
         String customPageTitle;
         if (langs.size() == 1) {
@@ -217,9 +220,9 @@ public class WebController {
     @RequestMapping("/external-services")
     public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -250,9 +253,9 @@ public class WebController {
     @RequestMapping("/sources")
     public String sources(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -284,9 +287,9 @@ public class WebController {
     @RequestMapping("/cooperation")
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -315,9 +318,9 @@ public class WebController {
     @RequestMapping("/donate")
     public String donate(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -347,9 +350,9 @@ public class WebController {
     @RequestMapping("/krypto-learning")
     public String cryptoLearning(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -380,9 +383,9 @@ public class WebController {
     @RequestMapping("/dictionary")
     public String dictionary(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -419,21 +422,25 @@ public class WebController {
     //public List<SiteEntry> sitemapXml(HttpServletRequest request) {
     public String sitemapXml(HttpServletRequest request) {
         //XmlUrlSet
-        String lang = langService.getLocaleFromUrl(request.getRequestURL().toString());
-        log.info("Lang was found={}, sitemap-{}.xml rendered", lang, lang);
+        Locale resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        String siteMapLang = resolvedLocale.getLanguage().toLowerCase();
+        if (siteMapLang.equalsIgnoreCase("us")) {
+            siteMapLang = "en";
+        }
+        log.info("Locale was found={}, sitemap-{}.xml rendered", resolvedLocale, siteMapLang);
 
         ///return sitemapService.createSitemap(lang);
         //return s.getSites();
-        return "sitemaps/sitemap-" + lang + ".xml";
+        return "sitemaps/sitemap-" + siteMapLang + ".xml";
     }
 
 
     @RequestMapping("/article/{postTitle}")
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle, HttpServletRequest request) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -467,9 +474,9 @@ public class WebController {
     @RequestMapping("/did-you-know")
     public String didYouKnow(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");
@@ -500,9 +507,9 @@ public class WebController {
             HttpServletResponse response,
             @PathVariable("hashed_id") String hashedId
        ) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(langService.getLang(
-                request
-        ));
+        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
         try {
 
             model.put("active_index", "");

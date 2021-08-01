@@ -2,33 +2,15 @@ package sk.kryptotipy.web.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import org.springframework.web.servlet.LocaleResolver;
-import sk.kryptotipy.web.AppProperties;
-import sk.kryptotipy.web.data.Label;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Slf4j
 @AllArgsConstructor
 @Service
 public class UtilityService {
-
-    private final AppProperties appProperties;
-
-    //TODO good for deletion
-//    public ResourceBundle getResourceBundle(HttpServletRequest request) {
-//        ResourceBundle rb = ResourceBundle.getBundle(
-//                "messages", new Locale(consumeAcceptLang(request))
-//        );
-//        return rb;
-//    }
 
     //TODO
     public ResourceBundle getResourceBundleSk() {
@@ -38,30 +20,12 @@ public class UtilityService {
         return rb;
     }
 
-    public ResourceBundle getResourceBundle(String langLower) {
-        if (langLower.contains("sk")) {//TODO news -> is null
+    public ResourceBundle getResourceBundle(Locale locale) {
+        System.out.println("Locale before RB = " + locale.getCountry() + ", " + locale.getLanguage());
 
-            return ResourceBundle.getBundle("messages", new Locale("sk"));
-        } else if (langLower.contains("cs")) {
-            return ResourceBundle.getBundle("messages", new Locale("sk"));
-        } else if (langLower.contains("de")) {
-            return ResourceBundle.getBundle("messages", new Locale("de"));
-        } else if (langLower.contains("pl")) {
-            return ResourceBundle.getBundle("messages", new Locale("pl"));
-        } else if (langLower.contains("hu")) {
-            return ResourceBundle.getBundle("messages", new Locale("hu"));
-        } else if (langLower.contains("en")) {
-            //LocaleContextHolder.setLocale(new Locale("hu"));//TODO
-            //LocaleContextHolder.setLocale(new Locale("en_US"));
-            log.info("Returning en resource bundle");
-            return ResourceBundle.getBundle("messages", new Locale("en"));
-        } else if (langLower.contains("us")) {
-            return ResourceBundle.getBundle("messages", new Locale("en"));
-        } else if (langLower.contains("nl")) {
-            return ResourceBundle.getBundle("messages", new Locale("nl"));
-        } else {
-            return ResourceBundle.getBundle("messages", new Locale("sk"));
-        }
+        ResourceBundle result = ResourceBundle.getBundle("messages", locale);
+        log.info("ResourceBundle with locale was found = {}", result.getLocale());
+        return result;
     }
 
     public String buildSiteUrl(List<String> labels, List<String> langs) {
