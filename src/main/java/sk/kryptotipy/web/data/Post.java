@@ -109,16 +109,17 @@ public class Post {
      */
     public boolean useRedirectToSourceSite() {
         List<String> redirect = Arrays.asList(
-                "krypto.sk", // si tak praje
-                "kryptonovinky.sk", //TODO problem s redirectom,
-                "cryptobriefing.com", //TODO problem s redirectom,
-                "trustnodes.com", //TODO problem s redirectom,
-                "cryptoslate.com", //TODO problem s redirectom,
+                "krypto.sk", // partners
+                "kryptonovinky.sk", // problem s redirectom,
+                "cryptobriefing.com", //problem s redirectom,
+                "trustnodes.com", //problem s redirectom,
+                "cryptoslate.com", //problem s redirectom,
                 "ambcrypto.com",
-                "krypto-meny.sk",
+                "krypto-meny.sk", // partners
                 "beincrypto.pl", // partners
                 "beincrypto.com", // partners
-                "de.beincrypto.com" // partners
+                "de.beincrypto.com", // partners
+                "cryptonews.com" // problem s redirectom
 
         );
         return redirect.contains(sourceRender);

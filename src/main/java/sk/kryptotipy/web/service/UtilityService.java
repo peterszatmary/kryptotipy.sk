@@ -82,8 +82,6 @@ public class UtilityService {
                 initValues : new ArrayList<>(Arrays.asList(parameterMap.get(inputKey)));
     }
 
-
-
     public String buildUrlWithLang(String lang) {
         if (StringUtils.isEmpty(lang)) {
             return "https://www.kryptotipy.sk";
