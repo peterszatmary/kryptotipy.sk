@@ -381,6 +381,10 @@ div.did-you-know ul li {
         content:url("/assets/img/logo/banner-small.png");
         margin-bottom: 10px;
     }
+    img#banner_render_other {
+        content:url("/assets/img/logo/banner-small-other-langs.png");
+        margin-bottom: 10px;
+    }
     nav select {
         height: 40px;
     }
@@ -389,6 +393,9 @@ div.did-you-know ul li {
 @media (max-width: 519px) {
     img#banner_render {
         content:url("/assets/img/logo/logo-40.png");
+    }
+    img#banner_render_other {
+        content:url("/assets/img/logo/banner-small-other-langs.png");
     }
     nav select {
         width: 220px;
@@ -401,14 +408,18 @@ div.did-you-know ul li {
 /** kryptotipy.sk - all other   */
 
 @media (min-width: 750px) {
-    img#banner_render_iframe {
+    img#banner_render {
         content:url("/assets/img/logo/banner-small.png");
+        margin-bottom: 10px;
+    }
+    img#banner_render_other {
+        content:url("/assets/img/logo/banner-small-other-langs.png");
         margin-bottom: 10px;
     }
 }
 
 @media (max-width: 749px) {
-    img#banner_render_iframe {
+    img#banner_render {
         content:url("/assets/img/logo/logo-40.png");
     }
 }
