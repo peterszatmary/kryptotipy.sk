@@ -36,23 +36,24 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
         } else {
             String acceptHeader = consumeAcceptLang(request);
             if (acceptHeader != null) {
-                result = acceptHeader;
+
+                String localeString = getJustOneLocale(acceptHeader).toUpperCase();
+                if ("CZ".equalsIgnoreCase(localeString)) {
+                    result = "SK";
+                }
+                localeString = localeString.toLowerCase();
+                if (!appProperties.getSupportedLangs().contains(localeString)) {
+                    result = "US";
+                }
             } else {
                 // default
                 result = "SK";
             }
         }
-        String localeString = getJustOneLocale(result).toUpperCase();
-        if ("CZ".equalsIgnoreCase(localeString)) {
-            localeString = "SK";
-        }
-        localeString = localeString.toLowerCase();
-        if (!appProperties.getSupportedLangs().contains(localeString)) {
-            localeString = "US";
-        }
+
         // en-gb,en-us
-        log.debug("Locale computed = {}", localeString);
-        return new Locale(localeString.toLowerCase());
+        log.debug("Locale computed = {}", result);
+        return new Locale(result.toLowerCase());
     }
 
     /**
@@ -108,8 +109,9 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
         if (supportedLangs.contains(langPart)) {
             result = langPart;
+        } else if ("www".equalsIgnoreCase(langPart)) {
+            result = "sk";
         }
-
         return result;
     }
 
