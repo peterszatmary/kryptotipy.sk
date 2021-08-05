@@ -109,9 +109,10 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
         if (supportedLangs.contains(langPart)) {
             result = langPart;
-        } else if ("www".equalsIgnoreCase(langPart)) {
-            result = "sk";
         }
+//        else if ("www".equalsIgnoreCase(langPart)) {
+//            result = "sk";
+//        }
         return result;
     }
 
