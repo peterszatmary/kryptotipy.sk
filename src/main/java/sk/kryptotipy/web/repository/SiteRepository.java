@@ -1,399 +1,119 @@
 package sk.kryptotipy.web.repository;
 
 import org.springframework.stereotype.Repository;
-import sk.kryptotipy.web.data.SiteEntry;
+import sk.kryptotipy.web.data.Sitemap;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Repository
 public class SiteRepository {
-    public List<SiteEntry> getSites() {
-        List<SiteEntry> sites = new ArrayList<>();
-        sites.add(new SiteEntry("", 1.0, LocalDate.now()));//TODO date ?
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
-        sites.add(new SiteEntry(null, null, null));
+    public List<Sitemap.URL> getSites() {
 
+        List<Sitemap.URL> sites = new ArrayList<>();
+        
+        sites.add(new Sitemap.URL("https://www.kryptotipy.sk/", 1.0, new Date()));
+        sites.add(new Sitemap.URL("https://en.kryptotipy.sk/", 1.0, new Date()));
+        sites.add(new Sitemap.URL("https://de.kryptotipy.sk/", 1.0, new Date()));
+        sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/", 1.0, new Date()));
+        sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/", 1.0, new Date()));
+        sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/", 1.0, new Date()));
 
-
-        //TODO
-
-
-
-
-//  <url>
-//    <loc>https://www.kryptotipy.sk/</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>1.00</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/news</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/bitcoin</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/cooperation</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//
-//
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/cryptocurrency</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/kraken</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/blockchain</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/wallets</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/ethereum</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/neo</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/polkadot</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/altcoin</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/litecoin</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/exchange</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/ico</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/binance</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/ripple</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/cardano</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/dag</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/nbs</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/fork</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/not-categorized</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/ecb</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/coinbase</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/exodus</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/algorand</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/fed</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/ontology/</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/coinmarketcap</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/monero</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/bittrex</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/bitfinex</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/tezos</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/halving</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/vechain</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/cosmos</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.51</priority>
-//  </url>
-//
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/halving</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/iota</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/aave</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/kusama</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/stellar</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/uniswap</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/chainlink</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts/solana</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/GB</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/US</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/CA</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/SK</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/CZ</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/PL</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/DE</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/HU</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/CH</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/posts-by-i18n/NL</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//
-//
-//
-//
-//
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/complete-guide-to-proof-of-work</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/passive-income-with-neo</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/passive-income-with-exodus</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/btc-is-not-the-first</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/passive-income-with-algorand</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/passive-income-with-polkadot-on-ledger</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/passive-income-with-vechain</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/passive-income-with-cardano</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/article/passive-income-with-cosmos-atom</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/krypto-learning</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/external-services</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/did-you-know</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/dictionary</loc>
-//    <lastmod>2021-03-17T12:02:22+00:00</lastmod>
-//    <priority>0.80</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/sources</loc>
-//    <lastmod>2021-03-20T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//  <url>
-//    <loc>https://www.kryptotipy.sk/kryptotipy_news_bot</loc>
-//    <lastmod>2021-04-02T12:02:22+00:00</lastmod>
-//    <priority>0.64</priority>
-//  </url>
-//
-//</urlset>
-
+        this.createSitesWithPriority08(sites);
+        this.createSitesWithPriority064(sites);
+        this.manualWithPriority08(sites);
+        this.manualWithPriority064(sites);
 
         return sites;
+    }
+
+
+    private void createSitesWithPriority08(List<Sitemap.URL> sites) {
+
+        List<String> _08Sites = Arrays.asList(
+                "neo", "litecoin", "polkadot", "ethereum", "bitcoin", "kusama", "wallets",
+                "blockchain", "kraken", "altcoin", "cryptocurrency", "solana", "chainlink",
+                "monero", "ontology", "fed", "ecb", "cardano", "ripple", "dag", "binance",
+                "nbs", "ico", "fork", "exodus", "coinbase", "algorand", "halving", "tezos",
+                "iota", "halving", "exchange", "not-categorized", "vechain", "bitfinex",
+                "bittrex", "cosmos", "uniswap", "coinmarketcap", "aave", "stellar",
+                "posts-by-i18n/GB", "posts-by-i18n/SK", "posts-by-i18n/CZ", "posts-by-i18n/HU",
+                "posts-by-i18n/CH", "posts-by-i18n/US", "posts-by-i18n/CA", "posts-by-i18n/PL",
+                "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL", "news"
+
+        );
+
+        _08Sites.stream().
+                forEach(site -> {
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.8, new Date()));
+        });
+    }
+
+    private void createSitesWithPriority064(List<Sitemap.URL> sites) {
+
+        List<String> _064Sites = Arrays.asList(
+                 "sources"
+        );
+
+        _064Sites.stream().
+                forEach(site -> {
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.64, new Date()));
+                });
+    }
+
+    private void manualWithPriority064(List<Sitemap.URL> sites) {
+
+        List<String> manualSites = Arrays.asList(
+                "donate", "article/complete-guide-to-proof-of-work",
+                "article/passive-income-with-neo", "article/passive-income-with-exodus",
+                "article/btc-is-not-the-first", "article/passive-income-with-algorand",
+                "article/passive-income-with-polkadot-on-ledger", "article/passive-income-with-vechain",
+                "article/passive-income-with-cardano", "article/passive-income-with-cosmos-atom",
+                "cooperation"
+        );
+
+        manualSites.stream().
+                forEach(site -> {
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                });
+    }
+
+    private void manualWithPriority08(List<Sitemap.URL> sites) {
+        List<String> manualSites = Arrays.asList(
+            "dictionary", "krypto-learning", "external-services", "did-you-know"
+        );
+
+        manualSites.stream().
+                forEach(site -> {
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                });
+    }
+
+    private Date localDateToDate(LocalDate localDate) {
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

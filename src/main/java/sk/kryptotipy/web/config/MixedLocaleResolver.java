@@ -30,7 +30,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
         String url = request.getRequestURL().toString();
         String langFromUrl = this.getLocaleFromUrl(url);
-        String result = "";
+        String result = "SK";
         if (langFromUrl != null) {
             result = langFromUrl;
         } else {

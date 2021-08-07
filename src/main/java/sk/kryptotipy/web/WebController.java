@@ -8,8 +8,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.data.Sitemap;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
 import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.repository.ArticleRepository;
@@ -22,6 +24,8 @@ import sk.kryptotipy.web.service.UtilityService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
@@ -413,22 +417,30 @@ public class WebController {
         return "robots.txt";
     }
 
-    @RequestMapping(value = "/sitemap.xml",
-            //produces = MediaType.TEXT_XML_VALUE)
-            produces = MediaType.APPLICATION_XML_VALUE)
-    //public List<SiteEntry> sitemapXml(HttpServletRequest request) {
-    public String sitemapXml(HttpServletRequest request) {
-        //XmlUrlSet
+    @RequestMapping(
+            value = "sitemap.xml",
+            method = RequestMethod.GET,
+            produces = { "application/xml", "text/xml" }
+            )
+    @ResponseBody
+    public void getSitemap(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
         Locale resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         String siteMapLang = resolvedLocale.getLanguage().toLowerCase();
         if (siteMapLang.equalsIgnoreCase("us")) {
             siteMapLang = "en";
         }
-        log.info("Locale was found={}, sitemap-{}.xml rendered", resolvedLocale, siteMapLang);
+        if (siteMapLang.equalsIgnoreCase("sk")) {
+            siteMapLang = "www";
+        }
 
-        ///return sitemapService.createSitemap(lang);
-        //return s.getSites();
-        return "sitemaps/sitemap-" + siteMapLang + ".xml";
+        log.info("Locale was found={}, sitemap for lang {} rendered", resolvedLocale, siteMapLang);
+
+		response.addHeader("content-type", "application/xml; charset=utf-8");
+		response.setStatus(200);
+
+        PrintWriter out = response.getWriter();
+		out.println(sitemapService.create(siteMapLang));
     }
 
 
