@@ -418,7 +418,7 @@ public class WebController {
     }
 
     @RequestMapping(
-            value = "sitemap.xml",
+            value = "/sitemap.xml",
             method = RequestMethod.GET,
             produces = { "application/xml", "text/xml" }
             )
