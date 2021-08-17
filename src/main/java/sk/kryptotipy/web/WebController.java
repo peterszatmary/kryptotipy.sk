@@ -57,6 +57,10 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
 
         try {
+            String cookies = resolvedLocale.getLanguage().toLowerCase();
+            List<String> langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
+            log.info("index.html");
+            log.debug("cookies '{}'", cookies);
 
             model.put("active_index", "active");
             model.put("active_posts", "");
@@ -64,13 +68,11 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("cookies_lang", resolvedLocale.getCountry().toLowerCase());//TODO cookies everywhere!!!
+            model.put("cookies_lang", cookies);//TODO cookies everywhere!!!
             model.put("site", "");
-            List<String> langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
             model.put("posts", postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
             model.put("external_services", serviceRepo.getExternalServicesViews(rbFromUrl));
-            log.info("index.html");
             pageData.set(model, rbFromUrl.getString("page.index.description"), rbFromUrl.getString("default.descr"));
             model.put("btc_price", getBtcPrice());
             model.put("page_description", rbFromUrl.getString("page.index.description.long"));
