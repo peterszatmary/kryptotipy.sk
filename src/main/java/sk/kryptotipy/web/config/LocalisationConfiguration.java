@@ -19,5 +19,4 @@ public class LocalisationConfiguration {
         slr.setDefaultLocale(new Locale("", "SK"));
         return slr;
     }
-
 }

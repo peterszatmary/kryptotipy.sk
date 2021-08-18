@@ -2,6 +2,7 @@ package sk.kryptotipy.web.config;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.i18n.AbstractLocaleResolver;
@@ -9,9 +10,11 @@ import sk.kryptotipy.web.AppProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,7 +30,29 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
+        return isGoogleBot(request) ? resolveLocaleForGoogleBot(request) : resolveLocaleForUser(request);
+    }
 
+    private Locale resolveLocaleForGoogleBot(HttpServletRequest request) {
+        String url = request.getRequestURL().toString();
+        String locale = getLocaleFromUrl(url);
+        if (locale == null && url.contains("www")) {
+            return new Locale("sk");
+        }
+        return new Locale(locale.toLowerCase());
+    }
+
+    private boolean isGoogleBot(HttpServletRequest request) {
+
+        String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
+        if (userAgent.contains("Googlebot") || userAgent.contains("www.google.com/bot.html")) {
+            log.info("Google bot is here!.");
+            return true;
+        }
+        return false;
+    }
+
+    private Locale resolveLocaleForUser(HttpServletRequest request) {
         String url = request.getRequestURL().toString();
         String langFromUrl = this.getLocaleFromUrl(url);
         String result = "SK";
@@ -55,6 +80,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
         log.debug("Locale computed = {}", result);
         return new Locale(result.toLowerCase());
     }
+
 
     /**
      * Locale can contain more locales as 'en-gb,en-us' for example we need just one
@@ -115,6 +141,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 //        }
         return result;
     }
+
 
     private String consumeAcceptLang(HttpServletRequest request) {
         String userLocale = "";
