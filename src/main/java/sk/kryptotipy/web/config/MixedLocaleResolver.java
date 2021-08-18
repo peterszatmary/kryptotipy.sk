@@ -46,7 +46,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
         String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
         if (userAgent.contains("Googlebot") || userAgent.contains("www.google.com/bot.html")) {
-            log.info("Google bot is here!.");
+            log.info("Google bot is here! on site {}.", request.getRequestURL().toString());
             return true;
         }
         return false;
