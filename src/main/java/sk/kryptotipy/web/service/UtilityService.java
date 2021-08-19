@@ -21,8 +21,6 @@ public class UtilityService {
     }
 
     public ResourceBundle getResourceBundle(Locale locale) {
-        System.out.println("Locale before RB = " + locale.getCountry() + ", " + locale.getLanguage());
-
         ResourceBundle result = ResourceBundle.getBundle("messages", locale);
         log.info("ResourceBundle with locale was found = {}", result.getLocale());
         return result;

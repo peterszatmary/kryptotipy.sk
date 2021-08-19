@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 Disallow: /one-page-frame/
+Disallow: /error
+Disallow: /posts/kryptomeny
+
 Sitemap: https://www.kryptotipy.sk/sitemap.xml
+Sitemap: https://en.kryptotipy.sk/sitemap.xml
+Sitemap: https://sk.kryptotipy.sk/sitemap.xml
+Sitemap: https://nl.kryptotipy.sk/sitemap.xml
+Sitemap: https://de.kryptotipy.sk/sitemap.xml
+Sitemap: https://hu.kryptotipy.sk/sitemap.xml
+Sitemap: https://pl.kryptotipy.sk/sitemap.xml

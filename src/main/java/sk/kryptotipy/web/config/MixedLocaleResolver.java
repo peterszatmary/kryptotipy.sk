@@ -10,11 +10,9 @@ import sk.kryptotipy.web.AppProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,7 +28,10 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
-        return isGoogleBot(request) ? resolveLocaleForGoogleBot(request) : resolveLocaleForUser(request);
+        Locale localeResolved = isGoogleBot(request) ?
+                resolveLocaleForGoogleBot(request) : resolveLocaleForUser(request);
+        log.info("Locale resolved = {}", localeResolved);
+        return localeResolved;
     }
 
     private Locale resolveLocaleForGoogleBot(HttpServletRequest request) {
@@ -46,7 +47,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
         String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
         if (userAgent.contains("Googlebot") || userAgent.contains("www.google.com/bot.html")) {
-            log.info("Google bot is here! on site {}.", request.getRequestURL().toString());
+            log.info("Google bot is here! on site {}", request.getRequestURL().toString());
             return true;
         }
         return false;
@@ -149,7 +150,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
         if (!StringUtils.isEmpty(clientLocal)) {
             userLocale = clientLocal.split(";")[0];
         }
-        log.info("Trying to read client locale = {} userLocale = {}", clientLocal, userLocale);
+        log.debug("Trying to read client locale = {} userLocale = {}", clientLocal, userLocale);
         return userLocale.toLowerCase();
     }
 
