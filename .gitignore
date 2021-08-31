@@ -35,7 +35,6 @@ build/
 app.log
 *.gz
 
-TODO
 *.tmp
 *.icloud
 
