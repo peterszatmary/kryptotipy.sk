@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.component.UrlComponent;
 import sk.kryptotipy.web.data.Sitemap;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
 import sk.kryptotipy.web.data.Post;
@@ -46,8 +47,9 @@ public class WebController {
     private final LabelRepository labelRepo;
     private final MixedLocaleResolver mixedLocaleResolver;
 
+    private final UrlComponent urlComponent;
+
     private final SitemapService sitemapService;
-    private final SiteRepository s;
 
     @RequestMapping("/")
     public String index(Map<String, Object> model,
@@ -73,14 +75,17 @@ public class WebController {
             model.put("posts", postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
             model.put("external_services", serviceRepo.getExternalServicesViews(rbFromUrl));
-            pageData.set(model, rbFromUrl.getString("page.index.description"), rbFromUrl.getString("default.descr"));
+            pageData.set(model,
+                    rbFromUrl.getString("page.index.description"),
+                    rbFromUrl.getString("default.descr"),
+                    request);
             model.put("btc_price", getBtcPrice());
             model.put("page_description", rbFromUrl.getString("page.index.description.long"));
             return "index";
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error.html";
         }
     }
@@ -214,8 +219,8 @@ public class WebController {
             customPageTitle = pageTitle + label_render;
         }
 
-        pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"));
-        model.put("site", utilityService.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
+        pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"), request);
+        model.put("site", urlComponent.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
         model.put("label_render", customPageTitle);
         model.put("label_render_path", StringUtils.capitalize(label_render));
     }
@@ -240,14 +245,14 @@ public class WebController {
             model.put("link_is_not_internal", true);
 
             log.info("external_services.html");
-            pageData.set(model, rbFromUrl.getString("external.services.h1"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("external.services.h1"), rbFromUrl.getString("default.descr"), request);
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 19, 0, 0) + "");
             model.put("page_description", rbFromUrl.getString("external.description"));
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("external-services : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -267,19 +272,19 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("site", "cooperation");
+            model.put("site", "sources");
             model.put("content_path","fragments/content/sources");
             model.put("sources", postService.getAllSources());
 
             log.info("sources.html");
-            pageData.set(model, rbFromUrl.getString("footer.sources.text"), rbFromUrl.getString("default.descr"));//TODO
+            pageData.set(model, rbFromUrl.getString("footer.sources.text"), rbFromUrl.getString("default.descr"), request);//TODO
             model.put("page_description", rbFromUrl.getString("sources.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.MARCH, 19, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("sources : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -306,14 +311,14 @@ public class WebController {
             model.put("services", serviceRepo.getCooperationServices(rbFromUrl));
 
             log.info("cooperation.html");
-            pageData.set(model, rbFromUrl.getString("footer.cooperation"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("footer.cooperation"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("cooperation.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("cooperation : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -337,14 +342,14 @@ public class WebController {
             model.put("donates", postService.getAllDonates());
 
             log.info("donate.html");
-            pageData.set(model, rbFromUrl.getString("footer.donate"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("footer.donate"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("donate.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("donate : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -371,14 +376,14 @@ public class WebController {
             model.put("link_is_not_internal", false);
 
             log.info("krypto_learning.html");
-            pageData.set(model, "Krypto learning", rbFromUrl.getString("default.descr"));
+            pageData.set(model, "Krypto learning", rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("crypto.learning.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 17, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("krypto-learning : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -401,14 +406,14 @@ public class WebController {
             model.put("content_path", "fragments/content/dictionary");
 
             log.info("dictionary.html");
-            pageData.set(model, rbFromUrl.getString("dictionary.title"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("dictionary.title"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("dictionary.d"));
             model.put("page_date", LocalDateTime.of(2020, Month.DECEMBER, 22, 0, 0 ) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -465,7 +470,7 @@ public class WebController {
             model.put("content_path","fragments/content/" + postTitle);
 
             log.info("article = {}", postTitle);
-            pageData.set(model, pageData.getPostTitle(postTitle), rbFromUrl.getString("default.descr"));
+            pageData.set(model, pageData.getPostTitle(postTitle), rbFromUrl.getString("default.descr"), request);
 
             model.put("page_title", pageData.getPostTitle(postTitle));
             model.put("page_description", pageData.getPostDescription(postTitle));
@@ -477,7 +482,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("{} : {}", postTitle, ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -498,7 +503,7 @@ public class WebController {
             model.put("active_krypto_learning", "");
             model.put("site", "did-you-know");
             model.put("content_path", "fragments/content/did_you_know");
-            pageData.set(model, rbFromUrl.getString("did.you.know") , rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("did.you.know") , rbFromUrl.getString("default.descr"), request);
             log.info("did_you_know.html");
             model.put("page_description", rbFromUrl.getString("did.you.know.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
@@ -506,7 +511,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -541,7 +546,7 @@ public class WebController {
 
             model.put("one_post", post);
 
-            pageData.set(model, post.getTitle(), rbFromUrl.getString("default.descr"));
+            pageData.set(model, post.getTitle(), rbFromUrl.getString("default.descr"), request);
 
             if (post.useRedirectToSourceSite()) {
                 response.setHeader("Location", post.getUrl());
@@ -555,7 +560,7 @@ public class WebController {
                     ex.getMessage()
             );
             log.warn(ex.getCause() + "" + ex.getStackTrace());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"));
+            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }

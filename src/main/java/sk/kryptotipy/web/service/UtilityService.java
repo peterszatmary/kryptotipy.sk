@@ -4,13 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import sk.kryptotipy.web.component.UrlComponent;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Slf4j
 @AllArgsConstructor
 @Service
 public class UtilityService {
+
+    private final UrlComponent urlComponent;
 
     //TODO
     public ResourceBundle getResourceBundleSk() {
@@ -34,19 +38,7 @@ public class UtilityService {
         return siteUrl.toString();
     }
 
-    public String mapSiteUrl(String url, List<String> labels, List<String> langs) {
 
-        if (labels.size() == 1) {
-            return "posts/" + labels.get(0);
-        }
-        if (langs.size() == 1) {
-            return "posts-by-i18n/" + langs.get(0).toUpperCase();
-        }
-        if ("news".equals(url)) {
-            return "posts/all";
-        }
-        return "news";
-    }
 
 
     //TODO translate
@@ -92,5 +84,15 @@ public class UtilityService {
     public Long decodeKryptotipyHash(String hashedId) {
         String s = hashedId.substring(1, hashedId.length() - 2);
         return Long.valueOf(s) - 217L;
+    }
+
+    public String getCanonicalUrl(HttpServletRequest request) {
+        String fullUrl;
+        if (request.getQueryString() == null) {
+            fullUrl = request.getRequestURL().toString();
+        } else {
+            fullUrl = request.getRequestURL().toString() + "?" + request.getQueryString();
+        }
+        return urlComponent.getCanonical(fullUrl);
     }
 }

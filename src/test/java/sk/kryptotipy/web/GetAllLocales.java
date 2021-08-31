@@ -1,6 +1,10 @@
 package sk.kryptotipy.web;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Locale;
+import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 public class GetAllLocales {
 
@@ -16,6 +20,7 @@ public class GetAllLocales {
         Locale ll = new Locale("", "us");
         System.out.println("l=" + l.toString());
         System.out.println("ll=" + ll.toString());
-
     }
+
+
 }

@@ -8,6 +8,7 @@ import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.component.ArticleComponent;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -21,10 +22,10 @@ public class PageDataService implements PageDataServiceApi {
     private final AppProperties appProperties;
 
     private final ArticleComponent articleComponent;
+    private final UtilityService utilityService;
 
 
-    //TODO
-    public void set(Map<String, Object> model, String pageTitleCustom, String pageDescription) {
+    public void set(Map<String, Object> model, String pageTitleCustom, String pageDescription, HttpServletRequest request) {
         model.put("page_title", pageTitleCustom + " | " + appProperties.getPageTitle());
         model.put("page_author", appProperties.getPageAuthor());
         model.put("base_url", appProperties.getBaseUrl());
@@ -43,6 +44,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_img_height", "85");
         model.put("page_date", LocalDateTime.now());
         model.put("page_description", pageTitleCustom + pageDescription);
+        model.put("canonical_url", utilityService.getCanonicalUrl(request));
 
         articleComponent.addPostsAndArticlesMeta();
     }
