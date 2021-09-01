@@ -32,6 +32,7 @@ public class UrlComponent {
     // canonical should be same as actual url
     public String getCanonical(String url) {
 
+        url = comToSK(url);
         String urlWithoutPort = url;
         if (url.contains(":443")) {
             urlWithoutPort = url.replace(":443", "");
@@ -48,6 +49,10 @@ public class UrlComponent {
         } else {
             return urlWithoutPort;
         }
+    }
+
+    private String comToSK(String url) {
+        return url.contains(".com") ? url.replace(".com", ".sk") : url;
     }
 
 
