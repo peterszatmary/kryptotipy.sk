@@ -35,26 +35,32 @@ public class SiteRepository {
     private void createSitesWithPriority08(List<Sitemap.URL> sites) {
 
         List<String> _08Sites = Arrays.asList(
-                "neo", "litecoin", "polkadot", "ethereum", "bitcoin", "kusama", "wallets",
-                "blockchain", "kraken", "altcoin", "cryptocurrency", "solana", "chainlink",
-                "monero", "ontology", "fed", "ecb", "cardano", "ripple", "dag", "binance",
-                "nbs", "ico", "fork", "exodus", "coinbase", "algorand", "halving", "tezos",
-                "iota", "halving", "exchange", "not-categorized", "vechain", "bitfinex",
-                "bittrex", "cosmos", "uniswap", "coinmarketcap", "aave", "stellar",
+                "posts/neo", "posts/litecoin", "posts/polkadot", "posts/ethereum", "posts/bitcoin",
+                "posts/kusama", "posts/wallets",
+                "posts/blockchain", "posts/kraken", "posts/altcoin", "posts/cryptocurrency",
+                "posts/solana", "posts/chainlink",
+                "posts/monero", "posts/ontology", "posts/fed", "posts/ecb", "posts/cardano", "posts/ripple",
+                "posts/dag", "posts/binance",
+                "posts/nbs", "posts/ico", "posts/fork", "posts/exodus", "posts/coinbase", "posts/algorand",
+                "posts/halving", "posts/tezos",
+                "posts/iota", "posts/halving", "posts/exchange", "posts/not-categorized",
+                "posts/vechain", "posts/bitfinex",
+                "posts/bittrex", "posts/cosmos", "posts/uniswap", "posts/coinmarketcap", "posts/aave",
+                "posts/stellar",
                 "posts-by-i18n/GB", "posts-by-i18n/SK", "posts-by-i18n/CZ", "posts-by-i18n/HU",
                 "posts-by-i18n/CH", "posts-by-i18n/US", "posts-by-i18n/CA", "posts-by-i18n/PL",
-                "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL", "news"
+                "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL"
 
         );
 
         _08Sites.stream().
                 forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.8, new Date()));
         });
     }
 
@@ -66,12 +72,12 @@ public class SiteRepository {
 
         _064Sites.stream().
                 forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, new Date()));
                 });
     }
 
@@ -88,12 +94,12 @@ public class SiteRepository {
 
         manualSites.stream().
                 forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
                 });
     }
 
@@ -104,12 +110,12 @@ public class SiteRepository {
 
         manualSites.stream().
                 forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/posts/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
                 });
     }
 
