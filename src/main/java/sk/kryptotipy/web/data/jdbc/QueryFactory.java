@@ -9,7 +9,8 @@ public class QueryFactory {
 
     public static String newestPosts(Integer langsCount) {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                        " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
                 .append("AND p.i18n IN (")
@@ -25,7 +26,8 @@ public class QueryFactory {
 
     public static String postsByI18n() {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                        " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
                 .append("AND p.i18n = ? ")
@@ -40,7 +42,8 @@ public class QueryFactory {
     public static String postsByLabelAll() {
 
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                        " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.disabled = 0 ")
                 .append("ORDER BY p.birthday ")
@@ -53,8 +56,9 @@ public class QueryFactory {
 
     public static String postsByLabel() {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes, l.name ")
-                .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                        " p.i18n, p.clicks, p.likes, l.name ")
+                .append("FROM post p JOIN post_index pl ON pl.post_id = p.id ")
                 .append("JOIN label l ON l.id = pl.label_id ")
                 .append("WHERE l.name = ? ")
                 .append("AND p.disabled = 0 ")
@@ -69,8 +73,8 @@ public class QueryFactory {
     public static String getLabelsByPostId() {
         return new StringBuilder()
                 .append("SELECT l.name ")
-                .append("FROM label l JOIN post_labels pl ON pl.label_id = l.id ")
-                .append("WHERE pl.post_id = ? LIMIT 5") // LIMIT because i dont want to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
+                .append("FROM label l JOIN post_index pl ON pl.label_id = l.id ")
+                .append("WHERE pl.post_id = ? ORDER BY pl.count DESC LIMIT 4") // LIMIT because i dont want to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
                 .toString();
     }
 
@@ -83,8 +87,9 @@ public class QueryFactory {
 
     public static String postsByLabelsAndLangs(Integer labelsCount, Integer langsCount) {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
-                .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n," +
+                        " p.clicks, p.likes ")
+                .append("FROM post p JOIN post_index pl ON pl.post_id = p.id ")
                 .append("JOIN label l ON l.id = pl.label_id ")
                 .append("WHERE l.name in (")
                 .append(_x(labelsCount))
@@ -105,7 +110,8 @@ public class QueryFactory {
 
     public static String postByUrl() {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                        " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.url like ? ") // because ending / can be present in url and can not be. it is optional
                 .toString();
@@ -120,10 +126,12 @@ public class QueryFactory {
         return str.toString();
     }
 
+    //TODO
     public static String postsByUrlPartAndSourceRendered() {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes, l.name ")
-                .append("FROM post p JOIN post_labels pl ON pl.post_id = p.id ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                        " p.i18n, p.clicks, p.likes, l.name ")
+                .append("FROM post p JOIN post_index pl ON pl.post_id = p.id ")
                 .append("JOIN label l ON l.id = pl.label_id ")
                 .append("WHERE p.url like ? ")
                 .append("AND p.source_render = ? ")
@@ -134,7 +142,8 @@ public class QueryFactory {
 
     public static String postById() {
         String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n, p.clicks, p.likes ")
+                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                        " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.id = ? ")
                 .toString();

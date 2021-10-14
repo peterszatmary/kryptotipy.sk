@@ -22,14 +22,14 @@ PRIMARY KEY (`id`),
 UNIQUE KEY `UK_defh0r2wr6e5g7vu7vanv4pxa` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14028 DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `post_labels` (
+CREATE TABLE `post_index` (
 `post_id` bigint(20) NOT NULL,
 `label_id` bigint(20) NOT NULL,
 KEY `post_id` (`post_id`),
 KEY `label_id` (`label_id`),
 CONSTRAINT `FKjj16h83j6ke5vljjlv26driyr` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
 CONSTRAINT `FKn50lp4uxki348v0rmqe08lc8h` FOREIGN KEY (`label_id`) REFERENCES `label` (`id`),
-CONSTRAINT `post_labels_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
-CONSTRAINT `post_labels_ibfk_2` FOREIGN KEY (`label_id`) REFERENCES `label` (`id`)
+CONSTRAINT `post_index_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
+CONSTRAINT `post_index_ibfk_2` FOREIGN KEY (`label_id`) REFERENCES `label` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
