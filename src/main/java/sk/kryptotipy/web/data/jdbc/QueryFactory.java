@@ -72,7 +72,7 @@ public class QueryFactory {
 
     public static String getLabelsByPostId() {
         return new StringBuilder()
-                .append("SELECT l.name ")
+                .append("SELECT l.id, l.name ")
                 .append("FROM label l JOIN post_index pl ON pl.label_id = l.id ")
                 .append("WHERE pl.post_id = ? ORDER BY pl.count DESC LIMIT 4") // LIMIT because i dont want to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
                 .toString();
@@ -85,6 +85,7 @@ public class QueryFactory {
                 .toString();
     }
 
+    //TODO zmen aby si zobrazoval korektne posty v kategoriach
     public static String postsByLabelsAndLangs(Integer labelsCount, Integer langsCount) {
         String query = new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n," +
