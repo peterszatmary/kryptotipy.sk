@@ -46,7 +46,7 @@ public class SiteRepository {
                 "posts/iota", "posts/halving", "posts/exchange", "posts/not-categorized",
                 "posts/vechain", "posts/bitfinex",
                 "posts/bittrex", "posts/cosmos", "posts/uniswap", "posts/coinmarketcap", "posts/aave",
-                "posts/stellar",
+                "posts/stellar", "posts/nft",
                 "posts-by-i18n/GB", "posts-by-i18n/SK", "posts-by-i18n/CZ", "posts-by-i18n/HU",
                 "posts-by-i18n/CH", "posts-by-i18n/US", "posts-by-i18n/CA", "posts-by-i18n/PL",
                 "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL"

@@ -42,6 +42,7 @@
                             <th scope="col">#</th>
                             <th scope="col" th:text="#{sources.table.name}"></th>
                             <th scope="col" th:text="#{sources.table.url}"></th>
+                            <th scope="col" th:text="#{sources.table.birthday}"></th>
                             <th scope="col" th:text="#{sources.table.numofpost}"></th>
                             <th scope="col" th:text="#{sources.table.country}"></th>
                         </tr>
@@ -51,6 +52,7 @@
                             <th scope="row" th:text="${source.order}"></th>
                             <td th:text="${source.urlRendered}"></td>
                             <td><a th:href="${source.url}" th:text="${source.url}" rel="nofollow"></a></td>
+                            <td th:text="${source.birthday}"></td>
                             <td th:text="${source.numberOfPosts}"></td>
                             <td>
                                 <a th:href="@{${'/news?lang=' + source.i18n}}">

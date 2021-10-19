@@ -11,4 +11,5 @@ public class Source {
     private String url;
     private String urlRendered;
     private Integer order;
+    private String birthday;
 }

@@ -153,6 +153,6 @@ public class QueryFactory {
     }
 
     public static String sources() {
-        return "select count(p.source), p.source, p.source_render, p.i18n from post p group by p.source order by p.i18n";
+        return "select count(p.source), p.source, p.source_render, p.i18n, max(p.birthday) from post p group by p.source order by max(p.birthday) DESC";
     }
 }

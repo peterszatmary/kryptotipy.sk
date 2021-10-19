@@ -16,6 +16,7 @@ public class SourcesMapper implements RowMapper<Source> {
         s.setUrl(rs.getString(2));
         s.setUrlRendered(rs.getString(3));
         s.setI18n(rs.getString(4));
+        s.setBirthday(rs.getString(5));
         return s;
     }
 }
