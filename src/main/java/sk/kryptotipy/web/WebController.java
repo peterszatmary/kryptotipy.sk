@@ -15,10 +15,7 @@ import sk.kryptotipy.web.component.UrlComponent;
 import sk.kryptotipy.web.data.Sitemap;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
 import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.repository.ArticleRepository;
-import sk.kryptotipy.web.repository.LabelRepository;
-import sk.kryptotipy.web.repository.ServiceRepository;
-import sk.kryptotipy.web.repository.SiteRepository;
+import sk.kryptotipy.web.repository.*;
 import sk.kryptotipy.web.service.BtcPriceService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
@@ -46,6 +43,7 @@ public class WebController {
     private final ArticleRepository articleRepo;
     private final LabelRepository labelRepo;
     private final MixedLocaleResolver mixedLocaleResolver;
+    private final PostJdbcRepository postJdbcRepository;
 
     private final UrlComponent urlComponent;
 
@@ -117,7 +115,6 @@ public class WebController {
                 .collect(Collectors.toList());
 
         final Integer ALL_LABELS = allLabels.size();
-        final Integer ALL_LANGS  = 10; //TODO from DB
 
         List<String> labels = new ArrayList<>();
 
@@ -156,17 +153,7 @@ public class WebController {
             labels.remove("all");
         }
 
-        List<Post> posts;
-        if (labels.size() == 1 && langs.size() == ALL_LANGS) {
-            posts = this.postService.getPostsByLabel(labels.get(0), from, to);
-        } else if (labels.size() == ALL_LABELS && langs.size() == 1) {
-            posts = this.postService.getPostsByI18n(langs.get(0), from, to);
-        } else if (labels.size() == ALL_LABELS && langs.size() == ALL_LANGS) {
-            posts = this.postService.getPostsByLabelAll(from, to);
-        }
-        else {
-            posts = this.postService.getPostsByLabelsAndLangs(labels, langs, from, to);
-        }
+        List<Post> posts = postJdbcRepository.getNews(labels, langs, from, to);
 
         setNewsRenderingTexts(labels, langs, model, ALL_LABELS, request);
 

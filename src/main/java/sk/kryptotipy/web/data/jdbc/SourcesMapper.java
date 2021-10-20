@@ -1,4 +1,4 @@
-package sk.kryptotipy.web.repository;
+package sk.kryptotipy.web.data.jdbc;
 
 import org.springframework.jdbc.core.RowMapper;
 import sk.kryptotipy.web.data.Source;

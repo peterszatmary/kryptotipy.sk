@@ -20,55 +20,28 @@ public class QueryFactory {
                 .append("DESC ")
                 .append("LIMIT 8")
                 .toString();
-        //log.info(query);
         return query;
     }
 
-    public static String postsByI18n() {
+
+
+    public static String getNews(Integer labelsCount, Integer langsCount) {
         String query = new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
-                        " p.i18n, p.clicks, p.likes ")
-                .append("FROM post p ")
-                .append("WHERE p.disabled = 0 ")
-                .append("AND p.i18n = ? ")
-                .append("ORDER BY p.birthday ")
-                .append("DESC ")
-                .append("LIMIT ?,?")
+                        "p.i18n, p.clicks, p.likes FROM post p ")
+                .append("JOIN post_index pi ON pi.post_id = p.id JOIN label l ON l.id = pi.label_id ")
+                .append("WHERE p.i18n in ( ")
+                .append(_x(langsCount))
+                .append(" ) and l.name in ( ")
+                .append(_x(labelsCount))
+                .append(" ) ")
+                .append("and pi.count=(select max(u.count) from post_index as u where u.post_id = p.id and u.count >1) ")
+                .append("and p.disabled = 0 ")
+                .append("order by p.birthday DESC LIMIT ?,?")//TODO limit
                 .toString();
-        //log.info(query);
         return query;
     }
 
-    public static String postsByLabelAll() {
-
-        String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
-                        " p.i18n, p.clicks, p.likes ")
-                .append("FROM post p ")
-                .append("WHERE p.disabled = 0 ")
-                .append("ORDER BY p.birthday ")
-                .append("DESC ")
-                .append("LIMIT ?,?")
-                .toString();
-        //log.info(query);
-        return query;
-    }
-
-    public static String postsByLabel() {
-        String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
-                        " p.i18n, p.clicks, p.likes, l.name ")
-                .append("FROM post p JOIN post_index pl ON pl.post_id = p.id ")
-                .append("JOIN label l ON l.id = pl.label_id ")
-                .append("WHERE l.name = ? ")
-                .append("AND p.disabled = 0 ")
-                .append("ORDER BY p.birthday ")
-                .append("DESC ")
-                .append("LIMIT ?,?")
-                .toString();
-        //log.info(query);
-        return query;
-    }
 
     public static String getLabelsByPostId() {
         return new StringBuilder()
@@ -85,60 +58,11 @@ public class QueryFactory {
                 .toString();
     }
 
-    //TODO zmen aby si zobrazoval korektne posty v kategoriach
-    public static String postsByLabelsAndLangs(Integer labelsCount, Integer langsCount) {
-        String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render, p.i18n," +
-                        " p.clicks, p.likes ")
-                .append("FROM post p JOIN post_index pl ON pl.post_id = p.id ")
-                .append("JOIN label l ON l.id = pl.label_id ")
-                .append("WHERE l.name in (")
-                .append(_x(labelsCount))
-                .append(") ")
-                .append("AND p.i18n in (")
-                .append(_x(langsCount))
-                .append(") ")
-                .append("AND p.disabled = 0 ")
-                //.append("GROUP BY p.id ")
-                //.append("HAVING count(p.id)=1 ")
-                .append("ORDER BY p.birthday ")
-                .append("DESC ")
-                .append("LIMIT ?,?")
-                .toString();
-        log.info(query);
-        return query;
-    }
-
-    public static String postByUrl() {
-        String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
-                        " p.i18n, p.clicks, p.likes ")
-                .append("FROM post p ")
-                .append("WHERE p.url like ? ") // because ending / can be present in url and can not be. it is optional
-                .toString();
-        //log.info(query);
-        return query;
-    }
-
     private static String _x(Integer count) {
         StringBuilder str = new StringBuilder();
         IntStream.range(0, count).forEach(x -> str.append("?,"));
         str.delete(str.length() - 1, str.length());
         return str.toString();
-    }
-
-    //TODO
-    public static String postsByUrlPartAndSourceRendered() {
-        String query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
-                        " p.i18n, p.clicks, p.likes, l.name ")
-                .append("FROM post p JOIN post_index pl ON pl.post_id = p.id ")
-                .append("JOIN label l ON l.id = pl.label_id ")
-                .append("WHERE p.url like ? ")
-                .append("AND p.source_render = ? ")
-                .toString();
-        //log.info(query);
-        return query;
     }
 
     public static String postById() {

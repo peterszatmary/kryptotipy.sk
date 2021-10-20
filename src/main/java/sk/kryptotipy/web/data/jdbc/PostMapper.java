@@ -25,11 +25,7 @@ public class PostMapper implements RowMapper<Post> {
     @Override
     public Post mapRow(ResultSet rs, int i) throws SQLException {
 
-        //log.info("started post mapRow");
-
         Post post = new Post();
-        //Label label = new Label();
-        //label.setName(rs.getString("l.name"));
 
         post.setId(rs.getLong("p.id"));
         post.setUrl(rs.getString("p.url"));
@@ -43,10 +39,7 @@ public class PostMapper implements RowMapper<Post> {
         post.setViews(rs.getInt("p.clicks"));
         post.setLikes(rs.getInt("p.likes"));
         post.setBirthday(LocalDate.parse(rs.getString("p.birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        //post.setLabels(new HashSet<>(Arrays.asList(label)));
-
         post.setLabels(selectLabels(rs.getLong("p.id")));
-        //log.info("after labels sql query");
 
         return post;
     }

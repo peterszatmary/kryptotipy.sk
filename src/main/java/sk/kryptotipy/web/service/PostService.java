@@ -22,43 +22,11 @@ public class PostService implements PostServiceApi {
     private final SourceRepository sourceRepository;
     private final DonateRepository donateRepository;
 
-    public List<Post> getPostsByLabel(String label, Long from, Long to) {
-        List<Post> posts = postLabelRepository
-                .getPostsByLabel(label, from, to);
-        return posts;
-    }
-
-    @Override
-    public List<Post> getPostsByLabelAll(Long from, Long to) {
-        List<Post> posts = postLabelRepository
-                .getPostsByLabelAll(from, to);
-        return posts;
-    }
-
     @Override
     public Post getPostsById(Long id) {
         return postLabelRepository.getPostById(id);
     }
 
-    @Override
-    public List<Post> getPostsByI18n(String i18n, Long from, Long to) {
-        return postLabelRepository.getPostsByI18n(i18n, from, to);
-    }
-
-    @Override
-    public List<Post> getPostsByLabelsAndLangs(List<String> labels, List<String> langs, Long from, Long to) {
-        return postLabelRepository.getPostsByLabelsAndLang(labels, langs, from, to);
-    }
-
-    @Override
-    public Post getPostByUrl(String url) {
-        return postLabelRepository.findByUrl(url);
-    }
-
-    @Override
-    public Post getPostByUrlPartAndSourceRendered(String urlPart, String sourceRendered) {
-        return postLabelRepository.findByUrlPartAndSourceRendered(urlPart, sourceRendered);
-    }
 
     @Override
     public boolean updatePostViews(String url, Integer views) {
@@ -67,9 +35,7 @@ public class PostService implements PostServiceApi {
 
     @Override
     public List<Post> getNewestPosts(List<String> langs) {
-        List<Post> posts = postLabelRepository
-                .getNewestPosts(langs);
-        return posts;
+        return postLabelRepository.getNewestPosts(langs);
     }
 
     @Override
