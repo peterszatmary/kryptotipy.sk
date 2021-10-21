@@ -44,10 +44,9 @@ public class WebController {
     private final LabelRepository labelRepo;
     private final MixedLocaleResolver mixedLocaleResolver;
     private final PostJdbcRepository postJdbcRepository;
-
     private final UrlComponent urlComponent;
-
     private final SitemapService sitemapService;
+
 
     @RequestMapping("/")
     public String index(Map<String, Object> model,
@@ -57,10 +56,9 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
 
         try {
-            String cookies = resolvedLocale.getLanguage().toLowerCase();
+            addCookies(model, request);
             List<String> langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
             log.info("index.html");
-            log.debug("cookies '{}'", cookies);
 
             model.put("active_index", "active");
             model.put("active_posts", "");
@@ -68,7 +66,6 @@ public class WebController {
             model.put("active_external_services", "");
             model.put("active_did_you_know", "");
             model.put("active_krypto_learning", "");
-            model.put("cookies_lang", cookies);//TODO cookies everywhere!!!
             model.put("site", "");
             model.put("posts", postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
@@ -107,28 +104,27 @@ public class WebController {
                        HttpServletRequest request) {
 
         List<String> langs = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
+        final var from = 0L;
+        final var to = appProperties.getPageSize();
+        final var parameterMap = request.getParameterMap();
+        addCookies(model, request);
 
-
-        List<String> allLabels = labelRepo.getAllLabels()
+        var allLabels = labelRepo.getAllLabels()
                 .stream()
                 .map(label -> label.getName())
                 .collect(Collectors.toList());
-
-        final Integer ALL_LABELS = allLabels.size();
-
-        List<String> labels = new ArrayList<>();
+        var ALL_LABELS = allLabels.size();
 
         if (null != labell) {
             labels =
                     labell != null && !labell.contains(",") && labels.contains(labell) ?
-                            Arrays.asList(labell) : Arrays.asList(labell.split(","));
+                            List.of(labell) : Arrays.asList(labell.split(","));
         }
 
         if (lang != null && !lang.contains(",") && !langs.contains(lang)) {
             langs.add(lang);
         }
-
-        Map<String, String[]> parameterMap = request.getParameterMap();
 
         if (langs.isEmpty() && null == parameterMap.get("lang")) {
             langs = mixedLocaleResolver.getLangsByUserCountry(mixedLocaleResolver.resolveLocale(request));
@@ -138,7 +134,6 @@ public class WebController {
             } else {
                 langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
             }
-
         }
 
         if (labels.isEmpty()) {
@@ -146,18 +141,13 @@ public class WebController {
                     utilityService.checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
         }
 
-        final Long from = 0L;
-        final Long to = appProperties.getPageSize();
-
         if (labels.contains("all")) {
             labels.remove("all");
         }
 
-        List<Post> posts = postJdbcRepository.getNews(labels, langs, from, to);
-
+        var posts = postJdbcRepository.getNews(labels, langs, from, to);
         setNewsRenderingTexts(labels, langs, model, ALL_LABELS, request);
 
-        log.info("Posts count rendered = {}", posts.size());
         model.put("posts", posts);
         model.put("content_path", "fragments/content/posts");
         model.put("checked_labels", labels);
@@ -169,6 +159,7 @@ public class WebController {
         model.put("active_did_you_know", "");
         model.put("active_krypto_learning", "");
 
+        log.info("Posts count rendered = {}", posts.size());
         log.info("Posts filtered by labels count = {} labels = {} langs count = {} and langs = {}",
                 labels.size(), labels, langs.size(), langs);
         return "non-index";
@@ -177,11 +168,12 @@ public class WebController {
     private void setNewsRenderingTexts(List<String> labels, List<String> langs,
                                        Map<String, Object> model,
                                        Integer allLabelCount, HttpServletRequest request) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+        var label_render = "";
+        var customPageTitle = "";
+        var rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
-        String label_render;
-        String customPageTitle;
+
         if (langs.size() == 1) {
             customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
             label_render = customPageTitle.split(" ")[0];
@@ -218,6 +210,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -251,6 +244,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -285,6 +279,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -316,6 +311,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -348,6 +344,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -381,6 +378,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -444,6 +442,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -480,6 +479,7 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        addCookies(model, request);
         try {
 
             model.put("active_index", "");
@@ -554,7 +554,14 @@ public class WebController {
 
 
     private String getBtcPrice() {
-        String btcPrice = String.valueOf(btcPriceService.getLatestPrice());
+        var btcPrice = String.valueOf(btcPriceService.getLatestPrice());
         return btcPrice.substring(0, btcPrice.length() - 2);
+    }
+
+    private void addCookies(Map<String, Object> model, HttpServletRequest request) {
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        var cookies = resolvedLocale.getLanguage().toLowerCase();
+        model.put("cookies_lang", cookies);
+        log.debug("cookies '{}'", cookies);
     }
 }
