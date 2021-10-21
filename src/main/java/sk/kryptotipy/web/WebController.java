@@ -156,45 +156,6 @@ public class WebController {
         return "non-index";
     }
 
-    private void setNewsRenderingTexts(List<String> labels, List<String> langs,
-                                       Map<String, Object> model,
-                                       Integer allLabelCount, HttpServletRequest request) {
-        var label_render = "";
-        var customPageTitle = "";
-        var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
-        );
-
-        if (langs.size() == 1) {
-            customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
-            label_render = customPageTitle.split(" ")[0];
-        } else if (labels.size() == 1) {
-            label_render = utilityService.mapLabelForRendering(labels.get(0));
-            customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
-        } else if (labels.size() == allLabelCount) {
-            customPageTitle = rbFromUrl.getString("crypto.news.title.all");
-            label_render = rbFromUrl.getString("filter.component.all");
-        } else {
-            String pageTitle = rbFromUrl.getString("crypto.news.themes");
-
-            StringBuilder labelsStr = new StringBuilder();
-            labelsStr.append("[ ");
-            labels.stream().forEach(label -> labelsStr.append(rbFromUrl.getString("a.label."+label))
-                    .append(", "));
-            label_render = labelsStr
-                    .deleteCharAt(labelsStr.length() - 1)
-                    .deleteCharAt(labelsStr.length() - 1)
-                    .append(" ]")
-                    .toString();
-            customPageTitle = pageTitle + label_render;
-        }
-
-        pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"), request);
-        model.put("site", urlComponent.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
-        model.put("label_render", customPageTitle);
-        model.put("label_render_path", StringUtils.capitalize(label_render));
-    }
-
     @RequestMapping("/external-services")
     public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
@@ -518,5 +479,44 @@ public class WebController {
         model.put("active_" + activeLink, "active");
         links.remove(activeLink);
         links.stream().forEach(x -> model.put("active_" + x, ""));
+    }
+
+    private void setNewsRenderingTexts(List<String> labels, List<String> langs,
+                                       Map<String, Object> model,
+                                       Integer allLabelCount, HttpServletRequest request) {
+        var label_render = "";
+        var customPageTitle = "";
+        var rbFromUrl = utilityService.getResourceBundle(
+                mixedLocaleResolver.resolveLocale(request)
+        );
+
+        if (langs.size() == 1) {
+            customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
+            label_render = customPageTitle.split(" ")[0];
+        } else if (labels.size() == 1) {
+            label_render = utilityService.mapLabelForRendering(labels.get(0));
+            customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
+        } else if (labels.size() == allLabelCount) {
+            customPageTitle = rbFromUrl.getString("crypto.news.title.all");
+            label_render = rbFromUrl.getString("filter.component.all");
+        } else {
+            String pageTitle = rbFromUrl.getString("crypto.news.themes");
+
+            StringBuilder labelsStr = new StringBuilder();
+            labelsStr.append("[ ");
+            labels.stream().forEach(label -> labelsStr.append(rbFromUrl.getString("a.label."+label))
+                    .append(", "));
+            label_render = labelsStr
+                    .deleteCharAt(labelsStr.length() - 1)
+                    .deleteCharAt(labelsStr.length() - 1)
+                    .append(" ]")
+                    .toString();
+            customPageTitle = pageTitle + label_render;
+        }
+
+        pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"), request);
+        model.put("site", urlComponent.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
+        model.put("label_render", customPageTitle);
+        model.put("label_render_path", StringUtils.capitalize(label_render));
     }
 }

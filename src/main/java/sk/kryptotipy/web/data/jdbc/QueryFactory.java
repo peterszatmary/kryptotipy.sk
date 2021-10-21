@@ -35,9 +35,9 @@ public class QueryFactory {
                 .append(" ) and l.name in ( ")
                 .append(_x(labelsCount))
                 .append(" ) ")
-                .append("and pi.count=(select max(u.count) from post_index as u where u.post_id = p.id and u.count >1) ")
+                .append("and pi.count=(select max(u.count) from post_index as u where u.post_id = p.id) ")
                 .append("and p.disabled = 0 ")
-                .append("order by p.birthday DESC LIMIT ?,?")//TODO limit
+                .append("order by p.birthday DESC LIMIT ?,?")
                 .toString();
         return query;
     }
