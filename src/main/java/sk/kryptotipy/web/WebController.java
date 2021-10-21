@@ -52,20 +52,16 @@ public class WebController {
     public String index(Map<String, Object> model,
                         HttpServletRequest request) {
 
-        Locale resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
 
         try {
             addCookies(model, request);
+            makeLinkActive(model, "index");
+
             List<String> langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
             log.info("index.html");
 
-            model.put("active_index", "active");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
             model.put("site", "");
             model.put("posts", postService.getNewestPosts(langs));
             model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
@@ -109,6 +105,7 @@ public class WebController {
         final var to = appProperties.getPageSize();
         final var parameterMap = request.getParameterMap();
         addCookies(model, request);
+        makeLinkActive(model, "posts");
 
         var allLabels = labelRepo.getAllLabels()
                 .stream()
@@ -152,12 +149,6 @@ public class WebController {
         model.put("content_path", "fragments/content/posts");
         model.put("checked_labels", labels);
         model.put("checked_langs", langs);
-        model.put("active_index", "");
-        model.put("active_posts", "active");
-        model.put("active_dictionary", "");
-        model.put("active_external_services", "");
-        model.put("active_did_you_know", "");
-        model.put("active_krypto_learning", "");
 
         log.info("Posts count rendered = {}", posts.size());
         log.info("Posts filtered by labels count = {} labels = {} langs count = {} and langs = {}",
@@ -211,14 +202,10 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "external_services");
+
         try {
 
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "active");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
             model.put("site", "external-services");
             model.put("content_path","fragments/content/external_services");
             model.put("services", serviceRepo.getExternalServices(rbFromUrl));
@@ -245,14 +232,9 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "");
         try {
 
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
             model.put("site", "sources");
             model.put("content_path","fragments/content/sources");
             model.put("sources", postService.getAllSources());
@@ -280,14 +262,9 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "");
         try {
 
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
             model.put("site", "cooperation");
             model.put("content_path","fragments/content/cooperation");
             model.put("services", serviceRepo.getCooperationServices(rbFromUrl));
@@ -312,14 +289,8 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "");
         try {
-
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
             model.put("site", "donate");
             model.put("content_path","fragments/content/donate");
             model.put("donates", postService.getAllDonates());
@@ -345,14 +316,8 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "krypto_learning");
         try {
-
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "active");
             model.put("site", "krypto-learning");
             model.put("content_path","fragments/content/krypto_learning");
 
@@ -379,13 +344,8 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "dictionary");
         try {
-
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "active");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
             model.put("site", "dictionary");
             model.put("active_krypto_learning", "");
             model.put("content_path", "fragments/content/dictionary");
@@ -443,16 +403,10 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "");
         try {
 
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "active");
             model.put("site", "article/" + postTitle);
-
             model.put("content_path","fragments/content/" + postTitle);
 
             log.info("article = {}", postTitle);
@@ -480,14 +434,8 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
+        makeLinkActive(model, "did_you_know");
         try {
-
-            model.put("active_index", "");
-            model.put("active_posts", "");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "active");
-            model.put("active_krypto_learning", "");
             model.put("site", "did-you-know");
             model.put("content_path", "fragments/content/did_you_know");
             pageData.set(model, rbFromUrl.getString("did.you.know") , rbFromUrl.getString("default.descr"), request);
@@ -513,14 +461,8 @@ public class WebController {
         ResourceBundle rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
+        makeLinkActive(model, "posts");
         try {
-
-            model.put("active_index", "");
-            model.put("active_posts", "active");
-            model.put("active_dictionary", "");
-            model.put("active_external_services", "");
-            model.put("active_did_you_know", "");
-            model.put("active_krypto_learning", "");
             model.put("site", "one-post-frame");
 
             Long id = utilityService.decodeKryptotipyHash(hashedId);
@@ -563,5 +505,18 @@ public class WebController {
         var cookies = resolvedLocale.getLanguage().toLowerCase();
         model.put("cookies_lang", cookies);
         log.debug("cookies '{}'", cookies);
+    }
+
+    private void makeLinkActive(Map<String, Object> model, String activeLink) {
+        var links = new ArrayList<>(Arrays.asList(
+                "index", "posts", "dictionary", "external_services", "did_you_know", "krypto_learning"
+        ));
+        if (!links.contains(activeLink)) {
+            activeLink = "index";
+        }
+
+        model.put("active_" + activeLink, "active");
+        links.remove(activeLink);
+        links.stream().forEach(x -> model.put("active_" + x, ""));
     }
 }
