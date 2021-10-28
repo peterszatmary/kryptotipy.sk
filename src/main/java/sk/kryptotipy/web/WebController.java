@@ -186,36 +186,6 @@ public class WebController {
     }
 
 
-    @RequestMapping("/sources")
-    public String sources(Map<String, Object> model, HttpServletRequest request) {
-
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
-        );
-        addCookies(model, request);
-        makeLinkActive(model, "");
-        try {
-
-            model.put("site", "sources");
-            model.put("content_path","fragments/content/sources");
-            model.put("sources", postService.getAllSources());
-
-            log.info("sources.html");
-            pageData.set(model, rbFromUrl.getString("footer.sources.text"), rbFromUrl.getString("default.descr"), request);//TODO
-            model.put("page_description", rbFromUrl.getString("sources.descr"));
-            model.put("page_date", LocalDateTime.of(2021, Month.MARCH, 19, 0, 0) + "");
-            return "non-index";
-
-        } catch (Exception ex) {
-            log.warn("sources : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
-            return "redirect:/error";
-        }
-    }
-
-
-
-
     @RequestMapping("/cooperation")
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 

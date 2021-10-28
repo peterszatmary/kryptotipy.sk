@@ -24,7 +24,7 @@ public class SiteRepository {
         sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/", 1.0, new Date()));
 
         this.createSitesWithPriority08(sites);
-        this.createSitesWithPriority064(sites);
+        //this.createSitesWithPriority064(sites);
         this.manualWithPriority08(sites);
         this.manualWithPriority064(sites);
 
@@ -67,7 +67,7 @@ public class SiteRepository {
     private void createSitesWithPriority064(List<Sitemap.URL> sites) {
 
         List<String> _064Sites = Arrays.asList(
-                 "sources"
+
         );
 
         _064Sites.stream().

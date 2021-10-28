@@ -12,7 +12,7 @@
               gtag('js', new Date());
 
               gtag('config', 'UA-182396559-1');
-            </script>
+        </script>
 
         <!--        <meta HTTP-EQUIV="REFRESH" th:content="@{${'0; url=https://www.kryptotipy.sk/' + site}}">-->
         <link rel="canonical" th:href="@{${base_url_without_port + site}}" itemprop="url" />
@@ -94,6 +94,7 @@
                                             <span th:text="#{one.frame.you.watching}"></span> <span th:text="${one_post.sourceRender}"></span>
                                         </div><br />
 
+
                                         <a class="btn btn-success" style="background-color: #94c045" href="/news" th:text="#{one.frame.back}"></a>
                                         <a class="btn btn-light" th:href="${one_post.url}" rel="nofollow"><span th:text="#{one.frame.goto}"></span> <span th:text="${one_post.sourceRender}"></span></a>
                                     </div>
@@ -116,7 +117,13 @@
                                 <a href="https://lddy.no/v0jj" target="_blank">
                                     KeepKey
                                 </a>
+
+
+
                             </div>
+
+
+
 
                             <i class="icon-eye-open" style="font-size:16px;">
                                 <span th:text="#{one.frame.seen.count}"></span>&nbsp;

@@ -6,10 +6,9 @@ import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.data.Donate;
 import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.data.Source;
 import sk.kryptotipy.web.repository.DonateRepository;
 import sk.kryptotipy.web.repository.PostJdbcRepository;
-import sk.kryptotipy.web.repository.SourceRepository;
+
 
 import java.util.*;
 
@@ -19,7 +18,6 @@ import java.util.*;
 public class PostService implements PostServiceApi {
 
     private final PostJdbcRepository postLabelRepository;
-    private final SourceRepository sourceRepository;
     private final DonateRepository donateRepository;
 
     @Override
@@ -36,11 +34,6 @@ public class PostService implements PostServiceApi {
     @Override
     public List<Post> getNewestPosts(List<String> langs) {
         return postLabelRepository.getNewestPosts(langs);
-    }
-
-    @Override
-    public List<Source> getAllSources() {
-        return sourceRepository.getSources();
     }
 
     @Override
