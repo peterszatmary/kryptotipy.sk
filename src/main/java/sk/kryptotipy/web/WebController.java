@@ -2,7 +2,6 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,17 +11,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.component.UrlComponent;
-import sk.kryptotipy.web.data.Sitemap;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
 import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.repository.*;
+import sk.kryptotipy.web.repository.ArticleRepository;
+import sk.kryptotipy.web.repository.LabelRepository;
+import sk.kryptotipy.web.repository.PostJdbcRepository;
+import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.service.BtcPriceService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.Month;
