@@ -49,7 +49,7 @@ public class SiteRepository {
                 "posts/stellar", "posts/nft",
                 "posts-by-i18n/GB", "posts-by-i18n/SK", "posts-by-i18n/CZ", "posts-by-i18n/HU",
                 "posts-by-i18n/CH", "posts-by-i18n/US", "posts-by-i18n/CA", "posts-by-i18n/PL",
-                "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL"
+                "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL", "posts-by-i18n/ES", "posts-by-i18n/SE"
 
         );
 
