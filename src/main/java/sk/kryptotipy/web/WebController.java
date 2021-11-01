@@ -199,6 +199,7 @@ public class WebController {
             model.put("site", "cooperation");
             model.put("content_path","fragments/content/cooperation");
             model.put("services", serviceRepo.getCooperationServices(rbFromUrl));
+            makeLinkActive(model, "cooperation");
 
             log.info("cooperation.html");
             pageData.set(model, rbFromUrl.getString("footer.cooperation"), rbFromUrl.getString("default.descr"), request);
@@ -208,32 +209,6 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("cooperation : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
-            return "redirect:/error";
-        }
-    }
-
-    @RequestMapping("/donate")
-    public String donate(Map<String, Object> model, HttpServletRequest request) {
-
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
-        );
-        addCookies(model, request);
-        makeLinkActive(model, "");
-        try {
-            model.put("site", "donate");
-            model.put("content_path","fragments/content/donate");
-            model.put("donates", postService.getAllDonates());
-
-            log.info("donate.html");
-            pageData.set(model, rbFromUrl.getString("footer.donate"), rbFromUrl.getString("default.descr"), request);
-            model.put("page_description", rbFromUrl.getString("donate.descr"));
-            model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
-            return "non-index";
-
-        } catch (Exception ex) {
-            log.warn("donate : " + ex.getMessage());
             pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
@@ -440,7 +415,7 @@ public class WebController {
 
     private void makeLinkActive(Map<String, Object> model, String activeLink) {
         var links = new ArrayList<>(Arrays.asList(
-                "index", "posts", "dictionary", "external_services", "did_you_know", "krypto_learning"
+                "index", "posts", "dictionary", "external_services", "did_you_know", "krypto_learning", "cooperation"
         ));
         if (!links.contains(activeLink)) {
             activeLink = "index";
@@ -489,4 +464,33 @@ public class WebController {
         model.put("label_render", customPageTitle);
         model.put("label_render_path", StringUtils.capitalize(label_render));
     }
+
+
+    //    @RequestMapping("/donate")
+//    public String donate(Map<String, Object> model, HttpServletRequest request) {
+//
+//        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+//                mixedLocaleResolver.resolveLocale(request)
+//        );
+//        addCookies(model, request);
+//        makeLinkActive(model, "");
+//        try {
+//            model.put("site", "donate");
+//            model.put("content_path","fragments/content/donate");
+//            model.put("donates", postService.getAllDonates());
+//
+//            log.info("donate.html");
+//            pageData.set(model, rbFromUrl.getString("footer.donate"), rbFromUrl.getString("default.descr"), request);
+//            model.put("page_description", rbFromUrl.getString("donate.descr"));
+//            model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
+//            return "non-index";
+//
+//        } catch (Exception ex) {
+//            log.warn("donate : " + ex.getMessage());
+//            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+//            return "redirect:/error";
+//        }
+//    }
 }
+
+
