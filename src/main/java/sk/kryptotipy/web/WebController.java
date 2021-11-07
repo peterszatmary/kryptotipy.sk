@@ -309,7 +309,7 @@ public class WebController {
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
-        makeLinkActive(model, "");
+        makeLinkActive(model, "krypto_learning");
         try {
 
             model.put("site", "article/" + postTitle);

@@ -6,10 +6,7 @@
 
         <div class="row">
             <div class="span12">
-                <h1 style="font-size: 22px;margin-bottom: 0px;" th:text="#{navbar.crypto.learning}"></h1>
-                <div style="margin-bottom: 20px;">
-                    <a href="/cooperation"><span th:text="#{index.cooperation.text}"></span></a>
-                </div>
+                <h1 style="font-size: 22px;" th:text="#{navbar.crypto.learning}"></h1>
             </div>
             <ul class="portfolio-area da-thumbs">
                 <div th:each="article : ${articles}" th:remove="tag">

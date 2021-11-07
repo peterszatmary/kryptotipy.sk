@@ -229,11 +229,7 @@
 
 @media (max-width: 767px) {
     p.btc_price {
-        font-size: 11px;
-        background-color: #404b50;
-        padding: 12px;
-        margin-bottom: 15px;
-        color: rgb(232, 232, 232);
+        display: none;
     }
 
     p.posts_ends_for_free {
@@ -250,11 +246,7 @@
 
 @media (max-width: 480px) {
     p.btc_price {
-        font-size: 11px;
-        background-color: #404b50;
-        padding: 12px;
-        margin-bottom: 15px;
-        color: rgb(232, 232, 232);
+        display: none;
     }
 
     p.posts_ends_for_free {
