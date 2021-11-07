@@ -60,7 +60,7 @@ public class ArticleRepository {
         services.add(new Article(
                 rb.getString("article.ethereum.dapps"),
                 "/article/ethereum-dapps-today",
-                "ethereum-dapps-2021.jpg",
+                "ethereum-dapps-today.jpg",
                 "6.11.2021 - " + rb.getString("article.category.ethereum.dapps"),
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.MARCH, 6+1))

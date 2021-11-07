@@ -24,7 +24,7 @@ public class ArticleComponent {
     private void addArticleEthereumDapps2021() {
         var postKey = "ethereum-dapps-today";
         var postTitle = "100+ Ethereum decentralizovaných aplikácií roku 2021";
-        var postDescription = "Najperspektívnejšie decentralizované aplikácie postavené na blockchaine Ehereum platformy roku 2021, ktoré môžu zmeniť internet.";
+        var postDescription = "Najperspektívnejšie decentralizované aplikácie roku 2021 postavené na Ehereum blockchaine, ktoré môžu zmeniť internet.";
         var postImagePath = ".jpg";
         var imgWidth = "638";
         var imgHeight = "414";
