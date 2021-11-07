@@ -16,10 +16,18 @@ public class ArticleRepository {
 
 
     public List<Article> getKryptotipyContent(ResourceBundle rb) {
-        List<Article> services = new ArrayList<>();
+        var services = new ArrayList<Article>();
 
         services.addAll(getKryptotipyContentView(rb));
 
+        services.add(new Article(
+                rb.getString("article.exodus.algorand"),
+                "article/passive-income-with-algorand",
+                "passive-income-with-algorand.jpg",
+                "27.1.2021 - " + rb.getString("article.category.passive.income"),
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
+        ));
 
         services.add(new Article(
                 rb.getString("article.btc.not.first"),
@@ -36,7 +44,7 @@ public class ArticleRepository {
 
     public List<Article> getKryptotipyContentView(ResourceBundle rb) {
 
-        List<Article> services = new ArrayList<>();
+        var services = new ArrayList<Article>();
 
         //TODO +1 day because Iam stupid and date does not contain Time Zone
 
@@ -48,6 +56,15 @@ public class ArticleRepository {
 //                "",
 //                Date.valueOf(LocalDate.of(2021, Month.APRIL, 2+1))
 //        ));
+
+        services.add(new Article(
+                rb.getString("article.ethereum.dapps"),
+                "/article/ethereum-dapps-today",
+                "ethereum-dapps-2021.jpg",
+                "6.11.2021 - " + rb.getString("article.category.ethereum.dapps"),
+                "",
+                Date.valueOf(LocalDate.of(2021, Month.MARCH, 6+1))
+        ));
 
         services.add(new Article(
                 rb.getString("article.exodus.polkadot"),
@@ -104,15 +121,6 @@ public class ArticleRepository {
         ));
 
         services.add(new Article(
-                rb.getString("article.exodus.algorand"),
-                "article/passive-income-with-algorand",
-                "passive-income-with-algorand.jpg",
-                "27.1.2021 - " + rb.getString("article.category.passive.income"),
-                "",
-                Date.valueOf(LocalDate.of(2021, Month.JANUARY, 27+1))
-        ));
-
-        services.add(new Article(
                 rb.getString("article.exodus"),
                 "article/passive-income-with-exodus",
                 "passive-income-with-exodus.jpg",
@@ -120,7 +128,6 @@ public class ArticleRepository {
                 "",
                 Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17+1))
         ));
-
 
         return services;
     }

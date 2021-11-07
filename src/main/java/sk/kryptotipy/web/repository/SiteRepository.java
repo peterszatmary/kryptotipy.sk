@@ -14,7 +14,7 @@ import java.util.List;
 public class SiteRepository {
     public List<Sitemap.URL> getSites() {
 
-        List<Sitemap.URL> sites = new ArrayList<>();
+        var sites = new ArrayList<Sitemap.URL>();
         
         sites.add(new Sitemap.URL("https://www.kryptotipy.sk/", 1.0, new Date()));
         sites.add(new Sitemap.URL("https://en.kryptotipy.sk/", 1.0, new Date()));
@@ -34,7 +34,7 @@ public class SiteRepository {
 
     private void createSitesWithPriority08(List<Sitemap.URL> sites) {
 
-        List<String> _08Sites = Arrays.asList(
+        var _08Sites = Arrays.asList(
                 "posts/neo", "posts/litecoin", "posts/polkadot", "posts/ethereum", "posts/bitcoin",
                 "posts/kusama", "posts/wallets",
                 "posts/blockchain", "posts/kraken", "posts/altcoin", "posts/cryptocurrency",
@@ -66,7 +66,7 @@ public class SiteRepository {
 
     private void createSitesWithPriority064(List<Sitemap.URL> sites) {
 
-        List<String> _064Sites = Arrays.asList(
+        var _064Sites = Arrays.asList(
 
         );
 
@@ -83,7 +83,7 @@ public class SiteRepository {
 
     private void manualWithPriority064(List<Sitemap.URL> sites) {
 
-        List<String> manualSites = Arrays.asList(
+        var manualSites = Arrays.asList(
                 "donate", "article/complete-guide-to-proof-of-work",
                 "article/passive-income-with-neo", "article/passive-income-with-exodus",
                 "article/btc-is-not-the-first", "article/passive-income-with-algorand",
@@ -104,7 +104,7 @@ public class SiteRepository {
     }
 
     private void manualWithPriority08(List<Sitemap.URL> sites) {
-        List<String> manualSites = Arrays.asList(
+        var manualSites = Arrays.asList(
             "dictionary", "krypto-learning", "external-services", "did-you-know"
         );
 

@@ -19,29 +19,31 @@ public class ArticleComponent {
     private final AppProperties appProperties;
     private Map<String, String> postsMeta;
 
-    private void addTelegramNewsBot() {
-        String postKey = "kryptotipy_news_bot";
-        String postTitle = "Nový telegram bot, ktorý vám nájde najčerstvejšie krypto novinky @kryptotipy_news_bot";
-        String postDescription = "Články na tému kryptomeny možno hľadať jednoducho pomocou nového bota Kryptotipy aktuality @kryptotipy_news_bot .";
-        String postImagePathExtension =  ".png";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.APRIL, 2, 0, 0);
+    //TODO preloz
+
+    private void addArticleEthereumDapps2021() {
+        var postKey = "ethereum-dapps-today";
+        var postTitle = "100+ Ethereum decentralizovaných aplikácií roku 2021";
+        var postDescription = "Najperspektívnejšie decentralizované aplikácie postavené na blockchaine Ehereum platformy roku 2021, ktoré môžu zmeniť internet.";
+        var postImagePath = ".jpg";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.NOVEMBER, 6, 0, 0);
 
         addPost(postKey,
-                postTitle, postDescription, postImagePathExtension,
+                postTitle, postDescription, postImagePath,
                 imgWidth, imgHeight, postDate
         );
     }
 
     private void addArticlePassiveIncomeWithPolkadotOnLedger() {
-        String postKey = "passive-income-with-polkadot-on-ledger";
-        String postTitle = "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger";
-        String postDescription = "Hardvérová peňaženka Ledger Nano je prvou hardvérovou peňaženkou na svete, ktorá prináša možnosť stakeovať Polkadot DOT tokeny. Článok rozoberá ako pasívne zarobiť s Polkadot a Ledger.";
-        String postImagePathExtension =  ".png";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.MARCH, 6, 0, 0);
+        var postKey = "passive-income-with-polkadot-on-ledger";
+        var postTitle = "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger";
+        var postDescription = "Hardvérová peňaženka Ledger Nano je prvou hardvérovou peňaženkou na svete, ktorá prináša možnosť stakeovať Polkadot DOT tokeny. Článok rozoberá ako pasívne zarobiť s Polkadot a Ledger.";
+        var postImagePathExtension =  ".png";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.MARCH, 6, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePathExtension,
@@ -50,13 +52,13 @@ public class ArticleComponent {
     }
 
     private void addArticleProofOfWork() {
-        String postKey = "complete-guide-to-proof-of-work";
-        String postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
-        String postDescription = "Kompletný sprievodca algoritmami proof of work (PoW). Článok vysvetľuje aj ako funguje ťažba kryptomien, ako vyzerá blok a blockchain, výhody nevýhody tohto prístupu.";
-        String postImagePathExtension =  ".png";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 7, 0, 0);
+        var postKey = "complete-guide-to-proof-of-work";
+        var postTitle = "15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien";
+        var postDescription = "Kompletný sprievodca algoritmami proof of work (PoW). Článok vysvetľuje aj ako funguje ťažba kryptomien, ako vyzerá blok a blockchain, výhody nevýhody tohto prístupu.";
+        var postImagePathExtension =  ".png";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.FEBRUARY, 7, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePathExtension,
@@ -65,14 +67,14 @@ public class ArticleComponent {
     }
 
     private void addArticlePassiveIncomeWithCosmosAtom() {
-        String postKey = "passive-income-with-cosmos-atom";
-        String postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke";
-        String postDescription = "Pasívny zárobok vďaka kryptomene ATOM v sieti COSMOS. Sieť COSMOS ponúka solídny pasívny príjem a keď, k tomu" +
+        var postKey = "passive-income-with-cosmos-atom";
+        var postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke";
+        var postDescription = "Pasívny zárobok vďaka kryptomene ATOM v sieti COSMOS. Sieť COSMOS ponúka solídny pasívny príjem a keď, k tomu" +
                 " pripočítame atraktivitu projektu, ide o veľmi zaujímavú investíciu a nielen o pasívny príjem.";
-        String postImagePathExtension =  ".jpg";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 14, 0, 0);
+        var postImagePathExtension =  ".jpg";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.FEBRUARY, 14, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePathExtension,
@@ -81,14 +83,14 @@ public class ArticleComponent {
     }
 
     private void addArticlePassiveIncomeWithCardano() {
-        String postKey = "passive-income-with-cardano";
-        String postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ADA (Cardano) ako eurá v banke";
-        String postDescription = "Pasívny zárobok vďaka kryptomene ADA v sieti Cardamo. Sieť Cardano ponúka solídny pasívny príjem a keď, k tomu" +
+        var postKey = "passive-income-with-cardano";
+        var postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu ADA (Cardano) ako eurá v banke";
+        var postDescription = "Pasívny zárobok vďaka kryptomene ADA v sieti Cardamo. Sieť Cardano ponúka solídny pasívny príjem a keď, k tomu" +
                 " pripočítame atraktivitu projektu, ide nielen o zaujímavú investíciu.";
-        String postImagePathExtension =  ".png";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 21, 0, 0);
+        var postImagePathExtension =  ".png";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.FEBRUARY, 21, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePathExtension,
@@ -98,14 +100,14 @@ public class ArticleComponent {
 
     private void addArticlePassiveIncomeExodus() {
 
-        String postKey = "passive-income-with-exodus";
-        String postTitle = "Pasívny príjem s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke";
-        String postDescription = "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v" +
+        var postKey = "passive-income-with-exodus";
+        var postTitle = "Pasívny príjem s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke";
+        var postDescription = "Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v" +
                 " banke. 7 kryptomien, 7 spôsobov ako pasívne zarábať.";
-        String postImagePath = ".jpg";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0);
+        var postImagePath = ".jpg";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePath,
@@ -115,14 +117,14 @@ public class ArticleComponent {
 
     private void addArticlePassiveIncomeWithAlgorand() {
 
-        String postKey = "passive-income-with-algorand";
-        String postTitle = "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus";
-        String postDescription = "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus. " +
+        var postKey = "passive-income-with-algorand";
+        var postTitle = "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus";
+        var postDescription = "Ako pasívne zarábať s kryptomenou Algorand držanou v peňaženke Exodus. " +
                 "Algorand ako ďalšia proof of stake kryptomena.";
-        String postImagePath = ".jpg";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 27, 0, 0);
+        var postImagePath = ".jpg";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.JANUARY, 27, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePath,
@@ -132,14 +134,14 @@ public class ArticleComponent {
 
     private void addArticlePassiveIncomeWithNeo() {
 
-        String postKey = "passive-income-with-neo";
-        String postTitle = "NEO-spôsoby ako pasívne zarábať";
-        String postDescription = "NEO-spôsoby ako pasívne zarábať. Proof of stake kryptomena NEO v peňaženke Exodus a " +
+        var postKey = "passive-income-with-neo";
+        var postTitle = "NEO-spôsoby ako pasívne zarábať";
+        var postDescription = "NEO-spôsoby ako pasívne zarábať. Proof of stake kryptomena NEO v peňaženke Exodus a " +
                 "možnosť pasívneho zárobku v podobe GAS.";
-        String postImagePath = ".jpg";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 31, 0, 0);
+        var postImagePath = ".jpg";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.JANUARY, 31, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePath,
@@ -149,14 +151,14 @@ public class ArticleComponent {
 
     private void addArticleBtcIsNotTheFirst() {
 
-        String postKey = "btc-is-not-the-first";
-        String postTitle = "Bitcoin nebol prvou kryptomenou";
-        String postDescription = "Mnohí si asi myslia, že prvá kryptomena bol Bitcoin. " +
+        var postKey = "btc-is-not-the-first";
+        var postTitle = "Bitcoin nebol prvou kryptomenou";
+        var postDescription = "Mnohí si asi myslia, že prvá kryptomena bol Bitcoin. " +
                 "Nie je to však tak. História kryptomien začala už omnoho skôr.";
-        String postImagePath = ".png";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.JANUARY, 2, 0, 0);
+        var postImagePath = ".png";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.JANUARY, 2, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePath,
@@ -166,13 +168,13 @@ public class ArticleComponent {
 
     private void addArticlePassiveIncomeWithVechain() {
 
-        String postKey = "passive-income-with-vechain";
-        String postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu Vechain ako eurá v banke";
-        String postDescription = "Ako pasívne zarábať s kryptomenou Vechain držanou v peňaženke Exodus.";//TODO
-        String postImagePath = ".jpg";
-        String imgWidth = "638";
-        String imgHeight = "414";
-        LocalDateTime postDate = LocalDateTime.of(2021, Month.FEBRUARY, 26, 0, 0);
+        var postKey = "passive-income-with-vechain";
+        var postTitle = "Pasívny príjem alebo prečo sa viac oplatí držať kryptomenu Vechain ako eurá v banke";
+        var postDescription = "Ako pasívne zarábať s kryptomenou Vechain držanou v peňaženke Exodus.";//TODO
+        var postImagePath = ".jpg";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.FEBRUARY, 26, 0, 0);
 
         addPost(postKey,
                 postTitle, postDescription, postImagePath,
@@ -180,8 +182,23 @@ public class ArticleComponent {
         );
     }
 
+    private void addTelegramNewsBot() {
+        var postKey = "kryptotipy_news_bot";
+        var postTitle = "Nový telegram bot, ktorý vám nájde najčerstvejšie krypto novinky @kryptotipy_news_bot";
+        var postDescription = "Články na tému kryptomeny možno hľadať jednoducho pomocou nového bota Kryptotipy aktuality @kryptotipy_news_bot .";
+        var postImagePathExtension =  ".png";
+        var imgWidth = "638";
+        var imgHeight = "414";
+        var postDate = LocalDateTime.of(2021, Month.APRIL, 2, 0, 0);
+
+        addPost(postKey,
+                postTitle, postDescription, postImagePathExtension,
+                imgWidth, imgHeight, postDate
+        );
+    }
+
     private void addAllPostsMeta() {
-        String baseUrlWithoutPort = appProperties.getBaseUrlWithoutPort();
+        var baseUrlWithoutPort = appProperties.getBaseUrlWithoutPort();
         postsMeta.put("post.image.all",           baseUrlWithoutPort + "assets/post-images/bitcoin/images_2.jpg");
         postsMeta.put("post.image.bitcoin",       baseUrlWithoutPort + "assets/post-images/bitcoin/images_3.jpg");
         postsMeta.put("post.image.nezaradene",    baseUrlWithoutPort + "assets/post-images/nezaradene/images_1.jpg");
@@ -215,8 +232,9 @@ public class ArticleComponent {
         postsMeta.put("post.image.burza",         baseUrlWithoutPort + "assets/post-images/burza/images_3.jpg");
         postsMeta.put("post.image.cardano",       baseUrlWithoutPort + "assets/post-images/cardano/images_1.jpg");
         postsMeta.put("post.image.nbs",           baseUrlWithoutPort + "assets/post-images/nbs/images_10.jpg");
-        postsMeta.put("post.image.wallets",       baseUrlWithoutPort + "assets/post-images/peňaženky/");
+        postsMeta.put("post.image.wallets",       baseUrlWithoutPort + "assets/post-images/peňaženky/images_2.jpg");
         postsMeta.put("post.image.altcoin",       baseUrlWithoutPort + "assets/post-images/altocin/images_10.jpg");
+        postsMeta.put("post.image.nft",           baseUrlWithoutPort + "assets/post-images/nft/images_1.jpg");
     }
 
     private void addPost(
@@ -251,8 +269,9 @@ public class ArticleComponent {
         addArticleProofOfWork();
         addArticlePassiveIncomeWithNeo();
         addArticlePassiveIncomeWithPolkadotOnLedger();
+        addArticleEthereumDapps2021();
         addAllPostsMeta();
-        addTelegramNewsBot();
+        //addTelegramNewsBot();
     }
 
     public String getPostTitle(String key) {

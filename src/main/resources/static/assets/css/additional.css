@@ -647,3 +647,20 @@ input[type=checkbox]:checked:disabled + label:before {
         display: table;
     }
 }
+
+ol.ethereum-dapps-list li {
+    margin-bottom: 20px;
+}
+
+ol.ethereum-dapps-list li h5 {
+    margin-bottom: -1px;
+}
+
+ol.ethereum-dapps-list li::marker {
+    font-weight: 500;
+    color: #94c045;
+}
+
+ol.ethereum-dapps-list img {
+    margin-bottom: 20px;
+}

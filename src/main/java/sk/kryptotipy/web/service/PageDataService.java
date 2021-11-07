@@ -20,10 +20,8 @@ import java.util.ResourceBundle;
 public class PageDataService implements PageDataServiceApi {
 
     private final AppProperties appProperties;
-
     private final ArticleComponent articleComponent;
     private final UtilityService utilityService;
-
 
     public void set(Map<String, Object> model, String pageTitleCustom, String pageDescription, HttpServletRequest request) {
         model.put("page_title", pageTitleCustom + " | " + appProperties.getPageTitle());

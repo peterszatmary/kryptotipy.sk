@@ -1,0 +1,1022 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="centered">
+                        <h1 style="font-size: 22px;color: #fff;" th:text="${page_title}"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb notop">
+                    <li><a href="/">Domov</a><span class="divider">/</span></li>
+                    <li><a href="/krypto-learning">Learning</a><span class="divider">/</span></li>
+                    <li class="active"><span th:text="${page_title}" itemprop="name"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <article itemscope itemtype="https://schema.org/Article">
+                    <div class="heading">
+                        <h2 th:text="${post_title}" itemprop="name"></h2>
+
+                        <div class="fb-share-button"
+                             data-href="https://www.kryptotipy.sk/article/ethereum-dapps-2021"
+                             data-layout="button_count"
+                             data-size="large"
+                             style="margin-right:10px;"
+                        >
+
+                            <a target="_blank"
+                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fethereum-dapps-2021&amp;src=sdkpreparse"
+                               class="fb-xfbml-parse-ignore">Zdieľať</a>
+                        </div>
+                        <i>6.11.2021 (aktualizované 6.11.2021)</i>&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                        <a href="/">Späť</a>
+                    </div>
+
+                    <img src="/assets/img/articles/ethereum-dapps-2021/dapps.jpg" alt="Ethereum dapps 2021" />
+
+                    <div class="clearfix">
+                    </div>
+                    <div class="row">
+                        <div class="span8" style="font-size: 15px;">
+
+                            <p>
+                                <br /><br />
+                                Potrebujete prácu? Kupovať umenie? Potrebujete licencovať hudbu? Získať pôžičku? Existuje na to už dapp (decentralizovaná aplikácia).
+                                <br /><br />
+                                Mnoho vizionárskych projektov skončilo počas dlhého medvedieho trhu, napriek tomu dnes vznikajú ďalšie ešte brilantnejšie a odvážnejšie decentralizované aplikácie.
+                                <br /><br />
+                                Väčšina z nich je k dispozícii na stiahnutie zadarmo buď v obchodoch Apple alebo Google Play, alebo priamo prostredníctvom ich webových stránok ako ukážky, beta verzie alebo plnohodnotné verzie.
+                                <br /><br />
+                                Decentralizované aplikácie nie sú nič iné ako smart kontrakty, ktoré fungujú a existujú na decentralizovanom uložisku údajov, ktoré voláme blockchain. Smart kontrakty obsahujú vykonateľný kód, ktorý keď raz autor nasadí do blockchainu už ho nemôže zmeniť / ovplyvniť. Kód smart kontraktov je písaný v jazyku Solidity.
+                                <br /><br />
+                                Vždy si urobte prieskum, pretože blockchain a s ním spojené technológie a projekty sú stále nové. Pred uložením značného množstva peňazí sa uistite, že rozumiete rizikám.
+                                <br /><br />
+                            </p>
+
+                            <p>
+                                <ol class="ethereum-dapps-list">
+                                    <h2>Základné</h2>
+                                    <blockquote>
+                                        <i>
+                                            Prehliadače, peňaženky a nevyhnutné nástroje na komunikáciu so sieťou Ethereum.
+                                        </i>
+                                    </blockquote>
+
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/wallets.png" alt="Basics on blockchain dapps" title="Basics on blockchain dapps" />
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://metamask.io/" target="_blank" rel="nofollow">MetaMask</a>
+                                        </h5>
+                                        Doplnok webového prehliadača, ktorý pripája vaše zariadenie
+                                        k sieti Ethereum. MetaMask tiež umožňuje zdieľanie peer-to-peer a výmenu tokenov.
+                                        <br />
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://brave.com/" target="_blank" rel="nofollow">MetaMask</a>
+                                        </h5>
+                                        Webový a mobilný prehliadač integrovaný s tokenmi BAT a ERC-20.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://ens.domains/" target="_blank" rel="nofollow">Služba názvov Ethereum (Name Service)</a>
+                                        </h5>
+                                        Vytvorte si prispôsobenú a jednoduchú adresu peňaženky ETH.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://3boxlabs.com/" target="_blank" rel="nofollow">3box</a>
+                                        </h5>
+                                        Prihlásenie, profil a cloudové úložisko typu všetko v jednom na serveri Ethereum.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.civic.com/" target="_blank" rel="nofollow">Civic</a>
+                                        </h5>
+                                        Zabezpečená správa identity a údajov na blockchaine.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.myetherwallet.com/" target="_blank" rel="nofollow">MyEtherWallet</a>
+                                        </h5>
+                                        Bezplatné open-source rozhranie na strane klienta na generovanie peňaženiek Ethereum a ďalších.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://mycrypto.com/" target="_blank" rel="nofollow">Peňaženka MyCrypto</a>
+                                        </h5>
+                                        S týmto správcom peňaženky Ethereum môžete vymieňať, odosielať a kupovať kryptomeny so svojimi obľúbenými peňaženkami.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://selfkey.org/" target="_blank" rel="nofollow">SelfKey</a>
+                                        </h5>
+                                        Suverénny systém identity.
+                                    </li>
+
+                                    <br /><br /><br />
+
+                                    <h2>Umelecké trhy</h2>
+
+                                    <blockquote>
+                                        <i>
+                                            Tvorba, nákup a obchodovanie s nezameniteľným digitálnym umením.
+                                        </i>
+                                    </blockquote>
+
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/NFT.jpg" alt="" title="" />
+                                    <li>
+                                        <h5>
+                                            <a href="https://rarible.com/" target="_blank" rel="nofollow">Rarible</a>
+                                        </h5>
+                                        Prvý komunitný trh NFT.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://zora.co/" target="_blank" rel="nofollow">Zora</a>
+                                        </h5>
+                                        Univerzálny trhový protokol pre NFT s inovatívnym podielom tvorcov na autorských honorároch za ďalší predaj.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://foundation.app/" target="_blank" rel="nofollow">Foundation</a>
+                                        </h5>
+                                        Investujte do jedinečných edícií digitálnych umeleckých diel a obchodov s inými kupujúcimi.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://superrare.com" target="_blank" rel="nofollow">SuperRare</a>
+                                        </h5>
+                                        Miesto pre obchodovanie a zber jedinečných digitálnych umeleckých diel z jednej edície.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.bitski.com" target="_blank" rel="nofollow">Bitski</a>
+                                        </h5>
+                                        Vytvárajte, predávajte a zobrazujte NFT.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://niftygateway.com" target="_blank" rel="nofollow">Nifty Gateway</a>
+                                        </h5>
+                                        Získajte prístup k niektorým dnes z najvyhľadávanejších výtvarných umení a zberateľských predmetov.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://ephimera.com" target="_blank" rel="nofollow">Ephemera</a>
+                                        </h5>
+                                        Trhovisko pre umelcov a galérie založené na šošovkách.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://async.art" target="_blank" rel="nofollow">Async Art</a>
+                                        </h5>
+                                        Vytvárajte, zbierajte a obchodujte s programovateľným umením.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://beta.cent.co/~discover/" target="_blank" rel="nofollow">Cent</a>
+                                        </h5>
+                                        Sociálna sieť a trh NFT.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://makersplace.com" target="_blank" rel="nofollow">MakersPlace</a>
+                                        </h5>
+                                        trhovisko na zdieľanie a zbieranie vzácnych digitálnych výtvorov
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://mintable.app" target="_blank" rel="nofollow">Mintable</a>
+                                        </h5>
+                                        Platforma, ktorá vám umožní vytvárať, spravovať a prehliadať digitálne položky na blockchaine.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://opensea.io" target="_blank" rel="nofollow">OpenSea</a>
+                                        </h5>
+                                        Peer-to-peer obchodný trh pre krypto-zberateľské predmety a vzácne digitálne položky.
+                                    </li>
+
+                                    <br /><br /><br />
+
+                                    <h2>Hudba</h2>
+
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/music.jpg" alt="music dapps" title="music dapps" />
+                                    <li>
+                                        <h5>
+                                            <a href="https://beta.catalog.works" target="_blank" rel="nofollow">Catalog</a>
+                                        </h5>
+                                        Platforma na zhromažďovanie, obchodovanie a počúvanie preukázateľne autentických diel.
+                                        Umelci dostávajú 100 % z počiatočného predaja a vopred si stanovia aj percentuálny poplatok, ktorý dostanú za každý ďalší predaj.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://audius.co" target="_blank" rel="nofollow">Audius</a>
+                                        </h5>
+                                        platforma na streamovanie a zdieľanie hudby, ktorá vracia silu späť do rúk tvorcom obsahu.
+                                    </li>
+
+
+                                    <br /><br /><br />
+
+                                    <h2>Decentralizované finančníctvo (DEFI)</h2>
+                                    <blockquote>
+                                        <i>
+                                            Odpoveď Web3 na tradičné financie. Aj napriek rozsiahlemu šíreniu fintech riešení
+                                            zostávajú miliardy ľudí bez banky. Dokonca aj tí, ktorí majú bankové účty,
+                                            majú často zablokované transakcie alebo nemôžu prijímať pôžičky.
+                                            DeFi nespí ani nediskriminuje. Iba s internetovým pripojením, peňaženkou
+                                            a trochou know-how môžete odosielať, prijímať, požičiavať si, získavať úroky a
+                                            dokonca streamovať finančné prostriedky kdekoľvek na svete.
+                                        </i>
+                                    </blockquote>
+
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/ethereum-dapps-2021.jpg" alt="" title="" />
+                                    <br />
+                                    <h3>Pôžičky</h3>
+                                    <li>
+                                        <h5>
+                                            <a href="https://oasis.app/" target="_blank" rel="nofollow">Oasis Borrow</a>
+                                        </h5>
+                                        Využite svoj majetok. Uzamknite svoje tokeny ako kolaterál na generovanie DAI.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://compound.finance/" target="_blank" rel="nofollow">Compound Finance</a>
+                                        </h5>
+                                        open source protokol pre efektívne algoritmické  peňažné trhy v sieti Ethereum.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://aave.com/" target="_blank" rel="nofollow">AAVE</a>
+                                        </h5>
+                                        je open source  protokol na zarábanie úrokov z vkladov a požičiavania aktív.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://yearn.finance/" target="_blank" rel="nofollow">Yearn.Finance</a>
+                                        </h5>
+                                        decentralizovaný agregátor výnosov, ktorý optimalizuje vaše požičiavanie tokenov.
+                                    </li>
+
+                                    <br /><br />
+                                    <h3>Pooling a investície</h3>
+                                    <li>
+                                        <h5>
+                                            <a href="https://app.pooltogether.com/" target="_blank" rel="nofollow">Pool Together</a>
+                                        </h5>
+                                        Lotéria, ktorú nemôžete prehrať. Získajte ceny každý týždeň.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.indexcoop.com/" target="_blank" rel="nofollow">Index Coop</a>
+                                        </h5>
+                                        Kryptoindexový fond, vďaka ktorému je vaše portfólio rozdelené do špičkových tokenov DeFi.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.tokensets.com/" target="_blank" rel="nofollow">Token Sets</a>
+                                        </h5>
+                                        platforma správy aktív s tokenizovanými obchodnými stratégiami.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.dharma.io/" target="_blank" rel="nofollow">Dharma</a>
+                                        </h5>
+                                        Skupina inteligentných zmlúv a vývojárskych nástrojov, ktoré umožňujú požičiavať si a požičiavať iným krypto aktíva na blockchainoch, ako je Ethereum
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://lendoit.com/" target="_blank" rel="nofollow">Lendoit</a>
+                                        </h5>
+                                        Decentralizovaná platforma na poskytovanie pôžičiek typu peer-to-peer, ktorá spája dlžníkov a veriteľov.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://instadapp.io/" target="_blank" rel="nofollow">InstaDApp</a>
+                                        </h5>
+                                        Decentralizovaná banka postavená na protokole MakerDAO.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://nexusmutual.io/" target="_blank" rel="nofollow">Nexus Mutual</a>
+                                        </h5>
+                                        Alternatíva decentralizovaného poistenia. Rozšírte svoje inteligentné zmluvy o fond na zdieľanie rizika
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://etherisc.com/" target="_blank" rel="nofollow">Etherisc</a>
+                                        </h5>
+                                        Decentralizovaný poistný protokol na kolektívne vytváranie riešení prenosu rizík.
+                                        Produkty zahŕňajú poistenie meškania letu, ochranu pred hurikánom, poistenie
+                                        kryptopeňaženky, ochranu kolaterálu pre pôžičky kryté kryptomenami, poistenie
+                                        plodín a sociálne poistenie.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://dydx.exchange/" target="_blank" rel="nofollow">dYdX</a>
+                                        </h5>
+                                        Decentralizovaná platforma na obchodovanie s maržami. Otvorte krátke alebo pákové pozície s
+                                        pákovým efektom až 10x. Požičiavajte sebe aj iným tiež.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.synthetix.io/" target="_blank" rel="nofollow">Synthetix</a>
+                                        </h5>
+                                        Protokol pre vydávanie syntetických on-chain aktív, ktoré sledujú hodnotu aktív v reálnom svete.
+                                    </li>
+
+                                    <br />
+                                    <br />
+
+                                    <h3>Portfólia</h3>
+                                    <li>
+                                        <h5>
+                                            <a href="https://zapper.fi/" target="_blank" rel="nofollow">Zapper</a>
+                                        </h5>
+                                        Sledujte a vizualizujte svoje aktíva a pasíva DeFi na jednoduchom dashboarde.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://rotki.com/" target="_blank" rel="nofollow">Rotki</a>
+                                        </h5>
+                                        Open source platforma na sledovanie, analytiku a krypto účtovníctvo.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://zerion.io/" target="_blank" rel="nofollow">Zerion</a>
+                                        </h5>
+                                        Zostavte a spravujte celé svoje portfólio DeFi z jedného miesta.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://zerion.io/" target="_blank" rel="nofollow">Zerion</a>
+                                        </h5>
+                                        Zostavte a spravujte celé svoje portfólio DeFi z jedného miesta.
+                                    </li>
+                                    <br />
+                                    <br />
+
+                                    <h2>Tokenové burzy</h2>
+                                    <blockquote>
+                                        <i>
+                                            Decentralizované burzy a možnosti typu peer-to-peer na nákup, ukladanie a
+                                            obchodovanie s digitálnymi menami.
+                                        </i>
+                                    </blockquote>
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/token-exchanges.jpg" alt="Token exchanges" title="Token exchanges" />
+                                    <li>
+                                        <h5>
+                                            <a href="https://app.1inch.io/" target="_blank" rel="nofollow">1inch</a>
+                                        </h5>
+                                        DEX agregátor a jediný vstupný bod pre DeFi
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.airswap.io/" target="_blank" rel="nofollow">AirSwap</a>
+                                        </h5>
+                                        Decentralizovaný trh tokenov.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://localcryptos.com/" target="_blank" rel="nofollow">LocalCryptos</a>
+                                        </h5>
+                                        Bezpečný, rýchly a hlavne súkromný spôsob nákupu a predaja ETH a ďalších kryptomien rôznymi metódami.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://idex.io/" target="_blank" rel="nofollow">IDEX</a>
+                                        </h5>
+                                        Decentralizovaná burza s obchodovaním v reálnom čase a vysokou priepustnosťou transakcií.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://leverj.io/" target="_blank" rel="nofollow">LEVERJ</a>
+                                        </h5>
+                                        Samosprávna decentralizovaná burza s vysokou frekvenciou obchodovania s futures.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://forkdelta.app/" target="_blank" rel="nofollow">ForkDelta</a>
+                                        </h5>
+                                        Decentralizovaná výmena tokenov Ethereum.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://bancor.network/" target="_blank" rel="nofollow">Bancor</a>
+                                        </h5>
+                                        Decentralizovaná sieť likvidity, výmena tokenov a odmeny.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://0x.org/portal" target="_blank" rel="nofollow">0x</a>
+                                        </h5>
+                                        Protokol pre decentralizovanú výmenu, ktorý využívajú platformy ako Radar Relay,
+                                        <a href="https://ddex.io/margin/ETH-USDT" target="_blank" rel="nofollow">DDEX</a>,
+                                        Paradex,
+                                        <a href="https://tokenlon.im/" target="_blank" rel="nofollow">Tokenlon</a>
+                                        a
+                                        <a href="https://matcha.xyz/" target="_blank" rel="nofollow">Matcha</a>.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://liquality.io/" target="_blank" rel="nofollow">Liquality</a>
+                                        </h5>
+                                        Prvá multi chain peňaženka ako rozšírenie do prehliadača, vďaka čomu je spôsob výmeny
+                                        kryptomien medzi blockchainmi ešte jednoduchší.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://beta.curve.fi/" target="_blank" rel="nofollow">Curve</a>
+                                        </h5>
+                                        AMM optimalizovaný pre stablecoiny, ktorý na jednej strane funguje ako burza a na druhej strane umožňuje
+                                        poskytovateľom likvidity zarábať na poplatkoch a požičiavať úroky.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://uniswap.org/" target="_blank" rel="nofollow">Uniswap</a>
+                                        </h5>
+                                        Automatická výmena tokenov na Ethereum.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.tokensets.com/" target="_blank" rel="nofollow">Set</a>
+                                        </h5>
+                                        Protokol na vytváranie a správu takzvaných košov (basket) tokenov na investovanie a obchodovanie.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.synthetix.io/" target="_blank" rel="nofollow">Synthetix</a>
+                                        </h5>
+                                        Vymieňajte si syntetické fiat meny zabezpečené kryptoaktívami.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://sushi.com/" target="_blank" rel="nofollow">Sushiswap</a>
+                                        </h5>
+                                        Komunitou poháňaný automatizovaný trhový DEX, ktorý je momentálne na blockchaine Ethereum.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://loopring.org/" target="_blank" rel="nofollow">Loopring</a>
+                                        </h5>
+                                        Peer-to-peer obchodná platforma vytvorená pre rýchlosť.
+                                    </li>
+
+                                    <br />
+                                    <br />
+
+                                    <h2>DAO</h2>
+                                    <blockquote>
+                                        <i>
+                                            DAO (Decentralizované autonómne organizácie) sa stávajú primárnymi médiami správy
+                                            DeFi v krypto a konzervatívne dohliadajú už na viac ako 480 miliónov dolárov.
+                                        </i>
+                                    </blockquote>
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/dao.jpg" alt="dao dapps" title="dao dapps" />
+                                    <li>
+                                        <h5>
+                                            <a href="https://makerdao.com/en/" target="_blank" rel="nofollow">MakerDAO</a>
+                                        </h5>
+                                        Viacúčelové DAO, ktoré obsahuje burzu OasisDEX, investičné produkty a stablecoiny
+                                        DAI.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://badger.com/" target="_blank" rel="nofollow">Badger</a>
+                                        </h5>
+                                        Jednoúčelové DAO: vybudujte produkty a infraštruktúru potrebnú na urýchlenie bitcoinu ako
+                                        kolaterálu naprieč inými blockchainmi.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://aragon.org/" target="_blank" rel="nofollow">Aragon</a>
+                                        </h5>
+                                        Odstraňuje sprostredkovateľa pri vytváraní a riadení organizácií.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.molochdao.com/" target="_blank" rel="nofollow">MolochDAO</a>
+                                        </h5>
+                                        Pôvodne vytvorený na financovanie grantov Ethereum 2.0 a teraz investuje do rozvoja Etherea
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://dxdao.eth.link/" target="_blank" rel="nofollow">DXdao</a>
+                                        </h5>
+                                        Vyvíja, riadi a rozvíja protokoly a produkty DeFi.
+                                        LAO: Členom riadený fond rizikového kapitálu organizovaný v Spojených štátoch s cieľom dodržiavať zákony USA
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://flamingodao.xyz/" target="_blank" rel="nofollow">FlamingoDAO</a>
+                                        </h5>
+                                        DAO zamerané na NFT, ktorého cieľom je preskúmať vznikajúce investičné príležitosti
+                                        pre vlastnené aktíva založené na blockchaine.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.pool-party.club/" target="_blank" rel="nofollow">PeepsPoolParty</a>
+                                        </h5>
+                                        Komunitné získavanie finančných prostriedkov na základe cieľov, kde DAOs DeFi.
+                                    </li>
+
+                                    <br />
+                                    <br />
+
+                                    <h2>Predikčné trhy</h2>
+                                    <blockquote>
+                                        <i>
+                                            Internet hodnoty, kde na trh vstupuje všetko od vedomosti cez hudbu až po
+                                            počítačovú silu a tovar vo virtuálnych svetoch.
+                                        </i>
+                                    </blockquote>
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/prediction-markets.jpg" alt="Prediction markets" title="Prediction markets" />
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.augur.net/" target="_blank" rel="nofollow">Augur</a>
+                                        </h5>
+                                        Decentralizovaný predikčný trh na predpovedanie udalostí v reálnom svete.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.golem.network/" target="_blank" rel="nofollow">Golem</a>
+                                        </h5>
+                                        Globálny, open-source, decentralizovaný superpočítač, ktorý môže využívať ktokoľvek.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://gnosis.io/" target="_blank" rel="nofollow">Gnosis</a>
+                                        </h5>
+                                        Protokol a predikčný trh pre oceňovanie digitálnych aktív.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://district0x.io/" target="_blank" rel="nofollow">district0x</a>
+                                        </h5>
+                                        Vytvárajte vzájomne prepojené trhoviská a komunity poháňané tokenmi.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.originprotocol.com/en" target="_blank" rel="nofollow">Origin</a>
+                                        </h5>
+                                        Protokol na vytváranie peer-to-peer trhovísk s využitím Etherea a IPFS.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://enjin.io/" target="_blank" rel="nofollow">Enjin Coin</a>
+                                        </h5>
+                                        Enjin ponúka sadu produktov na vytváranie, správu, obchodovanie, ukladanie, skúmanie, distribúciu
+                                        a integráciu aktív založených na blockchaine.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://polymarket.com/" target="_blank" rel="nofollow">Polymarket</a>
+                                        </h5>
+                                        Stavte na výsledky. Obchodovanie na informačných trhoch.
+                                    </li>
+
+                                    <br />
+                                    <br />
+
+                                    <h2>Práca</h2>
+                                    <blockquote>
+                                        <i>
+                                            Pracujte a dostaňte zaplatené!
+                                        </i>
+                                    </blockquote>
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/ethereum-dapps.jpg" alt="Do and earn" title="Do and earn" />
+                                    <li>
+                                        <h5>
+                                            <a href="https://gitcoin.co/" target="_blank" rel="nofollow">Gitcoin</a>
+                                        </h5>
+                                        Najjednoduchší spôsob, ako speňažiť alebo stimulovať prácu na softvéri s otvoreným zdrojovým kódom.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://ethlance.com/" target="_blank" rel="nofollow">Ethlance</a>
+                                        </h5>
+                                        Nájdite si prácu a získajte odmenu v digitálnych menách.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://numer.ai/homepage/" target="_blank" rel="nofollow">Numerai</a>
+                                        </h5>
+                                        Zarábajte kryptomenu v týždenných súťažiach v oblasti vedy o údajoch.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://gluon.network/" target="_blank" rel="nofollow">Gluon.Network</a>
+                                        </h5>
+                                        Vyvíjajte na plne funkčnom reťazci Ethereum Layer2.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.openlaw.io/" target="_blank" rel="nofollow">OpenLaw</a>
+                                        </h5>
+                                        Vytvárajte inteligentné právne zmluvy a dohody.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://request.network/en/" target="_blank" rel="nofollow">Request</a>
+                                        </h5>
+                                        Posielajte faktúry a dostávajte platby bezpečne v krypto (alebo fiat).
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://radicle.xyz/" target="_blank" rel="nofollow">Radicle</a>
+                                        </h5>
+                                        Bezpečná spolupráca na kóde typu peer-to-peer bez sprostredkovateľov.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://tokit.io/" target="_blank" rel="nofollow">Tokit</a>
+                                        </h5>
+                                        Platforma pre crowdfundingové médiá prostredníctvom tokenizácie umelcov.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://support.storj.io/hc/en-us" target="_blank" rel="nofollow">Storj</a>
+                                        </h5>
+                                        Zarábajte kryptomeny prenájmom extra miesta na pevnom disku.
+                                    </li>
+
+                                    <br />
+                                    <br />
+
+                                    <h2>Zbierky (Collectibles)</h2>
+                                    <blockquote>
+                                        <i>
+                                            Vytvárajte a zbierajte a predávajte svoje cenné zbierky na blockchaine.
+                                        </i>
+                                    </blockquote>
+                                    <img src="/assets/img/articles/ethereum-dapps-2021/blockchain-games.jpg" alt="Blockchain games" title="Blockchain games" />
+                                    <li>
+                                        <h5>
+                                            <a href="https://eulerbeats.com/" target="_blank" rel="nofollow">EulerBeats</a>
+                                        </h5>
+                                        Mimoriadne vzácna zbierka digitálneho umenia + beatov generovaná on chain použitím matematických objavov Eulera.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.larvalabs.com/cryptopunks" target="_blank" rel="nofollow">CryptoPunks</a>
+                                        </h5>
+                                        Inšpirácia pre ERC-721. Zbierajte a obchodujte s 10 000 jedinečnými postavami.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://avastars.io/" target="_blank" rel="nofollow">Avastari</a>
+                                        </h5>
+                                        Vytvorte avatarov pre čoraz silnejšie sa rozvíjajúce metaverzum.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.thehashmasks.com/" target="_blank" rel="nofollow">Hashmasks</a>
+                                        </h5>
+                                        Digitálne umelecké zberateľské predmety s dynamickou hierarchiou hodnôt.
+                                    </li>
+
+
+                                    <br />
+                                    <br />
+
+                                    <h3>Hry a virtuálne svety</h3>
+                                    <blockquote>
+                                        <i>
+                                            Decentralizované hry sa vyvinuli – od pomalých, drahých interakcií
+                                            s 2D plyšovými zberateľskými predmetmi až po dobývanie planét v hlboko pohlcujúcej hre so skrytými informáciami založenej na sci-fi a technológii zkSNARK.
+                                        </i>
+                                    </blockquote>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://axieinfinity.com/" target="_blank" rel="nofollow">Axie Infinity</a>
+                                        </h5>
+                                        Zarobte si malý nápoj lásky (SLP = Small Love Potion ), zatiaľ čo zbierate,
+                                        vychovávate a bojujete s fantastickými bytosťami nazývanými Axie.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://bravefrontierheroes.com/" target="_blank" rel="nofollow">Brave Frontier Heroes</a>
+                                        </h5>
+                                        crossover úspešnej mobilnej hry BRAVE FRONTIER a blockchainovej hry číslo 1 My Crypto Heroes.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://zkga.me/" target="_blank" rel="nofollow">Dark forest:</a>
+                                        </h5>
+                                        Objavujte a dobývajte planéty v nekonečnom, procedurálne generovanom, kryptograficky špecifikovanom vesmíre.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://sorare.com/" target="_blank" rel="nofollow">Sorare</a>
+                                        </h5>
+                                        Fantastická futbalová hra, ktorá beží na Ethereu. Sorare funguje na základnej blockchainovej
+                                        sieti Ethereum, aby zabezpečil vlastníctvo a distribúciu kariet. Používatelia môžu obchodovať s hráčmi,
+                                        zúčastniť sa týždenných turnajov a súťažiť o ceny v hodnote tisícov libier.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://ethsnakes.github.io/" target="_blank" rel="nofollow">EthSnakes</a>
+                                        </h5>
+                                        Decentralizovaná verzia hry Snake and Ladders. Hráči si môžu byť istí, že výsledky neboli
+                                        zmanipulované, overením integrity každej stávky kontrolou zmluvy v Github a Etherscan.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://ethermon.io/" target="_blank" rel="nofollow">Ethermon</a>
+                                        </h5>
+                                        Chyťte, bojujte a obchodujte s éterickými príšerami. Obchodujte s monštrami a zbierajte
+                                        menu v hre za peňažnú odmenu.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://godsunchained.com/" target="_blank" rel="nofollow">Gods Unchained</a>
+                                        </h5>
+                                        Zberateľská kartová hra. Zostavte si svoj balíček kariet ERC-721 a zúčastnite sa súťažných
+                                        týždenných turnajov s obrovskými cenami.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://denations.com/" target="_blank" rel="nofollow">Decentralized Nations</a>
+                                        </h5>
+                                        Rozvíjajte národy a mestá, súťažte s ostatnými a zarábajte DENA.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://funfair.games/" target="_blank" rel="nofollow">FunFair</a>
+                                        </h5>
+                                        Preukázateľne férové, bezpečné a transparentné kasíno.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://etheroll.com/" target="_blank" rel="nofollow">Etheroll</a>
+                                        </h5>
+                                        Niekedy je to také jednoduché ako hádzanie kockou. Etheroll je preukázateľne férová hra s
+                                        kockami s nízkou 1% výhodou a bez registrácií alebo vkladov.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://0xuniverse.com/" target="_blank" rel="nofollow">0x Universe</a>
+                                        </h5>
+                                        umožňuje hráčom stavať vesmírne lode, skúmať galaxiu a kolonizovať planéty.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://lordless.io/" target="_blank" rel="nofollow">Lordless</a>
+                                        </h5>
+                                        Fantasy hra, v ktorej používatelia verbujú lovcov odmien, posielajú ich na questy a zbierajú odmeny.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://decentraland.org/" target="_blank" rel="nofollow">Decentraland</a>
+                                        </h5>
+                                        Platforma virtuálnej reality, na ktorej používatelia vytvárajú, využívajú a speňažujú obsah a aplikácie.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://dragonereum.io/" target="_blank" rel="nofollow">Dragonereum</a>
+                                        </h5>
+                                        Chovajte drakov, ničte svojich nepriateľov, obchodujte s kryptomenami s ostatnými hráčmi.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.caesarstriumph.com/" target="_blank" rel="nofollow">Caesar’s Triumph</a>
+                                        </h5>
+                                        Strategická dobývacia hra na vytvorenie mega sveta ekonomickej, politickej a vojenskej stratégie.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.cryptovoxels.com/" target="_blank" rel="nofollow">CryptoVoxels:</a>
+                                        </h5>
+                                        Ethereum virtuálny svet, kde si môžete kúpiť pozemok, postaviť umelecké galérie a obchody.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://aavegotchi.com/" target="_blank" rel="nofollow">Aavegotchi</a>
+                                        </h5>
+                                        Crypto Collectibles s podporou DeFi poháňané Aave. Zbierajte, súťažte a kombinujte svoje Aavegotchis pre dokonalý zážitok z hry DeFi.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.mycryptoheroes.net/" target="_blank" rel="nofollow">My Crypto Heroes</a>
+                                        </h5>
+                                        Prevádzkujte svoju digitálnu pracovnú agentúru pre historických hrdinov.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.mlbc.app/" target="_blank" rel="nofollow">MLB Champions</a>
+                                        </h5>
+                                        Zbierajte hráčov a hrajte fantasy baseball. Každá hra MLB Crypto Baseball je spojená so živou hrou MLB v reálnom čase.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://marble.cards/" target="_blank" rel="nofollow">Marble Cards</a>
+                                        </h5>
+                                        Zbierajte internetový obsah a merajte jeho hodnotu. Mramorujte akúkoľvek jedinečnú adresu
+                                        URL webovej stránky na zberateľskú kartu v Ethereu.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://zed.run/" target="_blank" rel="nofollow">ZED</a>
+                                        </h5>
+                                        Kupujte, chovajte, predávajte závodné kone na Ethereu.
+                                    </li>
+
+                                    <br />
+                                    <br />
+
+                                    <h3>Tokenizované komunity</h3>
+                                    <blockquote>
+                                        <i>
+                                            Už ste odstránili Facebook? Pripojte sa k tokenizovanej komunite a vychutnajte
+                                            si svetlú stránku sociálnych médií.
+                                        </i>
+                                    </blockquote>
+
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://www.fwb.help/" target="_blank" rel="nofollow">$FWB</a>
+                                        </h5>
+                                        Súkromný diskordový server pre umelcov, technológov a hudobníkov.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://karma.link/" target="_blank" rel="nofollow">$Karma</a>
+                                        </h5>
+                                        profesionálna sieť založená na telegramoch. Zarábajte alebo zarábajte $KARMA za dobré činy pre komunitu.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://jammsession.substack.com/p/are-you-ready-to-jamm" target="_blank" rel="nofollow">$JAMM</a>
+                                        </h5>
+                                        Skupina jednotlivcov testujúcich podivné a šialené veci v kryptomenách.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://trywhiski.com/" target="_blank" rel="nofollow">$WHISKI</a>
+                                        </h5>
+                                        Komunita pre milovníkov whisky 🥃 a kryptomien.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://whale.me/" target="_blank" rel="nofollow">$WHALE</a>
+                                        </h5>
+                                        Sociálna mena krytá hmotnými aktívami a aktívami NFT.
+                                    </li>
+
+                                    <br />
+                                    <br />
+
+                                    <h3>Sociálne siete</h3>
+
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://play.google.com/store/apps/details?id=com.minds.mobile&hl=en_US" target="_blank" rel="nofollow">Minds</a>
+                                        </h5>
+                                        Sociálna sieť odolná voči cenzúre.
+                                    </li>
+
+                                    <li>
+                                        <h5>
+                                            <a href="https://akasha.world/" target="_blank" rel="nofollow">Akasha</a>
+                                        </h5>
+                                        Decentralizovaná sociálna sieť postavená na Ethereu.
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <a href="https://livepeer.org/" target="_blank" rel="nofollow">Livepeer</a>
+                                        </h5>
+                                        Služby video infraštruktúry s otvoreným zdrojom pre živé vysielanie videa.
+                                    </li>
+                            <li>
+                                <h5>
+                                    <a href="https://refereum.com/" target="_blank" rel="nofollow">Refereum</a>
+                                </h5>
+                                Získajte odmeny za hranie hier, sledovanie streamov a zdieľanie herného obsahu s priateľmi.
+                            </li>
+                            <li>
+                                <h5>
+                                    <a href="https://vouchforme.co/" target="_blank" rel="nofollow">VouchForMe</a>
+                                </h5>
+                                Distribuovaná poistná platforma založená na sociálnom dôkaze postavená na Ethereu.
+                            </li>
+
+                        </ol>
+                            </p>
+
+                            <br /><br />
+                            <p>
+                                V prípade, že sa vám článok páčil zdieľajte ho so svojimi priateľmi na vašich sociálnych sieťach.
+
+                                <br /><br />
+                                V prípade akýchkoľvek otázok nás neváhajte kontaktovať alebo napíšte nám otázku do komentára nižšie.
+                            </p>
+
+
+                            <p>
+                                Nenesieme žiadnu zodpovednosť za vaše prípadné finančné straty. Články sú výlučne
+                                informačného charakteru. Každý by mal obchodovať na vlastnú zodpovednosť a s peniazmi, ktoré
+                                je ochotný stratiť.
+                            </p>
+
+                            <p>
+                                <br /><br />
+
+                                <h2>Ďalšie populárne články</h2>
+                                <a href="/article/passive-income-with-vechain">28.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu Vechain ako eurá v banke</a><br />
+                                <a href="/article/passive-income-with-cardano">21.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ADA (Cardano) ako eurá v banke</a><br />
+                                <a href="/article/passive-income-with-cosmos-atom">14.2.2021 - Pasívny zárobok alebo prečo sa viac oplatí držať kryptomenu ATOM (COSMOS) ako eurá v banke</a><br />
+                                <a href="/article/complete-guide-to-proof-of-work">7.2.2021 - 15 proof of work algoritmov poháňajúcich kryptomeny alebo ako funguje ťažba kryptomien</a><br />
+                                <a href="/article/btc-is-not-the-first">2.1.2021 - Prvá kryptomena nie je Bitcoin</a><br />
+                                <a href="/article/passive-income-with-exodus">17.1.2021 - Pasívny zárobok s peňaženkou Exodus alebo prečo sa viac oplatí držať kryptomeny ako eurá v banke</a><br />
+                                <a href="/article/passive-income-with-neo">31.1.2021 - NEO-spôsoby ako pasívne zarábať</a><br />
+
+                                <br /><br /><br />
+                                <div th:replace="fragments/social-networks"></div>
+                            </p>
+                            <p>
+                                <h3>Zdroje</h3>
+                                <ul>
+                                    <li><a href="https://consensys.net/blog/news/90-ethereum-apps-you-can-use-right-now/">[1] 100+ Ethereum aplikácií, ktoré môžete použiť hneď teraz</a></li>
+
+                                </ul>
+
+                                <br /><br />
+                            </p>
+
+                            <div class="fb-comments" data-href="https://www.kryptotipy.sk/article/ethereum-dapps-2021" data-width="" data-numposts="5">
+
+                            </div>
+
+                            <br /><br />
+
+                            <div class="fb-share-button"
+                                 data-href="https://www.kryptotipy.sk/article/ethereum-dapps-2021"
+                                 data-layout="button_count"
+                                 data-size="large">
+                                <a target="_blank"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kryptotipy.sk%2Farticle%2Fethereum-dapps-2021&amp;src=sdkpreparse"
+                                   class="fb-xfbml-parse-ignore">Zdieľať</a>
+                            </div>
+
+                            <br /><br />
+
+                            <a href="/">Späť</a>
+                        </div>
+                        <div class="span4">
+
+                        </div>
+                    </div>
+                </article>
+                <!-- end article full post -->
+            </div>
+        </div>
+    </div>
+</section>
