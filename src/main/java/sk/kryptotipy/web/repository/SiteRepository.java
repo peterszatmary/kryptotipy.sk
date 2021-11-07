@@ -84,7 +84,8 @@ public class SiteRepository {
     private void manualWithPriority064(List<Sitemap.URL> sites) {
 
         var manualSites = Arrays.asList(
-                "donate", "article/complete-guide-to-proof-of-work",
+                "article/ethereum-dapps-today",
+                 "article/complete-guide-to-proof-of-work",
                 "article/passive-income-with-neo", "article/passive-income-with-exodus",
                 "article/btc-is-not-the-first", "article/passive-income-with-algorand",
                 "article/passive-income-with-polkadot-on-ledger", "article/passive-income-with-vechain",
