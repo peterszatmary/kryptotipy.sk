@@ -48,10 +48,6 @@ public class UtilityService {
             result = "peňaženky";
         }
 
-        else if ("not-categorized".equals(label)) {
-            result = "ostatné";
-        }
-
         else if ("cryptocurrency".equals(label)) {
             result = "kryptomeny";
         }

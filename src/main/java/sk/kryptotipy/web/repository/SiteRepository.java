@@ -43,7 +43,7 @@ public class SiteRepository {
                 "posts/dag", "posts/binance",
                 "posts/nbs", "posts/ico", "posts/fork", "posts/exodus", "posts/coinbase", "posts/algorand",
                 "posts/halving", "posts/tezos",
-                "posts/iota", "posts/halving", "posts/exchange", "posts/not-categorized",
+                "posts/iota", "posts/halving", "posts/exchange",
                 "posts/vechain", "posts/bitfinex",
                 "posts/bittrex", "posts/cosmos", "posts/uniswap", "posts/coinmarketcap", "posts/aave",
                 "posts/stellar", "posts/nft",

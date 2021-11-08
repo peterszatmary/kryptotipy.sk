@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>sk.kryptotipy</groupId>
 	<artifactId>kryptotipy-web</artifactId>
-	<version>4.43.3</version>
+	<version>4.44.0</version>
 	<name>kryptotipy.sk web</name>
 	<description>kryptotipy.sk web</description>
 
