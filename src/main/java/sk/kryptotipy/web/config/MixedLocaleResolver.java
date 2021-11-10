@@ -35,12 +35,17 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
     }
 
     private Locale resolveLocaleForGoogleBot(HttpServletRequest request) {
-        String url = request.getRequestURL().toString();
-        String locale = getLocaleFromUrl(url);
+        var url = request.getRequestURL().toString();
+        var locale = getLocaleFromUrl(url);
         if (locale == null && url.contains("www")) {
             return new Locale("sk");
+        } else if (url.contains("com")) {
+            return new Locale("us");
+        } else if (locale != null) {
+            return new Locale(locale.toLowerCase());
+        } else {
+           return new Locale("sk");
         }
-        return new Locale(locale.toLowerCase());
     }
 
     private boolean isGoogleBot(HttpServletRequest request) {
