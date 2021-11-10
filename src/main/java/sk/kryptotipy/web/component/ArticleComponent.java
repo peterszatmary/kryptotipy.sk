@@ -201,7 +201,6 @@ public class ArticleComponent {
         var baseUrlWithoutPort = appProperties.getBaseUrlWithoutPort();
         postsMeta.put("post.image.all",           baseUrlWithoutPort + "assets/post-images/bitcoin/images_2.jpg");
         postsMeta.put("post.image.bitcoin",       baseUrlWithoutPort + "assets/post-images/bitcoin/images_3.jpg");
-        postsMeta.put("post.image.nezaradene",    baseUrlWithoutPort + "assets/post-images/nezaradene/images_1.jpg");
         postsMeta.put("post.image.litecoin",      baseUrlWithoutPort + "assets/post-images/litecoin/images_6.jpg");
         postsMeta.put("post.image.monero",        baseUrlWithoutPort + "assets/post-images/monero/images_3.jpg");
         postsMeta.put("post.image.tezos",         baseUrlWithoutPort + "assets/post-images/tezos/images_8.jpg");

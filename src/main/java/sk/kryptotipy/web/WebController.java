@@ -59,7 +59,7 @@ public class WebController {
             addCookies(model, request);
             makeLinkActive(model, "index");
 
-            List<String> langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
+            var langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
             log.info("index.html");
 
             model.put("site", "");
@@ -99,8 +99,8 @@ public class WebController {
     public String news(String labell, String lang, Map<String, Object> model,
                        HttpServletRequest request) {
 
-        List<String> langs = new ArrayList<String>();
-        List<String> labels = new ArrayList<String>();
+        List<String> langs = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
         final var from = 0L;
         final var to = appProperties.getPageSize();
         final var parameterMap = request.getParameterMap();
