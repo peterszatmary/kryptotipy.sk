@@ -121,7 +121,6 @@ public class Post {
                 "de.beincrypto.com", // partners
                 "cryptonews.com", // problem s redirectom
                 "u.today" // radsej, a su partneri
-
         );
         return redirect.contains(sourceRender);
     }
