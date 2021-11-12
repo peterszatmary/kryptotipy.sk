@@ -4,15 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.component.UrlComponent;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
-import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.repository.LabelRepository;
 import sk.kryptotipy.web.repository.PostJdbcRepository;
@@ -23,7 +19,6 @@ import sk.kryptotipy.web.service.UtilityService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
@@ -48,7 +43,7 @@ public class WebController {
     private final SitemapService sitemapService;
 
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index(Map<String, Object> model,
                         HttpServletRequest request) {
 
@@ -81,21 +76,21 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/posts-by-i18n/{lang}")
+    @GetMapping("/posts-by-i18n/{lang}")
     public String postsByI18n(Map<String, Object> model,
                               @PathVariable("lang") String lang, HttpServletRequest request) {
        return news(null, lang, model, request);
     }
 
 
-    @RequestMapping("/posts/{label}")
+    @GetMapping("/posts/{label}")
     public String posts(Map<String, Object> model,
                         @PathVariable("label") String label, HttpServletRequest request) {
         return news(label, null,  model, request);
     }
 
 
-    @RequestMapping(value="/news", method = RequestMethod.GET)
+    @GetMapping(value="/news")
     public String news(String labell, String lang, Map<String, Object> model,
                        HttpServletRequest request) {
 
@@ -156,10 +151,10 @@ public class WebController {
         return "non-index";
     }
 
-    @RequestMapping("/external-services")
+    @GetMapping("/external-services")
     public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+        var rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
@@ -186,10 +181,10 @@ public class WebController {
     }
 
 
-    @RequestMapping("/cooperation")
+    @GetMapping("/cooperation")
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+        var rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
@@ -215,10 +210,10 @@ public class WebController {
     }
 
 
-    @RequestMapping("/krypto-learning")
+    @GetMapping("/krypto-learning")
     public String cryptoLearning(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+        var rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
@@ -243,12 +238,11 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/dictionary")
+    @GetMapping("/dictionary")
     public String dictionary(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
-        );
+        var rbFromUrl =
+                utilityService.getResourceBundle(mixedLocaleResolver.resolveLocale(request));
         addCookies(model, request);
         makeLinkActive(model, "dictionary");
         try {
@@ -269,22 +263,27 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/robots.txt")
+    @GetMapping("/robots.txt")
     public String robotsTxt() {
         log.info("robots.txt");
         return "robots.txt";
     }
 
-    @RequestMapping(
+    @GetMapping("/ads.txt")
+    public String adsTxt() {
+        log.info("ads.txt");
+        return "ads.txt";
+    }
+
+    @GetMapping(
             value = "/sitemap.xml",
-            method = RequestMethod.GET,
             produces = { "application/xml", "text/xml" }
             )
     @ResponseBody
     public void getSitemap(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        Locale resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        String siteMapLang = resolvedLocale.getLanguage().toLowerCase();
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        var siteMapLang = resolvedLocale.getLanguage().toLowerCase();
         if (siteMapLang.equalsIgnoreCase("us")) {
             siteMapLang = "en";
         }
@@ -297,15 +296,15 @@ public class WebController {
 		response.addHeader("content-type", "application/xml; charset=utf-8");
 		response.setStatus(200);
 
-        PrintWriter out = response.getWriter();
+        var out = response.getWriter();
 		out.println(sitemapService.create(siteMapLang));
     }
 
 
-    @RequestMapping("/article/{postTitle}")
+    @GetMapping("/article/{postTitle}")
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle, HttpServletRequest request) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+        var rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
@@ -333,10 +332,10 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/did-you-know")
+    @GetMapping("/did-you-know")
     public String didYouKnow(Map<String, Object> model, HttpServletRequest request) {
 
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+        var rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
         addCookies(model, request);
@@ -357,22 +356,22 @@ public class WebController {
         }
     }
 
-    @RequestMapping("/one-post-frame/{hashed_id}")
+    @GetMapping("/one-post-frame/{hashed_id}")
     public String onePostFrame(
             Map<String, Object> model,
             HttpServletRequest request,
             HttpServletResponse response,
             @PathVariable("hashed_id") String hashedId
        ) {
-        ResourceBundle rbFromUrl = utilityService.getResourceBundle(
+        var rbFromUrl = utilityService.getResourceBundle(
                 mixedLocaleResolver.resolveLocale(request)
         );
         makeLinkActive(model, "posts");
         try {
             model.put("site", "one-post-frame");
 
-            Long id = utilityService.decodeKryptotipyHash(hashedId);
-            Post post = this.postService.getPostsById(id);
+            var id = utilityService.decodeKryptotipyHash(hashedId);
+            var post = this.postService.getPostsById(id);
 
             post.setViews(post.getViews() + 1);
             postService.updatePostViews(post.getUrl(), post.getViews());
