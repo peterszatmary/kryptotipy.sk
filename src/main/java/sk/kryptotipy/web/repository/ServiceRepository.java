@@ -24,7 +24,7 @@ public class ServiceRepository {
         services.add(new Service(rb.getString("external.services.service.8.title"), "https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933", "trezor-t-black.png", rb.getString("external.services.service.8.description")));
         services.add(new Service(rb.getString("external.services.service.9.title"), "https://www.kucoin.com/", "kucoin-big.png", rb.getString("external.services.service.9.description")));
         services.add(new Service(rb.getString("external.services.service.10.title"), "https://lddy.no/v0jj", "keepkey.jpg", rb.getString("external.services.service.10.description")));
-        services.add(new Service(rb.getString("external.services.service.11.title"), "https://r.kraken.com/rn4GDj", "kraken-big.jpg", rb.getString("external.services.service.11.description")));
+        services.add(new Service(rb.getString("external.services.service.11.title"), "https://www.kraken.com/sign-up?clickid=SM03WF29RxyITyfwvm3qMxrPUkBSUNWBnzyKUg0&utm_source=Impact&utm_medium=Affiliate&utm_campaign=2683827&utm_content=%22Create%20an%20account%20with%20Kraken%22&irgwc=1&mpid=2683827", "kraken-big.jpg", rb.getString("external.services.service.11.description")));
         services.add(new Service(rb.getString("external.services.service.12.title"), "https://neotogas.com", "neotogas-big.jpg", rb.getString("external.services.service.12.description")));
         services.add(new Service(rb.getString("external.services.service.13.title"), "https://athda.com", "athda-big.jpg", rb.getString("external.services.service.13.description")));
         services.add(new Service(rb.getString("external.services.service.14.title"), "https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506", "ledger-nano-x.jpg", rb.getString("external.services.service.14.description")));
@@ -97,7 +97,7 @@ public class ServiceRepository {
         services.add(new Service(rb.getString("external.services.service.27.title"), "https://www.stakingrewards.com", "staking-rewards.png", rb.getString("external.services.service.27.description")));
         services.add(new Service(rb.getString("external.services.service.10.title"), "https://lddy.no/v0jj", "keepkey.jpg", rb.getString("external.services.service.10.description")));
         services.add(new Service(rb.getString("external.services.service.29.title"), "https://whitepaper.io/", "whitepaper.jpg", rb.getString("external.services.service.29.description")));
-        services.add(new Service(rb.getString("external.services.service.11.title"), "https://r.kraken.com/rn4GDj", "kraken-big.jpg", rb.getString("external.services.service.11.description")));
+        services.add(new Service(rb.getString("external.services.service.11.title"), "https://www.kraken.com/sign-up?clickid=SM03WF29RxyITyfwvm3qMxrPUkBSUNWBnzyKUg0&utm_source=Impact&utm_medium=Affiliate&utm_campaign=2683827&utm_content=%22Create%20an%20account%20with%20Kraken%22&irgwc=1&mpid=2683827", "kraken-big.jpg", rb.getString("external.services.service.11.description")));
 
         return services;
     }
