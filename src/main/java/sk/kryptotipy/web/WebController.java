@@ -86,6 +86,7 @@ public class WebController {
     @GetMapping("/posts/{label}")
     public String posts(Map<String, Object> model,
                         @PathVariable("label") String label, HttpServletRequest request) {
+        System.out.println(request.getRequestURL());
         return news(label, null,  model, request);
     }
 
