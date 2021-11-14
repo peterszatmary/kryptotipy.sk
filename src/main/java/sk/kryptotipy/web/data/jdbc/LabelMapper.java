@@ -10,8 +10,7 @@ public class LabelMapper implements RowMapper<Label> {
 
     @Override
     public Label mapRow(ResultSet rs, int rowNum) throws SQLException {
-
-        Label label = new Label();
+        var label = new Label();
         label.setName(rs.getString("l.name"));
         return label;
     }

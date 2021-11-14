@@ -17,7 +17,7 @@ public class JdbcConfig {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        var dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(properties.getDbDriver());
         dataSource.setUrl(properties.getDbUrl());
         dataSource.setUsername(properties.getDbUsername());

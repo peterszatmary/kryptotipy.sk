@@ -24,9 +24,4 @@ public class BtcPrice {
 
     @Setter
     private LocalDateTime time;
-
-    public BtcPrice(Double price, LocalDateTime time) {
-        this.price = price;
-        this.time = time;
-    }
 }

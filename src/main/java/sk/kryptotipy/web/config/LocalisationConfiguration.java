@@ -15,7 +15,7 @@ public class LocalisationConfiguration {
 
     @Bean
     public LocaleResolver localeResolver() {
-        MixedLocaleResolver slr = new MixedLocaleResolver(appProperties);
+        var slr = new MixedLocaleResolver(appProperties);
         slr.setDefaultLocale(new Locale("", "SK"));
         return slr;
     }

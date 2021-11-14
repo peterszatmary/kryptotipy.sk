@@ -7,12 +7,13 @@ import sk.kryptotipy.web.data.Donate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated(since = "Not in use. Use Patreon instead of it")
 @AllArgsConstructor
 @Repository
 public class DonateRepository {
 
     public List<Donate> getDonates() {
-        List<Donate> donates = new ArrayList<>();
+        var donates = new ArrayList<Donate>();
         donates.add(new Donate("Bitcoin", "/assets/img/donate/btc.png", "bc1qqx27qhdmaf336g3wpxhetrqdpgh2t20atfn56q", "/assets/img/donate/qr/btc.png"));
         donates.add(new Donate("Ethereum", "/assets/img/donate/ethereum.png", "0x81e07c46013d5EDc3a691e3458dFeF366DFB35c9","/assets/img/donate/qr/eth.png"));
         donates.add(new Donate("Litecoin", "/assets/img/donate/ltc.png", "LTyHnsU6VWUReBpFhgmPPDjvZgWihNC8Uw","/assets/img/donate/qr/ltc.png"));

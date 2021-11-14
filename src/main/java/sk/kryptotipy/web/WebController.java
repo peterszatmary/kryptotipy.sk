@@ -227,7 +227,7 @@ public class WebController {
             model.put("link_is_not_internal", false);
 
             log.info("krypto_learning.html");
-            pageData.set(model, "Krypto learning", rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, "Learning", rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("crypto.learning.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 17, 0, 0) + "");
             return "non-index";

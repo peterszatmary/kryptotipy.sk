@@ -41,7 +41,7 @@ public class RssFeedView extends AbstractRssFeedView {
     protected List<Item> buildFeedItems(Map<String, Object> model,
                                         HttpServletRequest request, HttpServletResponse response) {
 
-        List<Article> articles = articleRepository.getKryptotipyContent(
+        var articles = articleRepository.getKryptotipyContent(
                 utilityService.getResourceBundleSk());
         return articles.stream()
                 .map(article -> mapArticleToRssItem(article))
@@ -61,7 +61,7 @@ public class RssFeedView extends AbstractRssFeedView {
 
 
     private Item mapArticleToRssItem(Article article) {
-        Item rssItem = new Item();
+        var rssItem = new Item();
         rssItem.setTitle(article.getName());
         rssItem.setAuthor(appProperties.getPageTitle());
         rssItem.setLink(appProperties.getBaseUrlWithoutPort() + article.getUrl());

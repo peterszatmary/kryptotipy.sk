@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 public class UrlComponent {
 
     private String getBaseUrl(String url) {
-        Pattern p = Pattern.compile("(https://.*)/.*/.*");
-        Matcher m = p.matcher(url);
+        var p = Pattern.compile("(https://.*)/.*/.*");
+        var m = p.matcher(url);
         if (m.matches()) {
             return m.group(1);
         }
@@ -33,7 +33,7 @@ public class UrlComponent {
     public String getCanonical(String url) {
 
         url = comToSK(url);
-        String urlWithoutPort = url;
+        var urlWithoutPort = url;
         if (url.contains(":443")) {
             urlWithoutPort = url.replace(":443", "");
         } else if (url.contains(":8443")){

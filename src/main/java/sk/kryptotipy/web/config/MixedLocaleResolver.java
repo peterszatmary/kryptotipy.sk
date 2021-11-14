@@ -28,7 +28,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
-        Locale localeResolved = isGoogleBot(request) ?
+        var localeResolved = isGoogleBot(request) ?
                 resolveLocaleForGoogleBot(request) : resolveLocaleForUser(request);
         log.info("Locale resolved = {}", localeResolved);
         return localeResolved;
@@ -50,7 +50,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
     private boolean isGoogleBot(HttpServletRequest request) {
 
-        String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
+        var userAgent = request.getHeader(HttpHeaders.USER_AGENT);
         if (userAgent.contains("Googlebot") || userAgent.contains("www.google.com/bot.html")) {
             log.info("Google bot is here! on site {}", request.getRequestURL().toString());
             return true;
@@ -59,9 +59,9 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
     }
 
     private Locale resolveLocaleForUser(HttpServletRequest request) {
-        String url = request.getRequestURL().toString();
-        String langFromUrl = this.getLocaleFromUrl(url);
-        String result = "SK";
+        var url = request.getRequestURL().toString();
+        var langFromUrl = this.getLocaleFromUrl(url);
+        var result = "SK";
         if (langFromUrl != null) {
             result = langFromUrl;
         } else {
@@ -93,9 +93,9 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
      * @return
      */
     private String getJustOneLocale(String locale) {
-        String result = "";
+        var result = "";
         //sk,cs -> sk
-        Matcher matcher = Pattern.compile("(.{0,3}),(.{0,3})").matcher(locale);
+        var matcher = Pattern.compile("(.{0,3}),(.{0,3})").matcher(locale);
         if (matcher.matches()) {
             result = matcher.group(1);
             return result;
@@ -127,12 +127,12 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
     private String getLocaleFromUrl(String url) {
 
-        List<String> supportedLangs = appProperties.getSupportedLangs();
+        var supportedLangs = appProperties.getSupportedLangs();
 
         String result = null;
 
-        String[] urlParts = url.split("\\.");
-        String langPart = "";
+        var urlParts = url.split("\\.");
+        var langPart = "";
         if (null != urlParts[0]) {
             langPart = urlParts[0].toLowerCase();
         }
@@ -150,8 +150,8 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
 
 
     private String consumeAcceptLang(HttpServletRequest request) {
-        String userLocale = "";
-        String clientLocal = request.getHeader("Accept-Language");
+        var userLocale = "";
+        var clientLocal = request.getHeader("Accept-Language");
         if (!StringUtils.isEmpty(clientLocal)) {
             userLocale = clientLocal.split(";")[0];
         }
@@ -165,8 +165,8 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
      * @return
      */
     public List<String> getLangsByUserCountry(Locale locale) {
-        List<String> langs = new ArrayList<>();
-        String lang = locale.getLanguage();
+        var langs = new ArrayList<String>();
+        var lang = locale.getLanguage();
 
         switch (lang) {
             case "de": {

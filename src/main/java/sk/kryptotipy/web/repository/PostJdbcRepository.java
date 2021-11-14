@@ -57,22 +57,22 @@ public class PostJdbcRepository {
     }
 
     public List<Post> getNews(List<String> labels, List<String> langs, Long fromLimit, Long toLimit) {
-        List<Post> result = new ArrayList<>();
+        var result = new ArrayList<Post>();
 
         try {
-            List<Object> o = new ArrayList<>();
+            var o = new ArrayList<>();
             o.addAll(langs);
             o.addAll(labels);
             o.add(fromLimit);
             o.add(to(toLimit));
 
-            List<Post> posts  = jdbcTemplate.query(
+            var posts  = jdbcTemplate.query(
                     QueryFactory.getNews(labels.size(), langs.size()),
                     new PostMapper(jdbcTemplate),
                     o.toArray()
             );
 
-            Set<Post> resultWithoutDuplicities = new LinkedHashSet<>();
+            var resultWithoutDuplicities = new LinkedHashSet<Post>();
             posts.stream().forEach(post -> resultWithoutDuplicities.add(post));
             result = new ArrayList<>(resultWithoutDuplicities);
 

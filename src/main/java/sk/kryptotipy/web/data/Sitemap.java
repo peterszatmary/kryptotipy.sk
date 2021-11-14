@@ -35,7 +35,6 @@ public class Sitemap {
         if (urls == null) {
             urls = new ArrayList<>();
         }
-
     }
 
     @NoArgsConstructor
@@ -55,8 +54,7 @@ public class Sitemap {
         }
 
         private String dateToISOString(Date date) {
-            SimpleDateFormat sdf;
-            sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+            var sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
             sdf.setTimeZone(TimeZone.getTimeZone("CET"));
             return sdf.format(date);
         }

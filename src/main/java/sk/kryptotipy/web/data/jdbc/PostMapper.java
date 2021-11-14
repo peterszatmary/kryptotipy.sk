@@ -25,7 +25,7 @@ public class PostMapper implements RowMapper<Post> {
     @Override
     public Post mapRow(ResultSet rs, int i) throws SQLException {
 
-        Post post = new Post();
+        var post = new Post();
 
         post.setId(rs.getLong("p.id"));
         post.setUrl(rs.getString("p.url"));
@@ -46,7 +46,7 @@ public class PostMapper implements RowMapper<Post> {
 
 
     private List<Label> selectLabels(Long id) {
-        List<Label> labels = new ArrayList<>();
+       List<Label> labels = new ArrayList<>();
 
         try {
             //SqlParameterSource namedParameters = new MapSqlParameterSource("label_name", label);
@@ -89,8 +89,8 @@ public class PostMapper implements RowMapper<Post> {
         }
 
         if (titleLength > MAX_LENGTH) {
-            String part = post.getTitle().substring(0, MAX_LENGTH);
-            StringBuilder title = new StringBuilder().append(part).append("...");
+            var part = post.getTitle().substring(0, MAX_LENGTH);
+            var title = new StringBuilder().append(part).append("...");
             post.setTitleRender(title.toString());
             return;
         }

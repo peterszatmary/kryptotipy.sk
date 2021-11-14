@@ -38,12 +38,9 @@ public class UtilityService {
         return siteUrl.toString();
     }
 
-
-
-
     //TODO translate
     public String mapLabelForRendering(String label) {
-        String result = label;
+        var result = label;
         if ("wallets".equals(label)) {
             result = "peňaženky";
         }
@@ -66,14 +63,6 @@ public class UtilityService {
         //TODO from DB
         return (null == parameterMap.get(inputKey)) ?
                 initValues : new ArrayList<>(Arrays.asList(parameterMap.get(inputKey)));
-    }
-
-    public String buildUrlWithLang(String lang) {
-        if (StringUtils.isEmpty(lang)) {
-            return "https://www.kryptotipy.sk";
-        } else {
-            return "https://" + lang + ".kryptotipy.sk";
-        }
     }
 
 

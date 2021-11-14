@@ -18,16 +18,16 @@ public class CustomContainer implements WebServerFactoryCustomizer<TomcatServlet
     @Override
     public void customize(TomcatServletWebServerFactory factory) {
 
-        final RewriteValve valve = new RewriteValve() {
+        final var valve = new RewriteValve() {
 
             @Override
             protected synchronized void startInternal() throws LifecycleException {
                 super.startInternal();
 
                 try {
-                    InputStream resource = new ClassPathResource("rewrite.config").getInputStream();
-                    InputStreamReader resourceReader = new InputStreamReader(resource);
-                    BufferedReader buffer = new BufferedReader(resourceReader);
+                    var resource = new ClassPathResource("rewrite.config").getInputStream();
+                    var resourceReader = new InputStreamReader(resource);
+                    var buffer = new BufferedReader(resourceReader);
                     parse(buffer);
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public class QueryFactory {
 
     public static String newestPosts(Integer langsCount) {
-        String query = new StringBuilder()
+        var query = new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
                         " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
@@ -27,7 +27,7 @@ public class QueryFactory {
 
 
     public static String getNews(Integer labelsCount, Integer langsCount) {
-        String query = new StringBuilder()
+        var query = new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
                         "p.i18n, p.clicks, p.likes FROM post p ")
                 .append("JOIN post_index pi ON pi.post_id = p.id JOIN label l ON l.id = pi.label_id ")
@@ -61,14 +61,14 @@ public class QueryFactory {
     }
 
     private static String _x(Integer count) {
-        StringBuilder str = new StringBuilder();
+        var str = new StringBuilder();
         IntStream.range(0, count).forEach(x -> str.append("?,"));
         str.delete(str.length() - 1, str.length());
         return str.toString();
     }
 
     public static String postById() {
-        String query = new StringBuilder()
+        var query = new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
                         " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")

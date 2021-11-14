@@ -36,6 +36,7 @@ public class PostService implements PostServiceApi {
         return postLabelRepository.getNewestPosts(langs);
     }
 
+    @Deprecated
     @Override
     public List<Donate> getAllDonates() {
         return donateRepository.getDonates();

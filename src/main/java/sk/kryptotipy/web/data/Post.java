@@ -14,12 +14,9 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 
 @NoArgsConstructor
 @AllArgsConstructor
-//@Data
 @Getter
-//@Entity
 @EqualsAndHashCode(of = {"id"})
 @ToString(exclude = {"content"})
-//@Table(name = "post")
 @Slf4j
 @Setter
 public class Post {

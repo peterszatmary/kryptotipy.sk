@@ -64,22 +64,6 @@ public class SiteRepository {
         });
     }
 
-    private void createSitesWithPriority064(List<Sitemap.URL> sites) {
-
-        var _064Sites = Arrays.asList(
-
-        );
-
-        _064Sites.stream().
-                forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, new Date()));
-                });
-    }
 
     private void manualWithPriority064(List<Sitemap.URL> sites) {
 
@@ -122,5 +106,23 @@ public class SiteRepository {
 
     private Date localDateToDate(LocalDate localDate) {
         return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
+
+
+    private void createSitesWithPriority064(List<Sitemap.URL> sites) {
+
+        var _064Sites = Arrays.asList(
+
+        );
+
+        _064Sites.stream().
+                forEach(site -> {
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, new Date()));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, new Date()));
+                });
     }
 }

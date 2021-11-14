@@ -15,17 +15,9 @@ import java.util.List;
 public class RssRepository {
 
     public List<Article> getKryptotipyContentForRss() {
-        System.out.println("S\u00e3o Paulo");
-        List<Article> services = new ArrayList<>();
+        var services = new ArrayList<Article>();
 
-        services.add(new Article(
-                "Nový telegram bot, ktorý vám nájde najčerstvejšie krypto novinky @kryptotipy_news_bot",
-                "/article/kryptotipy_news_bot",
-                null,
-                "",
-                "Telegram",
-                Date.valueOf(LocalDate.of(2021, Month.APRIL, 2+1))
-        ));
+        //TODO ethereum
 
         services.add(new Article(
                 "Pasívny príjem s kryptomenou Polkadot (DOT) pomocou Nano Ledger",
