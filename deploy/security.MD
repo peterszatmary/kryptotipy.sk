@@ -6,8 +6,18 @@
 
 ## Renew
 
+
+### Dry
+
 ```
 certbot renew --dry-run
+```
+
+### Do it
+
+- do not forget both commands and password is in app-prod.properties file.
+
+```
 certbot renew
 openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```

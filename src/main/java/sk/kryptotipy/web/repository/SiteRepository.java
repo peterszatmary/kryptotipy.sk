@@ -69,22 +69,22 @@ public class SiteRepository {
 
         var manualSites = Arrays.asList(
                 "article/ethereum-dapps-today",
-                 "article/complete-guide-to-proof-of-work",
+                "article/complete-guide-to-proof-of-work",
                 "article/passive-income-with-neo", "article/passive-income-with-exodus",
                 "article/btc-is-not-the-first", "article/passive-income-with-algorand",
                 "article/passive-income-with-polkadot-on-ledger", "article/passive-income-with-vechain",
                 "article/passive-income-with-cardano", "article/passive-income-with-cosmos-atom",
-                "cooperation"
+                "cooperation", "article/majk-spirit-wexo-nft"
         );
 
         manualSites.stream().
                 forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 6, 23))));
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
                 });
     }
 

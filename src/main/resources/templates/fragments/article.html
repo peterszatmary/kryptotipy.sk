@@ -4,12 +4,12 @@
                     <div class="thumbnail">
                         <div class="image-wrapp" itemscope itemtype="https://schema.org/Article">
                             <a th:href="${article.url}" target="_blank" th:rel="bookmark">
-                                <img th:src="@{${'/assets/img/articles/index/' + article.imgSrc}}" th:alt="${article.name}" />
+                                <img th:src="@{${'/assets/img/articles/index/' + article.imgSrc}}" th:alt="${article.title}" />
                                 <article class="da-animate da-slideFromRight" style="display: block;">
-                                    <h4 th:text="${article.name}"></h4>
+                                    <h4 th:text="${article.title}"></h4>
                                 </article>
                             </a>
-                            <a th:href="${article.url}" class="post-title" th:text="${article.name}" target="_blank" style="text-decoration: none;" th:rel="${link_is_not_internal} ? 'external' : 'bookmark'"></a>
+                            <a th:href="${article.url}" class="post-title" th:text="${article.title}" target="_blank" style="text-decoration: none;" th:rel="${link_is_not_internal} ? 'external' : 'bookmark'"></a>
                             <span class="post-metadata" th:text="${article.description}"></span>
                         </div>
                     </div>

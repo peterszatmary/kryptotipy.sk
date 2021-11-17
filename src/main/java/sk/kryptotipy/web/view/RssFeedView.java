@@ -62,7 +62,7 @@ public class RssFeedView extends AbstractRssFeedView {
 
     private Item mapArticleToRssItem(Article article) {
         var rssItem = new Item();
-        rssItem.setTitle(article.getName());
+        rssItem.setTitle(article.getTitle());
         rssItem.setAuthor(appProperties.getPageTitle());
         rssItem.setLink(appProperties.getBaseUrlWithoutPort() + article.getUrl());
         rssItem.setPubDate(article.getPubDate());
