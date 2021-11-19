@@ -42,7 +42,7 @@ public class SiteRepository {
                 "posts/monero", "posts/ontology", "posts/fed", "posts/ecb", "posts/cardano", "posts/ripple",
                 "posts/dag", "posts/binance",
                 "posts/nbs", "posts/ico", "posts/fork", "posts/exodus", "posts/coinbase", "posts/algorand",
-                "posts/halving", "posts/tezos",
+                "posts/halving", "posts/tezos", "posts/play-to-earn", "posts/metaverse",
                 "posts/iota", "posts/halving", "posts/exchange",
                 "posts/vechain", "posts/bitfinex",
                 "posts/bittrex", "posts/cosmos", "posts/uniswap", "posts/coinmarketcap", "posts/aave",
