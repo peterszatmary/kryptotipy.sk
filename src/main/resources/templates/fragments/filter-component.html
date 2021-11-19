@@ -167,7 +167,11 @@
                     </div>
 
                     <div class="span2 border-test" style="float:left;">
-
+                        <div>
+                            <input type="checkbox" class="filter-component" id="metaverse" name="label" value="metaverse"
+                                   th:checked="${#lists.contains(checked_labels, 'metaverse')}" />
+                            <label class="filter-component" for="metaverse" th:text="#{filter.component.metaverse}"></label>
+                        </div>
                         <div>
                             <input type="checkbox" class="filter-component" id="monero" name="label" value="monero"
                                    th:checked="${#lists.contains(checked_labels, 'monero')}" />
@@ -240,6 +244,11 @@
                             <input type="checkbox" class="filter-component" id="vechain" name="label" value="vechain"
                                    th:checked="${#lists.contains(checked_labels, 'vechain')}" />
                             <label class="filter-component" for="vechain">Vechain</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="filter-component" id="play-to-earn" name="label" value="play-to-earn"
+                                   th:checked="${#lists.contains(checked_labels, 'play-to-earn')}" />
+                            <label class="filter-component" for="play-to-earn" th:text="#{filter.component.play-to-earn}"></label>
                         </div>
                     </div>
                 </div>
