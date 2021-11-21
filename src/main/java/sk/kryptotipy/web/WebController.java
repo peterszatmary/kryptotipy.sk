@@ -86,7 +86,6 @@ public class WebController {
     @GetMapping("/posts/{label}")
     public String posts(Map<String, Object> model,
                         @PathVariable("label") String label, HttpServletRequest request) {
-        System.out.println(request.getRequestURL());
         return news(label, null,  model, request);
     }
 
@@ -439,15 +438,15 @@ public class WebController {
             customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
             label_render = customPageTitle.split(" ")[0];
         } else if (labels.size() == 1) {
-            label_render = utilityService.mapLabelForRendering(labels.get(0));
             customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
+            label_render = utilityService.mapLabelForRendering(labels.get(0));
         } else if (labels.size() == allLabelCount) {
             customPageTitle = rbFromUrl.getString("crypto.news.title.all");
             label_render = rbFromUrl.getString("filter.component.all");
         } else {
-            String pageTitle = rbFromUrl.getString("crypto.news.themes");
+            var pageTitle = rbFromUrl.getString("crypto.news.themes");
 
-            StringBuilder labelsStr = new StringBuilder();
+            var labelsStr = new StringBuilder();
             labelsStr.append("[ ");
             labels.stream().forEach(label -> labelsStr.append(rbFromUrl.getString("a.label."+label))
                     .append(", "));
@@ -460,9 +459,17 @@ public class WebController {
         }
 
         pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"), request);
+        model.put("page_image", getOgImageForNews(labels));
         model.put("site", urlComponent.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
         model.put("label_render", customPageTitle);
         model.put("label_render_path", StringUtils.capitalize(label_render));
+    }
+
+    private String getOgImageForNews(List<String> labels) {
+        if (labels.size() == 1) {
+            return "/assets/post-images/" + labels.get(0) + "/images_7.jpg";
+        }
+        return "/assets/post-images/exchange/images_2.jpg";
     }
 
 
