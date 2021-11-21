@@ -20,6 +20,11 @@ public class ArticleData {
     @Bean
     public List<Article> articles() {
         var articles = new ArrayList<Article>();
+
+        articles.add(this.metaverseNews());
+        articles.add(this.playToEarnNews());
+        articles.add(this.nftNews());
+
         //articles.add(this.spiritNft());
         articles.add(this.ethereumDapps2021());
         articles.add(this.passiveIncomeWithPolkadotOnLedger());
@@ -32,6 +37,76 @@ public class ArticleData {
         articles.add(this.passiveIncomeExodus());
         articles.add(this.btcIsNotTheFirst());
         return articles;
+    }
+
+    private Article metaverseNews() {
+        var dateTime = LocalDateTime.of(2021, Month.NOVEMBER, 21, 0, 0);
+        var datePlusOne = Date.valueOf(dateTime.toLocalDate().plusDays(1));
+        var postMeta =  Article.PostMeta.builder()
+                .metaPostKey("metaverse-news")
+                .metaPostTitle("Metaverzum")
+                .metaPostDescription("Metaverzum je naj")
+                .metaPostImageExtension(".jpg")
+                .metaImgWidth("638")
+                .metaImgHeight("414")
+                .metaPostDate(dateTime)
+                .build();
+        return Article.builder()
+                .rbTitleKey("article.metaverse.news")
+                .rbCategoryKey("article.category.news")
+                .imgSrc("metaverse-news.jpg")
+                .pubDate(datePlusOne)
+                .category("21.11.2021")
+                .url("posts/metaverse?lang=SK&lang=CZ")
+                .postMeta(postMeta)
+                .build();
+    }
+
+
+    private Article playToEarnNews() {
+        var dateTime = LocalDateTime.of(2021, Month.NOVEMBER, 15, 0, 0);
+        var datePlusOne = Date.valueOf(dateTime.toLocalDate().plusDays(1));
+        var postMeta =  Article.PostMeta.builder()
+                .metaPostKey("")
+                .metaPostTitle("Play-to-earn")
+                .metaPostDescription("")
+                .metaPostImageExtension("")
+                .metaImgWidth("638")
+                .metaImgHeight("414")
+                .metaPostDate(dateTime)
+                .build();
+        return Article.builder()
+                .rbTitleKey("article.play-to-earn.news")
+                .rbCategoryKey("article.category.news")
+                .imgSrc("playtoearn-news.jpg")
+                .pubDate(datePlusOne)
+                .category("21.11.2021")
+                .url("posts/play-to-earn?lang=SK&lang=CZ")
+                .postMeta(postMeta)
+                .build();
+    }
+
+    private Article nftNews() {
+        var dateTime = LocalDateTime.of(2021, Month.NOVEMBER, 15, 0, 0);
+        var datePlusOne = Date.valueOf(dateTime.toLocalDate().plusDays(1));
+        var postMeta =  Article.PostMeta.builder()
+                .metaPostKey("")
+                .metaPostTitle("Non fungible token (NFT)")
+                .metaPostDescription("")
+                .metaPostImageExtension("")
+                .metaImgWidth("638")
+                .metaImgHeight("414")
+                .metaPostDate(dateTime)
+                .build();
+        return Article.builder()
+                .rbTitleKey("article.nft.news")
+                .rbCategoryKey("article.category.news")
+                .imgSrc("nft-news.jpg")
+                .pubDate(datePlusOne)
+                .category("21.11.2021")
+                .url("posts/nft?lang=SK&lang=CZ")
+                .postMeta(postMeta)
+                .build();
     }
 
 
