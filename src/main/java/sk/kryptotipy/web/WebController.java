@@ -438,8 +438,9 @@ public class WebController {
             customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
             label_render = customPageTitle.split(" ")[0];
         } else if (labels.size() == 1) {
-            customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
             label_render = utilityService.mapLabelForRendering(labels.get(0));
+            customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
+
         } else if (labels.size() == allLabelCount) {
             customPageTitle = rbFromUrl.getString("crypto.news.title.all");
             label_render = rbFromUrl.getString("filter.component.all");
@@ -455,7 +456,7 @@ public class WebController {
                     .deleteCharAt(labelsStr.length() - 1)
                     .append(" ]")
                     .toString();
-            customPageTitle = pageTitle + label_render;
+            customPageTitle = pageTitle + StringUtils.capitalize(label_render);
         }
 
         pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"), request);
