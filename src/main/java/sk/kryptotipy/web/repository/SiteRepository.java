@@ -47,11 +47,18 @@ public class SiteRepository {
                 "posts/vechain", "posts/bitfinex",
                 "posts/bittrex", "posts/cosmos", "posts/uniswap", "posts/coinmarketcap", "posts/aave",
                 "posts/stellar", "posts/nft",
+                "posts/avalanche", "posts/terra", "posts/polygon", "posts/dogecoin",
+                "posts/elrond", "posts/tether", "posts/shiba-inu", "posts/axie-infinity",
+                "posts/terrausd", "posts/filecoin", "posts/tron",
+                "posts/tron", "posts/ftx", "posts/theta", "posts/theta", "posts/dai",
+                "posts/hedera", "posts/sandbox", "posts/fantom", "posts/helium",
+                "posts/loopring", "posts/eos", "posts/flow",
                 "posts-by-i18n/GB", "posts-by-i18n/SK", "posts-by-i18n/CZ", "posts-by-i18n/HU",
                 "posts-by-i18n/CH", "posts-by-i18n/US", "posts-by-i18n/CA", "posts-by-i18n/PL",
-                "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL", "posts-by-i18n/ES", "posts-by-i18n/SE"
-
+                "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL", "posts-by-i18n/ES",
+                "posts-by-i18n/SE"
         );
+
 
         _08Sites.stream().
                 forEach(site -> {
