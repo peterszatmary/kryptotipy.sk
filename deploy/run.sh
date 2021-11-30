@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-java -jar -Dspring.config.location=app-prod.properties kryptotipy-web-4.50.13.jar
+java -jar -Dspring.config.location=app-prod.properties kryptotipy-web-4.51.0.jar
