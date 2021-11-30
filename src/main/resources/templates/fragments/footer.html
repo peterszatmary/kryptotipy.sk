@@ -159,6 +159,15 @@
           }
         }
 
+        function hideAndShowMoreCategories() {
+          var x = document.getElementById("more-categories");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
         // select / unselect  all checkboxes by one
         document.getElementById('select-all').onclick = function() {
             var checkboxesLabel = document.getElementsByName('label');
