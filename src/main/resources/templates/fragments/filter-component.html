@@ -332,7 +332,7 @@
 <!--                <div class="row">-->
 <!--                    <div class="span12">-->
                         <!-- langs -->
-                        <div class="span1 width-fixed" style="float:left;width:75px;">
+                        <div class="span1 width-fixed" style="float:left;width:74px;">
                             <div>
                                 <input type="checkbox" class="filter-component" id="SK" name="lang" value="SK"
                                        th:checked="${#lists.contains(checked_langs, 'SK')}" />
@@ -350,16 +350,6 @@
                                          th:alt="#{filter.component.lang.cz}" style="border: 1px solid #969696;" />
                                 </label>
                             </div>
-                        </div>
-                        <div class="span1 width-fixed" style="float:left;width:75px;">
-                            <div>
-                                <input type="checkbox" class="filter-component" id="DE" name="lang" value="DE"
-                                       th:checked="${#lists.contains(checked_langs, 'DE')}" />
-                                <label class="filter-component" for="DE">
-                                    <img src="/assets/img/flags/DE.png" width="20" height="35"
-                                         th:alt="#{filter.component.lang.de}" style="border: 1px solid #969696;" />
-                                </label>
-                            </div>
                             <div>
                                 <input type="checkbox" class="filter-component" id="PL" name="lang" value="PL"
                                        th:checked="${#lists.contains(checked_langs, 'PL')}" />
@@ -369,13 +359,13 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="span1 width-fixed" style="float:left;width:75px;">
+                        <div class="span1 width-fixed" style="float:left;width:74px;">
                             <div>
-                                <input type="checkbox" class="filter-component" id="HU" name="lang" value="HU"
-                                       th:checked="${#lists.contains(checked_langs, 'HU')}" />
-                                <label class="filter-component" for="HU">
-                                    <img src="/assets/img/flags/HU.png" width="20" height="35"
-                                         th:alt="#{filter.component.lang.hu}" style="border: 1px solid #969696;" />
+                                <input type="checkbox" class="filter-component" id="DE" name="lang" value="DE"
+                                       th:checked="${#lists.contains(checked_langs, 'DE')}" />
+                                <label class="filter-component" for="DE">
+                                    <img src="/assets/img/flags/DE.png" width="20" height="35"
+                                         th:alt="#{filter.component.lang.de}" style="border: 1px solid #969696;" />
                                 </label>
                             </div>
                             <div>
@@ -386,8 +376,17 @@
                                          th:alt="#{filter.component.lang.ch}" style="border: 1px solid #969696;" />
                                 </label>
                             </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="HU" name="lang" value="HU"
+                                       th:checked="${#lists.contains(checked_langs, 'HU')}" />
+                                <label class="filter-component" for="HU">
+                                    <img src="/assets/img/flags/HU.png" width="20" height="35"
+                                         th:alt="#{filter.component.lang.hu}" style="border: 1px solid #969696;" />
+                                </label>
+                            </div>
                         </div>
-                        <div class="span1 width-fixed" style="float:left;width:75px;">
+                        <div class="span1 width-fixed" style="float:left;width:74px;">
+
                             <div>
                                 <input type="checkbox" class="filter-component" id="GB" name="lang" value="GB"
                                        th:checked="${#lists.contains(checked_langs, 'GB')}" />
@@ -404,8 +403,6 @@
                                          th:alt="#{filter.component.lang.us}" style="border: 1px solid #969696;" />
                                 </label>
                             </div>
-                        </div>
-                        <div class="span1 width-fixed" style="float:left;width:75px;">
                             <div>
                                 <input type="checkbox" class="filter-component" id="CA" name="lang" value="CA"
                                        th:checked="${#lists.contains(checked_langs, 'CA')}" />
@@ -414,6 +411,10 @@
                                          th:alt="#{filter.component.lang.ca}" style="border: 1px solid #969696;" />
                                 </label>
                             </div>
+                        </div>
+
+                        <div class="span1 width-fixed" style="float:left;width:74px;">
+
                             <div>
                                 <input type="checkbox" class="filter-component" id="NL" name="lang" value="NL"
                                        th:checked="${#lists.contains(checked_langs, 'NL')}" />
@@ -422,9 +423,6 @@
                                          th:alt="#{filter.component.lang.nl}" style="border: 1px solid #969696;" />
                                 </label>
                             </div>
-                        </div>
-
-                        <div class="span1 width-fixed" style="float:left;width:75px;">
                             <div>
                                 <input type="checkbox" class="filter-component" id="SE" name="lang" value="SE"
                                        th:checked="${#lists.contains(checked_langs, 'SE')}" />
@@ -443,8 +441,10 @@
                             </div>
                         </div>
 
+
+
                     <div style="float:right;padding: 15px;">
-                        <button type="submit" class="btn btn-success" style="width:120px;height:50px;">
+                        <button type="submit" class="btn btn-success" style="width:100px;height:60px;">
                             <i class="icon-filter"></i>
                             <span th:text="#{news.filter.do.filtering}"></span>
                         </button>
