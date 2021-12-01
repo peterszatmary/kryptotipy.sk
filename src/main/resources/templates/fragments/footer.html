@@ -171,7 +171,8 @@
         // select / unselect  all checkboxes by one
         document.getElementById('select-all').onclick = function() {
             var checkboxesLabel = document.getElementsByName('label');
-            for (var checkbox of checkboxesLabel) {
+            var allExceptMore = document.querySelectorAll('[title="main-element"]');
+            for (var checkbox of allExceptMore) {
                 checkbox.checked = this.checked;
             }
             var checkboxesLang = document.getElementsByName('lang');
