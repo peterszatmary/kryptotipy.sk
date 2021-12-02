@@ -461,11 +461,17 @@ input.filter-component[type="checkbox"] {
     div.social-panel {
         padding-right: 25px;
     }
+    .row.margin-left {
+       margin-left:20px;
+    }
 }
 
 @media (min-width: 981px) {
     .margin {
         margin-left: 25px;
+    }
+    .row.margin-left {
+       margin-left:20px;
     }
     div#filter-component {
         display: block;
@@ -475,6 +481,9 @@ input.filter-component[type="checkbox"] {
 @media (min-width: 561px) and (max-width: 980px) {
     .span2 {
         width: 30%;
+    }
+    .row.margin-left {
+           margin-left:10px;
     }
     .border-test {
         border: none;
@@ -492,10 +501,25 @@ input.filter-component[type="checkbox"] {
 
 @media (min-width: 371px) and (max-width: 560px) {
     .span2 {
-        width: 40%;
+        width: 32%;
+    }
+    .row {
+        margin-left:5px;
+        margin-right:5px;
+    }
+    .row.margin-left {
+       margin-left:0px;
     }
     .border-test {
        border: none;
+       margin-bottom: 20px;
+       margin-top: 0px;
+       margin-right: 0px;
+    }
+
+    body {
+        padding-right: 0px;
+        padding-left: 2px;
     }
 
     .margin {
@@ -514,6 +538,9 @@ input.filter-component[type="checkbox"] {
 @media (max-width: 370px) {
     .span2 {
         width: 50%;
+    }
+    .row.margin-left {
+           margin-left:0px;
     }
     .border-test {
         border: none;
