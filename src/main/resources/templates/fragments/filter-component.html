@@ -1,6 +1,6 @@
     <html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
 
-    <div class="row margin" style="border:1px solid #333;">
+    <div class="row margin" style="border:1px solid #333;margin-top: 20px; ">
         <div style="background-color: #f2f2f2; color: #333; font-size: 18px; text-align: center; padding: 10px;" onclick="hideAndShowPostFilter()">
             FILTER <i class="icon-filter"></i>
         </div>
@@ -487,9 +487,9 @@
 
 
                     <div style="float:right;padding: 15px;">
-                        <button type="submit" class="btn btn-success" style="width:100px;height:60px;">
-                            <i class="icon-filter"></i>
-                            <span th:text="#{news.filter.do.filtering}"></span>
+                        <button type="submit" class="btn btn-success" style="width:90px;height:50px;" th:title="#{news.filter.do.filtering}">
+                            <i class="icon-search" style="font-size: 1.3em;"></i>
+<!--                            <span th:text="#{news.filter.do.filtering}"></span>-->
                         </button>
                    </div>
                 </div>

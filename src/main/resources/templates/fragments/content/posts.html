@@ -40,6 +40,14 @@
     <div class="container">
         <div class="row" style="margin-top: -30px;">
 
+            <th:block th:if="${price_widget != null and price_widget.siteName == 'coinlib'}">
+                <div th:replace="fragments/price-chart-coinlib-component" th:remove="tag"></div>
+            </th:block>
+
+            <th:block th:if="${price_widget != null and price_widget.siteName == 'coinmarketcap'}">
+                <div th:replace="fragments/price-chart-coinmarketcap-component" th:remove="tag"></div>
+            </th:block>
+
             <div th:replace="fragments/filter-component" th:remove="tag"></div>
 
             <div style="margin-left:25px; margin-top: 20px;margin-bottom: 20px;margin-right: 20px;" >

@@ -124,6 +124,7 @@ public class ArticleData {
                 .build();
         return Article.builder()
                 .rbTitleKey("article.majk.spirit.nft")
+                //.rbTitleKey("hu")
                 .rbCategoryKey("article.category.press.release")
                 .imgSrc("majk-spirit-nft.jpeg")
                 .pubDate(datePlusOne)

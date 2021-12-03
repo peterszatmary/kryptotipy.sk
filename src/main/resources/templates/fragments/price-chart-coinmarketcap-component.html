@@ -1,0 +1,8 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
+    <div style="margin-left: 25px;">
+        <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js">
+        </script>
+        <div class="coinmarketcap-currency-widget" th:data-currencyid="${price_widget.id}" data-base="EUR" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="EUR">
+        </div>
+    </div>
+</html>

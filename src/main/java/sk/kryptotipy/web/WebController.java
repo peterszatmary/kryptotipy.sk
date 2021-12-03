@@ -13,7 +13,7 @@ import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.repository.LabelRepository;
 import sk.kryptotipy.web.repository.PostJdbcRepository;
 import sk.kryptotipy.web.repository.ServiceRepository;
-import sk.kryptotipy.web.service.BtcPriceService;
+import sk.kryptotipy.web.service.PriceService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
 
@@ -33,7 +33,7 @@ public class WebController {
     private final PostServiceApi postService;
     private final AppProperties appProperties;
     private final UtilityService utilityService;
-    private final BtcPriceService btcPriceService;
+    private final PriceService priceService;
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
     private final LabelRepository labelRepo;
@@ -143,6 +143,7 @@ public class WebController {
         model.put("posts", posts);
         model.put("content_path", "fragments/content/posts");
         model.put("checked_labels", labels);
+        model.put("price_widget", priceService.mapCoinToCoinLibId(labels));
         model.put("checked_langs", langs);
 
         log.info("Posts count rendered = {}", posts.size());
@@ -401,7 +402,7 @@ public class WebController {
 
 
     private String getBtcPrice() {
-        var btcPrice = String.valueOf(btcPriceService.getLatestPrice());
+        var btcPrice = String.valueOf(priceService.getLatestPrice());
         return btcPrice.substring(0, btcPrice.length() - 2);
     }
 
