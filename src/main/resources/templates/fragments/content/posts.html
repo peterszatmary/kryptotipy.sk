@@ -50,7 +50,7 @@
 
             <div th:replace="fragments/filter-component" th:remove="tag"></div>
 
-            <div style="margin-left:25px; margin-top: 20px;margin-bottom: 20px;margin-right: 20px;" >
+            <div class="might-interest-you" style="margin-top: 20px;margin-bottom: 20px;" >
                 <h4 th:text="#{posts.interesting}"></h4>
                 <!--<a href="/article/majk-spirit-wexo-nft" target="_blank" th:text="#{article.majk.spirit.nft}"></a> | -->
                 <a href="/article/ethereum-dapps-today" target="_blank" th:text="#{article.ethereum.dapps}"></a> |
@@ -65,7 +65,7 @@
                 <a href="/article/passive-income-with-algorand" target="_blank" th:text="#{posts.article.title.algorand}"></a>
             </div>
 
-            <ul class="portfolio-area da-thumbs">
+            <ul class="portfolio-area da-thumbs margin-left">
                    <div th:each="post : ${posts}">
                        <div th:replace="fragments/post :: one_post(${post})"></div>
                    </div>

@@ -225,6 +225,10 @@
         margin-bottom: 15px;
         color: rgb(232, 232, 232);
     }
+
+    ul.portfolio-area.margin-left  {
+        margin-left: -25px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -464,6 +468,16 @@ input.filter-component[type="checkbox"] {
     .row.margin-left {
        margin-left:20px;
     }
+
+    div.widget_coinmarketcap {
+        margin-left: 25px;
+    }
+    div.widget_coinlib {
+        margin-left: 25px;
+    }
+    .might-interest-you {
+        margin-left: 25px;
+    }
 }
 
 @media (min-width: 981px) {
@@ -475,6 +489,15 @@ input.filter-component[type="checkbox"] {
     }
     div#filter-component {
         display: block;
+    }
+    div.widget_coinmarketcap {
+        margin-left: 25px;
+    }
+    div.widget_coinlib {
+        margin-left: 25px;
+    }
+    .might-interest-you {
+        margin-left: 25px;
     }
 }
 
@@ -498,6 +521,7 @@ input.filter-component[type="checkbox"] {
         padding-right: 25px;
     }
 }
+
 
 @media (min-width: 371px) and (max-width: 560px) {
     .span2 {
