@@ -52,7 +52,7 @@ public class SiteRepository {
                 "posts/filecoin", "posts/tron",
                 "posts/tron", "posts/ftx", "posts/theta", "posts/dai",
                 "posts/hedera", "posts/sandbox", "posts/fantom", "posts/helium",
-                "posts/loopring", "posts/eos", "posts/flow",
+                "posts/loopring", "posts/eos", "posts/flow", "posts/decentraland", "posts/diem",
                 "posts-by-i18n/GB", "posts-by-i18n/SK", "posts-by-i18n/CZ", "posts-by-i18n/HU",
                 "posts-by-i18n/CH", "posts-by-i18n/US", "posts-by-i18n/CA", "posts-by-i18n/PL",
                 "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL", "posts-by-i18n/ES",
