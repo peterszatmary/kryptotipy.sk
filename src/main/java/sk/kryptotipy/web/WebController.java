@@ -447,16 +447,8 @@ public class WebController {
             label_render = rbFromUrl.getString("filter.component.all");
         } else {
             var pageTitle = rbFromUrl.getString("crypto.news.themes");
-
-            var labelsStr = new StringBuilder();
-            labelsStr.append("[ ");
-            labels.stream().forEach(label -> labelsStr.append(rbFromUrl.getString("a.label."+label))
-                    .append(", "));
-            label_render = labelsStr
-                    .deleteCharAt(labelsStr.length() - 1)
-                    .deleteCharAt(labelsStr.length() - 1)
-                    .append(" ]")
-                    .toString();
+            var labelsStr = new StringBuilder("[ ");
+            label_render = labelsToRender(labels, labelsStr, rbFromUrl);
             customPageTitle = pageTitle + StringUtils.capitalize(label_render);
         }
 
@@ -466,6 +458,29 @@ public class WebController {
         model.put("label_render", customPageTitle);
         model.put("label_render_path", StringUtils.capitalize(label_render));
     }
+
+
+    private String labelsToRender(List<String> labels, StringBuilder labelsStr, ResourceBundle rb) {
+        if (labels.size() > 5) {
+            return l(labels, 5, "... ]",labelsStr, rb);
+        } else {
+            return l(labels, labels.size(), "]",labelsStr, rb);
+        }
+    }
+
+    private String l(List<String> labels, Integer limit, String appendToEnd, StringBuilder labelsStr, ResourceBundle rb) {
+        labels.stream()
+                .limit(limit)
+                .forEach(label -> labelsStr.append(rb.getString("a.label."+label))
+                        .append(", "));
+        return labelsStr.deleteCharAt(labelsStr.length() - 1)
+                .deleteCharAt(labelsStr.length() - 1)
+                .append(appendToEnd)
+                .toString();
+    }
+
+
+
 
     private String getOgImageForNews(List<String> labels) {
         if (labels.size() == 1) {
