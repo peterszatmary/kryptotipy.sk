@@ -72,6 +72,9 @@ public class PriceService implements BtcPriceServiceApi {
             case "ontology" :    { result = new ExternalPriceId("coinlib","633095"); break; }
             case "tron" :        { result = new ExternalPriceId("coinlib","8550"); break; }
             case "monero" :      { result = new ExternalPriceId("coinlib","6"); break; }
+            case "decentraland": { result = new ExternalPriceId("coinlib", "441"); break; }
+
+            // diem in future maybe :)
 
             case "kusama" :        { result = new ExternalPriceId("coinmarketcap","5034"); break; }
             case "axie-infinity" : { result = new ExternalPriceId("coinmarketcap","6783"); break; }
