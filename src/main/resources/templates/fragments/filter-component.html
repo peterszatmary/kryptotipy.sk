@@ -301,6 +301,11 @@
                                    th:checked="${#lists.contains(checked_labels, 'play-to-earn')}" title="main-element" />
                             <label class="filter-component" for="play-to-earn" th:text="#{filter.component.play-to-earn}"></label>
                         </div>
+                        <div>
+                            <input type="checkbox" class="filter-component" id="airdrops" name="label" value="airdrops"
+                                   th:checked="${#lists.contains(checked_labels, 'airdrops')}" title="main-element" />
+                            <label class="filter-component" for="airdrops" th:text="#{filter.component.airdrops}"></label>
+                        </div>
                     </div>
                 </div>
 
