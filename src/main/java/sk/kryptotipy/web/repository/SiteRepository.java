@@ -50,7 +50,7 @@ public class SiteRepository {
                 "posts/avalanche", "posts/terra", "posts/polygon", "posts/dogecoin",
                 "posts/elrond", "posts/tether", "posts/shiba-inu", "posts/axie-infinity",
                 "posts/filecoin", "posts/tron",
-                "posts/tron", "posts/ftx", "posts/theta", "posts/dai",
+                "posts/tron", "posts/ftx", "posts/theta", "posts/dai", "posts/airdrops",
                 "posts/hedera", "posts/sandbox", "posts/fantom", "posts/helium",
                 "posts/loopring", "posts/eos", "posts/flow", "posts/decentraland", "posts/diem",
                 "posts-by-i18n/GB", "posts-by-i18n/SK", "posts-by-i18n/CZ", "posts-by-i18n/HU",
