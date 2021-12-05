@@ -198,13 +198,19 @@
                             <label class="filter-component" for="metaverse" th:text="#{filter.component.metaverse}"></label>
                         </div>
                         <div>
+                            <input type="checkbox" class="filter-component" id="monero" name="label" value="monero"
+                                   th:checked="${#lists.contains(checked_labels, 'monero')}"  title="main-element"/>
+                            <label class="filter-component" for="monero">Monero</label>
+                        </div>
+
+                    </div>
+
+                    <div class="span2 border-test" style="float:left;">
+                        <div>
                             <input type="checkbox" class="filter-component" id="neo" name="label" value="neo"
                                    th:checked="${#lists.contains(checked_labels, 'neo')}" title="main-element" />
                             <label class="filter-component" for="neo">NEO</label>
                         </div>
-                    </div>
-
-                    <div class="span2 border-test" style="float:left;">
                         <div>
                             <input type="checkbox" class="filter-component" id="nft" name="label" value="nft"
                                    th:checked="${#lists.contains(checked_labels, 'nft')}" title="main-element" />
@@ -246,15 +252,15 @@
                                    th:checked="${#lists.contains(checked_labels, 'shiba-inu')}" title="main-element" />
                             <label class="filter-component" for="shiba-inu">Shiba Inu</label>
                         </div>
+
+                    </div>
+
+                    <div class="span2" style="float:left; margin-left:0px; margin-top: 10px;">
                         <div>
                             <input type="checkbox" class="filter-component" id="stellar" name="label" value="stellar"
                                    th:checked="${#lists.contains(checked_labels, 'stellar')}" title="main-element" />
                             <label class="filter-component" for="stellar">Stellar</label>
                         </div>
-                    </div>
-
-                    <div class="span2" style="float:left; margin-left:0px; margin-top: 10px;">
-
                         <div>
                             <input type="checkbox" class="filter-component" id="tezos" name="label" value="tezos"
                                    th:checked="${#lists.contains(checked_labels, 'tezos')}" title="main-element" />
@@ -364,7 +370,7 @@
                         </div>
                         <div style="float:left;margin-right: 8px;">
                             <input type="checkbox" class="filter-component" id="ontology" name="label" value="ontology"
-                                 />
+                                   th:checked="${#lists.contains(checked_labels, 'ontology')}" title="main-element" />
                             <label class="filter-component" for="ontology">Ontology</label>
                         </div>
                     </div>

@@ -38,23 +38,6 @@ public class UtilityService {
         return siteUrl.toString();
     }
 
-    //TODO translate
-    public String mapLabelForRendering(String label) {
-        var result = label;
-        if ("wallets".equals(label)) {
-            result = "peňaženky";
-        }
-
-        else if ("cryptocurrency".equals(label)) {
-            result = "kryptomeny";
-        }
-
-        else if ("exchange".equals(label)) {
-            result = "burzy";
-        }
-        return result;
-    }
-
     public List<String> checkAndInitCheckBoxInput(
             String inputKey,
             Map<String, String[]> parameterMap,

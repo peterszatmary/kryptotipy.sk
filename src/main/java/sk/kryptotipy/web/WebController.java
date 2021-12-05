@@ -439,7 +439,7 @@ public class WebController {
             customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
             label_render = customPageTitle.split(" ")[0];
         } else if (labels.size() == 1) {
-            label_render = utilityService.mapLabelForRendering(labels.get(0));
+            label_render =  rbFromUrl.getString("label.title." + labels.get(0).toLowerCase());
             customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
 
         } else if (labels.size() == allLabelCount) {
@@ -471,7 +471,8 @@ public class WebController {
     private String l(List<String> labels, Integer limit, String appendToEnd, StringBuilder labelsStr, ResourceBundle rb) {
         labels.stream()
                 .limit(limit)
-                .forEach(label -> labelsStr.append(rb.getString("a.label."+label))
+                //.map(x -> rb.getString("label.title." + x.toLowerCase()))//TODO
+                .forEach(label -> labelsStr.append(rb.getString("label.title." + label.toLowerCase()))
                         .append(", "));
         return labelsStr.deleteCharAt(labelsStr.length() - 1)
                 .deleteCharAt(labelsStr.length() - 1)
