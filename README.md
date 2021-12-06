@@ -29,3 +29,6 @@ certbot renew --dry-run
 certbot renew
 openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```
+
+## AHrefs
+- finally will not follow nofollow links. So my clicks stats from page would be from 10.11.2021 accurate.

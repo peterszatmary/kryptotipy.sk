@@ -9,6 +9,7 @@ import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.component.UrlComponent;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
+import sk.kryptotipy.web.data.Post;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.repository.LabelRepository;
 import sk.kryptotipy.web.repository.PostJdbcRepository;
@@ -111,7 +112,7 @@ public class WebController {
         if (null != labell) {
             labels =
                     labell != null && !labell.contains(",") && labels.contains(labell) ?
-                            List.of(labell) : Arrays.asList(labell.split(","));
+                            new ArrayList<>(List.of(labell)) : new ArrayList<>(List.of(labell.split(",")));
         }
 
         if (lang != null && !lang.contains(",") && !langs.contains(lang)) {
@@ -133,11 +134,15 @@ public class WebController {
                     utilityService.checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
         }
 
+        List<Post> posts;
         if (labels.contains("all")) {
             labels.remove("all");
+            posts = postJdbcRepository.getNewestPosts(langs);
+            //TODO all translate, not 8 but more maaan!
+        } else {
+            posts = postJdbcRepository.getNews(labels, langs, from, to);
         }
 
-        var posts = postJdbcRepository.getNews(labels, langs, from, to);
         setNewsRenderingTexts(labels, langs, model, ALL_LABELS, request);
 
         model.put("posts", posts);
@@ -447,7 +452,7 @@ public class WebController {
             label_render = rbFromUrl.getString("filter.component.all");
         } else {
             var pageTitle = rbFromUrl.getString("crypto.news.themes");
-            var labelsStr = new StringBuilder("[ ");
+            var labelsStr = new StringBuilder();
             label_render = labelsToRender(labels, labelsStr, rbFromUrl);
             customPageTitle = pageTitle + StringUtils.capitalize(label_render);
         }
@@ -462,9 +467,9 @@ public class WebController {
 
     private String labelsToRender(List<String> labels, StringBuilder labelsStr, ResourceBundle rb) {
         if (labels.size() > 5) {
-            return l(labels, 5, "... ]",labelsStr, rb);
+            return l(labels, 5, " ...",labelsStr, rb);
         } else {
-            return l(labels, labels.size(), "]",labelsStr, rb);
+            return l(labels, labels.size(), "",labelsStr, rb);
         }
     }
 
@@ -474,10 +479,15 @@ public class WebController {
                 //.map(x -> rb.getString("label.title." + x.toLowerCase()))//TODO
                 .forEach(label -> labelsStr.append(rb.getString("label.title." + label.toLowerCase()))
                         .append(", "));
-        return labelsStr.deleteCharAt(labelsStr.length() - 1)
-                .deleteCharAt(labelsStr.length() - 1)
-                .append(appendToEnd)
-                .toString();
+
+        if (!labels.isEmpty()) {
+            return labelsStr.deleteCharAt(labelsStr.length() - 1)
+                    .deleteCharAt(labelsStr.length() - 1)
+                    .append(appendToEnd)
+                    .toString();
+        } else {
+            return "all";
+        }
     }
 
 
