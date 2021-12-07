@@ -40,7 +40,7 @@ public class PostJdbcRepository {
     }
 
     private Long to(Long to) {
-        final Integer NUM_OF_POSSIBLE_LABELS = 3;
+        final Integer NUM_OF_POSSIBLE_LABELS = 2;
         return to * NUM_OF_POSSIBLE_LABELS;
     }
 
