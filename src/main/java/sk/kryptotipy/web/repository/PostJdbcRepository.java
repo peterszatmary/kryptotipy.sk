@@ -39,11 +39,6 @@ public class PostJdbcRepository {
                 clicks, url + "%") > 0;
     }
 
-    private Long to(Long to) {
-        final Integer NUM_OF_POSSIBLE_LABELS = 2;
-        return to * NUM_OF_POSSIBLE_LABELS;
-    }
-
     public Post getPostById(Long id) {
         List<Post> posts = new ArrayList<>();
         try {
@@ -64,7 +59,7 @@ public class PostJdbcRepository {
             o.addAll(langs);
             o.addAll(labels);
             o.add(fromLimit);
-            o.add(to(toLimit));
+            o.add(toLimit);
 
             var posts  = jdbcTemplate.query(
                     QueryFactory.getNews(labels.size(), langs.size()),
