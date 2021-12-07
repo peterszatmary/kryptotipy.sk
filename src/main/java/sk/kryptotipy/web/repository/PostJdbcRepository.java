@@ -19,13 +19,22 @@ public class PostJdbcRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public List<Post> getNewestPosts(List<String> langs) {
+       return p(langs, 8);
+    }
+
+    public List<Post> getNewsAll(List<String> langs) {
+        return p(langs, 60);
+    }
+
+    private List<Post> p(List<String> langs, Integer limit) {
         List<Post> posts = new ArrayList<>();
 
         try {
             List<Object> o = new ArrayList<>();
             o.addAll(langs);
+            //o.add(limit);
 
-            posts  = jdbcTemplate.query(QueryFactory.newestPosts(langs.size()), new PostMapper(jdbcTemplate), o.toArray());
+            posts  = jdbcTemplate.query(QueryFactory.newestPosts(langs.size(), limit), new PostMapper(jdbcTemplate), o.toArray());
 
         } catch(Exception e){
             e.printStackTrace();

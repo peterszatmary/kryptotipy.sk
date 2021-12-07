@@ -137,8 +137,7 @@ public class WebController {
         List<Post> posts;
         if (labels.contains("all")) {
             labels.remove("all");
-            posts = postJdbcRepository.getNewestPosts(langs);
-            //TODO all translate, not 8 but more maaan!
+            posts = postJdbcRepository.getNewsAll(langs);
         } else {
             posts = postJdbcRepository.getNews(labels, langs, from, to);
         }

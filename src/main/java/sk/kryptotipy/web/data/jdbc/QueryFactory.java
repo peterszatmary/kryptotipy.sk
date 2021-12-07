@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 @Slf4j
 public class QueryFactory {
 
-    public static String newestPosts(Integer langsCount) {
+    public static String newestPosts(Integer langsCount, Integer limit) {
         var query = new StringBuilder()
                 .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
                         " p.i18n, p.clicks, p.likes ")
@@ -19,7 +19,8 @@ public class QueryFactory {
                 .append("AND p.img_src is not null ")
                 .append("ORDER BY p.birthday ")
                 .append("DESC ")
-                .append("LIMIT 8")
+                .append("LIMIT ")
+                .append(limit)
                 .toString();
         return query;
     }
