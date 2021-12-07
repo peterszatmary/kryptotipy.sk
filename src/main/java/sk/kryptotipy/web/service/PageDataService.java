@@ -23,7 +23,7 @@ public class PageDataService implements PageDataServiceApi {
     private final ArticleComponent articleComponent;
     private final UtilityService utilityService;
 
-    public void set(Map<String, Object> model, String pageTitleCustom, String pageDescription, HttpServletRequest request) {
+    public void set(Map<String, Object> model, String resolvedLocale, String pageTitleCustom, String pageDescription, HttpServletRequest request) {
         model.put("page_title", pageTitleCustom + " | " + appProperties.getPageTitle());
         model.put("page_author", appProperties.getPageAuthor());
         model.put("base_url", appProperties.getBaseUrl());
@@ -43,7 +43,7 @@ public class PageDataService implements PageDataServiceApi {
         model.put("page_date", LocalDateTime.now());
         model.put("page_description", pageTitleCustom + pageDescription);
         model.put("canonical_url", utilityService.getCanonicalUrl(request));
-
+        model.put("resolved_locale", "us".equalsIgnoreCase(resolvedLocale) ? "en" : resolvedLocale);
         articleComponent.addPostsAndArticlesMeta();
     }
 

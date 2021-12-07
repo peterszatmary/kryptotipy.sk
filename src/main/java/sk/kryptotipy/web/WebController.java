@@ -63,6 +63,7 @@ public class WebController {
             model.put("articles", articleRepo.getKryptotipyContentView(rbFromUrl));
             model.put("external_services", serviceRepo.getExternalServicesViews(rbFromUrl));
             pageData.set(model,
+                    resolvedLocale.getLanguage(),
                     rbFromUrl.getString("page.index.description"),
                     rbFromUrl.getString("default.descr"),
                     request);
@@ -72,7 +73,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("index : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error.html";
         }
     }
@@ -159,8 +160,9 @@ public class WebController {
     @GetMapping("/external-services")
     public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
+               resolvedLocale 
         );
         addCookies(model, request);
         makeLinkActive(model, "external_services");
@@ -173,14 +175,14 @@ public class WebController {
             model.put("link_is_not_internal", true);
 
             log.info("external_services.html");
-            pageData.set(model, rbFromUrl.getString("external.services.h1"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("external.services.h1"), rbFromUrl.getString("default.descr"), request);
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 19, 0, 0) + "");
             model.put("page_description", rbFromUrl.getString("external.description"));
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("external-services : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -189,8 +191,9 @@ public class WebController {
     @GetMapping("/cooperation")
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
+                resolvedLocale
         );
         addCookies(model, request);
         makeLinkActive(model, "");
@@ -202,14 +205,14 @@ public class WebController {
             makeLinkActive(model, "cooperation");
 
             log.info("cooperation.html");
-            pageData.set(model, rbFromUrl.getString("footer.cooperation"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("footer.cooperation"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("cooperation.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("cooperation : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -218,8 +221,9 @@ public class WebController {
     @GetMapping("/krypto-learning")
     public String cryptoLearning(Map<String, Object> model, HttpServletRequest request) {
 
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
+                resolvedLocale
         );
         addCookies(model, request);
         makeLinkActive(model, "krypto_learning");
@@ -231,14 +235,14 @@ public class WebController {
             model.put("link_is_not_internal", false);
 
             log.info("krypto_learning.html");
-            pageData.set(model, "Learning", rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(),"Learning", rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("crypto.learning.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 17, 0, 0) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("krypto-learning : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -246,8 +250,8 @@ public class WebController {
     @GetMapping("/dictionary")
     public String dictionary(Map<String, Object> model, HttpServletRequest request) {
 
-        var rbFromUrl =
-                utilityService.getResourceBundle(mixedLocaleResolver.resolveLocale(request));
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
         addCookies(model, request);
         makeLinkActive(model, "dictionary");
         try {
@@ -256,14 +260,14 @@ public class WebController {
             model.put("content_path", "fragments/content/dictionary");
 
             log.info("dictionary.html");
-            pageData.set(model, rbFromUrl.getString("dictionary.title"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("dictionary.title"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("dictionary.d"));
             model.put("page_date", LocalDateTime.of(2020, Month.DECEMBER, 22, 0, 0 ) + "");
             return "non-index";
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -309,8 +313,9 @@ public class WebController {
     @GetMapping("/article/{postTitle}")
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle, HttpServletRequest request) {
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
+                resolvedLocale
         );
         addCookies(model, request);
         makeLinkActive(model, "krypto_learning");
@@ -320,7 +325,7 @@ public class WebController {
             model.put("content_path","fragments/content/" + postTitle);
 
             log.info("article = {}", postTitle);
-            pageData.set(model, pageData.getPostTitle(postTitle), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), pageData.getPostTitle(postTitle), rbFromUrl.getString("default.descr"), request);
 
             model.put("page_title", pageData.getPostTitle(postTitle));
             model.put("page_description", pageData.getPostDescription(postTitle));
@@ -332,7 +337,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("{} : {}", postTitle, ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -340,15 +345,16 @@ public class WebController {
     @GetMapping("/did-you-know")
     public String didYouKnow(Map<String, Object> model, HttpServletRequest request) {
 
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
+                resolvedLocale
         );
         addCookies(model, request);
         makeLinkActive(model, "did_you_know");
         try {
             model.put("site", "did-you-know");
             model.put("content_path", "fragments/content/did_you_know");
-            pageData.set(model, rbFromUrl.getString("did.you.know") , rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("did.you.know") , rbFromUrl.getString("default.descr"), request);
             log.info("did_you_know.html");
             model.put("page_description", rbFromUrl.getString("did.you.know.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
@@ -356,7 +362,7 @@ public class WebController {
 
         } catch (Exception ex) {
             log.warn("dictionary : " + ex.getMessage());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -368,8 +374,9 @@ public class WebController {
             HttpServletResponse response,
             @PathVariable("hashed_id") String hashedId
        ) {
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
+                resolvedLocale
         );
         makeLinkActive(model, "posts");
         try {
@@ -385,7 +392,7 @@ public class WebController {
 
             model.put("one_post", post);
 
-            pageData.set(model, post.getTitle(), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), post.getTitle(), rbFromUrl.getString("default.descr"), request);
 
             if (post.useRedirectToSourceSite()) {
                 response.setHeader("Location", post.getUrl());
@@ -399,7 +406,7 @@ public class WebController {
                     ex.getMessage()
             );
             log.warn(ex.getCause() + "" + ex.getStackTrace());
-            pageData.set(model, rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
     }
@@ -435,9 +442,8 @@ public class WebController {
                                        Integer allLabelCount, HttpServletRequest request) {
         var label_render = "";
         var customPageTitle = "";
-        var rbFromUrl = utilityService.getResourceBundle(
-                mixedLocaleResolver.resolveLocale(request)
-        );
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
 
         if (langs.size() == 1) {
             customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
@@ -456,7 +462,7 @@ public class WebController {
             customPageTitle = pageTitle + StringUtils.capitalize(label_render);
         }
 
-        pageData.set(model, customPageTitle, rbFromUrl.getString("default.descr"), request);
+        pageData.set(model, resolvedLocale.getLanguage(), customPageTitle, rbFromUrl.getString("default.descr"), request);
         model.put("page_image", getOgImageForNews(labels));
         model.put("site", urlComponent.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
         model.put("label_render", customPageTitle);

@@ -84,9 +84,19 @@ public class UrlComponent {
             return getBaseUrl(url) + "/posts-by-i18n/" + langs.get(0).toUpperCase();
         }
 
-        if (labels.isEmpty() && langs.isEmpty()) {
+
+        if (labels.isEmpty() && !langs.isEmpty() && url.contains("posts")) {
+            return url;
+        }
+
+        if (labels.isEmpty() && langs.isEmpty() && !url.contains("posts") && url.contains("news")) {
             return getBaseUrl(url) + "/posts/all";
         }
+
+        if (labels.isEmpty() && langs.isEmpty() && url.contains("posts")) {
+            return url;
+        }
+
         if (url.contains("news") || url.contains("posts")) {
             return getBaseUrl(url) + url.split("news")[0] + "/posts/all";
         }
