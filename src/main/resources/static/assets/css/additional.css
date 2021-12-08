@@ -506,7 +506,8 @@ input.filter-component[type="checkbox"] {
         width: 30%;
     }
     .row.margin-left {
-           margin-left:10px;
+        margin-left:10px;
+        margin-bottom:0px;
     }
     .border-test {
         border: none;

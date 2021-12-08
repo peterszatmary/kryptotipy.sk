@@ -86,7 +86,7 @@ public class UrlComponent {
 
 
         if (labels.isEmpty() && !langs.isEmpty() && url.contains("posts")) {
-            return url;
+            return url; //TODO maybe return getBaseUrl(url) + "/posts/all";
         }
 
         if (labels.isEmpty() && langs.isEmpty() && !url.contains("posts") && url.contains("news")) {
@@ -94,7 +94,15 @@ public class UrlComponent {
         }
 
         if (labels.isEmpty() && langs.isEmpty() && url.contains("posts")) {
-            return url;
+            return url; //TODO maybe return getBaseUrl(url) + "/posts/all";
+        }
+
+        if (labels.size() > 1) {
+            return getBaseUrl(url) + "/posts/all";
+        }
+
+        if (langs.size() > 1) {
+            return getBaseUrl(url) + "/posts/all";
         }
 
         if (url.contains("news") || url.contains("posts")) {

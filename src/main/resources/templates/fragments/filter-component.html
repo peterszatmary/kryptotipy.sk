@@ -1,21 +1,133 @@
     <html xmlns:th="http://www.thymeleaf.org" lang="en" th:remove="tag">
 
     <div class="row margin" style="border:1px solid #333;margin-top: 20px; ">
-        <div style="background-color: #f2f2f2; color: #333; font-size: 18px; text-align: center; padding: 10px;" onclick="hideAndShowPostFilter()">
-            FILTER <i class="icon-filter"></i>
+        <div style="padding: 10px;" onclick="hideAndShowPostFilter()">
         </div>
 
         <div style="margin-left: 10px; margin-right: 10px;margin-top:2px;margin-bottom:2px;" id="filter-component">
             <form action="/news" method="get">
+
+                <!-- ----------------  NON TOKEN ------------------------ -->
                 <div class="row margin-left">
+                    <div style="background-color: #f2f2f2; color: #333; font-size: 18px; text-align: center; padding: 10px;" onclick="hideAndShowNonTokenCategories()">
+                        <span>Non tokens</span>
+                    </div>
+                    <div id="non-token-categories" style="margin-top:5px;font-size:14px;">
+                        <div class="span2 border-test" style="float:left;">
+                            <div>
+                                <input type="checkbox" class="filter-component" id="select-all" name="label" value="all" onclick="toggle()"
+                                       th:checked="${#lists.contains(checked_labels, 'all')}" />
+                                <label class="filter-component" for="select-all"
+                                       th:text="#{filter.component.all}"></label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="airdrops" name="label" value="airdrops"
+                                       th:checked="${#lists.contains(checked_labels, 'airdrops')}" title="main-element" />
+                                <label class="filter-component" for="airdrops" th:text="#{filter.component.airdrops}"></label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="altcoin" name="label" value="altcoin"
+                                       th:checked="${#lists.contains(checked_labels, 'altcoin')}" title="main-element" />
+                                <label class="filter-component" for="altcoin" th:text="#{filter.component.altcoins}"></label>
+                            </div>
+                        </div>
+                        <div class="span2 border-test" style="float:left;">
+                            <div>
+                                <input type="checkbox" class="filter-component" id="bitfinex" name="label" value="bitfinex"
+                                       th:checked="${#lists.contains(checked_labels, 'bitfinex')}" title="main-element" />
+                                <label class="filter-component" for="bitfinex">Bitfinex</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="bittrex" name="label" value="bittrex"
+                                       th:checked="${#lists.contains(checked_labels, 'bittrex')}" title="main-element" />
+                                <label class="filter-component" for="bittrex">Bittrex</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="blockchain" name="label" value="blockchain"
+                                       th:checked="${#lists.contains(checked_labels, 'blockchain')}" title="main-element" />
+                                <label class="filter-component" for="blockchain">Blockchain</label>
+                            </div>
+                        </div>
+                        <div class="span2 border-test" style="float:left;">
+                            <div>
+                                <input type="checkbox" class="filter-component" id="coinbase" name="label" value="coinbase"
+                                       th:checked="${#lists.contains(checked_labels, 'coinbase')}"  title="main-element"/>
+                                <label class="filter-component" for="coinbase">Coinbase</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="cryptocurrency" name="label" value="cryptocurrency"
+                                       th:checked="${#lists.contains(checked_labels, 'cryptocurrency')}" title="main-element" />
+                                <label class="filter-component" for="cryptocurrency" th:text="#{filter.component.cryptocurrency}"></label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="exodus" name="label" value="exodus"
+                                       th:checked="${#lists.contains(checked_labels, 'exodus')}" title="main-element" />
+                                <label class="filter-component" for="exodus">Exodus</label>
+                            </div>
+
+
+                        </div>
+                        <div class="span2 border-test" style="float:left;">
+                            <div>
+                                <input type="checkbox" class="filter-component" id="fork" name="label" value="fork"
+                                       th:checked="${#lists.contains(checked_labels, 'fork')}" title="main-element" />
+                                <label class="filter-component" for="fork">Fork</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="halving" name="label" value="halving"
+                                       th:checked="${#lists.contains(checked_labels, 'halving')}" title="main-element" />
+                                <label class="filter-component" for="halving">Halving</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="exchange" name="label" value="exchange"
+                                       th:checked="${#lists.contains(checked_labels, 'exchange')}" title="main-element" />
+                                <label class="filter-component" for="exchange" th:text="#{filter.component.exchange}"></label>
+                            </div>
+
+                        </div>
+                        <div class="span2 border-test" style="float:left;">
+                            <div>
+                                <input type="checkbox" class="filter-component" id="kraken" name="label" value="kraken"
+                                       th:checked="${#lists.contains(checked_labels, 'kraken')}" title="main-element" />
+                                <label class="filter-component" for="kraken">Kraken</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="metaverse" name="label" value="metaverse"
+                                       th:checked="${#lists.contains(checked_labels, 'metaverse')}" title="main-element" />
+                                <label class="filter-component" for="metaverse" th:text="#{filter.component.metaverse}"></label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="nft" name="label" value="nft"
+                                       th:checked="${#lists.contains(checked_labels, 'nft')}" title="main-element" />
+                                <label class="filter-component" for="nft">NFT</label>
+                            </div>
+
+                        </div>
+                        <div class="span2 border-test" style="float:left;">
+                            <div>
+                                <input type="checkbox" class="filter-component" id="play-to-earn" name="label" value="play-to-earn"
+                                       th:checked="${#lists.contains(checked_labels, 'play-to-earn')}" title="main-element" />
+                                <label class="filter-component" for="play-to-earn" th:text="#{filter.component.play-to-earn}"></label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="wallets" name="label" value="wallets"
+                                       th:checked="${#lists.contains(checked_labels, 'wallets')}" title="main-element" />
+                                <label class="filter-component" for="wallets" th:text="#{filter.component.wallets}"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ----------------  TOKEN ------------------------ -->
+                <div class="row margin-left">
+                    <div style="background-color: #f2f2f2; color: #333; font-size: 18px; text-align: center; padding: 10px;" onclick="hideAndShowTokenCategories()">
+                        <span>Tokens</span>
+                    </div>
+                    <div id="token-categories" style="margin-top:5px;font-size:14px;display: none;">
                     <!-- labels -->
                     <div class="span2 border-test" style="float:left;">
-                        <div>
-                            <input type="checkbox" class="filter-component" id="select-all" name="label" value="all" onclick="toggle()"
-                                   th:checked="${#lists.contains(checked_labels, 'all')}" />
-                            <label class="filter-component" for="select-all"
-                            th:text="#{filter.component.all}"></label>
-                        </div>
+
                         <div>
                             <input type="checkbox" class="filter-component" id="aave" name="label" value="aave"
                                    th:checked="${#lists.contains(checked_labels, 'aave')}"  title="main-element"/>
@@ -46,11 +158,7 @@
                                    th:checked="${#lists.contains(checked_labels, 'binance')}" title="main-element" />
                             <label class="filter-component" for="binance">Binance</label>
                         </div>
-                        <div>
-                            <input type="checkbox" class="filter-component" id="blockchain" name="label" value="blockchain"
-                                   th:checked="${#lists.contains(checked_labels, 'blockchain')}" title="main-element" />
-                            <label class="filter-component" for="blockchain">Blockchain</label>
-                        </div>
+
                         <div>
                             <input type="checkbox" class="filter-component" id="cardano" name="label" value="cardano"
                                    th:checked="${#lists.contains(checked_labels, 'cardano')}" title="main-element" />
@@ -58,13 +166,8 @@
                         </div>
                     </div>
 
-
                     <div class="span2 border-test"  style="float:left;">
-                        <div>
-                            <input type="checkbox" class="filter-component" id="coinbase" name="label" value="coinbase"
-                                   th:checked="${#lists.contains(checked_labels, 'coinbase')}"  title="main-element"/>
-                            <label class="filter-component" for="coinbase">Coinbase</label>
-                        </div>
+
                         <div>
                             <input type="checkbox" class="filter-component" id="cosmos" name="label" value="cosmos"
                                    th:checked="${#lists.contains(checked_labels, 'cosmos')}" title="main-element" />
@@ -86,11 +189,6 @@
                             <label class="filter-component" for="dash">Dash</label>
                         </div>
                         <div>
-                            <input type="checkbox" class="filter-component" id="decentraland" name="label" value="decentraland"
-                                   th:checked="${#lists.contains(checked_labels, 'decentraland')}" title="main-element" />
-                            <label class="filter-component" for="decentraland">Mana</label>
-                        </div>
-                        <div>
                             <input type="checkbox" class="filter-component" id="diem" name="label" value="diem"
                                    th:checked="${#lists.contains(checked_labels, 'diem')}" title="main-element" />
                             <label class="filter-component" for="diem">Diem</label>
@@ -101,18 +199,13 @@
                             <label class="filter-component" for="dogecoin">Dogecoin</label>
                         </div>
                         <div>
-                            <input type="checkbox" class="filter-component" id="exchange" name="label" value="exchange"
-                                   th:checked="${#lists.contains(checked_labels, 'exchange')}" title="main-element" />
-                            <label class="filter-component" for="exchange" th:text="#{filter.component.exchange}"></label>
-                        </div>
-                    </div>
-
-                    <div class="span2 border-test"  style="float:left;">
-                        <div>
                             <input type="checkbox" class="filter-component" id="elrond" name="label" value="elrond"
                                    th:checked="${#lists.contains(checked_labels, 'elrond')}" title="main-element" />
                             <label class="filter-component" for="elrond">Elrond</label>
                         </div>
+                    </div>
+
+                    <div class="span2 border-test"  style="float:left;">
                         <div>
                             <input type="checkbox" class="filter-component" id="ethereum" name="label" value="ethereum"
                                    th:checked="${#lists.contains(checked_labels, 'ethereum')}" title="main-element" />
@@ -123,21 +216,13 @@
                                    th:checked="${#lists.contains(checked_labels, 'eos')}" title="main-element" />
                             <label class="filter-component" for="eos">EOS</label>
                         </div>
-                        <div>
-                            <input type="checkbox" class="filter-component" id="exodus" name="label" value="exodus"
-                                   th:checked="${#lists.contains(checked_labels, 'exodus')}" title="main-element" />
-                            <label class="filter-component" for="exodus">Exodus</label>
-                        </div>
+
                         <div>
                             <input type="checkbox" class="filter-component" id="fantom" name="label" value="fantom"
                                    th:checked="${#lists.contains(checked_labels, 'fantom')}" title="main-element" />
                             <label class="filter-component" for="fantom">Fantom</label>
                         </div>
-                        <div>
-                            <input type="checkbox" class="filter-component" id="fork" name="label" value="fork"
-                                   th:checked="${#lists.contains(checked_labels, 'fork')}" title="main-element" />
-                            <label class="filter-component" for="fork">Fork</label>
-                        </div>
+
                         <div>
                             <input type="checkbox" class="filter-component" id="filecoin" name="label" value="filecoin"
                                    th:checked="${#lists.contains(checked_labels, 'filecoin')}" title="main-element" />
@@ -153,20 +238,14 @@
                                    th:checked="${#lists.contains(checked_labels, 'ftx')}"  title="main-element"/>
                             <label class="filter-component" for="ftx">FTX</label>
                         </div>
-                    </div>
-
-                    <div class="span2 border-test" style="float:left;">
-                        <div>
-                            <input type="checkbox" class="filter-component" id="halving" name="label" value="halving"
-                                   th:checked="${#lists.contains(checked_labels, 'halving')}" title="main-element" />
-                            <label class="filter-component" for="halving">Halving</label>
-                        </div>
-
                         <div>
                             <input type="checkbox" class="filter-component" id="hedera" name="label" value="hedera"
                                    th:checked="${#lists.contains(checked_labels, 'hedera')}" title="main-element" />
                             <label class="filter-component" for="hedera">Hedera</label>
                         </div>
+                    </div>
+
+                    <div class="span2 border-test" style="float:left;">
                         <div>
                             <input type="checkbox" class="filter-component" id="helium" name="label" value="helium"
                                    th:checked="${#lists.contains(checked_labels, 'helium')}" title="main-element" />
@@ -178,14 +257,14 @@
                             <label class="filter-component" for="iota">Iota</label>
                         </div>
                         <div>
-                            <input type="checkbox" class="filter-component" id="kraken" name="label" value="kraken"
-                                   th:checked="${#lists.contains(checked_labels, 'kraken')}" title="main-element" />
-                            <label class="filter-component" for="kraken">Kraken</label>
-                        </div>
-                        <div>
                             <input type="checkbox" class="filter-component" id="kusama" name="label" value="kusama"
                                    th:checked="${#lists.contains(checked_labels, 'kusama')}"  title="main-element"/>
                             <label class="filter-component" for="kusama">Kusama</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="filter-component" id="loopring" name="label" value="loopring"
+                                   th:checked="${#lists.contains(checked_labels, 'loopring')}" title="main-element" />
+                            <label class="filter-component" for="loopring">Loopring</label>
                         </div>
                         <div>
                             <input type="checkbox" class="filter-component" id="litecoin" name="label" value="litecoin"
@@ -193,16 +272,15 @@
                             <label class="filter-component" for="litecoin">Litecoin</label>
                         </div>
                         <div>
-                            <input type="checkbox" class="filter-component" id="metaverse" name="label" value="metaverse"
-                                   th:checked="${#lists.contains(checked_labels, 'metaverse')}" title="main-element" />
-                            <label class="filter-component" for="metaverse" th:text="#{filter.component.metaverse}"></label>
+                            <input type="checkbox" class="filter-component" id="decentraland" name="label" value="decentraland"
+                                   th:checked="${#lists.contains(checked_labels, 'decentraland')}" title="main-element" />
+                            <label class="filter-component" for="decentraland">Mana</label>
                         </div>
                         <div>
                             <input type="checkbox" class="filter-component" id="monero" name="label" value="monero"
                                    th:checked="${#lists.contains(checked_labels, 'monero')}"  title="main-element"/>
                             <label class="filter-component" for="monero">Monero</label>
                         </div>
-
                     </div>
 
                     <div class="span2 border-test" style="float:left;">
@@ -212,9 +290,9 @@
                             <label class="filter-component" for="neo">NEO</label>
                         </div>
                         <div>
-                            <input type="checkbox" class="filter-component" id="nft" name="label" value="nft"
-                                   th:checked="${#lists.contains(checked_labels, 'nft')}" title="main-element" />
-                            <label class="filter-component" for="nft">NFT</label>
+                            <input type="checkbox" class="filter-component" id="ontology" name="label" value="ontology"
+                                   th:checked="${#lists.contains(checked_labels, 'ontology')}" title="main-element" />
+                            <label class="filter-component" for="ontology">Ontology</label>
                         </div>
                         <div>
                             <input type="checkbox" class="filter-component" id="polkadot" name="label" value="polkadot"
@@ -225,11 +303,6 @@
                             <input type="checkbox" class="filter-component" id="polygon" name="label" value="polygon"
                                    th:checked="${#lists.contains(checked_labels, 'polygon')}" title="main-element" />
                             <label class="filter-component" for="polygon">Polygon</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="filter-component" id="wallets" name="label" value="wallets"
-                                   th:checked="${#lists.contains(checked_labels, 'wallets')}" title="main-element" />
-                            <label class="filter-component" for="wallets" th:text="#{filter.component.wallets}"></label>
                         </div>
                         <div>
                             <input type="checkbox" class="filter-component" id="ripple" name="label" value="ripple"
@@ -296,48 +369,19 @@
                                    th:checked="${#lists.contains(checked_labels, 'vechain')}"  title="main-element"/>
                             <label class="filter-component" for="vechain">Vechain</label>
                         </div>
-                        <div>
-                            <input type="checkbox" class="filter-component" id="play-to-earn" name="label" value="play-to-earn"
-                                   th:checked="${#lists.contains(checked_labels, 'play-to-earn')}" title="main-element" />
-                            <label class="filter-component" for="play-to-earn" th:text="#{filter.component.play-to-earn}"></label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="filter-component" id="airdrops" name="label" value="airdrops"
-                                   th:checked="${#lists.contains(checked_labels, 'airdrops')}" title="main-element" />
-                            <label class="filter-component" for="airdrops" th:text="#{filter.component.airdrops}"></label>
-                        </div>
+
+
                     </div>
                 </div>
+                </div>
 
+
+                <!-- ----------------  MORE ------------------------ -->
                 <div class="row margin-left">
                     <div style="background-color: #f2f2f2; color: #333; font-size: 18px; text-align: center; padding: 10px;" onclick="hideAndShowMoreCategories()">
                         <span th:text="#{filter.component.more.categories}"></span>
                     </div>
                     <div id="more-categories" style="margin-top:20px;font-size:14px;display:none;">
-
-                        <div style="float:left;margin-right: 8px;">
-                            <input type="checkbox" class="filter-component" id="altcoin" name="label" value="altcoin"
-                                   th:checked="${#lists.contains(checked_labels, 'altcoin')}" title="main-element" />
-                            <label class="filter-component" for="altcoin" th:text="#{filter.component.altcoins}"></label>
-                        </div>
-
-                        <div style="float:left;margin-right: 8px;">
-                            <input type="checkbox" class="filter-component" id="bitfinex" name="label" value="bitfinex"
-                                   th:checked="${#lists.contains(checked_labels, 'bitfinex')}" title="main-element" />
-                            <label class="filter-component" for="bitfinex">Bitfinex</label>
-                        </div>
-
-                        <div style="float:left;margin-right: 8px;">
-                            <input type="checkbox" class="filter-component" id="bittrex" name="label" value="bittrex"
-                                   th:checked="${#lists.contains(checked_labels, 'bittrex')}" title="main-element" />
-                            <label class="filter-component" for="bittrex">Bittrex</label>
-                        </div>
-
-                        <div style="float:left;margin-right: 8px;">
-                            <input type="checkbox" class="filter-component" id="cryptocurrency" name="label" value="cryptocurrency"
-                                   th:checked="${#lists.contains(checked_labels, 'cryptocurrency')}" title="main-element" />
-                            <label class="filter-component" for="cryptocurrency" th:text="#{filter.component.cryptocurrency}"></label>
-                        </div>
 
                         <div style="float:left;margin-right: 8px;">
                             <input type="checkbox" class="filter-component" id="coinmarketcap" name="label" value="coinmarketcap"
@@ -367,16 +411,6 @@
                             <input type="checkbox" class="filter-component" id="nbs" name="label" value="nbs"
                                    th:checked="${#lists.contains(checked_labels, 'nbs')}" title="main-element" />
                             <label class="filter-component" for="nbs">NBS</label>
-                        </div>
-                        <div style="float:left;margin-right: 8px;">
-                            <input type="checkbox" class="filter-component" id="loopring" name="label" value="loopring"
-                                   th:checked="${#lists.contains(checked_labels, 'loopring')}" title="main-element" />
-                            <label class="filter-component" for="loopring">Loopring</label>
-                        </div>
-                        <div style="float:left;margin-right: 8px;">
-                            <input type="checkbox" class="filter-component" id="ontology" name="label" value="ontology"
-                                   th:checked="${#lists.contains(checked_labels, 'ontology')}" title="main-element" />
-                            <label class="filter-component" for="ontology">Ontology</label>
                         </div>
                     </div>
                 </div>
@@ -504,8 +538,6 @@
                         </button>
                    </div>
                 </div>
-<!--                    </div>-->
-                </form>
-<!--            </div>-->
+            </form>
         </div>
     </div>
