@@ -551,7 +551,7 @@ input.filter-component[type="checkbox"] {
         margin-left: 0px;
     }
     div#filter-component {
-        display: none;
+        display: block;
     }
     div.social-panel {
         padding-right: 25px;
@@ -575,7 +575,7 @@ input.filter-component[type="checkbox"] {
         margin-left: 0px;
     }
     div#filter-component {
-        display: none;
+        display: block;
     }
     div.social-panel {
         padding-right: 15px;
