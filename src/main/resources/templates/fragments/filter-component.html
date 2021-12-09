@@ -114,6 +114,11 @@
                                        th:checked="${#lists.contains(checked_labels, 'wallets')}" title="main-element" />
                                 <label class="filter-component" for="wallets" th:text="#{filter.component.wallets}"></label>
                             </div>
+                            <div>
+                                <input type="checkbox" class="filter-component" id="mining" name="label" value="mining"
+                                       th:checked="${#lists.contains(checked_labels, 'mining')}" title="main-element" />
+                                <label class="filter-component" for="mining" th:text="#{filter.component.mining}"></label>
+                            </div>
                         </div>
                     </div>
                 </div>
