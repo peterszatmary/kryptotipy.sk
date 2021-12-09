@@ -81,7 +81,8 @@ public class SiteRepository {
                 "article/btc-is-not-the-first", "article/passive-income-with-algorand",
                 "article/passive-income-with-polkadot-on-ledger", "article/passive-income-with-vechain",
                 "article/passive-income-with-cardano", "article/passive-income-with-cosmos-atom",
-                "cooperation", "article/majk-spirit-wexo-nft"
+                "cooperation"
+                //, "article/majk-spirit-wexo-nft"
         );
 
         manualSites.stream().
