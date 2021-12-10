@@ -391,8 +391,11 @@ public class WebController {
             log.info("New view for post = {}, views = {}", post.getUrl(), post.getViews());
 
             model.put("one_post", post);
-
             pageData.set(model, resolvedLocale.getLanguage(), post.getTitle(), rbFromUrl.getString("default.descr"), request);
+
+            var pageImage = "/assets/post-images/" + post.getLabels().get(0).getName().toLowerCase() + "/images_1.jpg";
+
+            model.put("page_image", pageImage);
 
             if (post.useRedirectToSourceSite()) {
                 response.setHeader("Location", post.getUrl());
