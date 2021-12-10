@@ -1,19 +1,17 @@
-package sk.kryptotipy.web.data.jdbc;
+package sk.kryptotipy.web.data.db.mappers;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import sk.kryptotipy.web.data.Label;
-import sk.kryptotipy.web.data.Post;
+import sk.kryptotipy.web.data.db.Label;
+import sk.kryptotipy.web.data.db.Post;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 @Slf4j

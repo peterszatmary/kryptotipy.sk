@@ -1,8 +1,8 @@
-package sk.kryptotipy.web.repository;
+package sk.kryptotipy.web.repository.db;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import sk.kryptotipy.web.data.BtcPrice;
+import sk.kryptotipy.web.data.db.BtcPrice;
 
 public interface BtcPriceRepository extends JpaRepository<BtcPrice, Long> {
 

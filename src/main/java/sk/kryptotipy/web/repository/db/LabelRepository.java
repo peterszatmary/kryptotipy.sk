@@ -1,12 +1,11 @@
-package sk.kryptotipy.web.repository;
+package sk.kryptotipy.web.repository.db;
 
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import sk.kryptotipy.web.data.Label;
-import sk.kryptotipy.web.data.Post;
-import sk.kryptotipy.web.data.jdbc.LabelMapper;
-import sk.kryptotipy.web.data.jdbc.QueryFactory;
+import sk.kryptotipy.web.data.db.Label;
+import sk.kryptotipy.web.data.db.mappers.LabelMapper;
+import sk.kryptotipy.web.data.db.mappers.QueryFactory;
 
 import java.util.ArrayList;
 import java.util.List;

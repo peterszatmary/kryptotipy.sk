@@ -1,4 +1,4 @@
-package sk.kryptotipy.web.data;
+package sk.kryptotipy.web.data.db;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;

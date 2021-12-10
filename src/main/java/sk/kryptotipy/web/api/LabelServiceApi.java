@@ -1,6 +1,6 @@
 package sk.kryptotipy.web.api;
 
-import sk.kryptotipy.web.data.Label;
+import sk.kryptotipy.web.data.db.Label;
 
 import java.util.List;
 

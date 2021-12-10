@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.BtcPriceServiceApi;
 import sk.kryptotipy.web.data.ExternalPriceId;
-import sk.kryptotipy.web.repository.BtcPriceRepository;
+import sk.kryptotipy.web.repository.db.BtcPriceRepository;
 
 import java.util.List;
 

@@ -1,12 +1,10 @@
-package sk.kryptotipy.web.data;
+package sk.kryptotipy.web.data.db;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package sk.kryptotipy.web.data.jdbc;
+package sk.kryptotipy.web.data.db.mappers;
 
 import lombok.extern.slf4j.Slf4j;
 

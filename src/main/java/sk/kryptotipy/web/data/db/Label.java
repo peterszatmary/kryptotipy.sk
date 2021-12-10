@@ -1,4 +1,4 @@
-package sk.kryptotipy.web.data;
+package sk.kryptotipy.web.data.db;
 
 import lombok.*;
 import java.util.List;

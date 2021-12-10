@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.data.Donate;
-import sk.kryptotipy.web.data.Post;
+import sk.kryptotipy.web.data.db.Post;
 import sk.kryptotipy.web.repository.DonateRepository;
-import sk.kryptotipy.web.repository.PostJdbcRepository;
+import sk.kryptotipy.web.repository.db.PostJdbcRepository;
 
 
 import java.util.*;

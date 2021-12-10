@@ -1,7 +1,7 @@
 package sk.kryptotipy.web.api;
 
 import sk.kryptotipy.web.data.Donate;
-import sk.kryptotipy.web.data.Post;
+import sk.kryptotipy.web.data.db.Post;
 
 import java.util.List;
 
