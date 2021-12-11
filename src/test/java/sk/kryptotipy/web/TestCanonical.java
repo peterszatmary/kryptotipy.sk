@@ -72,7 +72,7 @@ public class TestCanonical {
                 Arrays.asList("altcoin", "kusama"),
                 Arrays.asList("SK", "US")
         );
-        Assert.assertEquals("https://localhost:8443/posts/all", canonical);
+        Assert.assertEquals("https://localhost:8443/news?label=altcoin&label=kusama&lang=SK&lang=US", canonical);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class TestCanonical {
                 Arrays.asList("altcoin", "kusama"),
                 Arrays.asList("SK", "US")
         );
-        Assert.assertEquals("https://sk.localhost:8443/posts/all", canonical);
+        Assert.assertEquals("https://sk.localhost:8443/news?label=altcoin&label=kusama&lang=SK&lang=US", canonical);
     }
     //
 

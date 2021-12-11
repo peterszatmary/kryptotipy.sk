@@ -80,13 +80,14 @@ public class UrlComponent {
         if (labels.size() == 1) {
             return getBaseUrl(url) + "/posts/" + labels.get(0);
         }
+
         if (langs.size() == 1) {
             return getBaseUrl(url) + "/posts-by-i18n/" + langs.get(0).toUpperCase();
         }
 
 
         if (labels.isEmpty() && !langs.isEmpty() && url.contains("posts")) {
-            return url; //TODO maybe return getBaseUrl(url) + "/posts/all";
+            return url;
         }
 
         if (labels.isEmpty() && langs.isEmpty() && !url.contains("posts") && url.contains("news")) {
@@ -94,15 +95,11 @@ public class UrlComponent {
         }
 
         if (labels.isEmpty() && langs.isEmpty() && url.contains("posts")) {
-            return url; //TODO maybe return getBaseUrl(url) + "/posts/all";
+            return url;
         }
 
-        if (labels.size() > 1) {
-            return getBaseUrl(url) + "/posts/all";
-        }
-
-        if (langs.size() > 1) {
-            return getBaseUrl(url) + "/posts/all";
+        if (labels.size() > 1 || langs.size() > 1) {
+            return url;
         }
 
         if (url.contains("news") || url.contains("posts")) {

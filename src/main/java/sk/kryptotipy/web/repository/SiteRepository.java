@@ -34,7 +34,9 @@ public class SiteRepository {
 
     private void createSitesWithPriority08(List<Sitemap.URL> sites) {
 
-        var _08Sites = Arrays.asList(
+        var date = new Date();
+
+        var _08Sites = new ArrayList(Arrays.asList(
                 "posts/neo", "posts/litecoin", "posts/polkadot", "posts/ethereum", "posts/bitcoin",
                 "posts/kusama", "posts/wallets",
                 "posts/blockchain", "posts/kraken", "posts/altcoin", "posts/cryptocurrency",
@@ -57,17 +59,34 @@ public class SiteRepository {
                 "posts-by-i18n/CH", "posts-by-i18n/US", "posts-by-i18n/CA", "posts-by-i18n/PL",
                 "posts-by-i18n/DE", "posts-by-i18n/CH", "posts-by-i18n/NL", "posts-by-i18n/ES",
                 "posts-by-i18n/SE"
-        );
+        ));
 
+        var newsCombinations = createNewsCombinations();
+
+        for (var x : newsCombinations) {
+            if (x.contains("&lang=SK&lang=CZ")) {
+                sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + x, 0.8, date));
+            } else if (x.contains("&lang=HU")) {
+                sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + x, 0.8, date));
+            } else if (x.contains("&lang=PL")) {
+                sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + x, 0.8, date));
+            } else if (x.contains("&lang=NL")) {
+                sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + x, 0.8, date));
+            } else if (x.contains("&lang=DE")) {
+                sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + x, 0.8, date));
+            } else if (x.contains("&lang=US")) {
+                sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + x, 0.8, date));
+            }
+        }
 
         _08Sites.stream().
                 forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.8, new Date()));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.8, new Date()));
+                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.8, date));
+                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.8, date));
+                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.8, date));
+                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.8, date));
+                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.8, date));
+                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.8, date));
         });
     }
 
@@ -132,5 +151,43 @@ public class SiteRepository {
                     sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, new Date()));
                     sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, new Date()));
                 });
+    }
+
+    //TODO create all news combinations for sitemap + (titles)
+    private List<String> createNewsCombinations() {
+        var result = new ArrayList<String>();
+        var url = "news?";
+        var categories = Arrays.asList(
+                "avalanche", "algorand",
+                "bitcoin",
+                "cryptocurrency",
+                "decentraland",
+                "monero", "mining", "nft", "metaverse",
+                "play-to-earn",
+                "axie-infinity", "ethereum", "litecoin", "neo", "polkadot", "polygon", "sandbox",
+                "solana", "cardano", "dogecoin", "shiba-inu"
+        );
+        for (var category : categories) {
+            var u = new StringBuilder(url);
+            for (int i = 0; i < categories.size(); i++) {
+                if (categories.get(i).equals(category)) {
+                    continue;
+                }
+                if (i == categories.size() - 1) {
+                    u.append(categories.get(i));
+                    result.add(u.toString() + "&lang=SK&lang=CZ");
+                    result.add(u.toString() + "&lang=US");
+                    result.add(u.toString() + "&lang=CA");
+                    result.add(u.toString() + "&lang=DE");
+                    result.add(u.toString() + "&lang=NL");
+                    result.add(u.toString() + "&lang=HU");
+                    result.add(u.toString() + "&lang=PL");
+                } else {
+                    u.append(categories.get(i)).append("&");
+                }
+            }
+        }
+        result.stream().forEach(System.out::println);
+        return result;
     }
 }
