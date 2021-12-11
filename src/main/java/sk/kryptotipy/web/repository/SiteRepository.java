@@ -174,7 +174,7 @@ public class SiteRepository {
                     continue;
                 }
                 if (i == categories.size() - 1) {
-                    u.append(categories.get(i));
+                    u.append("label=" + categories.get(i));
                     result.add(u.toString() + "&lang=SK&lang=CZ");
                     result.add(u.toString() + "&lang=US");
                     result.add(u.toString() + "&lang=CA");
@@ -183,11 +183,18 @@ public class SiteRepository {
                     result.add(u.toString() + "&lang=HU");
                     result.add(u.toString() + "&lang=PL");
                 } else {
-                    u.append(categories.get(i)).append("&");
+                    u.append("label=" + categories.get(i));
+                    result.add(u.toString() + "&lang=SK&lang=CZ");
+                    result.add(u.toString() + "&lang=US");
+                    result.add(u.toString() + "&lang=CA");
+                    result.add(u.toString() + "&lang=DE");
+                    result.add(u.toString() + "&lang=NL");
+                    result.add(u.toString() + "&lang=HU");
+                    result.add(u.toString() + "&lang=PL");
+                    u.append("&");
                 }
             }
         }
-        result.stream().forEach(System.out::println);
         return result;
     }
 }
