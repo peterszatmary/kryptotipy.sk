@@ -96,13 +96,15 @@ public class WebController {
     public String news(String labell, String lang, Map<String, Object> model,
                        HttpServletRequest request) {
 
+        // labell is one leabel containing all labels and langs
+        // posts/labell -> posts/bitcoin_avalanche_l_us_sk
+        // l show where langs starts
+
         List<String> langs = new ArrayList<>();
         List<String> labels = new ArrayList<>();
+        List<Post> posts;
         final var from = 0L;
         final var to = appProperties.getPageSize();
-        final var parameterMap = request.getParameterMap();
-        addCookies(model, request);
-        makeLinkActive(model, "posts");
 
         var allLabels = labelRepo.getAllLabels()
                 .stream()
@@ -110,39 +112,49 @@ public class WebController {
                 .collect(Collectors.toList());
         var ALL_LABELS = allLabels.size();
 
-        if (null != labell) {
-            labels =
-                    labell != null && !labell.contains(",") && labels.contains(labell) ?
-                            new ArrayList<>(List.of(labell)) : new ArrayList<>(List.of(labell.split(",")));
-        }
-
-        if (lang != null && !lang.contains(",") && !langs.contains(lang)) {
-            langs.add(lang);
-        }
-
-        if (langs.isEmpty() && null == parameterMap.get("lang")) {
-            langs = mixedLocaleResolver.getLangsByUserCountry(mixedLocaleResolver.resolveLocale(request));
+        if (labell != null && labell.contains("_l_")) {
+            var langss = labell.split("_l_")[1];
+            var labelss = labell.split("_l_")[0];
+            langs = Arrays.asList(langss.toUpperCase().split("_"));
+            labels = Arrays.asList(labelss.split("_"));
         } else {
-            if (null == parameterMap.get("lang")) {
-                langs = new ArrayList<>(Arrays.asList(lang));
+
+            final var parameterMap = request.getParameterMap();
+            addCookies(model, request);
+            makeLinkActive(model, "posts");
+
+            if (null != labell) {
+                labels =
+                        labell != null && !labell.contains("_") && labels.contains(labell) ?
+                                new ArrayList<>(List.of(labell)) : new ArrayList<>(List.of(labell.split("_")));
+            }
+
+            if (lang != null && !lang.contains("_") && !langs.contains(lang)) {
+                langs.add(lang);
+            }
+
+            if (langs.isEmpty() && null == parameterMap.get("lang")) {
+                langs = mixedLocaleResolver.getLangsByUserCountry(mixedLocaleResolver.resolveLocale(request));
             } else {
-                langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
+                if (null == parameterMap.get("lang")) {
+                    langs = new ArrayList<>(Arrays.asList(lang));
+                } else {
+                    langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
+                }
+            }
+
+            if (labels.isEmpty()) {
+                labels =
+                        utilityService.checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
             }
         }
 
-        if (labels.isEmpty()) {
-            labels =
-                    utilityService.checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
-        }
-
-        List<Post> posts;
         if (labels.contains("all")) {
             labels.remove("all");
             posts = postJdbcRepository.getNewsAll(langs);
         } else {
             posts = postJdbcRepository.getNews(labels, langs, from, to);
         }
-
         setNewsRenderingTexts(labels, langs, model, ALL_LABELS, request);
 
         model.put("posts", posts);
@@ -474,6 +486,10 @@ public class WebController {
 
 
     private String labelsToRender(List<String> labels, StringBuilder labelsStr, ResourceBundle rb) {
+//        labels = labels.stream()
+//                .filter(x -> !x.equals("l"))
+//                .collect(Collectors.toList());
+
         if (labels.size() > 5) {
             return l(labels, 5, " ...",labelsStr, rb);
         } else {

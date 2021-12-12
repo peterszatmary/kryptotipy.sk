@@ -154,19 +154,26 @@ public class SiteRepository {
                 });
     }
 
-    //TODO create all news combinations for sitemap + (titles)
     private List<String> createNewsCombinations() {
         var result = new ArrayList<String>();
-        var url = "news?";
+        var url = "posts/";
         var categories = Arrays.asList(
-                "avalanche", "algorand",
-                "bitcoin",
-                "cryptocurrency",
-                "decentraland",
-                "monero", "mining", "nft", "metaverse",
-                "play-to-earn",
-                "axie-infinity", "ethereum", "litecoin", "neo", "polkadot", "polygon", "sandbox",
-                "solana", "cardano", "dogecoin", "shiba-inu", "cosmos"
+                "avalanche", "algorand", "axie-infinity", "altcoin", "airdrops",
+                "bitcoin", "binance",
+                "cryptocurrency", "cosmos", "cardano", "chainlink",
+                "decentraland", "dogecoin", "dai", "dash", "diem",
+                "ethereum", "eos",
+                "monero", "mining", "metaverse",
+                "nft",
+                "play-to-earn",  "polkadot", "polygon",
+                "iota", "kusama", "helium", "loopring", "ontology",
+                "fantom", "filecoin", "ftx", "flow", "hedera",
+                "litecoin", "neo",
+                "ripple",
+                "solana", "shiba-inu", "stellar","sandbox",
+                "tether", "terra", "tron", "theta", "tezos",
+                "ecb", "fed", "nbs", "wallets", "halving", "exchange", "exodus", "dag", "coinmarketcap"
+                //TODO more later
         );
         for (var category : categories) {
             var u = new StringBuilder(url);
@@ -175,34 +182,34 @@ public class SiteRepository {
                     continue;
                 }
                 if (i == categories.size() - 1) {
-                    u.append("label=" + categories.get(i));
-                    result.add(u.toString() + "&lang=SK&lang=CZ");
-                    result.add(u.toString() + "&lang=US");
-                    result.add(u.toString() + "&lang=CA");
-                    result.add(u.toString() + "&lang=DE");
-                    result.add(u.toString() + "&lang=NL");
-                    result.add(u.toString() + "&lang=HU");
-                    result.add(u.toString() + "&lang=PL");
+                    u.append(categories.get(i));
+                    result.add(u.toString() + "_l_SK_CZ");
+                    result.add(u.toString() + "_l_US");
+                    result.add(u.toString() + "_l_CA");
+                    result.add(u.toString() + "_l_DE");
+                    result.add(u.toString() + "_l_NL");
+                    result.add(u.toString() + "_l_HU");
+                    result.add(u.toString() + "_l_PL");
                 } else {
-                    u.append("label=" + categories.get(i));
-                    result.add(u.toString() + "&lang=SK&lang=CZ");
-                    result.add(u.toString() + "&lang=US");
-                    result.add(u.toString() + "&lang=CA");
-                    result.add(u.toString() + "&lang=DE");
-                    result.add(u.toString() + "&lang=NL");
-                    result.add(u.toString() + "&lang=HU");
-                    result.add(u.toString() + "&lang=PL");
-                    u.append("&");
+                    u.append(categories.get(i));
+                    result.add(u.toString() + "_l_SK_CZ");
+                    result.add(u.toString() + "_l_US");
+                    result.add(u.toString() + "_l_CA");
+                    result.add(u.toString() + "_l_DE");
+                    result.add(u.toString() + "_l_NL");
+                    result.add(u.toString() + "_l_HU");
+                    result.add(u.toString() + "_l_PL");
+                    u.append("_");
                 }
             }
         }
 
         return result.stream()
-                .filter(x -> x.split("label").length > 2)
+                .filter(x -> x.split("_l_")[0].contains("_"))
                 .collect(Collectors.toList());
     }
 
-    public static void main(String[] args) {
-        new SiteRepository().createNewsCombinations().stream().forEach(System.out::println);
-    }
+//    public static void main(String[] args) {
+//        new SiteRepository().createNewsCombinations().stream().forEach(System.out::println);
+//    }
 }
