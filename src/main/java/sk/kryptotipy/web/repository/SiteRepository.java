@@ -65,17 +65,17 @@ public class SiteRepository {
         var newsCombinations = createNewsCombinations();
 
         for (var x : newsCombinations) {
-            if (x.contains("&lang=SK&lang=CZ")) {
+            if (x.contains("_l_sk_cz")) {
                 sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("&lang=HU")) {
+            } else if (x.contains("_l_hu")) {
                 sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("&lang=PL")) {
+            } else if (x.contains("_l_pl")) {
                 sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("&lang=NL")) {
+            } else if (x.contains("_l_nl")) {
                 sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("&lang=DE")) {
+            } else if (x.contains("_l_de")) {
                 sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("&lang=US")) {
+            } else if (x.contains("_l_us")) {
                 sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + x, 0.8, date));
             }
         }
@@ -183,22 +183,22 @@ public class SiteRepository {
                 }
                 if (i == categories.size() - 1) {
                     u.append(categories.get(i));
-                    result.add(u.toString() + "_l_SK_CZ");
-                    result.add(u.toString() + "_l_US");
-                    result.add(u.toString() + "_l_CA");
-                    result.add(u.toString() + "_l_DE");
-                    result.add(u.toString() + "_l_NL");
-                    result.add(u.toString() + "_l_HU");
-                    result.add(u.toString() + "_l_PL");
+                    result.add(u.toString() + "_l_sk_cz");
+                    result.add(u.toString() + "_l_us");
+                    result.add(u.toString() + "_l_ca");
+                    result.add(u.toString() + "_l_de");
+                    result.add(u.toString() + "_l_nl");
+                    result.add(u.toString() + "_l_hu");
+                    result.add(u.toString() + "_l_pl");
                 } else {
                     u.append(categories.get(i));
-                    result.add(u.toString() + "_l_SK_CZ");
-                    result.add(u.toString() + "_l_US");
-                    result.add(u.toString() + "_l_CA");
-                    result.add(u.toString() + "_l_DE");
-                    result.add(u.toString() + "_l_NL");
-                    result.add(u.toString() + "_l_HU");
-                    result.add(u.toString() + "_l_PL");
+                    result.add(u.toString() + "_l_sk_cz");
+                    result.add(u.toString() + "_l_us");
+                    result.add(u.toString() + "_l_ca");
+                    result.add(u.toString() + "_l_de");
+                    result.add(u.toString() + "_l_nl");
+                    result.add(u.toString() + "_l_hu");
+                    result.add(u.toString() + "_l_pl");
                     u.append("_");
                 }
             }
