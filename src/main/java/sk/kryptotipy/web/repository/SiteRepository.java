@@ -182,6 +182,8 @@ public class SiteRepository {
                     result.add(u.toString() + "&lang=NL");
                     result.add(u.toString() + "&lang=HU");
                     result.add(u.toString() + "&lang=PL");
+                } else if (i == 0) {
+                    u.append("label=" + categories.get(i) + "&");
                 } else {
                     u.append("label=" + categories.get(i));
                     result.add(u.toString() + "&lang=SK&lang=CZ");
