@@ -12,9 +12,7 @@ public class TestCanonical {
     public void testPostAll() {
         UrlComponent urlComponent = new UrlComponent();
         String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://kryptotipy.sk/posts/all",
-                Arrays.asList(),
-                Arrays.asList()
+                "https://kryptotipy.sk/posts/all"
         );
         Assert.assertEquals("https://kryptotipy.sk/posts/all", canonical);
     }
@@ -23,9 +21,7 @@ public class TestCanonical {
     public void testNews() {
         UrlComponent urlComponent = new UrlComponent();
         String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://kryptotipy.sk/news",
-                Arrays.asList(),
-                Arrays.asList()
+                "https://kryptotipy.sk/news"
         );
         Assert.assertEquals("https://kryptotipy.sk/posts/all", canonical);
     }
@@ -34,56 +30,36 @@ public class TestCanonical {
     public void testOneLangOneLabelUrl() {
         UrlComponent urlComponent = new UrlComponent();
         String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://kryptotipy.sk/news?lang=US&label=kusama",
-                Arrays.asList("kusama"),
-                Arrays.asList("US")
+                "https://kryptotipy.sk/news?lang=US&label=kusama"
         );
-        Assert.assertEquals("https://kryptotipy.sk/posts/kusama", canonical);
+        Assert.assertEquals("https://kryptotipy.sk/posts/kusama_l_us", canonical);
     }
 
     @Test
     public void testMoreLangOneLabelUrl() {
         UrlComponent urlComponent = new UrlComponent();
         String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://kryptotipy.sk/news?lang=US&lang=SK&label=kusama",
-                Arrays.asList("kusama"),
-                Arrays.asList("US", "SK")
+                "https://kryptotipy.sk/news?label=kusama&lang=US&lang=SK"
         );
-        Assert.assertEquals("https://kryptotipy.sk/posts/kusama", canonical);
+        Assert.assertEquals("https://kryptotipy.sk/posts/kusama_l_us_sk", canonical);
     }
 
     @Test
     public void testLabelAltcoin() {
         UrlComponent urlComponent = new UrlComponent();
         String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://localhost:8443/news?label=altcoin",
-                Arrays.asList("altcoin"),
-                Arrays.asList()
+                "https://localhost:8443/news?label=altcoin"
         );
         Assert.assertEquals("https://localhost:8443/posts/altcoin", canonical);
-    }
-
-
-    @Test
-    public void testLabel() {
-        UrlComponent urlComponent = new UrlComponent();
-        String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://localhost:8443/news?label=altcoin&label=kusama&lang=SK&lang=US",
-                Arrays.asList("altcoin", "kusama"),
-                Arrays.asList("SK", "US")
-        );
-        Assert.assertEquals("https://localhost:8443/news?label=altcoin&label=kusama&lang=SK&lang=US", canonical);
     }
 
     @Test
     public void testLabels() {
         UrlComponent urlComponent = new UrlComponent();
         String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://sk.localhost:8443/news?label=altcoin&label=kusama&lang=SK&lang=US",
-                Arrays.asList("altcoin", "kusama"),
-                Arrays.asList("SK", "US")
+                "https://sk.localhost:8443/news?label=altcoin&label=kusama&lang=SK&lang=US"
         );
-        Assert.assertEquals("https://sk.localhost:8443/news?label=altcoin&label=kusama&lang=SK&lang=US", canonical);
+        Assert.assertEquals("https://sk.localhost:8443/posts/altcoin_kusama_l_sk_us", canonical);
     }
     //
 
@@ -91,9 +67,7 @@ public class TestCanonical {
     public void testLabelsNews() {
         UrlComponent urlComponent = new UrlComponent();
         String canonical = urlComponent.mapSiteUrlForCanonical(
-                "https://sk.localhost:8443/news",
-                Arrays.asList(),
-                Arrays.asList()
+                "https://sk.localhost:8443/news"
         );
         Assert.assertEquals("https://sk.localhost:8443/posts/all", canonical);
     }
