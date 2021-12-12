@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class SiteRepository {
@@ -165,7 +166,7 @@ public class SiteRepository {
                 "monero", "mining", "nft", "metaverse",
                 "play-to-earn",
                 "axie-infinity", "ethereum", "litecoin", "neo", "polkadot", "polygon", "sandbox",
-                "solana", "cardano", "dogecoin", "shiba-inu"
+                "solana", "cardano", "dogecoin", "shiba-inu", "cosmos"
         );
         for (var category : categories) {
             var u = new StringBuilder(url);
@@ -182,8 +183,6 @@ public class SiteRepository {
                     result.add(u.toString() + "&lang=NL");
                     result.add(u.toString() + "&lang=HU");
                     result.add(u.toString() + "&lang=PL");
-                } else if (i == 0) {
-                    u.append("label=" + categories.get(i) + "&");
                 } else {
                     u.append("label=" + categories.get(i));
                     result.add(u.toString() + "&lang=SK&lang=CZ");
@@ -197,6 +196,13 @@ public class SiteRepository {
                 }
             }
         }
-        return result;
+
+        return result.stream()
+                .filter(x -> x.split("label").length > 2)
+                .collect(Collectors.toList());
+    }
+
+    public static void main(String[] args) {
+        new SiteRepository().createNewsCombinations().stream().forEach(System.out::println);
     }
 }
