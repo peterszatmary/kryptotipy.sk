@@ -1,5 +1,6 @@
 package sk.kryptotipy.web.service;
 
+import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,6 @@ public class SitemapService {
         var sitesByLang = siteRepository.getSites().stream()
                 .filter(site -> site.getLoc().contains(sitemapLang + ".kryptotipy.sk"))
                 .collect(Collectors.toList());
-
         sitemap.setUrls(sitesByLang);
 
         var jaxbContext = JAXBContext.newInstance(Sitemap.class);
@@ -35,6 +35,17 @@ public class SitemapService {
 
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(sitemap, sw);
+
+
+//        var mapper = new NamespacePrefixMapper() {
+//            public String getPreferredPrefix(String namespaceUri, String suggestion, boolean requirePrefix) {
+//                if ("http://namespace".equals(namespaceUri) && !requirePrefix)
+//                    return "";
+//                return "ns";
+//            }
+//        };
+//        jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", mapper);
+
         return sw.toString();
     }
 }
