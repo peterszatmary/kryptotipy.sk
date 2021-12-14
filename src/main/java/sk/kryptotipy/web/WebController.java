@@ -2,9 +2,14 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.component.UrlComponent;
@@ -296,30 +301,7 @@ public class WebController {
         return "ads.txt";
     }
 
-    @GetMapping(
-            value = "/sitemap.xml",
-            produces = { "application/xml", "text/xml" }
-            )
-    @ResponseBody
-    public void getSitemap(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var siteMapLang = resolvedLocale.getLanguage().toLowerCase();
-        if (siteMapLang.equalsIgnoreCase("us")) {
-            siteMapLang = "en";
-        }
-        if (siteMapLang.equalsIgnoreCase("sk")) {
-            siteMapLang = "www";
-        }
-
-        log.info("Locale was found={}, sitemap for lang {} rendered", resolvedLocale, siteMapLang);
-
-		response.addHeader("content-type", "application/xml; charset=utf-8");
-		response.setStatus(200);
-
-        var out = response.getWriter();
-		out.println(sitemapService.create(siteMapLang));
-    }
 
 
     @GetMapping("/article/{postTitle}")
@@ -425,6 +407,74 @@ public class WebController {
             return "redirect:/error";
         }
     }
+
+    //way how to downloaad files
+//    @GetMapping("/sitemap.xml")
+//    public void sitemap(HttpServletResponse res) throws Exception {
+//
+//
+//        var resolver = new SpringResourceTemplateResolver();
+//        resolver.setApplicationContext(new AnnotationConfigApplicationContext());
+//        resolver.setPrefix("classpath:/templates/");
+//        resolver.setSuffix(".xml");
+//        resolver.setCharacterEncoding("UTF-8");
+//        resolver.setTemplateMode(TemplateMode.XML);
+//
+//        var engine = new SpringTemplateEngine();
+//        engine.setTemplateResolver(resolver);
+//
+//        var ctx = new Context();
+//        ctx.setVariable("notes", Arrays.asList("one note", "two note"));
+//        var xml = engine.process("sitemap", ctx);
+//
+//        res.setHeader("Content-Disposition", "attachment; filename=sitemap.xml");
+//        res.setContentType("application/xml");
+//        var writer = res.getWriter();
+//        writer.print(xml);
+//        writer.close();
+//    }
+
+    @GetMapping(
+            value = "/sitemap.xml",
+            produces = { "application/xml", "text/xml" }
+    )
+    @ResponseBody
+    public void getSitemap(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+        var siteMapLang = resolvedLocale.getLanguage().toLowerCase();
+        if (siteMapLang.equalsIgnoreCase("us")) {
+            siteMapLang = "en";
+        }
+        if (siteMapLang.equalsIgnoreCase("sk")) {
+            siteMapLang = "www";
+        }
+
+        log.info("Locale was found={}, sitemap for lang {} rendered", resolvedLocale, siteMapLang);
+
+        response.addHeader("content-type", "application/xml; charset=utf-8");
+        response.setStatus(200);
+
+        var out = response.getWriter();
+        out.println(sitemapService.create(siteMapLang));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private String getBtcPrice() {

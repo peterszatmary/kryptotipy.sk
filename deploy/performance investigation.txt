@@ -1,0 +1,38 @@
+----------------------------------
+
+PERFORMANCE TROUBLESHOOTING
+
+----------------------------------
+
+13.12.2021 ->>>>>>>>>>
+
+- I was trying  mysqlcheck
+
+- multi threading to one thread extraction
+mysqlcheck --all-databases -u root -p -o
+
+- it helped
+- but in few days problems came back
+- I restarted server but mysql was slow
+- repair again and it helped!!!
+- now I am trying again I deleted thread pools from post-extractor (maybe the problem)
+
+# spring.datasource.hikari.minimum-idle= 11
+# spring.datasource.hikari.maximum-pool-size= 13
+
+- will see in few days today is (13.12) for sure the issue is database but what causes databases running into troubles?
+
+- mentioned conf
+- low CPU or RAM ?
+
+
+there is lot of data but database is able to work relatively fine but after few days it is horrible.
+
+---------
+QUICK FIX
+---------
+- restart server
+- mysqlcheck --all-databases -u root -p -o
+
+
+IT SEEMS THAT I NEED NEW  DATABASE
