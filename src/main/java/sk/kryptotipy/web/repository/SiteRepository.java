@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import sk.kryptotipy.web.data.Sitemap;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,23 +63,25 @@ public class SiteRepository {
                 "posts-by-i18n/SE"
         ));
 
-        var newsCombinations = createNewsCombinations();
+//        var newsCombinations = createNewsCombinations();
 
-        for (var x : newsCombinations) {
-            if (x.contains("_l_sk_cz")) {
-                sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("_l_hu")) {
-                sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("_l_pl")) {
-                sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("_l_nl")) {
-                sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("_l_de")) {
-                sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + x, 0.8, date));
-            } else if (x.contains("_l_us")) {
-                sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + x, 0.8, date));
-            }
-        }
+        //TODO
+//
+//        for (var x : newsCombinations) {
+//            if (x.contains("_l_sk_cz")) {
+//                sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + x, 0.8, date));
+//            } else if (x.contains("_l_hu")) {
+//                sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + x, 0.8, date));
+//            } else if (x.contains("_l_pl")) {
+//                sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + x, 0.8, date));
+//            } else if (x.contains("_l_nl")) {
+//                sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + x, 0.8, date));
+//            } else if (x.contains("_l_de")) {
+//                sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + x, 0.8, date));
+//            } else if (x.contains("_l_us")) {
+//                sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + x, 0.8, date));
+//            }
+//        }
 
         _08Sites.stream().
                 forEach(site -> {
@@ -89,6 +92,13 @@ public class SiteRepository {
                     sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.8, date));
                     sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.8, date));
         });
+
+        _08Sites.addAll(createNewsCombinationsOf5("www", date));
+        _08Sites.addAll(createNewsCombinationsOf5("en", date));
+        _08Sites.addAll(createNewsCombinationsOf5("de", date));
+        _08Sites.addAll(createNewsCombinationsOf5("pl", date));
+        _08Sites.addAll(createNewsCombinationsOf5("nl", date));
+        _08Sites.addAll(createNewsCombinationsOf5("hu", date));
     }
 
 
@@ -154,6 +164,9 @@ public class SiteRepository {
                 });
     }
 
+
+    @Deprecated
+    @SuppressWarnings("It seems that this is too much for Google. Less is more.")
     private List<String> createNewsCombinations() {
         var result = new ArrayList<String>();
         var url = "posts/";
@@ -173,7 +186,6 @@ public class SiteRepository {
                 "solana", "shiba-inu", "stellar","sandbox",
                 "tether", "terra", "tron", "theta", "tezos",
                 "ecb", "fed", "nbs", "wallets", "halving", "exchange", "exodus", "dag", "coinmarketcap"
-                //TODO more later
         );
         for (var category : categories) {
             var u = new StringBuilder(url);
@@ -206,6 +218,32 @@ public class SiteRepository {
 
         return result.stream()
                 .filter(x -> x.split("_l_")[0].contains("_"))
+                .collect(Collectors.toList());
+    }
+
+
+
+    private List<Sitemap.URL> createNewsCombinationsOf5(String lang, Date date) {
+
+        //TODO later maybe other usefull combinations
+        var _5 = Arrays.asList(
+                "avalanche_algorand_axie-infinity_altcoin_airdrops",
+                "bitcoin_binance_cryptocurrency_cosmos_cardano",
+                "chainlink_decentraland_dogecoin_dai_dash",
+                "diem_ethereum_eos_monero_mining",
+                "metaverse_nft_play-to-earn_blockchain",
+                "polkadot_polygon_iota_kusama_helium",
+                "loopring_ontology_fantom_filecoin_ftx",
+                "flow_hedera_litecoin_neo_ripple",
+                "solana_shiba-inu_stellar_sandbox_tether",
+                "terra_tron_theta_tezos_ecb",
+                "fed_nbs_wallets_halving_exchange",
+                "exodus_dag_uniswap",
+                "bittrex_bitfinex_coinmarketcap_coinbase"
+        );
+
+        return _5.stream()
+                .map(x -> new Sitemap.URL("https://" + lang + ".kryptotipy.sk/" + x, 0.8, date))
                 .collect(Collectors.toList());
     }
 

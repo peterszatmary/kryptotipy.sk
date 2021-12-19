@@ -36,3 +36,8 @@ QUICK FIX
 
 
 IT SEEMS THAT I NEED NEW  DATABASE
+
+- overloaded cpu
+
+-restarts
+- 17.12.2021 00:00
