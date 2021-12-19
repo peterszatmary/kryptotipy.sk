@@ -510,7 +510,7 @@ public class WebController {
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
 
-        if (langs.size() == 1) {
+        if (langs.size() == 1 ) {//TODO think more && labels.size() > 5 PL has one lang thats why no 5 but all. but fix other site too all->5
             customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
             label_render = customPageTitle.split(" ")[0];
         } else if (labels.size() == 1) {

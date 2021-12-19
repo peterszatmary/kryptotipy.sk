@@ -243,11 +243,25 @@ public class SiteRepository {
         );
 
         return _5.stream()
-                .map(x -> new Sitemap.URL("https://" + lang + ".kryptotipy.sk/posts/" + x, 0.8, date))
+                .map(x -> new Sitemap.URL("https://" + lang + ".kryptotipy.sk/posts/" + x + "_l_" + langToL(lang) , 0.8, date))
                 .collect(Collectors.toList());
     }
 
+    private String langToL(String lang) {
+        switch(lang) {
+            case "en" : return "us_gb_ca";
+            case "de" : return "de_ch";
+
+            case "nl" : return "nl";
+            case "pl" : return "pl";
+            case "es" : return "es";
+            case "se" : return "se";
+            case "hu" : return "hu";
+            default : return "sk_cz";
+        }
+    }
+
 //    public static void main(String[] args) {
-//        new SiteRepository().createNewsCombinations().stream().forEach(System.out::println);
+//        System.out.println(new SiteRepository().langToL("hu"));
 //    }
 }
