@@ -67,3 +67,14 @@ IMPORTANT NOTES:
 https://certbot.eff.org/lets-encrypt/debianbuster-other
 
 
+# Lets encrypto problems
+
+https://community.letsencrypt.org/t/could-not-obtain-directory-curl-error-6-could-not-resolve-host-acme-v02-api-letsencrypt-org-unknown-error/131147
+
+curl -v https://acme-v02.api.letsencrypt.org/directory
+
+curl: (6) Could not resolve host: acme-v02.api.letsencrypt.org
+
+
+
+
