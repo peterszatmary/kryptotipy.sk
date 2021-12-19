@@ -93,12 +93,12 @@ public class SiteRepository {
                     sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.8, date));
         });
 
-        _08Sites.addAll(createNewsCombinationsOf5("www", date));
-        _08Sites.addAll(createNewsCombinationsOf5("en", date));
-        _08Sites.addAll(createNewsCombinationsOf5("de", date));
-        _08Sites.addAll(createNewsCombinationsOf5("pl", date));
-        _08Sites.addAll(createNewsCombinationsOf5("nl", date));
-        _08Sites.addAll(createNewsCombinationsOf5("hu", date));
+        sites.addAll(createNewsCombinationsOf5("www", date));
+        sites.addAll(createNewsCombinationsOf5("en", date));
+        sites.addAll(createNewsCombinationsOf5("de", date));
+        sites.addAll(createNewsCombinationsOf5("pl", date));
+        sites.addAll(createNewsCombinationsOf5("nl", date));
+        sites.addAll(createNewsCombinationsOf5("hu", date));
     }
 
 
@@ -243,7 +243,7 @@ public class SiteRepository {
         );
 
         return _5.stream()
-                .map(x -> new Sitemap.URL("https://" + lang + ".kryptotipy.sk/" + x, 0.8, date))
+                .map(x -> new Sitemap.URL("https://" + lang + ".kryptotipy.sk/posts/" + x, 0.8, date))
                 .collect(Collectors.toList());
     }
 
