@@ -22,7 +22,7 @@ public class PostService implements PostServiceApi {
     private final DonateRepository donateRepository;
 
     @Override
-    public PostWithLabel getPostsById(Long id) {
+    public Post getPostsById(Long id) {
         return postLabelRepository.getPostById(id);
     }
 

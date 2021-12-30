@@ -90,15 +90,13 @@ public class QueryFactory {
     }
 
 
-    //TODO v novej verzii uz nebude vobec treba
-//    @Deprecated(since = "used before BIG OPTIMALIZATION")
-//    public static String getLabelsByPostId() {
-//        return new StringBuilder()
-//                .append("SELECT l.id, l.name ")
-//                .append("FROM label l JOIN post_index pl ON pl.label_id = l.id ")
-//                .append("WHERE pl.post_id = ? ORDER BY pl.count DESC LIMIT 4") // LIMIT because i dont want to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
-//                .toString();
-//    }
+    public static String getLabelsByPostId() {
+        return new StringBuilder()
+                .append("SELECT l.id, l.name ")
+                .append("FROM label l JOIN post_index pl ON pl.label_id = l.id ")
+                .append("WHERE pl.post_id = ? ORDER BY pl.count DESC LIMIT 4") // LIMIT because i dont want to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
+                .toString();
+    }
 
     public static String getAllLabels() {
         return new StringBuilder()

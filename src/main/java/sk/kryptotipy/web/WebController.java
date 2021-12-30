@@ -385,7 +385,7 @@ public class WebController {
             model.put("one_post", post);
             pageData.set(model, resolvedLocale.getLanguage(), post.getTitle(), rbFromUrl.getString("default.descr"), request);
 
-            var pageImage = "/assets/post-images/" + post.getLabelName1().toLowerCase() + "/images_1.jpg";
+            var pageImage = "/assets/post-images/" + post.getLabels().get(0).getName().toLowerCase() + "/images_1.jpg";
 
             model.put("page_image", pageImage);
 

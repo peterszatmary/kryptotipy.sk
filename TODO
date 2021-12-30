@@ -1,3 +1,7 @@
 - canonical
   - maybe not possible when /news but actually already f.e. czech news (not present in url). but there
   are just few 9 not working canonicals from all.
+
+
+- bugs
+ - java.io.IOException: Duplicate accept detected. This is a known OS bug. Please consider reporting that you are affected: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1924298

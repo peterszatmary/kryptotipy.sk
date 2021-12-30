@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PostServiceApi {
     List<PostWithLabel> getNewestPosts(List<String> langs);
-    PostWithLabel getPostsById(Long id);
+    Post getPostsById(Long id);
     boolean updatePostViews(String url, Integer views);
     List<Donate> getAllDonates();
 }

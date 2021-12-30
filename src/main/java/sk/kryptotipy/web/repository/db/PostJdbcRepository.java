@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import sk.kryptotipy.web.data.db.Post;
 import sk.kryptotipy.web.data.db.PostWithLabel;
+import sk.kryptotipy.web.data.db.mappers.PostMapper;
 import sk.kryptotipy.web.data.db.mappers.PostWithLabelMapper;
 import sk.kryptotipy.web.data.db.mappers.QueryFactory;
 
@@ -45,10 +46,10 @@ public class PostJdbcRepository {
                 clicks, url + "%") > 0;
     }
 
-    public PostWithLabel getPostById(Long id) {
-        List<PostWithLabel> posts = new ArrayList<>();
+    public Post getPostById(Long id) {
+        List<Post> posts = new ArrayList<>();
         try {
-            posts  = jdbcTemplate.query(QueryFactory.postById(), new PostWithLabelMapper(), id);
+            posts  = jdbcTemplate.query(QueryFactory.postById(), new PostMapper(jdbcTemplate), id);
 
         } catch(Exception e){
             e.printStackTrace();
