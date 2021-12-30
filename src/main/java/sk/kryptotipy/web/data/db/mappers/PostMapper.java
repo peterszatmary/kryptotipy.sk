@@ -40,7 +40,7 @@ public class PostMapper implements RowMapper<Post> {
         post.setImgSrc(rs.getString("p.img_src"));
         post.setViews(rs.getInt("p.clicks"));
         post.setLikes(rs.getInt("p.likes"));
-        post.setBirthday(LocalDate.parse(rs.getString("p.birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        post.setBirthday(LocalDate.parse(rs.getString("p.birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
         //post.setLabels(new HashSet<>(Arrays.asList(label)));
 
         post.setLabels(selectLabels(rs.getLong("p.id")));

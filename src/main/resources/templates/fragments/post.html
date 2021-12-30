@@ -12,7 +12,7 @@
                 </a>
 
                 <a th:href="${post.getPostViewUrl()}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;" rel="nofollow"></a>
-                <span class="post-labels">
+                <div class="post-labels">
                       <th:block th:if="${post.labelName1 != null and post.labelRelevance1 != null}">
                          <a th:href="@{${'/posts/' + post.labelName1}}"
                             th:text="#{@{'a.label.' + ${post.labelName1}}}" style="margin-right:5px;"></a>
@@ -29,7 +29,7 @@
                          <a th:href="@{${'/posts/' + post.labelName4}}"
                             th:text="#{@{'a.label.' + ${post.labelName4}}}" style="margin-right:5px;"></a>
                       </th:block>
-                </span>
+                </div>
                 <div class="post-metadata">
                     <a th:href="@{${'/news?lang=' + post.lang}}">
                         <img th:src="@{${'/assets/img/flags/' + post.lang + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"

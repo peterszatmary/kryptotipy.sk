@@ -65,7 +65,7 @@ public class Post {
     private List<Label> labels;
 
     public String getPostViewUrl() {
-        String hashed = "p" + (this.id + 217) + "sz";
+        var hashed = "p" + (this.id + 217) + "sz";
         return "/one-post-frame/" + hashed;
     }
 
