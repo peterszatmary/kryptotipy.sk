@@ -2,23 +2,21 @@ package sk.kryptotipy.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.templatemode.TemplateMode;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.component.UrlComponent;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
 import sk.kryptotipy.web.data.db.Post;
+import sk.kryptotipy.web.data.db.PostWithLabel;
 import sk.kryptotipy.web.repository.ArticleRepository;
+import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.repository.db.LabelRepository;
 import sk.kryptotipy.web.repository.db.PostJdbcRepository;
-import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.service.PriceService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
@@ -107,7 +105,7 @@ public class WebController {
 
         List<String> langs = new ArrayList<>();
         List<String> labels = new ArrayList<>();
-        List<Post> posts;
+        List<PostWithLabel> posts;
         final var from = 0L;
         final var to = appProperties.getPageSize();
 
@@ -387,7 +385,7 @@ public class WebController {
             model.put("one_post", post);
             pageData.set(model, resolvedLocale.getLanguage(), post.getTitle(), rbFromUrl.getString("default.descr"), request);
 
-            var pageImage = "/assets/post-images/" + post.getLabels().get(0).getName().toLowerCase() + "/images_1.jpg";
+            var pageImage = "/assets/post-images/" + post.getLabelName1().toLowerCase() + "/images_1.jpg";
 
             model.put("page_image", pageImage);
 

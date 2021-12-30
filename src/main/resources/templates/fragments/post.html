@@ -13,12 +13,26 @@
 
                 <a th:href="${post.getPostViewUrl()}" th:utext="${post.titleRender}" target="_blank" class="post-title" th:title="${post.title}" style="text-decoration: none;" rel="nofollow"></a>
                 <span class="post-labels">
-                      <a th:each="label : ${post.labels}" th:href="@{${'/posts/' + label.name}}"
-                         th:text="#{@{'a.label.' + ${label.name}}}" style="margin-right:5px;"></a>
+                      <th:block th:if="${post.labelName1 != null and post.labelRelevance1 != null}">
+                         <a th:href="@{${'/posts/' + post.labelName1}}"
+                            th:text="#{@{'a.label.' + ${post.labelName1}}}" style="margin-right:5px;"></a>
+                      </th:block>
+                      <th:block th:if="${post.labelName2 != null and post.labelRelevance2 != null}">
+                         <a th:href="@{${'/posts/' + post.labelName2}}"
+                            th:text="#{@{'a.label.' + ${post.labelName2}}}" style="margin-right:5px;"></a>
+                      </th:block>
+                      <th:block th:if="${post.labelName3 != null and post.labelRelevance3 != null}">
+                         <a th:href="@{${'/posts/' + post.labelName3}}"
+                            th:text="#{@{'a.label.' + ${post.labelName3}}}" style="margin-right:5px;"></a>
+                      </th:block>
+                      <th:block th:if="${post.labelName4 != null and post.labelRelevance4 != null}">
+                         <a th:href="@{${'/posts/' + post.labelName4}}"
+                            th:text="#{@{'a.label.' + ${post.labelName4}}}" style="margin-right:5px;"></a>
+                      </th:block>
                 </span>
                 <div class="post-metadata">
-                    <a th:href="@{${'/news?lang=' + post.i18n}}">
-                        <img th:src="@{${'/assets/img/flags/' + post.i18n + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"
+                    <a th:href="@{${'/news?lang=' + post.lang}}">
+                        <img th:src="@{${'/assets/img/flags/' + post.lang + '.png'}}" width="20" height="35" style="float: left;padding-right: 10px;"
                                  th:title="#{${post.getI18nFlagRender()}}" th:alt="#{${post.getI18nFlagRender()}}"/>
                     </a>
                     <div>
