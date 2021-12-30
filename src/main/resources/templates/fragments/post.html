@@ -15,15 +15,15 @@
                 <div class="post-labels">
                       <th:block th:if="${post.labelName1 != null and post.labelRelevance1 != null}">
                          <a th:href="@{${'/posts/' + post.labelName1}}"
-                            th:text="#{@{'a.label.' + ${post.labelName1}}}" style="margin-right:5px;"></a>
+                            th:text="#{@{'a.label.' + ${post.labelName1}}}" style="margin-right:2px;"></a>
                       </th:block>
                       <th:block th:if="${post.labelName2 != null and post.labelRelevance2 != null}">
                          <a th:href="@{${'/posts/' + post.labelName2}}"
-                            th:text="#{@{'a.label.' + ${post.labelName2}}}" style="margin-right:5px;"></a>
+                            th:text="#{@{'a.label.' + ${post.labelName2}}}" style="margin-right:2px;"></a>
                       </th:block>
                       <th:block th:if="${post.labelName3 != null and post.labelRelevance3 != null}">
                          <a th:href="@{${'/posts/' + post.labelName3}}"
-                            th:text="#{@{'a.label.' + ${post.labelName3}}}" style="margin-right:5px;"></a>
+                            th:text="#{@{'a.label.' + ${post.labelName3}}}" style="margin-right:2px;"></a>
                       </th:block>
                       <th:block th:if="${post.labelName4 != null and post.labelRelevance4 != null}">
                          <a th:href="@{${'/posts/' + post.labelName4}}"
