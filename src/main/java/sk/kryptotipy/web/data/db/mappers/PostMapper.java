@@ -32,6 +32,7 @@ public class PostMapper implements RowMapper<Post> {
         post.setId(rs.getLong("p.id"));
         post.setUrl(rs.getString("p.url"));
         post.setTitle(rs.getString("p.title"));
+        post.setContent(getContentView(rs.getString("p.content")));
         post.setI18n(rs.getString("p.i18n"));
         this.setRenderPostTitle(post);
 
@@ -47,6 +48,19 @@ public class PostMapper implements RowMapper<Post> {
         //log.info("after labels sql query");
 
         return post;
+    }
+
+    private String getContentView(String content) {
+        // budeme zobrazovat 25% clanku
+        if (content == null || "".equals(content)) {
+            return "";
+        } else if (content.length() >= 3200) {
+            return content.substring(0, 800) + "...";
+        } else if (content.length() < 3200)  {
+            return content.substring(0, content.length() / 4) + "...";
+        } else {
+            return "";
+        }
     }
 
 

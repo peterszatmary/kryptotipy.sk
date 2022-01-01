@@ -44,10 +44,6 @@ public class PostWithLabel {
     @Column(name = "post_title_render")
     private String titleRender;
 
-//    @Lob
-//    @Column(name = "post_content")
-//    private String content; //TODO i hope no content is needed
-
     @DateTimeFormat(iso = DATE)
     @Column(name = "post_birthday")
     private LocalDate birthday;
@@ -74,7 +70,7 @@ public class PostWithLabel {
     @Column(name = "post_original_image")
     private String imgSrcOrigin;
 
-    @Column(name = "source_render")
+    @Column(name = "post_source_render")
     private String sourceRender;
 
     @Column(name = "post_type")
@@ -107,11 +103,13 @@ public class PostWithLabel {
     @Column(name = "label_relevance_4")
     private Integer labelRelevance4;
 
-
+//delete , kryptotipy_url instead
+    //TODO asi problem kvoli spatnej kompatibilite musim v tom urobit poriadok
     public String getPostViewUrl() {
         var hashed = "p" + (this.postId + 217) + "sz";
-        return "/one-post-frame/" + hashed;
+        return "/post-view/" + hashed;
     }
+
 
     public String getPostRenderShort() {
         if (this.sourceRender == null || this.sourceRender.isEmpty()) {
@@ -163,7 +161,4 @@ public class PostWithLabel {
         );
         return redirect.contains(sourceRender);
     }
-
-
-
 }

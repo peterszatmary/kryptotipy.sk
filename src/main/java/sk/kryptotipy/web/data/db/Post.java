@@ -58,6 +58,9 @@ public class Post {
     @Column(name = "source_render")
     private String sourceRender;
 
+    //     @Column(name = "post_source_approved")
+    //    private String approved;
+
     //    @ManyToMany
 //    @JoinTable(
 //            joinColumns = @JoinColumn(name = "post_id"),
@@ -66,7 +69,7 @@ public class Post {
 
     public String getPostViewUrl() {
         var hashed = "p" + (this.id + 217) + "sz";
-        return "/one-post-frame/" + hashed;
+        return "/post-view/" + hashed;
     }
 
     public String getPostRenderShort() {

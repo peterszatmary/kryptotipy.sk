@@ -115,7 +115,7 @@ public class QueryFactory {
     //TODO do not tuch you need it in new version
     public static String postById() {
         var query = new StringBuilder()
-                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
+                .append("SELECT p.id, p.url, p.title, p.content, p.source, p.birthday, p.img_src, p.source_render," +
                         " p.i18n, p.clicks, p.likes ")
                 .append("FROM post p ")
                 .append("WHERE p.id = ? ")

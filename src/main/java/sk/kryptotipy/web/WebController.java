@@ -11,12 +11,13 @@ import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.api.PostServiceApi;
 import sk.kryptotipy.web.component.UrlComponent;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
-import sk.kryptotipy.web.data.db.Post;
+
 import sk.kryptotipy.web.data.db.PostWithLabel;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.repository.ServiceRepository;
 import sk.kryptotipy.web.repository.db.LabelRepository;
 import sk.kryptotipy.web.repository.db.PostJdbcRepository;
+import sk.kryptotipy.web.repository.db.PostWithLabelRepository;
 import sk.kryptotipy.web.service.PriceService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
@@ -45,6 +46,7 @@ public class WebController {
     private final PostJdbcRepository postJdbcRepository;
     private final UrlComponent urlComponent;
     private final SitemapService sitemapService;
+    private final PostWithLabelRepository postWithLabelRepository;
 
 
     @GetMapping("/")
@@ -359,41 +361,99 @@ public class WebController {
         }
     }
 
-    @GetMapping("/one-post-frame/{hashed_id}")
-    public String onePostFrame(
+//    @GetMapping("/one-post-frame/{hashed_id}")
+//    public String onePostFrame(
+//            Map<String, Object> model,
+//            HttpServletRequest request,
+//            HttpServletResponse response,
+//            @PathVariable("hashed_id") String hashedId
+//       ) {
+//        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
+//        var rbFromUrl = utilityService.getResourceBundle(
+//                resolvedLocale
+//        );
+//        makeLinkActive(model, "posts");
+//        try {
+//            model.put("site", "one-post-frame");
+//
+//            var id = utilityService.decodeKryptotipyHash(hashedId);
+//
+//            var post = this.postService.getPostsById(id);
+//            var postWithLabel = postWithLabelRepository.findByPostId(id);
+//
+//            post.setViews(post.getViews() + 1);
+//            postWithLabel.setViews(postWithLabel.getViews() + 1);
+//
+//            postService.updatePostViews(post.getUrl(), post.getViews());
+//
+//            log.info("Post hashed id = {}, id = {}", hashedId, id);
+//            log.info("New view for post = {}, views = {}", postWithLabel.getUrl(), postWithLabel.getViews());
+//
+//            model.put("one_post", post);
+//            pageData.set(model, resolvedLocale.getLanguage(), postWithLabel.getTitle(), rbFromUrl.getString("default.descr"), request);
+//
+//            var pageImage = "/assets/post-images/" + postWithLabel.getLabelName1().toLowerCase() + "/images_1.jpg";
+//
+//            model.put("page_image", pageImage);
+//
+//            if (postWithLabel.useRedirectToSourceSite()) {
+//                response.setHeader("Location", postWithLabel.getUrl());
+//                response.setStatus(302);
+//            }
+//            return "one-post";
+//
+//        } catch (Exception ex) {
+//            log.warn("one page frame : hashedId={}",
+//                    hashedId,
+//                    ex.getMessage()
+//            );
+//            log.warn(ex.getCause() + "" + ex.getStackTrace());
+//            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
+//            return "redirect:/error";
+//        }
+//    }
+
+
+
+    @GetMapping("/post-view/{hashed_id}")
+    public String postView(
             Map<String, Object> model,
             HttpServletRequest request,
             HttpServletResponse response,
             @PathVariable("hashed_id") String hashedId
-       ) {
+    ) {
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(
                 resolvedLocale
         );
         makeLinkActive(model, "posts");
         try {
-            model.put("site", "one-post-frame");
-
+            model.put("site", "post-view");
+            model.put("content_path", "fragments/content/post-view");
+//
             var id = utilityService.decodeKryptotipyHash(hashedId);
+//
             var post = this.postService.getPostsById(id);
-
+            var postWithLabel = postWithLabelRepository.findByPostId(id);
+//
             post.setViews(post.getViews() + 1);
+            postWithLabel.setViews(postWithLabel.getViews() + 1);
+//
             postService.updatePostViews(post.getUrl(), post.getViews());
+
             log.info("Post hashed id = {}, id = {}", hashedId, id);
-            log.info("New view for post = {}, views = {}", post.getUrl(), post.getViews());
+            log.info("New view for post = {}, views = {}", postWithLabel.getUrl(), postWithLabel.getViews());
 
             model.put("one_post", post);
-            pageData.set(model, resolvedLocale.getLanguage(), post.getTitle(), rbFromUrl.getString("default.descr"), request);
-
-            var pageImage = "/assets/post-images/" + post.getLabels().get(0).getName().toLowerCase() + "/images_1.jpg";
-
+            model.put("one_post_with_label", postWithLabel);
+            pageData.set(model, resolvedLocale.getLanguage(), postWithLabel.getTitle(), rbFromUrl.getString("default.descr"), request);
+//
+            var pageImage = "/assets/post-images/" + postWithLabel.getLabelName1().toLowerCase() + "/images_1.jpg";
+//
             model.put("page_image", pageImage);
+            model.put("page_description", post.getContent().substring(0,150)+"...");
 
-            if (post.useRedirectToSourceSite()) {
-                response.setHeader("Location", post.getUrl());
-                response.setStatus(302);
-            }
-            return "one-post";
+            return "non-index";
 
         } catch (Exception ex) {
             log.warn("one page frame : hashedId={}",

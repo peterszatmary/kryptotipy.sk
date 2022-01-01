@@ -9,6 +9,7 @@ import sk.kryptotipy.web.data.db.Post;
 import sk.kryptotipy.web.data.db.PostWithLabel;
 import sk.kryptotipy.web.repository.DonateRepository;
 import sk.kryptotipy.web.repository.db.PostJdbcRepository;
+import sk.kryptotipy.web.repository.db.PostWithLabelRepository;
 
 
 import java.util.*;
@@ -29,7 +30,9 @@ public class PostService implements PostServiceApi {
 
     @Override
     public boolean updatePostViews(String url, Integer views) {
-        return postLabelRepository.updatePostClicks(url, views);
+        var postTable = postLabelRepository.updatePostClicksInViewTable(url, views);
+        var view = postLabelRepository.updatePostClicks(url, views);
+        return postTable && view;
     }
 
     @Override

@@ -41,8 +41,14 @@ public class PostJdbcRepository {
     }
 
 
+    //old one, maybe one day i will use it again
     public boolean updatePostClicks(String url, Integer clicks) {
         return jdbcTemplate.update("update post set clicks = ? where url like ?",
+                clicks, url + "%") > 0;
+    }
+
+    public boolean updatePostClicksInViewTable(String url, Integer clicks) {
+        return jdbcTemplate.update("update post_with_label set post_clicks = ? where post_url like ?",
                 clicks, url + "%") > 0;
     }
 
