@@ -53,7 +53,11 @@
                 <h1 th:text="${one_post.title}"></h1>
                 <p>
                     <strong th:text="${one_post.sourceRender}"></strong>
-                    <span th:text="${#temporals.format(one_post.birthday,'dd.MM.yyyy')}"></span>
+                    <span th:text="${#temporals.format(one_post.birthday,'dd.MM.yyyy')}" style="padding-left:10px;"></span>
+                    <span style="padding-left:10px;">
+                        <i class="icon-eye-open" style="margin-right:-2px;"></i>
+                        <span th:text="${one_post.views}"></span>
+                    </span>
                 </p>
 
                 <div class="post-labels" style="padding-top:15px; padding-bottom:15px;font-size: 14px;">
@@ -83,7 +87,7 @@
                 </a>
 
 
-            </div>
+            </span>
             <div class="span4"></div>
         </div>
     </div>
