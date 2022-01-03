@@ -453,6 +453,11 @@ public class WebController {
             model.put("page_image", pageImage);
             model.put("page_description", post.getContent().substring(0,150)+"...");
 
+            if (post.useRedirectToSourceSite()) {
+                response.setHeader("Location", post.getUrl());
+                response.setStatus(302);
+            }
+
             return "non-index";
 
         } catch (Exception ex) {
