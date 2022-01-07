@@ -85,22 +85,19 @@
                             </a>
                         </div>
 
-
-                            <div style="float:right; margin-bottom:10px; margin-top:20px; margin-right:20px;">
-                                <div class="iframe_post">
-                                    <div>
-                                        <div style="font-size: 15px; margin-top: 13px;">
-                                            <span th:text="#{one.frame.you.watching}"></span> <span th:text="${one_post.sourceRender}"></span>
-                                        </div><br />
-
-
-
-                                    </div>
+                        <div style="float:right; margin-bottom:10px; margin-top:20px; margin-right:20px;">
+                            <div class="iframe_post">
+                                <div>
+                                    <div style="font-size: 15px; margin-top: 13px;">
+                                        <span th:text="#{one.frame.you.watching}"></span> <span th:text="${one_post.sourceRender}"></span>
+                                    </div><br />
                                 </div>
                             </div>
+                        </div>
                     </div>
 
-                        <div class="social-panel" style="background-color: #333; color: #f2f2f2; text-align:right; padding-top:10px; padding-bottom: 10px;">
+                    <div class="social-panel" style="background-color: #333; color: #f2f2f2; text-align:right; padding-top:10px; padding-bottom: 10px;">
+
                             <div style="float:left; padding-left: 10px;padding-top: 5px;">
                                 <i class="icon-eye-open" style="font-size:16px;padding-right:10px;">
                                     <span th:text="${one_post.views}"></span>
@@ -110,29 +107,46 @@
                                     <img th:src="@{${'/assets/img/flags/' + one_post.i18n + '.png'}}" width="50"  style="float: left;padding-right: 10px;margin-top:-6px;"
                                          th:title="#{${one_post.getI18nFlagRender()}}" th:alt="#{${one_post.getI18nFlagRender()}}"/>
                                 </a>
+                                <span style="background-color:#f2f2f2;padding:10px;padding-bottom:12px;border-radius: 25px;">
 
-                                <span th:text="#{one.frame.affiliates}"></span>
-                                <a href="https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933" target="_blank">
-                                    Trezor T
-                               </a>|
-                                <a href="https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933" target="_blank">
-                                    Trezor One
-                                </a>|
-                                <a href="https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506" target="_blank">
-                                    Ledger Nano X
-                                </a>|
-                                <a href="https://lddy.no/v0jj" target="_blank">
-                                    KeepKey
-                                </a>
+                                    <a href="https://bit.ly/3cil00w" title="Ledger Nano X" target="_blank" rel="nofollow">
+                                        <img src="/assets/img/logo/ledger.png"
+                                             height="25" width="25"
+                                             style="margin-left:10px;margin-right:10px;"
+                                             alt="Ledger Nano X" />
+                                    </a>
+
+                                    <a href="https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933" title="Trezor T" target="_blank" rel="nofollow">
+                                        <img src="/assets/img/logo/trezort.png"
+                                             height="25" width="25"
+                                             style="margin-right:10px;"
+                                             alt="Trezor T" />
+                                    </a>
+
+                                    <a href="https://lddy.no/v0jj" title="Keep Key" target="_blank" rel="nofollow">
+                                        <img src="/assets/img/logo/keepkey.png"
+                                             height="25" width="25"
+                                             style="margin-right:10px;"
+                                             alt="Keep Key" />
+                                    </a>
+
+                                    <a href="https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933" title="Trezor One" target="_blank" rel="nofollow">
+                                        <img src="/assets/img/logo/trezor-one.png"
+                                             height="25" width="25"
+                                             style="margin-right:10px;"
+                                             alt="Trezor One" />
+                                    </a>
+                                </span>
                             </div>
 
                             <div style="margin-top:0px;">
-
                                 <a class="btn btn-success" style="background-color: #94c045;" href="/news" th:text="#{one.frame.back}"></a>
-                                <a class="btn btn-light" th:href="${one_post.url}" rel="nofollow" style="margin-right:10px;"><span th:text="#{one.frame.goto}"></span> <span th:text="${one_post.sourceRender}"></span></a>
-
+                                <a class="btn btn-light" th:href="${one_post.url}" rel="nofollow" style="margin-right:10px;">
+                                    <span th:text="#{one.frame.goto}"></span> <span th:text="${one_post.sourceRender}"></span>
+                                </a>
                             </div>
-                        </div>
+
+                    </div>
                 </div>
             </div>
         </header>
