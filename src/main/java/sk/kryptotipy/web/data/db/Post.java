@@ -69,7 +69,7 @@ public class Post {
 
     public String getPostViewUrl() {
         var hashed = "p" + (this.id + 217) + "sz";
-        return "/post-view/" + hashed;
+        return "/one-post-frame/" + hashed;
     }
 
     public String getPostRenderShort() {

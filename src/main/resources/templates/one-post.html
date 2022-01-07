@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:lang="${resolved_locale}" itemscope itemtype="https://schema.org/WebSite">
-
     <!-- duplication just because noindex head -->
     <head>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182396559-1"></script>
         <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
 
-              gtag('config', 'UA-182396559-1');
-        </script>
+                  gtag('config', 'UA-182396559-1');
+            </script>
 
         <!--        <meta HTTP-EQUIV="REFRESH" th:content="@{${'0; url=https://www.kryptotipy.sk/' + site}}">-->
         <link rel="canonical" th:href="@{${base_url_without_port + site}}" itemprop="url" />
@@ -87,23 +86,31 @@
                         </div>
 
 
-                            <div style="float:right; margin-bottom:20px; margin-top:20px; margin-right:20px;">
+                            <div style="float:right; margin-bottom:10px; margin-top:20px; margin-right:20px;">
                                 <div class="iframe_post">
                                     <div>
-                                        <div style="font-size: 15px; margin-top: 3px;">
+                                        <div style="font-size: 15px; margin-top: 13px;">
                                             <span th:text="#{one.frame.you.watching}"></span> <span th:text="${one_post.sourceRender}"></span>
                                         </div><br />
 
 
-                                        <a class="btn btn-success" style="background-color: #94c045" href="/news" th:text="#{one.frame.back}"></a>
-                                        <a class="btn btn-light" th:href="${one_post.url}" rel="nofollow"><span th:text="#{one.frame.goto}"></span> <span th:text="${one_post.sourceRender}"></span></a>
+
                                     </div>
                                 </div>
                             </div>
                     </div>
 
-                        <div class="social-panel" style="background-color: #262626; color: #f2f2f2; text-align:right; padding-top:10px; padding-bottom: 10px;">
-                            <div style="float:left; padding-left: 10px;">
+                        <div class="social-panel" style="background-color: #333; color: #f2f2f2; text-align:right; padding-top:10px; padding-bottom: 10px;">
+                            <div style="float:left; padding-left: 10px;padding-top: 5px;">
+                                <i class="icon-eye-open" style="font-size:16px;padding-right:10px;">
+                                    <span th:text="${one_post.views}"></span>
+                                </i>
+
+                                <a th:href="@{${'/news?lang=' + one_post.i18n}}">
+                                    <img th:src="@{${'/assets/img/flags/' + one_post.i18n + '.png'}}" width="50"  style="float: left;padding-right: 10px;margin-top:-6px;"
+                                         th:title="#{${one_post.getI18nFlagRender()}}" th:alt="#{${one_post.getI18nFlagRender()}}"/>
+                                </a>
+
                                 <span th:text="#{one.frame.affiliates}"></span>
                                 <a href="https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933" target="_blank">
                                     Trezor T
@@ -117,22 +124,15 @@
                                 <a href="https://lddy.no/v0jj" target="_blank">
                                     KeepKey
                                 </a>
-
-
-
                             </div>
 
+                            <div style="margin-top:0px;">
 
+                                <a class="btn btn-success" style="background-color: #94c045;" href="/news" th:text="#{one.frame.back}"></a>
+                                <a class="btn btn-light" th:href="${one_post.url}" rel="nofollow" style="margin-right:10px;"><span th:text="#{one.frame.goto}"></span> <span th:text="${one_post.sourceRender}"></span></a>
 
-
-                            <i class="icon-eye-open" style="font-size:16px;">
-                                <span th:text="#{one.frame.seen.count}"></span>&nbsp;
-                                <span th:text="${one_post.views}"></span>
-                            </i>
-<!--                            <i class="icon-heart-empty" style="font-size:17px;">&nbsp;78</i>-->
-<!--                           <i class="icon-plus" style="font-size:17px;"></i>-->
+                            </div>
                         </div>
-
                 </div>
             </div>
         </header>

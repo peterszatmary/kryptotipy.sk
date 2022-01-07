@@ -107,7 +107,7 @@ public class PostWithLabel {
     //TODO asi problem kvoli spatnej kompatibilite musim v tom urobit poriadok
     public String getPostViewUrl() {
         var hashed = "p" + (this.postId + 217) + "sz";
-        return "/post-view/" + hashed;
+        return "/one-post-frame/" + hashed;
     }
 
 
