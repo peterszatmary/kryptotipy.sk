@@ -11,7 +11,7 @@
                     </article>
                 </a>
                 <i th:class="${(post.useRedirectToSourceSite() == true) ? 'icon-ok-sign' : 'icon-question-sign'}"
-                   th:style="${(post.useRedirectToSourceSite() == true) ? 'float:left;margin-top:15px;margin-left:10px;margin-right:0px;font-size:20px;color:green;' : 'float:left;margin-top:15px;margin-left:10px;margin-right:0px;font-size:20px;'}"
+                   th:style="${(post.useRedirectToSourceSite() == true) ? 'float:left;margin-top:15px;margin-left:10px;margin-right:0px;font-size:20px;color:green;' : 'float:left;margin-top:15px;margin-left:10px;margin-right:0px;font-size:20px;color:#BBB;'}"
                    th:alt="${(post.useRedirectToSourceSite() == true) ? 'Approved source' : 'Not approved source yet'}"
                    th:title="${(post.useRedirectToSourceSite() == true) ? 'Approved source' : 'Not approved source yet'}"></i>
 
