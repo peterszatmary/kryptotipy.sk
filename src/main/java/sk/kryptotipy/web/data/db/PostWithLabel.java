@@ -135,4 +135,25 @@ public class PostWithLabel {
             default : return "navbar.news";
         }
     }
+    /**
+     * some sources have to have direct redirect to their site and
+     * their content without kryptotipy iframe.
+     * @return
+     */
+    public boolean useRedirectToSourceSite() {
+        var redirect = Arrays.asList(
+                "krypto.sk", // partner
+                "krypto-meny.sk", // partner
+                "beincrypto.pl", // partner
+                "beincrypto.com", // partner
+                "de.beincrypto.com", // partner
+                "u.today", // partner
+                "coinquora.com", //partner
+                "bitnewsbot.com", //partner
+                "thecryptobasic.com", //partner
+                "coindoo.com" //partner
+
+        );
+        return redirect.contains(sourceRender);
+    }
 }

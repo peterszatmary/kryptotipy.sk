@@ -49,22 +49,8 @@ public class QueryFactory {
     }
 
 
-
-    //@Deprecated(since = "used before BIG OPTIMALIZATION")
     public static String getNews(Integer labelsCount, Integer langsCount) {
         var query = new StringBuilder();
-//                .append("SELECT p.id, p.url, p.title, p.source, p.birthday, p.img_src, p.source_render," +
-//                        "p.i18n, p.clicks, p.likes FROM post p ")
-//                .append("JOIN post_index pi ON pi.post_id = p.id JOIN label l ON l.id = pi.label_id ")
-//                .append("WHERE p.i18n in ( ")
-//                .append(_x(langsCount))
-//                .append(" ) and l.name in ( ")
-//                .append(_x(labelsCount))
-//                .append(" ) ")
-//
-//                .append("and pi.count=(select max(u.count) from post_index as u where u.post_id = p.id) ")
-//
-
         query
                 .append("SELECT p.id, p.post_id, p.post_url, p.post_title, p.post_title_render, p.post_source, p.post_birthday, p.post_source_image, " +
                         "p.post_source_render,post_original_image," +
@@ -72,9 +58,7 @@ public class QueryFactory {
                         ",p.label_name_1, p.label_relevance_1,p.label_name_2, p.label_relevance_2" +
                         ",p.label_name_3, p.label_relevance_3,p.label_name_4, p.label_relevance_4 ")
                 .append("FROM post_with_label p ")
-                //TODO disabled nezabudni
                 .append("WHERE p.post_disabled = 0 ")
-                //.append("AND p.post_lang IN (")
                 .append("AND p.post_lang IN (")
                 .append(_x(langsCount))
                 .append(" ) and p.label_name_1 in ( ")
@@ -84,8 +68,6 @@ public class QueryFactory {
                 .append("AND p.post_source_image is not null ")
                 .append("ORDER BY p.post_birthday DESC ")
                 .append("LIMIT ?,?");
-
-        //TODO
         return query.toString();
     }
 

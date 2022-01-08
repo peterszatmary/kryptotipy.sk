@@ -83,41 +83,4 @@ public class Post {
         return sourceParts.stream().max(Comparator.comparingInt(String::length)).get();
 
     }
-
-    public String getI18nFlagRender() {
-        switch (this.i18n) {
-            case "SK" : { return "crypto.news.title.sk"; }
-            case "CZ" : { return "crypto.news.title.cz"; }
-            case "DE" : { return "crypto.news.title.de"; }
-            case "CH" : { return "crypto.news.title.ch"; }
-            case "PL" : { return "crypto.news.title.pl"; }
-            case "HU" : { return "crypto.news.title.hu"; }
-            case "CA" : { return "crypto.news.title.ca"; }
-            case "US" : { return "crypto.news.title.us"; }
-            case "GB" : { return "crypto.news.title.gb"; }
-            case "NL" : { return "crypto.news.title.nl"; }
-            default : return "navbar.news";
-        }
-    }
-
-    /**
-     * some sources have to have direct redirect to their site and
-     * their content without kryptotipy iframe.
-     * @return
-     */
-    public boolean useRedirectToSourceSite() {
-        List<String> redirect = Arrays.asList(
-                "krypto.sk", // partners
-                "krypto-meny.sk", // partners
-                "beincrypto.pl", // partners
-                "beincrypto.com", // partners
-                "de.beincrypto.com", // partners
-                "u.today", // radsej, a su partneri
-                "coinquora.com", //partner
-                "bitnewsbot.com", //partner
-                "thecryptobasic.com" //partner
-
-        );
-        return redirect.contains(sourceRender);
-    }
 }

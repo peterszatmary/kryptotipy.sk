@@ -397,7 +397,7 @@ public class WebController {
 
             model.put("page_image", pageImage);
 
-            if (post.useRedirectToSourceSite()) {
+            if (postWithLabel.useRedirectToSourceSite()) {
                 response.setHeader("Location", postWithLabel.getUrl());
                 response.setStatus(302);
             }
