@@ -103,8 +103,8 @@
                                     <span th:text="${one_post.views}"></span>
                                 </i>
 
-                                <a th:href="@{${'/news?lang=' + one_post.i18n}}">
-                                    <img th:src="@{${'/assets/img/flags/' + one_post.i18n + '.png'}}" width="50"  style="float: left;padding-right: 10px;margin-top:-6px;"
+                                <a th:href="@{${'/news?lang=' + one_post.lang}}">
+                                    <img th:src="@{${'/assets/img/flags/' + one_post.lang + '.png'}}" width="50"  style="float: left;padding-right: 10px;margin-top:-6px;"
                                          th:title="#{${one_post.getI18nFlagRender()}}" th:alt="#{${one_post.getI18nFlagRender()}}"/>
                                 </a>
                                 <span style="background-color:#f2f2f2;padding:10px;padding-bottom:12px;border-radius: 25px;">

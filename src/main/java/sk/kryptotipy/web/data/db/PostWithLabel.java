@@ -151,7 +151,8 @@ public class PostWithLabel {
                 "coinquora.com", //partner
                 "bitnewsbot.com", //partner
                 "thecryptobasic.com", //partner
-                "coindoo.com" //partner
+                "coindoo.com", //partner
+                "coinpedia.org" //partner
 
         );
         return redirect.contains(sourceRender);

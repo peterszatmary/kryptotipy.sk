@@ -389,8 +389,7 @@ public class WebController {
             log.info("Post hashed id = {}, id = {}", hashedId, id);
             log.info("New view for post = {}, views = {}", postWithLabel.getUrl(), postWithLabel.getViews());
 
-            model.put("one_post", post);
-//            model.put("content_path", "one-post");
+            model.put("one_post", postWithLabel);
             pageData.set(model, resolvedLocale.getLanguage(), postWithLabel.getTitle(), rbFromUrl.getString("default.descr"), request);
 
             var pageImage = "/assets/post-images/" + postWithLabel.getLabelName1().toLowerCase() + "/images_1.jpg";

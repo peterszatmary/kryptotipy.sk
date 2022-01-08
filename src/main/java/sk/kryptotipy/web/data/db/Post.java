@@ -66,21 +66,4 @@ public class Post {
 //            joinColumns = @JoinColumn(name = "post_id"),
 //            inverseJoinColumns = @JoinColumn(name = "label_id"))
     private List<Label> labels;
-
-    public String getPostViewUrl() {
-        var hashed = "p" + (this.id + 217) + "sz";
-        return "/one-post-frame/" + hashed;
-    }
-
-    public String getPostRenderShort() {
-        if (this.sourceRender == null || this.sourceRender.isEmpty()) {
-            return "";
-        }
-        if (sourceRender.length() <= 20) {
-            return this.sourceRender;
-        }
-        List<String> sourceParts = new ArrayList(Arrays.asList(this.sourceRender.split("\\.")));
-        return sourceParts.stream().max(Comparator.comparingInt(String::length)).get();
-
-    }
 }
