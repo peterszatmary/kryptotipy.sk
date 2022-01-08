@@ -39,3 +39,4 @@ app.log
 *.icloud
 
 deploy/kryptotipy-web-*.jar
+extracted_data.sql

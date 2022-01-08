@@ -76,9 +76,6 @@ public class PostWithLabel {
     @Column(name = "post_type")
     private String type;
 
-    @Column(name = "kryptotipy_url") //TODO add to DB
-    private String kryptotipyUrl;
-
     @Column(name = "label_name_1")
     private String labelName1;
 
