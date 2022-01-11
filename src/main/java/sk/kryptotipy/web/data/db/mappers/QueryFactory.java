@@ -33,10 +33,8 @@ public class QueryFactory {
                         ",p.label_name_1, p.label_relevance_1,p.label_name_2, p.label_relevance_2" +
                         ",p.label_name_3, p.label_relevance_3,p.label_name_4, p.label_relevance_4 ")
                 .append("FROM post_with_label p ")
-                        //TODO disabled nezabudni
-                .append("WHERE p.post_disabled = 0 ")
-                //.append("AND p.post_lang IN (")
-                        .append("AND p.post_lang IN (")
+                .append("WHERE p.post_kryptotipy_enabled = 1 ")
+                .append("AND p.post_lang IN (")
                 .append(_x(langsCount))
                 .append(") ")
                 .append("AND p.post_source_image is not null ")
@@ -58,7 +56,7 @@ public class QueryFactory {
                         ",p.label_name_1, p.label_relevance_1,p.label_name_2, p.label_relevance_2" +
                         ",p.label_name_3, p.label_relevance_3,p.label_name_4, p.label_relevance_4 ")
                 .append("FROM post_with_label p ")
-                .append("WHERE p.post_disabled = 0 ")
+                .append("WHERE p.post_kryptotipy_enabled = 1 ")
                 .append("AND p.post_lang IN (")
                 .append(_x(langsCount))
                 .append(" ) and p.label_name_1 in ( ")

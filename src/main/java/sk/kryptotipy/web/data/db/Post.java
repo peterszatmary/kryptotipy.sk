@@ -42,7 +42,8 @@ public class Post {
 
     private String i18n;
 
-    private Boolean disabled;
+    @Column(name = "kryptotipy_enabled")
+    private Boolean kryptotipy_enabled;
 
     @Setter
     private Boolean external;
