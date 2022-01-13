@@ -51,8 +51,8 @@ public class PostWithLabel {
     @Column(name = "post_lang")
     private String lang;
 
-    @Column(name = "post_disabled")//TODO
-    private Boolean disabled;
+    @Column(name = "post_kryptotipy_enabled")
+    private Boolean kryptotipyEnabled;
 
     @Setter
     @Column(name = "post_external")//TODO

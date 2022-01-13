@@ -35,6 +35,15 @@ public class Post {
     private String titleRender;
 
     @Lob
+    @Setter
+    @Column(name = "content_html")
+    private String contentHtml;
+
+    @Lob
+    @Setter
+    private String description;
+
+    @Lob
     private String content;
 
     @DateTimeFormat(iso = DATE)
