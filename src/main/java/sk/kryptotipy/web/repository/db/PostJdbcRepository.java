@@ -33,7 +33,7 @@ public class PostJdbcRepository {
             o.addAll(langs);
             //o.add(limit);
 
-            results  = jdbcTemplate.query(QueryFactory.newestPosts(langs.size(), limit * 4), new PostWithLabelMapper(), o.toArray());
+            results  = jdbcTemplate.query(QueryFactory.newestPosts(langs.size(), limit), new PostWithLabelMapper(), o.toArray());
         } catch(Exception e){
             e.printStackTrace();
         }
