@@ -218,7 +218,6 @@ public class WebController {
 
             model.put("site", "cooperation");
             model.put("content_path","fragments/content/cooperation");
-            model.put("services", serviceRepo.getCooperationServices(rbFromUrl));
             makeLinkActive(model, "cooperation");
 
             log.info("cooperation.html");
@@ -228,7 +227,7 @@ public class WebController {
             return "non-index";
 
         } catch (Exception ex) {
-            log.warn("cooperation : " + ex.getMessage());
+            log.warn("cooperation : {}", ex.getMessage());
             pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }

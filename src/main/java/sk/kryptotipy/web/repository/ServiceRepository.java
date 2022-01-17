@@ -64,34 +64,34 @@ public class ServiceRepository {
         return services;
     }
 
-    public List<Service> getCooperationServices(ResourceBundle rb) {
-        var services = new ArrayList<Service>();
-        services.add(new Service(
-                s(rb,"cooperation.service.1.title"),
-                "",
-                "cooperation/back.jpg",
-                s(rb,"cooperation.service.1.description"))
-        );
-        services.add(new Service(
-                   s(rb,"cooperation.service.2.title"),
-                "",
-                "cooperation/posts.png",
-                s(rb,"cooperation.service.2.description"))
-        );
-        services.add(new Service(
-                s(rb,"cooperation.service.3.title"),
-                "",
-                "cooperation/write_post_but_question.jpg",
-                s(rb,"cooperation.service.3.description"))
-        );
-        services.add(new Service(
-                s(rb,"cooperation.service.4.title"),
-                "",
-                "cooperation/backlinks.png",
-                s(rb,"cooperation.service.4.description"))
-        );
-        return services;
-    }
+//    public List<Service> getCooperationServices(ResourceBundle rb) {
+//        var services = new ArrayList<Service>();
+//        services.add(new Service(
+//                s(rb,"cooperation.service.1.title"),
+//                "",
+//                "cooperation/back.jpg",
+//                s(rb,"cooperation.service.1.description"))
+//        );
+//        services.add(new Service(
+//                   s(rb,"cooperation.service.2.title"),
+//                "",
+//                "cooperation/posts.png",
+//                s(rb,"cooperation.service.2.description"))
+//        );
+//        services.add(new Service(
+//                s(rb,"cooperation.service.3.title"),
+//                "",
+//                "cooperation/write_post_but_question.jpg",
+//                s(rb,"cooperation.service.3.description"))
+//        );
+//        services.add(new Service(
+//                s(rb,"cooperation.service.4.title"),
+//                "",
+//                "cooperation/backlinks.png",
+//                s(rb,"cooperation.service.4.description"))
+//        );
+//        return services;
+//    }
 
 
     /** views **/
