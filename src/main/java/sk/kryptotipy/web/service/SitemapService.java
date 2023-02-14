@@ -1,7 +1,5 @@
 package sk.kryptotipy.web.service;
 
-//import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
-
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import lombok.AllArgsConstructor;
@@ -34,16 +32,6 @@ public class SitemapService {
 
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(sitemap, sw);
-
-
-//        var mapper = new NamespacePrefixMapper() {
-//            public String getPreferredPrefix(String namespaceUri, String suggestion, boolean requirePrefix) {
-//                if ("http://namespace".equals(namespaceUri) && !requirePrefix)
-//                    return "";
-//                return "ns";
-//            }
-//        };
-//        jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", mapper);
 
         return sw.toString();
     }
