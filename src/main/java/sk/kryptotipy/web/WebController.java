@@ -22,8 +22,8 @@ import sk.kryptotipy.web.service.PriceService;
 import sk.kryptotipy.web.service.SitemapService;
 import sk.kryptotipy.web.service.UtilityService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
@@ -59,9 +59,7 @@ public class WebController {
         try {
             addCookies(model, request);
             makeLinkActive(model, "index");
-
             var langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
-            log.info("index.html");
 
             model.put("site", "");
             model.put("posts", postService.getNewestPosts(langs));
@@ -74,6 +72,8 @@ public class WebController {
                     request);
             model.put("btc_price", getBtcPrice());
             model.put("page_description", rbFromUrl.getString("page.index.description.long"));
+
+            log.info("Rendered = [index.html]");
             return "index";
 
         } catch (Exception ex) {
@@ -168,8 +168,8 @@ public class WebController {
         model.put("price_widget", priceService.mapCoinToCoinLibId(labels));
         model.put("checked_langs", langs);
 
-        log.info("Posts count rendered = {}", posts.size());
-        log.info("Posts filtered by labels count = {} labels = {} langs count = {} and langs = {}",
+        log.info("Posts count rendered = [{}]", posts.size());
+        log.info("Posts filtered by labels count = [{}], labels = [{}], langs = [{}], langs count = [{}].",
                 labels.size(), labels, langs.size(), langs);
         return "non-index";
     }
@@ -178,9 +178,7 @@ public class WebController {
     public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var rbFromUrl = utilityService.getResourceBundle(
-               resolvedLocale 
-        );
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
         addCookies(model, request);
         makeLinkActive(model, "external_services");
 
@@ -190,11 +188,11 @@ public class WebController {
             model.put("content_path","fragments/content/external_services");
             model.put("services", serviceRepo.getExternalServices(rbFromUrl));
             model.put("link_is_not_internal", true);
-
-            log.info("external_services.html");
             pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("external.services.h1"), rbFromUrl.getString("default.descr"), request);
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 19, 0, 0) + "");
             model.put("page_description", rbFromUrl.getString("external.description"));
+
+            log.info("Rendered = [external_services.html]");
             return "non-index";
 
         } catch (Exception ex) {
@@ -209,9 +207,7 @@ public class WebController {
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var rbFromUrl = utilityService.getResourceBundle(
-                resolvedLocale
-        );
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
         addCookies(model, request);
         makeLinkActive(model, "");
         try {
@@ -219,11 +215,11 @@ public class WebController {
             model.put("site", "cooperation");
             model.put("content_path","fragments/content/cooperation");
             makeLinkActive(model, "cooperation");
-
-            log.info("cooperation.html");
             pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("footer.cooperation"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("cooperation.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
+
+            log.info("Rendered = [cooperation.html]");
             return "non-index";
 
         } catch (Exception ex) {
@@ -246,14 +242,13 @@ public class WebController {
         try {
             model.put("site", "krypto-learning");
             model.put("content_path","fragments/content/krypto_learning");
-
             model.put("articles", articleRepo.getKryptotipyContent(rbFromUrl));
             model.put("link_is_not_internal", false);
-
-            log.info("krypto_learning.html");
             pageData.set(model, resolvedLocale.getLanguage(),"Learning", rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("crypto.learning.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 17, 0, 0) + "");
+
+            log.info("Rendered = [krypto_learning.html]");
             return "non-index";
 
         } catch (Exception ex) {
@@ -274,11 +269,11 @@ public class WebController {
             model.put("site", "dictionary");
             model.put("active_krypto_learning", "");
             model.put("content_path", "fragments/content/dictionary");
-
-            log.info("dictionary.html");
             pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("dictionary.title"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("dictionary.d"));
             model.put("page_date", LocalDateTime.of(2020, Month.DECEMBER, 22, 0, 0 ) + "");
+
+            log.info("Rendered = [dictionary.html]");
             return "non-index";
 
         } catch (Exception ex) {
@@ -290,13 +285,13 @@ public class WebController {
 
     @GetMapping("/robots.txt")
     public String robotsTxt() {
-        log.info("robots.txt");
+        log.info("Rendered = [robots.txt]");
         return "robots.txt";
     }
 
     @GetMapping("/ads.txt")
     public String adsTxt() {
-        log.info("ads.txt");
+        log.info("Rendered = [ads.txt]");
         return "ads.txt";
     }
 
@@ -307,25 +302,22 @@ public class WebController {
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle, HttpServletRequest request) {
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var rbFromUrl = utilityService.getResourceBundle(
-                resolvedLocale
-        );
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
         addCookies(model, request);
         makeLinkActive(model, "krypto_learning");
         try {
 
             model.put("site", "article/" + postTitle);
             model.put("content_path","fragments/content/" + postTitle);
-
-            log.info("article = {}", postTitle);
             pageData.set(model, resolvedLocale.getLanguage(), pageData.getPostTitle(postTitle), rbFromUrl.getString("default.descr"), request);
-
             model.put("page_title", pageData.getPostTitle(postTitle));
             model.put("page_description", pageData.getPostDescription(postTitle));
             model.put("page_image", pageData.getPostImage(postTitle));
             model.put("page_image_width", pageData.getPostImageWidth(postTitle));
             model.put("page_image_height", pageData.getPostImageHeight(postTitle));
             model.put("page_date", pageData.getPostDate(postTitle));
+
+            log.info("article = [{}]", postTitle);
             return "non-index";
 
         } catch (Exception ex) {
@@ -339,18 +331,17 @@ public class WebController {
     public String didYouKnow(Map<String, Object> model, HttpServletRequest request) {
 
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var rbFromUrl = utilityService.getResourceBundle(
-                resolvedLocale
-        );
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
         addCookies(model, request);
         makeLinkActive(model, "did_you_know");
         try {
             model.put("site", "did-you-know");
             model.put("content_path", "fragments/content/did_you_know");
             pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("did.you.know") , rbFromUrl.getString("default.descr"), request);
-            log.info("did_you_know.html");
             model.put("page_description", rbFromUrl.getString("did.you.know.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 22, 0, 0) + "");
+
+            log.info("Rendered = [did_you_know.html]");
             return "non-index";
 
         } catch (Exception ex) {
@@ -368,15 +359,11 @@ public class WebController {
             @PathVariable("hashed_id") String hashedId
        ) {
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var rbFromUrl = utilityService.getResourceBundle(
-                resolvedLocale
-        );
+        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
         makeLinkActive(model, "posts");
         try {
             model.put("site", "one-post-frame");
-
             var id = utilityService.decodeKryptotipyHash(hashedId);
-
             var post = this.postService.getPostsById(id);
             var postWithLabel = postWithLabelRepository.findByPostId(id);
 
@@ -413,89 +400,6 @@ public class WebController {
     }
 
 
-
-//    @GetMapping("/post-view/{hashed_id}")
-//    public String postView(
-//            Map<String, Object> model,
-//            HttpServletRequest request,
-//            HttpServletResponse response,
-//            @PathVariable("hashed_id") String hashedId
-//    ) {
-//        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-//        var rbFromUrl = utilityService.getResourceBundle(
-//                resolvedLocale
-//        );
-//        makeLinkActive(model, "posts");
-//        try {
-//            model.put("site", "post-view");
-//            model.put("content_path", "fragments/content/post-view");
-////
-//            var id = utilityService.decodeKryptotipyHash(hashedId);
-////
-//            var post = this.postService.getPostsById(id);
-//            var postWithLabel = postWithLabelRepository.findByPostId(id);
-////
-//            post.setViews(post.getViews() + 1);
-//            postWithLabel.setViews(postWithLabel.getViews() + 1);
-////
-//            postService.updatePostViews(post.getUrl(), post.getViews());
-//
-//            log.info("Post hashed id = {}, id = {}", hashedId, id);
-//            log.info("New view for post = {}, views = {}", postWithLabel.getUrl(), postWithLabel.getViews());
-//
-//            model.put("one_post", post);
-//            model.put("one_post_with_label", postWithLabel);
-//            pageData.set(model, resolvedLocale.getLanguage(), postWithLabel.getTitle(), rbFromUrl.getString("default.descr"), request);
-////
-//            var pageImage = "/assets/post-images/" + postWithLabel.getLabelName1().toLowerCase() + "/images_1.jpg";
-////
-//            model.put("page_image", pageImage);
-//            model.put("page_description", post.getContent().substring(0,150)+"...");
-//
-//            if (post.useRedirectToSourceSite()) {
-//                response.setHeader("Location", post.getUrl());
-//                response.setStatus(302);
-//            }
-//
-//            return "non-index";
-//
-//        } catch (Exception ex) {
-//            log.warn("one page frame : hashedId={}",
-//                    hashedId,
-//                    ex.getMessage()
-//            );
-//            log.warn(ex.getCause() + "" + ex.getStackTrace());
-//            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
-//            return "redirect:/error";
-//        }
-//    }
-
-    //way how to downloaad files
-//    @GetMapping("/sitemap.xml")
-//    public void sitemap(HttpServletResponse res) throws Exception {
-//
-//
-//        var resolver = new SpringResourceTemplateResolver();
-//        resolver.setApplicationContext(new AnnotationConfigApplicationContext());
-//        resolver.setPrefix("classpath:/templates/");
-//        resolver.setSuffix(".xml");
-//        resolver.setCharacterEncoding("UTF-8");
-//        resolver.setTemplateMode(TemplateMode.XML);
-//
-//        var engine = new SpringTemplateEngine();
-//        engine.setTemplateResolver(resolver);
-//
-//        var ctx = new Context();
-//        ctx.setVariable("notes", Arrays.asList("one note", "two note"));
-//        var xml = engine.process("sitemap", ctx);
-//
-//        res.setHeader("Content-Disposition", "attachment; filename=sitemap.xml");
-//        res.setContentType("application/xml");
-//        var writer = res.getWriter();
-//        writer.print(xml);
-//        writer.close();
-//    }
-
     @GetMapping(
             value = "/sitemap.xml",
             produces = { "application/xml", "text/xml" }
@@ -512,32 +416,12 @@ public class WebController {
             siteMapLang = "www";
         }
 
-        log.info("Locale was found={}, sitemap for lang {} rendered", resolvedLocale, siteMapLang);
-
         response.addHeader("content-type", "application/xml; charset=utf-8");
         response.setStatus(200);
-
         var out = response.getWriter();
         out.println(sitemapService.create(siteMapLang));
+        log.info("Locale was found={}, sitemap for lang {} rendered", resolvedLocale, siteMapLang);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private String getBtcPrice() {
         var btcPrice = String.valueOf(priceService.getLatestPrice());
@@ -598,10 +482,6 @@ public class WebController {
 
 
     private String labelsToRender(List<String> labels, StringBuilder labelsStr, ResourceBundle rb) {
-//        labels = labels.stream()
-//                .filter(x -> !x.equals("l"))
-//                .collect(Collectors.toList());
-
         if (labels.size() > 5) {
             return l(labels, 5, " ...",labelsStr, rb);
         } else {
@@ -625,8 +505,6 @@ public class WebController {
             return "all";
         }
     }
-
-
 
 
     private String getOgImageForNews(List<String> labels) {

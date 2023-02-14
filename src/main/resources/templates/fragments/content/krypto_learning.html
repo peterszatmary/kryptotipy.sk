@@ -35,7 +35,7 @@
             <div class="row">
                 <ul class="portfolio-area da-thumbs">
                     <div th:each="article : ${articles}" th:remove="tag">
-                        <div th:replace="fragments/article :: one_article(${article})" th:remove="tag"></div>
+                        <div th:replace="~{fragments/article :: one_article(${article})}" th:remove="tag"></div>
                     </div>
                 </ul>
             </div>

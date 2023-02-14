@@ -1,5 +1,7 @@
 package sk.kryptotipy.web.config;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -8,12 +10,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.i18n.AbstractLocaleResolver;
 import sk.kryptotipy.web.AppProperties;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -30,7 +29,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
     public Locale resolveLocale(HttpServletRequest request) {
         var localeResolved = isGoogleBot(request) ?
                 resolveLocaleForGoogleBot(request) : resolveLocaleForUser(request);
-        log.info("Locale resolved = {}", localeResolved);
+        log.info("Locale resolved = [{}]", localeResolved);
         return localeResolved;
     }
 
@@ -83,7 +82,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
         }
 
         // en-gb,en-us
-        log.debug("Locale computed = {}", result);
+        log.debug("Locale computed = [{}]", result);
         return new Locale(result.toLowerCase());
     }
 
@@ -142,9 +141,7 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
         if (supportedLangs.contains(langPart)) {
             result = langPart;
         }
-//        else if ("www".equalsIgnoreCase(langPart)) {
-//            result = "sk";
-//        }
+
         return result;
     }
 
@@ -186,28 +183,13 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
                 langs.add("HU");
                 break;
             }
-            case "en": {
+            case "en", "us": {
                 langs.add("CA");
                 langs.add("GB");
                 langs.add("US");
                 break;
             }
-            case "us": {
-                langs.add("CA");
-                langs.add("GB");
-                langs.add("US");
-                break;
-            }
-            case "sk": {
-                langs.add("SK");
-                langs.add("CZ");
-                break;
-            }
-            case "cs": {
-                langs.add("SK");
-                langs.add("CZ");
-                break;
-            }
+
             default: {
                 langs.add("SK");
                 langs.add("CZ");

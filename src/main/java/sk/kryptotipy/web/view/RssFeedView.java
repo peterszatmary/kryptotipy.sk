@@ -2,6 +2,8 @@ package sk.kryptotipy.web.view;
 
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Item;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
@@ -10,12 +12,8 @@ import sk.kryptotipy.web.data.Article;
 import sk.kryptotipy.web.repository.ArticleRepository;
 import sk.kryptotipy.web.service.UtilityService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -48,33 +46,12 @@ public class RssFeedView extends AbstractRssFeedView {
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    protected List<Item> buildFeedItems(Map<String, Object> model,
-//                                        HttpServletRequest request, HttpServletResponse response) {
-//
-//        List<Article> articles = rssRepository.getKryptotipyContentForRss();
-//        return articles.stream()
-//                .map(article -> mapArticleToRssItem(article))
-//                .collect(Collectors.toList());
-//    }
-
-
-
     private Item mapArticleToRssItem(Article article) {
         var rssItem = new Item();
         rssItem.setTitle(article.getTitle());
         rssItem.setAuthor(appProperties.getPageTitle());
         rssItem.setLink(appProperties.getBaseUrlWithoutPort() + article.getUrl());
         rssItem.setPubDate(article.getPubDate());
-
-//        Description description = new Description();
-//        description.setValue(article.getDescription());
-//        description.setType(article.getDescription());
-//        rssItem.setDescription(description);
-//
-//        Category category = new Category();
-//        category.setValue(article.getCategory());
-//        rssItem.setCategories(Arrays.asList(category));
 
         return rssItem;
     }

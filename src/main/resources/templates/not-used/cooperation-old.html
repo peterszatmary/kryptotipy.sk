@@ -137,7 +137,7 @@
 
 
                 <div th:each="service : ${services}" th:remove="tag">
-                    <div th:replace="fragments/service :: one_service(${service}, ${link_is_no_follow})" th:remove="tag"></div>
+                    <div th:replace="~{fragments/service :: one_service(${service}, ${link_is_no_follow})}" th:remove="tag"></div>
                 </div>
             </ul>
         </div>

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:lang="${resolved_locale}" itemscope itemtype="https://schema.org/WebSite">
 
-    <div th:replace="fragments/header"></div>
+    <div th:replace="~{fragments/header}"></div>
 
     <body id="top">
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3RDJ8D"
                           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
-        <div th:replace="fragments/cookies :: cookies_lang(${cookies_lang})"></div>
-        <div th:replace="fragments/navbar"></div>
+        <div th:replace="~{fragments/cookies :: cookies_lang(${cookies_lang})}"></div>
+        <div th:replace="~{fragments/navbar}"></div>
 
-        <div th:replace="fragments/index-bar"></div>
+        <div th:replace="~{fragments/index-bar}"></div>
 
-        <div th:replace="fragments/right-vertical-social"></div>
+        <div th:replace="~{fragments/right-vertical-social}"></div>
 
         <!-- self content start -->
-        <div th:replace="fragments/content/index"></div>
+        <div th:replace="~{fragments/content/index}"></div>
         <!-- self content end -->
-        <div th:replace="fragments/footer"></div>
+        <div th:replace="~{fragments/footer}"></div>
     </body>
 </html>

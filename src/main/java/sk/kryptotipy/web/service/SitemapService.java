@@ -1,17 +1,16 @@
 package sk.kryptotipy.web.service;
 
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
+//import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.data.Sitemap;
 import sk.kryptotipy.web.repository.SiteRepository;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor

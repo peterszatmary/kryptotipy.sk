@@ -25,7 +25,7 @@ public class PostMapper implements RowMapper<Post> {
 
         //log.info("started post mapRow");
 
-        Post post = new Post();
+        var post = new Post();
         //Label label = new Label();
         //label.setName(rs.getString("l.name"));
 

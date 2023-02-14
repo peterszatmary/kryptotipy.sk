@@ -18,7 +18,7 @@ public class PostJdbcRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public List<PostWithLabel> getNewestPosts(List<String> langs) {
-       return p(langs, 8);
+       return p(langs, 12);
     }
 
     public List<PostWithLabel> getNewsAll(List<String> langs) {

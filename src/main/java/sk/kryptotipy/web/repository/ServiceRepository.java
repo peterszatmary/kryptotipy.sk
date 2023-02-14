@@ -64,35 +64,6 @@ public class ServiceRepository {
         return services;
     }
 
-//    public List<Service> getCooperationServices(ResourceBundle rb) {
-//        var services = new ArrayList<Service>();
-//        services.add(new Service(
-//                s(rb,"cooperation.service.1.title"),
-//                "",
-//                "cooperation/back.jpg",
-//                s(rb,"cooperation.service.1.description"))
-//        );
-//        services.add(new Service(
-//                   s(rb,"cooperation.service.2.title"),
-//                "",
-//                "cooperation/posts.png",
-//                s(rb,"cooperation.service.2.description"))
-//        );
-//        services.add(new Service(
-//                s(rb,"cooperation.service.3.title"),
-//                "",
-//                "cooperation/write_post_but_question.jpg",
-//                s(rb,"cooperation.service.3.description"))
-//        );
-//        services.add(new Service(
-//                s(rb,"cooperation.service.4.title"),
-//                "",
-//                "cooperation/backlinks.png",
-//                s(rb,"cooperation.service.4.description"))
-//        );
-//        return services;
-//    }
-
 
     /** views **/
     public List<Service> getExternalServicesViews(ResourceBundle rb) {
@@ -100,16 +71,11 @@ public class ServiceRepository {
 
         services.add(new Service(s(rb,"external.services.service.31.title"), "https://axieinfinity.com/", "axieinfinity.png", s(rb,"external.services.service.31.description")));
         services.add(new Service(s(rb,"external.services.service.2.title"), "https://shop.trezor.io/product/trezor-one-black?offer_id=35&aff_id=5933", "trezor-one-black.png", s(rb,"external.services.service.2.description")));
-        services.add(new Service(s(rb,"external.services.service.32.title"), "https://www.larvalabs.com/cryptopunks", "cryptopunks.jpeg", s(rb,"external.services.service.32.description")));
         services.add(new Service(s(rb,"external.services.service.33.title"), "https://opensea.io/", "opensea.jpeg", s(rb,"external.services.service.33.description")));
-
         services.add(new Service(s(rb,"external.services.service.34.title"), "https://rarible.com/", "rarible.jpeg", s(rb,"external.services.service.34.description")));
-        services.add(new Service(s(rb,"external.services.service.35.title"), "https://sushi.com/", "sushiswap.png", s(rb,"external.services.service.35.description")));
-        services.add(new Service(s(rb,"external.services.service.36.title"), "https://uniswap.org/", "uniswap.png", s(rb,"external.services.service.36.description")));
-        services.add(new Service(s(rb,"external.services.service.8.title"), "https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933", "trezor-t-black.png", s(rb,"external.services.service.8.description")));
 
-        services.add(new Service(s(rb,"external.services.service.1.title"), "https://blockchair.com/", "blockchair.png", s(rb,"external.services.service.1.description")));
-        services.add(new Service(s(rb,"external.services.service.3.title"), "https://www.coinbase.com", "coinbase-big.png", s(rb,"external.services.service.3.description")));
+        services.add(new Service(s(rb,"external.services.service.35.title"), "https://sushi.com/", "sushiswap.png", s(rb,"external.services.service.35.description")));
+        services.add(new Service(s(rb,"external.services.service.8.title"), "https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=5933", "trezor-t-black.png", s(rb,"external.services.service.8.description")));
         services.add(new Service(s(rb,"external.services.service.4.title"), "https://www.exodus.io", "exodus-big.jpg", s(rb,"external.services.service.4.description")));
         services.add(new Service(s(rb,"external.services.service.14.title"), "https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506", "ledger-nano-x.jpg", s(rb,"external.services.service.14.description")));
 

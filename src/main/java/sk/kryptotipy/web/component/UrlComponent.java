@@ -3,10 +3,8 @@ package sk.kryptotipy.web.component;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -41,7 +39,6 @@ public class UrlComponent {
             urlWithoutPort = url.replace(":8443", "");
         }
 
-        String o = "posts";
         if (urlWithoutPort.contains("news") || urlWithoutPort.contains("posts")) {
             return this.mapSiteUrlForCanonical(urlWithoutPort);
         } else {
@@ -82,9 +79,8 @@ public class UrlComponent {
     private Long getLangsFromPostsUrl(String url) {
         if (url.contains("_l_")) {
             return (long) url.split("_l_")[1].split("_").length;
-        } else {
-            return 0L;
         }
+        return 0L;
     }
 
     /**
@@ -104,18 +100,14 @@ public class UrlComponent {
             var langs  = getLangsFromUrl(url);
 
             var str = new StringBuilder(getBaseUrl(url)).append("/posts/");
-            labels.stream().forEach(x ->
-                    str.append(x).append("_")
-            );
+            labels.stream().forEach(x -> str.append(x).append("_"));
             if (str.toString().contains("_")) {
                 str.deleteCharAt(str.length() - 1);
             }
             if (!langs.isEmpty()) {
                 str.append("_l_");
             }
-            langs.stream().forEach(x ->
-                    str.append(x).append("_")
-            );
+            langs.stream().forEach(x -> str.append(x).append("_"));
             if (str.toString().contains("_")) {
                 str.deleteCharAt(str.length() - 1);
             }
