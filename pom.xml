@@ -24,10 +24,6 @@
 		<spring.fox.boot.version>3.0.0</spring.fox.boot.version>
 		<junit.version>4.13.1</junit.version>
 		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
-
-<!--		<jaxb-runtime.version>3.0.2</jaxb-runtime.version>-->
-<!--		<jakarta-annotation-api.version>2.1.1</jakarta-annotation-api.version>-->
-<!--		<jakarta-activation.version>2.0.1</jakarta-activation.version>-->
 		<jakarta-xml-bind.version>4.0.0</jakarta-xml-bind.version>
 	</properties>
 
