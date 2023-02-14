@@ -1,6 +1,7 @@
 package sk.kryptotipy.web.data.db.mappers;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.RowMapper;
 import sk.kryptotipy.web.data.db.PostWithLabel;
 
@@ -8,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
+@Slf4j
 @AllArgsConstructor
 public class PostWithLabelMapper implements RowMapper<PostWithLabel> {
 
@@ -22,9 +25,11 @@ public class PostWithLabelMapper implements RowMapper<PostWithLabel> {
     public PostWithLabel mapRow(ResultSet rs, int i) throws SQLException {
         var post = new PostWithLabel();
 
+        var postUrl = rs.getString("p.post_url");
+
         post.setId(rs.getLong("p.id"));
         post.setPostId(rs.getLong("p.post_id"));
-        post.setUrl(rs.getString("p.post_url"));
+        post.setUrl(postUrl);
         post.setTitle(rs.getString("p.post_title"));
         post.setTitleRender(rs.getString("p.post_title_render"));
         post.setLang(rs.getString("p.post_lang"));
@@ -35,7 +40,7 @@ public class PostWithLabelMapper implements RowMapper<PostWithLabel> {
         post.setImgSrc(rs.getString("p.post_source_image"));
         post.setViews(rs.getInt("p.post_clicks"));
         post.setLikes(rs.getInt("p.post_likes"));
-        post.setBirthday(LocalDate.parse(rs.getString("p.post_birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
+        post.setBirthday(parseDate(rs.getString("p.post_birthday"), postUrl));
 
         var labelName1 = rs.getString("p.label_name_1");
         if (labelName1 != null) {
@@ -75,5 +80,15 @@ public class PostWithLabelMapper implements RowMapper<PostWithLabel> {
         }
 
         return post;
+    }
+
+    private LocalDate parseDate(String rawDate, String postUrl) {
+        LocalDate birthDay = LocalDate.now();
+        try {
+            birthDay = LocalDate.parse(rawDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        } catch (DateTimeParseException ex) {
+            log.warn("Date not parsed correctly for [{}], post url = [{}]", rawDate, postUrl);
+        }
+        return birthDay;
     }
 }
