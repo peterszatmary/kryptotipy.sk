@@ -55,15 +55,15 @@ public class UrlComponent {
     private List<String> getLabelsFromUrl(String url) {
         return Arrays.asList(url.split("label=")).stream()
                 .skip(1)
-                .map(x -> x.split("&")[0])
+                .map((var x) -> x.split("&")[0])
                 .collect(Collectors.toList());
     }
 
     private List<String> getLangsFromUrl(String url) {
         return Arrays.asList(url.split("lang=")).stream()
                 .skip(1)
-                .map(x -> x.toLowerCase())
-                .map(x -> x.split("&")[0])
+                .map((var x) -> x.toLowerCase())
+                .map((var x) -> x.split("&")[0])
                 .collect(Collectors.toList());
     }
 
@@ -100,14 +100,14 @@ public class UrlComponent {
             var langs  = getLangsFromUrl(url);
 
             var str = new StringBuilder(getBaseUrl(url)).append("/posts/");
-            labels.stream().forEach(x -> str.append(x).append("_"));
+            labels.stream().forEach((var x) -> str.append(x).append("_"));
             if (str.toString().contains("_")) {
                 str.deleteCharAt(str.length() - 1);
             }
             if (!langs.isEmpty()) {
                 str.append("_l_");
             }
-            langs.stream().forEach(x -> str.append(x).append("_"));
+            langs.stream().forEach((var x) -> str.append(x).append("_"));
             if (str.toString().contains("_")) {
                 str.deleteCharAt(str.length() - 1);
             }

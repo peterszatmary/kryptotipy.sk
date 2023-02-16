@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -18,7 +17,7 @@ import java.util.TimeZone;
 public class Sitemap {
 
     @XmlElement(name = "url")
-    List<URL> urls = null;
+    List<URL> urls;
 
     public List<URL> getUrls() {
         return urls;
@@ -28,21 +27,15 @@ public class Sitemap {
         this.urls = urls;
     }
 
-    public void addURL(String url) {
-        if (urls == null) {
-            urls = new ArrayList<>();
-        }
-    }
-
     @NoArgsConstructor
     @Data
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlRootElement(name = "url")
     public static class URL {
 
-        private String loc = null;
-        private String lastMod = null;
-        private Double priority = null;
+        private String loc;
+        private String lastMod;
+        private Double priority;
 
         public URL(String loc, Double priority, Date created) {
             this.loc = loc;

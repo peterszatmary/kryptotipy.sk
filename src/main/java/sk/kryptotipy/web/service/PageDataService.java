@@ -5,19 +5,17 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.kryptotipy.web.AppProperties;
-import sk.kryptotipy.web.api.PageDataServiceApi;
 import sk.kryptotipy.web.component.ArticleComponent;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 @Service
 @Data
 @Slf4j
 @AllArgsConstructor
-public class PageDataService implements PageDataServiceApi {
+public final class PageDataService implements PageDataServiceApi {
 
     private final AppProperties appProperties;
     private final ArticleComponent articleComponent;

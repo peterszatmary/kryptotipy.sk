@@ -1,9 +1,9 @@
-package sk.kryptotipy.web.api;
+package sk.kryptotipy.web.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-public interface PageDataServiceApi {
+public sealed interface PageDataServiceApi permits PageDataService {
     void set(Map<String, Object> model, String resolvedLocale, String pageTitleCustom, String pageDescription, HttpServletRequest request);
     String getPostTitle(String key);
     String getPostDescription(String key);

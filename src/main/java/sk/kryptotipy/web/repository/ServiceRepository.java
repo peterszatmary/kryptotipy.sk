@@ -59,8 +59,6 @@ public class ServiceRepository {
         services.add(new Service(s(rb,"external.services.service.29.title"), "https://whitepaper.io/", "whitepaper.jpg", s(rb,"external.services.service.29.description")));
         services.add(new Service(s(rb,"external.services.service.30.title"), "https://99bitcoins.com/bitcoin-obituaries/", "bitcoin-deaths.jpeg", s(rb,"external.services.service.30.description")));
 
-
-
         return services;
     }
 

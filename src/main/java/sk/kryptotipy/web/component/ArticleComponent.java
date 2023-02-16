@@ -8,8 +8,6 @@ import sk.kryptotipy.web.AppProperties;
 import sk.kryptotipy.web.data.Article;
 
 import java.time.LocalDateTime;
-import java.time.Month;
-
 import java.util.List;
 import java.util.Map;
 
@@ -84,14 +82,14 @@ public class ArticleComponent {
 
     public void addPostsAndArticlesMeta() {
         articles.stream()
-                .forEach(x -> addPost(
-                        x.getPostMeta().getMetaPostKey(),
-                        x.getPostMeta().getMetaPostTitle(),
-                        x.getPostMeta().getMetaPostDescription(),
-                        x.getPostMeta().getMetaPostImageExtension(),
-                        x.getPostMeta().getMetaImgWidth(),
-                        x.getPostMeta().getMetaImgHeight(),
-                        x.getPostMeta().getMetaPostDate()
+                .forEach((var x) -> addPost(
+                        x.getPostMeta().metaPostKey(),
+                        x.getPostMeta().metaPostTitle(),
+                        x.getPostMeta().metaPostDescription(),
+                        x.getPostMeta().metaPostImageExtension(),
+                        x.getPostMeta().metaImgWidth(),
+                        x.getPostMeta().metaImgHeight(),
+                        x.getPostMeta().metaPostDate()
                         ));
         addAllPostsMeta();
     }

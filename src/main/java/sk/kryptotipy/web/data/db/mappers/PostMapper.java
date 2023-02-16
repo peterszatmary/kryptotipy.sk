@@ -6,11 +6,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import sk.kryptotipy.web.data.db.Label;
 import sk.kryptotipy.web.data.db.Post;
+import sk.kryptotipy.web.service.UtilityService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +19,7 @@ public class PostMapper implements RowMapper<Post> {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private final UtilityService utilityService;
     @Override
     public Post mapRow(ResultSet rs, int i) throws SQLException {
 
@@ -41,7 +41,7 @@ public class PostMapper implements RowMapper<Post> {
         post.setImgSrc(rs.getString("p.img_src"));
         post.setViews(rs.getInt("p.clicks"));
         post.setLikes(rs.getInt("p.likes"));
-        post.setBirthday(LocalDate.parse(rs.getString("p.birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
+        post.setBirthday(utilityService.parseDate(rs.getString("p.birthday"), post.getUrl()));
         //post.setLabels(new HashSet<>(Arrays.asList(label)));
 
         post.setLabels(selectLabels(rs.getLong("p.id")));
@@ -85,7 +85,7 @@ public class PostMapper implements RowMapper<Post> {
      * @return
      */
     private void setRenderPostTitle(Post post) {
-        int MAX_LENGTH = 68;
+        var MAX_LENGTH = 68;
         if (post.getTitle() == null) {
             post.setTitleRender("N/A");
             return;
@@ -94,8 +94,8 @@ public class PostMapper implements RowMapper<Post> {
         int titleLength = post.getTitle().length();
 
         if (titleLength < MAX_LENGTH) {
-            StringBuilder str = new StringBuilder(post.getTitle());
-            for (int i = 0; i < MAX_LENGTH - titleLength; i++) {
+            var str = new StringBuilder(post.getTitle());
+            for (var i = 0; i < MAX_LENGTH - titleLength; i++) {
                 str.append("&#160;");//todo
             }
             post.setTitleRender(str.toString());
@@ -108,10 +108,9 @@ public class PostMapper implements RowMapper<Post> {
         }
 
         if (titleLength > MAX_LENGTH) {
-            String part = post.getTitle().substring(0, MAX_LENGTH);
-            StringBuilder title = new StringBuilder().append(part).append("...");
+            var part = post.getTitle().substring(0, MAX_LENGTH);
+            var title = new StringBuilder().append(part).append("...");
             post.setTitleRender(title.toString());
-            return;
         }
     }
 }

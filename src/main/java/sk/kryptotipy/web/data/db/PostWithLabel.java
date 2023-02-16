@@ -121,19 +121,19 @@ public class PostWithLabel {
     }
 
     public String getI18nFlagRender() {
-        switch (this.lang) {
-            case "SK" : { return "crypto.news.title.sk"; }
-            case "CZ" : { return "crypto.news.title.cz"; }
-            case "DE" : { return "crypto.news.title.de"; }
-            case "CH" : { return "crypto.news.title.ch"; }
-            case "PL" : { return "crypto.news.title.pl"; }
-            case "HU" : { return "crypto.news.title.hu"; }
-            case "CA" : { return "crypto.news.title.ca"; }
-            case "US" : { return "crypto.news.title.us"; }
-            case "GB" : { return "crypto.news.title.gb"; }
-            case "NL" : { return "crypto.news.title.nl"; }
-            default : return "navbar.news";
-        }
+        return switch (this.lang) {
+            case "SK" -> "crypto.news.title.sk";
+            case "CZ" -> "crypto.news.title.cz";
+            case "DE" -> "crypto.news.title.de";
+            case "CH" -> "crypto.news.title.ch";
+            case "PL" -> "crypto.news.title.pl";
+            case "HU" -> "crypto.news.title.hu";
+            case "CA" -> "crypto.news.title.ca";
+            case "US" -> "crypto.news.title.us";
+            case "GB" -> "crypto.news.title.gb";
+            case "NL" -> "crypto.news.title.nl";
+            default -> "navbar.news";
+        };
     }
     /**
      * some sources have to have direct redirect to their site and
@@ -156,6 +156,4 @@ public class PostWithLabel {
         );
         return redirect.contains(sourceRender);
     }
-
-
 }

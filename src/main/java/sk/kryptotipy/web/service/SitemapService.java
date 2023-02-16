@@ -22,7 +22,7 @@ public class SitemapService {
 
         var sitemap = new Sitemap();
         var sitesByLang = siteRepository.getSites().stream()
-                .filter(site -> site.getLoc().contains(sitemapLang + ".kryptotipy.sk"))
+                .filter((var site) -> site.getLoc().contains(sitemapLang + ".kryptotipy.sk"))
                 .collect(Collectors.toList());
         sitemap.setUrls(sitesByLang);
 

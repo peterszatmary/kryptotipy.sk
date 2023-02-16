@@ -2,7 +2,6 @@ package sk.kryptotipy.web.data.db.mappers;
 
 import lombok.extern.slf4j.Slf4j;
 
-import javax.management.DescriptorKey;
 import java.util.stream.IntStream;
 
 @Slf4j
@@ -87,7 +86,7 @@ public class QueryFactory {
 
     private static String _x(Integer count) {
         var str = new StringBuilder();
-        IntStream.range(0, count).forEach(x -> str.append("?,"));
+        IntStream.range(0, count).forEach((var x) -> str.append("?,"));
         str.delete(str.length() - 1, str.length());
         return str.toString();
     }

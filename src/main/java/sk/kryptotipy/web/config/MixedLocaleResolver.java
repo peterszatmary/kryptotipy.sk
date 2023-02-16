@@ -141,7 +141,6 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
         if (supportedLangs.contains(langPart)) {
             result = langPart;
         }
-
         return result;
     }
 
@@ -166,34 +165,27 @@ public class MixedLocaleResolver extends AbstractLocaleResolver {
         var lang = locale.getLanguage();
 
         switch (lang) {
-            case "de": {
+            case "de" -> {
                 langs.add("DE");
                 langs.add("CH");
-                break;
             }
-            case "pl": {
+            case "pl" -> {
                 langs.add("PL");
-                break;
             }
-            case "nl": {
+            case "nl" -> {
                 langs.add("NL");
-                break;
             }
-            case "hu": {
+            case "hu" -> {
                 langs.add("HU");
-                break;
             }
-            case "en", "us": {
+            case "en", "us" -> {
                 langs.add("CA");
                 langs.add("GB");
                 langs.add("US");
-                break;
             }
-
-            default: {
+            default -> {
                 langs.add("SK");
                 langs.add("CZ");
-                break;
             }
         }
         log.info("set [{}] by [{}]", langs, lang);

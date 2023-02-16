@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import sk.kryptotipy.web.data.Sitemap;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +25,6 @@ public class SiteRepository {
         sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/", 1.0, new Date()));
 
         this.createSitesWithPriority08(sites);
-        //this.createSitesWithPriority064(sites);
         this.manualWithPriority08(sites);
         this.manualWithPriority064(sites);
 
@@ -63,28 +61,9 @@ public class SiteRepository {
                 "posts-by-i18n/SE"
         ));
 
-//        var newsCombinations = createNewsCombinations();
-
-        //TODO
-//
-//        for (var x : newsCombinations) {
-//            if (x.contains("_l_sk_cz")) {
-//                sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + x, 0.8, date));
-//            } else if (x.contains("_l_hu")) {
-//                sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + x, 0.8, date));
-//            } else if (x.contains("_l_pl")) {
-//                sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + x, 0.8, date));
-//            } else if (x.contains("_l_nl")) {
-//                sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + x, 0.8, date));
-//            } else if (x.contains("_l_de")) {
-//                sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + x, 0.8, date));
-//            } else if (x.contains("_l_us")) {
-//                sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + x, 0.8, date));
-//            }
-//        }
 
         _08Sites.stream().
-                forEach(site -> {
+                forEach((var site) -> {
                     sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.8, date));
                     sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.8, date));
                     sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.8, date));
@@ -112,11 +91,10 @@ public class SiteRepository {
                 "article/passive-income-with-polkadot-on-ledger", "article/passive-income-with-vechain",
                 "article/passive-income-with-cardano", "article/passive-income-with-cosmos-atom",
                 "cooperation"
-                //, "article/majk-spirit-wexo-nft"
         );
 
         manualSites.stream().
-                forEach(site -> {
+                forEach((var site) -> {
                     sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
                     sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
                     sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 11, 15))));
@@ -132,7 +110,7 @@ public class SiteRepository {
         );
 
         manualSites.stream().
-                forEach(site -> {
+                forEach((var site) -> {
                     sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
                     sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
                     sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, localDateToDate(LocalDate.of(2021, 7, 20))));
@@ -145,82 +123,6 @@ public class SiteRepository {
     private Date localDateToDate(LocalDate localDate) {
         return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
-
-
-    private void createSitesWithPriority064(List<Sitemap.URL> sites) {
-
-        var _064Sites = Arrays.asList(
-
-        );
-
-        _064Sites.stream().
-                forEach(site -> {
-                    sites.add(new Sitemap.URL("https://www.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://en.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://de.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/" + site, 0.64, new Date()));
-                    sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/" + site, 0.64, new Date()));
-                });
-    }
-
-
-    @Deprecated
-    @SuppressWarnings("It seems that this is too much for Google. Less is more.")
-    private List<String> createNewsCombinations() {
-        var result = new ArrayList<String>();
-        var url = "posts/";
-        var categories = Arrays.asList(
-                "avalanche", "algorand", "axie-infinity", "altcoin", "airdrops",
-                "bitcoin", "binance",
-                "cryptocurrency", "cosmos", "cardano", "chainlink",
-                "decentraland", "dogecoin", "dai", "dash", "diem",
-                "ethereum", "eos",
-                "monero", "mining", "metaverse",
-                "nft",
-                "play-to-earn",  "polkadot", "polygon",
-                "iota", "kusama", "helium", "loopring", "ontology",
-                "fantom", "filecoin", "ftx", "flow", "hedera",
-                "litecoin", "neo",
-                "ripple",
-                "solana", "shiba-inu", "stellar","sandbox",
-                "tether", "terra", "tron", "theta", "tezos",
-                "ecb", "fed", "nbs", "wallets", "halving", "exchange", "exodus", "dag", "coinmarketcap"
-        );
-        for (var category : categories) {
-            var u = new StringBuilder(url);
-            for (int i = 0; i < categories.size(); i++) {
-                if (categories.get(i).equals(category)) {
-                    continue;
-                }
-                if (i == categories.size() - 1) {
-                    u.append(categories.get(i));
-                    result.add(u.toString() + "_l_sk_cz");
-                    result.add(u.toString() + "_l_us");
-                    result.add(u.toString() + "_l_ca");
-                    result.add(u.toString() + "_l_de");
-                    result.add(u.toString() + "_l_nl");
-                    result.add(u.toString() + "_l_hu");
-                    result.add(u.toString() + "_l_pl");
-                } else {
-                    u.append(categories.get(i));
-                    result.add(u.toString() + "_l_sk_cz");
-                    result.add(u.toString() + "_l_us");
-                    result.add(u.toString() + "_l_ca");
-                    result.add(u.toString() + "_l_de");
-                    result.add(u.toString() + "_l_nl");
-                    result.add(u.toString() + "_l_hu");
-                    result.add(u.toString() + "_l_pl");
-                    u.append("_");
-                }
-            }
-        }
-
-        return result.stream()
-                .filter(x -> x.split("_l_")[0].contains("_"))
-                .collect(Collectors.toList());
-    }
-
 
 
     private List<Sitemap.URL> createNewsCombinationsOf5(String lang, Date date) {
@@ -243,25 +145,20 @@ public class SiteRepository {
         );
 
         return _5.stream()
-                .map(x -> new Sitemap.URL("https://" + lang + ".kryptotipy.sk/posts/" + x + "_l_" + langToL(lang) , 0.8, date))
+                .map((var x) -> new Sitemap.URL("https://" + lang + ".kryptotipy.sk/posts/" + x + "_l_" + langToL(lang) , 0.8, date))
                 .collect(Collectors.toList());
     }
 
     private String langToL(String lang) {
-        switch(lang) {
-            case "en" : return "us_gb_ca";
-            case "de" : return "de_ch";
-
-            case "nl" : return "nl";
-            case "pl" : return "pl";
-            case "es" : return "es";
-            case "se" : return "se";
-            case "hu" : return "hu";
-            default : return "sk_cz";
-        }
+        return switch(lang) {
+            case "en" -> "us_gb_ca";
+            case "de" -> "de_ch";
+            case "nl" -> "nl";
+            case "pl" -> "pl";
+            case "es" -> "es";
+            case "se" -> "se";
+            case "hu" -> "hu";
+            default -> "sk_cz";
+        };
     }
-
-//    public static void main(String[] args) {
-//        System.out.println(new SiteRepository().langToL("hu"));
-//    }
 }

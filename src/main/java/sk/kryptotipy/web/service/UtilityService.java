@@ -1,12 +1,14 @@
 package sk.kryptotipy.web.service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import sk.kryptotipy.web.component.UrlComponent;
 
-import jakarta.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 @Slf4j
@@ -32,8 +34,8 @@ public class UtilityService {
 
     public String buildSiteUrl(List<String> labels, List<String> langs) {
         StringBuilder siteUrl = new StringBuilder("news?");
-        labels.stream().forEach(label -> siteUrl.append("label=").append(label).append("&"));
-        langs.stream().forEach(lang -> siteUrl.append("lang=").append(lang).append("&"));
+        labels.stream().forEach((var label) -> siteUrl.append("label=").append(label).append("&"));
+        langs.stream().forEach((var lang) -> siteUrl.append("lang=").append(lang).append("&"));
         siteUrl.delete(siteUrl.length() - 1, siteUrl.length());
         return siteUrl.toString();
     }
@@ -62,5 +64,15 @@ public class UtilityService {
             fullUrl = request.getRequestURL().toString() + "?" + request.getQueryString();
         }
         return urlComponent.getCanonical(fullUrl);
+    }
+
+    public LocalDate parseDate(String rawDate, String postUrl) {
+        var birthDay = LocalDate.now();
+        try {
+            birthDay = LocalDate.parse(rawDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        } catch (DateTimeParseException ex) {
+            log.warn("Date not parsed correctly for [{}], post url = [{}]", rawDate, postUrl);
+        }
+        return birthDay;
     }
 }

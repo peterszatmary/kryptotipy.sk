@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -19,24 +20,24 @@ public class ArticleData {
     
     @Bean
     public List<Article> articles() {
-        var articles = new ArrayList<Article>();
-
-        articles.add(this.metaverseNews());
-        articles.add(this.playToEarnNews());
-        articles.add(this.nftNews());
-
-        //articles.add(this.spiritNft());
-        articles.add(this.ethereumDapps2021());
-        articles.add(this.passiveIncomeWithPolkadotOnLedger());
-        articles.add(this.passiveIncomeWithVechain());
-        articles.add(this.passiveIncomeWithCardano());
-        articles.add(this.passiveIncomeWithCosmosAtom());
-        articles.add(this.proofOfWork());
-        articles.add(this.passiveIncomeWithAlgorand());
-        articles.add(this.passiveIncomeWithNeo());
-        articles.add(this.passiveIncomeExodus());
-        articles.add(this.btcIsNotTheFirst());
-        return articles;
+        return new ArrayList<>(
+            Arrays.asList(
+                this.metaverseNews(),
+                this.playToEarnNews(),
+                this.nftNews(),
+                //this.spiritNft(),
+                this.ethereumDapps2021(),
+                this.passiveIncomeWithPolkadotOnLedger(),
+                this.passiveIncomeWithVechain(),
+                this.passiveIncomeWithCardano(),
+                this.passiveIncomeWithCosmosAtom(),
+                this.proofOfWork(),
+                this.passiveIncomeWithAlgorand(),
+                this.passiveIncomeWithNeo(),
+                this.passiveIncomeExodus(),
+                this.btcIsNotTheFirst()
+            )
+        );
     }
 
     private Article metaverseNews() {

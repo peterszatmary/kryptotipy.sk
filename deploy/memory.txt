@@ -1,5 +1,0 @@
-ps -o pid,user,%mem,command ax | sort -b -k3 -r | less
-pmap <NUM>
-
-big anon - write to support
-diff between container and KVL instances

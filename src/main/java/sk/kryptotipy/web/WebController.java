@@ -7,8 +7,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sk.kryptotipy.web.api.PageDataServiceApi;
-import sk.kryptotipy.web.api.PostServiceApi;
+import sk.kryptotipy.web.service.PageDataServiceApi;
+import sk.kryptotipy.web.service.PostServiceApi;
 import sk.kryptotipy.web.component.UrlComponent;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
 
@@ -113,7 +113,7 @@ public class WebController {
 
         var allLabels = labelRepo.getAllLabels()
                 .stream()
-                .map(label -> label.getName())
+                .map((var label) -> label.getName())
                 .collect(Collectors.toList());
         var ALL_LABELS = allLabels.size();
 
@@ -138,14 +138,13 @@ public class WebController {
                 langs.add(lang);
             }
 
-            if (langs.isEmpty() && null == parameterMap.get("lang")) {
+            var parameterLang = parameterMap.get("lang");
+            if (langs.isEmpty() && null == parameterLang) {
                 langs = mixedLocaleResolver.getLangsByUserCountry(mixedLocaleResolver.resolveLocale(request));
             } else {
-                if (null == parameterMap.get("lang")) {
-                    langs = new ArrayList<>(Arrays.asList(lang));
-                } else {
-                    langs = new ArrayList<>(Arrays.asList(parameterMap.get("lang")));
-                }
+                langs = (null == parameterLang) ?
+                        new ArrayList<>(Arrays.asList(lang)) :
+                        new ArrayList<>(Arrays.asList(parameterLang));
             }
 
             if (labels.isEmpty()) {
@@ -170,7 +169,7 @@ public class WebController {
 
         log.info("Posts count rendered = [{}]", posts.size());
         log.info("Posts filtered by labels count = [{}], labels = [{}], langs = [{}], langs count = [{}].",
-                labels.size(), labels, langs.size(), langs);
+                labels.size(), labels, langs, langs.size());
         return "non-index";
     }
 
@@ -445,7 +444,7 @@ public class WebController {
 
         model.put("active_" + activeLink, "active");
         links.remove(activeLink);
-        links.stream().forEach(x -> model.put("active_" + x, ""));
+        links.stream().forEach((var x) -> model.put("active_" + x, ""));
     }
 
     private void setNewsRenderingTexts(List<String> labels, List<String> langs,
@@ -493,7 +492,7 @@ public class WebController {
         labels.stream()
                 .limit(limit)
                 //.map(x -> rb.getString("label.title." + x.toLowerCase()))//TODO
-                .forEach(label -> labelsStr.append(rb.getString("label.title." + label.toLowerCase()))
+                .forEach((var label) -> labelsStr.append(rb.getString("label.title." + label.toLowerCase()))
                         .append(", "));
 
         if (!labels.isEmpty()) {

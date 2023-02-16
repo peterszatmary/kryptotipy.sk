@@ -42,7 +42,7 @@ public class RssFeedView extends AbstractRssFeedView {
         var articles = articleRepository.getKryptotipyContent(
                 utilityService.getResourceBundleSk());
         return articles.stream()
-                .map(article -> mapArticleToRssItem(article))
+                .map((var article) -> mapArticleToRssItem(article))
                 .collect(Collectors.toList());
     }
 

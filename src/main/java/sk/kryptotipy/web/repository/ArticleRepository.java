@@ -4,11 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import sk.kryptotipy.web.data.Article;
 
-import java.sql.Date;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.*;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 //TODO encoding problems are caused by external library rome.
@@ -28,10 +25,10 @@ public class ArticleRepository {
     public List<Article> getKryptotipyContent(ResourceBundle rb) {
 
         var articleList = articles.stream()
-                .map(x -> {
-                    x.setTitle(rb.getString(x.getRbTitleKey()));
-                    x.setDescription(x.getCategory() + " - " + rb.getString(x.getRbCategoryKey()));
-                    return x;
+                .map((var article) -> {
+                    article.setTitle(rb.getString(article.getRbTitleKey()));
+                    article.setDescription(article.getCategory() + " - " + rb.getString(article.getRbCategoryKey()));
+                    return article;
                 })
                 .collect(Collectors.toList());
         return articleList;

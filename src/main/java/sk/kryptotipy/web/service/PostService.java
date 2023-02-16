@@ -3,12 +3,9 @@ package sk.kryptotipy.web.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import sk.kryptotipy.web.api.PostServiceApi;
-import sk.kryptotipy.web.data.Donate;
 import sk.kryptotipy.web.data.db.Post;
 import sk.kryptotipy.web.data.db.PostWithLabel;
 import sk.kryptotipy.web.repository.db.PostJdbcRepository;
-import sk.kryptotipy.web.repository.db.PostWithLabelRepository;
 
 
 import java.util.*;
@@ -16,7 +13,7 @@ import java.util.*;
 @Slf4j
 @AllArgsConstructor
 @Service
-public class PostService implements PostServiceApi {
+public final class PostService implements PostServiceApi {
 
     private final PostJdbcRepository postLabelRepository;
 

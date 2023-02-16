@@ -8,14 +8,17 @@ import sk.kryptotipy.web.data.db.PostWithLabel;
 import sk.kryptotipy.web.data.db.mappers.PostMapper;
 import sk.kryptotipy.web.data.db.mappers.PostWithLabelMapper;
 import sk.kryptotipy.web.data.db.mappers.QueryFactory;
+import sk.kryptotipy.web.service.UtilityService;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @Repository
 public class PostJdbcRepository {
 
     private final JdbcTemplate jdbcTemplate;
+    private final UtilityService utilityService;
 
     public List<PostWithLabel> getNewestPosts(List<String> langs) {
        return p(langs, 12);
@@ -33,7 +36,7 @@ public class PostJdbcRepository {
             o.addAll(langs);
             //o.add(limit);
 
-            results  = jdbcTemplate.query(QueryFactory.newestPosts(langs.size(), limit), new PostWithLabelMapper(), o.toArray());
+            results  = jdbcTemplate.query(QueryFactory.newestPosts(langs.size(), limit), new PostWithLabelMapper(utilityService), o.toArray());
         } catch(Exception e){
             e.printStackTrace();
         }
@@ -55,7 +58,7 @@ public class PostJdbcRepository {
     public Post getPostById(Long id) {
         List<Post> posts = new ArrayList<>();
         try {
-            posts  = jdbcTemplate.query(QueryFactory.postById(), new PostMapper(jdbcTemplate), id);
+            posts  = jdbcTemplate.query(QueryFactory.postById(), new PostMapper(jdbcTemplate, utilityService), id);
 
         } catch(Exception e){
             e.printStackTrace();
@@ -76,7 +79,7 @@ public class PostJdbcRepository {
 
             result  = jdbcTemplate.query(
                     QueryFactory.getNews(labels.size(), langs.size()),
-                    new PostWithLabelMapper(),
+                    new PostWithLabelMapper(utilityService),
                     o.toArray()
             );
 
