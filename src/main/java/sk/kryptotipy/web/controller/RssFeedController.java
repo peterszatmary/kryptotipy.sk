@@ -1,4 +1,4 @@
-package sk.kryptotipy.web;
+package sk.kryptotipy.web.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

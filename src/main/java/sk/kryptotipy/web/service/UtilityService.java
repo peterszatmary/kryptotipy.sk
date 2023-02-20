@@ -52,7 +52,7 @@ public class UtilityService {
 
 
     public Long decodeKryptotipyHash(String hashedId) {
-        String s = hashedId.substring(1, hashedId.length() - 2);
+        var s = hashedId.substring(1, hashedId.length() - 2);
         return Long.valueOf(s) - 217L;
     }
 

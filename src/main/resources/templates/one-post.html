@@ -140,7 +140,7 @@
                             </div>
 
                             <div style="margin-top:0px;">
-                                <a class="btn btn-success" style="background-color: #94c045;" href="/news" th:text="#{one.frame.back}"></a>
+                                <a class="btn btn-success" style="background-color: #94c045;" th:href="${session.backtothefuture}" th:text="#{one.frame.back}"></a>
                                 <a class="btn btn-light" th:href="${one_post.url}" rel="nofollow" style="margin-right:10px;">
                                     <span th:text="#{one.frame.goto}"></span> <span th:text="${one_post.sourceRender}"></span>
                                 </a>

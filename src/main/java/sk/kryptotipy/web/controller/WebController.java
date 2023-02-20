@@ -1,33 +1,22 @@
-package sk.kryptotipy.web;
-
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import sk.kryptotipy.web.service.PageDataServiceApi;
-import sk.kryptotipy.web.service.PostServiceApi;
-import sk.kryptotipy.web.component.UrlComponent;
-import sk.kryptotipy.web.config.MixedLocaleResolver;
-
-import sk.kryptotipy.web.data.db.PostWithLabel;
-import sk.kryptotipy.web.repository.ArticleRepository;
-import sk.kryptotipy.web.repository.ServiceRepository;
-import sk.kryptotipy.web.repository.db.LabelRepository;
-import sk.kryptotipy.web.repository.db.PostJdbcRepository;
-import sk.kryptotipy.web.repository.db.PostWithLabelRepository;
-import sk.kryptotipy.web.service.PriceService;
-import sk.kryptotipy.web.service.SitemapService;
-import sk.kryptotipy.web.service.UtilityService;
+package sk.kryptotipy.web.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
+import sk.kryptotipy.web.config.MixedLocaleResolver;
+import sk.kryptotipy.web.repository.ArticleRepository;
+import sk.kryptotipy.web.repository.ServiceRepository;
+import sk.kryptotipy.web.service.*;
+import sk.kryptotipy.web.util.WebUtils;
+
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Slf4j
 @AllArgsConstructor
@@ -36,17 +25,12 @@ public class WebController {
 
     private final PageDataServiceApi pageData;
     private final PostServiceApi postService;
-    private final AppProperties appProperties;
     private final UtilityService utilityService;
     private final PriceService priceService;
     private final ServiceRepository serviceRepo;
     private final ArticleRepository articleRepo;
-    private final LabelRepository labelRepo;
     private final MixedLocaleResolver mixedLocaleResolver;
-    private final PostJdbcRepository postJdbcRepository;
-    private final UrlComponent urlComponent;
     private final SitemapService sitemapService;
-    private final PostWithLabelRepository postWithLabelRepository;
 
 
     @GetMapping("/")
@@ -57,8 +41,8 @@ public class WebController {
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
 
         try {
-            addCookies(model, request);
-            makeLinkActive(model, "index");
+            WebUtils.addCookies(model, request, mixedLocaleResolver);
+            WebUtils.makeLinkActive(model, "index");
             var langs = mixedLocaleResolver.getLangsByUserCountry(resolvedLocale);
 
             model.put("site", "");
@@ -83,103 +67,13 @@ public class WebController {
         }
     }
 
-    @GetMapping("/posts-by-i18n/{lang}")
-    public String postsByI18n(Map<String, Object> model,
-                              @PathVariable("lang") String lang, HttpServletRequest request) {
-       return news(null, lang, model, request);
-    }
-
-
-    @GetMapping("/posts/{label}")
-    public String posts(Map<String, Object> model,
-                        @PathVariable("label") String label, HttpServletRequest request) {
-        return news(label, null,  model, request);
-    }
-
-
-    @GetMapping(value="/news")
-    public String news(String labell, String lang, Map<String, Object> model,
-                       HttpServletRequest request) {
-
-        // labell is one leabel containing all labels and langs
-        // posts/labell -> posts/bitcoin_avalanche_l_us_sk
-        // l show where langs starts
-
-        List<String> langs = new ArrayList<>();
-        List<String> labels = new ArrayList<>();
-        List<PostWithLabel> posts;
-        final var from = 0L;
-        final var to = appProperties.getPageSize();
-
-        var allLabels = labelRepo.getAllLabels()
-                .stream()
-                .map((var label) -> label.getName())
-                .collect(Collectors.toList());
-        var ALL_LABELS = allLabels.size();
-
-        if (labell != null && labell.contains("_l_")) {
-            var langss = labell.split("_l_")[1];
-            var labelss = labell.split("_l_")[0];
-            langs = Arrays.asList(langss.toUpperCase().split("_"));
-            labels = Arrays.asList(labelss.split("_"));
-        } else {
-
-            final var parameterMap = request.getParameterMap();
-            addCookies(model, request);
-            makeLinkActive(model, "posts");
-
-            if (null != labell) {
-                labels =
-                        labell != null && !labell.contains("_") && labels.contains(labell) ?
-                                new ArrayList<>(List.of(labell)) : new ArrayList<>(List.of(labell.split("_")));
-            }
-
-            if (lang != null && !lang.contains("_") && !langs.contains(lang)) {
-                langs.add(lang);
-            }
-
-            var parameterLang = parameterMap.get("lang");
-            if (langs.isEmpty() && null == parameterLang) {
-                langs = mixedLocaleResolver.getLangsByUserCountry(mixedLocaleResolver.resolveLocale(request));
-            } else {
-                langs = (null == parameterLang) ?
-                        new ArrayList<>(Arrays.asList(lang)) :
-                        new ArrayList<>(Arrays.asList(parameterLang));
-            }
-
-            if (labels.isEmpty()) {
-                labels =
-                        utilityService.checkAndInitCheckBoxInput("label", parameterMap,  allLabels);
-            }
-        }
-
-        if (labels.contains("all")) {
-            labels.remove("all");
-            posts = postJdbcRepository.getNewsAll(langs);
-        } else {
-            posts = postJdbcRepository.getNews(labels, langs, from, to);
-        }
-        setNewsRenderingTexts(labels, langs, model, ALL_LABELS, request);
-
-        model.put("posts", posts);
-        model.put("content_path", "fragments/content/posts");
-        model.put("checked_labels", labels);
-        model.put("price_widget", priceService.mapCoinToCoinLibId(labels));
-        model.put("checked_langs", langs);
-
-        log.info("Posts count rendered = [{}]", posts.size());
-        log.info("Posts filtered by labels count = [{}], labels = [{}], langs = [{}], langs count = [{}].",
-                labels.size(), labels, langs, langs.size());
-        return "non-index";
-    }
-
     @GetMapping("/external-services")
     public String externalServices(Map<String, Object> model, HttpServletRequest request) {
 
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
-        addCookies(model, request);
-        makeLinkActive(model, "external_services");
+        WebUtils.addCookies(model, request, mixedLocaleResolver);
+        WebUtils.makeLinkActive(model, "external_services");
 
         try {
 
@@ -207,13 +101,13 @@ public class WebController {
 
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
-        addCookies(model, request);
-        makeLinkActive(model, "");
+        WebUtils.addCookies(model, request, mixedLocaleResolver);
+        WebUtils.makeLinkActive(model, "");
         try {
 
             model.put("site", "cooperation");
             model.put("content_path","fragments/content/cooperation");
-            makeLinkActive(model, "cooperation");
+            WebUtils.makeLinkActive(model, "cooperation");
             pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("footer.cooperation"), rbFromUrl.getString("default.descr"), request);
             model.put("page_description", rbFromUrl.getString("cooperation.descr"));
             model.put("page_date", LocalDateTime.of(2021, Month.JANUARY, 16, 0, 0) + "");
@@ -236,8 +130,8 @@ public class WebController {
         var rbFromUrl = utilityService.getResourceBundle(
                 resolvedLocale
         );
-        addCookies(model, request);
-        makeLinkActive(model, "krypto_learning");
+        WebUtils.addCookies(model, request, mixedLocaleResolver);
+        WebUtils.makeLinkActive(model, "krypto_learning");
         try {
             model.put("site", "krypto-learning");
             model.put("content_path","fragments/content/krypto_learning");
@@ -262,8 +156,8 @@ public class WebController {
 
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
-        addCookies(model, request);
-        makeLinkActive(model, "dictionary");
+        WebUtils.addCookies(model, request, mixedLocaleResolver);
+        WebUtils.makeLinkActive(model, "dictionary");
         try {
             model.put("site", "dictionary");
             model.put("active_krypto_learning", "");
@@ -294,16 +188,13 @@ public class WebController {
         return "ads.txt";
     }
 
-
-
-
     @GetMapping("/article/{postTitle}")
     public String post(Map<String, Object> model,
                        @PathVariable("postTitle") String postTitle, HttpServletRequest request) {
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
-        addCookies(model, request);
-        makeLinkActive(model, "krypto_learning");
+        WebUtils.addCookies(model, request, mixedLocaleResolver);
+        WebUtils.makeLinkActive(model, "krypto_learning");
         try {
 
             model.put("site", "article/" + postTitle);
@@ -331,8 +222,8 @@ public class WebController {
 
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
-        addCookies(model, request);
-        makeLinkActive(model, "did_you_know");
+        WebUtils.addCookies(model, request, mixedLocaleResolver);
+        WebUtils.makeLinkActive(model, "did_you_know");
         try {
             model.put("site", "did-you-know");
             model.put("content_path", "fragments/content/did_you_know");
@@ -349,55 +240,6 @@ public class WebController {
             return "redirect:/error";
         }
     }
-
-    @GetMapping("/one-post-frame/{hashed_id}")
-    public String onePostFrame(
-            Map<String, Object> model,
-            HttpServletRequest request,
-            HttpServletResponse response,
-            @PathVariable("hashed_id") String hashedId
-       ) {
-        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
-        makeLinkActive(model, "posts");
-        try {
-            model.put("site", "one-post-frame");
-            var id = utilityService.decodeKryptotipyHash(hashedId);
-            var post = this.postService.getPostsById(id);
-            var postWithLabel = postWithLabelRepository.findByPostId(id);
-
-            post.setViews(post.getViews() + 1);
-            postWithLabel.setViews(postWithLabel.getViews() + 1);
-
-            postService.updatePostViews(post.getUrl(), post.getViews());
-
-            log.info("Post hashed id = {}, id = {}", hashedId, id);
-            log.info("New view for post = {}, views = {}", postWithLabel.getUrl(), postWithLabel.getViews());
-
-            model.put("one_post", postWithLabel);
-            pageData.set(model, resolvedLocale.getLanguage(), postWithLabel.getTitle(), rbFromUrl.getString("default.descr"), request);
-
-            var pageImage = "/assets/post-images/" + postWithLabel.getLabelName1().toLowerCase() + "/images_1.jpg";
-
-            model.put("page_image", pageImage);
-
-            if (postWithLabel.useRedirectToSourceSite()) {
-                response.setHeader("Location", postWithLabel.getUrl());
-                response.setStatus(302);
-            }
-            return "one-post";
-
-        } catch (Exception ex) {
-            log.warn("one page frame : hashedId={}",
-                    hashedId,
-                    ex.getMessage()
-            );
-            log.warn(ex.getCause() + "" + ex.getStackTrace());
-            pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
-            return "redirect:/error";
-        }
-    }
-
 
     @GetMapping(
             value = "/sitemap.xml",
@@ -427,91 +269,8 @@ public class WebController {
         return btcPrice.substring(0, btcPrice.length() - 2);
     }
 
-    private void addCookies(Map<String, Object> model, HttpServletRequest request) {
-        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var cookies = resolvedLocale.getLanguage().toLowerCase();
-        model.put("cookies_lang", cookies);
-        log.debug("cookies '{}'", cookies);
-    }
-
-    private void makeLinkActive(Map<String, Object> model, String activeLink) {
-        var links = new ArrayList<>(Arrays.asList(
-                "index", "posts", "dictionary", "external_services", "did_you_know", "krypto_learning", "cooperation"
-        ));
-        if (!links.contains(activeLink)) {
-            activeLink = "index";
-        }
-
-        model.put("active_" + activeLink, "active");
-        links.remove(activeLink);
-        links.stream().forEach((var x) -> model.put("active_" + x, ""));
-    }
-
-    private void setNewsRenderingTexts(List<String> labels, List<String> langs,
-                                       Map<String, Object> model,
-                                       Integer allLabelCount, HttpServletRequest request) {
-        var label_render = "";
-        var customPageTitle = "";
-        var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
-        var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
-
-        if (langs.size() == 1 ) {//TODO think more && labels.size() > 5 PL has one lang thats why no 5 but all. but fix other site too all->5
-            customPageTitle = rbFromUrl.getString("crypto.news.title." + langs.get(0).toLowerCase());
-            label_render = customPageTitle.split(" ")[0];
-        } else if (labels.size() == 1) {
-            label_render =  rbFromUrl.getString("label.title." + labels.get(0).toLowerCase());
-            customPageTitle = rbFromUrl.getString("crypto.news.theme") + StringUtils.capitalize(label_render);
-
-        } else if (labels.size() == allLabelCount) {
-            customPageTitle = rbFromUrl.getString("crypto.news.title.all");
-            label_render = rbFromUrl.getString("filter.component.all");
-        } else {
-            var pageTitle = rbFromUrl.getString("crypto.news.themes");
-            var labelsStr = new StringBuilder();
-            label_render = labelsToRender(labels, labelsStr, rbFromUrl);
-            customPageTitle = pageTitle + StringUtils.capitalize(label_render);
-        }
-
-        pageData.set(model, resolvedLocale.getLanguage(), customPageTitle, rbFromUrl.getString("default.descr"), request);
-        model.put("page_image", getOgImageForNews(labels));
-        model.put("site", urlComponent.mapSiteUrl(utilityService.buildSiteUrl(labels, langs), labels, langs));
-        model.put("label_render", customPageTitle);
-        model.put("label_render_path", StringUtils.capitalize(label_render));
-    }
 
 
-    private String labelsToRender(List<String> labels, StringBuilder labelsStr, ResourceBundle rb) {
-        if (labels.size() > 5) {
-            return l(labels, 5, " ...",labelsStr, rb);
-        } else {
-            return l(labels, labels.size(), "",labelsStr, rb);
-        }
-    }
-
-    private String l(List<String> labels, Integer limit, String appendToEnd, StringBuilder labelsStr, ResourceBundle rb) {
-        labels.stream()
-                .limit(limit)
-                //.map(x -> rb.getString("label.title." + x.toLowerCase()))//TODO
-                .forEach((var label) -> labelsStr.append(rb.getString("label.title." + label.toLowerCase()))
-                        .append(", "));
-
-        if (!labels.isEmpty()) {
-            return labelsStr.deleteCharAt(labelsStr.length() - 1)
-                    .deleteCharAt(labelsStr.length() - 1)
-                    .append(appendToEnd)
-                    .toString();
-        } else {
-            return "all";
-        }
-    }
-
-
-    private String getOgImageForNews(List<String> labels) {
-        if (labels.size() == 1) {
-            return "/assets/post-images/" + labels.get(0) + "/images_7.jpg";
-        }
-        return "/assets/post-images/exchange/images_2.jpg";
-    }
 
 
     //    @RequestMapping("/donate")
