@@ -47,6 +47,7 @@ openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -i
 - [video guide](https://www.youtube.com/watch?v=_8rFUr_NDB0&ab_channel=AnalyticsMania-GoogleTagManager%26Analytics)
 - deadline 1.7.2023
 - 14 months of statistics
+- more months in BigQuery
 
 
 ## Sitemap
@@ -133,23 +134,21 @@ openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -i
 
 #### Renew
 
-
-#### Dry
-
-```
-certbot renew --dry-run
-```
-
-#### Do it
-
-- do not forget both commands and password is in app-prod.properties file.
+Stop the application and run
 
 ```
 certbot renew
 openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```
 
-#### Automatic renew
+if you would like to try
+
+```
+certbot renew --dry-run
+```
+
+
+#### Automatic renew (TODO)
 
 - check systemctl list-timers
 - or check instruction on certbot site
@@ -197,6 +196,7 @@ https://certbot.eff.org/lets-encrypt/debianbuster-other
 
 ## Testing multi-extraction (more extraction in one time)
 
+```
 13.12.2021 ->>>>>>>>>>
 
 - I was trying  mysqlcheck
@@ -220,12 +220,12 @@ https://certbot.eff.org/lets-encrypt/debianbuster-other
 
 
 there is a lot of data but database is able to work relatively fine but after few days it is horrible.
-
+```
 
 ### QUICK FIX
 
 - restart server
-- mysqlcheck --all-databases -u root -p -o
+- `mysqlcheck --all-databases -u root -p -o`
 
 
 IT SEEMS THAT I NEED NEW  DATABASE

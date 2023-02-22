@@ -47,9 +47,15 @@ public class PostMapper implements RowMapper<Post> {
         post.setLabels(selectLabels(rs.getLong("p.id")));
         //log.info("after labels sql query");
 
+        log.debug("[POST-MAPPER]:{}", post);
         return post;
     }
 
+    /**
+     * this is at this moment not in the use because I am using iframes
+     * @param content
+     * @return
+     */
     private String getContentView(String content) {
         // budeme zobrazovat 25% clanku
         if (content == null || "".equals(content)) {

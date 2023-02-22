@@ -41,7 +41,7 @@ public class QueryFactory {
                 .append("LIMIT ")
                 .append(limit)
                 .toString();
-
+                log.debug("[WEB-QUERY]:{}", query);
         return query;
     }
 
@@ -65,23 +65,28 @@ public class QueryFactory {
                 .append("AND p.post_source_image is not null ")
                 .append("ORDER BY p.post_birthday DESC ")
                 .append("LIMIT ?,?");
+        log.debug("[WEB-QUERY]:{}", query);
         return query.toString();
     }
 
 
     public static String getLabelsByPostId() {
-        return new StringBuilder()
+        var query = new StringBuilder()
                 .append("SELECT l.id, l.name ")
                 .append("FROM label l JOIN post_index pl ON pl.label_id = l.id ")
                 .append("WHERE pl.post_id = ? ORDER BY pl.count DESC LIMIT 4") // LIMIT because i dont want to spend so much time to fix LABEL ONE LINER problem. line can hold max 5 labels. TODO do the fix later
                 .toString();
+        log.debug("[WEB-QUERY]:{}", query);
+        return query;
     }
 
     public static String getAllLabels() {
-        return new StringBuilder()
+        var query = new StringBuilder()
                 .append("SELECT DISTINCT l.name ")
                 .append("FROM label l ")
                 .toString();
+        log.debug("[WEB-QUERY]:{}", query);
+        return query;
     }
 
     private static String _x(Integer count) {
@@ -99,7 +104,7 @@ public class QueryFactory {
                 .append("FROM post p ")
                 .append("WHERE p.id = ? ")
                 .toString();
-        //log.info(query);
+        log.debug("[WEB-QUERY]:{}", query);
         return query;
     }
 }

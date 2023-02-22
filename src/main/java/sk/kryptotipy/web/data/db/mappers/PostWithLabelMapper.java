@@ -79,6 +79,7 @@ public class PostWithLabelMapper implements RowMapper<PostWithLabel> {
             post.setLabelRelevance4(labelRelevance4);
         }
 
+        log.debug("[POST_WITH_LABEL-MAPPER]:{}", post);
         return post;
     }
 }

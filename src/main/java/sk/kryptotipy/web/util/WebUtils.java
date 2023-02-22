@@ -2,12 +2,10 @@ package sk.kryptotipy.web.util;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
 import sk.kryptotipy.web.config.MixedLocaleResolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
