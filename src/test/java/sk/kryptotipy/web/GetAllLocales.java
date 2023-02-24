@@ -1,5 +1,10 @@
 package sk.kryptotipy.web;
 
+import org.junit.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class GetAllLocales {
@@ -14,7 +19,7 @@ public class GetAllLocales {
         }
         var l = new Locale("", "US");
         var ll = new Locale("", "us");
-        System.out.println("l=" + l.toString());
-        System.out.println("ll=" + ll.toString());
+        System.out.println("l=" + l);
+        System.out.println("ll=" + ll);
     }
 }

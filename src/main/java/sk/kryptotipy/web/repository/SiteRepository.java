@@ -3,12 +3,13 @@ package sk.kryptotipy.web.repository;
 import org.springframework.stereotype.Repository;
 import sk.kryptotipy.web.data.Sitemap;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
@@ -16,25 +17,26 @@ public class SiteRepository {
     public List<Sitemap.URL> getSites() {
 
         var sites = new ArrayList<Sitemap.URL>();
-        
-        sites.add(new Sitemap.URL("https://www.kryptotipy.sk/", 1.0, new Date()));
-        sites.add(new Sitemap.URL("https://en.kryptotipy.sk/", 1.0, new Date()));
-        sites.add(new Sitemap.URL("https://de.kryptotipy.sk/", 1.0, new Date()));
-        sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/", 1.0, new Date()));
-        sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/", 1.0, new Date()));
-        sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/", 1.0, new Date()));
+        var date = date();
 
-        this.createSitesWithPriority08(sites);
+        this.createSitesWithPriority1(sites, date);
+        this.createSitesWithPriority08(sites, date);
         this.manualWithPriority08(sites);
         this.manualWithPriority064(sites);
 
         return sites;
     }
 
+    private void createSitesWithPriority1(ArrayList<Sitemap.URL> sites, Date date) {
+        sites.add(new Sitemap.URL("https://www.kryptotipy.sk/", 1.0, date));
+        sites.add(new Sitemap.URL("https://en.kryptotipy.sk/", 1.0, date));
+        sites.add(new Sitemap.URL("https://de.kryptotipy.sk/", 1.0, date));
+        sites.add(new Sitemap.URL("https://pl.kryptotipy.sk/", 1.0, date));
+        sites.add(new Sitemap.URL("https://nl.kryptotipy.sk/", 1.0, date));
+        sites.add(new Sitemap.URL("https://hu.kryptotipy.sk/", 1.0, date));
+    }
 
-    private void createSitesWithPriority08(List<Sitemap.URL> sites) {
-
-        var date = new Date();
+    private void createSitesWithPriority08(List<Sitemap.URL> sites, Date date) {
 
         var _08Sites = new ArrayList(Arrays.asList(
                 "posts/neo", "posts/litecoin", "posts/polkadot", "posts/ethereum", "posts/bitcoin",
@@ -160,5 +162,16 @@ public class SiteRepository {
             case "hu" -> "hu";
             default -> "sk_cz";
         };
+    }
+
+    private Date date() {
+        var d = new Date();
+        var sm = new SimpleDateFormat("yyyy-MM-dd");
+        var strDate = sm.format(d);
+        try {
+            return sm.parse(strDate);
+        } catch (ParseException e) {
+            return new Date();
+        }
     }
 }
