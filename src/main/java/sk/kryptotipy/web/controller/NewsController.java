@@ -127,9 +127,11 @@ public class NewsController {
         model.put("price_widget", priceService.mapCoinToCoinLibId(labels));
         model.put("checked_langs", langs);
 
-        log.info("Posts count rendered = [{}]", posts.size());
-        log.info("Posts filtered by labels count = [{}], labels = [{}], langs = [{}], langs count = [{}].",
-                labels.size(), labels, langs, langs.size());
+        var clientIP = WebUtils.getClientIpAddress(request);
+
+        log.info("[{}] Posts count rendered = [{}]", clientIP, posts.size());
+        log.info("[{}] Posts filtered by [{}] labels count = [{}], labels = [{}], langs = [{}], langs count = [{}].",
+                clientIP, labels.size(), labels, langs, langs.size());
         return "non-index";
     }
 

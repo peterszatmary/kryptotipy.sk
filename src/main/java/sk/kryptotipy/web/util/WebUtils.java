@@ -11,6 +11,44 @@ import java.util.Map;
 @Slf4j
 public class WebUtils {
 
+    public static String getClientIpAddress(HttpServletRequest request) {
+        var ip = request.getHeader("X-Forwarded-For");
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("HTTP_X_FORWARDED");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("HTTP_X_CLUSTER_CLIENT_IP");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("HTTP_FORWARDED_FOR");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("HTTP_FORWARDED");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("HTTP_VIA");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("REMOTE_ADDR");
+        }
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getRemoteAddr();
+        }
+        return ip;
+    }
+
     public static void addCookies(Map<String, Object> model, HttpServletRequest request, MixedLocaleResolver mixedLocaleResolver) {
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var cookies = resolvedLocale.getLanguage().toLowerCase();
