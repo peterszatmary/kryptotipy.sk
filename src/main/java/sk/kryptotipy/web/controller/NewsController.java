@@ -88,7 +88,7 @@ public class NewsController {
 
             if (null != labell) {
                 labels =
-                        labell != null && !labell.contains("_") && labels.contains(labell) ?
+                        !labell.contains("_") && labels.contains(labell) ?
                                 new ArrayList<>(List.of(labell)) : new ArrayList<>(List.of(labell.split("_")));
             }
 
@@ -101,8 +101,8 @@ public class NewsController {
                 langs = mixedLocaleResolver.getLangsByUserCountry(mixedLocaleResolver.resolveLocale(request));
             } else {
                 langs = (null == parameterLang) ?
-                        new ArrayList<>(Arrays.asList(lang)) :
-                        new ArrayList<>(Arrays.asList(parameterLang));
+                        new ArrayList<>(List.of(lang)) :
+                        new ArrayList<>(List.of(parameterLang));
             }
 
             if (labels.isEmpty()) {
@@ -130,7 +130,7 @@ public class NewsController {
         var clientIP = WebUtils.getClientIpAddress(request);
 
         log.info("[{}] Posts count rendered = [{}]", clientIP, posts.size());
-        log.info("[{}] Posts filtered by [{}] labels count = [{}], labels = [{}], langs = [{}], langs count = [{}].",
+        log.info("[{}] Posts filtered by labels count = [{}], labels = [{}], langs = [{}], langs count = [{}].",
                 clientIP, labels.size(), labels, langs, langs.size());
         return "non-index";
     }
@@ -144,10 +144,11 @@ public class NewsController {
     ) {
         var resolvedLocale = mixedLocaleResolver.resolveLocale(request);
         var rbFromUrl = utilityService.getResourceBundle(resolvedLocale);
+        var ip = WebUtils.getClientIpAddress(request);
         WebUtils.makeLinkActive(model, "posts");
         try {
 
-            var postWithLabel = updateViewCounter(hashedId);
+            var postWithLabel = updateViewCounter(hashedId, ip);
             var pageImage = "/assets/post-images/" + postWithLabel.getLabelName1().toLowerCase() + "/images_1.jpg";
 
             model.put("site", "one-post-frame");
@@ -164,7 +165,7 @@ public class NewsController {
             return "one-post";
 
         } catch (Exception ex) {
-            log.warn("one page frame : hashedId={}",
+            log.warn("one page frame : hashedId=[{}],[{}]",
                     hashedId,
                     ex.getMessage()
             );
@@ -174,7 +175,7 @@ public class NewsController {
         }
     }
 
-    private PostWithLabel updateViewCounter(String hashedId) {
+    private PostWithLabel updateViewCounter(String hashedId, String ip) {
         var id = utilityService.decodeKryptotipyHash(hashedId);
         var post = this.postService.getPostsById(id);
         var postWithLabel = postWithLabelRepository.findByPostId(id);
@@ -183,8 +184,8 @@ public class NewsController {
         postWithLabel.setViews(postWithLabel.getViews() + 1);
         postService.updatePostViews(post.getUrl(), post.getViews());
 
-        log.info("Post hashed id = {}, id = {}", hashedId, id);
-        log.info("New view for post = {}, views = {}", postWithLabel.getUrl(), postWithLabel.getViews());
+        log.info("[{}] Post hashed id = {}, id = {}", ip, hashedId, id);
+        log.info("[{}] New view for post = {}, views = {}", ip, postWithLabel.getUrl(), postWithLabel.getViews());
 
         return postWithLabel;
     }

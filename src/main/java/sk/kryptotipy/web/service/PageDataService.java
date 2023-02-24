@@ -68,5 +68,4 @@ public final class PageDataService implements PageDataServiceApi {
     public String getPostImageHeight(String key) {
         return this.articleComponent.getPostImageHeight(key);
     }
-
 }

@@ -66,6 +66,6 @@ public class WebUtils {
 
         model.put("active_" + activeLink, "active");
         links.remove(activeLink);
-        links.stream().forEach((var x) -> model.put("active_" + x, ""));
+        links.forEach((var x) -> model.put("active_" + x, ""));
     }
 }
