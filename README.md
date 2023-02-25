@@ -224,8 +224,10 @@ there is a lot of data but database is able to work relatively fine but after fe
 
 ### QUICK FIX
 
-- restart server
-- `mysqlcheck --all-databases -u root -p -o`
+```
+service mysql restart
+mysqlcheck --all-databases -u root -p -o
+```
 
 
 IT SEEMS THAT I NEED NEW  DATABASE
