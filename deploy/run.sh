@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 # usage run.sh
-java -jar -Dspring.profiles.active=prod kryptotipy-web-5.0.9.jar
+java -jar -Dspring.profiles.active=prod kryptotipy-web-5.0.10.jar
 
