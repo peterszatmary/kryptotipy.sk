@@ -96,6 +96,7 @@ public class WebController {
     }
 
 
+    /**
     @GetMapping("/cooperation")
     public String cooperation(Map<String, Object> model, HttpServletRequest request) {
 
@@ -120,7 +121,7 @@ public class WebController {
             pageData.set(model, resolvedLocale.getLanguage(), rbFromUrl.getString("page.not.found"), rbFromUrl.getString("default.descr"), request);
             return "redirect:/error";
         }
-    }
+    }**/
 
 
     @GetMapping("/krypto-learning")

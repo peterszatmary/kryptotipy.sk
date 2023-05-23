@@ -58,7 +58,7 @@ public class WebUtils {
 
     public static void makeLinkActive(Map<String, Object> model, String activeLink) {
         var links = new ArrayList<>(Arrays.asList(
-                "index", "posts", "dictionary", "external_services", "did_you_know", "krypto_learning", "cooperation"
+                "index", "posts", "dictionary", "external_services", "did_you_know", "krypto_learning" //,"cooperation"
         ));
         if (!links.contains(activeLink)) {
             activeLink = "index";

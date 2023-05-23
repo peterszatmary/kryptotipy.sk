@@ -91,8 +91,8 @@ public class SiteRepository {
                 "article/passive-income-with-neo", "article/passive-income-with-exodus",
                 "article/btc-is-not-the-first", "article/passive-income-with-algorand",
                 "article/passive-income-with-polkadot-on-ledger", "article/passive-income-with-vechain",
-                "article/passive-income-with-cardano", "article/passive-income-with-cosmos-atom",
-                "cooperation"
+                "article/passive-income-with-cardano", "article/passive-income-with-cosmos-atom"//,
+                //"cooperation"
         );
 
         manualSites.stream().
