@@ -37,7 +37,7 @@
 ```
 certbot renew --dry-run
 certbot renew
-openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
+openssl pkcs12 -export -inkey /etc/letsencrypt/live/sk.kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```
 
 ## AHrefs
@@ -138,7 +138,7 @@ Stop the application and run
 
 ```
 certbot renew
-openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
+openssl pkcs12 -export -inkey /etc/letsencrypt/live/sk.kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```
 
 if you would like to try
@@ -168,14 +168,14 @@ snap install core; sudo snap refresh core
 apt-get remove certbot
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --standalone -d sk.kryptotipy.sk -d kryptotipy.sk -d www.kryptotipy.sk -d de.kryptotipy.sk -d nl.kryptotipy.sk -d pl.kryptotipy.sk -d en.kryptotipy.sk -d hu.kryptotipy.sk -d fr.kryptotipy.sk -d es.kryptotipy.sk -d fi.kryptotipy.sk -d www.kryptotipy.com -d kryptotipy.com  -d sk.kryptotipy.com -d en.kryptotipy.com 
-openssl pkcs12 -export -inkey /etc/letsencrypt/live/kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
+certbot certonly --standalone -d sk.kryptotipy.sk -d kryptotipy.sk -d www.kryptotipy.sk -d de.kryptotipy.sk -d nl.kryptotipy.sk -d pl.kryptotipy.sk -d en.kryptotipy.sk -d hu.kryptotipy.sk -d fr.kryptotipy.sk -d es.kryptotipy.sk -d fi.kryptotipy.sk  
+openssl pkcs12 -export -inkey /etc/letsencrypt/live/sk.kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
 ```
 
 ```
 IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at:
-   /etc/letsencrypt/live/kryptotipy.sk/fullchain.pem
+   /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem
    Your key file has been saved at:
    /etc/letsencrypt/live/kryptotipy.sk/privkey.pem
    Your cert will expire on 2021-03-02. To obtain a new or tweaked
@@ -191,6 +191,7 @@ IMPORTANT NOTES:
 
 ### For more information see please
 https://certbot.eff.org/lets-encrypt/debianbuster-other
+https://certbot.eff.org/instructions?ws=other&os=debianbuster
 
 
 
