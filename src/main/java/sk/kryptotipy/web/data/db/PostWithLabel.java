@@ -142,7 +142,6 @@ public class PostWithLabel {
      */
     public boolean useRedirectToSourceSite() {
         var redirect = Arrays.asList(
-                "krypto.sk", // partner
                 "krypto-meny.sk", // partner
                 "beincrypto.pl", // partner
                 "beincrypto.com", // partner

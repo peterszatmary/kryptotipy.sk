@@ -29,7 +29,7 @@ public class ServiceRepository {
         services.add(new Service(s(rb,"external.services.service.5.title"), "https://pro.coinbase.com/", "gdax-big.jpg", s(rb,"external.services.service.5.description")));
 
         services.add(new Service(s(rb,"external.services.service.6.title"), "https://poloniex.com", "poloniex-big.png", s(rb,"external.services.service.6.description")));
-        services.add(new Service(s(rb,"external.services.service.11.title"), "https://www.kraken.com/sign-up?clickid=SM03WF29RxyITyfwvm3qMxrPUkBSUNWBnzyKUg0&utm_source=Impact&utm_medium=Affiliate&utm_campaign=2683827&utm_content=%22Create%20an%20account%20with%20Kraken%22&irgwc=1&mpid=2683827", "kraken-big.jpg", s(rb,"external.services.service.11.description")));
+        services.add(new Service(s(rb,"external.services.service.11.title"), "https://www.kraken.com/", "kraken-big.jpg", s(rb,"external.services.service.11.description")));
         services.add(new Service(s(rb,"external.services.service.7.title"), "https://jaxx.io", "jaxx-big.png", s(rb,"external.services.service.7.description")));
         services.add(new Service(s(rb,"external.services.service.14.title"), "https://shop.ledger.com/pages/ledger-nano-x?r=b88bca019506", "ledger-nano-x.jpg", s(rb,"external.services.service.14.description")));
 
