@@ -1,26 +1,20 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Trigger on push to main or master
   push:
     branches:
       - main
       - master
-
-  # Hourly cron rebuild to refresh SSG data (Polymarket, CoinGecko ATHs, RSS)
   schedule:
-    - cron: '0 * * * *'
-
-  # Allows manual deployment from GitHub Actions tab
+    # Každý deň o 03:00 UTC (automatický nočný rebuild a aktualizácia dát)
+    - cron: '0 3 * * *'
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: 'pages'
   cancel-in-progress: false

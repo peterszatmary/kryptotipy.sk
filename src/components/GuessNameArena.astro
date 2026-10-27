@@ -1,0 +1,56 @@
+---
+import GameIcon from './GameIcon.astro';
+---
+
+<div id="arena-guess-name" class="game-arena hidden flex-1 w-full max-w-xl mx-auto flex-col items-center justify-center px-4 py-2 relative">
+  <div class="text-center mb-3">
+    <span class="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+      <GameIcon name="guess_name" class="w-3.5 h-3.5 text-[#2a6a51]" />
+      <span>Kvíz názvov</span>
+    </span>
+    <h2 class="text-base sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-1">
+      Ako sa volá táto kryptomena?
+    </h2>
+    <p class="text-xs text-zinc-500 mt-0.5">
+      Pozri si oficiálne logo, poradie a cenu, a vyber správny názov zo 4 možností.
+    </p>
+  </div>
+
+  <!-- Karta mince -->
+  <div class="w-full max-w-sm rounded-2xl bg-white border-2 border-zinc-200/90 p-5 shadow-xs flex flex-col items-center justify-center mb-4 text-center">
+    <img
+      id="guess-coin-img"
+      src=""
+      alt="Minca"
+      class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-zinc-50 border border-zinc-100 p-2 object-contain mb-2.5 shadow-2xs"
+      loading="eager"
+    />
+
+    <div class="flex items-center gap-2 mb-2">
+      <span id="guess-coin-rank" class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 text-zinc-700 font-mono font-bold text-xs">
+        #--
+      </span>
+      <span id="guess-coin-price" class="px-2.5 py-0.5 rounded-md bg-zinc-50 border border-zinc-200 text-zinc-900 font-mono font-black text-xs sm:text-sm tabular-nums">
+        $---
+      </span>
+    </div>
+
+    <div id="guess-revealed-name" class="text-base sm:text-lg font-black text-zinc-900 tracking-tight">
+      ???
+    </div>
+  </div>
+
+  <!-- 4 Možnosti názvu -->
+  <div class="grid grid-cols-2 gap-2.5 w-full">
+    {[0, 1, 2, 3].map((idx) => (
+      <button
+        type="button"
+        id={`guess-opt-${idx}`}
+        class="guess-choice-btn py-3 px-4 rounded-xl bg-white border-2 border-zinc-200/90 hover:border-zinc-400 font-extrabold text-xs sm:text-sm text-zinc-800 shadow-2xs hover:shadow-xs active:scale-95 transition cursor-pointer text-center disabled:cursor-not-allowed"
+        data-index={idx}
+      >
+        ---
+      </button>
+    ))}
+  </div>
+</div>

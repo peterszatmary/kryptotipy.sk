@@ -1,0 +1,145 @@
+---
+import GameIcon from './GameIcon.astro';
+---
+
+<div id="arena-ath-time" class="game-arena hidden flex-1 w-full max-w-7xl mx-auto flex-col items-center justify-center px-4 py-2 relative">
+  <!-- Hore nadpis o čo ide -->
+  <div class="text-center mb-1 sm:mb-2">
+    <span class="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+      <GameIcon name="ath_time" class="w-3.5 h-3.5 text-[#2a6a51]" />
+      <span>Časostroj ATH</span>
+    </span>
+    <h2 class="text-base sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-1">
+      Dátum historického maxima (ATH)
+    </h2>
+    <p class="text-xs text-zinc-500 mt-0.5">
+      Tipni si, či druhá kryptomena dosiahla svoje historické maximum skôr alebo neskôr.
+    </p>
+  </div>
+
+  <div class="w-full flex-1 flex flex-col lg:flex-row items-center justify-center relative overflow-hidden">
+    <!-- ĽAVÁ MINCA (Známy dátum ATH) -->
+    <div class="flex-1 w-full flex flex-col items-center justify-center p-2 sm:p-4">
+      <div class="perspective-1000 mb-3 sm:mb-5">
+        <div class="coin-disc relative w-52 h-52 sm:w-72 sm:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl bg-white border-2 border-zinc-200/90 shadow-xl shadow-zinc-200/70 flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 text-center transition-all duration-700">
+          <img
+            id="ath-left-img"
+            src=""
+            alt="Minca"
+            class="w-18 h-18 sm:w-24 sm:h-24 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1.5 object-contain mb-2 sm:mb-2.5 transition-transform duration-300"
+            loading="eager"
+          />
+          <h3 id="ath-left-name" class="text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 line-clamp-1">
+            ---
+          </h3>
+          <span id="ath-left-symbol" class="text-[11px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5">
+            ---
+          </span>
+
+          <div class="mt-2.5 sm:mt-3.5 text-center">
+            <div id="ath-left-date" class="text-base sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums">
+              ---
+            </div>
+            <div class="text-[10px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5">
+              Dátum historického maxima (ATH)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spodný vyrovnávací blok zladený s pravou stranou -->
+      <div class="flex flex-col items-center justify-center w-full max-w-[280px] sm:max-w-[320px] min-h-[56px] sm:min-h-[64px]">
+        <div class="flex items-center gap-2 text-xs sm:text-sm text-zinc-400 font-mono">
+          <span>Referenčná kryptomena</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stredový "VS" symbol: voľne napísaný, výrazný, bez kruhu -->
+    <div class="shrink-0 z-20 my-1.5 lg:my-0 lg:mx-6 flex items-center justify-center lg:-translate-y-8 select-none pointer-events-none">
+      <span class="font-black text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-widest text-zinc-300/85 font-mono drop-shadow-2xs">
+        VS
+      </span>
+    </div>
+
+    <!-- PRAVÁ MINCA (Záhada - 3D Flip) -->
+    <div class="flex-1 w-full flex flex-col items-center justify-center p-2 sm:p-4">
+      <div class="perspective-1000 mb-3 sm:mb-5">
+        <div
+          id="ath-right-disc"
+          class="coin-disc relative w-52 h-52 sm:w-72 sm:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl preserve-3d transition-all duration-700 shadow-xl shadow-zinc-200/70"
+        >
+          <!-- Predná strana (Záhada) -->
+          <div
+            id="ath-right-front"
+            class="backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+          >
+            <img
+              id="ath-right-img"
+              src=""
+              alt="Minca"
+              class="w-18 h-18 sm:w-24 sm:h-24 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1.5 object-contain mb-2 sm:mb-2.5 transition-transform duration-300"
+              loading="eager"
+            />
+            <h3 id="ath-right-name" class="text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 line-clamp-1">
+              ---
+            </h3>
+            <span id="ath-right-symbol" class="text-[11px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5">
+              ---
+            </span>
+
+            <div class="mt-2.5 sm:mt-3.5 px-3.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs sm:text-sm lg:text-base font-mono font-bold text-zinc-600">
+              Dátum ATH: ???
+            </div>
+          </div>
+
+          <!-- Zadná strana (Odhalenie) -->
+          <div
+            id="ath-right-back"
+            class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+          >
+            <div id="ath-status-ring" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-zinc-100 text-zinc-700">
+              ?
+            </div>
+            <div id="ath-reveal-name" class="text-xs sm:text-sm lg:text-base font-bold text-zinc-600 mb-0.5">
+              ---
+            </div>
+            <div id="ath-reveal-date" class="text-base sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums">
+              ---
+            </div>
+            <div class="text-[10px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5">
+              Dátum historického maxima (ATH)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ovládacie tlačidlá: SKÔR vs NESKÔR (Zarovnané podľa dlaždice s identickou výškou) -->
+      <div class="flex flex-col items-center justify-center w-full max-w-[280px] sm:max-w-[320px] min-h-[56px] sm:min-h-[64px]">
+        <div class="grid grid-cols-2 gap-2.5 w-full">
+          <button
+            type="button"
+            id="btn-ath-earlier"
+            class="group relative flex items-center justify-center gap-1.5 py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl font-bold text-xs sm:text-sm lg:text-base bg-[#2a6a51] hover:bg-[#215642] text-white border border-[#1b4837]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
+          >
+            <span>SKÔR</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            id="btn-ath-later"
+            class="group relative flex items-center justify-center gap-1.5 py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl font-bold text-xs sm:text-sm lg:text-base bg-[#8c3b42] hover:bg-[#773137] text-white border border-[#63292e]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
+          >
+            <span>NESKÔR</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

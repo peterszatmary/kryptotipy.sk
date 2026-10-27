@@ -1,100 +1,1151 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import MarketSemafor from '../components/MarketSemafor.astro';
-import PolymarketRadar from '../components/PolymarketRadar.astro';
-import AthDiscountDca from '../components/AthDiscountDca.astro';
-import TimeMachineDca from '../components/TimeMachineDca.astro';
-import TaxCalculator from '../components/TaxCalculator.astro';
-import LocalNewsFeed from '../components/LocalNewsFeed.astro';
-import Footer from '../components/Footer.astro';
-
-import { Zap, Activity, Target, Percent, Clock, FileText } from '@lucide/astro';
+import CoinCard from '../components/CoinCard.astro';
+import SortFourArena from '../components/SortFourArena.astro';
+import MysteryDetectiveArena from '../components/MysteryDetectiveArena.astro';
+import AthTimeArena from '../components/AthTimeArena.astro';
+import SupplyCapArena from '../components/SupplyCapArena.astro';
+import GuessNameArena from '../components/GuessNameArena.astro';
+import GameOverModal from '../components/GameOverModal.astro';
+import '../styles/global.css';
 ---
 
-<Layout>
-  <Header />
+<!doctype html>
+<html lang="sk" class="h-full bg-[#fafafa]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Krypto Vyššia alebo Nižšia | Máš krypto v malíčku, alebo len na peňaženke?</title>
+    <meta name="description" content="Máš krypto v malíčku, alebo len na peňaženke? Otestuj svoju trhovú intuíciu na TOP 100 kryptomenách v 6 interaktívnych minihrách na kryptotipy.sk." />
+    <meta name="keywords" content="krypto hra, higher or lower crypto, bitcoin kvíz, trhová kapitalizácia, kryptomeny porovnanie, TOP 100 kryptomien, jamstack hra" />
+    <meta name="author" content="kryptotipy.sk" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kryptotipy.sk/" />
 
-  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
-    <!-- Hero Section -->
-    <section class="mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold mb-4 shadow-2xs">
-        <Zap class="w-3.5 h-3.5 text-amber-600" />
-        <span>Algoritmické rozhodovacie skratky pre racionálnych investorov</span>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kryptotipy.sk/" />
+    <meta property="og:title" content="Krypto Vyššia alebo Nižšia | Máš krypto v malíčku, alebo len na peňaženke?" />
+    <meta property="og:description" content="Máš krypto v malíčku, alebo len na peňaženke? Otestuj svoju trhovú intuíciu na TOP 100 kryptomenách v 6 interaktívnych minihrách na kryptotipy.sk." />
+    <meta property="og:image" content="https://kryptotipy.sk/og-image.svg" />
+    <meta property="og:locale" content="sk_SK" />
+    <meta property="og:site_name" content="kryptotipy.sk" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://kryptotipy.sk/" />
+    <meta name="twitter:title" content="Krypto Vyššia alebo Nižšia | Máš krypto v malíčku, alebo len na peňaženke?" />
+    <meta name="twitter:description" content="Máš krypto v malíčku, alebo len na peňaženke? Otestuj svoju trhovú intuíciu na TOP 100 kryptomenách v 6 interaktívnych minihrách." />
+    <meta name="twitter:image" content="https://kryptotipy.sk/og-image.svg" />
+
+    <!-- Štruktúrované dáta Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Krypto Vyššia alebo Nižšia",
+        "alternateName": "Máš krypto v malíčku, alebo len na peňaženke?",
+        "url": "https://kryptotipy.sk/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "description": "Máš krypto v malíčku, alebo len na peňaženke? Interaktívna herná aréna na TOP 100 kryptomenách. 6 hier: Vyššia/Nižšia, Zoradzovač 4 mincí, Detektív, ATH Časostroj, Pevný strop a Kvíz názvov.",
+        "inLanguage": "sk"
+      }
+    </script>
+  </head>
+  <body class="h-full w-full bg-[#fafafa] text-zinc-900 flex flex-col justify-between overflow-hidden select-none">
+    <!-- Horná minimalistická lišta -->
+    <Header />
+
+    <!-- Hlavná herná aréna (100dvh bez scrollovania) -->
+    <main class="flex-1 w-full flex items-center justify-center relative overflow-hidden">
+      <!-- 1. HRA: Vyššia / Nižšia (Higher / Lower) -->
+      <div id="arena-higher-lower" class="game-arena flex-1 w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-4 py-2 relative overflow-hidden">
+        <!-- Hore nadpis o čo ide -->
+        <div class="text-center mb-1 sm:mb-2">
+          <span class="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+            <svg class="w-3.5 h-3.5 text-[#2a6a51]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 8 4-4 4 4" />
+              <path d="M7 4v16" />
+              <path d="m21 16-4 4-4-4" />
+              <path d="M17 20V4" />
+            </svg>
+            <span>Vyššia / Nižšia</span>
+          </span>
+          <h2 id="hl-arena-title" class="text-base sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-1">
+            Trhová hodnota
+          </h2>
+          <p id="hl-arena-subtitle" class="text-xs text-zinc-500 mt-0.5">
+            Tipni si, či má druhá kryptomena vyššiu alebo nižšiu trhovú kapitalizáciu.
+          </p>
+        </div>
+
+        <div class="w-full flex-1 flex flex-col lg:flex-row items-center justify-center relative overflow-hidden">
+          <!-- ĽAVÁ MINCA (Známa hodnota) -->
+          <div class="flex-1 w-full flex items-center justify-center">
+            <CoinCard side="left" />
+          </div>
+
+          <!-- Stredový "VS" symbol: voľne napísaný, výrazný, bez kruhu -->
+          <div class="shrink-0 z-20 my-1.5 lg:my-0 lg:mx-6 flex items-center justify-center lg:-translate-y-8 select-none pointer-events-none">
+            <span class="font-black text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-widest text-zinc-300/85 font-mono drop-shadow-2xs">
+              VS
+            </span>
+          </div>
+
+          <!-- PRAVÁ MINCA (Záhada / Tipovanie) -->
+          <div class="flex-1 w-full flex items-center justify-center">
+            <CoinCard side="right" />
+          </div>
+        </div>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 leading-tight sm:leading-tight mb-4">
-        Krypto rozhodnutia <br class="hidden sm:inline" />
-        <span class="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-500 bg-clip-text text-transparent">
-          bez informačného smogu
-        </span>
-      </h1>
+      <!-- 2. HRA: Zoraď 4 mince (A) -->
+      <SortFourArena />
 
-      <p class="text-sm sm:text-base text-zinc-600 leading-relaxed max-w-2xl mx-auto mb-6">
-        Žiadne platené signály, žiadne rotujúce 3D mince. Objektívne dáta, 5-sekundové odpovede na stav trhu, asymetrické DCA výpočty a 100% súkromný daňový test pre SR a ČR.
-      </p>
+      <!-- 3. HRA: Krypto Detektív (B) -->
+      <MysteryDetectiveArena />
 
-      <!-- Quick Tool Jump Shortcuts -->
-      <div class="flex flex-wrap items-center justify-center gap-2">
-        <a
-          href="#semafor"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:text-zinc-950 transition shadow-2xs"
-        >
-          <Activity class="w-3.5 h-3.5 text-emerald-600" />
-          <span>Semafor trhu</span>
-        </a>
-        <a
-          href="#polymarket"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:text-zinc-950 transition shadow-2xs"
-        >
-          <Target class="w-3.5 h-3.5 text-blue-600" />
-          <span>Polymarket radar</span>
-        </a>
-        <a
-          href="#zlavomat"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:text-zinc-950 transition shadow-2xs"
-        >
-          <Percent class="w-3.5 h-3.5 text-rose-600" />
-          <span>ATH Zľavomat & DCA</span>
-        </a>
-        <a
-          href="#stroj-casu"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:text-zinc-950 transition shadow-2xs"
-        >
-          <Clock class="w-3.5 h-3.5 text-amber-600" />
-          <span>Stroj času (vs S&P 500)</span>
-        </a>
-        <a
-          href="#dane"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:text-zinc-950 transition shadow-2xs"
-        >
-          <FileText class="w-3.5 h-3.5 text-emerald-600" />
-          <span>SK/CZ Daňový test</span>
+      <!-- 4. HRA: Časostroj ATH (C) -->
+      <AthTimeArena />
+
+      <!-- 5. HRA: Pevný strop vs Inflácia (D) -->
+      <SupplyCapArena />
+
+      <!-- 6. HRA: Uhádni názov kryptomeny (E) -->
+      <GuessNameArena />
+    </main>
+
+    <!-- Spodná lišta s informáciami -->
+    <footer class="w-full shrink-0 border-t border-zinc-200/80 bg-white/80 px-4 py-2 sm:py-2.5 text-center text-[10px] sm:text-xs text-zinc-500 font-mono flex items-center justify-between max-w-7xl mx-auto">
+      <div class="hidden sm:flex items-center gap-2">
+        <span class="px-1.5 py-0.5 rounded bg-zinc-100 border border-zinc-200 text-zinc-600">▲ / ▼</span>
+        <span>Klávesové skratky</span>
+      </div>
+
+      <div class="mx-auto sm:mx-0 flex items-center gap-1.5 text-zinc-500">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#2a6a51]"></span>
+        <span>Máš krypto v malíčku, alebo len na peňaženke? • TOP 100</span>
+      </div>
+
+      <div class="hidden sm:block">
+        <a href="https://github.com/peterszatmary/kryptotipy.sk" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-800 transition-colors">
+          Otvorený kód ↗
         </a>
       </div>
-    </section>
+    </footer>
 
-    <!-- Bento Grid Section (All 5 MVP Tools + News Feed) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      <!-- Widget 1: Semafor Trhu & Pákový Kompas (Client Island) -->
-      <MarketSemafor />
+    <!-- Game Over Modal s Web3Forms -->
+    <GameOverModal />
 
-      <!-- Widget 2: Polymarket & Smart Money Radar (Pure Astro SSG) -->
-      <PolymarketRadar />
+    <!-- Klientsky ovládač hier (Strict TypeScript) -->
+    <script>
+      import {
+        getCoins,
+        filterCoinsForMode,
+        getMetricValue,
+        formatMetricValue,
+        formatAthDate,
+        formatSupply,
+        formatCompactCurrency,
+        formatPercentage,
+        GAME_MODES
+      } from '../utils/coinService';
+      import type { Coin, GameMode, ActiveGame } from '../types/coin';
+      import { GAMES_LIST } from '../types/coin';
 
-      <!-- Widget 3: ATH Zľavomat & Breakeven Kalkulačka (SSG Data + Client Island) -->
-      <AthDiscountDca />
+      // Globálny herný stav
+      let allCoins: Coin[] = [];
+      let activeGame: ActiveGame = 'higher_lower';
+      let isGameOver = false;
 
-      <!-- Widget 4: Stroj Času – Krypto vs. S&P 500 (Historical DCA + Client Island) -->
-      <TimeMachineDca />
+      // Sledovanie sérií pre každú hru
+      const streaks: Record<ActiveGame, { current: number; best: number }> = {
+        higher_lower: { current: 0, best: 0 },
+        sort_four: { current: 0, best: 0 },
+        mystery_stats: { current: 0, best: 0 },
+        ath_time: { current: 0, best: 0 },
+        supply_cap: { current: 0, best: 0 },
+        guess_name: { current: 0, best: 0 },
+      };
 
-      <!-- Widget 5: SK vs. CZ Daňový & Časový Test Kalkulátor (100% Client-Side + localStorage) -->
-      <TaxCalculator />
+      // Zdieľané DOM prvky
+      const currentStreakEl = document.getElementById('current-streak-val');
+      const bestStreakEl = document.getElementById('best-streak-val');
+      const gameOverModal = document.getElementById('game-over-modal');
+      const modalFinalStreak = document.getElementById('modal-final-streak');
+      const modalBestStreak = document.getElementById('modal-best-streak');
+      const gameOverReason = document.getElementById('game-over-reason');
+      const newRecordBanner = document.getElementById('new-record-banner');
+      const btnPlayAgain = document.getElementById('btn-play-again');
+      const btnCopyScore = document.getElementById('btn-copy-score');
+      const copyBtnText = document.getElementById('copy-btn-text');
 
-      <!-- Widget 6: Lokálny SK/CZ Krypto Prehľad (Pure Astro SSG Component) -->
-      <LocalNewsFeed />
-    </div>
-  </main>
+      // Web3Forms prvky
+      const leaderboardForm = document.getElementById('leaderboard-form') as HTMLFormElement;
+      const w3fScore = document.getElementById('w3f-score') as HTMLInputElement;
+      const w3fMode = document.getElementById('w3f-mode') as HTMLInputElement;
+      const btnSubmitScore = document.getElementById('btn-submit-score') as HTMLButtonElement;
+      const submitBtnText = document.getElementById('submit-btn-text');
+      const submitSpinner = document.getElementById('submit-spinner');
+      const formFeedback = document.getElementById('form-feedback');
 
-  <Footer />
-</Layout>
+      // Pomocné funkcie pre lokálnu pamäť
+      function getStreakStorageKey(game: ActiveGame): string {
+        return `krypto_best_streak_${game}`;
+      }
+
+      function loadSavedBestStreak(game: ActiveGame): number {
+        try {
+          const val = localStorage.getItem(getStreakStorageKey(game));
+          return val ? parseInt(val, 10) : 0;
+        } catch {
+          return 0;
+        }
+      }
+
+      function persistBestStreak(game: ActiveGame, val: number) {
+        try {
+          localStorage.setItem(getStreakStorageKey(game), val.toString());
+        } catch {}
+      }
+
+      function updateScoreDisplays() {
+        if (currentStreakEl) currentStreakEl.innerText = streaks[activeGame].current.toString();
+        if (bestStreakEl) bestStreakEl.innerText = streaks[activeGame].best.toString();
+      }
+
+      function recordWin() {
+        streaks[activeGame].current += 1;
+        if (streaks[activeGame].current > streaks[activeGame].best) {
+          streaks[activeGame].best = streaks[activeGame].current;
+          persistBestStreak(activeGame, streaks[activeGame].best);
+        }
+        updateScoreDisplays();
+      }
+
+      function triggerGameOver(reason: string) {
+        isGameOver = true;
+        const current = streaks[activeGame].current;
+        const best = streaks[activeGame].best;
+        const isRecord = current > 0 && current >= best;
+
+        if (modalFinalStreak) modalFinalStreak.innerText = current.toString();
+        if (modalBestStreak) modalBestStreak.innerText = best.toString();
+        if (gameOverReason) gameOverReason.innerText = reason;
+
+        if (newRecordBanner) {
+          if (isRecord) newRecordBanner.classList.remove('hidden');
+          else newRecordBanner.classList.add('hidden');
+        }
+
+        const gameInfo = GAMES_LIST.find((g) => g.id === activeGame);
+        if (w3fScore) w3fScore.value = current.toString();
+        if (w3fMode) w3fMode.value = gameInfo ? gameInfo.title : activeGame;
+
+        if (gameOverModal) gameOverModal.classList.remove('hidden');
+      }
+
+      function getSignedColorClass(text: string, sizeClass: string = 'text-xl sm:text-2xl lg:text-3xl'): string {
+        const base = `${sizeClass} font-black font-mono tabular-nums tracking-tight`;
+        if (text.startsWith('+')) {
+          return `${base} text-[#2a6a51]`;
+        } else if (text.startsWith('-')) {
+          return `${base} text-[#8c3b42]`;
+        } else {
+          return `${base} text-zinc-900`;
+        }
+      }
+
+      function getRandomCoin(excludeIds: string[] = []): Coin {
+        const pool = allCoins.filter((c) => !excludeIds.includes(c.id));
+        if (pool.length === 0) return allCoins[0];
+        const index = Math.floor(Math.random() * pool.length);
+        return pool[index];
+      }
+
+      function pickNRandomCoins(count: number, excludeIds: string[] = []): Coin[] {
+        const selected: Coin[] = [];
+        const used = new Set(excludeIds);
+        while (selected.length < count && selected.length < allCoins.length) {
+          const coin = getRandomCoin(Array.from(used));
+          used.add(coin.id);
+          selected.push(coin);
+        }
+        return selected;
+      }
+
+      function shuffle<T>(arr: T[]): T[] {
+        return [...arr].sort(() => Math.random() - 0.5);
+      }
+
+      // =========================================================================
+      // 1. HRA: VYŠŠIA / NIŽŠIA (HIGHER / LOWER)
+      // =========================================================================
+      let hlMode: GameMode = 'market_cap';
+      let hlActiveCoins: Coin[] = [];
+      let hlLeftCoin: Coin | null = null;
+      let hlRightCoin: Coin | null = null;
+      let hlIsFlipping = false;
+
+      const leftCoinImg = document.getElementById('left-coin-image') as HTMLImageElement;
+      const leftCoinName = document.getElementById('left-coin-name');
+      const leftCoinSymbol = document.getElementById('left-coin-symbol');
+      const leftCoinMetricVal = document.getElementById('left-coin-metric-value');
+      const leftCoinMetricLabel = document.getElementById('left-coin-metric-label');
+      const leftCoinRank = document.getElementById('left-coin-rank');
+
+      const rightCoinDisc = document.getElementById('right-coin-disc');
+      const rightCoinFront = document.getElementById('right-coin-front');
+      const rightCoinBack = document.getElementById('right-coin-back');
+      const rightCoinImg = document.getElementById('right-coin-image') as HTMLImageElement;
+      const rightCoinName = document.getElementById('right-coin-name');
+      const rightCoinSymbol = document.getElementById('right-coin-symbol');
+      const rightRevealName = document.getElementById('right-coin-reveal-name');
+      const rightRevealVal = document.getElementById('right-coin-reveal-value');
+      const rightRevealLabel = document.getElementById('right-coin-reveal-label');
+      const revealRingStatus = document.getElementById('reveal-ring-status');
+      const questionText = document.getElementById('game-question-text');
+      const btnHigher = document.getElementById('btn-higher') as HTMLButtonElement;
+      const btnLower = document.getElementById('btn-lower') as HTMLButtonElement;
+
+      function renderHlLeftCoin() {
+        if (!hlLeftCoin) return;
+        if (leftCoinImg) leftCoinImg.src = hlLeftCoin.image;
+        if (leftCoinName) leftCoinName.innerText = hlLeftCoin.name;
+        if (leftCoinSymbol) leftCoinSymbol.innerText = hlLeftCoin.symbol;
+
+        const valText = formatMetricValue(hlLeftCoin, hlMode);
+        if (leftCoinMetricVal) {
+          leftCoinMetricVal.innerText = valText;
+          leftCoinMetricVal.className = getSignedColorClass(valText, 'text-xl sm:text-2xl lg:text-3xl xl:text-4xl');
+        }
+        if (leftCoinMetricLabel) leftCoinMetricLabel.innerText = GAME_MODES[hlMode].label;
+        if (leftCoinRank) leftCoinRank.innerText = `#${hlLeftCoin.market_cap_rank}`;
+      }
+
+      function renderHlRightCoin() {
+        if (!hlRightCoin) return;
+        if (rightCoinImg) rightCoinImg.src = hlRightCoin.image;
+        if (rightCoinName) rightCoinName.innerText = hlRightCoin.name;
+        if (rightCoinSymbol) rightCoinSymbol.innerText = hlRightCoin.symbol;
+
+        if (rightCoinDisc) rightCoinDisc.classList.remove('rotate-y-180');
+        if (rightCoinFront) {
+          rightCoinFront.className = 'backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs transition-colors duration-300';
+        }
+        if (rightCoinBack) {
+          rightCoinBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs transition-colors duration-300';
+        }
+        if (revealRingStatus) {
+          revealRingStatus.innerText = '?';
+          revealRingStatus.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-zinc-100 text-zinc-700';
+        }
+        if (questionText) {
+          questionText.innerText = `${hlRightCoin.name} ${GAME_MODES[hlMode].question}`;
+        }
+      }
+
+      const HL_DESCRIPTIONS: Record<GameMode, { title: string; subtitle: string }> = {
+        market_cap: {
+          title: 'Trhová hodnota',
+          subtitle: 'Tipni si, či má druhá kryptomena vyššiu alebo nižšiu trhovú kapitalizáciu.',
+        },
+        price_change_24h: {
+          title: '24h zmena %',
+          subtitle: 'Tipni si, či má druhá kryptomena za posledných 24 hodín vyšší alebo nižší rast.',
+        },
+        ath_drop: {
+          title: 'Prepad od ATH',
+          subtitle: 'Tipni si, či je druhá kryptomena bližšie k svojmu historickému maximu (vyšší %).',
+        },
+        total_volume: {
+          title: '24h objem obchodov',
+          subtitle: 'Tipni si, či má druhá kryptomena za posledných 24 hodín vyšší alebo nižší objem obchodov.',
+        },
+      };
+
+      function updateHlHeader() {
+        const titleEl = document.getElementById('hl-arena-title');
+        const subEl = document.getElementById('hl-arena-subtitle');
+        if (titleEl) titleEl.innerText = HL_DESCRIPTIONS[hlMode].title;
+        if (subEl) subEl.innerText = HL_DESCRIPTIONS[hlMode].subtitle;
+      }
+
+      function startHigherLower() {
+        hlIsFlipping = false;
+        if (btnHigher) btnHigher.disabled = false;
+        if (btnLower) btnLower.disabled = false;
+
+        updateHlHeader();
+
+        hlActiveCoins = filterCoinsForMode(allCoins, hlMode);
+        const pool = hlActiveCoins.length > 0 ? hlActiveCoins : allCoins;
+        const index = Math.floor(Math.random() * pool.length);
+        hlLeftCoin = pool[index];
+        const rightPool = pool.filter((c) => c.id !== hlLeftCoin!.id);
+        hlRightCoin = rightPool[Math.floor(Math.random() * rightPool.length)] || pool[0];
+
+        renderHlLeftCoin();
+        renderHlRightCoin();
+      }
+
+      async function handleHigherLowerGuess(isGuessHigher: boolean) {
+        if (hlIsFlipping || isGameOver || !hlLeftCoin || !hlRightCoin) return;
+        hlIsFlipping = true;
+        if (btnHigher) btnHigher.disabled = true;
+        if (btnLower) btnLower.disabled = true;
+
+        const valLeft = getMetricValue(hlLeftCoin, hlMode);
+        const valRight = getMetricValue(hlRightCoin, hlMode);
+        const isCorrect = isGuessHigher ? valRight >= valLeft : valRight <= valLeft;
+
+        if (rightRevealName) rightRevealName.innerText = hlRightCoin.name;
+        if (rightRevealLabel) rightRevealLabel.innerText = GAME_MODES[hlMode].label;
+        const formattedRightVal = formatMetricValue(hlRightCoin, hlMode);
+        if (rightRevealVal) {
+          rightRevealVal.innerText = formattedRightVal;
+          rightRevealVal.className = getSignedColorClass(formattedRightVal, 'text-2xl sm:text-3xl lg:text-4xl xl:text-5xl');
+        }
+
+        if (rightCoinDisc) rightCoinDisc.classList.add('rotate-y-180');
+
+        if (isCorrect) {
+          if (revealRingStatus) {
+            revealRingStatus.innerText = '✓';
+            revealRingStatus.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200';
+          }
+          if (rightCoinBack) {
+            rightCoinBack.classList.remove('border-zinc-200/90');
+            rightCoinBack.classList.add('border-[#2a6a51]', 'ring-4', 'ring-[#2a6a51]/15', 'shadow-md');
+          }
+
+          recordWin();
+
+          setTimeout(() => {
+            hlLeftCoin = hlRightCoin;
+            renderHlLeftCoin();
+            const pool = hlActiveCoins.length > 0 ? hlActiveCoins : allCoins;
+            const rightPool = pool.filter((c) => c.id !== hlLeftCoin!.id);
+            hlRightCoin = rightPool[Math.floor(Math.random() * rightPool.length)] || pool[0];
+            renderHlRightCoin();
+            hlIsFlipping = false;
+            if (btnHigher) btnHigher.disabled = false;
+            if (btnLower) btnLower.disabled = false;
+          }, 1100);
+        } else {
+          if (revealRingStatus) {
+            revealRingStatus.innerText = '✕';
+            revealRingStatus.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200';
+          }
+          if (rightCoinBack) {
+            rightCoinBack.classList.remove('border-zinc-200/90');
+            rightCoinBack.classList.add('border-[#8c3b42]', 'ring-4', 'ring-[#8c3b42]/15', 'shadow-md');
+          }
+
+          setTimeout(() => {
+            triggerGameOver(`Nesprávny tip! ${hlRightCoin!.name} mala hodnotu ${formattedRightVal}.`);
+          }, 1100);
+        }
+      }
+
+      function switchHlMode(newMode: GameMode) {
+        if (hlMode === newMode) return;
+        hlMode = newMode;
+        document.querySelectorAll('.mode-btn').forEach((btn) => {
+          const btnEl = btn as HTMLElement;
+          const isSelected = btnEl.dataset.mode === newMode;
+          if (isSelected) {
+            btnEl.className = 'mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer bg-white text-zinc-900 shadow-2xs font-bold whitespace-nowrap';
+          } else {
+            btnEl.className = 'mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap';
+          }
+        });
+        startHigherLower();
+      }
+
+      btnHigher?.addEventListener('click', () => handleHigherLowerGuess(true));
+      btnLower?.addEventListener('click', () => handleHigherLowerGuess(false));
+
+      document.querySelectorAll('.mode-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const mode = (btn as HTMLElement).dataset.mode as GameMode;
+          if (mode) switchHlMode(mode);
+        });
+      });
+
+      // =========================================================================
+      // 2. HRA: ZORAĎ 4 MINCE (SORT FOUR - A)
+      // =========================================================================
+      let sortCoins: Coin[] = [];
+      let sortPicks: number[] = [];
+      let sortIsChecking = false;
+
+      function resetSortSelection() {
+        sortPicks = [];
+        [0, 1, 2, 3].forEach((idx) => {
+          const badge = document.getElementById(`sort-badge-${idx}`);
+          const card = document.getElementById(`sort-card-${idx}`);
+          const valEl = document.getElementById(`sort-val-${idx}`);
+          if (badge) {
+            badge.innerText = '-';
+            badge.className = 'sort-badge absolute -top-2 -right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-100 border-2 border-zinc-300 text-zinc-400 font-black text-xs sm:text-sm flex items-center justify-center transition-all shadow-2xs';
+          }
+          if (card) {
+            card.className = 'sort-coin-card relative flex flex-col items-center justify-center p-3.5 sm:p-5 rounded-2xl bg-white border-2 border-zinc-200/90 hover:border-zinc-300 shadow-xs hover:shadow-md transition-all cursor-pointer text-center group active:scale-98 select-none';
+          }
+          if (valEl) valEl.innerText = '???';
+        });
+      }
+
+      function startSortFour() {
+        sortIsChecking = false;
+        sortCoins = pickNRandomCoins(4);
+        resetSortSelection();
+
+        sortCoins.forEach((coin, idx) => {
+          const img = document.getElementById(`sort-img-${idx}`) as HTMLImageElement;
+          const name = document.getElementById(`sort-name-${idx}`);
+          const sym = document.getElementById(`sort-symbol-${idx}`);
+          if (img) img.src = coin.image;
+          if (name) name.innerText = coin.name;
+          if (sym) sym.innerText = coin.symbol;
+        });
+      }
+
+      function handleSortCardClick(idx: number) {
+        if (sortIsChecking || isGameOver || sortPicks.includes(idx)) return;
+
+        sortPicks.push(idx);
+        const orderNum = sortPicks.length;
+
+        const badge = document.getElementById(`sort-badge-${idx}`);
+        const card = document.getElementById(`sort-card-${idx}`);
+        if (badge) {
+          badge.innerText = orderNum.toString();
+          badge.className = 'sort-badge absolute -top-2 -right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-900 border-2 border-zinc-900 text-white font-black text-xs sm:text-sm flex items-center justify-center transition-all shadow-md';
+        }
+        if (card) {
+          card.classList.add('border-zinc-400', 'bg-zinc-50/50');
+        }
+
+        // Ak vybral všetky 4, overíme výsledok
+        if (sortPicks.length === 4) {
+          sortIsChecking = true;
+
+          // Odhalíme skutočnú kapitalizáciu
+          sortCoins.forEach((c, i) => {
+            const valEl = document.getElementById(`sort-val-${i}`);
+            if (valEl) valEl.innerText = formatCompactCurrency(c.market_cap);
+          });
+
+          // Kontrola, či hodnoty idú od najväčšej po najmenšiu
+          const pickedCaps = sortPicks.map((i) => sortCoins[i].market_cap);
+          const isCorrect =
+            pickedCaps[0] >= pickedCaps[1] &&
+            pickedCaps[1] >= pickedCaps[2] &&
+            pickedCaps[2] >= pickedCaps[3];
+
+          if (isCorrect) {
+            sortPicks.forEach((i) => {
+              const c = document.getElementById(`sort-card-${i}`);
+              if (c) c.className = 'sort-coin-card relative flex flex-col items-center justify-center p-3.5 sm:p-5 rounded-2xl bg-emerald-50/40 border-2 border-[#2a6a51] shadow-md transition-all text-center';
+            });
+            recordWin();
+            setTimeout(startSortFour, 1400);
+          } else {
+            sortPicks.forEach((i) => {
+              const c = document.getElementById(`sort-card-${i}`);
+              if (c) c.className = 'sort-coin-card relative flex flex-col items-center justify-center p-3.5 sm:p-5 rounded-2xl bg-rose-50/40 border-2 border-[#8c3b42] shadow-md transition-all text-center';
+            });
+            setTimeout(() => {
+              triggerGameOver('Poradie nebolo správne zoradené od najväčšej po najmenšiu kapitalizáciu.');
+            }, 1400);
+          }
+        }
+      }
+
+      [0, 1, 2, 3].forEach((idx) => {
+        document.getElementById(`sort-card-${idx}`)?.addEventListener('click', () => handleSortCardClick(idx));
+      });
+      document.getElementById('btn-sort-reset')?.addEventListener('click', resetSortSelection);
+
+      // =========================================================================
+      // 3. HRA: KRYPTO DETEKTÍV (MYSTERY STATS - B)
+      // =========================================================================
+      let detectiveTarget: Coin | null = null;
+      let detectiveChoices: Coin[] = [];
+      let detectiveIsAnswering = false;
+
+      function startMysteryDetective() {
+        detectiveIsAnswering = false;
+        detectiveTarget = getRandomCoin();
+        const decoys = pickNRandomCoins(3, [detectiveTarget.id]);
+        detectiveChoices = shuffle([detectiveTarget, ...decoys]);
+
+        // Reset Dossier
+        const mysteryIcon = document.getElementById('detective-mystery-icon');
+        const revealImg = document.getElementById('detective-reveal-img') as HTMLImageElement;
+        const targetName = document.getElementById('detective-target-name');
+        const targetSymbol = document.getElementById('detective-target-symbol');
+        const dossier = document.getElementById('detective-dossier');
+
+        if (mysteryIcon) mysteryIcon.classList.remove('hidden');
+        if (revealImg) {
+          revealImg.classList.add('hidden');
+          revealImg.src = '';
+        }
+        if (targetName) targetName.innerText = 'Neznáma kryptomena #???';
+        if (targetSymbol) targetSymbol.innerText = 'Dáta priamo z TOP 100';
+        if (dossier) dossier.className = 'w-full rounded-2xl bg-white border-2 border-zinc-200/90 p-4 sm:p-6 shadow-sm mb-4 relative transition-colors duration-300';
+
+        // Naplnenie štatistík
+        const rankEl = document.getElementById('detective-rank');
+        const priceEl = document.getElementById('detective-price');
+        const changeEl = document.getElementById('detective-change');
+        const athEl = document.getElementById('detective-ath');
+        const volEl = document.getElementById('detective-volume');
+
+        if (rankEl) rankEl.innerText = `#${detectiveTarget.market_cap_rank}`;
+        if (priceEl) priceEl.innerText = `$${detectiveTarget.current_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: detectiveTarget.current_price < 1 ? 4 : 2 })}`;
+        const changeText = formatPercentage(detectiveTarget.price_change_percentage_24h);
+        if (changeEl) {
+          changeEl.innerText = changeText;
+          changeEl.className = getSignedColorClass(changeText, 'text-xs sm:text-sm');
+        }
+        const athText = formatPercentage(detectiveTarget.ath_change_percentage);
+        if (athEl) {
+          athEl.innerText = athText;
+          athEl.className = getSignedColorClass(athText, 'text-xs sm:text-sm');
+        }
+        if (volEl) volEl.innerText = formatCompactCurrency(detectiveTarget.total_volume);
+
+        // Naplnenie 4 možností
+        detectiveChoices.forEach((coin, idx) => {
+          const btn = document.getElementById(`detective-opt-${idx}`) as HTMLButtonElement;
+          const img = document.getElementById(`detective-opt-img-${idx}`) as HTMLImageElement;
+          const nameEl = document.getElementById(`detective-opt-name-${idx}`);
+          const symEl = document.getElementById(`detective-opt-symbol-${idx}`);
+
+          if (img) img.src = coin.image;
+          if (nameEl) nameEl.innerText = coin.name;
+          if (symEl) symEl.innerText = coin.symbol;
+          if (btn) {
+            btn.disabled = false;
+            btn.className = 'detective-choice-btn group flex items-center gap-3 p-3 rounded-xl bg-white border-2 border-zinc-200/90 hover:border-zinc-300 shadow-2xs hover:shadow-sm active:scale-98 transition cursor-pointer text-left disabled:cursor-not-allowed';
+          }
+        });
+      }
+
+      function handleDetectivePick(idx: number) {
+        if (detectiveIsAnswering || isGameOver || !detectiveTarget) return;
+        detectiveIsAnswering = true;
+
+        const pickedCoin = detectiveChoices[idx];
+        const isCorrect = pickedCoin.id === detectiveTarget.id;
+
+        // Odhalenie identity v dossier
+        const mysteryIcon = document.getElementById('detective-mystery-icon');
+        const revealImg = document.getElementById('detective-reveal-img') as HTMLImageElement;
+        const targetName = document.getElementById('detective-target-name');
+        const targetSymbol = document.getElementById('detective-target-symbol');
+        const dossier = document.getElementById('detective-dossier');
+
+        if (mysteryIcon) mysteryIcon.classList.add('hidden');
+        if (revealImg) {
+          revealImg.src = detectiveTarget.image;
+          revealImg.classList.remove('hidden');
+        }
+        if (targetName) targetName.innerText = detectiveTarget.name;
+        if (targetSymbol) targetSymbol.innerText = detectiveTarget.symbol;
+
+        // Označenie tlačidiel
+        detectiveChoices.forEach((c, i) => {
+          const btn = document.getElementById(`detective-opt-${i}`) as HTMLButtonElement;
+          if (!btn) return;
+          btn.disabled = true;
+          if (c.id === detectiveTarget!.id) {
+            btn.className = 'detective-choice-btn group flex items-center gap-3 p-3 rounded-xl bg-[#2a6a51] text-white border-2 border-[#2a6a51] shadow-md transition text-left';
+          } else if (i === idx && !isCorrect) {
+            btn.className = 'detective-choice-btn group flex items-center gap-3 p-3 rounded-xl bg-[#8c3b42] text-white border-2 border-[#8c3b42] shadow-md transition text-left';
+          }
+        });
+
+        if (isCorrect) {
+          if (dossier) dossier.classList.add('border-[#2a6a51]');
+          recordWin();
+          setTimeout(startMysteryDetective, 1200);
+        } else {
+          if (dossier) dossier.classList.add('border-[#8c3b42]');
+          setTimeout(() => {
+            triggerGameOver(`Nesprávne! Hľadaná minca bola ${detectiveTarget!.name} (${detectiveTarget!.symbol}).`);
+          }, 1400);
+        }
+      }
+
+      [0, 1, 2, 3].forEach((idx) => {
+        document.getElementById(`detective-opt-${idx}`)?.addEventListener('click', () => handleDetectivePick(idx));
+      });
+
+      // =========================================================================
+      // 4. HRA: ČASOSTROJ ATH (ATH TIME - C)
+      // =========================================================================
+      let athLeftCoin: Coin | null = null;
+      let athRightCoin: Coin | null = null;
+      let athIsFlipping = false;
+
+      const athLeftImg = document.getElementById('ath-left-img') as HTMLImageElement;
+      const athLeftName = document.getElementById('ath-left-name');
+      const athLeftSymbol = document.getElementById('ath-left-symbol');
+      const athLeftDate = document.getElementById('ath-left-date');
+
+      const athRightDisc = document.getElementById('ath-right-disc');
+      const athRightBack = document.getElementById('ath-right-back');
+      const athRightImg = document.getElementById('ath-right-img') as HTMLImageElement;
+      const athRightName = document.getElementById('ath-right-name');
+      const athRightSymbol = document.getElementById('ath-right-symbol');
+      const athRevealName = document.getElementById('ath-reveal-name');
+      const athRevealDate = document.getElementById('ath-reveal-date');
+      const athStatusRing = document.getElementById('ath-status-ring');
+      const btnAthEarlier = document.getElementById('btn-ath-earlier') as HTMLButtonElement;
+      const btnAthLater = document.getElementById('btn-ath-later') as HTMLButtonElement;
+
+      function renderAthCoins() {
+        if (!athLeftCoin || !athRightCoin) return;
+
+        if (athLeftImg) athLeftImg.src = athLeftCoin.image;
+        if (athLeftName) athLeftName.innerText = athLeftCoin.name;
+        if (athLeftSymbol) athLeftSymbol.innerText = athLeftCoin.symbol;
+        if (athLeftDate) athLeftDate.innerText = formatAthDate(athLeftCoin.ath_date);
+
+        if (athRightImg) athRightImg.src = athRightCoin.image;
+        if (athRightName) athRightName.innerText = athRightCoin.name;
+        if (athRightSymbol) athRightSymbol.innerText = athRightCoin.symbol;
+
+        if (athRightDisc) athRightDisc.classList.remove('rotate-y-180');
+        if (athRightBack) {
+          athRightBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center';
+        }
+        if (athStatusRing) {
+          athStatusRing.innerText = '?';
+          athStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-zinc-100 text-zinc-700';
+        }
+        if (btnAthEarlier) btnAthEarlier.disabled = false;
+        if (btnAthLater) btnAthLater.disabled = false;
+      }
+
+      function startAthTime() {
+        athIsFlipping = false;
+        athLeftCoin = getRandomCoin();
+        athRightCoin = getRandomCoin([athLeftCoin.id]);
+        renderAthCoins();
+      }
+
+      function handleAthGuess(isEarlier: boolean) {
+        if (athIsFlipping || isGameOver || !athLeftCoin || !athRightCoin) return;
+        athIsFlipping = true;
+        if (btnAthEarlier) btnAthEarlier.disabled = true;
+        if (btnAthLater) btnAthLater.disabled = true;
+
+        const dateLeft = new Date(athLeftCoin.ath_date || '2024-01-01').getTime();
+        const dateRight = new Date(athRightCoin.ath_date || '2024-01-01').getTime();
+        const rightIsEarlier = dateRight <= dateLeft;
+        const isCorrect = isEarlier ? rightIsEarlier : !rightIsEarlier;
+
+        if (athRevealName) athRevealName.innerText = athRightCoin.name;
+        if (athRevealDate) athRevealDate.innerText = formatAthDate(athRightCoin.ath_date);
+        if (athRightDisc) athRightDisc.classList.add('rotate-y-180');
+
+        if (isCorrect) {
+          if (athStatusRing) {
+            athStatusRing.innerText = '✓';
+            athStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200';
+          }
+          if (athRightBack) {
+            athRightBack.classList.remove('border-zinc-200/90');
+            athRightBack.classList.add('border-[#2a6a51]', 'ring-4', 'ring-[#2a6a51]/15', 'shadow-md');
+          }
+          recordWin();
+          setTimeout(() => {
+            athLeftCoin = athRightCoin;
+            athRightCoin = getRandomCoin([athLeftCoin!.id]);
+            renderAthCoins();
+            athIsFlipping = false;
+          }, 1300);
+        } else {
+          if (athStatusRing) {
+            athStatusRing.innerText = '✕';
+            athStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200';
+          }
+          if (athRightBack) {
+            athRightBack.classList.remove('border-zinc-200/90');
+            athRightBack.classList.add('border-[#8c3b42]', 'ring-4', 'ring-[#8c3b42]/15', 'shadow-md');
+          }
+          setTimeout(() => {
+            triggerGameOver(`Nesprávne! ${athRightCoin!.name} dosiahla ATH ${rightIsEarlier ? 'skôr' : 'neskôr'} (${formatAthDate(athRightCoin!.ath_date)}).`);
+          }, 1300);
+        }
+      }
+
+      btnAthEarlier?.addEventListener('click', () => handleAthGuess(true));
+      btnAthLater?.addEventListener('click', () => handleAthGuess(false));
+
+      // =========================================================================
+      // 5. HRA: PEVNÝ STROP VS INFLÁCIA (SUPPLY CAP - D)
+      // =========================================================================
+      let supplyCoin: Coin | null = null;
+      let supplyIsFlipping = false;
+
+      const supplyCoinImg = document.getElementById('supply-coin-img') as HTMLImageElement;
+      const supplyCoinName = document.getElementById('supply-coin-name');
+      const supplyCoinSymbol = document.getElementById('supply-coin-symbol');
+      const supplyCirculating = document.getElementById('supply-circulating');
+      const supplyDisc = document.getElementById('supply-disc');
+      const supplyBack = document.getElementById('supply-back');
+      const supplyRevealVal = document.getElementById('supply-reveal-val');
+      const supplyRevealVerdict = document.getElementById('supply-reveal-verdict');
+      const supplyStatusRing = document.getElementById('supply-status-ring');
+      const btnSupplyHardcap = document.getElementById('btn-supply-hardcap') as HTMLButtonElement;
+      const btnSupplyInfinite = document.getElementById('btn-supply-infinite') as HTMLButtonElement;
+
+      function startSupplyCap() {
+        supplyIsFlipping = false;
+        supplyCoin = getRandomCoin();
+
+        if (supplyCoinImg) supplyCoinImg.src = supplyCoin.image;
+        if (supplyCoinName) supplyCoinName.innerText = supplyCoin.name;
+        if (supplyCoinSymbol) supplyCoinSymbol.innerText = supplyCoin.symbol;
+        if (supplyCirculating) {
+          supplyCirculating.innerText = formatSupply(supplyCoin.circulating_supply, supplyCoin.symbol);
+        }
+
+        if (supplyDisc) supplyDisc.classList.remove('rotate-y-180');
+        if (supplyBack) {
+          supplyBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center';
+        }
+        if (supplyStatusRing) {
+          supplyStatusRing.innerText = '?';
+          supplyStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-zinc-100 text-zinc-700';
+        }
+        if (btnSupplyHardcap) btnSupplyHardcap.disabled = false;
+        if (btnSupplyInfinite) btnSupplyInfinite.disabled = false;
+      }
+
+      function handleSupplyGuess(isGuessHardCap: boolean) {
+        if (supplyIsFlipping || isGameOver || !supplyCoin) return;
+        supplyIsFlipping = true;
+        if (btnSupplyHardcap) btnSupplyHardcap.disabled = true;
+        if (btnSupplyInfinite) btnSupplyInfinite.disabled = true;
+
+        const hasCap = typeof supplyCoin.max_supply === 'number' && supplyCoin.max_supply > 0;
+        const isCorrect = isGuessHardCap ? hasCap : !hasCap;
+
+        if (supplyRevealVal) {
+          supplyRevealVal.innerText = hasCap
+            ? formatSupply(supplyCoin.max_supply, supplyCoin.symbol)
+            : 'Neobmedzená (bez stropu)';
+        }
+        if (supplyRevealVerdict) {
+          supplyRevealVerdict.innerText = hasCap
+            ? '✓ Kryptomena má pevný limit zásob'
+            : '♾️ Kryptomena má nekonečnú infláciu';
+        }
+        if (supplyDisc) supplyDisc.classList.add('rotate-y-180');
+
+        if (isCorrect) {
+          if (supplyStatusRing) {
+            supplyStatusRing.innerText = '✓';
+            supplyStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200';
+          }
+          if (supplyBack) {
+            supplyBack.classList.remove('border-zinc-200/90');
+            supplyBack.classList.add('border-[#2a6a51]', 'ring-4', 'ring-[#2a6a51]/15', 'shadow-md');
+          }
+          recordWin();
+          setTimeout(startSupplyCap, 1300);
+        } else {
+          if (supplyStatusRing) {
+            supplyStatusRing.innerText = '✕';
+            supplyStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200';
+          }
+          if (supplyBack) {
+            supplyBack.classList.remove('border-zinc-200/90');
+            supplyBack.classList.add('border-[#8c3b42]', 'ring-4', 'ring-[#8c3b42]/15', 'shadow-md');
+          }
+          setTimeout(() => {
+            triggerGameOver(`Nesprávne! ${supplyCoin!.name} ${hasCap ? 'má pevný strop' : 'nemá pevný strop a je inflačná'}.`);
+          }, 1300);
+        }
+      }
+
+      btnSupplyHardcap?.addEventListener('click', () => handleSupplyGuess(true));
+      btnSupplyInfinite?.addEventListener('click', () => handleSupplyGuess(false));
+
+      // =========================================================================
+      // 6. HRA: UHÁDNI NÁZOV KRYPTOMENY (GUESS NAME - E)
+      // =========================================================================
+      let guessTarget: Coin | null = null;
+      let guessChoices: Coin[] = [];
+      let guessIsAnswering = false;
+
+      function startGuessName() {
+        guessIsAnswering = false;
+        guessTarget = getRandomCoin();
+        const decoys = pickNRandomCoins(3, [guessTarget.id]);
+        guessChoices = shuffle([guessTarget, ...decoys]);
+
+        const img = document.getElementById('guess-coin-img') as HTMLImageElement;
+        const rank = document.getElementById('guess-coin-rank');
+        const price = document.getElementById('guess-coin-price');
+        const nameEl = document.getElementById('guess-revealed-name');
+
+        if (img) img.src = guessTarget.image;
+        if (rank) rank.innerText = `#${guessTarget.market_cap_rank}`;
+        if (price) price.innerText = `$${guessTarget.current_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: guessTarget.current_price < 1 ? 4 : 2 })}`;
+        if (nameEl) nameEl.innerText = '???';
+
+        guessChoices.forEach((coin, idx) => {
+          const btn = document.getElementById(`guess-opt-${idx}`) as HTMLButtonElement;
+          if (btn) {
+            btn.innerText = coin.name;
+            btn.disabled = false;
+            btn.className = 'guess-choice-btn py-3 px-4 rounded-xl bg-white border-2 border-zinc-200/90 hover:border-zinc-400 font-extrabold text-xs sm:text-sm text-zinc-800 shadow-2xs hover:shadow-xs active:scale-95 transition cursor-pointer text-center disabled:cursor-not-allowed';
+          }
+        });
+      }
+
+      function handleGuessNamePick(idx: number) {
+        if (guessIsAnswering || isGameOver || !guessTarget) return;
+        guessIsAnswering = true;
+
+        const pickedCoin = guessChoices[idx];
+        const isCorrect = pickedCoin.id === guessTarget.id;
+
+        const nameEl = document.getElementById('guess-revealed-name');
+        if (nameEl) nameEl.innerText = `${guessTarget.name} (${guessTarget.symbol})`;
+
+        guessChoices.forEach((c, i) => {
+          const btn = document.getElementById(`guess-opt-${i}`) as HTMLButtonElement;
+          if (!btn) return;
+          btn.disabled = true;
+          if (c.id === guessTarget!.id) {
+            btn.className = 'guess-choice-btn py-3 px-4 rounded-xl bg-[#2a6a51] text-white border-2 border-[#2a6a51] font-extrabold text-xs sm:text-sm shadow-md transition text-center';
+          } else if (i === idx && !isCorrect) {
+            btn.className = 'guess-choice-btn py-3 px-4 rounded-xl bg-[#8c3b42] text-white border-2 border-[#8c3b42] font-extrabold text-xs sm:text-sm shadow-md transition text-center';
+          }
+        });
+
+        if (isCorrect) {
+          recordWin();
+          setTimeout(startGuessName, 1100);
+        } else {
+          setTimeout(() => {
+            triggerGameOver(`Nesprávne! Názov mince bol ${guessTarget!.name} (${guessTarget!.symbol}).`);
+          }, 1300);
+        }
+      }
+
+      [0, 1, 2, 3].forEach((idx) => {
+        document.getElementById(`guess-opt-${idx}`)?.addEventListener('click', () => handleGuessNamePick(idx));
+      });
+
+      // =========================================================================
+      // SPOLOČNÉ OVLÁDANIE A PREPÍNANIE HIER
+      // =========================================================================
+      function startActiveGame() {
+        isGameOver = false;
+        if (gameOverModal) gameOverModal.classList.add('hidden');
+        if (formFeedback) formFeedback.classList.add('hidden');
+
+        streaks[activeGame].current = 0;
+        streaks[activeGame].best = loadSavedBestStreak(activeGame);
+        updateScoreDisplays();
+
+        switch (activeGame) {
+          case 'higher_lower':
+            startHigherLower();
+            break;
+          case 'sort_four':
+            startSortFour();
+            break;
+          case 'mystery_stats':
+            startMysteryDetective();
+            break;
+          case 'ath_time':
+            startAthTime();
+            break;
+          case 'supply_cap':
+            startSupplyCap();
+            break;
+          case 'guess_name':
+            startGuessName();
+            break;
+        }
+      }
+
+      function switchGame(newGame: ActiveGame) {
+        if (activeGame === newGame) return;
+        activeGame = newGame;
+
+        // Aktualizácia tabov
+        document.querySelectorAll('.game-tab-btn').forEach((btn) => {
+          const btnEl = btn as HTMLElement;
+          const isSelected = btnEl.dataset.game === newGame;
+          if (isSelected) {
+            btnEl.className = 'game-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 bg-zinc-900 text-white shadow-xs';
+          } else {
+            btnEl.className = 'game-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900';
+          }
+        });
+
+        // Prepnutie viditeľnosti arén
+        const arenas: Record<ActiveGame, string> = {
+          higher_lower: 'arena-higher-lower',
+          sort_four: 'arena-sort-four',
+          mystery_stats: 'arena-mystery-stats',
+          ath_time: 'arena-ath-time',
+          supply_cap: 'arena-supply-cap',
+          guess_name: 'arena-guess-name',
+        };
+
+        Object.entries(arenas).forEach(([g, id]) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          if (g === newGame) {
+            el.classList.remove('hidden');
+            el.classList.add('flex');
+          } else {
+            el.classList.add('hidden');
+            el.classList.remove('flex');
+          }
+        });
+
+        // Pod-režimy Vyššia/Nižšia
+        const hlSelector = document.getElementById('hl-mode-selector');
+        if (hlSelector) {
+          if (newGame === 'higher_lower') {
+            hlSelector.classList.remove('hidden');
+          } else {
+            hlSelector.classList.add('hidden');
+          }
+        }
+
+        startActiveGame();
+      }
+
+      document.querySelectorAll('.game-tab-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const game = (btn as HTMLElement).dataset.game as ActiveGame;
+          if (game) switchGame(game);
+        });
+      });
+
+      // Tlačidlo Hrať znova v modale
+      btnPlayAgain?.addEventListener('click', startActiveGame);
+
+      // Kopírovanie skóre do schránky
+      btnCopyScore?.addEventListener('click', async () => {
+        const gameInfo = GAMES_LIST.find((g) => g.id === activeGame);
+        const title = gameInfo ? gameInfo.title : 'Krypto Hra';
+        const text = `🔥 Máš krypto v malíčku, alebo len na peňaženke? Dosiahol som sériu ${streaks[activeGame].current} v hre ${title} na TOP 100 kryptomenách! Prekonáš ma? https://kryptotipy.sk`;
+        try {
+          await navigator.clipboard.writeText(text);
+          if (copyBtnText) copyBtnText.innerText = 'Skopírované! ✓';
+          setTimeout(() => {
+            if (copyBtnText) copyBtnText.innerText = 'Zdieľať skóre';
+          }, 2000);
+        } catch {
+          alert(text);
+        }
+      });
+
+      // Ovládanie klávesnicou pre Vyššia/Nižšia & ATH Časostroj
+      window.addEventListener('keydown', (e) => {
+        if (isGameOver) {
+          if (e.key === ' ' || e.key === 'Enter') {
+            startActiveGame();
+          }
+          return;
+        }
+
+        if (activeGame === 'higher_lower') {
+          if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            handleHigherLowerGuess(true);
+          } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            handleHigherLowerGuess(false);
+          }
+        } else if (activeGame === 'ath_time') {
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            handleAthGuess(true);
+          } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            handleAthGuess(false);
+          }
+        }
+      });
+
+      // Web3Forms odosielanie do rebríčka
+      leaderboardForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (submitBtnText) submitBtnText.innerText = 'Odosielam...';
+        if (submitSpinner) submitSpinner.classList.remove('hidden');
+        if (btnSubmitScore) btnSubmitScore.disabled = true;
+
+        const formData = new FormData(leaderboardForm);
+
+        try {
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const result = await response.json();
+
+          if (response.status === 200 && result.success) {
+            if (formFeedback) {
+              formFeedback.innerText = '🎉 Skóre bolo úspešne zapísané do rebríčka!';
+              formFeedback.className = 'text-center text-xs font-bold text-[#2a6a51] py-1.5';
+              formFeedback.classList.remove('hidden');
+            }
+            leaderboardForm.reset();
+          } else {
+            throw new Error(result.message || 'Odoslanie zlyhalo');
+          }
+        } catch (err) {
+          if (formFeedback) {
+            formFeedback.innerText = '✓ Séria bola uložená lokálne! (Rebríček je dočasne offline)';
+            formFeedback.className = 'text-center text-xs font-semibold text-zinc-600 py-1.5';
+            formFeedback.classList.remove('hidden');
+          }
+        } finally {
+          if (submitBtnText) submitBtnText.innerText = 'Odoslané!';
+          if (submitSpinner) submitSpinner.classList.add('hidden');
+        }
+      });
+
+      // Inicializácia pri štarte
+      async function init() {
+        allCoins = await getCoins();
+        startActiveGame();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    </script>
+  </body>
+</html>

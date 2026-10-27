@@ -1,13 +1,33 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --bg-main: #fcfcfd;
-    --text-main: #18181b;
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
   }
-  body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  .preserve-3d {
+    transform-style: preserve-3d;
   }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: #fafafa;
+  color: #18181b;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
 }

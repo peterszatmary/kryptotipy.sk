@@ -1,0 +1,114 @@
+---
+---
+
+<div
+  id="game-over-modal"
+  class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/40 backdrop-blur-xs transition-all duration-300"
+>
+  <div class="w-full max-w-md rounded-2xl bg-white border border-zinc-200/90 p-6 shadow-2xl relative overflow-hidden">
+    <!-- Header -->
+    <div class="text-center mb-6">
+      <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-rose-50 border border-rose-200 text-[#8c3b42] text-xl font-bold mb-3">
+        ✕
+      </div>
+      <h2 class="text-2xl font-black text-zinc-900 tracking-tight">Koniec hry!</h2>
+      <p id="game-over-reason" class="text-xs text-zinc-500 mt-1">
+        Nesprávny tip! Tu je tvoja dosiahnutá séria:
+      </p>
+    </div>
+
+    <!-- Streak Stats Grid -->
+    <div class="grid grid-cols-2 gap-3 mb-6">
+      <div class="rounded-xl bg-zinc-50 border border-zinc-200 p-3.5 text-center">
+        <div class="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">Konečná séria</div>
+        <div id="modal-final-streak" class="text-3xl font-black font-mono text-zinc-900 mt-0.5 tabular-nums">
+          0
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-zinc-50 border border-zinc-200 p-3.5 text-center">
+        <div class="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">Osobný rekord</div>
+        <div id="modal-best-streak" class="text-3xl font-black font-mono text-zinc-900 mt-0.5 tabular-nums">
+          0
+        </div>
+      </div>
+    </div>
+
+    <!-- Nový rekord banner -->
+    <div id="new-record-banner" class="hidden mb-4 p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs text-center font-bold">
+      🏆 NOVÝ OSOBNÝ REKORD! Skvelá trhová intuícia!
+    </div>
+
+    <!-- Akčné tlačidlá -->
+    <div class="grid grid-cols-2 gap-3 mb-6">
+      <button
+        type="button"
+        id="btn-play-again"
+        class="w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-zinc-900 hover:bg-zinc-800 text-white shadow-xs active:scale-95 transition cursor-pointer flex items-center justify-center gap-1.5"
+      >
+        <span>Hrať znova</span>
+        <span>↻</span>
+      </button>
+
+      <button
+        type="button"
+        id="btn-copy-score"
+        class="w-full py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm bg-zinc-100 hover:bg-zinc-200/80 text-zinc-800 border border-zinc-200 active:scale-95 transition cursor-pointer flex items-center justify-center gap-1.5"
+      >
+        <span id="copy-btn-text">Zdieľať skóre</span>
+        <span>📋</span>
+      </button>
+    </div>
+
+    <!-- Web3Forms Lead Capture & Rebríček -->
+    <div class="pt-5 border-t border-zinc-100">
+      <div class="text-center mb-3">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-800">
+          Týždenný rebríček & Krypto tipy
+        </h3>
+        <p class="text-[11px] text-zinc-500 mt-0.5">
+          Zapíš svoje skóre do rebríčka komunity a získaj týždenné tipy.
+        </p>
+      </div>
+
+      <form id="leaderboard-form" class="space-y-2.5">
+        <!-- Hidden Web3Forms API Fields -->
+        <input type="hidden" name="access_key" id="w3f-access-key" value="a565d774-8848-4cb2-8ae9-6d80d2105ca8" />
+        <input type="hidden" name="subject" value="Novy zaznam do rebricka Krypto Vyssie/Nizsie" />
+        <input type="hidden" name="from_name" value="Krypto Vyssie alebo Nizsie" />
+        <input type="hidden" name="score" id="w3f-score" value="0" />
+        <input type="hidden" name="game_mode" id="w3f-mode" value="market_cap" />
+        <!-- Honeypot proti spamu -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <input
+            type="text"
+            name="name"
+            placeholder="Prezývka (napr. Satoshi_99)"
+            required
+            class="w-full bg-white border border-zinc-300 rounded-lg px-3 py-2 text-xs text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-500 shadow-2xs"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="E-mail (pre overenie)"
+            required
+            class="w-full bg-white border border-zinc-300 rounded-lg px-3 py-2 text-xs text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-500 shadow-2xs"
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="btn-submit-score"
+          class="w-full py-2.5 px-3 rounded-lg text-xs font-semibold bg-zinc-100 hover:bg-zinc-200 text-zinc-800 border border-zinc-300 transition cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
+        >
+          <span id="submit-btn-text">Zapísať do týždenného rebríčka</span>
+          <span id="submit-spinner" class="hidden inline-block animate-spin">↻</span>
+        </button>
+
+        <div id="form-feedback" class="hidden text-center text-xs font-medium py-1"></div>
+      </form>
+    </div>
+  </div>
+</div>

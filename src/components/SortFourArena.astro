@@ -1,0 +1,75 @@
+---
+import GameIcon from './GameIcon.astro';
+---
+
+<div id="arena-sort-four" class="game-arena hidden flex-1 w-full max-w-4xl mx-auto flex-col items-center justify-center px-4 py-2 relative">
+  <div class="text-center mb-3 sm:mb-5">
+    <span class="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+      <GameIcon name="sort_four" class="w-3.5 h-3.5 text-[#2a6a51]" />
+      <span>Krypto Zoradzovač</span>
+    </span>
+    <h2 class="text-base sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-1">
+      Zoraď mince od najväčšej po najmenšiu
+    </h2>
+    <p class="text-xs text-zinc-500 mt-0.5">
+      Klikaj na mince v poradí od <strong class="text-zinc-800">1. (najvyššia trhová hodnota)</strong> po <strong class="text-zinc-800">4. (najnižšia)</strong>.
+    </p>
+  </div>
+
+  <!-- Mriežka 4 mincí -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 w-full mb-3 sm:mb-4">
+    {[0, 1, 2, 3].map((idx) => (
+      <button
+        type="button"
+        id={`sort-card-${idx}`}
+        class="sort-coin-card relative flex flex-col items-center justify-center p-3.5 sm:p-5 rounded-2xl bg-white border-2 border-zinc-200/90 hover:border-zinc-300 shadow-xs hover:shadow-md transition-all cursor-pointer text-center group active:scale-98 select-none"
+        data-index={idx}
+      >
+        <!-- Poradové číslo výberu hráča (1, 2, 3, 4) -->
+        <div
+          id={`sort-badge-${idx}`}
+          class="sort-badge absolute -top-2 -right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-100 border-2 border-zinc-300 text-zinc-400 font-black text-xs sm:text-sm flex items-center justify-center transition-all shadow-2xs"
+        >
+          -
+        </div>
+
+        <!-- Logo mince -->
+        <img
+          id={`sort-img-${idx}`}
+          src=""
+          alt="Minca"
+          class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-zinc-50 border border-zinc-100 p-1 object-contain mb-2 group-hover:scale-105 transition-transform"
+          loading="eager"
+        />
+
+        <!-- Názov & Symbol -->
+        <h3 id={`sort-name-${idx}`} class="text-xs sm:text-sm font-extrabold text-zinc-900 line-clamp-1">
+          ---
+        </h3>
+        <span id={`sort-symbol-${idx}`} class="text-[10px] sm:text-xs font-mono font-bold text-zinc-400 uppercase mt-0.5">
+          ---
+        </span>
+
+        <!-- Odhalená metrika po dokončení -->
+        <div id={`sort-val-${idx}`} class="mt-2 text-xs sm:text-sm font-black font-mono text-zinc-600 tabular-nums">
+          ???
+        </div>
+      </button>
+    ))}
+  </div>
+
+  <!-- Spodné akcie / Reset výberu -->
+  <div class="flex items-center gap-3">
+    <button
+      type="button"
+      id="btn-sort-reset"
+      class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200 transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
+    >
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+      </svg>
+      <span>Zrušiť výber</span>
+    </button>
+  </div>
+</div>

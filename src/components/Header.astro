@@ -1,61 +1,100 @@
 ---
-import GithubIcon from './GithubIcon.astro';
+import { GAMES_LIST } from '../types/coin';
+import GameIcon from './GameIcon.astro';
 ---
 
-<header class="border-b border-zinc-200/80 bg-white/85 backdrop-blur-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <!-- Brand -->
-    <a href="/" class="flex items-center gap-3 group">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-600 p-[1px] shadow-sm">
-        <div class="w-full h-full bg-white rounded-[11px] flex items-center justify-center font-black text-amber-500 text-lg group-hover:scale-105 transition-transform">
-          ₿
+<header class="w-full shrink-0 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-3 sm:px-6 py-2 sm:py-2.5 z-40">
+  <div class="max-w-7xl mx-auto flex flex-col gap-2">
+    <!-- Horný riadok: Brand, TOP 100 Odznak, Počítadlá série -->
+    <div class="flex items-center justify-between w-full">
+      <!-- Ľavá časť: Logo & TOP 100 Badge -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="/" class="flex items-center gap-2 group">
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-zinc-900 text-white flex items-center justify-center font-bold text-xs sm:text-sm shadow-xs group-hover:scale-105 transition-transform">
+            ▲▼
+          </div>
+          <div class="flex flex-col">
+            <span class="font-extrabold text-xs sm:text-sm tracking-tight text-zinc-900 leading-tight">
+              Krypto Vyššia / Nižšia
+            </span>
+            <span class="text-[10px] text-zinc-400 font-medium hidden lg:inline">
+              Máš krypto v malíčku, alebo len na peňaženke?
+            </span>
+          </div>
+        </a>
+
+        <!-- HORE: TOP 100 MINCÍ Odznak -->
+        <div class="flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[10px] sm:text-[11px] font-mono font-bold text-zinc-700 shadow-2xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#2a6a51] animate-pulse"></span>
+          <span>TOP 100 MINCÍ</span>
         </div>
       </div>
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="font-extrabold text-lg tracking-tight text-zinc-900 group-hover:text-amber-600 transition-colors">
-            kryptotipy<span class="text-amber-500">.sk</span>
-          </span>
-          <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-200/80">
-            Jamstack SSG
-          </span>
+
+      <!-- Pravá časť: Séria a Rekord -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div class="flex items-center gap-1.5 bg-zinc-50 px-2 sm:px-2.5 py-1 rounded-lg border border-zinc-200">
+          <span class="text-[10px] text-zinc-500 uppercase font-semibold">Séria:</span>
+          <span id="current-streak-val" class="text-xs sm:text-sm font-black font-mono text-zinc-900 tabular-nums">0</span>
         </div>
-        <p class="text-[11px] text-zinc-500 font-medium hidden sm:block">
-          Algoritmické skratky pre racionálne krypto rozhodnutia
-        </p>
-      </div>
-    </a>
 
-    <!-- Right Controls & Status -->
-    <div class="flex items-center gap-3 sm:gap-4">
-      <!-- Live Status Pill -->
-      <div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-zinc-100/90 border border-zinc-200 text-xs text-zinc-700">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-        </span>
-        <span class="font-mono text-[11px] hidden xs:inline text-zinc-600">Live API + Hourly SSG</span>
+        <div class="flex items-center gap-1.5 bg-zinc-50 px-2 sm:px-2.5 py-1 rounded-lg border border-zinc-200">
+          <span class="text-[10px] text-zinc-500 uppercase font-semibold">Rekord:</span>
+          <span id="best-streak-val" class="text-xs sm:text-sm font-black font-mono text-zinc-900 tabular-nums">0</span>
+        </div>
       </div>
+    </div>
 
-      <!-- Quick Nav -->
-      <nav class="hidden md:flex items-center gap-4 text-xs font-semibold text-zinc-600">
-        <a href="#semafor" class="hover:text-zinc-950 transition-colors">Semafor</a>
-        <a href="#polymarket" class="hover:text-zinc-950 transition-colors">Polymarket</a>
-        <a href="#zlavomat" class="hover:text-zinc-950 transition-colors">Zľavomat & DCA</a>
-        <a href="#stroj-casu" class="hover:text-zinc-950 transition-colors">Stroj Času</a>
-        <a href="#dane" class="hover:text-zinc-950 transition-colors">Daňový Test</a>
+    <!-- Spodný riadok: Prepínač 6 hier a pod-režimy -->
+    <div class="flex flex-wrap items-center justify-between gap-1.5 pt-1.5 border-t border-zinc-100">
+      <!-- Navigácia 6 hier -->
+      <nav class="flex items-center gap-1 overflow-x-auto max-w-full py-0.5" aria-label="Výber hry">
+        {GAMES_LIST.map((game, idx) => (
+          <button
+            type="button"
+            class={`game-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 ${
+              idx === 0
+                ? 'bg-zinc-900 text-white shadow-xs'
+                : 'bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900'
+            }`}
+            data-game={game.id}
+          >
+            <GameIcon name={game.id} />
+            <span>{game.shortTitle}</span>
+          </button>
+        ))}
       </nav>
 
-      <!-- GitHub Link -->
-      <a
-        href="https://github.com/peterszatmary/kryptotipy.sk"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="p-2 rounded-lg bg-zinc-100 hover:bg-zinc-200/80 text-zinc-700 hover:text-zinc-950 border border-zinc-200 transition-colors"
-        title="Zdrojový kód na GitHub"
-      >
-        <GithubIcon class="w-4 h-4" />
-      </a>
+      <!-- Prepínač metrík pre Vyššia/Nižšia (zobrazí sa len pre Vyššia/Nižšia) -->
+      <div id="hl-mode-selector" class="flex items-center bg-zinc-100 p-0.5 rounded-lg border border-zinc-200 text-[10px] sm:text-[11px] font-semibold overflow-x-auto">
+        <button
+          type="button"
+          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer bg-white text-zinc-900 shadow-2xs font-bold whitespace-nowrap"
+          data-mode="market_cap"
+        >
+          Trhová hodnota
+        </button>
+        <button
+          type="button"
+          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
+          data-mode="price_change_24h"
+        >
+          24h zmena %
+        </button>
+        <button
+          type="button"
+          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
+          data-mode="ath_drop"
+        >
+          Prepad od ATH
+        </button>
+        <button
+          type="button"
+          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
+          data-mode="total_volume"
+        >
+          24h objem
+        </button>
+      </div>
     </div>
   </div>
 </header>

@@ -1,16 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <rect width="100" height="100" rx="24" fill="#ffffff"/>
+  <rect width="100" height="100" rx="24" fill="#020617"/>
   <rect x="2" y="2" width="96" height="96" rx="22" stroke="url(#paint0_linear)" stroke-width="4"/>
-  <text x="50" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" fill="url(#paint1_linear)" text-anchor="middle">₿</text>
+  <path d="M50 24L65 42H35L50 24Z" fill="#10b981"/>
+  <path d="M50 76L35 58H65L50 76Z" fill="#f43f5e"/>
   <defs>
     <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f59e0b"/>
-      <stop offset="0.5" stop-color="#ea580c"/>
-      <stop offset="1" stop-color="#10b981"/>
-    </linearGradient>
-    <linearGradient id="paint1_linear" x1="30" y1="20" x2="70" y2="80" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f59e0b"/>
-      <stop offset="1" stop-color="#d97706"/>
+      <stop stop-color="#10b981"/>
+      <stop offset="0.5" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#f43f5e"/>
     </linearGradient>
   </defs>
 </svg>
