@@ -1,264 +1,155 @@
-# Kryptotipy.sk web
+# kryptotipy.sk 🚀
 
-- Spring Boot 3.0.2
-- Java 17
-- Maria DB
-- Thymeleaf
-- Websupport DNS
-- Time4vps hosting
-- https://app.bitly.com/
+> **Algoritmické rozhodovacie skratky pre racionálnych investorov do kryptomien.**  
+> Ultra-rýchly, dark-mode Jamstack & SSG dashboard postavený na Astro, TypeScript a Tailwind CSS. Hosťovaný na GitHub Pages.
 
-## Sources behaviour on the page
+[![Deploy to GitHub Pages](https://github.com/peterszatmary/kryptotipy.sk/actions/workflows/deploy.yml/badge.svg)](https://github.com/peterszatmary/kryptotipy.sk/actions/workflows/deploy.yml)
+[![Lighthouse Score](https://img.shields.io/badge/Lighthouse-100%2F100-emerald?style=flat-square)](#)
+[![Astro Version](https://img.shields.io/badge/Astro-v7-purple?style=flat-square)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?style=flat-square)](#)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-sky?style=flat-square)](#)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25%20Local-emerald?style=flat-square)](#)
 
-### Approved sources
+---
 
-- approved sources have green flag on each post.
-- approved means now also have **direct redirect** to their original pages.
-- TODO this bind between approved + redirect to original is not good. split it into two logics
+## 🎯 Filozofia projektu: „Signal over Noise“
 
+Väčšina krypto webov trpí jedným z dvoch extrémov:
+- Neprehľadné burzové terminály s 50 blikajúcimi sviečkovými grafmi a indikátormi.
+- Clickbait bulvár a platené VIP signálové skupiny.
 
-### Link to post
+**Kryptotipy.sk** namiesto toho prináša **5-sekundové rozhodovacie skratky**:
+1. Je trh prehriaty na derivátoch a hrozí likvidačný Long Squeeze?
+2. Čo v reálnom čase vsádzajú „inteligentné peniaze“ na predikčných trhoch (Polymarket)?
+3. Aký je skutočný prepad altcoinov od ATH a koľko % rastu vyžaduje návrat na nulu?
+4. Ako sa správa pravidelné mesačné DCA do Bitcoinu v porovnaní s indexom S&P 500 od roku 2016?
+5. Kedy presne môže slovenský alebo český daňovník vybrať krypto zisk s **0 % daňou** (3-ročný časový test v ČR vs. 34 % daň v SR)?
 
-- link to post is calculated from ID from DB.
-- that the reason why this is not testable on other machines, local ...
-- calculated to not be stored. storage optimalization
-- if it will be stored in storage DB it will be testable on other machines too
+---
 
-## Affiliates
+## 🏗️ Architektúra (Hybrid Jamstack Data Flow)
 
-- Trezor
-- https://affiliate.trezor.io/
-- info@kryptotipy.sk
-- C#
-
-
-## Certificate Renew
+Projekt kombinuje tri vrstvy dát pre maximálnu rýchlosť, bezpečnosť a nulové náklady na infraštruktúru:
 
 ```
-certbot renew --dry-run
-certbot renew
-openssl pkcs12 -export -inkey /etc/letsencrypt/live/sk.kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
+┌────────────────────────────────────────────────────────┐
+│             1. SSG Build-Time Layer (Astro)            │
+│  • Polymarket Gamma API (Smart Money predikcie)        │
+│  • CoinGecko API (Top 30 krypto metriky a ATH)         │
+│  • SK/CZ RSS Feeds (Kryptomagazin, Bitcoin v Kapse)    │
+│  • S&P 500 & BTC historické mesačné dáta (2016 - 2026) │
+│  → Statické HTML generované pri builde (každú hodinu)  │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+┌──────────────────────────▼─────────────────────────────┐
+│             2. Client-Side Islands (Vanilla TS)        │
+│  • Živé sviečky z Binance Spot (200D & 200W Klines)    │
+│  • Binance Futures Funding Rate (8h sadzba)            │
+│  • Alternative.me Fear & Greed Index                   │
+│  • Mempool.space on-chain odporúčané poplatky (sat/vB) │
+│  • Wilder's 14D RSI & Mayer Multiple algoritmy         │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+┌──────────────────────────▼─────────────────────────────┐
+│           3. 100% Privacy Client Layer                 │
+│  • Žiadne klientske portfólio neopúšťa prehliadač     │
+│  • browser localStorage perzistencia daňových nákupov  │
+│  • 3-ročný časový test (ČR) vs 19% + 15% odvody (SR)   │
+└────────────────────────────────────────────────────────┘
 ```
 
-## AHrefs
-- finally will not follow nofollow links. So my clicks stats from page would be from 10.11.2021 accurate.
+---
 
-## Migration from UA (Universal analytics) to GA4 (Google analytics)
-- [video guide](https://www.youtube.com/watch?v=_8rFUr_NDB0&ab_channel=AnalyticsMania-GoogleTagManager%26Analytics)
-- deadline 1.7.2023
-- 14 months of statistics
-- more months in BigQuery
+## 🛠️ Použitý technologický stack
 
+- **Framework:** [Astro](https://astro.build/) – Static Site Generation (SSG), Islands Architecture, nulový runtime bloat.
+- **Typovanie:** [TypeScript](https://www.typescriptlang.org/) (Strict Mode) – typovo bezpečné indikátory, kalkulačky a API klienty.
+- **Štýlovanie:** [Tailwind CSS](https://tailwindcss.com/) – Dark theme (`#0a0a0c`), Bento-grid rozloženie, plynulé mikrointerakcie.
+- **Ikony:** `@lucide/astro` (optimalizované SVG bez zbytočného bundle balastu).
+- **Hosting & CI/CD:** GitHub Pages cez GitHub Actions (`.github/workflows/deploy.yml`):
+  - Automatický build pri pushi do vetvy `main` / `master`.
+  - **Hodinový cron (`schedule: '0 * * * *'`)** na automatickú regeneráciu statických dát (Polymarket, CoinGecko, RSS).
+  - Manuálny trigger cez `workflow_dispatch`.
 
-## Sitemap
+---
 
-- sitemap is generated
-- not working if there is https://kryptotipy.sk
-- working with www. en. pl. sk. and so on.
+## 📦 Kľúčové nástroje a moduly
 
-```xml
-<urlset xmlns:ns2="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://en.kryptotipy.sk/</loc>
-<lastMod>2023-02-14T07:24:37.947+01:00</lastMod>
-<priority>1.0</priority>
-</url>
-<url>
-<loc>https://en.kryptotipy.sk/posts/neo</loc>
-<lastMod>2023-02-14T07:24:37.947+01:00</lastMod>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://en.kryptotipy.sk/posts/litecoin</loc>
-<lastMod>2023-02-14T07:24:37.947+01:00</lastMod>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://en.kryptotipy.sk/posts/polkadot</loc>
-<lastMod>2023-02-14T07:24:37.947+01:00</lastMod>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://en.kryptotipy.sk/posts/ethereum</loc>
-<lastMod>2023-02-14T07:24:37.947+01:00</lastMod>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://en.kryptotipy.sk/posts/bitcoin</loc>
-<lastMod>2023-02-14T07:24:37.947+01:00</lastMod>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://en.kryptotipy.sk/posts/kusama</loc>
-<lastMod>2023-02-14T07:24:37.947+01:00</lastMod>
-<priority>0.8</priority>
-</url>
+### 1. 🚦 Semafor Trhu & Pákový Kompas (`MarketSemafor.astro`)
+- **Vstupy priamo z prehliadača:** Binance Spot 200d & 200w klines, Binance Futures Funding Rate, Alternative.me Fear & Greed, Mempool.space poplatky.
+- **Algoritmy:**
+  - **Wilder's RSI (14D):** Hladký Wilderov index relatívnej sily (< 30 zľava, > 70 riziko).
+  - **Mayer Multiple:** Pomer aktuálnej ceny k 200-dennému kĺzavému priemeru (200 DMA).
+  - **Odstup od 200W MA:** Percentuálna vzdialenosť od historického cyklického dna.
+  - **Leverage Squeeze Alert:** Detekcia kombinácie `Fear & Greed > 75` AND `Funding Rate > 0.03 % za 8h` s varovným hlásením pred kaskádovitou likvidáciou longov.
+
+### 2. 🎯 Polymarket & Smart Money Radar (`PolymarketRadar.astro`)
+- Čisto statický Astro SSG komponent bez JavaScriptu na klientovi.
+- Zobrazuje 5 najväčších predikčných trhov s percentuálnou šancou a objemom stávok v miliónoch USD.
+
+### 3. 📉 ATH Zľavomat & Záchranné DCA (`AthDiscountDca.astro`)
+- Asymetrická matematika poklesu: demonštruje, prečo prepad o -80 % vyžaduje rast o +400 % na nulu.
+- Interaktívny posuvník *„Dokúpiť dnes za X €“* (Averaging down) okamžite prepočíta novú break-even cenu a pokles potrebného rastu k zisku.
+
+### 4. ⏳ Stroj Času: Krypto vs. S&P 500 (`TimeMachineDca.astro`)
+- Reálne mesačné historické dáta od januára 2016 do 2026.
+- Posuvníky pre mesačnú investíciu (50 € – 2 000 €) a počiatočný rok (2016 – 2025).
+- Interaktívny responzívny graf s 3 krivkami (Investovaná hotovosť, S&P 500 a Bitcoin) + metriky ROI % a CAGR % p.a.
+
+### 5. ⚖️ SK vs. CZ Daňový & Časový Test Kalkulátor (`TaxCalculator.astro`)
+- **100% súkromie:** Žiadne dáta o nákupoch sa neposielajú na server (iba lokálny `localStorage`).
+- **Česká republika (ČR):** Výpočet 3-ročného časového testu (1 095 dní držania = 0 % daň) s presným odpočtom zostávajúcich dní a dátumom oslobodenia. Ročný limit oslobodenia do 100 000 CZK.
+- **Slovenská republika (SR):** Výpočet kombinácie 19 % dane z príjmu a 15 % zdravotných odvodov (~34 % efektívna daň zo zisku).
+- **Daňová arbitráž:** Presné vyčíslenie rozdielu v eurách medzi zdanením v SR a oslobodením v ČR.
+
+### 6. 📰 Lokálny SK/CZ Krypto Prehľad (`LocalNewsFeed.astro`)
+- Build-time agregátor správ z popredných lokálnych médií (Kryptomagazin.sk, Bitcoin v Kapse) bez otravných reklám a sledovacích skriptov.
+
+---
+
+## 🚀 Lokálny vývoj
+
+### Požiadavky
+- Node.js `>= 20.0.0`
+- npm `>= 9.0.0`
+
+### Inštalácia a spustenie
+
+```bash
+# 1. Klonovanie repozitára
+git clone https://github.com/peterszatmary/kryptotipy.sk.git
+cd kryptotipy.sk
+
+# 2. Inštalácia závislostí
+npm install
+
+# 3. Spustenie lokálneho vývojového servera
+npm run dev
 ```
 
-# Spolupracu neskor rozsir
+Vývojový server sa spustí na `http://localhost:4321`.
 
-- agregator sa predavat nebude
-- data cez rest alebo graphQL. s tym, ze max viem vratit 100 clankov na request.
-- aj requesty je potrebne pocitat a zapisovat a spoplatnovat. cize cela infrastruktura.
+### Produkčný build a náhľad
 
+```bash
+# Zostavenie produkčnej statickej verzie
+npm run build
 
-## Catalogs
-
-- e-katalog.sk
-- https://www.naj-katalog.eu/
-- https://www.davaj.sk/
-- https://www.pozri.sk/
-- http://vsetko.info/
-- http://webdir.sk/
-- https://katalogstranok.sk/
-- https://webkatalog.xyz/
-
-### Content for catalogs
-
-- Agregátor najlepších článkov z celého sveta o kryptomenách na jednom mieste.
-- Agregátor najlepších článkov z celého sveta o kryptomenách na jednom mieste. Na našich stránkach nájdete okrem článkov aj odporúčané externé krypto služby, slovník vysvetľujúci základy krypto sveta a rubriku vedeli ste, že.
-- kryptomeny, bitcoin, články, agregátor, kryptotipy, investície, financie, ethereum, neo, monero, litecoin
-- https://www.kryptotipy.sk
-- info@kryptotipy.sk
-- Kryptotipy
-- https://www.facebook.com/kryptotipysk/
-
-
-## Security
-
-### How to install SSL certificate
-
-- certificate for free with Lets encrypt service
-- installation done via certbot
-- certificate valid till 2021-03-02
-
-#### Renew
-
-Stop the application and run
-
-```
-certbot renew
-openssl pkcs12 -export -inkey /etc/letsencrypt/live/sk.kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
+# Lokálny preview vygenerovaného výstupu v dist/
+npm run preview
 ```
 
-if you would like to try
+---
 
-```
-certbot renew --dry-run
-```
+## 🛡️ Bezpečnosť & Ochrana súkromia
 
+- Žiadne cookies, žiadne sledovacie reklamné skripty tretích strán (Google Analytics, Facebook Pixel, atď.).
+- Všetky vstupy používateľov v daňovom kalkulátore bežia **výhradne v pamäti prehliadača** a ukladajú sa do `localStorage` používateľa.
+- Žiadne API kľúče nie sú vystavené na klientovi.
 
-#### Automatic renew (TODO)
+---
 
-- check systemctl list-timers
-- or check instruction on certbot site
+## 📄 Licencia
 
-### my own key pair self signed
-
-```
-keytool -genkeypair -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore kryptotipy.p12 -validity 365
-```
-
-### run on server (debian 10)
-```
-apt install snapd
-snap install core
-snap install hello-world
-snap install core; sudo snap refresh core
-apt-get remove certbot
-snap install --classic certbot
-ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --standalone -d sk.kryptotipy.sk -d kryptotipy.sk -d www.kryptotipy.sk -d de.kryptotipy.sk -d nl.kryptotipy.sk -d pl.kryptotipy.sk -d en.kryptotipy.sk -d hu.kryptotipy.sk -d fr.kryptotipy.sk -d es.kryptotipy.sk -d fi.kryptotipy.sk  
-openssl pkcs12 -export -inkey /etc/letsencrypt/live/sk.kryptotipy.sk/privkey.pem -in /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem -CAfile letsencryptauthorityx1.pem -out cert.p12
-```
-
-```
-IMPORTANT NOTES:
- - Congratulations! Your certificate and chain have been saved at:
-   /etc/letsencrypt/live/sk.kryptotipy.sk/fullchain.pem
-   Your key file has been saved at:
-   /etc/letsencrypt/live/kryptotipy.sk/privkey.pem
-   Your cert will expire on 2021-03-02. To obtain a new or tweaked
-   version of this certificate in the future, simply run certbot
-   again. To non-interactively renew *all* of your certificates, run
-   "certbot renew"
- - If you like Certbot, please consider supporting our work by:
-
-   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-   Donating to EFF:                    https://eff.org/donate-le
-```
-
-
-### For more information see please
-https://certbot.eff.org/lets-encrypt/debianbuster-other
-https://certbot.eff.org/instructions?ws=other&os=debianbuster
-
-
-
-## Testing multi-extraction (more extraction in one time)
-
-```
-13.12.2021 ->>>>>>>>>>
-
-- I was trying  mysqlcheck
-
-- multi threading to one thread extraction
-  mysqlcheck --all-databases -u root -p -o
-
-- it helped
-- but in few days problems came back
-- I restarted server but mysql was slow
-- repair again and it helped!!!
-- now I am trying again I deleted thread pools from post-extractor (maybe the problem)
-
-- spring.datasource.hikari.minimum-idle= 11
-- spring.datasource.hikari.maximum-pool-size= 13
-
-- will see in few days today is (13.12) for sure the issue is database but what causes databases running into troubles?
-
-- mentioned conf
-- low CPU or RAM ?
-
-
-there is a lot of data but database is able to work relatively fine but after few days it is horrible.
-```
-
-### QUICK FIX
-
-```
-service mysql restart
-mysqlcheck --all-databases -u root -p -o
-```
-
-
-IT SEEMS THAT I NEED NEW  DATABASE
-
-- overloaded cpu
-
--restarts
-- 17.12.2021 00:00
-
-
-### Server memory
-
-```
-ps -o pid,user,%mem,command ax | sort -b -k3 -r | less
-pmap <NUM>
-```
-
-big anon - write to support
-diff between container and KVL instances
-
-
-
-### TODO
-
-- canonical
-    - maybe not possible when /news but actually already f.e. czech news (not present in url). but there
-      are just few 9 not working canonicals from all.
-
-
-- bugs
-- java.io.IOException: Duplicate accept detected. This is a known OS bug. Please consider reporting that you are affected: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1924298
-
-
+Projekt je zverejnený pod licenciou [MIT](LICENSE).
+Vytvorené s dôrazom na technickú eleganciu, výkon a praktickú hodnotu pre krypto komunitu v SR a ČR.

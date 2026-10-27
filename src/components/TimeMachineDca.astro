@@ -1,0 +1,353 @@
+---
+import { Clock } from '@lucide/astro';
+import historicalDataset from '../data/historical_dca.json';
+---
+
+<section id="stroj-casu" class="col-span-1 md:col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 p-5 sm:p-6 backdrop-blur-sm relative overflow-hidden shadow-xl">
+  <!-- Background Glow -->
+  <div class="absolute -top-24 -right-24 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-5 border-b border-zinc-800/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="inline-flex items-center justify-center p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+          <Clock class="w-4 h-4" />
+        </span>
+        <h2 class="text-xl font-bold tracking-tight text-white">
+          Stroj Času: Pravidelné DCA Krypto vs. S&P 500
+        </h2>
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700/50">
+          2016 – 2026 Reálne dáta
+        </span>
+      </div>
+      <p class="text-xs sm:text-sm text-zinc-400">
+        Simulácia mesačného nákupu v rovnaký deň bez časovania trhu. Porovnanie zhodnotenia Bitcoinu voči americkému indexu S&P 500.
+      </p>
+    </div>
+
+    <!-- Chart Legend -->
+    <div class="flex items-center gap-3 text-xs font-mono self-start sm:self-auto bg-zinc-950/60 px-3 py-1.5 rounded-lg border border-zinc-800">
+      <div class="flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+        <span class="text-zinc-200">Bitcoin</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+        <span class="text-zinc-200">S&P 500</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-2.5 h-0.5 bg-zinc-400"></span>
+        <span class="text-zinc-400">Vložené €</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sliders Row -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 p-4 rounded-xl bg-zinc-950/70 border border-zinc-800">
+    <!-- Slider 1: Monthly Investment -->
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <label for="monthly-invest-slider" class="text-xs font-semibold text-zinc-200">
+          Mesačná investícia (každý 1. deň v mesiaci):
+        </label>
+        <span class="text-base font-black font-mono text-white bg-zinc-800 px-2.5 py-0.5 rounded border border-zinc-700">
+          <span id="monthly-invest-label">100</span> € / mesiac
+        </span>
+      </div>
+      <input
+        type="range"
+        id="monthly-invest-slider"
+        min="50"
+        max="2000"
+        step="50"
+        value="100"
+        class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+      />
+      <div class="flex justify-between text-[10px] text-zinc-400 font-mono mt-1">
+        <span>50 €</span>
+        <span>500 €</span>
+        <span>1 000 €</span>
+        <span>2 000 €</span>
+      </div>
+    </div>
+
+    <!-- Slider 2: Start Year -->
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <label for="start-year-slider" class="text-xs font-semibold text-zinc-200">
+          Začiatok investovania (Rok):
+        </label>
+        <span class="text-base font-black font-mono text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded border border-amber-500/20">
+          Január <span id="start-year-label">2018</span>
+        </span>
+      </div>
+      <input
+        type="range"
+        id="start-year-slider"
+        min="2016"
+        max="2025"
+        step="1"
+        value="2018"
+        class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+      />
+      <div class="flex justify-between text-[10px] text-zinc-400 font-mono mt-1">
+        <span>2016</span>
+        <span>2018</span>
+        <span>2020</span>
+        <span>2022</span>
+        <span>2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI Summary Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <!-- Card 1: Total Invested Cash -->
+    <div class="rounded-xl bg-zinc-950/50 border border-zinc-800/80 p-4">
+      <div class="text-[11px] font-medium text-zinc-400 uppercase tracking-wider mb-1">Vložená hotovosť</div>
+      <div class="text-2xl font-black font-mono text-zinc-200" id="tm-invested-cash">-- €</div>
+      <div class="text-[11px] text-zinc-400 mt-1 font-mono">
+        Celkovo: <span id="tm-months-count">--</span> mesiacov
+      </div>
+    </div>
+
+    <!-- Card 2: S&P 500 Result -->
+    <div class="rounded-xl bg-zinc-950/50 border border-sky-500/20 p-4">
+      <div class="text-[11px] font-medium text-sky-400 uppercase tracking-wider mb-1">S&P 500 Hodnota</div>
+      <div class="text-2xl font-black font-mono text-sky-400" id="tm-sp-value">-- €</div>
+      <div class="flex items-center gap-2 text-xs font-mono mt-1">
+        <span id="tm-sp-roi" class="font-bold text-sky-300">+-- % ROI</span>
+        <span class="text-zinc-500">|</span>
+        <span id="tm-sp-cagr" class="text-zinc-400">-- % p.a.</span>
+      </div>
+    </div>
+
+    <!-- Card 3: Bitcoin Result -->
+    <div class="rounded-xl bg-zinc-950/50 border border-emerald-500/20 p-4">
+      <div class="text-[11px] font-medium text-emerald-400 uppercase tracking-wider mb-1">Bitcoin Hodnota</div>
+      <div class="text-2xl font-black font-mono text-emerald-400" id="tm-btc-value">-- €</div>
+      <div class="flex items-center gap-2 text-xs font-mono mt-1">
+        <span id="tm-btc-roi" class="font-bold text-emerald-300">+-- % ROI</span>
+        <span class="text-zinc-500">|</span>
+        <span id="tm-btc-cagr" class="text-zinc-400">-- % p.a.</span>
+      </div>
+    </div>
+
+    <!-- Card 4: Multiplier Difference -->
+    <div class="rounded-xl bg-zinc-950/50 border border-zinc-800/80 p-4">
+      <div class="text-[11px] font-medium text-zinc-400 uppercase tracking-wider mb-1">Krypto Multiplikátor</div>
+      <div class="text-2xl font-black font-mono text-amber-400" id="tm-multiplier">--x</div>
+      <div class="text-[11px] text-zinc-400 mt-1 font-mono">
+        Náskok voči S&P 500: <span id="tm-diff-eur" class="text-zinc-300">+-- €</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive SVG Chart Container -->
+  <div class="rounded-xl bg-zinc-950 border border-zinc-800/80 p-4 relative">
+    <div class="h-64 sm:h-72 w-full relative">
+      <svg id="dca-chart-svg" class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 800 300">
+        <!-- SVG content rendered dynamically by client script -->
+      </svg>
+      <div id="chart-tooltip" class="hidden absolute pointer-events-none bg-zinc-900/95 border border-zinc-700 text-xs rounded-lg p-2.5 shadow-2xl z-20 font-mono">
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center text-[10px] text-zinc-400 font-mono mt-3 pt-2 border-t border-zinc-800/60">
+      <span id="chart-x-start">2018-01</span>
+      <span>Časová os mesačného investovania</span>
+      <span id="chart-x-end">2026-10</span>
+    </div>
+  </div>
+</section>
+
+<!-- Client Script for Time Machine -->
+<script define:vars={{ historicalDataset }}>
+  function initTimeMachine() {
+    const monthlySlider = document.getElementById('monthly-invest-slider');
+    const startYearSlider = document.getElementById('start-year-slider');
+    const monthlyLabel = document.getElementById('monthly-invest-label');
+    const startYearLabel = document.getElementById('start-year-label');
+
+    const investedCashEl = document.getElementById('tm-invested-cash');
+    const monthsCountEl = document.getElementById('tm-months-count');
+    const spValueEl = document.getElementById('tm-sp-value');
+    const spRoiEl = document.getElementById('tm-sp-roi');
+    const spCagrEl = document.getElementById('tm-sp-cagr');
+    const btcValueEl = document.getElementById('tm-btc-value');
+    const btcRoiEl = document.getElementById('tm-btc-roi');
+    const btcCagrEl = document.getElementById('tm-btc-cagr');
+    const multiplierEl = document.getElementById('tm-multiplier');
+    const diffEurEl = document.getElementById('tm-diff-eur');
+
+    const svgEl = document.getElementById('dca-chart-svg');
+    const xStartEl = document.getElementById('chart-x-start');
+    const xEndEl = document.getElementById('chart-x-end');
+
+    function calculateDca(monthlyAmount, startYear) {
+      const filtered = historicalDataset.filter(pt => pt.year >= startYear);
+      if (!filtered.length) return null;
+
+      let accBtc = 0;
+      let accSp = 0;
+      let totalInvested = 0;
+      const timeline = [];
+
+      for (const pt of filtered) {
+        totalInvested += monthlyAmount;
+        if (pt.btc > 0) accBtc += monthlyAmount / pt.btc;
+        if (pt.sp500 > 0) accSp += monthlyAmount / pt.sp500;
+
+        timeline.push({
+          date: pt.date,
+          invested: totalInvested,
+          btcValue: accBtc * pt.btc,
+          spValue: accSp * pt.sp500
+        });
+      }
+
+      const latest = timeline[timeline.length - 1];
+      const btcFinal = latest.btcValue;
+      const spFinal = latest.spValue;
+
+      const btcRoi = totalInvested > 0 ? ((btcFinal - totalInvested) / totalInvested) * 100 : 0;
+      const spRoi = totalInvested > 0 ? ((spFinal - totalInvested) / totalInvested) * 100 : 0;
+
+      const years = filtered.length / 12;
+      const btcCagr = years >= 1 && totalInvested > 0 && btcFinal > 0
+        ? (Math.pow(btcFinal / totalInvested, 1 / years) - 1) * 100
+        : btcRoi;
+      const spCagr = years >= 1 && totalInvested > 0 && spFinal > 0
+        ? (Math.pow(spFinal / totalInvested, 1 / years) - 1) * 100
+        : spRoi;
+
+      return {
+        totalInvested,
+        monthsCount: filtered.length,
+        btcFinal,
+        spFinal,
+        btcRoi,
+        spRoi,
+        btcCagr,
+        spCagr,
+        timeline,
+        startDate: filtered[0].date,
+        endDate: filtered[filtered.length - 1].date
+      };
+    }
+
+    function renderChart(timeline) {
+      if (!svgEl || !timeline.length) return;
+
+      const W = 800;
+      const H = 260;
+      const padY = 20;
+
+      // Find max value among all curves
+      let maxVal = 0;
+      for (const pt of timeline) {
+        if (pt.btcValue > maxVal) maxVal = pt.btcValue;
+        if (pt.spValue > maxVal) maxVal = pt.spValue;
+        if (pt.invested > maxVal) maxVal = pt.invested;
+      }
+      maxVal = maxVal * 1.05; // 5% ceiling headroom
+
+      const n = timeline.length;
+      const getX = (i) => (i / (n - 1)) * W;
+      const getY = (val) => H - padY - ((val / maxVal) * (H - 2 * padY));
+
+      // Build path strings
+      let pathInvested = `M ${getX(0)} ${getY(timeline[0].invested)}`;
+      let pathSp = `M ${getX(0)} ${getY(timeline[0].spValue)}`;
+      let pathBtc = `M ${getX(0)} ${getY(timeline[0].btcValue)}`;
+
+      for (let i = 1; i < n; i++) {
+        pathInvested += ` L ${getX(i)} ${getY(timeline[i].invested)}`;
+        pathSp += ` L ${getX(i)} ${getY(timeline[i].spValue)}`;
+        pathBtc += ` L ${getX(i)} ${getY(timeline[i].btcValue)}`;
+      }
+
+      // Background area for BTC
+      const btcArea = `${pathBtc} L ${getX(n - 1)} ${H - padY} L ${getX(0)} ${H - padY} Z`;
+
+      // Build SVG internal HTML
+      svgEl.innerHTML = `
+        <defs>
+          <linearGradient id="btcGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Horizontal Guide Lines -->
+        <line x1="0" y1="${H - padY}" x2="${W}" y2="${H - padY}" stroke="#27272a" stroke-width="1" />
+        <line x1="0" y1="${getY(maxVal * 0.25)}" x2="${W}" y2="${getY(maxVal * 0.25)}" stroke="#27272a" stroke-width="1" stroke-dasharray="4,4" />
+        <line x1="0" y1="${getY(maxVal * 0.5)}" x2="${W}" y2="${getY(maxVal * 0.5)}" stroke="#27272a" stroke-width="1" stroke-dasharray="4,4" />
+        <line x1="0" y1="${getY(maxVal * 0.75)}" x2="${W}" y2="${getY(maxVal * 0.75)}" stroke="#27272a" stroke-width="1" stroke-dasharray="4,4" />
+
+        <!-- Area -->
+        <path d="${btcArea}" fill="url(#btcGlow)" />
+
+        <!-- 3 Curves -->
+        <!-- Cash Invested (Gray Dashed) -->
+        <path d="${pathInvested}" fill="none" stroke="#71717a" stroke-width="2" stroke-dasharray="5,5" />
+
+        <!-- S&P 500 (Sky Blue) -->
+        <path d="${pathSp}" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+
+        <!-- Bitcoin (Emerald Green) -->
+        <path d="${pathBtc}" fill="none" stroke="#10b981" stroke-width="3" />
+
+        <!-- Latest Points -->
+        <circle cx="${getX(n - 1)}" cy="${getY(timeline[n - 1].btcValue)}" r="4" fill="#10b981" />
+        <circle cx="${getX(n - 1)}" cy="${getY(timeline[n - 1].spValue)}" r="4" fill="#38bdf8" />
+        <circle cx="${getX(n - 1)}" cy="${getY(timeline[n - 1].invested)}" r="3" fill="#a1a1aa" />
+      `;
+    }
+
+    function update() {
+      const monthly = parseInt(monthlySlider.value, 10);
+      const startYear = parseInt(startYearSlider.value, 10);
+
+      monthlyLabel.innerText = monthly.toLocaleString('sk-SK');
+      startYearLabel.innerText = startYear.toString();
+
+      const res = calculateDca(monthly, startYear);
+      if (!res) return;
+
+      investedCashEl.innerText = `${Math.round(res.totalInvested).toLocaleString('sk-SK')} €`;
+      monthsCountEl.innerText = res.monthsCount.toString();
+
+      spValueEl.innerText = `${Math.round(res.spFinal).toLocaleString('sk-SK')} €`;
+      spRoiEl.innerText = `+${Math.round(res.spRoi).toLocaleString('sk-SK')} % ROI`;
+      spCagrEl.innerText = `${res.spCagr.toFixed(1)} % p.a.`;
+
+      btcValueEl.innerText = `${Math.round(res.btcFinal).toLocaleString('sk-SK')} €`;
+      btcRoiEl.innerText = `+${Math.round(res.btcRoi).toLocaleString('sk-SK')} % ROI`;
+      btcCagrEl.innerText = `${res.btcCagr.toFixed(1)} % p.a.`;
+
+      const mult = res.spFinal > 0 ? (res.btcFinal / res.spFinal).toFixed(1) : '1.0';
+      multiplierEl.innerText = `${mult}x`;
+
+      const diff = Math.round(res.btcFinal - res.spFinal);
+      diffEurEl.innerText = `+${diff.toLocaleString('sk-SK')} €`;
+
+      if (xStartEl) xStartEl.innerText = res.startDate;
+      if (xEndEl) xEndEl.innerText = res.endDate;
+
+      renderChart(res.timeline);
+    }
+
+    monthlySlider?.addEventListener('input', update);
+    startYearSlider?.addEventListener('input', update);
+
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTimeMachine);
+  } else {
+    initTimeMachine();
+  }
+</script>

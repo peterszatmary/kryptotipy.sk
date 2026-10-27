@@ -1,0 +1,47 @@
+[
+  {
+    "id": "poly-1",
+    "question": "Prekoná Bitcoin úroveň 150 000 $ v roku 2026?",
+    "category": "Bitcoin",
+    "yesProbability": 68,
+    "volumeUsd": 42150000,
+    "endDate": "31. Dec 2026",
+    "url": "https://polymarket.com"
+  },
+  {
+    "id": "poly-2",
+    "question": "Ethereum dosiahne nové All-Time High (> 4 890 $) v tomto cykle?",
+    "category": "Ethereum",
+    "yesProbability": 44,
+    "volumeUsd": 21800000,
+    "endDate": "31. Dec 2026",
+    "url": "https://polymarket.com"
+  },
+  {
+    "id": "poly-3",
+    "question": "Schváli SEC ďalšie krypto spotové ETF (Solana / XRP)?",
+    "category": "Regulácia",
+    "yesProbability": 79,
+    "volumeUsd": 18450000,
+    "endDate": "30. Nov 2026",
+    "url": "https://polymarket.com"
+  },
+  {
+    "id": "poly-4",
+    "question": "Prekročí celková trhová kapitalizácia kryptomien 5 biliónov $?",
+    "category": "Trh",
+    "yesProbability": 58,
+    "volumeUsd": 33200000,
+    "endDate": "31. Dec 2026",
+    "url": "https://polymarket.com"
+  },
+  {
+    "id": "poly-5",
+    "question": "Prijme ďalší štát G20 Bitcoin ako štátnu strategickú rezervu?",
+    "category": "Makro",
+    "yesProbability": 37,
+    "volumeUsd": 12900000,
+    "endDate": "31. Dec 2026",
+    "url": "https://polymarket.com"
+  }
+]

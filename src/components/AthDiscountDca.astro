@@ -1,0 +1,324 @@
+---
+import { getTopCoins } from '../lib/coingecko';
+import { Percent, Calculator } from '@lucide/astro';
+
+const coins = await getTopCoins();
+---
+
+<section id="zlavomat" class="col-span-1 md:col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 p-5 sm:p-6 backdrop-blur-sm relative overflow-hidden shadow-xl">
+  <!-- Subtle background glow -->
+  <div class="absolute -top-24 -left-24 w-80 h-80 bg-rose-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-5 border-b border-zinc-800/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="inline-flex items-center justify-center p-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+          <Percent class="w-4 h-4" />
+        </span>
+        <h2 class="text-xl font-bold tracking-tight text-white">
+          ATH Zľavomat & Breakeven Kalkulačka
+        </h2>
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700/50">
+          Asymetrická matematika poklesu
+        </span>
+      </div>
+      <p class="text-xs sm:text-sm text-zinc-400">
+        Prepad o 80 % vyžaduje rast o 400 % na nulu. Simulujte, ako rýchlo vám cielené DCA zníži potrebný rast na zisk.
+      </p>
+    </div>
+
+    <!-- Educational Tooltip -->
+    <div class="text-xs text-zinc-400 bg-zinc-950/60 px-3 py-1.5 rounded-lg border border-zinc-800 flex items-center gap-2">
+      <span class="text-rose-400 font-bold">-50% = +100%</span>
+      <span class="text-zinc-600">|</span>
+      <span class="text-rose-400 font-bold">-80% = +400%</span>
+      <span class="text-zinc-600">|</span>
+      <span class="text-rose-400 font-bold">-90% = +900%</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- Left Column: Top Coins Zľavomat Table (SSG) -->
+    <div class="lg:col-span-5 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between mb-3 text-xs font-semibold text-zinc-400 uppercase tracking-wider">
+          <span>Kryptomena & Trh</span>
+          <span>Prepad od ATH / Potrebný rast</span>
+        </div>
+
+        <div class="space-y-2 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar">
+          {coins.slice(0, 10).map((coin) => {
+            const isHeavyDiscount = coin.drawdown_percent <= -60;
+
+            return (
+              <button
+                type="button"
+                class="coin-quick-select w-full text-left rounded-xl bg-zinc-950/50 hover:bg-zinc-800/50 border border-zinc-800/80 p-3 transition flex items-center justify-between group cursor-pointer"
+                data-id={coin.id}
+                data-symbol={coin.symbol}
+                data-name={coin.name}
+                data-price={coin.current_price}
+                data-ath={coin.ath}
+              >
+                <div class="flex items-center gap-3">
+                  {coin.image && (
+                    <img src={coin.image} alt={coin.name} class="w-7 h-7 rounded-full bg-zinc-800 shrink-0" loading="lazy" />
+                  )}
+                  <div>
+                    <div class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                      {coin.name}
+                      <span class="text-xs font-normal text-zinc-400">({coin.symbol})</span>
+                    </div>
+                    <div class="text-xs font-mono text-zinc-400">
+                      Cena: ${coin.current_price >= 1 ? coin.current_price.toLocaleString('en-US') : coin.current_price}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-right">
+                  <div class={`text-sm font-black font-mono ${isHeavyDiscount ? 'text-rose-400' : 'text-amber-400'}`}>
+                    {coin.drawdown_percent}%
+                  </div>
+                  <div class="text-[11px] font-mono text-emerald-400 font-semibold">
+                    +{coin.required_gain_percent}% na ATH
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <p class="text-[11px] text-zinc-400 mt-3 italic">
+        💡 Kliknite na ľubovoľnú mincu v zozname pre okamžité načítanie do DCA kalkulačky vpravo.
+      </p>
+    </div>
+
+    <!-- Right Column: Interactive "Záchranné DCA" Simulator (Client Island) -->
+    <div class="lg:col-span-7 rounded-xl bg-zinc-950/80 border border-zinc-800 p-4 sm:p-5 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <Calculator class="w-4 h-4 text-emerald-400" />
+            <h3 class="text-sm font-bold text-white">
+              Simulátor „Záchranného DCA“ (Averaging Down)
+            </h3>
+          </div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            Realtime Island
+          </span>
+        </div>
+
+        <!-- Form Controls -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          <div>
+            <label class="block text-[11px] font-medium text-zinc-400 mb-1">Minca / Projekt</label>
+            <select
+              id="dca-coin-select"
+              class="w-full bg-zinc-900 border border-zinc-700/80 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-400"
+            >
+              {coins.map((c) => (
+                <option value={c.id} data-price={c.current_price} data-ath={c.ath} data-symbol={c.symbol}>
+                  {c.name} ({c.symbol})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-medium text-zinc-400 mb-1">Pôvodná nákupná cena ($)</label>
+            <input
+              type="number"
+              id="dca-original-price"
+              value="3500"
+              step="any"
+              class="w-full bg-zinc-900 border border-zinc-700/80 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-amber-400"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-medium text-zinc-400 mb-1">Pôvodne investované ($ / €)</label>
+            <input
+              type="number"
+              id="dca-original-invested"
+              value="1000"
+              step="any"
+              class="w-full bg-zinc-900 border border-zinc-700/80 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-amber-400"
+            />
+          </div>
+        </div>
+
+        <!-- Current Market Context Strip -->
+        <div class="rounded-lg bg-zinc-900/60 border border-zinc-800 px-3 py-2 text-xs flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div class="text-zinc-400">
+            Aktuálna trhová cena: <span id="dca-curr-price-disp" class="font-mono font-bold text-white">-- $</span>
+          </div>
+          <div class="text-zinc-400">
+            Aktuálna strata: <span id="dca-orig-pnl-disp" class="font-mono font-bold text-rose-400">-- %</span>
+          </div>
+          <div class="text-zinc-400">
+            Pôvodný rast k nule: <span id="dca-orig-gain-disp" class="font-mono font-bold text-amber-400">+-- %</span>
+          </div>
+        </div>
+
+        <!-- Averaging Down Slider -->
+        <div class="mb-5">
+          <div class="flex items-center justify-between mb-1.5">
+            <label for="dca-addon-slider" class="text-xs font-semibold text-zinc-200">
+              Dokúpiť dnes za aktuálnu cenu:
+            </label>
+            <span class="text-base font-black font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-lg border border-emerald-500/20">
+              <span id="dca-addon-value">500</span> $
+            </span>
+          </div>
+          <input
+            type="range"
+            id="dca-addon-slider"
+            min="0"
+            max="3000"
+            step="50"
+            value="500"
+            class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+          />
+          <div class="flex justify-between text-[10px] text-zinc-400 font-mono mt-1">
+            <span>0 $</span>
+            <span>1 000 $</span>
+            <span>2 000 $</span>
+            <span>3 000 $</span>
+          </div>
+        </div>
+
+        <!-- Result Comparison Card -->
+        <div class="rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-700/70 p-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- New Breakeven -->
+            <div>
+              <div class="text-[11px] text-zinc-400 uppercase font-semibold">Nová priemerná nákupná cena:</div>
+              <div class="flex items-baseline gap-2 mt-0.5">
+                <span id="dca-new-breakeven" class="text-2xl font-black font-mono text-white">-- $</span>
+                <span id="dca-price-drop-pct" class="text-xs font-bold text-emerald-400 font-mono">(---%)</span>
+              </div>
+              <div class="text-[11px] text-zinc-400 mt-1">
+                Pôvodná nákupná: <span id="dca-orig-price-ref" class="font-mono text-zinc-300">-- $</span>
+              </div>
+            </div>
+
+            <!-- Required Recovery Gain Drop -->
+            <div>
+              <div class="text-[11px] text-zinc-400 uppercase font-semibold">Nový potrebný rast k zisku:</div>
+              <div class="flex items-baseline gap-2 mt-0.5">
+                <span id="dca-new-required-gain" class="text-2xl font-black font-mono text-emerald-400">+-- %</span>
+                <span class="text-xs text-zinc-400 font-mono">namiesto</span>
+                <span id="dca-old-required-gain" class="text-xs line-through text-rose-400/80 font-mono">+-- %</span>
+              </div>
+              <div class="text-[11px] text-emerald-300/80 mt-1">
+                Úspora potrebného rastu o <span id="dca-gain-delta" class="font-bold font-mono">-- %</span>!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Client Script for DCA Calculator -->
+<script>
+  import { calculateAveragingDown } from '../lib/dca';
+
+  function initDcaCalculator() {
+    const coinSelect = document.getElementById('dca-coin-select') as HTMLSelectElement;
+    const origPriceInput = document.getElementById('dca-original-price') as HTMLInputElement;
+    const origInvestedInput = document.getElementById('dca-original-invested') as HTMLInputElement;
+    const slider = document.getElementById('dca-addon-slider') as HTMLInputElement;
+    const sliderValueDisp = document.getElementById('dca-addon-value');
+
+    const currPriceDisp = document.getElementById('dca-curr-price-disp');
+    const origPnlDisp = document.getElementById('dca-orig-pnl-disp');
+    const origGainDisp = document.getElementById('dca-orig-gain-disp');
+
+    const newBreakevenEl = document.getElementById('dca-new-breakeven');
+    const priceDropPctEl = document.getElementById('dca-price-drop-pct');
+    const origPriceRefEl = document.getElementById('dca-orig-price-ref');
+    const newRequiredGainEl = document.getElementById('dca-new-required-gain');
+    const oldRequiredGainEl = document.getElementById('dca-old-required-gain');
+    const gainDeltaEl = document.getElementById('dca-gain-delta');
+
+    function update() {
+      if (!coinSelect || !origPriceInput || !origInvestedInput || !slider) return;
+
+      const selectedOption = coinSelect.selectedOptions[0];
+      const currentPrice = parseFloat(selectedOption?.dataset?.price || '0');
+      const originalPrice = parseFloat(origPriceInput.value) || currentPrice || 1;
+      const originalInvested = parseFloat(origInvestedInput.value) || 0;
+      const additionalInvested = parseFloat(slider.value) || 0;
+
+      if (sliderValueDisp) sliderValueDisp.innerText = additionalInvested.toLocaleString('en-US');
+
+      const result = calculateAveragingDown({
+        originalPrice,
+        originalInvested,
+        currentPrice,
+        additionalInvested,
+      });
+
+      // Update Displays
+      if (currPriceDisp) currPriceDisp.innerText = `$${currentPrice >= 1 ? currentPrice.toLocaleString('en-US') : currentPrice}`;
+      if (origPnlDisp) {
+        origPnlDisp.innerText = `${result.originalUnrealizedPnlPercent >= 0 ? '+' : ''}${result.originalUnrealizedPnlPercent.toFixed(1)} %`;
+        origPnlDisp.className = `font-mono font-bold ${result.originalUnrealizedPnlPercent >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+      }
+      if (origGainDisp) origGainDisp.innerText = `+${result.originalRequiredGain.toFixed(1)} %`;
+
+      if (newBreakevenEl) newBreakevenEl.innerText = `$${result.newBreakevenPrice >= 1 ? result.newBreakevenPrice.toLocaleString('en-US', { maximumFractionDigits: 2 }) : result.newBreakevenPrice.toFixed(4)}`;
+      if (origPriceRefEl) origPriceRefEl.innerText = `$${originalPrice.toLocaleString('en-US')}`;
+
+      const priceDropPct = originalPrice > 0 ? ((originalPrice - result.newBreakevenPrice) / originalPrice) * 100 : 0;
+      if (priceDropPctEl) priceDropPctEl.innerText = `(-${priceDropPct.toFixed(1)} %)`;
+
+      if (newRequiredGainEl) newRequiredGainEl.innerText = `+${result.newRequiredGain.toFixed(1)} %`;
+      if (oldRequiredGainEl) oldRequiredGainEl.innerText = `+${result.originalRequiredGain.toFixed(1)} %`;
+      if (gainDeltaEl) gainDeltaEl.innerText = `${result.gainReductionDelta.toFixed(1)} %`;
+    }
+
+    // Attach listeners
+    coinSelect?.addEventListener('change', () => {
+      const selectedOption = coinSelect.selectedOptions[0];
+      const ath = parseFloat(selectedOption?.dataset?.ath || '0');
+      const curr = parseFloat(selectedOption?.dataset?.price || '0');
+      if (ath > 0 && origPriceInput) {
+        origPriceInput.value = (ath * 0.9).toFixed(curr < 1 ? 4 : 0);
+      }
+      update();
+    });
+
+    origPriceInput?.addEventListener('input', update);
+    origInvestedInput?.addEventListener('input', update);
+    slider?.addEventListener('input', update);
+
+    // Quick select buttons from left table
+    document.querySelectorAll('.coin-quick-select').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = (btn as HTMLElement).dataset.id;
+        const ath = parseFloat((btn as HTMLElement).dataset.ath || '0');
+        if (id && coinSelect) {
+          coinSelect.value = id;
+          if (ath > 0 && origPriceInput) {
+            origPriceInput.value = (ath * 0.9).toFixed(parseFloat((btn as HTMLElement).dataset.price || '1') < 1 ? 4 : 0);
+          }
+          update();
+        }
+      });
+    });
+
+    // Run initial update
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDcaCalculator);
+  } else {
+    initDcaCalculator();
+  }
+</script>

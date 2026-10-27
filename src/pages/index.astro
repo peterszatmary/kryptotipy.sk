@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import MarketSemafor from '../components/MarketSemafor.astro';
+import PolymarketRadar from '../components/PolymarketRadar.astro';
+import AthDiscountDca from '../components/AthDiscountDca.astro';
+import TimeMachineDca from '../components/TimeMachineDca.astro';
+import TaxCalculator from '../components/TaxCalculator.astro';
+import LocalNewsFeed from '../components/LocalNewsFeed.astro';
+import Footer from '../components/Footer.astro';
+
+import { Zap, Activity, Target, Percent, Clock, FileText } from '@lucide/astro';
+---
+
+<Layout>
+  <Header />
+
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+    <!-- Hero Section -->
+    <section class="mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
+        <Zap class="w-3.5 h-3.5" />
+        <span>Algoritmické rozhodovacie skratky pre racionálnych investorov</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight sm:leading-tight mb-4">
+        Krypto rozhodnutia <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-emerald-400 bg-clip-text text-transparent">
+          bez informačného smogu
+        </span>
+      </h1>
+
+      <p class="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-6">
+        Žiadne platené signály, žiadne rotujúce 3D mince. Objektívne dáta, 5-sekundové odpovede na stav trhu, asymetrické DCA výpočty a 100% súkromný daňový test pre SR a ČR.
+      </p>
+
+      <!-- Quick Tool Jump Shortcuts -->
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <a
+          href="#semafor"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-300 hover:text-white transition"
+        >
+          <Activity class="w-3.5 h-3.5 text-emerald-400" />
+          <span>Semafor trhu</span>
+        </a>
+        <a
+          href="#polymarket"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-300 hover:text-white transition"
+        >
+          <Target class="w-3.5 h-3.5 text-blue-400" />
+          <span>Polymarket radar</span>
+        </a>
+        <a
+          href="#zlavomat"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-300 hover:text-white transition"
+        >
+          <Percent class="w-3.5 h-3.5 text-rose-400" />
+          <span>ATH Zľavomat & DCA</span>
+        </a>
+        <a
+          href="#stroj-casu"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-300 hover:text-white transition"
+        >
+          <Clock class="w-3.5 h-3.5 text-amber-400" />
+          <span>Stroj času (vs S&P 500)</span>
+        </a>
+        <a
+          href="#dane"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-300 hover:text-white transition"
+        >
+          <FileText class="w-3.5 h-3.5 text-emerald-400" />
+          <span>SK/CZ Daňový test</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Bento Grid Section (All 5 MVP Tools + News Feed) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <!-- Widget 1: Semafor Trhu & Pákový Kompas (Client Island) -->
+      <MarketSemafor />
+
+      <!-- Widget 2: Polymarket & Smart Money Radar (Pure Astro SSG) -->
+      <PolymarketRadar />
+
+      <!-- Widget 3: ATH Zľavomat & Breakeven Kalkulačka (SSG Data + Client Island) -->
+      <AthDiscountDca />
+
+      <!-- Widget 4: Stroj Času – Krypto vs. S&P 500 (Historical DCA + Client Island) -->
+      <TimeMachineDca />
+
+      <!-- Widget 5: SK vs. CZ Daňový & Časový Test Kalkulátor (100% Client-Side + localStorage) -->
+      <TaxCalculator />
+
+      <!-- Widget 6: Lokálny SK/CZ Krypto Prehľad (Pure Astro SSG Component) -->
+      <LocalNewsFeed />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
