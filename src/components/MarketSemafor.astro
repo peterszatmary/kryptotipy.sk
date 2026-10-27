@@ -2,25 +2,25 @@
 import { Activity, TriangleAlert } from '@lucide/astro';
 ---
 
-<section id="semafor" class="col-span-1 md:col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 p-5 sm:p-6 backdrop-blur-sm relative overflow-hidden shadow-xl">
+<section id="semafor" class="col-span-1 md:col-span-2 lg:col-span-3 rounded-2xl bg-white border border-zinc-200/80 p-5 sm:p-6 relative overflow-hidden shadow-sm">
   <!-- Subtle background glow -->
   <div class="absolute -top-24 -right-24 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
   <!-- Header -->
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-5 border-b border-zinc-800/80">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-5 border-b border-zinc-100">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="inline-flex items-center justify-center p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <span class="inline-flex items-center justify-center p-1.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
           <Activity class="w-4 h-4" />
         </span>
-        <h2 class="text-xl font-bold tracking-tight text-white">
+        <h2 class="text-xl font-bold tracking-tight text-zinc-900">
           Semafor Trhu & Pákový Kompas
         </h2>
-        <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700/50">
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
           Live Browser Island
         </span>
       </div>
-      <p class="text-xs sm:text-sm text-zinc-400">
+      <p class="text-xs sm:text-sm text-zinc-500">
         Kombinácia spotového momentu, derivátovej páky a davovej psychológie. Odpoveď v 5 sekundách, či je trh prehriaty.
       </p>
     </div>
@@ -29,7 +29,7 @@ import { Activity, TriangleAlert } from '@lucide/astro';
     <div class="flex items-center gap-2 self-start sm:self-auto">
       <button
         id="refresh-semafor-btn"
-        class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700/80 text-zinc-200 border border-zinc-700 transition cursor-pointer active:scale-95"
+        class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200/80 text-zinc-800 border border-zinc-200 transition cursor-pointer active:scale-95 shadow-xs"
         title="Znova stiahnuť čerstvé dáta priamo z Binance a Mempool"
       >
         <span id="refresh-spinner" class="inline-block transition-transform duration-500">↻</span>
@@ -39,28 +39,28 @@ import { Activity, TriangleAlert } from '@lucide/astro';
   </div>
 
   <!-- Market Verdict Banner (Dynamic via Client Script) -->
-  <div id="verdict-banner" class="mb-6 rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition-all">
+  <div id="verdict-banner" class="mb-6 rounded-xl border border-zinc-200 bg-zinc-50/70 p-4 transition-all">
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div class="space-y-1">
         <div class="flex items-center gap-2">
-          <span class="text-xs uppercase tracking-wider font-bold text-zinc-400">Verdikt algoritmu:</span>
-          <span id="verdict-badge" class="px-2.5 py-0.5 rounded text-xs font-extrabold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+          <span class="text-xs uppercase tracking-wider font-bold text-zinc-500">Verdikt algoritmu:</span>
+          <span id="verdict-badge" class="px-2.5 py-0.5 rounded text-xs font-extrabold bg-blue-50 text-blue-700 border border-blue-200">
             Načítavam živé metriky...
           </span>
         </div>
-        <p id="verdict-desc" class="text-xs sm:text-sm text-zinc-300">
+        <p id="verdict-desc" class="text-xs sm:text-sm text-zinc-600">
           Sťahujem posledné 200 denné a 200 týždenné sviečky z Binance, funding rate a Fear & Greed...
         </p>
       </div>
 
       <!-- Temperature Gauge Meter -->
       <div class="min-w-[200px] sm:min-w-[240px]">
-        <div class="flex justify-between text-[11px] font-mono text-zinc-400 mb-1">
+        <div class="flex justify-between text-[11px] font-mono text-zinc-500 mb-1">
           <span>Zľava (0)</span>
-          <span id="verdict-score-text" class="font-bold text-white">Teplota: --/100</span>
+          <span id="verdict-score-text" class="font-bold text-zinc-900">Teplota: --/100</span>
           <span>Prehriatie (100)</span>
         </div>
-        <div class="h-2.5 w-full bg-zinc-800 rounded-full overflow-hidden flex">
+        <div class="h-2.5 w-full bg-zinc-200 rounded-full overflow-hidden flex">
           <div id="verdict-gauge-bar" class="h-full bg-gradient-to-r from-emerald-500 via-blue-500 to-rose-500 transition-all duration-700" style="width: 50%;"></div>
         </div>
       </div>
@@ -68,14 +68,14 @@ import { Activity, TriangleAlert } from '@lucide/astro';
   </div>
 
   <!-- Leverage Squeeze Alert Box (Hidden unless triggered) -->
-  <div id="leverage-squeeze-alert" class="hidden mb-6 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4 animate-pulse">
+  <div id="leverage-squeeze-alert" class="hidden mb-6 rounded-xl border border-rose-200 bg-rose-50 p-4 animate-pulse">
     <div class="flex items-start gap-3">
-      <TriangleAlert class="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+      <TriangleAlert class="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
       <div>
-        <h4 class="text-sm font-bold text-rose-300">
+        <h4 class="text-sm font-bold text-rose-800">
           ⚠️ Vysoké riziko Long Squeeze (Trh je extrémne prekúpený na páku)
         </h4>
-        <p class="text-xs text-rose-200/80 mt-0.5">
+        <p class="text-xs text-rose-700/90 mt-0.5">
           Index Fear & Greed presahuje 75 a futures funding rate je nezdravo vysoký (> 0.03% za 8h). Hrozí kaskádovitá likvidácia longových pozícií a náhly prepad.
         </p>
       </div>
@@ -85,82 +85,82 @@ import { Activity, TriangleAlert } from '@lucide/astro';
   <!-- 4 Primary Metric Cards -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     <!-- Card 1: Mayer Multiple -->
-    <div class="rounded-xl bg-zinc-950/50 border border-zinc-800/80 p-4 flex flex-col justify-between">
+    <div class="rounded-xl bg-zinc-50/70 border border-zinc-200/80 p-4 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+        <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
           <span class="font-medium">Mayer Multiple</span>
-          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">200 DMA</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-200/60 text-zinc-600">200 DMA</span>
         </div>
         <div class="flex items-baseline gap-2">
-          <span id="mayer-val" class="text-2xl font-black font-mono text-white">--</span>
-          <span id="mayer-status" class="text-xs font-semibold text-zinc-400">Počítam...</span>
+          <span id="mayer-val" class="text-2xl font-black font-mono text-zinc-900">--</span>
+          <span id="mayer-status" class="text-xs font-semibold text-zinc-500">Počítam...</span>
         </div>
-        <div class="text-[11px] text-zinc-400 mt-1">
-          BTC: <span id="btc-price-text" class="text-zinc-200 font-mono font-medium">-- $</span> (200 DMA: <span id="sma200-text" class="font-mono text-zinc-300">-- $</span>)
+        <div class="text-[11px] text-zinc-500 mt-1">
+          BTC: <span id="btc-price-text" class="text-zinc-800 font-mono font-medium">-- $</span> (200 DMA: <span id="sma200-text" class="font-mono text-zinc-700">-- $</span>)
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-zinc-800/60 text-[10px] text-zinc-400">
+      <div class="mt-3 pt-2.5 border-t border-zinc-200/60 text-[10px] text-zinc-400">
         &lt; 0.8: Podhodnotené | &gt; 2.4: Bublina
       </div>
     </div>
 
     <!-- Card 2: Wilder's RSI (14D) -->
-    <div class="rounded-xl bg-zinc-950/50 border border-zinc-800/80 p-4 flex flex-col justify-between">
+    <div class="rounded-xl bg-zinc-50/70 border border-zinc-200/80 p-4 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+        <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
           <span class="font-medium">Wilder's RSI (14D)</span>
-          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">Momentum</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-200/60 text-zinc-600">Momentum</span>
         </div>
         <div class="flex items-baseline gap-2">
-          <span id="rsi-val" class="text-2xl font-black font-mono text-white">--</span>
-          <span id="rsi-status" class="text-xs font-semibold text-zinc-400">Počítam...</span>
+          <span id="rsi-val" class="text-2xl font-black font-mono text-zinc-900">--</span>
+          <span id="rsi-status" class="text-xs font-semibold text-zinc-500">Počítam...</span>
         </div>
-        <div class="text-[11px] text-zinc-400 mt-1">
+        <div class="text-[11px] text-zinc-500 mt-1">
           Hladina relatívnej sily podľa Wilderovho vyhladenia.
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-zinc-800/60 text-[10px] text-zinc-400">
+      <div class="mt-3 pt-2.5 border-t border-zinc-200/60 text-[10px] text-zinc-400">
         &lt; 30: Prepredané (Zľava) | &gt; 70: Prekúpené
       </div>
     </div>
 
     <!-- Card 3: 200-Week MA Distance -->
-    <div class="rounded-xl bg-zinc-950/50 border border-zinc-800/80 p-4 flex flex-col justify-between">
+    <div class="rounded-xl bg-zinc-50/70 border border-zinc-200/80 p-4 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+        <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
           <span class="font-medium">Odstup od 200W MA</span>
-          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">Dno cyklu</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-200/60 text-zinc-600">Dno cyklu</span>
         </div>
         <div class="flex items-baseline gap-2">
-          <span id="wma-val" class="text-2xl font-black font-mono text-white">-- %</span>
-          <span id="wma-status" class="text-xs font-semibold text-zinc-400">200T SMA</span>
+          <span id="wma-val" class="text-2xl font-black font-mono text-zinc-900">-- %</span>
+          <span id="wma-status" class="text-xs font-semibold text-zinc-500">200T SMA</span>
         </div>
-        <div class="text-[11px] text-zinc-400 mt-1">
-          200-týždňový kĺzavý priemer: <span id="wma-price" class="font-mono text-zinc-300">-- $</span>
+        <div class="text-[11px] text-zinc-500 mt-1">
+          200-týždňový kĺzavý priemer: <span id="wma-price" class="font-mono text-zinc-700">-- $</span>
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-zinc-800/60 text-[10px] text-zinc-400">
+      <div class="mt-3 pt-2.5 border-t border-zinc-200/60 text-[10px] text-zinc-400">
         Historické dno medvedieho trhu
       </div>
     </div>
 
     <!-- Card 4: Funding Rate & Mempool -->
-    <div class="rounded-xl bg-zinc-950/50 border border-zinc-800/80 p-4 flex flex-col justify-between">
+    <div class="rounded-xl bg-zinc-50/70 border border-zinc-200/80 p-4 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+        <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
           <span class="font-medium">Funding & Poplatky</span>
-          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">Deriváty & On-chain</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-200/60 text-zinc-600">Deriváty & On-chain</span>
         </div>
         <div class="flex items-baseline gap-2">
-          <span id="funding-val" class="text-xl font-black font-mono text-white">-- %</span>
-          <span id="fear-greed-val" class="text-xs font-mono font-bold text-amber-400">F&G: --</span>
+          <span id="funding-val" class="text-xl font-black font-mono text-zinc-900">-- %</span>
+          <span id="fear-greed-val" class="text-xs font-mono font-bold text-amber-600">F&G: --</span>
         </div>
-        <div class="text-[11px] text-zinc-400 mt-1 space-y-0.5">
-          <div>Anualizovaný funding: <span id="funding-annual" class="font-mono text-zinc-300">-- %</span></div>
-          <div>Mempool poplatok: <span id="mempool-fee" class="font-mono text-zinc-300">-- sat/vB</span></div>
+        <div class="text-[11px] text-zinc-500 mt-1 space-y-0.5">
+          <div>Anualizovaný funding: <span id="funding-annual" class="font-mono text-zinc-800">-- %</span></div>
+          <div>Mempool poplatok: <span id="mempool-fee" class="font-mono text-zinc-800">-- sat/vB</span></div>
         </div>
       </div>
-      <div class="mt-3 pt-2.5 border-t border-zinc-800/60 text-[10px] text-zinc-400">
+      <div class="mt-3 pt-2.5 border-t border-zinc-200/60 text-[10px] text-zinc-400">
         Binance Futures 8h + Mempool.space
       </div>
     </div>
@@ -216,7 +216,6 @@ import { Activity, TriangleAlert } from '@lucide/astro';
         dailyCloses = dailyData.map((k: any) => parseFloat(k[4]));
         currentBtcPrice = dailyCloses[dailyCloses.length - 1];
       } else {
-        // Fallback synthetic series
         dailyCloses = Array.from({ length: 200 }, (_, i) => 70000 + i * 50);
         currentBtcPrice = dailyCloses[dailyCloses.length - 1];
       }
@@ -265,7 +264,6 @@ import { Activity, TriangleAlert } from '@lucide/astro';
       });
 
       // Update DOM
-      // BTC Price
       const btcPriceEl = document.getElementById('btc-price-text');
       if (btcPriceEl) btcPriceEl.innerText = `$${currentBtcPrice.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
 
@@ -279,13 +277,13 @@ import { Activity, TriangleAlert } from '@lucide/astro';
       if (mayerStatusEl) {
         if (mayer < 0.8) {
           mayerStatusEl.innerText = 'Podhodnotené';
-          mayerStatusEl.className = 'text-xs font-semibold text-emerald-400';
+          mayerStatusEl.className = 'text-xs font-semibold text-emerald-600';
         } else if (mayer > 2.4) {
           mayerStatusEl.innerText = 'Bublina';
-          mayerStatusEl.className = 'text-xs font-semibold text-rose-400';
+          mayerStatusEl.className = 'text-xs font-semibold text-rose-600';
         } else {
           mayerStatusEl.innerText = 'Normál';
-          mayerStatusEl.className = 'text-xs font-semibold text-zinc-300';
+          mayerStatusEl.className = 'text-xs font-semibold text-zinc-600';
         }
       }
 
@@ -296,13 +294,13 @@ import { Activity, TriangleAlert } from '@lucide/astro';
       if (rsiStatusEl) {
         if (rsi14 < 30) {
           rsiStatusEl.innerText = 'Prepredané';
-          rsiStatusEl.className = 'text-xs font-semibold text-emerald-400';
+          rsiStatusEl.className = 'text-xs font-semibold text-emerald-600';
         } else if (rsi14 > 70) {
           rsiStatusEl.innerText = 'Prekúpené';
-          rsiStatusEl.className = 'text-xs font-semibold text-rose-400';
+          rsiStatusEl.className = 'text-xs font-semibold text-rose-600';
         } else {
           rsiStatusEl.innerText = 'Neutrál';
-          rsiStatusEl.className = 'text-xs font-semibold text-zinc-300';
+          rsiStatusEl.className = 'text-xs font-semibold text-zinc-600';
         }
       }
 
@@ -311,7 +309,7 @@ import { Activity, TriangleAlert } from '@lucide/astro';
       const wmaPriceEl = document.getElementById('wma-price');
       if (wmaValEl) {
         wmaValEl.innerText = `${distancePercent > 0 ? '+' : ''}${distancePercent.toFixed(1)} %`;
-        wmaValEl.className = `text-2xl font-black font-mono ${distancePercent > 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+        wmaValEl.className = `text-2xl font-black font-mono ${distancePercent > 0 ? 'text-emerald-600' : 'text-rose-600'}`;
       }
       if (wmaPriceEl) {
         wmaPriceEl.innerText = `$${sma200w.toLocaleString('en-US')}`;
@@ -329,9 +327,9 @@ import { Activity, TriangleAlert } from '@lucide/astro';
       if (fundingValEl) fundingValEl.innerText = `${funding8hPct >= 0 ? '+' : ''}${funding8hPct.toFixed(4)} %`;
       if (fngValEl) {
         fngValEl.innerText = `F&G: ${fearGreedVal} (${fearGreedText})`;
-        if (fearGreedVal > 70) fngValEl.className = 'text-xs font-mono font-bold text-rose-400';
-        else if (fearGreedVal < 30) fngValEl.className = 'text-xs font-mono font-bold text-emerald-400';
-        else fngValEl.className = 'text-xs font-mono font-bold text-amber-400';
+        if (fearGreedVal > 70) fngValEl.className = 'text-xs font-mono font-bold text-rose-600';
+        else if (fearGreedVal < 30) fngValEl.className = 'text-xs font-mono font-bold text-emerald-600';
+        else fngValEl.className = 'text-xs font-mono font-bold text-amber-600';
       }
       if (fundingAnnualEl) fundingAnnualEl.innerText = `${fundingAnnualPct >= 0 ? '+' : ''}${fundingAnnualPct.toFixed(1)} % p.a.`;
       if (mempoolFeeEl) mempoolFeeEl.innerText = `${fastestFee} sat/vB`;
@@ -345,13 +343,13 @@ import { Activity, TriangleAlert } from '@lucide/astro';
       if (verdictBadge) {
         verdictBadge.innerText = verdict.label;
         if (verdict.color === 'emerald') {
-          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30';
+          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200';
         } else if (verdict.color === 'rose') {
-          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-rose-500/10 text-rose-400 border border-rose-500/30';
+          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-rose-50 text-rose-700 border border-rose-200';
         } else if (verdict.color === 'amber') {
-          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-amber-500/10 text-amber-400 border border-amber-500/30';
+          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-amber-50 text-amber-700 border border-amber-200';
         } else {
-          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-blue-500/10 text-blue-400 border border-blue-500/30';
+          verdictBadge.className = 'px-2.5 py-0.5 rounded text-xs font-extrabold bg-blue-50 text-blue-700 border border-blue-200';
         }
       }
 

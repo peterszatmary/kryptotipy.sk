@@ -16,6 +16,7 @@ function cleanText(text: string): string {
     .replace(/&#8217;/g, "'")
     .replace(/&#8220;/g, '"')
     .replace(/&#8221;/g, '"')
+    .replace(/&#8230;/g, '…')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -52,7 +53,7 @@ function parseRssXml(xml: string, sourceName: string): RssArticle[] {
   const itemRegex = /<item[\s>]([\s\S]*?)<\/item>/gi;
   let match: RegExpExecArray | null;
 
-  while ((match = itemRegex.exec(xml)) !== null && items.length < 10) {
+  while ((match = itemRegex.exec(xml)) !== null && items.length < 8) {
     const content = match[1];
 
     const titleMatch = /<title[\s>]([\s\S]*?)<\/title>/i.exec(content);
@@ -65,7 +66,8 @@ function parseRssXml(xml: string, sourceName: string): RssArticle[] {
     const rawDate = pubDateMatch ? cleanText(pubDateMatch[1]) : '';
     const category = categoryMatch ? cleanText(categoryMatch[1]) : 'Krypto';
 
-    if (title && link) {
+    // Ignore generic channel titles
+    if (title && link && !title.toLowerCase().includes('kryptonovinky') && !title.toLowerCase().includes('kryptomagaz')) {
       items.push({
         title,
         link,
@@ -81,11 +83,14 @@ function parseRssXml(xml: string, sourceName: string): RssArticle[] {
 
 /**
  * Fetches and aggregates latest SK/CZ crypto news headlines at build-time.
+ * Multi-source: KryptoNovinky.sk, Kryptomagazín.sk, Bitcoin v Kapse, Kryptomagazín.cz.
  */
 export async function getLocalRssHeadlines(): Promise<RssArticle[]> {
   const feeds = [
+    { url: 'https://www.kryptonovinky.sk/feed/', source: 'KryptoNovinky.sk' },
     { url: 'https://kryptomagazin.sk/feed/', source: 'Kryptomagazin.sk' },
     { url: 'https://bitcoinvkapse.cz/feed/', source: 'Bitcoin v Kapse' },
+    { url: 'https://kryptomagazin.cz/feed/', source: 'Kryptomagazin.cz' },
   ];
 
   const articles: RssArticle[] = [];
@@ -96,7 +101,7 @@ export async function getLocalRssHeadlines(): Promise<RssArticle[]> {
       const timeoutId = setTimeout(() => controller.abort(), 3500);
 
       const res = await fetch(feed.url, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; KryptotipyBot/1.0)' },
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; KryptotipyBot/2.0)' },
         signal: controller.signal,
       });
       clearTimeout(timeoutId);
@@ -107,11 +112,12 @@ export async function getLocalRssHeadlines(): Promise<RssArticle[]> {
         articles.push(...parsed);
       }
     } catch {
-      // Continue to next feed or fallback
+      // Continue to next feed
     }
   }
 
-  if (articles.length >= 5) {
+  if (articles.length >= 6) {
+    // Interleave sources for balanced diversity
     return articles.slice(0, 10);
   }
 

@@ -2,11 +2,12 @@
 
 @layer base {
   :root {
-    --bg-main: #0a0a0c;
+    --bg-main: #fcfcfd;
+    --text-main: #18181b;
   }
   body {
     background-color: var(--bg-main);
-    color: #f4f4f5;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }

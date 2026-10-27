@@ -2,25 +2,25 @@
 import GithubIcon from './GithubIcon.astro';
 ---
 
-<header class="border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
+<header class="border-b border-zinc-200/80 bg-white/85 backdrop-blur-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand -->
     <a href="/" class="flex items-center gap-3 group">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-500 to-emerald-400 p-[1px] shadow-lg shadow-amber-500/10">
-        <div class="w-full h-full bg-zinc-950 rounded-[11px] flex items-center justify-center font-black text-amber-400 text-lg group-hover:scale-105 transition-transform">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-600 p-[1px] shadow-sm">
+        <div class="w-full h-full bg-white rounded-[11px] flex items-center justify-center font-black text-amber-500 text-lg group-hover:scale-105 transition-transform">
           ₿
         </div>
       </div>
       <div>
         <div class="flex items-center gap-2">
-          <span class="font-extrabold text-lg tracking-tight text-white group-hover:text-amber-400 transition-colors">
-            kryptotipy<span class="text-amber-400">.sk</span>
+          <span class="font-extrabold text-lg tracking-tight text-zinc-900 group-hover:text-amber-600 transition-colors">
+            kryptotipy<span class="text-amber-500">.sk</span>
           </span>
-          <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700/60">
+          <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-200/80">
             Jamstack SSG
           </span>
         </div>
-        <p class="text-[11px] text-zinc-400 font-medium hidden sm:block">
+        <p class="text-[11px] text-zinc-500 font-medium hidden sm:block">
           Algoritmické skratky pre racionálne krypto rozhodnutia
         </p>
       </div>
@@ -29,21 +29,21 @@ import GithubIcon from './GithubIcon.astro';
     <!-- Right Controls & Status -->
     <div class="flex items-center gap-3 sm:gap-4">
       <!-- Live Status Pill -->
-      <div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-300">
+      <div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-zinc-100/90 border border-zinc-200 text-xs text-zinc-700">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span class="font-mono text-[11px] hidden xs:inline text-zinc-400">Live API + Hourly SSG</span>
+        <span class="font-mono text-[11px] hidden xs:inline text-zinc-600">Live API + Hourly SSG</span>
       </div>
 
       <!-- Quick Nav -->
-      <nav class="hidden md:flex items-center gap-4 text-xs font-medium text-zinc-400">
-        <a href="#semafor" class="hover:text-white transition-colors">Semafor</a>
-        <a href="#polymarket" class="hover:text-white transition-colors">Polymarket</a>
-        <a href="#zlavomat" class="hover:text-white transition-colors">Zľavomat & DCA</a>
-        <a href="#stroj-casu" class="hover:text-white transition-colors">Stroj Času</a>
-        <a href="#dane" class="hover:text-white transition-colors">Daňový Test</a>
+      <nav class="hidden md:flex items-center gap-4 text-xs font-semibold text-zinc-600">
+        <a href="#semafor" class="hover:text-zinc-950 transition-colors">Semafor</a>
+        <a href="#polymarket" class="hover:text-zinc-950 transition-colors">Polymarket</a>
+        <a href="#zlavomat" class="hover:text-zinc-950 transition-colors">Zľavomat & DCA</a>
+        <a href="#stroj-casu" class="hover:text-zinc-950 transition-colors">Stroj Času</a>
+        <a href="#dane" class="hover:text-zinc-950 transition-colors">Daňový Test</a>
       </nav>
 
       <!-- GitHub Link -->
@@ -51,7 +51,7 @@ import GithubIcon from './GithubIcon.astro';
         href="https://github.com/peterszatmary/kryptotipy.sk"
         target="_blank"
         rel="noopener noreferrer"
-        class="p-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 transition-colors"
+        class="p-2 rounded-lg bg-zinc-100 hover:bg-zinc-200/80 text-zinc-700 hover:text-zinc-950 border border-zinc-200 transition-colors"
         title="Zdrojový kód na GitHub"
       >
         <GithubIcon class="w-4 h-4" />

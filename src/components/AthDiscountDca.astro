@@ -5,36 +5,33 @@ import { Percent, Calculator } from '@lucide/astro';
 const coins = await getTopCoins();
 ---
 
-<section id="zlavomat" class="col-span-1 md:col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 p-5 sm:p-6 backdrop-blur-sm relative overflow-hidden shadow-xl">
-  <!-- Subtle background glow -->
-  <div class="absolute -top-24 -left-24 w-80 h-80 bg-rose-500/5 rounded-full blur-3xl pointer-events-none"></div>
-
+<section id="zlavomat" class="col-span-1 md:col-span-2 lg:col-span-3 rounded-2xl bg-white border border-zinc-200/80 p-5 sm:p-6 relative overflow-hidden shadow-sm">
   <!-- Header -->
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-5 border-b border-zinc-800/80">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-5 border-b border-zinc-100">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <span class="inline-flex items-center justify-center p-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+        <span class="inline-flex items-center justify-center p-1.5 rounded-lg bg-rose-50 text-rose-600 border border-rose-200">
           <Percent class="w-4 h-4" />
         </span>
-        <h2 class="text-xl font-bold tracking-tight text-white">
+        <h2 class="text-xl font-bold tracking-tight text-zinc-900">
           ATH Zľavomat & Breakeven Kalkulačka
         </h2>
-        <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700/50">
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
           Asymetrická matematika poklesu
         </span>
       </div>
-      <p class="text-xs sm:text-sm text-zinc-400">
+      <p class="text-xs sm:text-sm text-zinc-500">
         Prepad o 80 % vyžaduje rast o 400 % na nulu. Simulujte, ako rýchlo vám cielené DCA zníži potrebný rast na zisk.
       </p>
     </div>
 
     <!-- Educational Tooltip -->
-    <div class="text-xs text-zinc-400 bg-zinc-950/60 px-3 py-1.5 rounded-lg border border-zinc-800 flex items-center gap-2">
-      <span class="text-rose-400 font-bold">-50% = +100%</span>
-      <span class="text-zinc-600">|</span>
-      <span class="text-rose-400 font-bold">-80% = +400%</span>
-      <span class="text-zinc-600">|</span>
-      <span class="text-rose-400 font-bold">-90% = +900%</span>
+    <div class="text-xs text-zinc-600 bg-zinc-50 px-3 py-1.5 rounded-lg border border-zinc-200 flex items-center gap-2">
+      <span class="text-rose-600 font-bold">-50% = +100%</span>
+      <span class="text-zinc-300">|</span>
+      <span class="text-rose-600 font-bold">-80% = +400%</span>
+      <span class="text-zinc-300">|</span>
+      <span class="text-rose-600 font-bold">-90% = +900%</span>
     </div>
   </div>
 
@@ -42,7 +39,7 @@ const coins = await getTopCoins();
     <!-- Left Column: Top Coins Zľavomat Table (SSG) -->
     <div class="lg:col-span-5 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between mb-3 text-xs font-semibold text-zinc-400 uppercase tracking-wider">
+        <div class="flex items-center justify-between mb-3 text-xs font-semibold text-zinc-500 uppercase tracking-wider">
           <span>Kryptomena & Trh</span>
           <span>Prepad od ATH / Potrebný rast</span>
         </div>
@@ -54,7 +51,7 @@ const coins = await getTopCoins();
             return (
               <button
                 type="button"
-                class="coin-quick-select w-full text-left rounded-xl bg-zinc-950/50 hover:bg-zinc-800/50 border border-zinc-800/80 p-3 transition flex items-center justify-between group cursor-pointer"
+                class="coin-quick-select w-full text-left rounded-xl bg-zinc-50/70 hover:bg-zinc-100/80 border border-zinc-200/80 p-3 transition flex items-center justify-between group cursor-pointer"
                 data-id={coin.id}
                 data-symbol={coin.symbol}
                 data-name={coin.name}
@@ -63,24 +60,24 @@ const coins = await getTopCoins();
               >
                 <div class="flex items-center gap-3">
                   {coin.image && (
-                    <img src={coin.image} alt={coin.name} class="w-7 h-7 rounded-full bg-zinc-800 shrink-0" loading="lazy" />
+                    <img src={coin.image} alt={coin.name} class="w-7 h-7 rounded-full bg-zinc-100 shrink-0" loading="lazy" />
                   )}
                   <div>
-                    <div class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                    <div class="text-sm font-bold text-zinc-900 group-hover:text-amber-600 transition-colors flex items-center gap-1.5">
                       {coin.name}
-                      <span class="text-xs font-normal text-zinc-400">({coin.symbol})</span>
+                      <span class="text-xs font-normal text-zinc-500">({coin.symbol})</span>
                     </div>
-                    <div class="text-xs font-mono text-zinc-400">
+                    <div class="text-xs font-mono text-zinc-500">
                       Cena: ${coin.current_price >= 1 ? coin.current_price.toLocaleString('en-US') : coin.current_price}
                     </div>
                   </div>
                 </div>
 
                 <div class="text-right">
-                  <div class={`text-sm font-black font-mono ${isHeavyDiscount ? 'text-rose-400' : 'text-amber-400'}`}>
+                  <div class={`text-sm font-black font-mono ${isHeavyDiscount ? 'text-rose-600' : 'text-amber-600'}`}>
                     {coin.drawdown_percent}%
                   </div>
-                  <div class="text-[11px] font-mono text-emerald-400 font-semibold">
+                  <div class="text-[11px] font-mono text-emerald-600 font-semibold">
                     +{coin.required_gain_percent}% na ATH
                   </div>
                 </div>
@@ -90,22 +87,22 @@ const coins = await getTopCoins();
         </div>
       </div>
 
-      <p class="text-[11px] text-zinc-400 mt-3 italic">
+      <p class="text-[11px] text-zinc-500 mt-3 italic">
         💡 Kliknite na ľubovoľnú mincu v zozname pre okamžité načítanie do DCA kalkulačky vpravo.
       </p>
     </div>
 
     <!-- Right Column: Interactive "Záchranné DCA" Simulator (Client Island) -->
-    <div class="lg:col-span-7 rounded-xl bg-zinc-950/80 border border-zinc-800 p-4 sm:p-5 flex flex-col justify-between">
+    <div class="lg:col-span-7 rounded-xl bg-zinc-50/80 border border-zinc-200 p-4 sm:p-5 flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-2">
-            <Calculator class="w-4 h-4 text-emerald-400" />
-            <h3 class="text-sm font-bold text-white">
+            <Calculator class="w-4 h-4 text-emerald-600" />
+            <h3 class="text-sm font-bold text-zinc-900">
               Simulátor „Záchranného DCA“ (Averaging Down)
             </h3>
           </div>
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
             Realtime Island
           </span>
         </div>
@@ -113,10 +110,10 @@ const coins = await getTopCoins();
         <!-- Form Controls -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
           <div>
-            <label class="block text-[11px] font-medium text-zinc-400 mb-1">Minca / Projekt</label>
+            <label class="block text-[11px] font-medium text-zinc-500 mb-1">Minca / Projekt</label>
             <select
               id="dca-coin-select"
-              class="w-full bg-zinc-900 border border-zinc-700/80 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-400"
+              class="w-full bg-white border border-zinc-300 rounded-lg px-2.5 py-1.5 text-xs text-zinc-900 focus:outline-none focus:border-zinc-500 shadow-2xs"
             >
               {coins.map((c) => (
                 <option value={c.id} data-price={c.current_price} data-ath={c.ath} data-symbol={c.symbol}>
@@ -127,48 +124,48 @@ const coins = await getTopCoins();
           </div>
 
           <div>
-            <label class="block text-[11px] font-medium text-zinc-400 mb-1">Pôvodná nákupná cena ($)</label>
+            <label class="block text-[11px] font-medium text-zinc-500 mb-1">Pôvodná nákupná cena ($)</label>
             <input
               type="number"
               id="dca-original-price"
               value="3500"
               step="any"
-              class="w-full bg-zinc-900 border border-zinc-700/80 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-amber-400"
+              class="w-full bg-white border border-zinc-300 rounded-lg px-2.5 py-1.5 text-xs text-zinc-900 font-mono focus:outline-none focus:border-zinc-500 shadow-2xs"
             />
           </div>
 
           <div>
-            <label class="block text-[11px] font-medium text-zinc-400 mb-1">Pôvodne investované ($ / €)</label>
+            <label class="block text-[11px] font-medium text-zinc-500 mb-1">Pôvodne investované ($ / €)</label>
             <input
               type="number"
               id="dca-original-invested"
               value="1000"
               step="any"
-              class="w-full bg-zinc-900 border border-zinc-700/80 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-amber-400"
+              class="w-full bg-white border border-zinc-300 rounded-lg px-2.5 py-1.5 text-xs text-zinc-900 font-mono focus:outline-none focus:border-zinc-500 shadow-2xs"
             />
           </div>
         </div>
 
         <!-- Current Market Context Strip -->
-        <div class="rounded-lg bg-zinc-900/60 border border-zinc-800 px-3 py-2 text-xs flex flex-wrap items-center justify-between gap-2 mb-4">
-          <div class="text-zinc-400">
-            Aktuálna trhová cena: <span id="dca-curr-price-disp" class="font-mono font-bold text-white">-- $</span>
+        <div class="rounded-lg bg-white border border-zinc-200/90 px-3 py-2 text-xs flex flex-wrap items-center justify-between gap-2 mb-4 shadow-2xs">
+          <div class="text-zinc-500">
+            Aktuálna trhová cena: <span id="dca-curr-price-disp" class="font-mono font-bold text-zinc-900">-- $</span>
           </div>
-          <div class="text-zinc-400">
-            Aktuálna strata: <span id="dca-orig-pnl-disp" class="font-mono font-bold text-rose-400">-- %</span>
+          <div class="text-zinc-500">
+            Aktuálna strata: <span id="dca-orig-pnl-disp" class="font-mono font-bold text-rose-600">-- %</span>
           </div>
-          <div class="text-zinc-400">
-            Pôvodný rast k nule: <span id="dca-orig-gain-disp" class="font-mono font-bold text-amber-400">+-- %</span>
+          <div class="text-zinc-500">
+            Pôvodný rast k nule: <span id="dca-orig-gain-disp" class="font-mono font-bold text-amber-600">+-- %</span>
           </div>
         </div>
 
         <!-- Averaging Down Slider -->
         <div class="mb-5">
           <div class="flex items-center justify-between mb-1.5">
-            <label for="dca-addon-slider" class="text-xs font-semibold text-zinc-200">
+            <label for="dca-addon-slider" class="text-xs font-semibold text-zinc-700">
               Dokúpiť dnes za aktuálnu cenu:
             </label>
-            <span class="text-base font-black font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-lg border border-emerald-500/20">
+            <span class="text-base font-black font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-lg border border-emerald-200">
               <span id="dca-addon-value">500</span> $
             </span>
           </div>
@@ -179,7 +176,7 @@ const coins = await getTopCoins();
             max="3000"
             step="50"
             value="500"
-            class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+            class="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
           />
           <div class="flex justify-between text-[10px] text-zinc-400 font-mono mt-1">
             <span>0 $</span>
@@ -190,29 +187,29 @@ const coins = await getTopCoins();
         </div>
 
         <!-- Result Comparison Card -->
-        <div class="rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-700/70 p-4">
+        <div class="rounded-xl bg-white border border-zinc-200 p-4 shadow-xs">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <!-- New Breakeven -->
             <div>
-              <div class="text-[11px] text-zinc-400 uppercase font-semibold">Nová priemerná nákupná cena:</div>
+              <div class="text-[11px] text-zinc-500 uppercase font-semibold">Nová priemerná nákupná cena:</div>
               <div class="flex items-baseline gap-2 mt-0.5">
-                <span id="dca-new-breakeven" class="text-2xl font-black font-mono text-white">-- $</span>
-                <span id="dca-price-drop-pct" class="text-xs font-bold text-emerald-400 font-mono">(---%)</span>
+                <span id="dca-new-breakeven" class="text-2xl font-black font-mono text-zinc-900">-- $</span>
+                <span id="dca-price-drop-pct" class="text-xs font-bold text-emerald-600 font-mono">(---%)</span>
               </div>
-              <div class="text-[11px] text-zinc-400 mt-1">
-                Pôvodná nákupná: <span id="dca-orig-price-ref" class="font-mono text-zinc-300">-- $</span>
+              <div class="text-[11px] text-zinc-500 mt-1">
+                Pôvodná nákupná: <span id="dca-orig-price-ref" class="font-mono text-zinc-700">-- $</span>
               </div>
             </div>
 
             <!-- Required Recovery Gain Drop -->
             <div>
-              <div class="text-[11px] text-zinc-400 uppercase font-semibold">Nový potrebný rast k zisku:</div>
+              <div class="text-[11px] text-zinc-500 uppercase font-semibold">Nový potrebný rast k zisku:</div>
               <div class="flex items-baseline gap-2 mt-0.5">
-                <span id="dca-new-required-gain" class="text-2xl font-black font-mono text-emerald-400">+-- %</span>
+                <span id="dca-new-required-gain" class="text-2xl font-black font-mono text-emerald-600">+-- %</span>
                 <span class="text-xs text-zinc-400 font-mono">namiesto</span>
-                <span id="dca-old-required-gain" class="text-xs line-through text-rose-400/80 font-mono">+-- %</span>
+                <span id="dca-old-required-gain" class="text-xs line-through text-rose-500/80 font-mono">+-- %</span>
               </div>
-              <div class="text-[11px] text-emerald-300/80 mt-1">
+              <div class="text-[11px] text-emerald-700 mt-1">
                 Úspora potrebného rastu o <span id="dca-gain-delta" class="font-bold font-mono">-- %</span>!
               </div>
             </div>
@@ -267,7 +264,7 @@ const coins = await getTopCoins();
       if (currPriceDisp) currPriceDisp.innerText = `$${currentPrice >= 1 ? currentPrice.toLocaleString('en-US') : currentPrice}`;
       if (origPnlDisp) {
         origPnlDisp.innerText = `${result.originalUnrealizedPnlPercent >= 0 ? '+' : ''}${result.originalUnrealizedPnlPercent.toFixed(1)} %`;
-        origPnlDisp.className = `font-mono font-bold ${result.originalUnrealizedPnlPercent >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+        origPnlDisp.className = `font-mono font-bold ${result.originalUnrealizedPnlPercent >= 0 ? 'text-emerald-600' : 'text-rose-600'}`;
       }
       if (origGainDisp) origGainDisp.innerText = `+${result.originalRequiredGain.toFixed(1)} %`;
 

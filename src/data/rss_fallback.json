@@ -1,17 +1,24 @@
 [
   {
-    "title": "Bitcoin konsoliduje okolo kľúčových hladín: Čo naznačuje on-chain aktivita veľkých peňaženiek?",
-    "link": "https://kryptomagazin.sk",
+    "title": "Bitcoin pred zasadnutím Fedu konsoliduje: Kľúčové on-chain hladiny a správanie veľrýb",
+    "link": "https://www.kryptonovinky.sk",
     "pubDate": "Dnes, 18:30",
-    "source": "Kryptomagazin.sk",
-    "category": "On-Chain"
+    "source": "KryptoNovinky.sk",
+    "category": "Trhy & Analýzy"
   },
   {
-    "title": "Český parlament schválil 3-ročný časový test pre kryptomeny: Ako to ovplyvní investorov od roku 2025?",
+    "title": "Český parlament schválil 3-ročný časový test pre kryptomeny: Slovenskí investori sledujú daňový rozdiel",
     "link": "https://bitcoinvkapse.cz",
     "pubDate": "Dnes, 16:15",
     "source": "Bitcoin v Kapse",
     "category": "Dane & Legislatíva"
+  },
+  {
+    "title": "Rýchle správy z trhu: Bezpečnostné peňaženky a nové regulácie MiCA pre európske burzy",
+    "link": "https://www.kryptonovinky.sk",
+    "pubDate": "Dnes, 15:40",
+    "source": "KryptoNovinky.sk",
+    "category": "Bezpečnosť"
   },
   {
     "title": "Slovenský daňový mix: Prečo krypto investori naďalej doplácajú na zdravotné odvody a vysoké sadzby",
@@ -28,18 +35,18 @@
     "category": "Inštitúcie"
   },
   {
+    "title": "DCA stratégia v praxi: Prečo pravidelný nákup poráža 90 % aktívnych denných traderov",
+    "link": "https://www.kryptonovinky.sk",
+    "pubDate": "Včera, 19:10",
+    "source": "KryptoNovinky.sk",
+    "category": "Stratégie"
+  },
+  {
     "title": "Mempool v pohode: Priemerný poplatok za prevod na Bitcoin sieti klesol pod 15 sat/vB",
     "link": "https://mempool.space",
     "pubDate": "Včera, 17:10",
     "source": "Mempool Data",
     "category": "Sieť"
-  },
-  {
-    "title": "Hardvérové peňaženky v roku 2026: Prečo je offline generovanie seedu jediná skutočná bezpečnosť",
-    "link": "https://kryptomagazin.sk",
-    "pubDate": "Pred 2 dňami",
-    "source": "Kryptomagazin.sk",
-    "category": "Bezpečnosť"
   },
   {
     "title": "Ethereum Layer 2 ekosystém spracováva 10x viac transakcií ako hlavný mainnet",
@@ -49,23 +56,16 @@
     "category": "Ethereum L2"
   },
   {
-    "title": "DCA stratégia v praxi: Prečo pravidelný nákup poráža 90 % aktívnych denných traderov",
-    "link": "https://bitcoinvkapse.cz",
-    "pubDate": "Pred 3 dňami",
-    "source": "Bitcoin v Kapse",
-    "category": "Stratégie"
-  },
-  {
-    "title": "Európska regulácia MiCA v plnej platnosti: Čo to znamená pre stablecoiny a custody služby?",
+    "title": "Hardvérové peňaženky v roku 2026: Prečo je offline generovanie seedu jediná skutočná bezpečnosť",
     "link": "https://kryptomagazin.sk",
-    "pubDate": "Pred 3 dňami",
+    "pubDate": "Pred 2 dňami",
     "source": "Kryptomagazin.sk",
-    "category": "Regulácia EU"
+    "category": "Bezpečnosť"
   },
   {
     "title": "Solana vs. L2 reťazce: Kde rastie skutočná používateľská aktivita a objemy na DEX?",
     "link": "https://bitcoinvkapse.cz",
-    "pubDate": "Pred 4 dňami",
+    "pubDate": "Pred 3 dňami",
     "source": "Bitcoin v Kapse",
     "category": "DeFi"
   }
