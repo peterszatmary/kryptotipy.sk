@@ -1011,9 +1011,9 @@ import '../styles/global.css';
           const btnEl = btn as HTMLElement;
           const isSelected = btnEl.dataset.game === newGame;
           if (isSelected) {
-            btnEl.className = 'game-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 bg-zinc-900 text-white shadow-xs';
+            btnEl.className = 'game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 bg-zinc-900 text-white shadow-xs';
           } else {
-            btnEl.className = 'game-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900';
+            btnEl.className = 'game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900';
           }
         });
 

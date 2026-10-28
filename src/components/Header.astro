@@ -3,19 +3,19 @@ import { GAMES_LIST } from '../types/coin';
 import GameIcon from './GameIcon.astro';
 ---
 
-<header class="w-full shrink-0 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-3 sm:px-6 py-1.5 sm:py-2.5 z-40">
-  <div class="max-w-7xl mx-auto flex flex-col gap-1.5 sm:gap-2">
+<header class="w-full max-w-full shrink-0 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-3 sm:px-6 py-1.5 sm:py-2.5 z-40 overflow-hidden sm:overflow-visible">
+  <div class="max-w-7xl mx-auto flex flex-col gap-1.5 sm:gap-2 w-full min-w-0">
     <!-- Horný riadok: Brand, TOP 100 Odznak, Počítadlá série -->
-    <div class="flex items-center justify-between w-full">
+    <div class="flex items-center justify-between w-full gap-1.5 sm:gap-3 min-w-0">
       <!-- Ľavá časť: Logo & TOP 100 Badge -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <a href="/" class="flex items-center gap-2 group">
+      <div class="flex items-center gap-1.5 sm:gap-3 min-w-0">
+        <a href="/" class="flex items-center gap-1.5 sm:gap-2 group shrink-0">
           <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-zinc-900 text-white flex items-center justify-center font-bold text-xs sm:text-sm shadow-xs group-hover:scale-105 transition-transform">
             ▲▼
           </div>
           <div class="flex flex-col">
             <span class="font-extrabold text-xs sm:text-sm tracking-tight text-zinc-900 leading-tight">
-              Krypto Vyššia / Nižšia
+              Kryptotipy
             </span>
             <span class="text-[10px] text-zinc-400 font-medium hidden lg:inline">
               Máš krypto v malíčku, alebo len na peňaženke?
@@ -24,48 +24,50 @@ import GameIcon from './GameIcon.astro';
         </a>
 
         <!-- HORE: TOP 100 MINCÍ Odznak -->
-        <div class="flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[10px] sm:text-[11px] font-mono font-bold text-zinc-700 shadow-2xs">
+        <div class="flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[9px] sm:text-[11px] font-mono font-bold text-zinc-700 shadow-2xs shrink-0">
           <span class="w-1.5 h-1.5 rounded-full bg-[#2a6a51] animate-pulse"></span>
-          <span>TOP 100 MINCÍ</span>
+          <span>TOP 100<span class="hidden min-[380px]:inline"> MINCÍ</span></span>
         </div>
       </div>
 
       <!-- Pravá časť: Séria a Rekord -->
-      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <div class="flex items-center gap-1.5 bg-zinc-50 px-2 sm:px-2.5 py-1 rounded-lg border border-zinc-200">
-          <span class="text-[10px] text-zinc-500 uppercase font-semibold">Séria:</span>
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+        <div class="flex items-center gap-1 bg-zinc-50 px-1.5 sm:px-2.5 py-1 rounded-lg border border-zinc-200">
+          <span class="text-[9px] sm:text-[10px] text-zinc-500 uppercase font-semibold">Séria:</span>
           <span id="current-streak-val" class="text-xs sm:text-sm font-black font-mono text-zinc-900 tabular-nums">0</span>
         </div>
 
-        <div class="flex items-center gap-1.5 bg-zinc-50 px-2 sm:px-2.5 py-1 rounded-lg border border-zinc-200">
-          <span class="text-[10px] text-zinc-500 uppercase font-semibold">Rekord:</span>
+        <div class="flex items-center gap-1 bg-zinc-50 px-1.5 sm:px-2.5 py-1 rounded-lg border border-zinc-200">
+          <span class="text-[9px] sm:text-[10px] text-zinc-500 uppercase font-semibold">Rekord:</span>
           <span id="best-streak-val" class="text-xs sm:text-sm font-black font-mono text-zinc-900 tabular-nums">0</span>
         </div>
       </div>
     </div>
 
     <!-- Spodný riadok: Prepínač 6 hier a pod-režimy -->
-    <div class="flex flex-wrap items-center justify-between gap-1.5 pt-1.5 border-t border-zinc-100">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 pt-1.5 border-t border-zinc-100 w-full min-w-0">
       <!-- Navigácia 6 hier -->
-      <nav class="flex items-center gap-1 overflow-x-auto max-w-full py-0.5" aria-label="Výber hry">
+      <nav class="grid grid-cols-6 sm:flex sm:items-center gap-1 sm:gap-1.5 w-full sm:w-auto py-0.5 min-w-0" aria-label="Výber hry">
         {GAMES_LIST.map((game, idx) => (
           <button
             type="button"
-            class={`game-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 ${
+            class={`game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 ${
               idx === 0
                 ? 'bg-zinc-900 text-white shadow-xs'
                 : 'bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900'
             }`}
             data-game={game.id}
+            title={game.title}
+            aria-label={game.title}
           >
-            <GameIcon name={game.id} />
-            <span>{game.shortTitle}</span>
+            <GameIcon name={game.id} class="w-5 h-5 sm:w-3.5 sm:h-3.5 shrink-0" />
+            <span class="hidden sm:inline">{game.shortTitle}</span>
           </button>
         ))}
       </nav>
 
       <!-- Prepínač metrík pre Vyššia/Nižšia (zobrazí sa len pre Vyššia/Nižšia) -->
-      <div id="hl-mode-selector" class="flex items-center bg-zinc-100 p-0.5 rounded-lg border border-zinc-200 text-[10px] sm:text-[11px] font-semibold overflow-x-auto">
+      <div id="hl-mode-selector" class="flex items-center bg-zinc-100 p-0.5 rounded-lg border border-zinc-200 text-[10px] sm:text-[11px] font-semibold overflow-x-auto max-w-[calc(100vw-24px)] sm:max-w-none w-full sm:w-auto">
         <button
           type="button"
           class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer bg-white text-zinc-900 shadow-2xs font-bold whitespace-nowrap"
