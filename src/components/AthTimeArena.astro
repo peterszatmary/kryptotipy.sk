@@ -21,26 +21,26 @@ import GameIcon from './GameIcon.astro';
     <!-- ĽAVÁ MINCA (Známy dátum ATH) -->
     <div class="flex-1 w-full flex flex-col items-center justify-center p-1 sm:p-3 lg:p-6">
       <div class="perspective-1000 mb-1.5 sm:mb-4 lg:mb-5">
-        <div class="coin-disc relative w-36 h-36 min-[400px]:w-42 min-[400px]:h-42 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl bg-white border-2 border-zinc-200/90 shadow-xl shadow-zinc-200/70 flex flex-col items-center justify-center p-3 min-[400px]:p-4 sm:p-6 lg:p-8 text-center transition-all duration-700">
+        <div class="coin-disc relative w-42 h-42 min-[380px]:w-48 min-[380px]:h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl bg-white border-2 border-zinc-200/90 shadow-xl shadow-zinc-200/70 flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 text-center transition-all duration-700">
           <img
             id="ath-left-img"
             src=""
             alt="Minca"
-            class="w-11 h-11 min-[400px]:w-13 min-[400px]:h-13 sm:w-20 sm:h-20 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 object-contain mb-1 sm:mb-2.5 transition-transform duration-300"
+            class="w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-20 sm:h-20 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 object-contain mb-1 sm:mb-2.5 transition-transform duration-300 shrink-0"
             loading="eager"
           />
-          <h3 id="ath-left-name" class="text-xs min-[400px]:text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 line-clamp-1">
+          <h3 id="ath-left-name" class="text-xs min-[380px]:text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
             ---
           </h3>
-          <span id="ath-left-symbol" class="text-[9px] min-[400px]:text-[10px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5">
+          <span id="ath-left-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
             ---
           </span>
 
-          <div class="mt-1 min-[400px]:mt-2 sm:mt-3 text-center">
-            <div id="ath-left-date" class="text-xs min-[400px]:text-sm sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums">
+          <div class="mt-1 min-[380px]:mt-2 sm:mt-3 text-center shrink-0">
+            <div id="ath-left-date" class="text-xs min-[380px]:text-sm sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums whitespace-nowrap">
               ---
             </div>
-            <div class="text-[8px] min-[400px]:text-[9px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5">
+            <div class="text-[8px] min-[380px]:text-[9px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5">
               Dátum historického maxima (ATH)
             </div>
           </div>
@@ -67,28 +67,28 @@ import GameIcon from './GameIcon.astro';
       <div class="perspective-1000 mb-1.5 sm:mb-4 lg:mb-5">
         <div
           id="ath-right-disc"
-          class="coin-disc relative w-36 h-36 min-[400px]:w-42 min-[400px]:h-42 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl preserve-3d transition-all duration-700 shadow-xl shadow-zinc-200/70"
+          class="coin-disc relative w-42 h-42 min-[380px]:w-48 min-[380px]:h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl preserve-3d transition-all duration-700 shadow-xl shadow-zinc-200/70"
         >
           <!-- Predná strana (Záhada) -->
           <div
             id="ath-right-front"
-            class="backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[400px]:p-4 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+            class="backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
           >
             <img
               id="ath-right-img"
               src=""
               alt="Minca"
-              class="w-11 h-11 min-[400px]:w-13 min-[400px]:h-13 sm:w-20 sm:h-20 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 object-contain mb-1 sm:mb-2.5 transition-transform duration-300"
+              class="w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-20 sm:h-20 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 object-contain mb-1 sm:mb-2.5 transition-transform duration-300 shrink-0"
               loading="eager"
             />
-            <h3 id="ath-right-name" class="text-xs min-[400px]:text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 line-clamp-1">
+            <h3 id="ath-right-name" class="text-xs min-[380px]:text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
               ---
             </h3>
-            <span id="ath-right-symbol" class="text-[9px] min-[400px]:text-[10px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5">
+            <span id="ath-right-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
               ---
             </span>
 
-            <div class="mt-1.5 min-[400px]:mt-2.5 sm:mt-3.5 px-2.5 min-[400px]:px-3.5 py-0.5 min-[400px]:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[11px] min-[400px]:text-xs sm:text-sm lg:text-base font-mono font-bold text-zinc-600">
+            <div class="mt-1.5 min-[380px]:mt-2.5 sm:mt-3.5 px-2.5 min-[380px]:px-3.5 py-0.5 min-[380px]:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[11px] min-[380px]:text-xs sm:text-sm lg:text-base font-mono font-bold text-zinc-600 shrink-0">
               Dátum ATH: ???
             </div>
           </div>
@@ -96,18 +96,18 @@ import GameIcon from './GameIcon.astro';
           <!-- Zadná strana (Odhalenie) -->
           <div
             id="ath-right-back"
-            class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[400px]:p-4 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+            class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
           >
-            <div id="ath-status-ring" class="w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700">
+            <div id="ath-status-ring" class="w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0">
               ?
             </div>
-            <div id="ath-reveal-name" class="text-[10px] min-[400px]:text-xs sm:text-sm lg:text-base font-bold text-zinc-600 mb-0.5">
+            <div id="ath-reveal-name" class="text-[10px] min-[380px]:text-xs sm:text-sm lg:text-base font-bold text-zinc-600 mb-0.5 shrink-0 truncate max-w-full px-2">
               ---
             </div>
-            <div id="ath-reveal-date" class="text-xs min-[400px]:text-sm sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums">
+            <div id="ath-reveal-date" class="text-xs min-[380px]:text-sm sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums whitespace-nowrap shrink-0">
               ---
             </div>
-            <div class="text-[8px] min-[400px]:text-[9px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5">
+            <div class="text-[8px] min-[380px]:text-[9px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5 shrink-0">
               Dátum historického maxima (ATH)
             </div>
           </div>

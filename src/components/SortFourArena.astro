@@ -38,20 +38,20 @@ import GameIcon from './GameIcon.astro';
           id={`sort-img-${idx}`}
           src=""
           alt="Minca"
-          class="w-10 h-10 min-[400px]:w-12 min-[400px]:h-12 sm:w-16 sm:h-16 rounded-full bg-zinc-50 border border-zinc-100 p-1 object-contain mb-1 sm:mb-2 group-hover:scale-105 transition-transform"
+          class="w-10 h-10 min-[380px]:w-12 min-[380px]:h-12 sm:w-16 sm:h-16 rounded-full bg-zinc-50 border border-zinc-100 p-1 object-contain mb-1 sm:mb-2 group-hover:scale-105 transition-transform shrink-0"
           loading="eager"
         />
 
         <!-- Názov & Symbol -->
-        <h3 id={`sort-name-${idx}`} class="text-xs sm:text-sm font-extrabold text-zinc-900 line-clamp-1">
+        <h3 id={`sort-name-${idx}`} class="text-xs sm:text-sm font-extrabold text-zinc-900 truncate max-w-full px-1 shrink-0 leading-snug">
           ---
         </h3>
-        <span id={`sort-symbol-${idx}`} class="text-[9px] sm:text-xs font-mono font-bold text-zinc-400 uppercase mt-0.5">
+        <span id={`sort-symbol-${idx}`} class="text-[9px] sm:text-xs font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
           ---
         </span>
 
         <!-- Odhalená metrika po dokončení -->
-        <div id={`sort-val-${idx}`} class="mt-1 sm:mt-2 text-[11px] sm:text-sm font-black font-mono text-zinc-600 tabular-nums">
+        <div id={`sort-val-${idx}`} class="mt-1 sm:mt-2 text-[11px] sm:text-sm font-black font-mono text-zinc-600 tabular-nums shrink-0 whitespace-nowrap">
           ???
         </div>
       </button>

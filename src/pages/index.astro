@@ -337,7 +337,7 @@ import '../styles/global.css';
         const valText = formatMetricValue(hlLeftCoin, hlMode);
         if (leftCoinMetricVal) {
           leftCoinMetricVal.innerText = valText;
-          leftCoinMetricVal.className = getSignedColorClass(valText, 'text-xl sm:text-2xl lg:text-3xl xl:text-4xl');
+          leftCoinMetricVal.className = getSignedColorClass(valText, 'text-base min-[380px]:text-lg sm:text-2xl lg:text-3xl xl:text-4xl');
         }
         if (leftCoinMetricLabel) leftCoinMetricLabel.innerText = GAME_MODES[hlMode].label;
         if (leftCoinRank) leftCoinRank.innerText = `#${hlLeftCoin.market_cap_rank}`;
@@ -351,14 +351,14 @@ import '../styles/global.css';
 
         if (rightCoinDisc) rightCoinDisc.classList.remove('rotate-y-180');
         if (rightCoinFront) {
-          rightCoinFront.className = 'backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs transition-colors duration-300';
+          rightCoinFront.className = 'backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs transition-colors duration-300';
         }
         if (rightCoinBack) {
-          rightCoinBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs transition-colors duration-300';
+          rightCoinBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs transition-colors duration-300';
         }
         if (revealRingStatus) {
           revealRingStatus.innerText = '?';
-          revealRingStatus.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-zinc-100 text-zinc-700';
+          revealRingStatus.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0';
         }
         if (questionText) {
           questionText.innerText = `${hlRightCoin.name} ${GAME_MODES[hlMode].question}`;
@@ -424,7 +424,7 @@ import '../styles/global.css';
         const formattedRightVal = formatMetricValue(hlRightCoin, hlMode);
         if (rightRevealVal) {
           rightRevealVal.innerText = formattedRightVal;
-          rightRevealVal.className = getSignedColorClass(formattedRightVal, 'text-2xl sm:text-3xl lg:text-4xl xl:text-5xl');
+          rightRevealVal.className = getSignedColorClass(formattedRightVal, 'text-base min-[380px]:text-lg sm:text-2xl lg:text-4xl xl:text-5xl');
         }
 
         if (rightCoinDisc) rightCoinDisc.classList.add('rotate-y-180');
@@ -432,7 +432,7 @@ import '../styles/global.css';
         if (isCorrect) {
           if (revealRingStatus) {
             revealRingStatus.innerText = '✓';
-            revealRingStatus.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200';
+            revealRingStatus.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200 shrink-0';
           }
           if (rightCoinBack) {
             rightCoinBack.classList.remove('border-zinc-200/90');
@@ -455,7 +455,7 @@ import '../styles/global.css';
         } else {
           if (revealRingStatus) {
             revealRingStatus.innerText = '✕';
-            revealRingStatus.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200';
+            revealRingStatus.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200 shrink-0';
           }
           if (rightCoinBack) {
             rightCoinBack.classList.remove('border-zinc-200/90');
@@ -743,11 +743,11 @@ import '../styles/global.css';
 
         if (athRightDisc) athRightDisc.classList.remove('rotate-y-180');
         if (athRightBack) {
-          athRightBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center';
+          athRightBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center';
         }
         if (athStatusRing) {
           athStatusRing.innerText = '?';
-          athStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-zinc-100 text-zinc-700';
+          athStatusRing.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0';
         }
         if (btnAthEarlier) btnAthEarlier.disabled = false;
         if (btnAthLater) btnAthLater.disabled = false;
@@ -778,7 +778,7 @@ import '../styles/global.css';
         if (isCorrect) {
           if (athStatusRing) {
             athStatusRing.innerText = '✓';
-            athStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200';
+            athStatusRing.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200 shrink-0';
           }
           if (athRightBack) {
             athRightBack.classList.remove('border-zinc-200/90');
@@ -794,7 +794,7 @@ import '../styles/global.css';
         } else {
           if (athStatusRing) {
             athStatusRing.innerText = '✕';
-            athStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200';
+            athStatusRing.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200 shrink-0';
           }
           if (athRightBack) {
             athRightBack.classList.remove('border-zinc-200/90');
@@ -840,11 +840,11 @@ import '../styles/global.css';
 
         if (supplyDisc) supplyDisc.classList.remove('rotate-y-180');
         if (supplyBack) {
-          supplyBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center';
+          supplyBack.className = 'backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3.5 min-[380px]:p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center';
         }
         if (supplyStatusRing) {
           supplyStatusRing.innerText = '?';
-          supplyStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-zinc-100 text-zinc-700';
+          supplyStatusRing.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0';
         }
         if (btnSupplyHardcap) btnSupplyHardcap.disabled = false;
         if (btnSupplyInfinite) btnSupplyInfinite.disabled = false;
@@ -874,7 +874,7 @@ import '../styles/global.css';
         if (isCorrect) {
           if (supplyStatusRing) {
             supplyStatusRing.innerText = '✓';
-            supplyStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200';
+            supplyStatusRing.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-emerald-50 text-[#2a6a51] border border-emerald-200 shrink-0';
           }
           if (supplyBack) {
             supplyBack.classList.remove('border-zinc-200/90');
@@ -885,7 +885,7 @@ import '../styles/global.css';
         } else {
           if (supplyStatusRing) {
             supplyStatusRing.innerText = '✕';
-            supplyStatusRing.className = 'w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-1 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200';
+            supplyStatusRing.className = 'w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-rose-50 text-[#8c3b42] border border-rose-200 shrink-0';
           }
           if (supplyBack) {
             supplyBack.classList.remove('border-zinc-200/90');
