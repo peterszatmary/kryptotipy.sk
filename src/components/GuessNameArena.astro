@@ -2,51 +2,51 @@
 import GameIcon from './GameIcon.astro';
 ---
 
-<div id="arena-guess-name" class="game-arena hidden flex-1 w-full max-w-xl mx-auto flex-col items-center justify-center px-2 sm:px-4 py-1 sm:py-2 relative min-h-0">
-  <div class="text-center mb-1.5 sm:mb-3 shrink-0">
-    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+<div id="arena-guess-name" class="game-arena hidden flex-1 w-full max-w-xl md:max-w-2xl lg:max-w-xl xl:max-w-2xl mx-auto flex-col items-center justify-center px-2 sm:px-4 md:px-6 py-1 sm:py-2 md:py-6 lg:py-2 relative min-h-0">
+  <div class="text-center mb-1.5 sm:mb-3 md:mb-5 lg:mb-3 shrink-0">
+    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs md:text-sm font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
       <GameIcon name="guess_name" class="w-3.5 h-3.5 text-[#2a6a51]" />
       <span>Kvíz názvov</span>
     </span>
-    <h2 class="text-sm sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1">
+    <h2 class="text-sm sm:text-xl md:text-2xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1 md:mt-1.5">
       Ako sa volá táto kryptomena?
     </h2>
-    <p class="text-[11px] sm:text-xs text-zinc-500 mt-0.5 hidden min-[400px]:block">
+    <p class="text-[11px] sm:text-xs md:text-sm text-zinc-500 mt-0.5 md:mt-1 hidden min-[400px]:block">
       Pozri si oficiálne logo, poradie a cenu, a vyber správny názov zo 4 možností.
     </p>
   </div>
 
   <!-- Karta mince -->
-  <div class="w-full max-w-xs sm:max-w-sm rounded-2xl bg-white border-2 border-zinc-200/90 p-3.5 sm:p-5 shadow-xs flex flex-col items-center justify-center mb-2.5 sm:mb-4 text-center">
+  <div class="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-2xl md:rounded-3xl bg-white border-2 border-zinc-200/90 p-3.5 sm:p-5 md:p-8 shadow-xs flex flex-col items-center justify-center mb-2.5 sm:mb-4 md:mb-6 text-center">
     <img
       id="guess-coin-img"
       src=""
       alt="Minca"
-      class="w-14 h-14 sm:w-24 sm:h-24 rounded-full bg-zinc-50 border border-zinc-100 p-1.5 sm:p-2 object-contain mb-1.5 sm:mb-2.5 shadow-2xs"
+      class="w-14 h-14 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-zinc-50 border border-zinc-100 p-1.5 sm:p-2 md:p-2.5 object-contain mb-1.5 sm:mb-2.5 md:mb-4 shadow-2xs"
       loading="eager"
     />
 
-    <div class="flex items-center gap-2 mb-2">
-      <span id="guess-coin-rank" class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 text-zinc-700 font-mono font-bold text-xs">
+    <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+      <span id="guess-coin-rank" class="px-2 md:px-3 py-0.5 md:py-1 rounded-md md:rounded-lg bg-zinc-100 border border-zinc-200 text-zinc-700 font-mono font-bold text-xs md:text-sm">
         #--
       </span>
-      <span id="guess-coin-price" class="px-2.5 py-0.5 rounded-md bg-zinc-50 border border-zinc-200 text-zinc-900 font-mono font-black text-xs sm:text-sm tabular-nums">
+      <span id="guess-coin-price" class="px-2.5 md:px-3.5 py-0.5 md:py-1 rounded-md md:rounded-lg bg-zinc-50 border border-zinc-200 text-zinc-900 font-mono font-black text-xs sm:text-sm md:text-base tabular-nums">
         $---
       </span>
     </div>
 
-    <div id="guess-revealed-name" class="text-base sm:text-lg font-black text-zinc-900 tracking-tight">
+    <div id="guess-revealed-name" class="text-base sm:text-lg md:text-2xl font-black text-zinc-900 tracking-tight">
       ???
     </div>
   </div>
 
   <!-- 4 Možnosti názvu -->
-  <div class="grid grid-cols-2 gap-2.5 w-full">
+  <div class="grid grid-cols-2 gap-2.5 md:gap-3.5 w-full">
     {[0, 1, 2, 3].map((idx) => (
       <button
         type="button"
         id={`guess-opt-${idx}`}
-        class="guess-choice-btn py-3 px-4 rounded-xl bg-white border-2 border-zinc-200/90 hover:border-zinc-400 font-extrabold text-xs sm:text-sm text-zinc-800 shadow-2xs hover:shadow-xs active:scale-95 transition cursor-pointer text-center disabled:cursor-not-allowed"
+        class="guess-choice-btn py-3 sm:py-3.5 md:py-4.5 px-4 md:px-5 rounded-xl md:rounded-2xl bg-white border-2 border-zinc-200/90 hover:border-zinc-400 font-extrabold text-xs sm:text-sm md:text-base text-zinc-800 shadow-2xs hover:shadow-xs active:scale-95 transition cursor-pointer text-center disabled:cursor-not-allowed"
         data-index={idx}
       >
         ---

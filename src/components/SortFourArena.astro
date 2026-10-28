@@ -2,33 +2,33 @@
 import GameIcon from './GameIcon.astro';
 ---
 
-<div id="arena-sort-four" class="game-arena hidden flex-1 w-full max-w-4xl mx-auto flex-col items-center justify-center px-2 sm:px-4 py-1 sm:py-2 relative min-h-0">
-  <div class="text-center mb-1.5 sm:mb-4 shrink-0">
-    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+<div id="arena-sort-four" class="game-arena hidden flex-1 w-full max-w-xl md:max-w-2xl lg:max-w-4xl mx-auto flex-col items-center justify-center px-2 sm:px-4 md:px-6 py-1 sm:py-2 md:py-6 lg:py-2 relative min-h-0">
+  <div class="text-center mb-1.5 sm:mb-4 md:mb-6 lg:mb-4 shrink-0">
+    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs md:text-sm font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
       <GameIcon name="sort_four" class="w-3.5 h-3.5 text-[#2a6a51]" />
       <span>Krypto Zoradzovač</span>
     </span>
-    <h2 class="text-sm sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1">
+    <h2 class="text-sm sm:text-xl md:text-2xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1 md:mt-1.5">
       Zoraď mince od najväčšej po najmenšiu
     </h2>
-    <p class="text-[11px] sm:text-xs text-zinc-500 mt-0.5 hidden min-[400px]:block">
+    <p class="text-[11px] sm:text-xs md:text-sm text-zinc-500 mt-0.5 md:mt-1 hidden min-[400px]:block">
       Klikaj na mince v poradí od <strong class="text-zinc-800">1. (najvyššia hodnota)</strong> po <strong class="text-zinc-800">4. (najnižšia)</strong>.
     </p>
   </div>
 
-  <!-- Mriežka 4 mincí -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 w-full mb-2 sm:mb-4">
+  <!-- Mriežka 4 mincí (2x2 na mobiloch a tabletoch v režime na výšku, 4 v riadku na PC desktop) -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5 w-full mb-2.5 sm:mb-4 md:mb-6">
     {[0, 1, 2, 3].map((idx) => (
       <button
         type="button"
         id={`sort-card-${idx}`}
-        class="sort-coin-card relative flex flex-col items-center justify-center p-2.5 min-[400px]:p-3.5 sm:p-5 rounded-2xl bg-white border-2 border-zinc-200/90 hover:border-zinc-300 shadow-xs hover:shadow-md transition-all cursor-pointer text-center group active:scale-98 select-none"
+        class="sort-coin-card relative flex flex-col items-center justify-center p-2.5 min-[400px]:p-3.5 sm:p-5 md:p-6 lg:p-5 rounded-2xl md:rounded-3xl bg-white border-2 border-zinc-200/90 hover:border-zinc-300 shadow-xs hover:shadow-md transition-all cursor-pointer text-center group active:scale-98 select-none"
         data-index={idx}
       >
         <!-- Poradové číslo výberu hráča (1, 2, 3, 4) -->
         <div
           id={`sort-badge-${idx}`}
-          class="sort-badge absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-zinc-100 border-2 border-zinc-300 text-zinc-400 font-black text-[11px] sm:text-sm flex items-center justify-center transition-all shadow-2xs"
+          class="sort-badge absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full bg-zinc-100 border-2 border-zinc-300 text-zinc-400 font-black text-[11px] sm:text-sm md:text-base flex items-center justify-center transition-all shadow-2xs"
         >
           -
         </div>
@@ -38,20 +38,20 @@ import GameIcon from './GameIcon.astro';
           id={`sort-img-${idx}`}
           src=""
           alt="Minca"
-          class="w-10 h-10 min-[380px]:w-12 min-[380px]:h-12 sm:w-16 sm:h-16 rounded-full bg-zinc-50 border border-zinc-100 p-1 object-contain mb-1 sm:mb-2 group-hover:scale-105 transition-transform shrink-0"
+          class="w-10 h-10 min-[380px]:w-12 min-[380px]:h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 xl:w-20 xl:h-20 rounded-full bg-zinc-50 border border-zinc-100 p-1 md:p-1.5 object-contain mb-1 sm:mb-2 md:mb-3 group-hover:scale-105 transition-transform shrink-0"
           loading="eager"
         />
 
         <!-- Názov & Symbol -->
-        <h3 id={`sort-name-${idx}`} class="text-xs sm:text-sm font-extrabold text-zinc-900 truncate max-w-full px-1 shrink-0 leading-snug">
+        <h3 id={`sort-name-${idx}`} class="text-xs sm:text-sm md:text-base font-extrabold text-zinc-900 truncate max-w-full px-1 shrink-0 leading-snug">
           ---
         </h3>
-        <span id={`sort-symbol-${idx}`} class="text-[9px] sm:text-xs font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
+        <span id={`sort-symbol-${idx}`} class="text-[9px] sm:text-xs md:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
           ---
         </span>
 
         <!-- Odhalená metrika po dokončení -->
-        <div id={`sort-val-${idx}`} class="mt-1 sm:mt-2 text-[11px] sm:text-sm font-black font-mono text-zinc-600 tabular-nums shrink-0 whitespace-nowrap">
+        <div id={`sort-val-${idx}`} class="mt-1 sm:mt-2 md:mt-2.5 text-[11px] sm:text-sm md:text-base font-black font-mono text-zinc-600 tabular-nums shrink-0 whitespace-nowrap">
           ???
         </div>
       </button>
@@ -63,9 +63,9 @@ import GameIcon from './GameIcon.astro';
     <button
       type="button"
       id="btn-sort-reset"
-      class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200 transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
+      class="px-3.5 py-1.5 md:px-5 md:py-2.5 rounded-xl md:rounded-2xl text-xs sm:text-xs md:text-sm font-semibold bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200 transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
     >
-      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="w-3.5 h-3.5 md:w-4 md:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
         <path d="M3 3v5h5"/>
       </svg>

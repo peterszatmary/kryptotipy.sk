@@ -45,13 +45,13 @@ import GameIcon from './GameIcon.astro';
     </div>
 
     <!-- Spodný riadok: Prepínač 6 hier a pod-režimy -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 pt-1.5 border-t border-zinc-100 w-full min-w-0">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 lg:gap-1.5 pt-1.5 border-t border-zinc-100 w-full min-w-0">
       <!-- Navigácia 6 hier -->
-      <nav class="grid grid-cols-6 sm:flex sm:items-center gap-1 sm:gap-1.5 w-full sm:w-auto py-0.5 min-w-0" aria-label="Výber hry">
+      <nav class="grid grid-cols-6 sm:flex sm:items-center gap-1 sm:gap-1.5 w-full lg:w-auto py-0.5 min-w-0 overflow-x-auto" aria-label="Výber hry">
         {GAMES_LIST.map((game, idx) => (
           <button
             type="button"
-            class={`game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 ${
+            class={`game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 ${
               idx === 0
                 ? 'bg-zinc-900 text-white shadow-xs'
                 : 'bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900'
@@ -67,31 +67,31 @@ import GameIcon from './GameIcon.astro';
       </nav>
 
       <!-- Prepínač metrík pre Vyššia/Nižšia (zobrazí sa len pre Vyššia/Nižšia) -->
-      <div id="hl-mode-selector" class="flex items-center bg-zinc-100 p-0.5 rounded-lg border border-zinc-200 text-[10px] sm:text-[11px] font-semibold overflow-x-auto max-w-[calc(100vw-24px)] sm:max-w-none w-full sm:w-auto">
+      <div id="hl-mode-selector" class="flex items-center bg-zinc-100 p-0.5 rounded-lg border border-zinc-200 text-[10px] sm:text-[11px] font-semibold overflow-x-auto max-w-[calc(100vw-24px)] sm:max-w-none w-full lg:w-auto">
         <button
           type="button"
-          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer bg-white text-zinc-900 shadow-2xs font-bold whitespace-nowrap"
+          class="mode-btn px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer bg-white text-zinc-900 shadow-2xs font-bold whitespace-nowrap"
           data-mode="market_cap"
         >
           Trhová hodnota
         </button>
         <button
           type="button"
-          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
+          class="mode-btn px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
           data-mode="price_change_24h"
         >
           24h zmena %
         </button>
         <button
           type="button"
-          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
+          class="mode-btn px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
           data-mode="ath_drop"
         >
           Prepad od ATH
         </button>
         <button
           type="button"
-          class="mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
+          class="mode-btn px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap"
           data-mode="total_volume"
         >
           24h objem

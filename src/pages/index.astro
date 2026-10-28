@@ -77,12 +77,12 @@ import '../styles/global.css';
     <Header />
 
     <!-- Hlavná herná aréna (100dvh bez scrollovania) -->
-    <main class="flex-1 w-full flex items-center justify-center relative min-h-0 overflow-y-auto sm:overflow-hidden py-1 sm:py-2">
+    <main class="flex-1 w-full flex items-center justify-center relative min-h-0 overflow-y-auto sm:overflow-hidden py-1 sm:py-2 md:py-4 lg:py-2">
       <!-- 1. HRA: Vyššia / Nižšia (Higher / Lower) -->
-      <div id="arena-higher-lower" class="game-arena flex-1 w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-2 sm:px-4 py-1 sm:py-2 relative min-h-0">
+      <div id="arena-higher-lower" class="game-arena flex-1 w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-2 sm:px-4 md:px-6 py-1 sm:py-2 md:py-6 lg:py-2 relative min-h-0">
         <!-- Hore nadpis o čo ide -->
-        <div class="text-center mb-1 sm:mb-2 shrink-0">
-          <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+        <div class="text-center mb-1 sm:mb-2 md:mb-5 lg:mb-2 shrink-0">
+          <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs md:text-sm font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
             <svg class="w-3.5 h-3.5 text-[#2a6a51]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="m3 8 4-4 4 4" />
               <path d="M7 4v16" />
@@ -91,10 +91,10 @@ import '../styles/global.css';
             </svg>
             <span>Vyššia / Nižšia</span>
           </span>
-          <h2 id="hl-arena-title" class="text-sm sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1">
+          <h2 id="hl-arena-title" class="text-sm sm:text-xl md:text-2xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1 md:mt-1.5">
             Trhová hodnota
           </h2>
-          <p id="hl-arena-subtitle" class="text-[11px] sm:text-xs text-zinc-500 mt-0.5 hidden min-[400px]:block">
+          <p id="hl-arena-subtitle" class="text-[11px] sm:text-xs md:text-sm text-zinc-500 mt-0.5 md:mt-1 hidden min-[400px]:block">
             Tipni si, či má druhá kryptomena vyššiu alebo nižšiu trhovú kapitalizáciu.
           </p>
         </div>
@@ -106,7 +106,7 @@ import '../styles/global.css';
           </div>
 
           <!-- Stredový "VS" symbol: voľne napísaný, výrazný, bez kruhu -->
-          <div class="shrink-0 z-20 my-0.5 sm:my-1.5 sm:mx-4 lg:mx-6 flex items-center justify-center sm:-translate-y-6 lg:-translate-y-8 select-none pointer-events-none">
+          <div class="shrink-0 z-20 my-0.5 sm:my-1.5 sm:mx-4 lg:mx-6 flex items-center justify-center sm:-translate-y-6 md:-translate-y-7 lg:-translate-y-8 select-none pointer-events-none">
             <span class="font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-widest text-zinc-300/85 font-mono drop-shadow-2xs">
               VS
             </span>
@@ -136,7 +136,7 @@ import '../styles/global.css';
     </main>
 
     <!-- Spodná lišta s informáciami -->
-    <footer class="w-full shrink-0 border-t border-zinc-200/80 bg-white/80 px-4 py-2 sm:py-2.5 text-center text-[10px] sm:text-xs text-zinc-500 font-mono flex items-center justify-between max-w-7xl mx-auto">
+    <footer class="w-full shrink-0 border-t border-zinc-200/80 bg-white/80 px-4 py-2 sm:py-2.5 md:py-3 text-center text-[10px] sm:text-xs md:text-xs text-zinc-500 font-mono flex items-center justify-between max-w-7xl mx-auto">
       <div class="hidden sm:flex items-center gap-2">
         <span class="px-1.5 py-0.5 rounded bg-zinc-100 border border-zinc-200 text-zinc-600">▲ / ▼</span>
         <span>Klávesové skratky</span>
@@ -475,9 +475,9 @@ import '../styles/global.css';
           const btnEl = btn as HTMLElement;
           const isSelected = btnEl.dataset.mode === newMode;
           if (isSelected) {
-            btnEl.className = 'mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer bg-white text-zinc-900 shadow-2xs font-bold whitespace-nowrap';
+            btnEl.className = 'mode-btn px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer bg-white text-zinc-900 shadow-2xs font-bold whitespace-nowrap';
           } else {
-            btnEl.className = 'mode-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap';
+            btnEl.className = 'mode-btn px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer text-zinc-500 hover:text-zinc-900 whitespace-nowrap';
           }
         });
         startHigherLower();
@@ -1011,9 +1011,9 @@ import '../styles/global.css';
           const btnEl = btn as HTMLElement;
           const isSelected = btnEl.dataset.game === newGame;
           if (isSelected) {
-            btnEl.className = 'game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 bg-zinc-900 text-white shadow-xs';
+            btnEl.className = 'game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 bg-zinc-900 text-white shadow-xs';
           } else {
-            btnEl.className = 'game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900';
+            btnEl.className = 'game-tab-btn w-full sm:w-auto px-2 py-2 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 bg-zinc-100 hover:bg-zinc-200/80 text-zinc-600 hover:text-zinc-900';
           }
         });
 

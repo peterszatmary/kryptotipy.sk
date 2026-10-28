@@ -2,45 +2,45 @@
 import GameIcon from './GameIcon.astro';
 ---
 
-<div id="arena-ath-time" class="game-arena hidden flex-1 w-full max-w-7xl mx-auto flex-col items-center justify-center px-2 sm:px-4 py-1 sm:py-2 relative min-h-0">
+<div id="arena-ath-time" class="game-arena hidden flex-1 w-full max-w-7xl mx-auto flex-col items-center justify-center px-2 sm:px-4 md:px-6 py-1 sm:py-2 md:py-6 lg:py-2 relative min-h-0">
   <!-- Hore nadpis o čo ide -->
-  <div class="text-center mb-1 sm:mb-2 shrink-0">
-    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+  <div class="text-center mb-1 sm:mb-2 md:mb-5 lg:mb-2 shrink-0">
+    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs md:text-sm font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
       <GameIcon name="ath_time" class="w-3.5 h-3.5 text-[#2a6a51]" />
       <span>Časostroj ATH</span>
     </span>
-    <h2 class="text-sm sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1">
+    <h2 class="text-sm sm:text-xl md:text-2xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1 md:mt-1.5">
       Dátum historického maxima (ATH)
     </h2>
-    <p class="text-[11px] sm:text-xs text-zinc-500 mt-0.5 hidden min-[400px]:block">
+    <p class="text-[11px] sm:text-xs md:text-sm text-zinc-500 mt-0.5 md:mt-1 hidden min-[400px]:block">
       Tipni si, či druhá kryptomena dosiahla svoje historické maximum skôr alebo neskôr.
     </p>
   </div>
 
   <div class="w-full flex-1 flex flex-col sm:flex-row items-center justify-center relative">
     <!-- ĽAVÁ MINCA (Známy dátum ATH) -->
-    <div class="flex-1 w-full flex flex-col items-center justify-center p-1 sm:p-3 lg:p-6">
-      <div class="perspective-1000 mb-1.5 sm:mb-4 lg:mb-5">
-        <div class="coin-disc relative w-42 h-42 min-[380px]:w-48 min-[380px]:h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl bg-white border-2 border-zinc-200/90 shadow-xl shadow-zinc-200/70 flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 text-center transition-all duration-700">
+    <div class="flex-1 w-full flex flex-col items-center justify-center p-1 sm:p-3 md:p-4 lg:p-6">
+      <div class="perspective-1000 mb-1.5 sm:mb-4 md:mb-5 lg:mb-5">
+        <div class="coin-disc relative w-42 h-42 min-[380px]:w-48 min-[380px]:h-48 sm:w-60 sm:h-60 md:w-[335px] md:h-[375px] min-[810px]:w-[350px] min-[810px]:h-[390px] lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl bg-white border-2 border-zinc-200/90 shadow-xl shadow-zinc-200/70 flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 md:p-7 lg:p-8 text-center transition-all duration-700">
           <img
             id="ath-left-img"
             src=""
             alt="Minca"
-            class="w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-20 sm:h-20 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 object-contain mb-1 sm:mb-2.5 transition-transform duration-300 shrink-0"
+            class="w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-20 sm:h-20 md:w-26 md:h-26 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 md:p-2 object-contain mb-1 sm:mb-2.5 md:mb-3.5 transition-transform duration-300 shrink-0"
             loading="eager"
           />
-          <h3 id="ath-left-name" class="text-xs min-[380px]:text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
+          <h3 id="ath-left-name" class="text-xs min-[380px]:text-sm sm:text-base md:text-xl lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
             ---
           </h3>
-          <span id="ath-left-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
+          <span id="ath-left-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs md:text-sm lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
             ---
           </span>
 
-          <div class="mt-1 min-[380px]:mt-2 sm:mt-3 text-center shrink-0">
-            <div id="ath-left-date" class="text-xs min-[380px]:text-sm sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums whitespace-nowrap">
+          <div class="mt-1 min-[380px]:mt-2 sm:mt-3 md:mt-4 text-center shrink-0">
+            <div id="ath-left-date" class="text-xs min-[380px]:text-sm sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums whitespace-nowrap">
               ---
             </div>
-            <div class="text-[8px] min-[380px]:text-[9px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5">
+            <div class="text-[8px] min-[380px]:text-[9px] sm:text-xs md:text-sm uppercase font-semibold text-zinc-500 tracking-wider mt-0.5">
               Dátum historického maxima (ATH)
             </div>
           </div>
@@ -48,47 +48,47 @@ import GameIcon from './GameIcon.astro';
       </div>
 
       <!-- Spodný vyrovnávací blok zladený s pravou stranou -->
-      <div class="flex flex-col items-center justify-center w-full max-w-[260px] min-[400px]:max-w-[280px] sm:max-w-[320px] min-h-[44px] sm:min-h-[56px] lg:min-h-[64px]">
-        <div class="flex items-center gap-2 text-[11px] sm:text-sm text-zinc-400 font-mono">
+      <div class="flex flex-col items-center justify-center w-full max-w-[260px] min-[400px]:max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[320px] xl:max-w-[352px] min-h-[44px] sm:min-h-[56px] md:min-h-[62px] lg:min-h-[64px]">
+        <div class="flex items-center gap-2 text-[11px] sm:text-sm md:text-base text-zinc-400 font-mono">
           <span>Referenčná kryptomena</span>
         </div>
       </div>
     </div>
 
     <!-- Stredový "VS" symbol: voľne napísaný, výrazný, bez kruhu -->
-    <div class="shrink-0 z-20 my-0.5 sm:my-1.5 sm:mx-4 lg:mx-6 flex items-center justify-center sm:-translate-y-6 lg:-translate-y-8 select-none pointer-events-none">
+    <div class="shrink-0 z-20 my-0.5 sm:my-1.5 sm:mx-4 lg:mx-6 flex items-center justify-center sm:-translate-y-6 md:-translate-y-7 lg:-translate-y-8 select-none pointer-events-none">
       <span class="font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-widest text-zinc-300/85 font-mono drop-shadow-2xs">
         VS
       </span>
     </div>
 
     <!-- PRAVÁ MINCA (Záhada - 3D Flip) -->
-    <div class="flex-1 w-full flex flex-col items-center justify-center p-1 sm:p-3 lg:p-6">
-      <div class="perspective-1000 mb-1.5 sm:mb-4 lg:mb-5">
+    <div class="flex-1 w-full flex flex-col items-center justify-center p-1 sm:p-3 md:p-4 lg:p-6">
+      <div class="perspective-1000 mb-1.5 sm:mb-4 md:mb-5 lg:mb-5">
         <div
           id="ath-right-disc"
-          class="coin-disc relative w-42 h-42 min-[380px]:w-48 min-[380px]:h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl preserve-3d transition-all duration-700 shadow-xl shadow-zinc-200/70"
+          class="coin-disc relative w-42 h-42 min-[380px]:w-48 min-[380px]:h-48 sm:w-60 sm:h-60 md:w-[335px] md:h-[375px] min-[810px]:w-[350px] min-[810px]:h-[390px] lg:w-80 lg:h-80 xl:w-88 xl:h-88 rounded-3xl preserve-3d transition-all duration-700 shadow-xl shadow-zinc-200/70"
         >
           <!-- Predná strana (Záhada) -->
           <div
             id="ath-right-front"
-            class="backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+            class="backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 md:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
           >
             <img
               id="ath-right-img"
               src=""
               alt="Minca"
-              class="w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-20 sm:h-20 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 object-contain mb-1 sm:mb-2.5 transition-transform duration-300 shrink-0"
+              class="w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-20 sm:h-20 md:w-26 md:h-26 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-1.5 md:p-2 object-contain mb-1 sm:mb-2.5 md:mb-3.5 transition-transform duration-300 shrink-0"
               loading="eager"
             />
-            <h3 id="ath-right-name" class="text-xs min-[380px]:text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
+            <h3 id="ath-right-name" class="text-xs min-[380px]:text-sm sm:text-base md:text-xl lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
               ---
             </h3>
-            <span id="ath-right-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
+            <span id="ath-right-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs md:text-sm lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
               ---
             </span>
 
-            <div class="mt-1.5 min-[380px]:mt-2.5 sm:mt-3.5 px-2.5 min-[380px]:px-3.5 py-0.5 min-[380px]:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[11px] min-[380px]:text-xs sm:text-sm lg:text-base font-mono font-bold text-zinc-600 shrink-0">
+            <div class="mt-1.5 min-[380px]:mt-2.5 sm:mt-3.5 md:mt-4 px-2.5 min-[380px]:px-3.5 sm:px-4 md:px-5 py-0.5 min-[380px]:py-1 md:py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-[11px] min-[380px]:text-xs sm:text-sm md:text-base font-mono font-bold text-zinc-600 shrink-0">
               Dátum ATH: ???
             </div>
           </div>
@@ -96,18 +96,18 @@ import GameIcon from './GameIcon.astro';
           <!-- Zadná strana (Odhalenie) -->
           <div
             id="ath-right-back"
-            class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+            class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3 min-[380px]:p-3.5 sm:p-6 md:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
           >
-            <div id="ath-status-ring" class="w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0">
+            <div id="ath-status-ring" class="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-base sm:text-xl md:text-2xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0">
               ?
             </div>
-            <div id="ath-reveal-name" class="text-[10px] min-[380px]:text-xs sm:text-sm lg:text-base font-bold text-zinc-600 mb-0.5 shrink-0 truncate max-w-full px-2">
+            <div id="ath-reveal-name" class="text-[10px] min-[380px]:text-xs sm:text-sm md:text-base font-bold text-zinc-600 mb-0.5 shrink-0 truncate max-w-full px-2">
               ---
             </div>
-            <div id="ath-reveal-date" class="text-xs min-[380px]:text-sm sm:text-xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums whitespace-nowrap shrink-0">
+            <div id="ath-reveal-date" class="text-xs min-[380px]:text-sm sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-black font-mono text-zinc-900 tabular-nums whitespace-nowrap shrink-0">
               ---
             </div>
-            <div class="text-[8px] min-[380px]:text-[9px] sm:text-xs uppercase font-semibold text-zinc-500 tracking-wider mt-0.5 shrink-0">
+            <div class="text-[8px] min-[380px]:text-[9px] sm:text-xs md:text-sm uppercase font-semibold text-zinc-500 tracking-wider mt-0.5 shrink-0">
               Dátum historického maxima (ATH)
             </div>
           </div>
@@ -115,12 +115,12 @@ import GameIcon from './GameIcon.astro';
       </div>
 
       <!-- Ovládacie tlačidlá: SKÔR vs NESKÔR (Zarovnané podľa dlaždice s identickou výškou) -->
-      <div class="flex flex-col items-center justify-center w-full max-w-[260px] min-[400px]:max-w-[280px] sm:max-w-[320px] min-h-[44px] sm:min-h-[56px] lg:min-h-[64px]">
-        <div class="grid grid-cols-2 gap-2 sm:gap-2.5 w-full">
+      <div class="flex flex-col items-center justify-center w-full max-w-[260px] min-[400px]:max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[320px] xl:max-w-[352px] min-h-[44px] sm:min-h-[56px] md:min-h-[62px] lg:min-h-[64px]">
+        <div class="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 w-full">
           <button
             type="button"
             id="btn-ath-earlier"
-            class="group relative flex items-center justify-center gap-1 sm:gap-1.5 py-2 min-[400px]:py-2.5 sm:py-3.5 px-2.5 min-[400px]:px-4 sm:px-5 rounded-xl font-bold text-[11px] min-[400px]:text-xs sm:text-sm lg:text-base bg-[#2a6a51] hover:bg-[#215642] text-white border border-[#1b4837]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
+            class="group relative flex items-center justify-center gap-1 sm:gap-1.5 py-2 min-[400px]:py-2.5 sm:py-3.5 md:py-4 px-2.5 min-[400px]:px-4 sm:px-5 md:px-6 rounded-xl md:rounded-2xl font-bold text-[11px] min-[400px]:text-xs sm:text-sm md:text-base bg-[#2a6a51] hover:bg-[#215642] text-white border border-[#1b4837]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
           >
             <span>SKÔR</span>
             <svg class="w-3 sm:w-3.5 h-3 sm:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -131,7 +131,7 @@ import GameIcon from './GameIcon.astro';
           <button
             type="button"
             id="btn-ath-later"
-            class="group relative flex items-center justify-center gap-1 sm:gap-1.5 py-2 min-[400px]:py-2.5 sm:py-3.5 px-2.5 min-[400px]:px-4 sm:px-5 rounded-xl font-bold text-[11px] min-[400px]:text-xs sm:text-sm lg:text-base bg-[#8c3b42] hover:bg-[#773137] text-white border border-[#63292e]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
+            class="group relative flex items-center justify-center gap-1 sm:gap-1.5 py-2 min-[400px]:py-2.5 sm:py-3.5 md:py-4 px-2.5 min-[400px]:px-4 sm:px-5 md:px-6 rounded-xl md:rounded-2xl font-bold text-[11px] min-[400px]:text-xs sm:text-sm md:text-base bg-[#8c3b42] hover:bg-[#773137] text-white border border-[#63292e]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
           >
             <span>NESKÔR</span>
             <svg class="w-3 sm:w-3.5 h-3 sm:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

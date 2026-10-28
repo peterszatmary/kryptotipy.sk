@@ -2,51 +2,51 @@
 import GameIcon from './GameIcon.astro';
 ---
 
-<div id="arena-supply-cap" class="game-arena hidden flex-1 w-full max-w-xl mx-auto flex-col items-center justify-center px-2 sm:px-4 py-1 sm:py-2 relative min-h-0">
+<div id="arena-supply-cap" class="game-arena hidden flex-1 w-full max-w-xl md:max-w-2xl lg:max-w-xl xl:max-w-2xl mx-auto flex-col items-center justify-center px-2 sm:px-4 md:px-6 py-1 sm:py-2 md:py-6 lg:py-2 relative min-h-0">
   <!-- Jemný neutrálny spotlight za kockou -->
-  <div class="absolute w-64 h-64 sm:w-[460px] sm:h-[460px] lg:w-[520px] lg:h-[520px] rounded-3xl bg-gradient-to-r from-zinc-200/35 via-zinc-100/20 to-transparent blur-3xl pointer-events-none -z-10"></div>
+  <div class="absolute w-64 h-64 sm:w-[460px] sm:h-[460px] md:w-[500px] md:h-[500px] lg:w-[520px] lg:h-[520px] rounded-3xl bg-gradient-to-r from-zinc-200/35 via-zinc-100/20 to-transparent blur-3xl pointer-events-none -z-10"></div>
 
-  <div class="text-center mb-1.5 sm:mb-3 shrink-0">
-    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
+  <div class="text-center mb-1.5 sm:mb-3 md:mb-5 lg:mb-3 shrink-0">
+    <span class="inline-flex items-center gap-1.5 text-[9px] sm:text-xs md:text-sm font-mono font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 shadow-2xs">
       <GameIcon name="supply_cap" class="w-3.5 h-3.5 text-[#2a6a51]" />
       <span>Pevný strop vs. Inflácia</span>
     </span>
-    <h2 class="text-sm sm:text-xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1">
+    <h2 class="text-sm sm:text-xl md:text-2xl lg:text-2xl font-black text-zinc-900 tracking-tight mt-0.5 sm:mt-1 md:mt-1.5">
       Má táto minca konečný limit zásob?
     </h2>
-    <p class="text-[11px] sm:text-xs text-zinc-500 mt-0.5 hidden min-[400px]:block">
+    <p class="text-[11px] sm:text-xs md:text-sm text-zinc-500 mt-0.5 md:mt-1 hidden min-[400px]:block">
       Tipni si, či má kryptomena pevný strop (Hard Cap) ako Bitcoin, alebo neobmedzenú ponuku.
     </p>
   </div>
 
   <!-- 3D Karta mince – zaoblený štvorec (kocka) -->
-  <div class="perspective-1000 mb-2 sm:mb-4 lg:mb-5">
+  <div class="perspective-1000 mb-2 sm:mb-4 md:mb-6 lg:mb-5">
     <div
       id="supply-disc"
-      class="coin-disc relative w-44 h-44 min-[380px]:w-52 min-[380px]:h-52 sm:w-68 sm:h-68 lg:w-84 lg:h-84 xl:w-92 xl:h-92 rounded-3xl preserve-3d transition-all duration-700 shadow-xl shadow-zinc-200/70"
+      class="coin-disc relative w-44 h-44 min-[380px]:w-52 min-[380px]:h-52 sm:w-68 sm:h-68 md:w-[370px] md:h-[410px] lg:w-84 lg:h-84 xl:w-92 xl:h-92 rounded-3xl preserve-3d transition-all duration-700 shadow-xl shadow-zinc-200/70"
     >
       <!-- Predná strana (Minca s ponukou v obehu) -->
       <div
         id="supply-front"
-        class="backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3.5 min-[380px]:p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+        class="backface-hidden absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3.5 min-[380px]:p-5 sm:p-7 md:p-8 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
       >
         <img
           id="supply-coin-img"
           src=""
           alt="Minca"
-          class="w-14 h-14 min-[380px]:w-18 min-[380px]:h-18 sm:w-24 sm:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-2 object-contain mb-1 sm:mb-2.5 transition-transform duration-300 shrink-0"
+          class="w-14 h-14 min-[380px]:w-18 min-[380px]:h-18 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-zinc-50 border border-zinc-100 p-1 sm:p-2 md:p-2.5 object-contain mb-1 sm:mb-2.5 md:mb-3.5 transition-transform duration-300 shrink-0"
           loading="eager"
         />
-        <h3 id="supply-coin-name" class="text-xs min-[380px]:text-sm sm:text-base lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
+        <h3 id="supply-coin-name" class="text-xs min-[380px]:text-sm sm:text-base md:text-2xl lg:text-lg xl:text-xl font-extrabold text-zinc-900 truncate max-w-full px-2 shrink-0 leading-snug">
           ---
         </h3>
-        <span id="supply-coin-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
+        <span id="supply-coin-symbol" class="text-[9px] min-[380px]:text-[10px] sm:text-xs md:text-sm lg:text-sm font-mono font-bold text-zinc-400 uppercase mt-0.5 shrink-0">
           ---
         </span>
 
-        <div class="mt-1.5 min-[380px]:mt-2.5 sm:mt-3 text-center shrink-0">
-          <div class="text-[8px] min-[380px]:text-[10px] sm:text-xs uppercase font-semibold text-zinc-400">V obehu je:</div>
-          <div id="supply-circulating" class="text-xs min-[380px]:text-sm sm:text-base font-black font-mono text-zinc-800 tabular-nums whitespace-nowrap">
+        <div class="mt-1.5 min-[380px]:mt-2.5 sm:mt-3 md:mt-4 text-center shrink-0">
+          <div class="text-[8px] min-[380px]:text-[10px] sm:text-xs md:text-sm uppercase font-semibold text-zinc-400">V obehu je:</div>
+          <div id="supply-circulating" class="text-xs min-[380px]:text-sm sm:text-base md:text-xl font-black font-mono text-zinc-800 tabular-nums whitespace-nowrap mt-0.5">
             ---
           </div>
         </div>
@@ -55,18 +55,18 @@ import GameIcon from './GameIcon.astro';
       <!-- Zadná strana (Odhalenie maximálnej zásoby) -->
       <div
         id="supply-back"
-        class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3.5 min-[380px]:p-5 sm:p-7 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
+        class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl flex flex-col items-center justify-center p-3.5 min-[380px]:p-5 sm:p-7 md:p-8 lg:p-8 bg-white border-2 border-zinc-200/90 shadow-xs text-center"
       >
-        <div id="supply-status-ring" class="w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-base sm:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0">
+        <div id="supply-status-ring" class="w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-base sm:text-xl md:text-2xl lg:text-2xl font-bold mb-0.5 sm:mb-2 bg-zinc-100 text-zinc-700 shrink-0">
           ?
         </div>
-        <div id="supply-reveal-title" class="text-xs sm:text-sm font-bold text-zinc-600 mb-0.5">
+        <div id="supply-reveal-title" class="text-xs sm:text-sm md:text-base font-bold text-zinc-600 mb-0.5">
           Maximálna zásoba
         </div>
-        <div id="supply-reveal-val" class="text-sm sm:text-base lg:text-lg xl:text-xl font-black font-mono text-zinc-900 tabular-nums">
+        <div id="supply-reveal-val" class="text-sm sm:text-base md:text-2xl lg:text-lg xl:text-xl font-black font-mono text-zinc-900 tabular-nums">
           ---
         </div>
-        <div id="supply-reveal-verdict" class="text-xs sm:text-sm font-bold text-zinc-500 mt-1">
+        <div id="supply-reveal-verdict" class="text-xs sm:text-sm md:text-base font-bold text-zinc-500 mt-1">
           ---
         </div>
       </div>
@@ -74,31 +74,31 @@ import GameIcon from './GameIcon.astro';
   </div>
 
   <!-- Tlačidlá voľby -->
-  <div class="grid grid-cols-2 gap-2.5 w-full max-w-[340px]">
+  <div class="grid grid-cols-2 gap-2.5 md:gap-3.5 w-full max-w-[340px] md:max-w-[420px]">
     <button
       type="button"
       id="btn-supply-hardcap"
-      class="flex flex-col items-center justify-center p-3 rounded-xl font-bold bg-[#2a6a51] hover:bg-[#215642] text-white border border-[#1b4837]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
+      class="flex flex-col items-center justify-center p-3 md:p-4 rounded-xl md:rounded-2xl font-bold bg-[#2a6a51] hover:bg-[#215642] text-white border border-[#1b4837]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
     >
-      <div class="flex items-center gap-1.5">
-        <GameIcon name="supply_cap" class="w-3.5 h-3.5 text-emerald-200" />
-        <span class="text-xs sm:text-sm">PEVNÝ STROP</span>
+      <div class="flex items-center gap-1.5 md:gap-2">
+        <GameIcon name="supply_cap" class="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-200" />
+        <span class="text-xs sm:text-sm md:text-base">PEVNÝ STROP</span>
       </div>
-      <span class="text-[10px] text-emerald-100/80 font-normal mt-0.5">Limitovaná zásoba</span>
+      <span class="text-[10px] md:text-xs text-emerald-100/80 font-normal mt-0.5">Limitovaná zásoba</span>
     </button>
 
     <button
       type="button"
       id="btn-supply-infinite"
-      class="flex flex-col items-center justify-center p-3 rounded-xl font-bold bg-[#8c3b42] hover:bg-[#773137] text-white border border-[#63292e]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
+      class="flex flex-col items-center justify-center p-3 md:p-4 rounded-xl md:rounded-2xl font-bold bg-[#8c3b42] hover:bg-[#773137] text-white border border-[#63292e]/20 shadow-xs active:scale-95 transition cursor-pointer disabled:opacity-40"
     >
-      <div class="flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5 text-rose-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="flex items-center gap-1.5 md:gap-2">
+        <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-rose-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/>
         </svg>
-        <span class="text-xs sm:text-sm">BEZ STROPU</span>
+        <span class="text-xs sm:text-sm md:text-base">BEZ STROPU</span>
       </div>
-      <span class="text-[10px] text-rose-100/80 font-normal mt-0.5">Nekonečná inflácia</span>
+      <span class="text-[10px] md:text-xs text-rose-100/80 font-normal mt-0.5">Nekonečná inflácia</span>
     </button>
   </div>
 </div>
